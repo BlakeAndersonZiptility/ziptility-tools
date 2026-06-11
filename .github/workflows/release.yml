@@ -1,14 +1,23 @@
 name: Release
-# Tag a commit on main as vX.Y.Z to cut a release:
-#   git tag v2.0.0 && git push origin v2.0.0
+# Two ways to cut a release (both end up identical):
+#   1. Actions tab → Release → "Run workflow" → enter the tag (vX.Y.Z).
+#      The workflow creates and pushes the tag itself — no terminal needed.
+#   2. Push a tag from a clone: git tag v2.1.0 && git push origin v2.1.0
 # The workflow tests, builds dist/calculator-vX.Y.Z.js (immutable, never
 # overwritten), commits it to main, and creates a GitHub Release.
 # Deploying = pointing the Webflow embed's script src at the new file.
 on:
   push:
     tags: ['v*']
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Release tag to create (vX.Y.Z, e.g. v2.1.0)'
+        required: true
 permissions:
   contents: write
+env:
+  TAG: ${{ github.event.inputs.tag || github.ref_name }}
 jobs:
   release:
     runs-on: ubuntu-latest
@@ -17,6 +26,20 @@ jobs:
         with:
           ref: main
           fetch-depth: 0
+      - name: Validate tag and create it (manual runs only)
+        run: |
+          if ! echo "${TAG}" | grep -Eq '^v[0-9]+\.[0-9]+\.[0-9]+$'; then
+            echo "Tag '${TAG}' must look like v2.1.0"; exit 1
+          fi
+          if [ "${GITHUB_EVENT_NAME}" = "workflow_dispatch" ]; then
+            if git rev-parse -q --verify "refs/tags/${TAG}" >/dev/null; then
+              echo "Tag ${TAG} already exists — versions are immutable"; exit 1
+            fi
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git tag "${TAG}"
+            git push origin "${TAG}"
+          fi
       - uses: actions/setup-node@v4
         with:
           node-version: 22
@@ -27,7 +50,6 @@ jobs:
       - run: node tests/browser.test.js
       - name: Build versioned artifact
         run: |
-          TAG=${GITHUB_REF_NAME}
           if [ -f "dist/calculator-${TAG}.js" ]; then
             echo "dist/calculator-${TAG}.js already exists — versions are immutable"; exit 1
           fi
@@ -38,8 +60,8 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add dist/calculator-${GITHUB_REF_NAME}.js
-          git commit -m "Release ${GITHUB_REF_NAME} artifact [skip ci]"
+          git add dist/calculator-${TAG}.js
+          git commit -m "Release ${TAG} artifact [skip ci]"
           # rebase-retry in case main moved while we built
           for i in 1 2 3; do
             git push origin HEAD:main && break || { git pull --rebase origin main; sleep 2; }
@@ -48,6 +70,6 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          gh release create "${GITHUB_REF_NAME}" "dist/calculator-${GITHUB_REF_NAME}.js" \
-            --title "${GITHUB_REF_NAME}" \
-            --notes "Artifact: https://blakeandersonziptility.github.io/ziptility-tools/dist/calculator-${GITHUB_REF_NAME}.js"
+          gh release create "${TAG}" "dist/calculator-${TAG}.js" \
+            --title "${TAG}" \
+            --notes "Artifact: https://blakeandersonziptility.github.io/ziptility-tools/dist/calculator-${TAG}.js"

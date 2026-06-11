@@ -72,9 +72,12 @@ fall back to Hanken Grotesk locally.)
 ## Release & rollback runbook
 
 1. Merge to `main` (CI must be green).
-2. `git tag v2.1.0 && git push origin v2.1.0`
-   → the Release workflow tests, builds `dist/calculator-v2.1.0.js`,
-   commits it, and creates a GitHub Release.
+2. Cut the release — either way works:
+   - **No terminal:** GitHub → Actions tab → "Release" → "Run workflow" →
+     enter the new tag (e.g. `v2.1.0`). The workflow creates the tag itself.
+   - **From a clone:** `git tag v2.1.0 && git push origin v2.1.0`
+   Either path tests, builds `dist/calculator-v2.1.0.js`, commits it, and
+   creates a GitHub Release.
 3. Wait for the artifact URL to return 200 (GitHub Pages CDN ≈ 10 min):
    `https://blakeandersonziptility.github.io/ziptility-tools/dist/calculator-v2.1.0.js`
 4. In Webflow, edit the embed's script `src` to the new filename; publish to

@@ -28,13 +28,13 @@ export default [
     fields:[{k:"pump",label:"Pump gpm"},{k:"inflow",label:"Inflow gpm"},{k:"stor",label:"Storage gal"},{k:"cyc",label:"Cycle min"}],
     solve:(v)=>{ if(v.pump!=null&&v.inflow!=null&&v.stor!=null){ const net=v.pump-v.inflow; return {values:{cyc:net!==0?v.stor/net:NaN},computed:["cyc"],error:""}; }
       return {values:{},computed:[],error:"Enter pump, inflow, and storage."}; }},
-  { id:"hydrant-flow", cat:"Flow & Pressure", domains:["water"], title:"Hydrant Flow Test (NFPA 291)", formula:"Q = 29.83 × C × d² × √pitot\nQ₂₀ = Q × (S−20)^0.54 ÷ (S−R)^0.54", note:"Nozzle dia defaults to 2.5\", C to 0.90 (smooth outlet; 0.80 square, 0.70 projecting). Add static + residual psi for the NFPA 20-psi rating.",
-    fields:[{k:"d",label:"Nozzle dia in"},{k:"c",label:"Outlet coeff C"},{k:"pitot",label:"Pitot psi"},{k:"q",label:"Test flow gpm"},{k:"static",label:"Static psi"},{k:"resid",label:"Residual psi"},{k:"q20",label:"Rated gpm @20 psi"}],
-    solve:(v)=>{ const d=(v.d!=null&&v.d!==0)?v.d:2.5, cc=(v.c!=null&&v.c!==0)?v.c:0.9; let q=v.q;
-      if(v.pitot!=null){ if(v.pitot<0) return {values:{},computed:[],error:"Pitot psi can't be negative."}; q=Q_HYD*cc*d*d*Math.sqrt(v.pitot); }
+  { id:"hydrant-flow", cat:"Flow & Pressure", domains:["water"], title:"Hydrant Flow Test (NFPA 291)", formula:"Q = 29.83 × C × d in² × √pitot\nQ₂₀ = Q × (S−20)^0.54 ÷ (S−R)^0.54", note:"Nozzle dia defaults to 2.5\", C to 0.90 (smooth outlet; 0.80 square, 0.70 projecting). Add static + residual psi for the NFPA 20-psi rating.",
+    fields:[{k:"d",label:"Nozzle dia",unit:"length",def:"in",units:["in","mm","cm"]},{k:"c",label:"Outlet coeff C"},{k:"pitot",label:"Pitot psi"},{k:"q",label:"Test flow gpm"},{k:"static",label:"Static psi"},{k:"resid",label:"Residual psi"},{k:"q20",label:"Rated gpm @20 psi"}],
+    solve:(v)=>{ const din=(v.d!=null&&v.d!==0)?v.d*12:2.5, cc=(v.c!=null&&v.c!==0)?v.c:0.9; let q=v.q;
+      if(v.pitot!=null){ if(v.pitot<0) return {values:{},computed:[],error:"Pitot psi can't be negative."}; q=Q_HYD*cc*din*din*Math.sqrt(v.pitot); }
       if(q==null) return {values:{},computed:[],error:"Enter a pitot reading (or an observed test flow)."};
       const values={}, computed=[];
-      if(v.pitot!=null){ values.q=q; computed.push("q"); if(v.d==null){ values.d=2.5; computed.push("d"); } if(v.c==null){ values.c=0.9; computed.push("c"); } }
+      if(v.pitot!=null){ values.q=q; computed.push("q"); if(v.d==null){ values.d=2.5/12; computed.push("d"); } if(v.c==null){ values.c=0.9; computed.push("c"); } }
       if(v.static!=null&&v.resid!=null){ if(!(v.static>20&&v.static>v.resid)) return {values,computed,error:"Static psi must exceed both residual psi and 20 psi."};
         values.q20=q*Math.pow(v.static-20,0.54)/Math.pow(v.static-v.resid,0.54); computed.push("q20"); }
       return {values,computed,error:""}; },

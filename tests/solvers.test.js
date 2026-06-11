@@ -96,22 +96,27 @@ test('power conversion & operating cost (v2.1)', () => {
 });
 
 test('field disinfection (v2.1)', () => {
-  const w = solve('well-disinfection', { dia: 6, depth: 100, vol: null, dose: 50, strength: 5, lbs: null, src: null });
-  approx(w.values.vol, 146.88);
-  approx(w.values.lbs, 50 * (146.88 / 1e6) * 8.34);
-  approx(w.values.src, w.values.lbs / (8.34 * 0.05));
-  approx(solve('tank-volume-field', { dia: 96, depth: 10, gal: null }).values.gal, 0.0408 * 96 * 96 * 10);
-  approx(solve('pipe-volume', { dia: 8, len: 1000, gal: null }).values.gal, 2611.2);
-  approx(solve('pipe-volume', { dia: 8, len: null, gal: 2611.2 }).values.len, 1000);
-  const m = solve('main-disinfection', { dia: 8, len: 1000, vol: null, dose: null, strength: 5, lbs: null, src: null });
+  // dimensional inputs are in BASE units (ft) — the UI's unit selects convert
+  const w = solve('well-disinfection', { dia: 0.5, depth: 100, vol: null, dose: 50, lbs: null, liqpct: 5, liqgal: null, drypct: 65, drylbs: null });
+  approx(w.values.vol, 146.88, 1e-2); // = 0.0408 × 6in² × 100ft
+  approx(w.values.lbs, 50 * (w.values.vol / 1e6) * 8.34);
+  approx(w.values.liqgal, w.values.lbs / (8.34 * 0.05));
+  approx(w.values.drylbs, w.values.lbs / 0.65);
+  approx(solve('tank-volume-field', { dia: 8, depth: 10, gal: null }).values.gal, 0.0408 * 96 * 96 * 10, 1e-2);
+  approx(solve('pipe-volume', { dia: 8 / 12, len: 1000, gal: null }).values.gal, 2611.2, 1e-2);
+  approx(solve('pipe-volume', { dia: 8 / 12, len: null, gal: 2611.2 }).values.len, 1000, 1e-2);
+  const m = solve('main-disinfection', { dia: 8 / 12, len: 1000, vol: null, dose: null, lbs: null, liqpct: 5, liqgal: null, drypct: null, drylbs: null });
   approx(m.values.dose, 25); // C651 default
-  approx(m.values.lbs, 25 * (2611.2 / 1e6) * 8.34);
-  approx(m.values.src, m.values.lbs / (8.34 * 0.05));
-  // tank chlorination both directions
-  approx(solve('tank-chlorination', { dia: null, depth: null, gal: 50000, dose: 10, strength: 12.5, lbs: null, src: null }).values.src,
-    (10 * 0.05 * 8.34) / (8.34 * 0.125));
-  approx(solve('tank-chlorination', { dia: null, depth: null, gal: 50000, dose: null, strength: 12.5, lbs: null, src: 4 }).values.dose,
+  approx(m.values.lbs, 25 * (m.values.vol / 1e6) * 8.34);
+  approx(m.values.liqgal, m.values.lbs / (8.34 * 0.05));
+  // tank chlorination: target → liquid AND granular, plus both inverses
+  const t = solve('tank-chlorination', { dia: null, depth: null, gal: 50000, dose: 10, lbs: null, liqpct: 12.5, liqgal: null, drypct: 65, drylbs: null });
+  approx(t.values.lbs, 4.17);
+  approx(t.values.liqgal, 4.17 / (8.34 * 0.125));
+  approx(t.values.drylbs, 4.17 / 0.65);
+  approx(solve('tank-chlorination', { dia: null, depth: null, gal: 50000, dose: null, lbs: null, liqpct: 12.5, liqgal: 4, drypct: null, drylbs: null }).values.dose,
     (4 * 8.34 * 0.125) / (0.05 * 8.34));
+  approx(solve('tank-chlorination', { dia: null, depth: null, gal: 50000, dose: null, lbs: null, liqpct: null, liqgal: null, drypct: 65, drylbs: 6.4154 }).values.dose, 10, 1e-3);
 });
 
 test('hydrant flow test (v2.1)', () => {
@@ -119,13 +124,16 @@ test('hydrant flow test (v2.1)', () => {
   const r = solve('hydrant-flow', { d: null, c: null, pitot: 50, q: null, static: 62, resid: 42, q20: null });
   approx(r.values.q, q, 1e-2);
   approx(r.values.q20, q * Math.pow(42, 0.54) / Math.pow(20, 0.54), 1e-2);
+  // explicit nozzle dia arrives in base ft: 4.5" pumper nozzle
+  approx(solve('hydrant-flow', { d: 4.5 / 12, c: 0.8, pitot: 30, q: null, static: null, resid: null, q20: null }).values.q,
+    29.83 * 0.8 * 4.5 * 4.5 * Math.sqrt(30), 1e-2);
   assert.equal(solve('hydrant-flow', { d: null, c: null, pitot: 50, q: null, static: 42, resid: 62, q20: null }).error.length > 0, true);
 });
 
 test('water loss & capacity (v2.1)', () => {
   const cl = solve('customer-leak', { gph: 5, gpd: null, gpmo: null, rate: 4, cost: null });
   approx(cl.values.gpd, 120); approx(cl.values.gpmo, 3600); approx(cl.values.cost, 14.4);
-  const bl = solve('break-loss', { d: 1, c: null, psi: 60, gpm: null, mins: 120, flush: 5000, total: null });
+  const bl = solve('break-loss', { d: 1 / 12, c: null, psi: 60, gpm: null, mins: 120, flush: 5000, total: null });
   approx(bl.values.gpm, 29.83 * 0.6 * Math.sqrt(60), 1e-2);
   approx(bl.values.total, bl.values.gpm * 120 + 5000, 1e-2);
   const ok = solve('capacity-assessment', { avg: 500000, peak: 900000, source: 1000000, storage: 600000, capr: null, sdays: null, capsub: null, storsub: null, score: null });

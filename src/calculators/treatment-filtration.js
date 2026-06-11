@@ -22,7 +22,7 @@ export default [
       return {values:{},computed:[],error:"Enter any two values."}; },
     interpret:(m)=>{ if(m.rate==null) return null; return {level:"info",text:"Typical filtration runs ~2–10 gpm/ft²; backwash ~15–20 gpm/ft². Compare to your filter's design."}; }},
   { id:"flux", cat:"Treatment & Filtration", domains:["water"], title:"Membrane / Filter Flux", formula:"Flux gfd = Flow gpm ÷ Area ft² × 1440\n1 gfd ≈ 1.698 LMH", note:"Enter flow + area, or a flux (gfd or LMH) to convert / back-solve.",
-    fields:[{k:"flow",label:"Flow gpm"},{k:"area",label:"Area ft²"},{k:"gfd",label:"Flux gfd"},{k:"lmh",label:"Flux LMH"}],
+    fields:[{k:"flow",label:"Flow",unit:"flow",def:"gpm",units:["gpm","mgd","gpd","Lps"]},{k:"area",label:"Area",unit:"area",def:"sqft",units:["sqft","sqm"]},{k:"gfd",label:"Flux gfd"},{k:"lmh",label:"Flux LMH"}],
     solve:(v)=>{ let gfd=null, src=null;
       if(v.flow!=null&&v.area!=null){ if(v.area===0) return {values:{},computed:[],error:"Area can't be zero."}; gfd=v.flow/v.area*1440; src="fa"; }
       else if(v.gfd!=null){ gfd=v.gfd; src="gfd"; }
@@ -36,7 +36,7 @@ export default [
       return {values,computed,error:""}; },
     interpret:(m)=>{ if(m.gfd==null) return null; return {level:"info",text:"Low-pressure membranes commonly run ~10–25 gfd; compare to the membrane's design/spec flux."}; }},
   { id:"ufrv", cat:"Treatment & Filtration", domains:["water"], title:"Unit Filter Run Volume (UFRV)", formula:"UFRV gal/ft² = Rate gpm/ft² × Run hours × 60", note:"Gallons filtered per ft² per run. Enter rate (or flow + area) + run hours.",
-    fields:[{k:"flow",label:"Flow gpm"},{k:"area",label:"Area ft²"},{k:"rate",label:"Rate gpm/ft²"},{k:"hrs",label:"Run length hr"},{k:"ufrv",label:"UFRV gal/ft²"}],
+    fields:[{k:"flow",label:"Flow",unit:"flow",def:"gpm",units:["gpm","mgd","gpd","Lps"]},{k:"area",label:"Area",unit:"area",def:"sqft",units:["sqft","sqm"]},{k:"rate",label:"Rate gpm/ft²"},{k:"hrs",label:"Run length hr"},{k:"ufrv",label:"UFRV gal/ft²"}],
     solve:(v)=>{ const values={}, computed=[]; let rate=v.rate;
       if(rate==null&&v.flow!=null&&v.area!=null&&v.area!==0){ rate=v.flow/v.area; values.rate=rate; computed.push("rate"); }
       if(rate!=null&&v.hrs!=null){ values.ufrv=rate*v.hrs*60; computed.push("ufrv"); return {values,computed,error:""}; }

@@ -38,10 +38,10 @@ export default [
     interpret:(m)=>{ if(m.gpd==null) return null; return {level:"info",text:"For scale (EPA WaterSense): a dripping faucet wastes ~3,000 gal/yr; a running toilet ~200 gal/day."}; },
     links:[{label:"EPA WaterSense — Fix a Leak",href:"https://www.epa.gov/watersense/fix-leak-week"}]},
   { id:"break-loss", cat:"Wells & Distribution", domains:["water"], title:"Main Break / Repair Loss", formula:"gpm ≈ 29.83 × C × d² × √psi\nTotal gal = gpm × minutes + flushing gal", note:"Order-of-magnitude estimate for incident reporting, not billing. C defaults to 0.6 (sharp-edged opening).",
-    fields:[{k:"d",label:"Opening dia in"},{k:"c",label:"Orifice coeff C"},{k:"psi",label:"Pressure psi"},{k:"gpm",label:"Est. flow gpm"},{k:"mins",label:"Duration min"},{k:"flush",label:"Flushing gal"},{k:"total",label:"Total gal lost"}],
+    fields:[{k:"d",label:"Opening dia",unit:"length",def:"in",units:["in","mm","cm"]},{k:"c",label:"Orifice coeff C"},{k:"psi",label:"Pressure psi"},{k:"gpm",label:"Est. flow gpm"},{k:"mins",label:"Duration min"},{k:"flush",label:"Flushing gal"},{k:"total",label:"Total gal lost"}],
     solve:(v)=>{ const cc=(v.c!=null&&v.c!==0)?v.c:0.6; let gpm=v.gpm; const values={}, computed=[];
       if(v.d!=null&&v.psi!=null){ if(v.psi<0) return {values:{},computed:[],error:"Pressure can't be negative."};
-        gpm=Q_HYD*cc*v.d*v.d*Math.sqrt(v.psi); values.gpm=gpm; computed.push("gpm"); if(v.c==null){ values.c=0.6; computed.push("c"); } }
+        const din=v.d*12; gpm=Q_HYD*cc*din*din*Math.sqrt(v.psi); values.gpm=gpm; computed.push("gpm"); if(v.c==null){ values.c=0.6; computed.push("c"); } }
       if(gpm==null) return {values:{},computed:[],error:"Enter opening size + pressure (or an estimated gpm)."};
       if(v.mins!=null){ values.total=gpm*v.mins+(v.flush||0); computed.push("total"); }
       return {values,computed,error:""}; },

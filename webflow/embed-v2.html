@@ -2,6 +2,17 @@
      Source: https://github.com/BlakeAndersonZiptility/ziptility-tools
      To deploy a new version or roll back: change ONLY the version in the
      script src below, then publish. Versions are immutable.
+
+     CWV (2026-06 audit): the Webflow wrapper around this embed
+     (.zip-calc-embed) must keep its per-breakpoint min-heights
+     (desktop 1650px / tablet 2000px / mobile-landscape 2100px /
+     mobile-portrait 3800px) so content below never shifts while the app
+     boots. The dark strip below is a skeleton the app replaces on boot.
+     The bundle loads NO fonts and NO third-party tags — keep it that way.
+
      Gated/in-app variant: add data-embed="app" to the div. -->
-<div id="ziptility-calculator"><noscript>This calculator requires JavaScript. Please enable it to use the free operator calculators.</noscript></div>
-<script defer src="https://blakeandersonziptility.github.io/ziptility-tools/dist/calculator-v2.0.0.js"></script>
+<div id="ziptility-calculator">
+  <div aria-hidden="true" style="height:88px;background:#0c1f30;border-bottom:3px solid #1C7CD6"></div>
+  <noscript>This calculator requires JavaScript. Please enable it to use the free operator calculators.</noscript>
+</div>
+<script defer src="https://blakeandersonziptility.github.io/ziptility-tools/dist/calculator-v2.2.0.js"></script>

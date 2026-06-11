@@ -18,7 +18,9 @@
     --brand-accent:#ff442f;     /* brand accent = tomato — computed-answer highlight, emphasis */
     --brand-font-display:'Archivo', sans-serif;
     --brand-font-body:'Hanken Grotesk', sans-serif;
-    --brand-font-mono:'IBM Plex Mono', monospace;
+    /* System mono by design — IBM Plex Mono needed a Google Fonts request
+       and its swap caused layout shift (CWV audit 2026-06). */
+    --brand-font-mono:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   }
   :root{
     --navy:var(--brand-navy); --accent:var(--brand-accent); --good:#1E9E6A;
@@ -161,8 +163,8 @@
 
 /* ===== ZIPTILITY BRAND FILTER (applied 2026-06-04) — aligned to design-language-lock ===== */
 :root{
-  --brand-font-display:'Hanken Grotesk', "Circular std", Inter, Helvetica, Arial, sans-serif;
-  --brand-font-body:'Hanken Grotesk', Inter, Helvetica, Arial, sans-serif;
+  --brand-font-display:"Circular std", Hankensans, 'Hanken Grotesk', Inter, Helvetica, Arial, sans-serif;
+  --brand-font-body:Hankensans, 'Hanken Grotesk', Inter, Helvetica, Arial, sans-serif;
 }
 .cta-btn:not(.cta-ghost){ background:var(--brand-red); color:#fff; border-color:var(--brand-red); }
 .cta-btn:not(.cta-ghost):hover{ background:var(--brand-red-dark); border-color:var(--brand-red-dark); }
@@ -181,8 +183,11 @@ a{ color:var(--brand-red); }
 :root{
     --brand-navy:#0c1f30;
     --brand-red:#ff442f;
-    --brand-font-display:"Circular std",'Hanken Grotesk',Hankensans,Inter,Helvetica,Arial,sans-serif;
-    --brand-font-body:'Hanken Grotesk',Hankensans,Inter,Helvetica,Arial,sans-serif;
+    /* Site-hosted families lead (Hankensans = Hanken Grotesk, self-hosted &
+       preloaded by the Webflow site); 'Hanken Grotesk' is a local-font
+       fallback only — nothing in this bundle fetches fonts. */
+    --brand-font-display:"Circular std",Hankensans,'Hanken Grotesk',Inter,Helvetica,Arial,sans-serif;
+    --brand-font-body:Hankensans,'Hanken Grotesk',Inter,Helvetica,Arial,sans-serif;
     /* Warm neutrals derived from --linen, replacing the cool blue-grays */
     --bg:#f9f5ef;
     --ink:#0c1f30;
@@ -204,6 +209,8 @@ a{ color:var(--brand-red); }
    ============================================================ */
 /* Compact tool masthead — the Webflow global nav sits above it now */
 .head-wrap{ padding:14px 22px 16px; }
+/* CLS belt-and-braces (CWV audit): CTA keeps its space while settling */
+.cta{ min-height:120px; }
 /* Related-resource backlinks on cards */
 .card-links{ margin-top:10px; padding-top:9px; border-top:1px solid var(--line-soft); font-size:12px; color:var(--muted); }
 .card-links a{ color:var(--brand-red); font-weight:600; text-decoration:none; }

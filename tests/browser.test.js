@@ -14,6 +14,8 @@ const ctx = await browser.newContext({ ignoreHTTPSErrors: true, viewport: { widt
 const page = await ctx.newPage();
 const jsErrors = [];
 page.on('pageerror', e => jsErrors.push(e.message));
+const fontReqs = [];
+page.on('request', r => { if (/fonts\.(googleapis|gstatic)\.com/.test(r.url())) fontReqs.push(r.url()); });
 
 await page.goto(PREVIEW, { waitUntil: 'load' });
 await page.waitForSelector('.card');
@@ -33,6 +35,12 @@ const btnBg = await page.evaluate(() => getComputedStyle(document.querySelector(
 ok('Calculate button tomato #ff442f, got ' + btnBg, btnBg === 'rgb(255, 68, 47)');
 const h2font = await page.evaluate(() => getComputedStyle(document.querySelector('.card-head h2')).fontFamily);
 ok('heading declares Circular std stack', /Circular/i.test(h2font));
+
+// CWV (2026-06 audit): the bundle must never fetch web fonts — swap reflow
+// on this page was the site's worst CLS contributor.
+ok('zero Google Fonts requests', fontReqs.length === 0);
+const monofont = await page.evaluate(() => getComputedStyle(document.querySelector('.formula')).fontFamily);
+ok('formula uses system mono stack (no IBM Plex)', !/plex/i.test(monofont) && /mono|menlo|consolas/i.test(monofont));
 
 // first paint state
 ok('water mode selected at init', await page.evaluate(() => document.documentElement.dataset.mode === 'water'));

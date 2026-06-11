@@ -1,0 +1,19 @@
+{
+  "name": "ziptility-tools",
+  "version": "2.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Ziptility free operator calculator — water & wastewater system math. Served via GitHub Pages into ziptility.com/ops/calculator.",
+  "scripts": {
+    "build": "esbuild src/main.js --bundle --format=iife --loader:.css=text --minify --outfile=dist/calculator-v$npm_package_version.js",
+    "build:dev": "esbuild src/main.js --bundle --format=iife --loader:.css=text --outfile=dist/calculator-dev.js",
+    "dev": "esbuild src/main.js --bundle --format=iife --loader:.css=text --outfile=dist/calculator-dev.js --watch --servedir=.",
+    "test": "node --test tests/solvers.test.js",
+    "test:browser": "npm run build:dev && node tests/browser.test.js",
+    "test:legacy": "node tests/legacy/test_solvers_v1.cjs"
+  },
+  "devDependencies": {
+    "esbuild": "^0.25.0",
+    "playwright": "^1.56.1"
+  }
+}

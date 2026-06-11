@@ -1,0 +1,53 @@
+name: Release
+# Tag a commit on main as vX.Y.Z to cut a release:
+#   git tag v2.0.0 && git push origin v2.0.0
+# The workflow tests, builds dist/calculator-vX.Y.Z.js (immutable, never
+# overwritten), commits it to main, and creates a GitHub Release.
+# Deploying = pointing the Webflow embed's script src at the new file.
+on:
+  push:
+    tags: ['v*']
+permissions:
+  contents: write
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm ci
+      - run: npm test
+      - run: npm run build:dev
+      - run: npx playwright install --with-deps chromium
+      - run: node tests/browser.test.js
+      - name: Build versioned artifact
+        run: |
+          TAG=${GITHUB_REF_NAME}
+          if [ -f "dist/calculator-${TAG}.js" ]; then
+            echo "dist/calculator-${TAG}.js already exists — versions are immutable"; exit 1
+          fi
+          npx esbuild src/main.js --bundle --format=iife --loader:.css=text --minify \
+            --banner:js="/* Ziptility Operator Calculator ${TAG} (${GITHUB_SHA}) — https://github.com/${GITHUB_REPOSITORY} */" \
+            --outfile="dist/calculator-${TAG}.js"
+      - name: Commit artifact to main
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add dist/calculator-${GITHUB_REF_NAME}.js
+          git commit -m "Release ${GITHUB_REF_NAME} artifact [skip ci]"
+          # rebase-retry in case main moved while we built
+          for i in 1 2 3; do
+            git push origin HEAD:main && break || { git pull --rebase origin main; sleep 2; }
+          done
+      - name: Create GitHub Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "${GITHUB_REF_NAME}" "dist/calculator-${GITHUB_REF_NAME}.js" \
+            --title "${GITHUB_REF_NAME}" \
+            --notes "Artifact: https://blakeandersonziptility.github.io/ziptility-tools/dist/calculator-${GITHUB_REF_NAME}.js"

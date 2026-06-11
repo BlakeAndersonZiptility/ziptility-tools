@@ -29,6 +29,7 @@ const DOMAINS = ["water","wastewater"];
 
 export function validate(){
   const errors = [], ids = new Set();
+  const allIds = new Set(calculators.map(c=>c.id));
   for(const c of calculators){
     const where = 'calculator "' + (c.id || '(missing id)') + '"';
     if(!c.id || !/^[a-z0-9-]+$/.test(c.id)) errors.push(where+': id must be kebab-case');
@@ -50,6 +51,15 @@ export function validate(){
       else for(const l of c.links){
         if(!l || typeof l.label!=='string' || typeof l.href!=='string' || !/^https:\/\//.test(l.href))
           errors.push(where+': each link needs {label, href} with an https:// href');
+      }
+    }
+    if(c.keywords!=null && (!Array.isArray(c.keywords) || c.keywords.some(k=>typeof k!=='string' || !k)))
+      errors.push(where+': keywords must be an array of non-empty strings');
+    if(c.seeAlso!=null){
+      if(!Array.isArray(c.seeAlso)) errors.push(where+': seeAlso must be an array of calculator ids');
+      else for(const id of c.seeAlso){
+        if(id===c.id) errors.push(where+': seeAlso must not reference itself');
+        else if(!allIds.has(id)) errors.push(where+': seeAlso references unknown id "'+id+'"');
       }
     }
   }

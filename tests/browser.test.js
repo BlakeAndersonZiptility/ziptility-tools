@@ -79,6 +79,22 @@ await page.fill('#search', 'svi');
 ok('search finds SVI', (await page.locator('.card').count()) >= 1);
 await page.fill('#search', '');
 
+// keyword synonyms reach cards whose titles don't contain them (v2.3)
+await page.click('.mode-btn[data-m="water"]');
+await page.fill('#search', 'kilowatt');
+ok('keyword search surfaces power converter', await page.evaluate(() =>
+  document.getElementById('conv-power__in') !== null));
+
+// seeAlso cross-link navigates via search (v2.3)
+await page.fill('#search', 'hazen');
+ok('head-loss card found by keyword', await page.evaluate(() =>
+  document.getElementById('head-loss__flow') !== null));
+await page.click('.seealso');
+ok('see-also click navigates to related card', await page.evaluate(() =>
+  document.getElementById('pressure-head__psi') !== null));
+await page.fill('#search', '');
+await page.click('.mode-btn[data-m="wastewater"]');
+
 // resource links on cards
 await page.fill('#search', 'population equivalent');
 const linkRow = await page.locator('.card-links a').first();

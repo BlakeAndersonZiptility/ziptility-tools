@@ -12,8 +12,8 @@ const approx = (got, want, tol = 1e-3) => {
   assert.ok(Math.abs(got - want) <= tol * Math.max(1, Math.abs(want)), `expected ~${want}, got ${got}`);
 };
 
-test('registry: 68+ calculators, valid schema, ordered categories', () => {
-  assert.ok(calculators.length >= 68, `only ${calculators.length} calculators`);
+test('registry: 76+ calculators, valid schema, ordered categories', () => {
+  assert.ok(calculators.length >= 76, `only ${calculators.length} calculators`);
   assert.deepEqual(validate(), []);
   for (const c of calculators) assert.ok(CAT_ORDER.includes(c.cat), c.id);
 });
@@ -144,6 +144,64 @@ test('water loss & capacity (v2.1)', () => {
   approx(ok.values.score, 100);
   const short = solve('capacity-assessment', { avg: 500000, peak: 1200000, source: 900000, storage: 300000, capr: null, sdays: null, capsub: null, storsub: null, score: null });
   approx(short.values.capr, 0.75); approx(short.values.sdays, 0.6); approx(short.values.score, 54);
+});
+
+test('hydraulics pack (v2.3)', () => {
+  // head-loss: 100 gpm through 4" C=140, 1000 ft (dia passed in base ft)
+  const hl = solve('head-loss', { flow: 100, dia: 4 / 12, c: 140, len: 1000, hf100: null, loss: null, psi: null, vel: null });
+  const hf100 = 0.2083 * Math.pow(100 / 140, 1.852) * Math.pow(100, 1.852) / Math.pow(4, 4.8655);
+  approx(hl.values.hf100, hf100, 1e-6);
+  approx(hl.values.loss, hf100 * 10, 1e-6);
+  approx(hl.values.psi, hf100 * 10 / 2.3067, 1e-4);
+  approx(hl.values.vel, 0.4085 * 100 / 16, 1e-4);
+  // affinity laws: 1750 -> 1450 rpm
+  const af = solve('affinity-laws', { s1: 1750, s2: 1450, flow1: 200, head1: 100, pow1: 10, flow2: null, head2: null, pow2: null });
+  const r = 1450 / 1750;
+  approx(af.values.flow2, 200 * r); approx(af.values.head2, 100 * r * r); approx(af.values.pow2, 10 * r * r * r);
+  // npsh: 15 ft lift, 3 ft friction, defaults for atm/vapor
+  const np = solve('npsh', { atm: null, lift: 15, fric: 3, vap: null, npsha: null, npshr: 12, margin: null });
+  approx(np.values.npsha, 33.9 - 15 - 3 - 0.59);
+  approx(np.values.margin, np.values.npsha - 12);
+});
+
+test('water chemistry pack (v2.3)', () => {
+  const ws = solve('water-stability', { ph: 7.5, tempf: 77, tds: 400, ca: 240, alk: 180, phs: null, lsi: null, rsi: null });
+  const A = (Math.log10(400) - 1) / 10, B = -13.12 * Math.log10(25 + 273) + 34.55,
+    Cc = Math.log10(240) - 0.4, D = Math.log10(180), phs = (9.3 + A + B) - (Cc + D);
+  approx(ws.values.phs, phs, 1e-6);
+  approx(ws.values.lsi, 7.5 - phs, 1e-6);
+  approx(ws.values.rsi, 2 * phs - 7.5, 1e-6);
+  approx(solve('conductivity-tds', { us: 800, kf: null, tds: null }).values.tds, 512);
+  approx(solve('conductivity-tds', { us: null, kf: 0.7, tds: 700 }).values.us, 1000);
+});
+
+test('wastewater & measurement pack (v2.3)', () => {
+  // Manning full-pipe: 8" PVC at 0.4% (dia passed in base ft)
+  const sc = solve('sewer-capacity', { dia: 8 / 12, slope: 0.4, n: 0.013, q: null, vel: null });
+  const Acs = 0.7854 * Math.pow(8 / 12, 2), R = (8 / 12) / 4;
+  const qcfs = (1.486 / 0.013) * Acs * Math.pow(R, 2 / 3) * Math.sqrt(0.004);
+  approx(sc.values.q, qcfs * 448.8312, 1e-3);
+  approx(sc.values.vel, qcfs / Acs, 1e-4);
+  // weirs
+  const wf = solve('weir-flow', { hv: 0.5, qv: null, crest: 2, hr: 0.5, qr: null });
+  approx(wf.values.qv, 2.49 * Math.pow(0.5, 2.48) * 448.8312, 1e-3);
+  approx(wf.values.qr, 3.33 * (2 - 0.1) * Math.pow(0.5, 1.5) * 448.8312, 1e-3);
+  // DO saturation at 20 C, measured 6.0
+  const ds = solve('do-saturation', { tempf: null, tempc: 20, cs: null, meas: 6, pct: null });
+  const cs20 = 14.652 - 0.41022 * 20 + 0.0079910 * 400 - 0.000077774 * 8000;
+  approx(ds.values.cs, cs20, 1e-6);
+  approx(ds.values.pct, 6 / cs20 * 100, 1e-4);
+  approx(solve('do-saturation', { tempf: 68, tempc: null, cs: null, meas: null, pct: null }).values.tempc, 20);
+});
+
+test('discoverability: keywords and seeAlso are schema-valid (v2.3)', () => {
+  // validate() (asserted empty in the registry test) covers shape + id existence;
+  // here just pin a few seeds so they aren't dropped accidentally.
+  const byIdL = Object.fromEntries(calculators.map(c => [c.id, c]));
+  assert.ok(byIdL['conv-power'].keywords.includes('kilowatt'));
+  assert.ok(byIdL['water-stability'].keywords.some(k => /langelier/i.test(k)));
+  assert.ok(byIdL['head-loss'].seeAlso.includes('pressure-head'));
+  assert.ok(byIdL['tank-chlorination'].seeAlso.includes('tank-volume-field'));
 });
 
 test('sweep: no calculator throws on empty input; returns error string', () => {

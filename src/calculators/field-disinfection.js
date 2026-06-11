@@ -40,6 +40,7 @@ export default [
       if(v.gal!=null&&v.depth!=null&&v.depth!==0) return {values:{dia:Math.sqrt(v.gal/(PI4*v.depth*C))},computed:["dia"],error:""};
       return {values:{},computed:[],error:"Enter any two values."}; }},
   { id:"tank-chlorination", cat:"Field Disinfection", domains:["water"], title:"Tank Chlorination", formula:"lbs Cl = mg/L × MG × 8.34 · product = lbs ÷ strength%", note:"Works both ways: target residual → amount to add, or amount added → resulting mg/L. "+SRC_NOTE,
+    keywords:["bleach","HTH","shock","hypochlorite","cal-hypo"], seeAlso:["tank-volume-field"],
     fields:[Object.assign({},DIA,{label:"Dia (optional)"}),{k:"depth",label:"Depth (optional)",unit:"length",def:"ft",units:["ft","in","m"]},{k:"gal",label:"Tank volume",unit:"volume",def:"gal",units:["gal","L","m3","MG"]},{k:"dose",label:"Target residual mg/L"},{k:"lbs",label:"Chlorine lbs"}].concat(LIQ,DRY),
     solve:(v)=>{ const values={}, computed=[]; let gal=v.gal;
       if(gal==null&&v.dia!=null&&v.depth!=null){ gal=cylGal(v.dia,v.depth); values.gal=gal; computed.push("gal"); }

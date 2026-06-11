@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<!-- Release preview — renders a RELEASED artifact straight from this repo's
+     GitHub Pages, no Webflow involved. Open:
+       https://blakeandersonziptility.github.io/ziptility-tools/preview.html
+     Defaults to the version below; QA any other release with ?v=vX.Y.Z.
+     Note: Circular Std only loads on ziptility.com/webflow.io (site-licensed
+     font) — headings fall back to Hanken Grotesk here. -->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Ziptility Operator Calculator — release preview</title>
+</head>
+<body>
+  <div id="ziptility-calculator"><noscript>This calculator requires JavaScript.</noscript></div>
+  <script>
+    var DEFAULT_VERSION = 'v2.1.0';
+    var v = new URLSearchParams(location.search).get('v') || DEFAULT_VERSION;
+    if (!/^v\d+\.\d+\.\d+$/.test(v)) v = DEFAULT_VERSION;
+    var s = document.createElement('script');
+    s.defer = true;
+    s.src = './dist/calculator-' + v + '.js';
+    s.onerror = function () {
+      document.getElementById('ziptility-calculator').innerHTML =
+        '<p style="font-family:sans-serif;padding:2em">No released artifact found for <b>' + v +
+        '</b> — check <a href="https://github.com/BlakeAndersonZiptility/ziptility-tools/releases">releases</a>.</p>';
+    };
+    document.head.appendChild(s);
+  </script>
+</body>
+</html>

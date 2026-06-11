@@ -40,5 +40,28 @@ export default [
     solve:(v)=>{ if(v.v!=null&&v.a!=null) return {values:{w:v.v*v.a},computed:["w"],error:""};
       if(v.w!=null&&v.v!=null) return {values:{a:v.w/v.v},computed:["a"],error:""};
       if(v.w!=null&&v.a!=null) return {values:{v:v.w/v.a},computed:["v"],error:""};
-      return {values:{},computed:[],error:"Enter any two values."}; }}
+      return {values:{},computed:[],error:"Enter any two values."}; }},
+  { id:"op-cost", cat:"Pumps & Power", domains:["water","wastewater"], title:"Equipment Operating Cost", formula:"$/hr = hp × 0.746 × $/kWh ÷ Motor%", note:"Enter hp + power price. Motor efficiency defaults to 100%; add hours/day for a daily cost.",
+    fields:[{k:"hp",label:"Horsepower"},{k:"price",label:"Price $/kWh"},{k:"meff",label:"Motor Eff %"},{k:"hrs",label:"Run hours/day"},{k:"perhr",label:"Cost $/hr"},{k:"perday",label:"Cost $/day"}],
+    solve:(v)=>{ if(v.hp==null||v.price==null) return {values:{},computed:[],error:"Enter horsepower and price $/kWh."};
+      const eff=(v.meff!=null&&v.meff!==0)?v.meff/100:1, values={}, computed=[];
+      if(v.meff==null){ values.meff=100; computed.push("meff"); }
+      values.perhr=v.hp*KW/eff*v.price; computed.push("perhr");
+      if(v.hrs!=null){ values.perday=values.perhr*v.hrs; computed.push("perday"); }
+      return {values,computed,error:""}; }},
+  { id:"specific-energy", cat:"Pumps & Power", domains:["water","wastewater"], title:"Pump Specific Energy & Cost", formula:"kWh/MG = kWh ÷ MG pumped · $/MG = kWh/MG × $/kWh", note:"Energy per million gallons. Fill in Pump B to compare two pumps side by side.",
+    fields:[{k:"kwh",label:"A: kWh used"},{k:"mg",label:"A: MG pumped"},{k:"price",label:"Price $/kWh"},{k:"kpmg",label:"A: kWh/MG"},{k:"cpmg",label:"A: $/MG"},{k:"kwhB",label:"B: kWh used"},{k:"mgB",label:"B: MG pumped"},{k:"kpmgB",label:"B: kWh/MG"},{k:"cpmgB",label:"B: $/MG"}],
+    solve:(v)=>{ const values={}, computed=[];
+      const side=(kwh,mg,kk,ck)=>{ if(kwh==null||mg==null||mg===0) return false;
+        values[kk]=kwh/mg; computed.push(kk);
+        if(v.price!=null){ values[ck]=values[kk]*v.price; computed.push(ck); } return true; };
+      const a=side(v.kwh,v.mg,"kpmg","cpmg"), b=side(v.kwhB,v.mgB,"kpmgB","cpmgB");
+      if(!a&&!b) return {values:{},computed:[],error:"Enter kWh used + MG pumped (at least for Pump A)."};
+      return {values,computed,error:""}; },
+    interpret:(m)=>{ if(m.kpmg==null) return null;
+      if(m.kpmgB!=null){ if(m.kpmg===m.kpmgB) return {level:"info",text:"Both pumps use the same energy per million gallons."};
+        const w=m.kpmg<m.kpmgB?"A":"B", lo=Math.min(m.kpmg,m.kpmgB), hi=Math.max(m.kpmg,m.kpmgB);
+        return {level:"info",text:"Pump "+w+" is more efficient — "+Math.round(lo)+" vs "+Math.round(hi)+" kWh/MG (~"+Math.round((hi-lo)/hi*100)+"% less energy per MG)."}; }
+      return {level:"info",text:"Typical systems run on the order of ~1,500 kWh/MG. A rising kWh/MG over time usually means wear or efficiency loss — trend it."}; },
+    links:[{label:"EPA — Energy efficiency for water utilities",href:"https://www.epa.gov/sustainable-water-infrastructure/energy-efficiency-water-utilities"}]}
 ];

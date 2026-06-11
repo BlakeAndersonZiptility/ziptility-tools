@@ -1,5 +1,5 @@
 /* Wells & Distribution calculators — definitions moved verbatim from v1 calculator.js */
-import { C, LBS, LITERS, PSI2FT, GRGAL, KW, PI4, D834 } from '../constants.js';
+import { C, LBS, LITERS, PSI2FT, GRGAL, KW, PI4, D834, Q_HYD } from '../constants.js';
 
 export default [
 
@@ -25,5 +25,43 @@ export default [
       if(v.gpd!=null&&v.gpcd!=null) return {values:{pop:v.gpd/v.gpcd},computed:["pop"],error:""};
       if(v.pop!=null&&v.gpcd!=null) return {values:{gpd:v.pop*v.gpcd},computed:["gpd"],error:""};
       return {values:{},computed:[],error:"Enter any two values."}; },
-    interpret:(m)=>{ if(m.gpcd==null) return null; return {level:"info",text:"U.S. residential average is roughly 80–100 gpcd; whole-system numbers vary with industry and losses."}; }}
+    interpret:(m)=>{ if(m.gpcd==null) return null; return {level:"info",text:"U.S. residential average is roughly 80–100 gpcd; whole-system numbers vary with industry and losses."}; }},
+  { id:"customer-leak", cat:"Wells & Distribution", domains:["water"], title:"Customer Leak Estimator", formula:"gal/day = gal/hr × 24 · $/month = gal/month ÷ 1000 × $/1000 gal", note:"Enter the leak rate any way you have it (meter sweep gal/hr works well). Add your rate for the bill impact.",
+    fields:[{k:"gph",label:"Leak gal/hr"},{k:"gpd",label:"Gallons/day"},{k:"gpmo",label:"Gallons/month"},{k:"rate",label:"Rate $/1000 gal"},{k:"cost",label:"Cost $/month"}],
+    solve:(v)=>{ let gpd=null, src=null;
+      if(v.gph!=null){ gpd=v.gph*24; src="gph"; } else if(v.gpd!=null){ gpd=v.gpd; src="gpd"; } else if(v.gpmo!=null){ gpd=v.gpmo/30; src="gpmo"; }
+      else return {values:{},computed:[],error:"Enter a leak rate (gal/hr, gal/day, or gal/month)."};
+      const values={gph:gpd/24, gpd, gpmo:gpd*30}, computed=[];
+      for(const k of ["gph","gpd","gpmo"]) if(k!==src) computed.push(k);
+      if(v.rate!=null){ values.cost=values.gpmo/1000*v.rate; computed.push("cost"); }
+      return {values,computed,error:""}; },
+    interpret:(m)=>{ if(m.gpd==null) return null; return {level:"info",text:"For scale (EPA WaterSense): a dripping faucet wastes ~3,000 gal/yr; a running toilet ~200 gal/day."}; },
+    links:[{label:"EPA WaterSense — Fix a Leak",href:"https://www.epa.gov/watersense/fix-leak-week"}]},
+  { id:"break-loss", cat:"Wells & Distribution", domains:["water"], title:"Main Break / Repair Loss", formula:"gpm ≈ 29.83 × C × d² × √psi\nTotal gal = gpm × minutes + flushing gal", note:"Order-of-magnitude estimate for incident reporting, not billing. C defaults to 0.6 (sharp-edged opening).",
+    fields:[{k:"d",label:"Opening dia in"},{k:"c",label:"Orifice coeff C"},{k:"psi",label:"Pressure psi"},{k:"gpm",label:"Est. flow gpm"},{k:"mins",label:"Duration min"},{k:"flush",label:"Flushing gal"},{k:"total",label:"Total gal lost"}],
+    solve:(v)=>{ const cc=(v.c!=null&&v.c!==0)?v.c:0.6; let gpm=v.gpm; const values={}, computed=[];
+      if(v.d!=null&&v.psi!=null){ if(v.psi<0) return {values:{},computed:[],error:"Pressure can't be negative."};
+        gpm=Q_HYD*cc*v.d*v.d*Math.sqrt(v.psi); values.gpm=gpm; computed.push("gpm"); if(v.c==null){ values.c=0.6; computed.push("c"); } }
+      if(gpm==null) return {values:{},computed:[],error:"Enter opening size + pressure (or an estimated gpm)."};
+      if(v.mins!=null){ values.total=gpm*v.mins+(v.flush||0); computed.push("total"); }
+      return {values,computed,error:""}; },
+    interpret:(m)=>{ if(m.gpm==null&&m.total==null) return null; return {level:"info",text:"Treat this as a reporting estimate — actual loss depends on the opening shape and how pressure held during the event."}; }},
+  { id:"capacity-assessment", cat:"Wells & Distribution", domains:["water"], title:"Capacity & Storage Assessment", formula:"Capacity ratio = Source ÷ Peak day\nStorage days = Storage ÷ Avg day", note:"Composite score is a Ziptility convention (60% capacity, 40% storage), not a published standard. Benchmarks: source ≥ peak-day demand; ~1 day of average demand in storage.",
+    fields:[{k:"avg",label:"Avg day gpd"},{k:"peak",label:"Peak day gpd"},{k:"source",label:"Source gpd"},{k:"storage",label:"Storage gal"},{k:"capr",label:"Capacity ratio"},{k:"sdays",label:"Storage days"},{k:"capsub",label:"Capacity score"},{k:"storsub",label:"Storage score"},{k:"score",label:"Composite 0–100"}],
+    solve:(v)=>{ const values={}, computed=[]; let capr=null, sdays=null;
+      if(v.source!=null&&v.peak!=null&&v.peak!==0){ capr=v.source/v.peak; values.capr=capr; computed.push("capr"); }
+      if(v.storage!=null&&v.avg!=null&&v.avg!==0){ sdays=v.storage/v.avg; values.sdays=sdays; computed.push("sdays"); }
+      if(capr==null&&sdays==null) return {values:{},computed:[],error:"Enter demands plus source capacity and/or storage."};
+      if(capr!=null&&sdays!=null){
+        const capSub=Math.max(0,Math.min(100,(capr-0.5)/0.5*100)), storSub=Math.max(0,Math.min(100,sdays*100));
+        values.capsub=capSub; values.storsub=storSub; values.score=0.6*capSub+0.4*storSub;
+        computed.push("capsub","storsub","score"); }
+      return {values,computed,error:""}; },
+    interpret:(m)=>{ if(m.score==null){ if(m.capr==null) return null;
+        return m.capr>=1 ? {level:"good",text:"Source meets peak-day demand (ratio ≥ 1.0). Add storage + avg day for the full score."}
+          : {level:"watch",text:"Source is below peak-day demand. Add storage + avg day for the full score."}; }
+      if(m.score>=85) return {level:"good",text:"Meets typical capacity & storage benchmarks (source ≥ peak day, ~1 day of storage)."};
+      if(m.score>=60) return {level:"watch",text:"Marginal — source or storage sits below the usual benchmarks; review against growth and fire-flow needs."};
+      return {level:"alert",text:"Source or storage shortfall — review your capacity development / capital improvement plan."}; },
+    links:[{label:"EPA — Drinking water capacity development",href:"https://www.epa.gov/dwcapacity"}]}
 ];

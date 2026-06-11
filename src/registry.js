@@ -11,17 +11,18 @@ import processControl from './calculators/process-control.js';
 import solidsSettling from './calculators/solids-settling.js';
 import wellsDistribution from './calculators/wells-distribution.js';
 import dosageChemical from './calculators/dosage-chemical.js';
+import fieldDisinfection from './calculators/field-disinfection.js';
 import pumpsPower from './calculators/pumps-power.js';
 import lab from './calculators/lab.js';
 import conversions from './calculators/conversions.js';
 import { UNITS } from './units.js';
 
-export const CAT_ORDER = ["Geometry & Volume","Flow & Pressure","Treatment & Filtration","Loading & Mass","Process Control","Solids & Settling","Wells & Distribution","Dosage & Chemical","Pumps & Power","Lab","Conversions"];
+export const CAT_ORDER = ["Geometry & Volume","Flow & Pressure","Treatment & Filtration","Loading & Mass","Process Control","Solids & Settling","Wells & Distribution","Dosage & Chemical","Field Disinfection","Pumps & Power","Lab","Conversions"];
 
 export const calculators = [
   ...geometryVolume, ...flowPressure, ...treatmentFiltration, ...loadingMass,
   ...processControl, ...solidsSettling, ...wellsDistribution, ...dosageChemical,
-  ...pumpsPower, ...lab, ...conversions
+  ...fieldDisinfection, ...pumpsPower, ...lab, ...conversions
 ];
 
 const DOMAINS = ["water","wastewater"];

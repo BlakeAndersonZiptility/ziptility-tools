@@ -9,6 +9,7 @@ export default [
   converter("conv-volume","Conversions","Volume","volume","gal","cf",["gal","cf","L","m3","MG","acft","lbH2O"]),
   converter("conv-mass","Conversions","Weight / Mass","mass","lb","kg",["lb","kg","g","ton","galH2O"]),
   converter("conv-flow","Conversions","Flow","flow","gpm","mgd",["gpm","mgd","gpd","cfs","Lps","mlmin"]),
+  converter("conv-power","Conversions","Power","power","hp","kW",["hp","kW","W","btuh"]),
   { id:"specific-gravity", cat:"Conversions", domains:["water","wastewater"], title:"Specific Gravity", formula:"Substance lb/gal ÷ 8.34 = SG", note:"Relative to water. Enter one value.",
     fields:[{k:"lbgal",label:"Weight lb/gal"},{k:"sg",label:"Specific Gravity"}], solve:convSolve({lbgal:D834, sg:1})},
   { id:"temp", cat:"Conversions", domains:["water","wastewater"], title:"Temperature", formula:"(°F − 32) × 5/9 = °C", note:"Enter one value.",

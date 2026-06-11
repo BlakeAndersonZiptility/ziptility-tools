@@ -1,5 +1,5 @@
 /* Flow & Pressure calculators — definitions moved verbatim from v1 calculator.js */
-import { C, LBS, LITERS, PSI2FT, GRGAL, KW, PI4, D834 } from '../constants.js';
+import { C, LBS, LITERS, PSI2FT, GRGAL, KW, PI4, D834, Q_HYD } from '../constants.js';
 import { convSolve, countNN, converter } from '../calc-helpers.js';
 
 export default [
@@ -27,5 +27,22 @@ export default [
   { id:"cycle-time", cat:"Flow & Pressure", domains:["wastewater"], title:"Lift Station Cycle Time", formula:"Storage ÷ (Pump − Inflow) = Cycle (min)", note:"Pump-down time. Enter pump, inflow, storage (gal & gpm).",
     fields:[{k:"pump",label:"Pump gpm"},{k:"inflow",label:"Inflow gpm"},{k:"stor",label:"Storage gal"},{k:"cyc",label:"Cycle min"}],
     solve:(v)=>{ if(v.pump!=null&&v.inflow!=null&&v.stor!=null){ const net=v.pump-v.inflow; return {values:{cyc:net!==0?v.stor/net:NaN},computed:["cyc"],error:""}; }
-      return {values:{},computed:[],error:"Enter pump, inflow, and storage."}; }}
+      return {values:{},computed:[],error:"Enter pump, inflow, and storage."}; }},
+  { id:"hydrant-flow", cat:"Flow & Pressure", domains:["water"], title:"Hydrant Flow Test (NFPA 291)", formula:"Q = 29.83 × C × d² × √pitot\nQ₂₀ = Q × (S−20)^0.54 ÷ (S−R)^0.54", note:"Nozzle dia defaults to 2.5\", C to 0.90 (smooth outlet; 0.80 square, 0.70 projecting). Add static + residual psi for the NFPA 20-psi rating.",
+    fields:[{k:"d",label:"Nozzle dia in"},{k:"c",label:"Outlet coeff C"},{k:"pitot",label:"Pitot psi"},{k:"q",label:"Test flow gpm"},{k:"static",label:"Static psi"},{k:"resid",label:"Residual psi"},{k:"q20",label:"Rated gpm @20 psi"}],
+    solve:(v)=>{ const d=(v.d!=null&&v.d!==0)?v.d:2.5, cc=(v.c!=null&&v.c!==0)?v.c:0.9; let q=v.q;
+      if(v.pitot!=null){ if(v.pitot<0) return {values:{},computed:[],error:"Pitot psi can't be negative."}; q=Q_HYD*cc*d*d*Math.sqrt(v.pitot); }
+      if(q==null) return {values:{},computed:[],error:"Enter a pitot reading (or an observed test flow)."};
+      const values={}, computed=[];
+      if(v.pitot!=null){ values.q=q; computed.push("q"); if(v.d==null){ values.d=2.5; computed.push("d"); } if(v.c==null){ values.c=0.9; computed.push("c"); } }
+      if(v.static!=null&&v.resid!=null){ if(!(v.static>20&&v.static>v.resid)) return {values,computed,error:"Static psi must exceed both residual psi and 20 psi."};
+        values.q20=q*Math.pow(v.static-20,0.54)/Math.pow(v.static-v.resid,0.54); computed.push("q20"); }
+      return {values,computed,error:""}; },
+    interpret:(m)=>{ const q=m.q20!=null?m.q20:m.q; if(q==null) return null;
+      const tail=m.q20!=null?"":" (Observed at test pressure — add static & residual psi for the NFPA 20-psi rating.)";
+      if(q>=1500) return {level:"good",text:"Class AA — ≥1,500 gpm (light blue bonnet)."+tail};
+      if(q>=1000) return {level:"good",text:"Class A — 1,000–1,499 gpm (green bonnet)."+tail};
+      if(q>=500) return {level:"watch",text:"Class B — 500–999 gpm (orange bonnet)."+tail};
+      return {level:"alert",text:"Class C — under 500 gpm (red bonnet). Check for closed valves, tuberculation, or undersized mains."+tail}; },
+    links:[{label:"NFPA 291 hydrant flow testing explained",href:"https://www.mwua.org/nfpa-291-hydrant-flow-testing/"}]}
 ];

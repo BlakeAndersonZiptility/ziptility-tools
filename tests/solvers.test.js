@@ -12,8 +12,8 @@ const approx = (got, want, tol = 1e-3) => {
   assert.ok(Math.abs(got - want) <= tol * Math.max(1, Math.abs(want)), `expected ~${want}, got ${got}`);
 };
 
-test('registry: 67+ calculators, valid schema, ordered categories', () => {
-  assert.ok(calculators.length >= 67, `only ${calculators.length} calculators`);
+test('registry: 68+ calculators, valid schema, ordered categories', () => {
+  assert.ok(calculators.length >= 68, `only ${calculators.length} calculators`);
   assert.deepEqual(validate(), []);
   for (const c of calculators) assert.ok(CAT_ORDER.includes(c.cat), c.id);
 });
@@ -71,6 +71,10 @@ test('wells, lab, conversions', () => {
   approx(uConv(1, 'mi', 'ft', 'length'), 5280);
   approx(uConv(1, 'mgd', 'gpm', 'flow'), 694.444);
   approx(solve('conv-length', { in: 1, out: null }).values.out, 1, 1e-9);
+  const af = solve('gallons-acre-feet', { gal: 325851, MG: null, acft: null });
+  approx(af.values.acft, 1, 1e-6);
+  approx(af.values.MG, 0.325851, 1e-6);
+  approx(solve('gallons-acre-feet', { gal: null, MG: null, acft: 2 }).values.gal, 651702);
 });
 
 test('treatment: flux & UFRV (v2.1)', () => {

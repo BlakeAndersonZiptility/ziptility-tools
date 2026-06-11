@@ -7,6 +7,59 @@ const LEAD = { hubspotPortalId:"4938013", hubspotFormId:"", fallbackEmail:"sales
 /* HubSpot portal 4938013 (confirm). To go live: create the formula-sheet form in HubSpot, paste its
    GUID into hubspotFormId above. Until BOTH are set, the opt-in safely falls back to a mailto. */
 
+/* ============================================================
+   ZIPTILITY BRAND ALIGNMENT LAYER
+   Injected at runtime so this repo — not the Webflow page embed —
+   owns the final word on tool styling. The <style> element is
+   appended after the embed's inline styles, so these rules win
+   the cascade without editing the Webflow page.
+
+   Token values mirror ziptility.com's Webflow :root variables:
+     --tomato: #ff442f        --midnight-blue: #0c1f30
+     --linen:  #f6eee6        --dim-grey: #5f6469
+     --dark-slate-grey: #42515f
+   Fonts: "Circular std" (headings — loaded by the site-wide
+   Webflow CSS on this page) and Hanken Grotesk (body — the same
+   typeface the site loads as "Hankensans").
+   ============================================================ */
+const BRAND_CSS = `
+  :root{
+    --brand-navy:#0c1f30;
+    --brand-red:#ff442f;
+    --brand-font-display:"Circular std",'Hanken Grotesk',Hankensans,Inter,Helvetica,Arial,sans-serif;
+    --brand-font-body:'Hanken Grotesk',Hankensans,Inter,Helvetica,Arial,sans-serif;
+    /* Warm neutrals derived from --linen, replacing the cool blue-grays */
+    --bg:#f9f5ef;
+    --ink:#0c1f30;
+    --muted:#5f6469;
+    --line:#e5ded4;
+    --line-soft:#f1ebe2;
+    --shadow:0 1px 2px rgba(12,31,48,.05), 0 10px 28px rgba(12,31,48,.07);
+  }
+  .control{ background:rgba(249,245,239,.92); }
+  .mode-btn:hover{ border-color:#c8beb4; }
+  .field-wrap select:hover, .field-wrap input:hover{ border-color:#c8beb4; }
+  .field input::placeholder{ color:#aaa49c; }
+  .field input.computed{ color:var(--ink); }
+  .btn{ border-radius:.625rem; }
+  .seo p{ color:#42515f; }
+`;
+(function(){
+  const s=document.createElement('style'); s.id='zip-brand-align'; s.textContent=BRAND_CSS;
+  (document.body||document.head).appendChild(s);
+})();
+
+/* Repair double-encoded punctuation baked into the page embed's static copy
+   (UTF-8 em dashes/ellipses pasted as MacRoman → "‚Äî"/"‚Ä¶" shows to users).
+   Becomes a no-op once the text is re-pasted cleanly in Webflow. */
+(function(){
+  const FIX=[[/‚Äî/g,"—"],[/‚Ä¶/g,"…"]];
+  const repair=(t)=>{ for(const [re,ch] of FIX) t=t.replace(re,ch); return t; };
+  const w=document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+  let n; while((n=w.nextNode())){ const t=repair(n.nodeValue); if(t!==n.nodeValue) n.nodeValue=t; }
+  document.querySelectorAll('input[placeholder]').forEach(i=>{ const p=repair(i.placeholder); if(p!==i.placeholder) i.placeholder=p; });
+})();
+
 const C=7.4805, LBS=8.3454, LITERS=3.78541, PSI2FT=2.3067, GRGAL=17.1181, KW=0.746, PI4=0.7854, D834=8.34;
 
 /* ---- Universal unit system (base units: ft, ft², gal, lb, gpm) ----
@@ -501,6 +554,7 @@ document.getElementById('leadSubmit').onclick=()=>{
 };
 
 /* Initialize the tool FIRST so nothing below can block it. */
+document.documentElement.dataset.mode=state.mode; /* so the active mode toggle is styled on first paint */
 buildSelect(); renderGrid();
 
 /* ?embed=app → in-app/gated build: hide marketing CTA + SEO copy, just the tool.

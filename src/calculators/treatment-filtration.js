@@ -1,6 +1,9 @@
 /* Treatment & Filtration calculators — definitions moved verbatim from v1 calculator.js */
 import { C, LBS, LITERS, PSI2FT, GRGAL, KW, PI4, D834 } from '../constants.js';
 
+/* 1 gal/ft²/day in L/m²/hr: 3.78541 L/gal ÷ 0.09290304 m²/ft² ÷ 24 hr */
+const LMH_PER_GFD = LITERS/0.09290304/24;
+
 export default [
 
   { id:"ct-disinfection", cat:"Treatment & Filtration", domains:["water"], title:"CT — Disinfection", formula:"Residual × Contact Time = CT", note:"Enter residual + time. Add required CT for a compliance ratio.",
@@ -17,5 +20,32 @@ export default [
       if(v.flow!=null&&v.rate!=null) return {values:{area:v.flow/v.rate},computed:["area"],error:""};
       if(v.area!=null&&v.rate!=null) return {values:{flow:v.area*v.rate},computed:["flow"],error:""};
       return {values:{},computed:[],error:"Enter any two values."}; },
-    interpret:(m)=>{ if(m.rate==null) return null; return {level:"info",text:"Typical filtration runs ~2–10 gpm/ft²; backwash ~15–20 gpm/ft². Compare to your filter's design."}; }}
+    interpret:(m)=>{ if(m.rate==null) return null; return {level:"info",text:"Typical filtration runs ~2–10 gpm/ft²; backwash ~15–20 gpm/ft². Compare to your filter's design."}; }},
+  { id:"flux", cat:"Treatment & Filtration", domains:["water"], title:"Membrane / Filter Flux", formula:"Flux gfd = Flow gpm ÷ Area ft² × 1440\n1 gfd ≈ 1.698 LMH", note:"Enter flow + area, or a flux (gfd or LMH) to convert / back-solve.",
+    fields:[{k:"flow",label:"Flow gpm"},{k:"area",label:"Area ft²"},{k:"gfd",label:"Flux gfd"},{k:"lmh",label:"Flux LMH"}],
+    solve:(v)=>{ let gfd=null, src=null;
+      if(v.flow!=null&&v.area!=null){ if(v.area===0) return {values:{},computed:[],error:"Area can't be zero."}; gfd=v.flow/v.area*1440; src="fa"; }
+      else if(v.gfd!=null){ gfd=v.gfd; src="gfd"; }
+      else if(v.lmh!=null){ gfd=v.lmh/LMH_PER_GFD; src="lmh"; }
+      else return {values:{},computed:[],error:"Enter flow + area, or a flux (gfd or LMH)."};
+      const values={}, computed=[];
+      if(src!=="fa"){ if(v.area!=null&&v.flow==null){ values.flow=gfd*v.area/1440; computed.push("flow"); }
+        else if(v.flow!=null&&v.area==null&&gfd!==0){ values.area=v.flow*1440/gfd; computed.push("area"); } }
+      if(src!=="gfd"){ values.gfd=gfd; computed.push("gfd"); }
+      if(src!=="lmh"){ values.lmh=gfd*LMH_PER_GFD; computed.push("lmh"); }
+      return {values,computed,error:""}; },
+    interpret:(m)=>{ if(m.gfd==null) return null; return {level:"info",text:"Low-pressure membranes commonly run ~10–25 gfd; compare to the membrane's design/spec flux."}; }},
+  { id:"ufrv", cat:"Treatment & Filtration", domains:["water"], title:"Unit Filter Run Volume (UFRV)", formula:"UFRV gal/ft² = Rate gpm/ft² × Run hours × 60", note:"Gallons filtered per ft² per run. Enter rate (or flow + area) + run hours.",
+    fields:[{k:"flow",label:"Flow gpm"},{k:"area",label:"Area ft²"},{k:"rate",label:"Rate gpm/ft²"},{k:"hrs",label:"Run length hr"},{k:"ufrv",label:"UFRV gal/ft²"}],
+    solve:(v)=>{ const values={}, computed=[]; let rate=v.rate;
+      if(rate==null&&v.flow!=null&&v.area!=null&&v.area!==0){ rate=v.flow/v.area; values.rate=rate; computed.push("rate"); }
+      if(rate!=null&&v.hrs!=null){ values.ufrv=rate*v.hrs*60; computed.push("ufrv"); return {values,computed,error:""}; }
+      if(v.ufrv!=null&&rate!=null&&rate!==0){ values.hrs=v.ufrv/(rate*60); computed.push("hrs"); return {values,computed,error:""}; }
+      if(v.ufrv!=null&&v.hrs!=null&&v.hrs!==0) return {values:{rate:v.ufrv/(v.hrs*60)},computed:["rate"],error:""};
+      return {values:{},computed:[],error:"Enter rate (or flow + area) plus run hours or UFRV."}; },
+    interpret:(m)=>{ if(m.ufrv==null) return null;
+      if(m.ufrv>=10000) return {level:"good",text:"≥10,000 gal/ft² — excellent run volume."};
+      if(m.ufrv>=5000) return {level:"good",text:"≥5,000 gal/ft² — generally acceptable. Many plants target 4,000–6,000+; compare to your filter's design."};
+      if(m.ufrv>=2000) return {level:"watch",text:"2,000–5,000 gal/ft² — below the usual ≥5,000 benchmark; watch washwater use and run times. Many plants target 4,000–6,000+."};
+      return {level:"alert",text:"Under 2,000 gal/ft² — short runs; investigate pretreatment, media condition, or backwash effectiveness."}; }}
 ];

@@ -12,8 +12,8 @@ const approx = (got, want, tol = 1e-3) => {
   assert.ok(Math.abs(got - want) <= tol * Math.max(1, Math.abs(want)), `expected ~${want}, got ${got}`);
 };
 
-test('registry: 53+ calculators, valid schema, ordered categories', () => {
-  assert.ok(calculators.length >= 53, `only ${calculators.length} calculators`);
+test('registry: 67+ calculators, valid schema, ordered categories', () => {
+  assert.ok(calculators.length >= 67, `only ${calculators.length} calculators`);
   assert.deepEqual(validate(), []);
   for (const c of calculators) assert.ok(CAT_ORDER.includes(c.cat), c.id);
 });
@@ -73,6 +73,67 @@ test('wells, lab, conversions', () => {
   approx(solve('conv-length', { in: 1, out: null }).values.out, 1, 1e-9);
 });
 
+test('treatment: flux & UFRV (v2.1)', () => {
+  const LMH = 3.78541 / 0.09290304 / 24; // ≈ 1.69779 LMH per gfd
+  const f = solve('flux', { flow: 100, area: 50, gfd: null, lmh: null });
+  approx(f.values.gfd, 2880);
+  approx(f.values.lmh, 2880 * LMH);
+  approx(solve('flux', { flow: null, area: 200, gfd: 20, lmh: null }).values.flow, 20 * 200 / 1440);
+  approx(solve('ufrv', { flow: null, area: null, rate: 4, hrs: 20, ufrv: null }).values.ufrv, 4800);
+  approx(solve('ufrv', { flow: 200, area: 50, rate: null, hrs: 24, ufrv: null }).values.ufrv, 5760);
+});
+
+test('power conversion & operating cost (v2.1)', () => {
+  approx(uConv(1, 'hp', 'kW', 'power'), 0.745700, 1e-4);
+  approx(uConv(1, 'hp', 'btuh', 'power'), 2544.43, 1e-4);
+  approx(solve('conv-power', { in: 1, out: null }).values.out, 1, 1e-9);
+  approx(solve('op-cost', { hp: 50, price: 0.12, meff: null, hrs: null, perhr: null, perday: null }).values.perhr, 4.476);
+  const oc = solve('op-cost', { hp: 50, price: 0.12, meff: 90, hrs: 24, perhr: null, perday: null });
+  approx(oc.values.perhr, 50 * 0.746 / 0.9 * 0.12);
+  approx(oc.values.perday, oc.values.perhr * 24);
+  const se = solve('specific-energy', { kwh: 1500, mg: 1, price: 0.1, kpmg: null, cpmg: null, kwhB: 1200, mgB: 1, kpmgB: null, cpmgB: null });
+  approx(se.values.kpmg, 1500); approx(se.values.cpmg, 150); approx(se.values.kpmgB, 1200);
+});
+
+test('field disinfection (v2.1)', () => {
+  const w = solve('well-disinfection', { dia: 6, depth: 100, vol: null, dose: 50, strength: 5, lbs: null, src: null });
+  approx(w.values.vol, 146.88);
+  approx(w.values.lbs, 50 * (146.88 / 1e6) * 8.34);
+  approx(w.values.src, w.values.lbs / (8.34 * 0.05));
+  approx(solve('tank-volume-field', { dia: 96, depth: 10, gal: null }).values.gal, 0.0408 * 96 * 96 * 10);
+  approx(solve('pipe-volume', { dia: 8, len: 1000, gal: null }).values.gal, 2611.2);
+  approx(solve('pipe-volume', { dia: 8, len: null, gal: 2611.2 }).values.len, 1000);
+  const m = solve('main-disinfection', { dia: 8, len: 1000, vol: null, dose: null, strength: 5, lbs: null, src: null });
+  approx(m.values.dose, 25); // C651 default
+  approx(m.values.lbs, 25 * (2611.2 / 1e6) * 8.34);
+  approx(m.values.src, m.values.lbs / (8.34 * 0.05));
+  // tank chlorination both directions
+  approx(solve('tank-chlorination', { dia: null, depth: null, gal: 50000, dose: 10, strength: 12.5, lbs: null, src: null }).values.src,
+    (10 * 0.05 * 8.34) / (8.34 * 0.125));
+  approx(solve('tank-chlorination', { dia: null, depth: null, gal: 50000, dose: null, strength: 12.5, lbs: null, src: 4 }).values.dose,
+    (4 * 8.34 * 0.125) / (0.05 * 8.34));
+});
+
+test('hydrant flow test (v2.1)', () => {
+  const q = 29.83 * 0.9 * 2.5 * 2.5 * Math.sqrt(50);
+  const r = solve('hydrant-flow', { d: null, c: null, pitot: 50, q: null, static: 62, resid: 42, q20: null });
+  approx(r.values.q, q, 1e-2);
+  approx(r.values.q20, q * Math.pow(42, 0.54) / Math.pow(20, 0.54), 1e-2);
+  assert.equal(solve('hydrant-flow', { d: null, c: null, pitot: 50, q: null, static: 42, resid: 62, q20: null }).error.length > 0, true);
+});
+
+test('water loss & capacity (v2.1)', () => {
+  const cl = solve('customer-leak', { gph: 5, gpd: null, gpmo: null, rate: 4, cost: null });
+  approx(cl.values.gpd, 120); approx(cl.values.gpmo, 3600); approx(cl.values.cost, 14.4);
+  const bl = solve('break-loss', { d: 1, c: null, psi: 60, gpm: null, mins: 120, flush: 5000, total: null });
+  approx(bl.values.gpm, 29.83 * 0.6 * Math.sqrt(60), 1e-2);
+  approx(bl.values.total, bl.values.gpm * 120 + 5000, 1e-2);
+  const ok = solve('capacity-assessment', { avg: 500000, peak: 900000, source: 1000000, storage: 600000, capr: null, sdays: null, capsub: null, storsub: null, score: null });
+  approx(ok.values.score, 100);
+  const short = solve('capacity-assessment', { avg: 500000, peak: 1200000, source: 900000, storage: 300000, capr: null, sdays: null, capsub: null, storsub: null, score: null });
+  approx(short.values.capr, 0.75); approx(short.values.sdays, 0.6); approx(short.values.score, 54);
+});
+
 test('sweep: no calculator throws on empty input; returns error string', () => {
   for (const c of calculators) {
     const empty = {}; c.fields.forEach(f => empty[f.k] = null);
@@ -90,11 +151,15 @@ test('sweep: no calculator throws on any single-field input', () => {
   }
 });
 
-test('links: seeded resource backlinks are well-formed', () => {
+test('links: resource backlinks are well-formed', () => {
   const linked = calculators.filter(c => c.links && c.links.length);
   assert.ok(linked.length >= 2, 'expected at least the two seed links');
+  // v2.1 cards cite external references (EPA/AWWA/NFPA); all links must be https,
+  // and the original ziptility.com seed backlinks must still exist.
   for (const c of linked) for (const l of c.links) {
-    assert.match(l.href, /^https:\/\/www\.ziptility\.com\//, c.id);
+    assert.match(l.href, /^https:\/\//, c.id);
     assert.ok(l.label.length > 3, c.id);
   }
+  const zip = linked.filter(c => c.links.some(l => /^https:\/\/www\.ziptility\.com\//.test(l.href)));
+  assert.ok(zip.length >= 2, 'expected the two ziptility.com seed backlinks to remain');
 });

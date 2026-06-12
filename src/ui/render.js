@@ -20,10 +20,18 @@ export function initApp(){
     catSelect.innerHTML=cats.map(c=>'<option value="'+c+'">'+c+'</option>').join(''); catSelect.value=state.cat; }
   function setMode(m){ if(state.mode===m) return; state.mode=m; document.documentElement.dataset.mode=m;
     document.querySelectorAll('.mode-btn').forEach(b=>b.setAttribute('aria-pressed', String(b.dataset.m===m))); buildSelect(); renderGrid(); }
+  function hay(c){ return (c.title+' '+c.note+' '+c.formula+' '+c.cat+' '+((c.keywords||[]).join(' '))).toLowerCase(); }
   function visibleItems(){ const q=state.query.trim().toLowerCase();
-    if(q) return calculators.filter(c=>c.domains.includes(state.mode) && (c.title+' '+c.note+' '+c.formula+' '+c.cat).toLowerCase().includes(q));
+    if(q) return calculators.filter(c=>c.domains.includes(state.mode) && hay(c).includes(q));
     return calculators.filter(c=>c.cat===state.cat && c.domains.includes(state.mode)); }
+  const titleOf=Object.fromEntries(calculators.map(c=>[c.id,c.title]));
 
+  function cardLinksHtml(c){
+    const rows=[];
+    if(c.links&&c.links.length) rows.push('Learn more: '+c.links.map(l=>'<a href="'+l.href+'" target="_blank" rel="noopener">'+l.label+'</a>').join(' · '));
+    if(c.seeAlso&&c.seeAlso.length) rows.push('Also: '+c.seeAlso.map(id=>'<button type="button" class="linkbtn seealso" data-t="'+titleOf[id]+'">'+titleOf[id]+'</button>').join(' · '));
+    return rows.length? '<div class="card-links">'+rows.join('<br>')+'</div>' : '';
+  }
   function unitSelectHtml(c, f){
     const list=f.units||Object.keys(UNITS[f.unit]);
     const opts=list.map(u=>'<option value="'+u+'"'+(u===f.def?' selected':'')+'>'+UNITS[f.unit][u].label+'</option>').join('');
@@ -37,7 +45,7 @@ export function initApp(){
     countEl.innerHTML='<b>'+items.length+'</b> '+(searching?('match'+(items.length===1?'':'es')):('calculator'+(items.length===1?'':'s')));
     if(items.length===0){ const other=state.mode==='water'?'wastewater':'water', otherLbl=other==='water'?'Water':'Wastewater';
       const q=state.query.trim().toLowerCase();
-      const otherN=calculators.filter(c=>c.domains.includes(other) && (c.title+' '+c.note+' '+c.formula+' '+c.cat).toLowerCase().includes(q)).length;
+      const otherN=calculators.filter(c=>c.domains.includes(other) && hay(c).includes(q)).length;
       grid.innerHTML='<div class="empty">No matches in '+(state.mode==='water'?'Water':'Wastewater')+' mode.'+(otherN>0?(' Found <b>'+otherN+'</b> in '+otherLbl+' — <button type="button" id="switchMode" class="linkbtn">switch to '+otherLbl+'</button>.'):' Try clearing the search.')+'</div>';
       if(otherN>0) document.getElementById('switchMode').onclick=()=>setMode(other); return; }
     items.forEach(c=>{
@@ -50,8 +58,9 @@ export function initApp(){
         +'<div class="fields '+(c.fields.length<=2?'one-col':'')+'">'+fieldsHtml+'</div>'
         +'<div class="actions"><button class="btn btn-calc" id="calc-'+c.id+'" type="button">Calculate</button><button class="btn btn-clear" id="clear-'+c.id+'" type="button">Clear</button><button class="btn btn-copy" id="copy-'+c.id+'" type="button">Copy</button></div>'
         +'<div class="msg" id="msg-'+c.id+'" aria-live="polite"></div><div class="insight" id="ins-'+c.id+'" aria-live="polite"></div>'
-        +(c.links&&c.links.length? '<div class="card-links">Learn more: '+c.links.map(l=>'<a href="'+l.href+'" target="_blank" rel="noopener">'+l.label+'</a>').join(' · ')+'</div>' : '');
+        +cardLinksHtml(c);
       grid.appendChild(card);
+      card.querySelectorAll('.seealso').forEach(b=>b.onclick=()=>{ searchEl.value=b.dataset.t; state.query=b.dataset.t; renderGrid(); });
 
       const inputs=c.fields.map(f=>document.getElementById(c.id+'__'+f.k));
       const run=()=>runCalc(c, inputs);

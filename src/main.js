@@ -8,23 +8,16 @@ import { buildShell } from './ui/template.js';
 import { initApp } from './ui/render.js';
 import { initLead } from './ui/lead.js';
 
-const FONT_CSS = 'https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap';
-
-function ensureFonts(){
-  if(document.querySelector('link[href="'+FONT_CSS+'"]')) return;
-  for(const href of ['https://fonts.googleapis.com','https://fonts.gstatic.com']){
-    const l=document.createElement('link'); l.rel='preconnect'; l.href=href;
-    if(href.includes('gstatic')) l.crossOrigin='anonymous';
-    document.head.appendChild(l);
-  }
-  const l=document.createElement('link'); l.rel='stylesheet'; l.href=FONT_CSS; document.head.appendChild(l);
-}
+/* No font loading here — by design (Core Web Vitals audit, 2026-06).
+   The Webflow site provides Hankensans + Circular Std (self-hosted,
+   preloaded); the stylesheet's stacks use those with system fallbacks.
+   Loading Google Fonts with display=swap from this bundle was the
+   page's main CLS source. Do not reintroduce a font <link>. */
 
 function boot(){
   const mount=document.getElementById('ziptility-calculator');
   if(!mount || mount.dataset.zipBooted) return;
   mount.dataset.zipBooted='1';
-  ensureFonts();
   if(!document.getElementById('zip-calc-styles')){
     const s=document.createElement('style'); s.id='zip-calc-styles'; s.textContent=CSS;
     document.head.appendChild(s);

@@ -63,5 +63,35 @@ export default [
         const w=m.kpmg<m.kpmgB?"A":"B", lo=Math.min(m.kpmg,m.kpmgB), hi=Math.max(m.kpmg,m.kpmgB);
         return {level:"info",text:"Pump "+w+" is more efficient — "+Math.round(lo)+" vs "+Math.round(hi)+" kWh/MG (~"+Math.round((hi-lo)/hi*100)+"% less energy per MG)."}; }
       return {level:"info",text:"Typical systems run on the order of ~1,500 kWh/MG. A rising kWh/MG over time usually means wear or efficiency loss — trend it."}; },
-    links:[{label:"EPA — Energy efficiency for water utilities",href:"https://www.epa.gov/sustainable-water-infrastructure/energy-efficiency-water-utilities"}]}
+    links:[{label:"EPA — Energy efficiency for water utilities",href:"https://www.epa.gov/sustainable-water-infrastructure/energy-efficiency-water-utilities"}]},
+  { id:"affinity-laws", cat:"Pumps & Power", domains:["water","wastewater"], title:"Pump Affinity Laws", formula:"Flow ∝ speed · Head ∝ speed² · Power ∝ speed³", note:"Speed in rpm or %. Enter both speeds plus whichever of flow/head/power you know at speed 1. Same math applies to impeller diameter trims.",
+    keywords:["affinity","vfd","speed change","impeller"], seeAlso:["hp","op-cost"],
+    fields:[{k:"s1",label:"Speed 1 (rpm or %)"},{k:"s2",label:"Speed 2 (rpm or %)"},{k:"flow1",label:"Flow @1 gpm"},{k:"head1",label:"Head @1 ft"},{k:"pow1",label:"Power @1 hp"},{k:"flow2",label:"Flow @2 gpm"},{k:"head2",label:"Head @2 ft"},{k:"pow2",label:"Power @2 hp"}],
+    solve:(v)=>{ if(v.s1==null||v.s1===0||v.s2==null) return {values:{},computed:[],error:"Enter both speeds."};
+      const r=v.s2/v.s1, values={}, computed=[];
+      if(v.flow1!=null){ values.flow2=v.flow1*r; computed.push("flow2"); }
+      if(v.head1!=null){ values.head2=v.head1*r*r; computed.push("head2"); }
+      if(v.pow1!=null){ values.pow2=v.pow1*r*r*r; computed.push("pow2"); }
+      if(computed.length===0) return {values:{},computed:[],error:"Enter both speeds plus a flow, head, or power at speed 1."};
+      return {values,computed,error:""}; },
+    interpret:(m)=>{ if(m.s1==null||m.s2==null||m.s1===0) return null; const r=m.s2/m.s1, dp=(Math.pow(r,3)-1)*100;
+      return {level:"info",text:"Power scales with speed cubed: this "+(r<1?(Math.round((1-r)*100)+"% slow-down cuts power ~"+Math.round(-dp)+"%."):(Math.round((r-1)*100)+"% speed-up raises power ~"+Math.round(dp)+"%."))+" Small VFD trims save real energy."}; },
+    links:[{label:"Pump affinity laws",href:"https://www.engineeringtoolbox.com/affinity-laws-d_408.html"}]},
+  { id:"npsh", cat:"Pumps & Power", domains:["water","wastewater"], title:"NPSH — Cavitation Check", formula:"NPSHa = Atm head − Static lift − Suction friction − Vapor head", note:"All in ft. Atm head defaults 33.9 (sea level; ~32.8 @1000 ft, ~31.6 @2000 ft elev). Vapor head defaults 0.59 (60 °F). Lift is negative for a flooded suction. Add the pump's NPSHr for the margin.",
+    keywords:["cavitation","suction","NPSHa","NPSHr","lift"], seeAlso:["hp","pressure-head"],
+    fields:[{k:"atm",label:"Atm head ft"},{k:"lift",label:"Static lift ft"},{k:"fric",label:"Suction friction ft"},{k:"vap",label:"Vapor head ft"},{k:"npsha",label:"NPSH available ft"},{k:"npshr",label:"NPSH required ft"},{k:"margin",label:"Margin ft"}],
+    solve:(v)=>{ if(v.lift==null) return {values:{},computed:[],error:"Enter static suction lift (negative if flooded)."};
+      const atm=(v.atm!=null&&v.atm!==0)?v.atm:33.9, vap=(v.vap!=null)?v.vap:0.59, fric=(v.fric!=null)?v.fric:0;
+      const values={}, computed=[];
+      if(v.atm==null){ values.atm=33.9; computed.push("atm"); }
+      if(v.vap==null){ values.vap=0.59; computed.push("vap"); }
+      if(v.fric==null){ values.fric=0; computed.push("fric"); }
+      values.npsha=atm-v.lift-fric-vap; computed.push("npsha");
+      if(v.npshr!=null){ values.margin=values.npsha-v.npshr; computed.push("margin"); }
+      return {values,computed,error:""}; },
+    interpret:(m)=>{ if(m.margin!=null){ if(m.margin<2) return {level:"alert",text:"Margin under 2 ft — cavitation likely. Reduce lift, shorten/upsize the suction line, or lower the pump."};
+        if(m.margin<5) return {level:"watch",text:"Margin 2–5 ft — workable but thin; hot weather or a clogged strainer can erase it."};
+        return {level:"good",text:"Margin ≥ 5 ft — comfortable cavitation safety margin."}; }
+      if(m.npsha!=null) return {level:"info",text:"Compare to the pump curve's NPSH required at your operating flow — enter it above for the margin."}; return null; },
+    links:[{label:"NPSH explained",href:"https://www.engineeringtoolbox.com/npsh-net-positive-suction-head-d_634.html"}]}
 ];

@@ -12,8 +12,8 @@ const approx = (got, want, tol = 1e-3) => {
   assert.ok(Math.abs(got - want) <= tol * Math.max(1, Math.abs(want)), `expected ~${want}, got ${got}`);
 };
 
-test('registry: 67+ calculators, valid schema, ordered categories', () => {
-  assert.ok(calculators.length >= 67, `only ${calculators.length} calculators`);
+test('registry: 76+ calculators, valid schema, ordered categories', () => {
+  assert.ok(calculators.length >= 76, `only ${calculators.length} calculators`);
   assert.deepEqual(validate(), []);
   for (const c of calculators) assert.ok(CAT_ORDER.includes(c.cat), c.id);
 });
@@ -71,6 +71,10 @@ test('wells, lab, conversions', () => {
   approx(uConv(1, 'mi', 'ft', 'length'), 5280);
   approx(uConv(1, 'mgd', 'gpm', 'flow'), 694.444);
   approx(solve('conv-length', { in: 1, out: null }).values.out, 1, 1e-9);
+  const af = solve('gallons-acre-feet', { gal: 325851, MG: null, acft: null });
+  approx(af.values.acft, 1, 1e-6);
+  approx(af.values.MG, 0.325851, 1e-6);
+  approx(solve('gallons-acre-feet', { gal: null, MG: null, acft: 2 }).values.gal, 651702);
 });
 
 test('treatment: flux & UFRV (v2.1)', () => {
@@ -96,22 +100,27 @@ test('power conversion & operating cost (v2.1)', () => {
 });
 
 test('field disinfection (v2.1)', () => {
-  const w = solve('well-disinfection', { dia: 6, depth: 100, vol: null, dose: 50, strength: 5, lbs: null, src: null });
-  approx(w.values.vol, 146.88);
-  approx(w.values.lbs, 50 * (146.88 / 1e6) * 8.34);
-  approx(w.values.src, w.values.lbs / (8.34 * 0.05));
-  approx(solve('tank-volume-field', { dia: 96, depth: 10, gal: null }).values.gal, 0.0408 * 96 * 96 * 10);
-  approx(solve('pipe-volume', { dia: 8, len: 1000, gal: null }).values.gal, 2611.2);
-  approx(solve('pipe-volume', { dia: 8, len: null, gal: 2611.2 }).values.len, 1000);
-  const m = solve('main-disinfection', { dia: 8, len: 1000, vol: null, dose: null, strength: 5, lbs: null, src: null });
+  // dimensional inputs are in BASE units (ft) — the UI's unit selects convert
+  const w = solve('well-disinfection', { dia: 0.5, depth: 100, vol: null, dose: 50, lbs: null, liqpct: 5, liqgal: null, drypct: 65, drylbs: null });
+  approx(w.values.vol, 146.88, 1e-2); // = 0.0408 × 6in² × 100ft
+  approx(w.values.lbs, 50 * (w.values.vol / 1e6) * 8.34);
+  approx(w.values.liqgal, w.values.lbs / (8.34 * 0.05));
+  approx(w.values.drylbs, w.values.lbs / 0.65);
+  approx(solve('tank-volume-field', { dia: 8, depth: 10, gal: null }).values.gal, 0.0408 * 96 * 96 * 10, 1e-2);
+  approx(solve('pipe-volume', { dia: 8 / 12, len: 1000, gal: null }).values.gal, 2611.2, 1e-2);
+  approx(solve('pipe-volume', { dia: 8 / 12, len: null, gal: 2611.2 }).values.len, 1000, 1e-2);
+  const m = solve('main-disinfection', { dia: 8 / 12, len: 1000, vol: null, dose: null, lbs: null, liqpct: 5, liqgal: null, drypct: null, drylbs: null });
   approx(m.values.dose, 25); // C651 default
-  approx(m.values.lbs, 25 * (2611.2 / 1e6) * 8.34);
-  approx(m.values.src, m.values.lbs / (8.34 * 0.05));
-  // tank chlorination both directions
-  approx(solve('tank-chlorination', { dia: null, depth: null, gal: 50000, dose: 10, strength: 12.5, lbs: null, src: null }).values.src,
-    (10 * 0.05 * 8.34) / (8.34 * 0.125));
-  approx(solve('tank-chlorination', { dia: null, depth: null, gal: 50000, dose: null, strength: 12.5, lbs: null, src: 4 }).values.dose,
+  approx(m.values.lbs, 25 * (m.values.vol / 1e6) * 8.34);
+  approx(m.values.liqgal, m.values.lbs / (8.34 * 0.05));
+  // tank chlorination: target → liquid AND granular, plus both inverses
+  const t = solve('tank-chlorination', { dia: null, depth: null, gal: 50000, dose: 10, lbs: null, liqpct: 12.5, liqgal: null, drypct: 65, drylbs: null });
+  approx(t.values.lbs, 4.17);
+  approx(t.values.liqgal, 4.17 / (8.34 * 0.125));
+  approx(t.values.drylbs, 4.17 / 0.65);
+  approx(solve('tank-chlorination', { dia: null, depth: null, gal: 50000, dose: null, lbs: null, liqpct: 12.5, liqgal: 4, drypct: null, drylbs: null }).values.dose,
     (4 * 8.34 * 0.125) / (0.05 * 8.34));
+  approx(solve('tank-chlorination', { dia: null, depth: null, gal: 50000, dose: null, lbs: null, liqpct: null, liqgal: null, drypct: 65, drylbs: 6.4154 }).values.dose, 10, 1e-3);
 });
 
 test('hydrant flow test (v2.1)', () => {
@@ -119,19 +128,80 @@ test('hydrant flow test (v2.1)', () => {
   const r = solve('hydrant-flow', { d: null, c: null, pitot: 50, q: null, static: 62, resid: 42, q20: null });
   approx(r.values.q, q, 1e-2);
   approx(r.values.q20, q * Math.pow(42, 0.54) / Math.pow(20, 0.54), 1e-2);
+  // explicit nozzle dia arrives in base ft: 4.5" pumper nozzle
+  approx(solve('hydrant-flow', { d: 4.5 / 12, c: 0.8, pitot: 30, q: null, static: null, resid: null, q20: null }).values.q,
+    29.83 * 0.8 * 4.5 * 4.5 * Math.sqrt(30), 1e-2);
   assert.equal(solve('hydrant-flow', { d: null, c: null, pitot: 50, q: null, static: 42, resid: 62, q20: null }).error.length > 0, true);
 });
 
 test('water loss & capacity (v2.1)', () => {
   const cl = solve('customer-leak', { gph: 5, gpd: null, gpmo: null, rate: 4, cost: null });
   approx(cl.values.gpd, 120); approx(cl.values.gpmo, 3600); approx(cl.values.cost, 14.4);
-  const bl = solve('break-loss', { d: 1, c: null, psi: 60, gpm: null, mins: 120, flush: 5000, total: null });
+  const bl = solve('break-loss', { d: 1 / 12, c: null, psi: 60, gpm: null, mins: 120, flush: 5000, total: null });
   approx(bl.values.gpm, 29.83 * 0.6 * Math.sqrt(60), 1e-2);
   approx(bl.values.total, bl.values.gpm * 120 + 5000, 1e-2);
   const ok = solve('capacity-assessment', { avg: 500000, peak: 900000, source: 1000000, storage: 600000, capr: null, sdays: null, capsub: null, storsub: null, score: null });
   approx(ok.values.score, 100);
   const short = solve('capacity-assessment', { avg: 500000, peak: 1200000, source: 900000, storage: 300000, capr: null, sdays: null, capsub: null, storsub: null, score: null });
   approx(short.values.capr, 0.75); approx(short.values.sdays, 0.6); approx(short.values.score, 54);
+});
+
+test('hydraulics pack (v2.3)', () => {
+  // head-loss: 100 gpm through 4" C=140, 1000 ft (dia passed in base ft)
+  const hl = solve('head-loss', { flow: 100, dia: 4 / 12, c: 140, len: 1000, hf100: null, loss: null, psi: null, vel: null });
+  const hf100 = 0.2083 * Math.pow(100 / 140, 1.852) * Math.pow(100, 1.852) / Math.pow(4, 4.8655);
+  approx(hl.values.hf100, hf100, 1e-6);
+  approx(hl.values.loss, hf100 * 10, 1e-6);
+  approx(hl.values.psi, hf100 * 10 / 2.3067, 1e-4);
+  approx(hl.values.vel, 0.4085 * 100 / 16, 1e-4);
+  // affinity laws: 1750 -> 1450 rpm
+  const af = solve('affinity-laws', { s1: 1750, s2: 1450, flow1: 200, head1: 100, pow1: 10, flow2: null, head2: null, pow2: null });
+  const r = 1450 / 1750;
+  approx(af.values.flow2, 200 * r); approx(af.values.head2, 100 * r * r); approx(af.values.pow2, 10 * r * r * r);
+  // npsh: 15 ft lift, 3 ft friction, defaults for atm/vapor
+  const np = solve('npsh', { atm: null, lift: 15, fric: 3, vap: null, npsha: null, npshr: 12, margin: null });
+  approx(np.values.npsha, 33.9 - 15 - 3 - 0.59);
+  approx(np.values.margin, np.values.npsha - 12);
+});
+
+test('water chemistry pack (v2.3)', () => {
+  const ws = solve('water-stability', { ph: 7.5, tempf: 77, tds: 400, ca: 240, alk: 180, phs: null, lsi: null, rsi: null });
+  const A = (Math.log10(400) - 1) / 10, B = -13.12 * Math.log10(25 + 273) + 34.55,
+    Cc = Math.log10(240) - 0.4, D = Math.log10(180), phs = (9.3 + A + B) - (Cc + D);
+  approx(ws.values.phs, phs, 1e-6);
+  approx(ws.values.lsi, 7.5 - phs, 1e-6);
+  approx(ws.values.rsi, 2 * phs - 7.5, 1e-6);
+  approx(solve('conductivity-tds', { us: 800, kf: null, tds: null }).values.tds, 512);
+  approx(solve('conductivity-tds', { us: null, kf: 0.7, tds: 700 }).values.us, 1000);
+});
+
+test('wastewater & measurement pack (v2.3)', () => {
+  // Manning full-pipe: 8" PVC at 0.4% (dia passed in base ft)
+  const sc = solve('sewer-capacity', { dia: 8 / 12, slope: 0.4, n: 0.013, q: null, vel: null });
+  const Acs = 0.7854 * Math.pow(8 / 12, 2), R = (8 / 12) / 4;
+  const qcfs = (1.486 / 0.013) * Acs * Math.pow(R, 2 / 3) * Math.sqrt(0.004);
+  approx(sc.values.q, qcfs * 448.8312, 1e-3);
+  approx(sc.values.vel, qcfs / Acs, 1e-4);
+  // weirs
+  const wf = solve('weir-flow', { hv: 0.5, qv: null, crest: 2, hr: 0.5, qr: null });
+  approx(wf.values.qv, 2.49 * Math.pow(0.5, 2.48) * 448.8312, 1e-3);
+  approx(wf.values.qr, 3.33 * (2 - 0.1) * Math.pow(0.5, 1.5) * 448.8312, 1e-3);
+  // DO saturation at 20 C, measured 6.0
+  const ds = solve('do-saturation', { tempf: null, tempc: 20, cs: null, meas: 6, pct: null });
+  const cs20 = 14.652 - 0.41022 * 20 + 0.0079910 * 400 - 0.000077774 * 8000;
+  approx(ds.values.cs, cs20, 1e-6);
+  approx(ds.values.pct, 6 / cs20 * 100, 1e-4);
+  approx(solve('do-saturation', { tempf: 68, tempc: null, cs: null, meas: null, pct: null }).values.tempc, 20);
+});
+
+test('discoverability: keywords and seeAlso are schema-valid (v2.3)', () => {
+  // validate() (asserted empty in the registry test) covers shape + id existence;
+  // here just pin a few seeds so they aren't dropped accidentally.
+  const byIdL = Object.fromEntries(calculators.map(c => [c.id, c]));
+  assert.ok(byIdL['conv-power'].keywords.includes('kilowatt'));
+  assert.ok(byIdL['water-stability'].keywords.some(k => /langelier/i.test(k)));
+  assert.ok(byIdL['head-loss'].seeAlso.includes('pressure-head'));
+  assert.ok(byIdL['tank-chlorination'].seeAlso.includes('tank-volume-field'));
 });
 
 test('sweep: no calculator throws on empty input; returns error string', () => {

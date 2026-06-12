@@ -83,6 +83,9 @@
   .card-head h2{font-family:var(--brand-font-display); font-weight:700; font-size:17px; margin:0 0 5px; letter-spacing:-.01em;}
   .formula{font-family:var(--brand-font-mono); font-size:11.5px; color:var(--mode-dark); background:var(--mode-soft); border-radius:6px; padding:5px 8px; display:inline-block; margin:1px 0 6px; line-height:1.4; white-space:pre-wrap;}
   .note{font-size:12px; color:var(--muted); margin:0;}
+  .seg{display:inline-flex; margin-top:9px; background:var(--line-soft); border:1px solid var(--line); border-radius:999px; padding:3px; gap:3px;}
+  .seg button{cursor:pointer; font-family:var(--brand-font-display); font-weight:600; font-size:12px; color:var(--muted); background:transparent; border:none; border-radius:999px; padding:5px 12px; transition:all .14s ease;}
+  .seg button[aria-pressed="true"]{color:#fff; background:var(--mode-dark); box-shadow:var(--shadow);}
   .fields{display:grid; grid-template-columns:1fr 1fr; gap:9px 12px; margin-top:4px;}
   .fields.one-col{grid-template-columns:1fr;}
   .field{display:flex; flex-direction:column; gap:4px; min-width:0;}

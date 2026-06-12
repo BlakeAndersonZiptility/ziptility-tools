@@ -123,6 +123,31 @@ test('field disinfection (v2.1)', () => {
   approx(solve('tank-chlorination', { dia: null, depth: null, gal: 50000, dose: null, lbs: null, liqpct: null, liqgal: null, drypct: 65, drylbs: 6.4154 }).values.dose, 10, 1e-3);
 });
 
+test('disinfection product toggle (v2.3): only active side computes, strength defaults', () => {
+  // liquid side active, strength blank -> defaults to 12.5%, granular untouched
+  const tl = solve('tank-chlorination', { src: 'liquid', dia: null, depth: null, gal: 50000, dose: 10, lbs: null, liqpct: null, liqgal: null, drypct: null, drylbs: null });
+  approx(tl.values.liqpct, 12.5);
+  approx(tl.values.liqgal, 4.17 / (8.34 * 0.125));
+  assert.ok(!('drylbs' in tl.values), 'granular must not compute on liquid side');
+  // granular side active, strength blank -> defaults to 65%, liquid untouched
+  const tg = solve('well-disinfection', { src: 'granular', dia: 0.5, depth: 100, vol: null, dose: 50, lbs: null, liqpct: null, liqgal: null, drypct: null, drylbs: null });
+  approx(tg.values.drypct, 65);
+  approx(tg.values.drylbs, tg.values.lbs / 0.65);
+  assert.ok(!('liqgal' in tg.values), 'liquid must not compute on granular side');
+  // inverse with toggle: liquid gallons added, strength defaulted
+  const inv = solve('tank-chlorination', { src: 'liquid', dia: null, depth: null, gal: 50000, dose: null, lbs: null, liqpct: null, liqgal: 4, drypct: null, drylbs: null });
+  approx(inv.values.liqpct, 12.5);
+  approx(inv.values.dose, (4 * 8.34 * 0.125) / (0.05 * 8.34));
+  // toggle schema is validated (registry test asserts validate() is clean);
+  // pin that the three disinfection cards carry it
+  const byIdT = Object.fromEntries(calculators.map(c => [c.id, c]));
+  for (const id of ['well-disinfection', 'tank-chlorination', 'main-disinfection'])
+    assert.equal(byIdT[id].toggle.k, 'src', id + ' has the product toggle');
+  // the volume cards moved out of Field Disinfection
+  assert.equal(byIdT['tank-volume-field'].cat, 'Geometry & Volume');
+  assert.equal(byIdT['pipe-volume'].cat, 'Geometry & Volume');
+});
+
 test('hydrant flow test (v2.1)', () => {
   const q = 29.83 * 0.9 * 2.5 * 2.5 * Math.sqrt(50);
   const r = solve('hydrant-flow', { d: null, c: null, pitot: 50, q: null, static: 62, resid: 42, q20: null });

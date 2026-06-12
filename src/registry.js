@@ -53,6 +53,19 @@ export function validate(){
           errors.push(where+': each link needs {label, href} with an https:// href');
       }
     }
+    if(c.toggle!=null){
+      const t=c.toggle;
+      if(!t || typeof t.k!=='string' || !t.k || !Array.isArray(t.options) || t.options.length<2
+        || t.options.some(o=>!o || typeof o.v!=='string' || typeof o.label!=='string')
+        || !t.options.some(o=>o.v===t.def))
+        errors.push(where+': toggle needs {k, def, options:[{v,label}, …]} with def among option values');
+      else{
+        if(Array.isArray(c.fields) && c.fields.some(f=>f&&f.k===t.k)) errors.push(where+': toggle.k collides with a field key');
+        if(Array.isArray(c.fields)) for(const f of c.fields)
+          if(f && f.show!=null && !t.options.some(o=>o.v===f.show)) errors.push(where+': field "'+f.k+'" show value is not a toggle option');
+      }
+    } else if(Array.isArray(c.fields) && c.fields.some(f=>f&&f.show!=null))
+      errors.push(where+': fields use show but the card has no toggle');
     if(c.keywords!=null && (!Array.isArray(c.keywords) || c.keywords.some(k=>typeof k!=='string' || !k)))
       errors.push(where+': keywords must be an array of non-empty strings');
     if(c.seeAlso!=null){

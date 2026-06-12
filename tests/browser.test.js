@@ -92,6 +92,22 @@ ok('head-loss card found by keyword', await page.evaluate(() =>
 await page.click('.seealso');
 ok('see-also click navigates to related card', await page.evaluate(() =>
   document.getElementById('pressure-head__psi') !== null));
+// liquid/granular toggle on disinfection cards (v2.3)
+await page.fill('#search', 'tank chlorination');
+ok('toggle renders with liquid active', await page.evaluate(() =>
+  document.querySelector('.seg button[data-v="liquid"]').getAttribute('aria-pressed') === 'true'));
+ok('granular fields hidden on liquid side', await page.evaluate(() =>
+  document.getElementById('tank-chlorination__drypct').closest('.field').style.display === 'none'));
+await page.fill('#tank-chlorination__gal', '50000');
+await page.fill('#tank-chlorination__dose', '10');
+await page.click('#calc-tank-chlorination');
+ok('liquid side computes with default 12.5%', (await page.inputValue('#tank-chlorination__liqpct')) === '12.5');
+await page.click('.seg button[data-v="granular"]');
+ok('toggle switches sides', await page.evaluate(() =>
+  document.getElementById('tank-chlorination__liqpct').closest('.field').style.display === 'none'
+  && document.getElementById('tank-chlorination__drypct').closest('.field').style.display !== 'none'));
+await page.click('#calc-tank-chlorination');
+ok('granular side computes with default 65%', (await page.inputValue('#tank-chlorination__drypct')) === '65');
 await page.fill('#search', '');
 await page.click('.mode-btn[data-m="wastewater"]');
 

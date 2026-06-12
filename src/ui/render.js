@@ -50,11 +50,14 @@ export function initApp(){
       if(otherN>0) document.getElementById('switchMode').onclick=()=>setMode(other); return; }
     items.forEach(c=>{
       const card=document.createElement('div'); card.className='card';
+      let tgl=c.toggle? c.toggle.def : null;
       let fieldsHtml='';
       c.fields.forEach(f=>{ const inp='<input id="'+c.id+'__'+f.k+'" inputmode="decimal" autocomplete="off" spellcheck="false" placeholder="—">';
         const body=f.unit? ('<div class="uf">'+inp+unitSelectHtml(c,f)+'</div>') : inp;
-        fieldsHtml+='<div class="field"><label for="'+c.id+'__'+f.k+'">'+f.label+'</label>'+body+'</div>'; });
-      card.innerHTML='<div class="card-head">'+(searching?'<span class="card-tag">'+c.cat+'</span>':'')+'<h2>'+c.title+'</h2><div class="formula">'+c.formula+'</div><p class="note">'+c.note+'</p></div>'
+        const hide=f.show&&f.show!==tgl;
+        fieldsHtml+='<div class="field"'+(f.show?' data-show="'+f.show+'"':'')+(hide?' style="display:none"':'')+'><label for="'+c.id+'__'+f.k+'">'+f.label+'</label>'+body+'</div>'; });
+      const tglHtml=c.toggle? '<div class="seg" role="group">'+c.toggle.options.map(o=>'<button type="button" data-v="'+o.v+'" aria-pressed="'+(o.v===tgl)+'">'+o.label+'</button>').join('')+'</div>' : '';
+      card.innerHTML='<div class="card-head">'+(searching?'<span class="card-tag">'+c.cat+'</span>':'')+'<h2>'+c.title+'</h2><div class="formula">'+c.formula+'</div><p class="note">'+c.note+'</p>'+tglHtml+'</div>'
         +'<div class="fields '+(c.fields.length<=2?'one-col':'')+'">'+fieldsHtml+'</div>'
         +'<div class="actions"><button class="btn btn-calc" id="calc-'+c.id+'" type="button">Calculate</button><button class="btn btn-clear" id="clear-'+c.id+'" type="button">Clear</button><button class="btn btn-copy" id="copy-'+c.id+'" type="button">Copy</button></div>'
         +'<div class="msg" id="msg-'+c.id+'" aria-live="polite"></div><div class="insight" id="ins-'+c.id+'" aria-live="polite"></div>'
@@ -63,11 +66,15 @@ export function initApp(){
       card.querySelectorAll('.seealso').forEach(b=>b.onclick=()=>{ searchEl.value=b.dataset.t; state.query=b.dataset.t; renderGrid(); });
 
       const inputs=c.fields.map(f=>document.getElementById(c.id+'__'+f.k));
-      const run=()=>runCalc(c, inputs);
+      const getTgl=()=>tgl;
+      if(c.toggle) card.querySelectorAll('.seg button').forEach(b=>b.onclick=()=>{ if(b.dataset.v===tgl) return; tgl=b.dataset.v;
+        card.querySelectorAll('.seg button').forEach(x=>x.setAttribute('aria-pressed', String(x.dataset.v===tgl)));
+        card.querySelectorAll('.field[data-show]').forEach(w=>{ w.style.display=(w.dataset.show===tgl)?'':'none'; }); });
+      const run=()=>runCalc(c, inputs, getTgl);
       document.getElementById('calc-'+c.id).onclick=run;
       document.getElementById('clear-'+c.id).onclick=()=>{ inputs.forEach(i=>{i.value=''; i.classList.remove('computed');});
         document.getElementById('msg-'+c.id).textContent=''; const ins=document.getElementById('ins-'+c.id); ins.className='insight'; ins.textContent=''; };
-      document.getElementById('copy-'+c.id).onclick=()=>copyResult(c, inputs);
+      document.getElementById('copy-'+c.id).onclick=()=>copyResult(c, inputs, getTgl);
       c.fields.forEach((f,idx)=>{ const i=inputs[idx];
         i.addEventListener('keydown',e=>{ if(e.key==='Enter') run(); });
         i.addEventListener('input',()=>i.classList.remove('computed'));
@@ -76,8 +83,10 @@ export function initApp(){
       });
     });
   }
-  function runCalc(c, inputs){
-    const v={}; c.fields.forEach((f,idx)=>{ v[f.k]=readField(f, inputs[idx]); });
+  function runCalc(c, inputs, getTgl){
+    const tgl=getTgl?getTgl():null;
+    const v={}; c.fields.forEach((f,idx)=>{ v[f.k]=(f.show&&f.show!==tgl)?null:readField(f, inputs[idx]); });
+    if(c.toggle) v[c.toggle.k]=tgl;
     const res=c.solve(v), msg=document.getElementById('msg-'+c.id), insEl=document.getElementById('ins-'+c.id);
     inputs.forEach(i=>i.classList.remove('computed')); msg.className='msg'; insEl.className='insight'; insEl.textContent='';
     if(res.error){ msg.textContent=res.error; return; }
@@ -88,8 +97,10 @@ export function initApp(){
     if(c.interpret){ const merged=Object.assign({}, v, res.values); const ins=c.interpret(merged);
       if(ins){ insEl.className='insight show '+ins.level; insEl.innerHTML='<span class="lead">Note</span>'+ins.text; } }
   }
-  function copyResult(c, inputs){
-    const parts=[]; c.fields.forEach((f,idx)=>{ const val=inputs[idx].value.trim(); if(val!==''){ let u=''; if(f.unit){ u=' '+UNITS[f.unit][selFor(inputs[idx]).value].label; } parts.push(f.label+': '+val+u); } });
+  function copyResult(c, inputs, getTgl){
+    const tgl=getTgl?getTgl():null;
+    const parts=[]; c.fields.forEach((f,idx)=>{ if(f.show&&f.show!==tgl) return;
+      const val=inputs[idx].value.trim(); if(val!==''){ let u=''; if(f.unit){ u=' '+UNITS[f.unit][selFor(inputs[idx]).value].label; } parts.push(f.label+': '+val+u); } });
     const msg=document.getElementById('msg-'+c.id);
     if(parts.length===0){ msg.className='msg'; msg.textContent='Nothing to copy yet — run a calculation first.'; return; }
     const text=c.title+' — '+parts.join('; ');

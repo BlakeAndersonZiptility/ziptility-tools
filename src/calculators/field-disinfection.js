@@ -2,7 +2,7 @@
    The field workflow: structure dimensions → gallons → lbs chlorine →
    how much product to add. A Liquid/Granular toggle on each card picks
    the product; only that product's fields show, and strength defaults
-   to 12.5% (bleach) or 65% (cal-hypo) when left blank. Doses follow
+   to 12.5% (sod-hypo) or 65% (cal-hypo) when left blank. Doses follow
    AWWA C651 (mains, 25 mg/L continuous-feed) and C654 (wells, ~50 mg/L).
    Liquid-source math treats the solution as water-weight (8.34 lb/gal)
    — slightly conservative (over-doses) for strong hypochlorite.
@@ -24,8 +24,8 @@ function addSources(v,values,computed,lbs){
 const DIA={k:"dia",label:"Diameter",unit:"length",def:"in",units:["in","ft","mm","cm","m"]};
 const LIQ=[{k:"liqpct",label:"Liquid strength %",show:"liquid"},{k:"liqgal",label:"Liquid to add",unit:"volume",def:"gal",units:["gal","L"],show:"liquid"}];
 const DRY=[{k:"drypct",label:"Granular strength %",show:"granular"},{k:"drylbs",label:"Granular product lbs",show:"granular"}];
-const SRC_TOGGLE={k:"src",def:"liquid",options:[{v:"liquid",label:"Liquid (bleach)"},{v:"granular",label:"Granular (cal-hypo)"}]};
-const SRC_NOTE="Pick your product above the fields. Strength defaults if left blank: liquid bleach 12.5% (household is 6–8%), granular cal-hypo 65%.";
+const SRC_TOGGLE={k:"src",def:"liquid",options:[{v:"liquid",label:"Liquid (sod-hypo)"},{v:"granular",label:"Granular (cal-hypo)"}]};
+const SRC_NOTE="Pick your product above the fields. Strength defaults if left blank: sodium hypochlorite 12.5% (household bleach runs 6–8%), cal-hypo 65%.";
 
 export default [
 

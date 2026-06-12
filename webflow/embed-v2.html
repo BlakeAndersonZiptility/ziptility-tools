@@ -10,9 +10,15 @@
      boots. The dark strip below is a skeleton the app replaces on boot.
      The bundle loads NO fonts and NO third-party tags — keep it that way.
 
-     Gated/in-app variant: add data-embed="app" to the div. -->
+     Gated/in-app variant: add data-embed="app" to the div.
+
+     Note: on the live Webflow page (/ops/calculator) this snippet is
+     built as native Webflow elements, and the skeleton's inline style
+     lives on a Webflow class (.zip-calc-skeleton) instead — Webflow
+     rejects a style attribute there. Keep both in sync if the skeleton
+     changes. -->
 <div id="ziptility-calculator">
   <div aria-hidden="true" style="height:88px;background:#0c1f30;border-bottom:3px solid #1C7CD6"></div>
   <noscript>This calculator requires JavaScript. Please enable it to use the free operator calculators.</noscript>
 </div>
-<script defer src="https://blakeandersonziptility.github.io/ziptility-tools/dist/calculator-v2.2.0.js"></script>
+<script defer src="https://blakeandersonziptility.github.io/ziptility-tools/dist/calculator-v2.3.1.js"></script>

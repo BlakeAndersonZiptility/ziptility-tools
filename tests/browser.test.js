@@ -30,15 +30,18 @@ ok('no logo in tool masthead (global nav carries brand)', await page.evaluate(()
 
 // brand styling (computed)
 const bodyBg = await page.evaluate(() => getComputedStyle(document.body).backgroundColor);
-ok('warm brand background, got ' + bodyBg, bodyBg === 'rgb(249, 245, 239)');
+ok('warm linen background DS 4.0 (#fbf8f5), got ' + bodyBg, bodyBg === 'rgb(251, 248, 245)');
 const btnBg = await page.evaluate(() => getComputedStyle(document.querySelector('.btn-calc')).backgroundColor);
 ok('Calculate button tomato #ff442f, got ' + btnBg, btnBg === 'rgb(255, 68, 47)');
 const h2font = await page.evaluate(() => getComputedStyle(document.querySelector('.card-head h2')).fontFamily);
-ok('heading declares Circular std stack', /Circular/i.test(h2font));
+ok('heading declares Archivo stack, got ' + h2font, /Archivo/i.test(h2font));
 
-// CWV (2026-06 audit): the bundle must never fetch web fonts — swap reflow
-// on this page was the site's worst CLS contributor.
-ok('zero Google Fonts requests', fontReqs.length === 0);
+// DS 4.0 (2026-06-22): the bundle now loads its brand type (Archivo + Geist)
+// so the tool renders correctly on any host — this deliberately reverses the
+// 2026-06 "no web fonts" CWV rule. preconnect + display=swap limit the swap
+// CLS; re-check CrUX after deploy, fall back to display=optional / self-host.
+ok('loads Archivo + Geist web fonts (' + fontReqs.length + ' reqs)',
+  fontReqs.length > 0 && /Archivo/.test(fontReqs.join(' ')) && /Geist/.test(fontReqs.join(' ')));
 const monofont = await page.evaluate(() => getComputedStyle(document.querySelector('.formula')).fontFamily);
 ok('formula uses system mono stack (no IBM Plex)', !/plex/i.test(monofont) && /mono|menlo|consolas/i.test(monofont));
 

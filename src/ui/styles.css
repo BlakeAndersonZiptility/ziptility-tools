@@ -230,10 +230,11 @@ body.embed-app .cta, body.embed-app .seo, body.embed-app .zip-seo{ display:none;
        wastewater-teal); modes now read via icon + selected state
      - Archivo (display + body) + Geist (numerics / labels / formula)
      - warm linen surfaces, linen formula chips, flat white cards
-   FONTS: like the rest of this bundle, NO fonts are loaded here (CWV
-   audit, 2026-06). Archivo + Geist must be provided by the host page
-   (DS 4.0 site rollout); without them the tool falls back to system
-   fonts on the live page. See HANDOFF before deploying.
+   FONTS: Archivo + Geist are loaded by the bundle itself (src/main.js,
+   preconnect + display=swap) so the tool renders correctly on any host.
+   (DS 4.0, 2026-06-22 — deliberately reverses the 2026-06 "no font link"
+   CWV rule; re-check CrUX after deploy, fall back to display=optional /
+   self-host if it regresses.)
    ============================================================ */
 :root{
   --brand-font-display:'Archivo', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;

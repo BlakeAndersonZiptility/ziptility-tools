@@ -220,3 +220,72 @@ a{ color:var(--brand-red); }
 .card-links a:hover{ text-decoration:underline; }
 /* Gated/in-app embed also hides Webflow-side SEO sections */
 body.embed-app .cta, body.embed-app .seo, body.embed-app .zip-seo{ display:none; }
+
+/* ============================================================
+   DESIGN SYSTEM 4.0 RESKIN — appended 2026-06-22 (kept last so it wins)
+   Source mockup: claude.ai/design "Operator Calculator.dc.html".
+   Restyles the tool to Ziptility Design System 4.0 with NO markup or
+   behaviour change — tokens + a few rules only:
+     - one Tomato accent (#ff442f) in BOTH modes (was water-blue /
+       wastewater-teal); modes now read via icon + selected state
+     - Archivo (display + body) + Geist (numerics / labels / formula)
+     - warm linen surfaces, linen formula chips, flat white cards
+   FONTS: Archivo + Geist are loaded by the bundle itself (src/main.js,
+   preconnect + display=swap) so the tool renders correctly on any host.
+   (DS 4.0, 2026-06-22 — deliberately reverses the 2026-06 "no font link"
+   CWV rule; re-check CrUX after deploy, fall back to display=optional /
+   self-host if it regresses.)
+   ============================================================ */
+:root{
+  --brand-font-display:'Archivo', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --brand-font-body:'Archivo', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --brand-font-mono:'Geist', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --bg:#fbf8f5;            /* warm linen page */
+  --muted:#6b7785;
+  /* single Tomato accent — collapses the old blue/teal --mode system */
+  --mode:var(--brand-red);     /* #ff442f */
+  --mode-dark:#c5341f;         /* deeper tomato for text on light */
+  --mode-soft:#ffe9e5;         /* tomato tint: card tag, focus ring */
+  --mode-tint:#ffffff;         /* selected mode-card bg (icon + border carry it) */
+}
+/* wastewater keeps the SAME tomato accent (no recolor) */
+html[data-mode="wastewater"]{ --mode:var(--brand-red); --mode-dark:#c5341f; --mode-soft:#ffe9e5; --mode-tint:#ffffff; }
+
+/* header: no mode-colored underline (the design ends flush on the linen page) */
+header{ border-bottom:none; }
+
+/* flat white cards — drop the mode-colored top stripe */
+.card{ border-radius:10px; }
+.card::before{ display:none; }
+
+/* mode cards: rounded, circular icon, navy title when selected */
+.mode-btn{ border-radius:12px; }
+.mode-ic{ border-radius:50%; }
+html[data-mode="water"] .mode-btn[data-m="water"] .mode-txt b,
+html[data-mode="wastewater"] .mode-btn[data-m="wastewater"] .mode-txt b{ color:var(--ink); }
+
+/* search in Geist; controls 10px radius; tomato chevron; navy count */
+.field-wrap input{ font-family:var(--brand-font-mono); }
+.field-wrap select, .field-wrap input{ border-radius:10px; }
+.field-wrap .chev{ color:var(--brand-red); }
+.count b{ color:var(--ink); }
+
+/* linen formula chip (was mode-tinted) */
+.formula{ background:#f6eee6; color:var(--ink); border:1px solid #ece1d3; font-size:12.5px; }
+
+/* toggle pill: selected = navy, per design */
+.seg button[aria-pressed="true"]{ background:var(--ink); }
+
+/* tomato computed-answer highlight */
+.field input.computed{ background:#fff1ee; border-color:var(--brand-red); box-shadow:inset 3px 0 0 var(--brand-red); }
+
+/* see-also / empty-state links in tomato */
+.linkbtn{ color:var(--brand-red); }
+
+/* header title: Archivo black, per design */
+.head-title h1{ font-family:var(--brand-font-display); font-weight:900; font-size:19px; letter-spacing:-.02em; line-height:1; }
+.head-title p{ font-family:var(--brand-font-display); color:#94a3b8; }
+
+/* CTA gradient angle + modal focus ring on-brand (tomato, not blue) */
+.cta-inner{ background:linear-gradient(160deg,#0c1f30,#0f2a3f); }
+.modal-field input:focus{ border-color:var(--brand-red); box-shadow:0 0 0 3px rgba(255,68,47,.18); }

@@ -154,7 +154,7 @@ export function initQuiz(rootEl, bank, cfg, { onExit } = {}) {
         (saved.idx + 1) + ' of ' + saved.qids.length + '.'));
       box.appendChild(msg);
       const btns = el('div', 'zq-navrow');
-      const resume = btn('Resume', 'zq-btn zq-btn-primary');
+      const resume = btn('Resume', 'zq-btn zq-btn-primary', { arrow: true });
       resume.addEventListener('click', () => resumeSession(saved));
       const discard = btn('Discard', 'zq-btn zq-btn-quiet');
       discard.addEventListener('click', () => { dropSession(); renderStart(); });
@@ -452,10 +452,14 @@ export function initQuiz(rootEl, bank, cfg, { onExit } = {}) {
 
     const hero = el('div', 'zq-card zq-score-hero');
     hero.appendChild(el('div', 'zq-score-num ' + (passed ? 'zq-pass' : 'zq-fail'), pct + '%'));
+    /* Pass/fail stated in text, never color alone (sheet row 27). */
+    hero.appendChild(el('div', 'zq-score-verdict ' + (passed ? 'zq-tag-ok' : 'zq-tag-err'),
+      passed ? 'Pass at the 70 percent line' : 'Below the 70 percent line'));
     hero.appendChild(el('div', 'zq-score-sub', correct + ' of ' + n + ' correct' + (state.mode === 'exam' ? ' on a timed exam' : '')));
     hero.appendChild(el('p', 'zq-passnote',
       "Most states set the pass line at 70 percent. Your state's rules govern, so check your certification program for the real requirement."));
-    announce('You scored ' + pct + ' percent, ' + correct + ' of ' + n + ' correct.');
+    announce('You scored ' + pct + ' percent, ' + correct + ' of ' + n + ' correct. ' +
+      (passed ? 'That clears the 70 percent line.' : 'That is below the 70 percent line.'));
 
     const again = el('div', 'zq-navrow zq-navrow-center');
     /* Retake initiates a run, same as Start: carries the arrow (maestro

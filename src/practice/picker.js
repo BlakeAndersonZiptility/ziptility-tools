@@ -50,6 +50,7 @@ export function renderLoading(rootEl) {
 export function renderError(rootEl, { message, onRetry }) {
   clear(rootEl);
   const box = el('div', 'zq-error');
+  box.setAttribute('role', 'alert');
   box.appendChild(el('h3', null, 'Could not load this test'));
   box.appendChild(el('p', null, message || 'The question set did not load. Check your connection and try again.'));
   const retry = el('button', 'zq-btn zq-btn-secondary', 'Try again');

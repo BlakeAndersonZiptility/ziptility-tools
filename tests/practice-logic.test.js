@@ -85,3 +85,43 @@ test('weakestFirstDomains sorts ascending by ok/n ratio', () => {
   const byDomain = { A: { ok: 9, n: 10 }, B: { ok: 1, n: 10 }, C: { ok: 5, n: 10 } };
   assert.deepEqual(weakestFirstDomains(byDomain), ['B', 'C', 'A']);
 });
+
+// ---------------------------------------------------------------------
+// Permanent "never all-C" guard: a broken/biased shuffle (e.g. an off-by-one
+// Fisher-Yates, or one that never lets the last element move) would quietly
+// skew which on-screen letter (A/B/C/D) carries the correct answer across a
+// whole bank. A single assertion on one draw can't catch that (uniform
+// output looks the same as biased output on any one sample) — only a
+// distribution check over many draws can. Chi-squared goodness-of-fit
+// against a uniform expectation, not a raw tolerance band, so this never
+// flakes on a fair shuffle: df=3, the p<0.001 critical value is 16.27, a
+// bar only a genuinely broken shuffle will clear.
+test('shuffle: answer-position distribution is uniform over 10,000 draws (chi-squared goodness-of-fit)', () => {
+  const TRIALS = 10000;
+  const buckets = [0, 0, 0, 0];
+  for (let i = 0; i < TRIALS; i++) {
+    const order = shuffle([0, 1, 2, 3]); // fresh array every iteration
+    buckets[order.indexOf(0)] += 1; // where correctIndex 0 lands on screen
+  }
+  const expected = TRIALS / 4;
+  const chi2 = buckets.reduce((sum, observed) => sum + ((observed - expected) ** 2) / expected, 0);
+  assert.ok(chi2 <= 16.27,
+    `chi-squared ${chi2.toFixed(3)} exceeds the df=3 p<0.001 critical value 16.27 (buckets: ${buckets.join(', ')}) — shuffle looks biased`);
+  for (const count of buckets) assert.ok(count > 0, `a bucket never hit across ${TRIALS} draws (buckets: ${buckets.join(', ')})`);
+});
+
+test('drawQuestions: displayed correct-answer position spreads across A-D even when every stored correctIndex is the same', () => {
+  // 12 questions, every one keyed to choice index 2 ("C" in storage) — if
+  // drawQuestions's per-question shuffle were broken (e.g. reusing one
+  // shared order, or not shuffling at all), every displayed correctPos
+  // would come out identical (always "C" on screen too).
+  const all = [];
+  for (let i = 1; i <= 12; i++) {
+    all.push({ id: 'q' + i, choices: ['a', 'b', 'c', 'd'], correctIndex: 2, domain: 'MATH' });
+  }
+  const picked = drawQuestions(all, [], 12);
+  const positions = picked.map((item) => item.correctPos);
+  const distinct = new Set(positions);
+  assert.ok(distinct.size > 1,
+    `expected displayed-position spread across 12 questions, got only position(s) ${[...distinct].join(', ')} (positions: ${positions.join(', ')})`);
+});

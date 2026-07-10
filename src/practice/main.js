@@ -31,10 +31,13 @@ function boot() {
 
   /* ?embed=app / data-embed="app", resolved once (calculator idiom;
      guarded since reading location can throw inside a sandboxed iframe).
-     Nothing in this bundle currently branches on embedApp: the CTA/SEO
-     hide use case that drives it in the calculator does not apply here
-     (must-fix 4 removed both from this bundle). Kept for parity and any
-     future gating; passed through on cfg. */
+     Resolved embedApp adds the 'zq-embed-app' class to mount: a live,
+     styleable, testable variant hook (T51), currently a visual no-op (no
+     styles.css rule targets it yet). Nothing else in this bundle branches
+     on embedApp: the CTA/SEO hide use case that drives it in the
+     calculator does not apply here (must-fix 4 removed both from this
+     bundle). Kept for parity and any future gating; also passed through
+     on cfg. */
   let embedApp = false;
   let deepLinkTest = null;
   try {
@@ -44,6 +47,7 @@ function boot() {
   } catch (e) { /* sandboxed iframe: location threw */ }
   if (!embedApp) embedApp = mount.dataset.embed === 'app';
   if (!deepLinkTest) deepLinkTest = mount.dataset.test || null;
+  if (embedApp) mount.classList.add('zq-embed-app');
 
   const bankBase = mount.dataset.bankBase || BANK_BASE_URL;
 
@@ -65,6 +69,10 @@ function boot() {
       .then((bank) => {
         const cfg = { ...CONFIG, embedApp, title: test.title, badge: test.badge };
         controller = initQuiz(stage, bank, cfg, { onExit: showPicker });
+        /* test-only reach-in: mirrors the calculator's debug-hook idiom.
+           Never set outside an explicit opt-in, so production pages never
+           expose the controller. */
+        if (mount.dataset.debug === '1') mount.__zqDebug = controller;
       })
       .catch(() => {
         renderError(stage, {

@@ -1,0 +1,77 @@
+name: Release Practice
+# Two ways to cut a release (both end up identical):
+#   1. Actions tab → Release Practice → "Run workflow" → enter the tag (practice-vX.Y.Z).
+#      The workflow creates and pushes the tag itself — no terminal needed.
+#   2. Push a tag from a clone: git tag practice-v1.0.0 && git push origin practice-v1.0.0
+# The workflow tests, builds dist/practice-vX.Y.Z.js (immutable, never
+# overwritten) plus dist/practice-banks/ (also immutable, per bank version),
+# commits both to main, and creates a GitHub Release.
+# Deploying = pointing the Webflow embed's script src at the new file.
+on:
+  push:
+    tags: ['practice-v*']
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Release tag to create (practice-vX.Y.Z, e.g. practice-v1.0.0)'
+        required: true
+permissions:
+  contents: write
+env:
+  TAG: ${{ github.event.inputs.tag || github.ref_name }}
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - name: Validate tag and create it (manual runs only)
+        run: |
+          if ! echo "${TAG}" | grep -Eq '^practice-v[0-9]+\.[0-9]+\.[0-9]+$'; then
+            echo "Tag '${TAG}' must look like practice-v1.0.0"; exit 1
+          fi
+          if [ "${GITHUB_EVENT_NAME}" = "workflow_dispatch" ]; then
+            if git rev-parse -q --verify "refs/tags/${TAG}" >/dev/null; then
+              echo "Tag ${TAG} already exists — versions are immutable"; exit 1
+            fi
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git tag "${TAG}"
+            git push origin "${TAG}"
+          fi
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm ci
+      - run: npm run test:practice
+      - run: npm run build:practice:dev
+      - run: node scripts/build-practice-banks.mjs
+      - run: npx playwright install --with-deps chromium
+      - run: node tests/practice-browser.test.js
+      - name: Build versioned artifact
+        run: |
+          if [ -f "dist/${TAG}.js" ]; then
+            echo "dist/${TAG}.js already exists — versions are immutable"; exit 1
+          fi
+          npx esbuild src/practice/main.js --bundle --format=iife --loader:.css=text --minify \
+            --banner:js="/* Ziptility Practice Tests ${TAG} (${GITHUB_SHA}) — https://github.com/${GITHUB_REPOSITORY} */" \
+            --outfile="dist/${TAG}.js"
+      - name: Commit artifact to main
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add dist/${TAG}.js dist/practice-banks/
+          git commit -m "Release ${TAG} artifact [skip ci]"
+          # rebase-retry in case main moved while we built
+          for i in 1 2 3; do
+            git push origin HEAD:main && break || { git pull --rebase origin main; sleep 2; }
+          done
+      - name: Create GitHub Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "${TAG}" "dist/${TAG}.js" \
+            --title "${TAG}" \
+            --notes "Artifact: https://blakeandersonziptility.github.io/ziptility-tools/dist/${TAG}.js"

@@ -1,0 +1,24 @@
+name: Test Practice
+on:
+  pull_request:
+  push:
+    branches: [main]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm ci
+      - name: Practice logic + bank schema tests
+        run: npm run test:practice
+      - name: Build dev bundle
+        run: npm run build:practice:dev
+      - name: Build practice banks
+        run: node scripts/build-practice-banks.mjs
+      - name: Install Playwright Chromium
+        run: npx playwright install --with-deps chromium
+      - name: Browser tests
+        run: node tests/practice-browser.test.js

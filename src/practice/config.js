@@ -8,5 +8,5 @@
 export const CONFIG = {
   calcUrl: '/tools/calculator',
   formulaSheetUrl: '/tools/formula-sheets',
-  contactEmail: '' /* BLAKE-BATCH: confirm final address */
+  contactEmail: 'sales@ziptility.com' /* Blake ruling 2026-07-10 */
 };

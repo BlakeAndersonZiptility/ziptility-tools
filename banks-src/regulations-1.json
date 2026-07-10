@@ -1,0 +1,1968 @@
+{
+ "id": "regulations-1",
+ "title": "Water and Wastewater Regulations Practice Test (Federal)",
+ "discipline": "Regulations (Federal)",
+ "level": "Entry to working level (ABC Class I-II)",
+ "durationMin": 120,
+ "refCount": 100,
+ "version": "2026-07-10",
+ "questions": [
+  {
+   "id": "XC-ALL-REGS-0042",
+   "text": "Under the federal secondary treatment standard, what is the minimum percent removal required for BOD5 and TSS on a 30-day average?",
+   "choices": [
+    "85 percent",
+    "30 percent",
+    "99 percent",
+    "50 percent"
+   ],
+   "correctIndex": 0,
+   "explanation": "The secondary treatment standard requires at least 85 percent removal of BOD5 and TSS, in addition to the 30 mg/L 30-day average concentration limits.",
+   "domain": "REGS",
+   "topic": "secondary-standards-40cfr133",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "40 CFR 133.102"
+  },
+  {
+   "id": "XC-ALL-REGS-0043",
+   "text": "What is the maximum residual disinfectant level (MRDL) for free chlorine in drinking water?",
+   "choices": [
+    "0.2 mg/L",
+    "4.0 mg/L (as Cl2)",
+    "10 mg/L",
+    "1.0 mg/L"
+   ],
+   "correctIndex": 1,
+   "explanation": "The federal MRDL for free chlorine is 4.0 mg/L as Cl2, set to limit disinfectant exposure while maintaining disinfection.",
+   "domain": "REGS",
+   "topic": "stage2-dbpr",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "SDWA Stage 1 DBPR, 40 CFR 141.65"
+  },
+  {
+   "id": "XC-ALL-REGS-0052",
+   "text": "The Revised Total Coliform Rule changed how total coliform results are handled compared with the older Total Coliform Rule. Which statement correctly describes the current federal approach?",
+   "choices": [
+    "Total coliforms have a maximum contaminant level of 5 percent positive, and E. coli has no standard",
+    "Both total coliforms and E. coli have maximum contaminant levels set at zero",
+    "Neither total coliforms nor E. coli is regulated once a system disinfects",
+    "Total coliforms no longer carry a maximum contaminant level and instead act as a treatment technique trigger, while E. coli has a maximum contaminant level with a goal of zero"
+   ],
+   "correctIndex": 3,
+   "explanation": "Under the Revised Total Coliform Rule, a total coliform detection is a trigger for assessment and follow-up rather than an automatic MCL violation. E. coli retains a maximum contaminant level with a maximum contaminant level goal of zero, because it is a more specific indicator of fecal contamination.",
+   "domain": "REGS",
+   "topic": "rtcr-coliform",
+   "difficulty": "Hard",
+   "cognitive": "Analysis",
+   "formula": null,
+   "calculator": null,
+   "citation": "40 CFR 141.63 + RTCR Subpart Y and the EPA RTCR page. The old total coliform MCL provisions in 141.63 apply only until March 31, 2016; from April 1, 2016 compliance is determined for the E. coli MCL. EPA RTCR: total coliform positives trigger Level 1 and Level 2 assessments (no MCL), and the E. coli MCLG is zero."
+  },
+  {
+   "id": "XC-ALL-REGS-0186",
+   "text": "What is the difference between an MCL and an MCLG?",
+   "choices": [
+    "The MCLG is a non-enforceable health goal; the MCL is the enforceable limit set as close to the goal as feasible",
+    "They are two names for the same enforceable limit",
+    "The MCLG is enforceable; the MCL is only a guideline",
+    "The MCL applies to groundwater and the MCLG to surface water"
+   ],
+   "correctIndex": 0,
+   "explanation": "The maximum contaminant level goal is the health-based target and carries no enforcement. The maximum contaminant level is the legal limit, set as close to the goal as treatment technology and cost feasibly allow.",
+   "domain": "REGS",
+   "topic": "sdwa-mcls",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "40 CFR 141.2 (definitions); SDWA 1412"
+  },
+  {
+   "id": "XC-ALL-REGS-0187",
+   "text": "Under the Safe Drinking Water Act, primacy means a state has...",
+   "choices": [
+    "The right to set MCLs weaker than EPA's",
+    "Primary enforcement responsibility for drinking water regulations, with EPA oversight",
+    "Ownership of all public water systems",
+    "Exemption from federal reporting"
+   ],
+   "correctIndex": 1,
+   "explanation": "Most states hold primacy: they adopt rules at least as strict as the federal ones and carry primary enforcement responsibility, while EPA keeps an oversight role.",
+   "domain": "REGS",
+   "topic": "sdwa-mcls",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "SDWA 1413; 40 CFR Part 142"
+  },
+  {
+   "id": "XC-ALL-REGS-0188",
+   "text": "A water system must follow the National Primary Drinking Water Regulations if it is...",
+   "choices": [
+    "A private well serving one home",
+    "Any system with a storage tank",
+    "A public water system",
+    "Only a system serving a city"
+   ],
+   "correctIndex": 2,
+   "explanation": "The NPDWRs apply to public water systems. Individual rules then vary in their details by system type and source, but private domestic wells sit outside the SDWA entirely.",
+   "domain": "REGS",
+   "topic": "sdwa-mcls",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "40 CFR 141.1 and 141.3"
+  },
+  {
+   "id": "XC-ALL-REGS-0189",
+   "text": "What makes a water system a public water system under the SDWA?",
+   "choices": [
+    "It is owned by a city or district",
+    "It serves at least 100 people year round",
+    "It charges customers for water",
+    "It serves at least 15 service connections or at least 25 people for at least 60 days a year"
+   ],
+   "correctIndex": 3,
+   "explanation": "The definition is numeric: 15 or more service connections, or 25 or more people, for at least 60 days per year. Ownership, public or private, does not matter.",
+   "domain": "REGS",
+   "topic": "sdwa-mcls",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "SDWA 1401(4); 40 CFR 141.2"
+  },
+  {
+   "id": "XC-ALL-REGS-0190",
+   "text": "A factory runs its own well and serves water to the same 80 employees every workday. What kind of public water system is it?",
+   "choices": [
+    "Non-transient non-community",
+    "Community",
+    "Transient non-community",
+    "Not a public water system"
+   ],
+   "correctIndex": 0,
+   "explanation": "A non-transient non-community system serves at least 25 of the same people more than 6 months a year at a place they do not live, like a factory or school.",
+   "domain": "REGS",
+   "topic": "sdwa-mcls",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "40 CFR 141.2 (system type definitions)"
+  },
+  {
+   "id": "XC-ALL-REGS-0191",
+   "text": "Why is the MCLG for some contaminants set at zero?",
+   "choices": [
+    "Laboratories cannot detect them",
+    "No level of exposure is considered free of risk for those contaminants",
+    "Zero makes enforcement simpler",
+    "Treatment can always remove them completely"
+   ],
+   "correctIndex": 1,
+   "explanation": "For known and probable carcinogens the health goal is zero because no threshold is considered risk free. The enforceable MCL then lands as close to zero as is feasible.",
+   "domain": "REGS",
+   "topic": "sdwa-mcls",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "EPA MCLG methodology; 40 CFR 141 subpart F and G"
+  },
+  {
+   "id": "XC-ALL-REGS-0192",
+   "text": "What is the MCL for nitrate in drinking water, measured as nitrogen?",
+   "choices": [
+    "1.0 mg/L",
+    "45 mg/L",
+    "10 mg/L",
+    "0.010 mg/L"
+   ],
+   "correctIndex": 2,
+   "explanation": "Nitrate's MCL is 10 mg/L as N. Its companion nitrite is 1.0 mg/L as N. Nitrate is also one of the few acute, Tier 1 contaminants.",
+   "domain": "REGS",
+   "topic": "sdwa-mcls",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "40 CFR 141.62"
+  },
+  {
+   "id": "XC-ALL-REGS-0193",
+   "text": "What is the MCL for arsenic?",
+   "choices": [
+    "0.050 mg/L",
+    "0.10 mg/L",
+    "0.001 mg/L",
+    "0.010 mg/L"
+   ],
+   "correctIndex": 3,
+   "explanation": "Arsenic's MCL is 0.010 mg/L (10 micrograms per liter), tightened from 0.050 in the 2001 rule.",
+   "domain": "REGS",
+   "topic": "sdwa-mcls",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "40 CFR 141.62"
+  },
+  {
+   "id": "XC-ALL-REGS-0194",
+   "text": "Federal secondary drinking water standards, like the ones for iron and manganese, are...",
+   "choices": [
+    "Non-enforceable guidelines for aesthetic qualities, though states may choose to enforce them",
+    "Enforceable federal limits with public notification",
+    "Limits that apply only to surface water systems",
+    "Health-based limits for acute contaminants"
+   ],
+   "correctIndex": 0,
+   "explanation": "The secondary standards address aesthetics such as iron, manganese, chloride, and pH. Federally they are guidance, not mandates, but many states enforce some of them.",
+   "domain": "REGS",
+   "topic": "sdwa-mcls",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "40 CFR Part 143"
+  },
+  {
+   "id": "XC-ALL-REGS-0195",
+   "text": "EPA sets a treatment technique instead of an MCL when...",
+   "choices": [
+    "The contaminant is not a health risk",
+    "There is no economically or technically feasible way to measure the contaminant reliably at compliance levels",
+    "States ask for flexibility",
+    "The contaminant only occurs in groundwater"
+   ],
+   "correctIndex": 1,
+   "explanation": "Lead and Cryptosporidium are the classic examples: instead of an MCL, the rule requires specific treatment or actions because routine compliance measurement is impractical.",
+   "domain": "REGS",
+   "topic": "sdwa-mcls",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "SDWA 1412(b)(7); 40 CFR 141.2"
+  },
+  {
+   "id": "XC-ALL-REGS-0196",
+   "text": "Operator certification programs for water systems are run by...",
+   "choices": [
+    "EPA directly",
+    "The certification exam vendors",
+    "The states, following federal guidelines",
+    "Each utility for itself"
+   ],
+   "correctIndex": 2,
+   "explanation": "States run operator certification under their own rules, which must meet EPA's baseline guidelines. That is why grades, eligibility, and renewal differ state to state.",
+   "domain": "REGS",
+   "topic": "sdwa-mcls",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "SDWA 1419 (operator certification guidelines)"
+  },
+  {
+   "id": "XC-ALL-REGS-0197",
+   "text": "Who carries out routine compliance monitoring at a public water system?",
+   "choices": [
+    "EPA inspectors on a federal schedule",
+    "The county health department in all cases",
+    "Certified labs choose the schedule",
+    "The system itself, reporting results to the state"
+   ],
+   "correctIndex": 3,
+   "explanation": "The system is responsible for collecting its compliance samples on schedule, using approved methods and labs, and reporting results to the state.",
+   "domain": "REGS",
+   "topic": "sdwa-mcls",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "40 CFR 141 subpart C"
+  },
+  {
+   "id": "XC-ALL-REGS-0198",
+   "text": "Which federal law governs the quality of water delivered by public water systems?",
+   "choices": [
+    "The Safe Drinking Water Act",
+    "The Clean Water Act",
+    "The Resource Conservation and Recovery Act",
+    "The National Environmental Policy Act"
+   ],
+   "correctIndex": 0,
+   "explanation": "The SDWA covers drinking water at public water systems. The Clean Water Act covers wastewater discharges and surface water quality. Knowing which law owns which side is a free exam point.",
+   "domain": "REGS",
+   "topic": "sdwa-mcls",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "SDWA; CWA (for contrast)"
+  },
+  {
+   "id": "XC-ALL-REGS-0199",
+   "text": "The federal secondary treatment standard for TSS in a POTW's effluent, as a 30-day average, is...",
+   "choices": [
+    "45 mg/L",
+    "30 mg/L",
+    "85 mg/L",
+    "10 mg/L"
+   ],
+   "correctIndex": 1,
+   "explanation": "Secondary treatment means 30-day averages of 30 mg/L for both BOD5 and TSS, with 45 mg/L allowed as the 7-day average.",
+   "domain": "REGS",
+   "topic": "secondary-standards-40cfr133",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "40 CFR 133.102"
+  },
+  {
+   "id": "XC-ALL-REGS-0200",
+   "text": "Under the federal secondary treatment standards, the 7-day average limit for BOD5 is...",
+   "choices": [
+    "30 mg/L",
+    "65 mg/L",
+    "45 mg/L",
+    "25 mg/L"
+   ],
+   "correctIndex": 2,
+   "explanation": "The standards run in pairs: 30 mg/L as the 30-day average and 45 mg/L as the 7-day average, for both BOD5 and TSS.",
+   "domain": "REGS",
+   "topic": "secondary-standards-40cfr133",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "40 CFR 133.102"
+  },
+  {
+   "id": "XC-ALL-REGS-0201",
+   "text": "The federal secondary treatment standards require effluent pH to stay between...",
+   "choices": [
+    "6.5 and 8.5",
+    "7.0 and 8.0",
+    "5.0 and 10.0",
+    "6.0 and 9.0"
+   ],
+   "correctIndex": 3,
+   "explanation": "Secondary treatment effluent must stay between pH 6.0 and 9.0 unless the permit says otherwise. The 6.5 to 8.5 range belongs to the drinking water aesthetic standards.",
+   "domain": "REGS",
+   "topic": "secondary-standards-40cfr133",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "40 CFR 133.102(c)"
+  },
+  {
+   "id": "XC-ALL-REGS-0202",
+   "text": "The 85 percent removal requirement in the secondary treatment standards is measured as...",
+   "choices": [
+    "A 30-day average percent removal of BOD5 and TSS relative to influent concentrations",
+    "A daily minimum that can never be missed",
+    "A 7-day average of flow reduction",
+    "An annual average across both parameters"
+   ],
+   "correctIndex": 0,
+   "explanation": "Secondary treatment requires removing at least 85 percent of incoming BOD5 and TSS as a 30-day average. Strong plants meet it easily; dilute influent is where it gets tricky.",
+   "domain": "REGS",
+   "topic": "secondary-standards-40cfr133",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "40 CFR 133.102"
+  },
+  {
+   "id": "XC-ALL-REGS-0203",
+   "text": "A trickling filter plant qualifying as equivalent to secondary treatment may be permitted BOD5 limits as high as...",
+   "choices": [
+    "30 mg/L as a 30-day average and 45 mg/L as a 7-day average",
+    "45 mg/L as a 30-day average and 65 mg/L as a 7-day average",
+    "50 mg/L as a 30-day average and 70 mg/L as a 7-day average",
+    "No relaxation is allowed for any technology"
+   ],
+   "correctIndex": 1,
+   "explanation": "Facilities using trickling filters or waste stabilization ponds that meet the conditions can be classed as equivalent to secondary, with 45 mg/L 30-day and 65 mg/L 7-day BOD5 limits and a lower removal floor.",
+   "domain": "REGS",
+   "topic": "secondary-standards-40cfr133",
+   "difficulty": "Hard",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "40 CFR 133.105"
+  },
+  {
+   "id": "XC-ALL-REGS-0204",
+   "text": "Where do the federal secondary treatment standards for POTWs live?",
+   "choices": [
+    "40 CFR Part 141",
+    "40 CFR Part 403",
+    "40 CFR Part 133",
+    "29 CFR 1910"
+   ],
+   "correctIndex": 2,
+   "explanation": "Secondary treatment standards sit in 40 CFR Part 133. Knowing the neighborhood (141 drinking water, 122 NPDES, 403 pretreatment) earns easy points.",
+   "domain": "REGS",
+   "topic": "secondary-standards-40cfr133",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "40 CFR Part 133"
+  },
+  {
+   "id": "XC-ALL-REGS-0205",
+   "text": "Untreated sewage escaping a separate sanitary sewer and reaching a creek is...",
+   "choices": [
+    "Legal if it happens during heavy rain",
+    "Allowed if reported within a year",
+    "Only a problem if fish are killed",
+    "A prohibited discharge under the Clean Water Act"
+   ],
+   "correctIndex": 3,
+   "explanation": "SSOs that reach surface waters violate the Clean Water Act because no permit authorizes them. Weather does not excuse the discharge, and the system must still report and respond to it.",
+   "domain": "REGS",
+   "topic": "cwa-npdes",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "CWA 301(a); EPA SSO enforcement framework"
+  },
+  {
+   "id": "XC-ALL-REGS-0206",
+   "text": "What is the difference between a CSO and an SSO?",
+   "choices": [
+    "A CSO is a permitted wet-weather discharge from a combined sewer; an SSO is an unpermitted overflow from a separate sanitary sewer",
+    "They are two names for the same event",
+    "An SSO is always smaller than a CSO",
+    "A CSO happens only at the treatment plant"
+   ],
+   "correctIndex": 0,
+   "explanation": "Combined sewer overflows discharge from designed outfalls under NPDES permits and the federal CSO policy. Sanitary sewer overflows have no permit and are violations.",
+   "domain": "REGS",
+   "topic": "cwa-npdes",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "EPA CSO Control Policy (1994); CWA"
+  },
+  {
+   "id": "XC-ALL-REGS-0207",
+   "text": "The main purpose of an industrial pretreatment program is to...",
+   "choices": [
+    "Charge industries higher sewer rates",
+    "Keep industrial discharges from passing through or interfering with the POTW and protect workers and the plant",
+    "Move industrial waste to landfills",
+    "Eliminate the need for an NPDES permit"
+   ],
+   "correctIndex": 1,
+   "explanation": "Pretreatment controls what industries put into the sewer so it cannot pass through the plant untreated, upset the process, contaminate biosolids, or endanger collection workers.",
+   "domain": "REGS",
+   "topic": "cwa-npdes",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "40 CFR Part 403 (general pretreatment regulations)"
+  },
+  {
+   "id": "XC-ALL-REGS-0208",
+   "text": "A metal finisher wants to discharge rinse water to the sanitary sewer. What regulates that discharge?",
+   "choices": [
+    "Nothing, once it enters the sewer it is the city's problem",
+    "An NPDES permit issued to the finisher for the sewer discharge",
+    "The pretreatment program: federal categorical standards plus the POTW's local limits",
+    "The drinking water rules"
+   ],
+   "correctIndex": 2,
+   "explanation": "Industries discharging to a POTW fall under pretreatment: EPA categorical standards for their industry plus local limits the POTW sets to protect its plant and permit.",
+   "domain": "REGS",
+   "topic": "cwa-npdes",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "40 CFR Part 403; 40 CFR 433 (metal finishing, example)"
+  },
+  {
+   "id": "XC-ALL-REGS-0209",
+   "text": "The permit that authorizes a treatment plant to discharge treated effluent to a river is...",
+   "choices": [
+    "A primacy agreement",
+    "A 404 dredge and fill permit",
+    "A consumer confidence report",
+    "An NPDES permit"
+   ],
+   "correctIndex": 3,
+   "explanation": "Point-source discharges to waters of the United States require a National Pollutant Discharge Elimination System permit, issued by the state where authorized, or EPA.",
+   "domain": "REGS",
+   "topic": "cwa-npdes",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "CWA 402; 40 CFR Part 122"
+  },
+  {
+   "id": "XC-ALL-REGS-0210",
+   "text": "Standard NPDES permit conditions require reporting any noncompliance that may endanger health or the environment within...",
+   "choices": [
+    "24 hours of becoming aware of it, orally, with a written report to follow",
+    "10 days, in writing only",
+    "30 days, with the next DMR",
+    "One year, in the annual report"
+   ],
+   "correctIndex": 0,
+   "explanation": "Permits carry standard conditions: noncompliance that may endanger health or the environment gets an oral report within 24 hours and a written follow-up, typically within 5 days.",
+   "domain": "REGS",
+   "topic": "cwa-npdes",
+   "difficulty": "Hard",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "40 CFR 122.41(l)(6)"
+  },
+  {
+   "id": "XC-ALL-REGS-0211",
+   "text": "A routine distribution sample comes back total coliform-positive one time. Under the RTCR, what does that single result trigger on its own?",
+   "choices": [
+    "An automatic MCL violation requiring Tier 1 notice",
+    "Not an MCL violation by itself; it triggers repeat sampling",
+    "Ignored unless turbidity is also high",
+    "A reason to shut the system down"
+   ],
+   "correctIndex": 1,
+   "explanation": "Total coliform positives start the response ladder: repeat samples, and if results keep coming back positive, an assessment. The MCL itself now belongs to E. coli only.",
+   "domain": "REGS",
+   "topic": "rtcr-coliform",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "40 CFR 141 subpart Y (141.851 to 141.861)"
+  },
+  {
+   "id": "XC-ALL-REGS-0212",
+   "text": "A routine sample comes back E. coli positive. The repeat samples are total coliform positive but E. coli negative. What is the compliance result?",
+   "choices": [
+    "No violation, since the repeats were E. coli negative",
+    "A monitoring violation only",
+    "An E. coli MCL violation",
+    "A secondary standard exceedance"
+   ],
+   "correctIndex": 2,
+   "explanation": "The E. coli MCL is violated by defined combinations, including an E. coli-positive routine followed by a total coliform-positive repeat. The repeats going E. coli negative does not clear it.",
+   "domain": "REGS",
+   "topic": "rtcr-coliform",
+   "difficulty": "Hard",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "40 CFR 141.860(a)"
+  },
+  {
+   "id": "XC-ALL-REGS-0213",
+   "text": "After a total coliform-positive routine sample, a system must collect how many repeat samples?",
+   "choices": [
+    "1, within a week",
+    "2, within 48 hours",
+    "5, by the end of the month",
+    "At least 3, within 24 hours of being notified"
+   ],
+   "correctIndex": 3,
+   "explanation": "Every total coliform positive triggers at least three repeat samples collected within 24 hours of learning the result.",
+   "domain": "REGS",
+   "topic": "rtcr-coliform",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "40 CFR 141.858(a)"
+  },
+  {
+   "id": "XC-ALL-REGS-0214",
+   "text": "Where are repeat samples collected after a coliform positive?",
+   "choices": [
+    "At the original tap and at the repeat monitoring sites named in the system's sample siting plan",
+    "Only at the treatment plant",
+    "At the farthest point in the system",
+    "Anywhere the operator chooses that day"
+   ],
+   "correctIndex": 0,
+   "explanation": "Under the current Revised Total Coliform Rule (RTCR), repeats go back to the original tap plus the repeat monitoring locations the system named in its own sample siting plan, approved by the primacy agency. There is no separate number to memorize; the plan controls.",
+   "domain": "REGS",
+   "topic": "rtcr-coliform",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "40 CFR 141.853"
+  },
+  {
+   "id": "XC-ALL-REGS-0215",
+   "text": "What triggers a Level 1 assessment under the RTCR?",
+   "choices": [
+    "Any single total coliform positive",
+    "Exceeding the total coliform treatment technique trigger, such as multiple TC positives in a month",
+    "An E. coli MCL violation",
+    "A missed Consumer Confidence Report"
+   ],
+   "correctIndex": 1,
+   "explanation": "Level 1 assessments respond to the treatment technique trigger: for small systems, two or more TC positives in a month; for large ones, more than 5.0 percent positive.",
+   "domain": "REGS",
+   "topic": "rtcr-coliform",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "40 CFR 141.859(a)"
+  },
+  {
+   "id": "XC-ALL-REGS-0216",
+   "text": "What is the difference between a Level 1 and a Level 2 assessment?",
+   "choices": [
+    "Level 2 is just a re-run of Level 1 paperwork",
+    "Level 1 requires shutting down a well",
+    "Level 2 is more in-depth and must be done by the state or a state-approved party, for E. coli violations or repeat triggers",
+    "There is no difference in practice"
+   ],
+   "correctIndex": 2,
+   "explanation": "Level 1 is a self-assessment of obvious sanitary defects. Level 2 digs deeper, follows E. coli violations or repeated triggers, and needs state-approved expertise.",
+   "domain": "REGS",
+   "topic": "rtcr-coliform",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "40 CFR 141.859"
+  },
+  {
+   "id": "XC-ALL-REGS-0217",
+   "text": "The written document that says where a system collects its routine and repeat coliform samples is called...",
+   "choices": [
+    "A consumer confidence report",
+    "A sanitary survey",
+    "A monitoring waiver",
+    "A sample siting plan"
+   ],
+   "correctIndex": 3,
+   "explanation": "Every system must keep a written sample siting plan covering routine and repeat locations, subject to state review.",
+   "domain": "REGS",
+   "topic": "rtcr-coliform",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "40 CFR 141.853(a)"
+  },
+  {
+   "id": "XC-ALL-REGS-0218",
+   "text": "How is the number of routine coliform samples a system must collect each month determined?",
+   "choices": [
+    "By the population the system serves",
+    "By the number of wells",
+    "By the age of the distribution system",
+    "By how many operators are certified"
+   ],
+   "correctIndex": 0,
+   "explanation": "Routine coliform monitoring frequency comes from a population-based table, starting at one sample per month for systems serving 1,000 or fewer.",
+   "domain": "REGS",
+   "topic": "rtcr-coliform",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "40 CFR 141.857"
+  },
+  {
+   "id": "XC-ALL-REGS-0219",
+   "text": "For a system collecting at least 40 routine samples per month, the total coliform treatment technique trigger is exceeded when...",
+   "choices": [
+    "Any sample is total coliform positive",
+    "More than 5.0 percent of monthly samples are total coliform positive",
+    "More than 1.0 percent are positive",
+    "Half the samples are positive"
+   ],
+   "correctIndex": 1,
+   "explanation": "Large systems trip the trigger above 5.0 percent TC-positive in a month; systems under 40 samples trip it at two or more positives.",
+   "domain": "REGS",
+   "topic": "rtcr-coliform",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "40 CFR 141.859(a)(1)"
+  },
+  {
+   "id": "XC-ALL-REGS-0220",
+   "text": "An E. coli MCL violation requires what kind of public notification?",
+   "choices": [
+    "Tier 2, within 30 days",
+    "Tier 3, within a year",
+    "Tier 1, within 24 hours",
+    "None, if repeats are clean"
+   ],
+   "correctIndex": 2,
+   "explanation": "E. coli MCL violations are Tier 1: the public must be notified within 24 hours through broadcast media, hand delivery, or posting as the state directs.",
+   "domain": "REGS",
+   "topic": "rtcr-coliform",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "40 CFR 141.202"
+  },
+  {
+   "id": "XC-ALL-REGS-0221",
+   "text": "A seasonal campground system reopens each spring. Before serving water, the RTCR requires it to...",
+   "choices": [
+    "Collect 10 routine samples in the first week",
+    "Hire a Level 2 assessor",
+    "Replace all service lines",
+    "Complete state-approved start-up procedures and certify that it did"
+   ],
+   "correctIndex": 3,
+   "explanation": "Seasonal systems depressurize and sit idle, so the rule requires documented start-up procedures before serving water each season.",
+   "domain": "REGS",
+   "topic": "rtcr-coliform",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "40 CFR 141.854(i)"
+  },
+  {
+   "id": "XC-ALL-REGS-0222",
+   "text": "For conventional and direct filtration plants, combined filter effluent turbidity must be...",
+   "choices": [
+    "0.3 NTU or less in at least 95 percent of monthly measurements",
+    "1.0 NTU or less in every measurement with no other requirement",
+    "5 NTU or less at all times",
+    "0.03 NTU or less always"
+   ],
+   "correctIndex": 0,
+   "explanation": "Conventional and direct filtration must keep combined filter effluent at or below 0.3 NTU in 95 percent of the measurements each month.",
+   "domain": "REGS",
+   "topic": "surface-water-treatment-rule",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "40 CFR 141.173(a); 141.551"
+  },
+  {
+   "id": "XC-ALL-REGS-0223",
+   "text": "The combined filter effluent turbidity level that conventional plants may never exceed is...",
+   "choices": [
+    "0.3 NTU",
+    "1 NTU",
+    "5 NTU",
+    "0.5 NTU"
+   ],
+   "correctIndex": 1,
+   "explanation": "Alongside the 0.3 NTU 95 percent standard, combined filter effluent must never exceed 1 NTU at conventional and direct filtration plants.",
+   "domain": "REGS",
+   "topic": "surface-water-treatment-rule",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "40 CFR 141.173(a)(2)"
+  },
+  {
+   "id": "XC-ALL-REGS-0224",
+   "text": "The Surface Water Treatment Rule requires total removal or inactivation of Giardia and viruses of at least...",
+   "choices": [
+    "2-log for both",
+    "4-log for Giardia and 3-log for viruses",
+    "3-log (99.9 percent) for Giardia and 4-log (99.99 percent) for viruses",
+    "6-log for both"
+   ],
+   "correctIndex": 2,
+   "explanation": "Treatment must achieve 99.9 percent (3-log) Giardia and 99.99 percent (4-log) virus removal or inactivation, split between filtration credit and disinfection CT.",
+   "domain": "REGS",
+   "topic": "surface-water-treatment-rule",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "40 CFR 141.70 to 141.73"
+  },
+  {
+   "id": "XC-ALL-REGS-0225",
+   "text": "Under LT2, the Long Term 2 Enhanced Surface Water Treatment Rule, how much Cryptosporidium removal credit do conventional filtration plants receive?",
+   "choices": [
+    "No credit regardless of how well the filters perform",
+    "6-log automatically with no source water monitoring required",
+    "1-log baseline adjusted only when turbidity runs low",
+    "3-log, with additional requirements possible based on source water monitoring"
+   ],
+   "correctIndex": 3,
+   "explanation": "Under LT2 conventional filtration in compliance with existing turbidity requirements is credited 3-log Cryptosporidium removal. The 40 CFR 141.711 bin table shows it: Bin 4 total treatment is 5.5-log and its additional requirement is 2.5-log. LT2 then bins systems by source water Cryptosporidium monitoring results and can require additional treatment above that credit.",
+   "domain": "REGS",
+   "topic": "surface-water-treatment-rule",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "40 CFR 141.711; 141.173"
+  },
+  {
+   "id": "XC-ALL-REGS-0226",
+   "text": "In disinfection compliance, CT stands for...",
+   "choices": [
+    "Disinfectant residual concentration multiplied by contact time",
+    "Chlorine temperature",
+    "Coliform total",
+    "Contact tank volume"
+   ],
+   "correctIndex": 0,
+   "explanation": "CT is concentration times time: the residual leaving the contact zone in mg/L times the minutes of contact, compared against required CT tables for the target organism and conditions.",
+   "domain": "REGS",
+   "topic": "surface-water-treatment-rule",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "40 CFR 141.74; EPA CT tables"
+  },
+  {
+   "id": "XC-ALL-REGS-0227",
+   "text": "Which systems must comply with the Surface Water Treatment Rules?",
+   "choices": [
+    "All groundwater systems",
+    "Systems using surface water or groundwater under the direct influence of surface water",
+    "Only systems serving over 10,000 people",
+    "Systems with elevated storage tanks"
+   ],
+   "correctIndex": 1,
+   "explanation": "The SWTR family applies to any public water system using surface water or groundwater under the direct influence of surface water (GWUDI).",
+   "domain": "REGS",
+   "topic": "surface-water-treatment-rule",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "40 CFR 141.70"
+  },
+  {
+   "id": "XC-ALL-REGS-0228",
+   "text": "How often must conventional plants measure combined filter effluent turbidity?",
+   "choices": [
+    "Once per day",
+    "Once per shift",
+    "At least every 4 hours, or continuously",
+    "Weekly, with the coliform samples"
+   ],
+   "correctIndex": 2,
+   "explanation": "Combined filter effluent turbidity must be measured at least every four hours during operation; continuous monitoring may substitute with state approval.",
+   "domain": "REGS",
+   "topic": "surface-water-treatment-rule",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "40 CFR 141.74(c)"
+  },
+  {
+   "id": "XC-ALL-REGS-0229",
+   "text": "A surface water system that wants to avoid filtration entirely must...",
+   "choices": [
+    "Maintain continuous disinfection alone, without meeting turbidity or coliform criteria",
+    "Serve a population under 500, regardless of source water quality",
+    "Meet the turbidity limit alone, with no coliform or watershed criteria",
+    "Meet strict source water and site criteria, and keep disinfecting"
+   ],
+   "correctIndex": 3,
+   "explanation": "Unfiltered systems exist only where source water meets avoidance criteria continuously, with watershed control and disinfection still required. Miss the criteria and filtration becomes mandatory.",
+   "domain": "REGS",
+   "topic": "surface-water-treatment-rule",
+   "difficulty": "Hard",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "40 CFR 141.71"
+  },
+  {
+   "id": "XC-ALL-REGS-0230",
+   "text": "Individual filter turbidity monitoring at conventional plants requires...",
+   "choices": [
+    "Continuous monitoring of each filter, recorded at least every 15 minutes",
+    "A weekly grab sample per filter",
+    "Monitoring only the worst filter",
+    "Nothing beyond the combined effluent"
+   ],
+   "correctIndex": 0,
+   "explanation": "Each filter gets its own continuous turbidimeter with results recorded at least every 15 minutes, because one bad filter can hide inside a clean combined average.",
+   "domain": "REGS",
+   "topic": "surface-water-treatment-rule",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "40 CFR 141.174; 141.560"
+  },
+  {
+   "id": "XC-ALL-REGS-0231",
+   "text": "The MCL for total trihalomethanes (TTHM) is...",
+   "choices": [
+    "0.060 mg/L",
+    "0.080 mg/L",
+    "0.80 mg/L",
+    "0.010 mg/L"
+   ],
+   "correctIndex": 1,
+   "explanation": "TTHM's MCL is 0.080 mg/L (80 micrograms per liter), evaluated as a locational running annual average under Stage 2.",
+   "domain": "REGS",
+   "topic": "stage2-dbpr",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "40 CFR 141.64"
+  },
+  {
+   "id": "XC-ALL-REGS-0232",
+   "text": "The MCL for the five regulated haloacetic acids (HAA5) is...",
+   "choices": [
+    "0.080 mg/L",
+    "0.60 mg/L",
+    "0.060 mg/L",
+    "0.006 mg/L"
+   ],
+   "correctIndex": 2,
+   "explanation": "HAA5's MCL is 0.060 mg/L (60 micrograms per liter), the partner number to TTHM's 80.",
+   "domain": "REGS",
+   "topic": "stage2-dbpr",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "40 CFR 141.64"
+  },
+  {
+   "id": "XC-ALL-REGS-0233",
+   "text": "Under Stage 2, TTHM and HAA5 compliance is calculated as...",
+   "choices": [
+    "A single annual grab sample",
+    "A system-wide average across all sites",
+    "The worst single result of the year",
+    "A locational running annual average at each monitoring site"
+   ],
+   "correctIndex": 3,
+   "explanation": "Each monitoring location must meet the MCL as its own running annual average (LRAA). Averaging across the system, the Stage 1 approach, no longer applies.",
+   "domain": "REGS",
+   "topic": "stage2-dbpr",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "40 CFR 141.620 to 141.629"
+  },
+  {
+   "id": "XC-ALL-REGS-0234",
+   "text": "Under the Stage 2 DBPR, what is the MRDL ceiling for free chlorine residual in the distribution system?",
+   "choices": [
+    "4.0 mg/L as Cl2, as an annual average",
+    "0.2 mg/L at any tap",
+    "2.0 mg/L at the entry point",
+    "10 mg/L during flushing"
+   ],
+   "correctIndex": 0,
+   "explanation": "Chlorine's MRDL is 4.0 mg/L measured as a running annual average of distribution samples. It caps how much disinfectant residual customers can be exposed to long term.",
+   "domain": "REGS",
+   "topic": "stage2-dbpr",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "40 CFR 141.65"
+  },
+  {
+   "id": "XC-ALL-REGS-0235",
+   "text": "Disinfection byproducts like TTHMs form when...",
+   "choices": [
+    "Pipes corrode in low pH water",
+    "Chlorine reacts with natural organic matter in the water",
+    "Fluoride is overfed",
+    "Filters are backwashed too often"
+   ],
+   "correctIndex": 1,
+   "explanation": "Free chlorine reacting with natural organic matter creates trihalomethanes and haloacetic acids. That is why precursor removal and chloramine strategies exist.",
+   "domain": "REGS",
+   "topic": "stage2-dbpr",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "EPA Stage 1/Stage 2 DBPR background; 40 CFR 141 subpart V"
+  },
+  {
+   "id": "XC-ALL-REGS-0236",
+   "text": "Stage 2 DBP monitoring locations were chosen based on...",
+   "choices": [
+    "The oldest pipes in the system",
+    "Random selection each quarter",
+    "An evaluation finding the highest-DBP sites in the distribution system",
+    "Wherever coliform samples are taken"
+   ],
+   "correctIndex": 2,
+   "explanation": "Systems ran an Initial Distribution System Evaluation to locate where DBPs run highest, and those sites became the Stage 2 compliance monitoring locations.",
+   "domain": "REGS",
+   "topic": "stage2-dbpr",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "40 CFR 141.600 to 141.605"
+  },
+  {
+   "id": "XC-ALL-REGS-0237",
+   "text": "Lead and copper are regulated with a treatment technique instead of an MCL because...",
+   "choices": [
+    "They enter water from plumbing and service lines after treatment, past any plant-side limit",
+    "Levels vary too much sample to sample for one plant-side limit to work",
+    "They are only aesthetic concerns",
+    "Corrosion control only fixes taste and color, not the health risk"
+   ],
+   "correctIndex": 0,
+   "explanation": "Lead and copper leach from service lines, solder, and fixtures between the plant and the tap. The rule therefore requires corrosion control and tap monitoring rather than an MCL at the entry point.",
+   "domain": "REGS",
+   "topic": "lead-copper-rule",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "40 CFR 141 subpart I; 141.80"
+  },
+  {
+   "id": "XC-ALL-REGS-0238",
+   "text": "The action level for copper at the tap is...",
+   "choices": [
+    "0.015 mg/L",
+    "1.3 mg/L",
+    "13 mg/L",
+    "0.13 mg/L"
+   ],
+   "correctIndex": 1,
+   "explanation": "Copper's action level is 1.3 mg/L, evaluated at the 90th percentile of tap samples.",
+   "domain": "REGS",
+   "topic": "lead-copper-rule",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "40 CFR 141.80(c)"
+  },
+  {
+   "id": "XC-ALL-REGS-0239",
+   "text": "Whether a system exceeds a lead or copper action level is decided by...",
+   "choices": [
+    "The single highest tap sample",
+    "The average of all samples",
+    "The 90th percentile of its tap sample results",
+    "The entry point sample"
+   ],
+   "correctIndex": 2,
+   "explanation": "Rank the tap results; if the 90th percentile result tops the action level, the system has an exceedance and the required actions kick in.",
+   "domain": "REGS",
+   "topic": "lead-copper-rule",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "40 CFR 141.80(c)"
+  },
+  {
+   "id": "XC-ALL-REGS-0240",
+   "text": "Exceeding a lead or copper action level is...",
+   "choices": [
+    "An MCL violation requiring Tier 1 notice within 24 hours",
+    "Grounds for immediate system shutdown",
+    "Only a recordkeeping note",
+    "Not an MCL violation, but a treatment-technique trigger"
+   ],
+   "correctIndex": 3,
+   "explanation": "An action level exceedance is a trigger, not an MCL violation. It obligates the system to act: corrosion control treatment steps, monitoring, and for lead, public education. One more wrinkle: under the Lead and Copper Rule Revisions (LCRR), a lead action level exceedance also triggers a Tier 1 public notice within 24 hours (141.202(a)(10)), even though it is still not an MCL violation.",
+   "domain": "REGS",
+   "topic": "lead-copper-rule",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "40 CFR 141.80 to 141.85"
+  },
+  {
+   "id": "XC-ALL-REGS-0241",
+   "text": "Lead and copper compliance samples are collected...",
+   "choices": [
+    "First-draw samples from taps at higher-risk sites",
+    "At the treatment plant entry point",
+    "From fire hydrants after flushing",
+    "From the distribution main directly"
+   ],
+   "correctIndex": 0,
+   "explanation": "Samples come from customer taps at sites most likely to have lead exposure, such as homes with lead service lines or lead solder, collected first-draw so the water has been sitting in the plumbing. Under the Lead and Copper Rule Improvements (LCRI), lead service line sites also add a paired fifth-liter sample that targets the service line itself, on top of the standard first-liter sample.",
+   "domain": "REGS",
+   "topic": "lead-copper-rule",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "40 CFR 141.86"
+  },
+  {
+   "id": "XC-ALL-REGS-0242",
+   "text": "Common corrosion control treatments under the Lead and Copper Rule include...",
+   "choices": [
+    "Increasing chlorine residual to a target of 2 mg/L or higher",
+    "Adjusting pH and alkalinity, or feeding a phosphate corrosion inhibitor",
+    "Softening with lime alone, without checking the finished pH",
+    "Adding fluoride at the system's target dose for dental health"
+   ],
+   "correctIndex": 1,
+   "explanation": "Systems control corrosivity by raising pH or alkalinity, or feeding orthophosphate to form a protective scale inside pipes.",
+   "domain": "REGS",
+   "topic": "lead-copper-rule",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "40 CFR 141.82"
+  },
+  {
+   "id": "XC-ALL-REGS-0243",
+   "text": "A customer asks why the utility had them run the tap sample themselves. The accurate answer is...",
+   "choices": [
+    "The utility was short staffed",
+    "Resident sampling is illegal but cheaper",
+    "Residents may collect their own first-draw samples when the utility gives instructions",
+    "Only the state may collect tap samples"
+   ],
+   "correctIndex": 2,
+   "explanation": "Residents may collect their own first-liter (first-draw) samples following the system's instructions. That captures water stagnant at least six hours, which best represents lead exposure, which is exactly why the utility asked them to do it that way.",
+   "domain": "REGS",
+   "topic": "lead-copper-rule",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "40 CFR 141.86(b)(1)"
+  },
+  {
+   "id": "XC-ALL-REGS-0244",
+   "text": "After a lead action level exceedance, a system must deliver...",
+   "choices": [
+    "A Tier 3 notice within one year",
+    "Free bottled water to every customer",
+    "A rate refund credited to the next billing cycle",
+    "Public education about lead health effects and exposure reduction"
+   ],
+   "correctIndex": 3,
+   "explanation": "A lead action level exceedance obligates the system to run the rule's public education program, telling customers about health effects, sources, and how to limit exposure.",
+   "domain": "REGS",
+   "topic": "lead-copper-rule",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "40 CFR 141.85"
+  },
+  {
+   "id": "XC-ALL-REGS-0245",
+   "text": "The most common source of lead in drinking water is...",
+   "choices": [
+    "Lead plumbing materials between the main and the tap",
+    "The source water aquifer, before any treatment happens",
+    "Chemicals added during treatment at the plant",
+    "Flushing hydrants to clear the mains"
+   ],
+   "correctIndex": 0,
+   "explanation": "Lead enters between the main and the glass: lead service lines, pre-1986 solder, and leaded brass. Corrosive water pulls it into solution, which is why corrosion control works.",
+   "domain": "REGS",
+   "topic": "lead-copper-rule",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "40 CFR 141 subpart I; EPA lead guidance"
+  },
+  {
+   "id": "XC-ALL-REGS-0246",
+   "text": "Under the Clean Water Act, discharging a pollutant from a point source to waters of the United States without a permit is...",
+   "choices": [
+    "Allowed below 1,000 gallons per day",
+    "Prohibited",
+    "Allowed for public agencies",
+    "A state option"
+   ],
+   "correctIndex": 1,
+   "explanation": "The CWA starts from a prohibition: no point-source discharge to waters of the United States except in compliance with a permit. Everything else in the act hangs off that.",
+   "domain": "REGS",
+   "topic": "cwa-npdes",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "CWA 301(a), 402"
+  },
+  {
+   "id": "XC-ALL-REGS-0247",
+   "text": "The self-monitoring results a permitted facility submits to its regulator are reported on a...",
+   "choices": [
+    "Consumer Confidence Report",
+    "Sanitary survey form",
+    "Discharge Monitoring Report (DMR)",
+    "Level 1 assessment"
+   ],
+   "correctIndex": 2,
+   "explanation": "NPDES permittees self-monitor and report results on Discharge Monitoring Reports at the frequency the permit sets, typically monthly.",
+   "domain": "REGS",
+   "topic": "cwa-npdes",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "40 CFR 122.41(l)(4)"
+  },
+  {
+   "id": "XC-ALL-REGS-0248",
+   "text": "The maximum term of an NPDES permit before it must be reissued is...",
+   "choices": [
+    "1 year",
+    "10 years",
+    "There is no limit",
+    "5 years"
+   ],
+   "correctIndex": 3,
+   "explanation": "NPDES permits run at most five years. Facilities apply for renewal before expiration, and a timely application keeps the old permit in force while the new one is processed.",
+   "domain": "REGS",
+   "topic": "cwa-npdes",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "CWA 402(b)(1)(B); 40 CFR 122.46"
+  },
+  {
+   "id": "XC-ALL-REGS-0249",
+   "text": "Effluent limits in an NPDES permit are based on...",
+   "choices": [
+    "Technology-based standards, tightened further where needed to protect the receiving water's quality standards",
+    "Whatever the plant can comfortably meet",
+    "National flat limits identical everywhere",
+    "The age of the facility"
+   ],
+   "correctIndex": 0,
+   "explanation": "Permits start from technology-based limits (like secondary treatment for POTWs) and add water-quality-based limits where the receiving water's designated uses demand more.",
+   "domain": "REGS",
+   "topic": "cwa-npdes",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "CWA 301, 302; 40 CFR 122.44"
+  },
+  {
+   "id": "XC-ALL-REGS-0250",
+   "text": "In most states, who issues NPDES permits?",
+   "choices": [
+    "The county recorder",
+    "The state environmental agency, under EPA-authorized delegation",
+    "The city council",
+    "The water utility itself"
+   ],
+   "correctIndex": 1,
+   "explanation": "EPA has authorized most states to run the NPDES program, so the state environmental agency issues and enforces permits, with EPA oversight.",
+   "domain": "REGS",
+   "topic": "cwa-npdes",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "CWA 402(b); 40 CFR Part 123"
+  },
+  {
+   "id": "XC-ALL-REGS-0251",
+   "text": "A bypass that causes effluent limitations to be exceeded is allowed under an NPDES permit only when...",
+   "choices": [
+    "High wet-weather flows exceeded the plant's design capacity so operators routed the excess around one unit",
+    "It was done for essential maintenance to keep the plant operating efficiently",
+    "It was unavoidable to prevent loss of life, injury, or severe property damage, no feasible alternative existed, and the required notice was given",
+    "The utility reported the bypass to the state within 24 hours after it happened"
+   ],
+   "correctIndex": 2,
+   "explanation": "A bypass that causes an exceedance is prohibited unless it was unavoidable to prevent loss of life, injury, or severe property damage, there was no feasible alternative, and the utility gave the required notice. A bypass that does not cause an exceedance has a separate, broader allowance: it is allowed for essential maintenance to keep the plant running efficiently.",
+   "domain": "REGS",
+   "topic": "cwa-npdes",
+   "difficulty": "Hard",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "40 CFR 122.41(m)(2), (m)(4)"
+  },
+  {
+   "id": "XC-ALL-REGS-0252",
+   "text": "Sample collection and analysis for NPDES compliance must follow...",
+   "choices": [
+    "Any method the lab prefers",
+    "The drinking water methods at Part 141",
+    "Methods the permittee invents and documents",
+    "The methods approved at 40 CFR Part 136"
+   ],
+   "correctIndex": 3,
+   "explanation": "NPDES monitoring must use the analytical methods approved in 40 CFR Part 136 unless the permit specifies otherwise.",
+   "domain": "REGS",
+   "topic": "cwa-npdes",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "40 CFR 122.41(j)(4); Part 136"
+  },
+  {
+   "id": "XC-ALL-REGS-0253",
+   "text": "Water quality standards for a receiving stream are built from...",
+   "choices": [
+    "Designated uses plus protective criteria",
+    "The best treatment technology each discharger can afford",
+    "One flat federal numeric limit applied to every stream nationwide",
+    "A public vote among residents near the water body"
+   ],
+   "correctIndex": 0,
+   "explanation": "States designate uses for each water body and adopt criteria to protect them. Those standards then drive water-quality-based permit limits upstream.",
+   "domain": "REGS",
+   "topic": "cwa-npdes",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "CWA 303; 40 CFR Part 131"
+  },
+  {
+   "id": "XC-ALL-REGS-0254",
+   "text": "Knowingly submitting false information on a Discharge Monitoring Report is...",
+   "choices": [
+    "A paperwork issue",
+    "A crime",
+    "Allowed if corrected in time",
+    "Only an audit problem"
+   ],
+   "correctIndex": 1,
+   "explanation": "Discharge Monitoring Reports are certified under penalty of law when signed (40 CFR 122.22(d)). Knowingly falsifying one is a criminal matter under CWA 309(c) that has put real operators and managers in legal trouble. There is no grace period for a later correction and no audit-only exception. Record what actually happened, always.",
+   "domain": "REGS",
+   "topic": "cwa-npdes",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "40 CFR 122.22(d); CWA 309(c)"
+  },
+  {
+   "id": "XC-ALL-REGS-0255",
+   "text": "Municipal storm sewer systems (MS4s) and many industrial sites are regulated under...",
+   "choices": [
+    "The Safe Drinking Water Act",
+    "Local plumbing codes only",
+    "NPDES stormwater permits",
+    "No federal program"
+   ],
+   "correctIndex": 2,
+   "explanation": "The CWA brings stormwater under NPDES too: municipal separate storm sewer systems, industrial facilities, and construction sites all carry stormwater permits.",
+   "domain": "REGS",
+   "topic": "cwa-npdes",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "CWA 402(p); 40 CFR 122.26"
+  },
+  {
+   "id": "XC-ALL-REGS-0256",
+   "text": "A community water system crosses AWIA's 3,300-person size threshold. From that point, federal law requires the system to...",
+   "choices": [
+    "Build a second treatment plant as a backup",
+    "Hire armed security guards at every facility",
+    "File a daily security report with EPA",
+    "Complete a risk assessment and emergency response plan"
+   ],
+   "correctIndex": 3,
+   "explanation": "AWIA section 2013 requires CWSs over 3,300 served to assess risks and resilience and keep an emergency response plan that reflects the assessment.",
+   "domain": "REGS",
+   "topic": "emergency-security",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "AWIA 2018, SDWA 1433"
+  },
+  {
+   "id": "XC-ALL-REGS-0257",
+   "text": "Under AWIA, the emergency response plan must be updated...",
+   "choices": [
+    "Within six months of each RRA certification",
+    "Only after an EPA site inspection",
+    "Every month, regardless of the assessment",
+    "Never, since it is a one-time filing"
+   ],
+   "correctIndex": 0,
+   "explanation": "Each time the risk and resilience assessment is recertified, the emergency response plan must be reviewed, updated as needed, and certified within six months.",
+   "domain": "REGS",
+   "topic": "emergency-security",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "SDWA 1433(b)"
+  },
+  {
+   "id": "XC-ALL-REGS-0258",
+   "text": "How often must AWIA risk and resilience assessments be reviewed and recertified?",
+   "choices": [
+    "Every year",
+    "Every 5 years",
+    "Every 10 years",
+    "Once, ever"
+   ],
+   "correctIndex": 1,
+   "explanation": "Risk and resilience assessments recertify on a five-year cycle, keeping the analysis current as threats and the system change.",
+   "domain": "REGS",
+   "topic": "emergency-security",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "SDWA 1433(a)(3)(B)"
+  },
+  {
+   "id": "XC-ALL-REGS-0259",
+   "text": "An operator discovers signs that someone tampered with a well house overnight. After securing the scene, the right move is...",
+   "choices": [
+    "Wait to see if water quality changes",
+    "Post about it on social media",
+    "Follow the emergency response plan's notification chain, including the state drinking water program and local response partners",
+    "Handle it quietly to avoid alarm"
+   ],
+   "correctIndex": 2,
+   "explanation": "Suspected tampering is exactly what the ERP exists for: isolate if needed, notify the state program and response partners per the plan, and document the event.",
+   "domain": "REGS",
+   "topic": "emergency-security",
+   "difficulty": "Easy",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "SDWA 1433 (ERP); state primacy notification requirements"
+  },
+  {
+   "id": "XC-ALL-REGS-0260",
+   "text": "A contractor cross-connects a chemical line and product backflows into the distribution system. Beyond stopping it, the utility must...",
+   "choices": [
+    "Log it for the annual report only",
+    "Flush quietly overnight",
+    "Bill the contractor and close the file",
+    "Treat it as an emergency: isolate the area, notify the state, and warn affected customers"
+   ],
+   "correctIndex": 3,
+   "explanation": "Backflow of a chemical into the mains is an acute event: isolate, flush, sample, notify the state, and get appropriate notice to affected customers fast.",
+   "domain": "REGS",
+   "topic": "emergency-security",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "State backflow/emergency response requirements; 40 CFR 141 subpart Q"
+  },
+  {
+   "id": "XC-ALL-REGS-0261",
+   "text": "The state's periodic onsite review of a water system's sources, treatment, storage, and operations is called...",
+   "choices": [
+    "A sanitary survey",
+    "A Level 1 assessment",
+    "A risk and resilience assessment",
+    "A consumer confidence report"
+   ],
+   "correctIndex": 0,
+   "explanation": "States conduct sanitary surveys on a multi-year cycle, walking the whole system from source to storage and flagging deficiencies that must be corrected.",
+   "domain": "REGS",
+   "topic": "emergency-security",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "40 CFR 141.401; 142.16"
+  },
+  {
+   "id": "XC-ALL-REGS-0262",
+   "text": "An unlocked hatch on a finished water storage tank is best described as...",
+   "choices": [
+    "Normal for ventilation",
+    "A sanitary defect and security risk that needs correction and inspection",
+    "Acceptable if the tank is tall",
+    "A problem only after a storm"
+   ],
+   "correctIndex": 1,
+   "explanation": "Hatches, vents, and overflows on finished water storage must be secured and screened. An unlocked hatch is a classic sanitary survey deficiency and a security gap.",
+   "domain": "REGS",
+   "topic": "emergency-security",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "EPA sanitary survey guidance; state design standards"
+  },
+  {
+   "id": "XC-ALL-REGS-0263",
+   "text": "The operator's everyday contribution to system security is...",
+   "choices": [
+    "Carrying out background checks on coworkers",
+    "Monitoring national threat feeds",
+    "Controlling access, noticing and reporting anything unusual, and keeping records of it",
+    "Encrypting the billing system"
+   ],
+   "correctIndex": 2,
+   "explanation": "Most security value comes from operators: locked facilities, challenge strangers, note vehicles and events, and report up the chain promptly.",
+   "domain": "REGS",
+   "topic": "emergency-security",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "AWIA ERP practices; EPA security guidance for small systems"
+  },
+  {
+   "id": "XC-ALL-REGS-0264",
+   "text": "Community water systems must deliver a Consumer Confidence Report to customers...",
+   "choices": [
+    "Every year, by July 1",
+    "Every five years",
+    "Only after a violation",
+    "Each month with the bill"
+   ],
+   "correctIndex": 0,
+   "explanation": "Every community water system publishes a CCR each year by July 1, covering the previous calendar year's water quality.",
+   "domain": "REGS",
+   "topic": "reporting-recordkeeping",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "40 CFR 141.152 to 141.155"
+  },
+  {
+   "id": "XC-ALL-REGS-0265",
+   "text": "A customer opens the water quality report their utility mails out every year. What is that Consumer Confidence Report built to show them?",
+   "choices": [
+    "The utility's payroll and budget",
+    "What contaminants were detected and how the results compare to the standards",
+    "Future rate increases",
+    "Which employees are certified"
+   ],
+   "correctIndex": 1,
+   "explanation": "The CCR covers the system's sources, detected contaminants against their MCLs, any violations, and required educational language.",
+   "domain": "REGS",
+   "topic": "reporting-recordkeeping",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "40 CFR 141.153"
+  },
+  {
+   "id": "XC-ALL-REGS-0266",
+   "text": "How long must a water system keep its bacteriological analysis records?",
+   "choices": [
+    "1 year",
+    "10 years",
+    "5 years",
+    "Forever"
+   ],
+   "correctIndex": 2,
+   "explanation": "Records of bacteriological analyses are kept at least 5 years; chemical analyses at least 10.",
+   "domain": "REGS",
+   "topic": "reporting-recordkeeping",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "40 CFR 141.33(a)"
+  },
+  {
+   "id": "XC-ALL-REGS-0267",
+   "text": "How long must records of chemical analyses be retained?",
+   "choices": [
+    "2 years",
+    "5 years",
+    "25 years",
+    "10 years"
+   ],
+   "correctIndex": 3,
+   "explanation": "Chemical analysis records are kept at least 10 years, twice the bacteriological retention.",
+   "domain": "REGS",
+   "topic": "reporting-recordkeeping",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "40 CFR 141.33(a)"
+  },
+  {
+   "id": "XC-ALL-REGS-0268",
+   "text": "Records of lead and copper tap sampling and related actions must be kept for...",
+   "choices": [
+    "12 years",
+    "3 years",
+    "5 years",
+    "7 years"
+   ],
+   "correctIndex": 0,
+   "explanation": "Lead and Copper Rule records, sampling, treatment decisions, and related documentation, are retained for no fewer than 12 years.",
+   "domain": "REGS",
+   "topic": "reporting-recordkeeping",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "40 CFR 141.91"
+  },
+  {
+   "id": "XC-ALL-REGS-0269",
+   "text": "Routine compliance monitoring results are reported to the state within...",
+   "choices": [
+    "24 hours of every sample",
+    "10 days after the end of the required monitoring period, unless a rule says otherwise",
+    "48 hours, always",
+    "One year, in the CCR"
+   ],
+   "correctIndex": 1,
+   "explanation": "The default is reporting results within the first 10 days following the monitoring period (or 10 days after receiving results), with specific rules setting their own schedules.",
+   "domain": "REGS",
+   "topic": "reporting-recordkeeping",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "40 CFR 141.31(a)"
+  },
+  {
+   "id": "XC-ALL-REGS-0270",
+   "text": "A system that fails to comply with an applicable drinking water requirement must report that failure to the state within...",
+   "choices": [
+    "10 days",
+    "30 days",
+    "48 hours",
+    "6 months"
+   ],
+   "correctIndex": 2,
+   "explanation": "Any failure to comply with a primary drinking water regulation must be reported to the state within 48 hours.",
+   "domain": "REGS",
+   "topic": "reporting-recordkeeping",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "40 CFR 141.31(b)"
+  },
+  {
+   "id": "XC-ALL-REGS-0271",
+   "text": "Copies of public notices a system issued must be kept for...",
+   "choices": [
+    "1 year",
+    "5 years",
+    "12 years",
+    "3 years"
+   ],
+   "correctIndex": 3,
+   "explanation": "Systems keep copies of each public notification, and certifications to the state, for at least 3 years after issuance.",
+   "domain": "REGS",
+   "topic": "reporting-recordkeeping",
+   "difficulty": "Hard",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "40 CFR 141.33(e)"
+  },
+  {
+   "id": "XC-ALL-REGS-0272",
+   "text": "On the wastewater side, NPDES monitoring records and DMR backup data must be retained for...",
+   "choices": [
+    "3 years",
+    "90 days",
+    "1 year",
+    "20 years"
+   ],
+   "correctIndex": 0,
+   "explanation": "NPDES permittees keep monitoring records, calibration and maintenance data, and required reports for at least 3 years from the date of the sample, measurement, report, or application (40 CFR 122.41(j)(2)). The Director can extend that period at any time, and many state programs or specific permits set a longer floor.",
+   "domain": "REGS",
+   "topic": "reporting-recordkeeping",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "40 CFR 122.41(j)(2)"
+  },
+  {
+   "id": "XC-ALL-REGS-0273",
+   "text": "Copies of written reports, summaries, or communications about a sanitary survey must be kept for...",
+   "choices": [
+    "1 year",
+    "10 years",
+    "3 years",
+    "5 years"
+   ],
+   "correctIndex": 1,
+   "explanation": "Copies of written reports, summaries, or communications about a sanitary survey are retained at least 10 years after the survey (40 CFR 141.33(c)). That is different from the 3-year retention for records of corrective actions taken to fix a violation (141.33(b)), so check which record type a question is asking about.",
+   "domain": "REGS",
+   "topic": "reporting-recordkeeping",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "40 CFR 141.33(c)"
+  },
+  {
+   "id": "XC-ALL-REGS-0274",
+   "text": "The best reason to keep complete, dated operator logs and bench sheets is...",
+   "choices": [
+    "They are only needed if an inspector asks for them",
+    "They satisfy the paperwork requirement, not the compliance requirement",
+    "They are the legal record that the work got done",
+    "They replace the need for permits entirely"
+   ],
+   "correctIndex": 2,
+   "explanation": "Logs and bench sheets are legal records that prove both that the work happened and that the results reported were real, not just that paperwork got filled out. Complete, contemporaneous, and honest entries are what stands between an operator and an unprovable claim when something is challenged later.",
+   "domain": "REGS",
+   "topic": "reporting-recordkeeping",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "40 CFR 141.33; 122.41(j); standard practice"
+  },
+  {
+   "id": "XC-ALL-REGS-0275",
+   "text": "A Tier 1 public notice must reach the public within...",
+   "choices": [
+    "48 hours",
+    "30 days",
+    "One year",
+    "24 hours"
+   ],
+   "correctIndex": 3,
+   "explanation": "Tier 1 notices, for violations posing acute health risk, must go out within 24 hours via broadcast media, hand delivery, posting, or as the state directs.",
+   "domain": "REGS",
+   "topic": "public-notification",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "40 CFR 141.202"
+  },
+  {
+   "id": "XC-ALL-REGS-0276",
+   "text": "Which of these triggers a Tier 1 notice?",
+   "choices": [
+    "A nitrate MCL violation",
+    "A late Consumer Confidence Report",
+    "A single total coliform positive",
+    "A monitoring violation"
+   ],
+   "correctIndex": 0,
+   "explanation": "Tier 1 covers acute risks: E. coli MCL violations, nitrate and nitrite MCL violations, and others the state designates.",
+   "domain": "REGS",
+   "topic": "public-notification",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "40 CFR 141.202(a)"
+  },
+  {
+   "id": "XC-ALL-REGS-0277",
+   "text": "Most MCL violations that are not acute require a Tier 2 notice within...",
+   "choices": [
+    "24 hours",
+    "30 days",
+    "6 months",
+    "Only the next CCR"
+   ],
+   "correctIndex": 1,
+   "explanation": "Non-acute MCL and treatment technique violations are Tier 2: notice within 30 days, with repeats every 3 months while the violation continues.",
+   "domain": "REGS",
+   "topic": "public-notification",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "40 CFR 141.203"
+  },
+  {
+   "id": "XC-ALL-REGS-0278",
+   "text": "Monitoring and testing procedure violations generally require which notice?",
+   "choices": [
+    "Tier 1, within 24 hours",
+    "Tier 2, within 30 days",
+    "Tier 3, within one year",
+    "No notice ever"
+   ],
+   "correctIndex": 2,
+   "explanation": "Monitoring and testing violations are Tier 3: notify within 12 months, and the CCR can carry the notice if it meets the content rules.",
+   "domain": "REGS",
+   "topic": "public-notification",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "40 CFR 141.204"
+  },
+  {
+   "id": "XC-ALL-REGS-0279",
+   "text": "Acceptable delivery for a Tier 1 notice includes...",
+   "choices": [
+    "A note in the next quarterly bill",
+    "An update buried on the website",
+    "First-class mail within two weeks",
+    "Broadcast media, hand delivery, and conspicuous posting, as the situation and state require"
+   ],
+   "correctIndex": 3,
+   "explanation": "Tier 1 uses the fastest practical channels: radio and TV, hand delivery, posting in conspicuous locations, plus whatever else the state directs.",
+   "domain": "REGS",
+   "topic": "public-notification",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "40 CFR 141.202(c)"
+  },
+  {
+   "id": "XC-ALL-REGS-0280",
+   "text": "An apartment complex gets its water through one master meter. Who must the public notice reach?",
+   "choices": [
+    "All persons served, not just the billed account",
+    "Only the property owner who pays the bill",
+    "Only the household members of the account holder",
+    "Only people who request it"
+   ],
+   "correctIndex": 0,
+   "explanation": "Public notification must reach all persons served. For master-metered properties that means posting or distribution that actually reaches tenants, not just the bill payer.",
+   "domain": "REGS",
+   "topic": "public-notification",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "40 CFR 141.201(c)"
+  },
+  {
+   "id": "XC-ALL-REGS-0281",
+   "text": "A boil water advisory is...",
+   "choices": [
+    "A voluntary suggestion with no rules attached",
+    "A common form of Tier 1 notice telling customers to boil water before use during an acute risk",
+    "A replacement for fixing the problem",
+    "Something only EPA can issue"
+   ],
+   "correctIndex": 1,
+   "explanation": "When an acute microbial risk exists, the Tier 1 notice often takes the form of a boil water advisory, issued fast and lifted only after confirmation sampling.",
+   "domain": "REGS",
+   "topic": "public-notification",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "40 CFR 141 subpart Q; state advisory protocols"
+  },
+  {
+   "id": "XC-ALL-REGS-0282",
+   "text": "While a Tier 2 violation remains unresolved, the notice must be repeated...",
+   "choices": [
+    "Weekly",
+    "Every 6 months",
+    "Every 3 months",
+    "Every 12 months"
+   ],
+   "correctIndex": 2,
+   "explanation": "An unresolved Tier 2 violation requires repeat notice every 3 months, keeping customers informed for as long as the problem persists.",
+   "domain": "REGS",
+   "topic": "public-notification",
+   "difficulty": "Hard",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "40 CFR 141.203(b)"
+  },
+  {
+   "id": "XC-ALL-REGS-0283",
+   "text": "What is the difference between the CCR and public notification?",
+   "choices": [
+    "They are the same report; only the file name differs",
+    "The CCR goes to the state; notification goes to EPA",
+    "The CCR ended in 2019; notification took over",
+    "The CCR is the yearly report; notification is event-driven"
+   ],
+   "correctIndex": 3,
+   "explanation": "The CCR runs every year regardless of problems. Public notification fires when a violation or situation requires telling people, on the clock its tier sets.",
+   "domain": "REGS",
+   "topic": "public-notification",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "40 CFR 141 subparts O and Q"
+  },
+  {
+   "id": "XC-ALL-REGS-0284",
+   "text": "A combined sewer carries both sanitary sewage and stormwater in one pipe. During heavy rain, why does that system discharge a combined sewer overflow (CSO)?",
+   "choices": [
+    "The utility chooses to dump excess flow to avoid paying treatment costs",
+    "State law requires a discharge whenever it rains more than an inch",
+    "The stormwater portion is illegal to treat, so it must bypass the plant",
+    "The pipe network and treatment plant cannot handle the combined wet-weather volume, so the excess discharges through a designed overflow point"
+   ],
+   "correctIndex": 3,
+   "explanation": "Combined systems carry sanitary sewage and stormwater together. When wet weather pushes the combined volume past what the pipes and plant can carry, the excess discharges through a permitted outfall built for that purpose, instead of backing up into streets and basements.",
+   "domain": "REGS",
+   "topic": "cwa-npdes",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "CWA Section 402(q); EPA CSO Control Policy (59 FR 18688, 1994)"
+  },
+  {
+   "id": "XC-ALL-REGS-0285",
+   "text": "A collection system operator finds wastewater surcharging out of a manhole onto a street on a clear, dry day with no rain in the forecast. How must this event be classified and handled?",
+   "choices": [
+    "As a CSO, since any overflow from a sewer is a combined sewer overflow",
+    "As a routine maintenance event that does not need to be reported",
+    "As a permitted bypass, since the plant was likely at capacity",
+    "As a sanitary sewer overflow: an unpermitted discharge that must be reported and addressed regardless of weather"
+   ],
+   "correctIndex": 3,
+   "explanation": "Only combined systems have permitted wet-weather overflow points, and this is a dry-weather event, which rules that out. A separate sanitary sewer has no authorized overflow condition, so any surcharge from it is a sanitary sewer overflow: an unpermitted discharge under the Clean Water Act that the system must report and respond to.",
+   "domain": "REGS",
+   "topic": "cwa-npdes",
+   "difficulty": "Hard",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "CWA Section 301(a); 40 CFR 122.41(l)(6) (noncompliance reporting)"
+  }
+ ]
+}

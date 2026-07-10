@@ -7,9 +7,9 @@
    filename in dist/practice-banks/ (bank-loader.js), a different thing
    from the bank JSON's own internal "version" field (a content-revision
    date quiz.js/quiz-engine.js use for localStorage session invalidation).
-   Wave-1 note: only operator-math-1 ships today; the other 5 Wave-1
-   entries (WT L1, WD L1, WWT L1, WWC L1, Regulations) land here as their
-   banks clear Blake's review gate (see practice-tests/HANDOFF.md). */
+   Wave-1 note: operator-math-1 + regulations-1 ship today; the other 4
+   Wave-1 entries (WT L1, WD L1, WWT L1, WWC L1) land here as their banks
+   clear the verify gate + Blake's flags pass (practice-tests/HANDOFF.md). */
 export const BANK_BASE_URL = 'https://blakeandersonziptility.github.io/ziptility-tools/dist/practice-banks/';
 
 export const TESTS = [
@@ -20,6 +20,17 @@ export const TESTS = [
     discipline: 'Operator Math',
     level: 'Levels 1-2 (ABC Class I-II)',
     questionCount: 110,
+    durationMin: 120,
+    refCount: 100,
+    bankVersion: '1.0.0'
+  },
+  {
+    id: 'regulations-1',
+    title: 'Water and wastewater regulations practice test (federal)',
+    badge: 'Federal regulations · Entry to working level',
+    discipline: 'Regulations (Federal)',
+    level: 'Entry to working level (ABC Class I-II)',
+    questionCount: 103,
     durationMin: 120,
     refCount: 100,
     bankVersion: '1.0.0'

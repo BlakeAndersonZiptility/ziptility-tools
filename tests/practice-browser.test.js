@@ -156,20 +156,25 @@ async function captureFirstQuestion(page) {
 // ---------------------------------------------------------------------
 // 1. Boot + picker
 // ---------------------------------------------------------------------
-test('boot + picker renders 1 card (operator-math-1) with eyebrow/title/meta, zero pageerrors', async () => {
+test('boot + picker renders one card per manifest test with eyebrow/title/meta, zero pageerrors', async () => {
+  const { TESTS } = await import('../src/practice/manifest.js');
   await withPage(async (page) => {
     await gotoPractice(page);
     await page.waitForSelector('.zq-hubcard');
-    assert.equal(await page.locator('.zq-hubcard').count(), 1);
+    // Manifest-driven, not hard-coded: bank additions must not break boot.
+    assert.equal(await page.locator('.zq-hubcard').count(), TESTS.length);
     // textContent, not innerText: .zq-eyebrow is text-transform:uppercase
     // in CSS (styles.css), so the rendered text is "OPERATOR MATH" even
     // though the underlying data (manifest.js discipline field) is
     // title-case — assert the data, not the CSS transform.
-    assert.equal(await page.locator('.zq-hubcard .zq-eyebrow').textContent(), 'Operator Math');
-    assert.equal(await page.locator('.zq-hubcard h3').innerText(), 'Operator math practice test');
-    const meta = await page.locator('.zq-hubcard .zq-meta').innerText();
-    assert.match(meta, /110 questions/);
-    assert.match(meta, /practice or timed exam/);
+    for (let i = 0; i < TESTS.length; i++) {
+      const card = page.locator('.zq-hubcard').nth(i);
+      assert.equal(await card.locator('.zq-eyebrow').textContent(), TESTS[i].discipline);
+      assert.equal(await card.locator('h3').innerText(), TESTS[i].title);
+      const meta = await card.locator('.zq-meta').innerText();
+      assert.match(meta, new RegExp(TESTS[i].questionCount + ' questions'));
+      assert.match(meta, /practice or timed exam/);
+    }
   });
 });
 

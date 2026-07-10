@@ -10,7 +10,10 @@
     "dev": "esbuild src/main.js --bundle --format=iife --loader:.css=text --outfile=dist/calculator-dev.js --watch --servedir=.",
     "test": "node --test tests/solvers.test.js",
     "test:browser": "npm run build:dev && node tests/browser.test.js",
-    "test:legacy": "node tests/legacy/test_solvers_v1.cjs"
+    "test:legacy": "node tests/legacy/test_solvers_v1.cjs",
+    "build:practice:dev": "esbuild src/practice/main.js --bundle --format=iife --loader:.css=text --outfile=dist/practice-dev.js",
+    "dev:practice": "esbuild src/practice/main.js --bundle --format=iife --loader:.css=text --outfile=dist/practice-dev.js --watch --servedir=.",
+    "test:practice": "node --test tests/practice-logic.test.js tests/practice-bank-schema.test.js"
   },
   "devDependencies": {
     "esbuild": "^0.25.0",

@@ -1,0 +1,24 @@
+<!-- Ziptility Operator Practice Tests: full tool renders from this one
+     script. Source: https://github.com/BlakeAndersonZiptility/ziptility-tools
+     To deploy a new version or roll back: change ONLY the version in the
+     script src below, then publish. Versions are immutable.
+
+     Wrapper min-heights (INITIAL ESTIMATES, re-tune after the first real
+     render, same CWV discipline as the calculator's .zip-calc-embed):
+       desktop ~950px / tablet ~950px / mobile-landscape ~1050px /
+       mobile-portrait ~1500px
+     so content below never shifts while the app boots. The dark strip
+     below is a skeleton the app replaces on boot. The bundle loads no
+     third-party tags beyond its own Google Fonts request (Archivo + Geist).
+
+     Gated/in-app variant: add data-embed="app" to the div (resolved once
+     in main.js; nothing in this bundle currently hides on it, kept for
+     parity with the calculator idiom and any future gating).
+     Deep link straight to one test, skipping the picker: add
+     data-test="operator-math-1" to the div, or append
+     ?test=operator-math-1 to the page URL. -->
+<div id="ziptility-practice">
+  <div aria-hidden="true" style="height:88px;background:#0c1f30;border-bottom:3px solid #ff442f"></div>
+  <noscript>This tool requires JavaScript. Please enable it to use the free practice tests.</noscript>
+</div>
+<script defer src="https://blakeandersonziptility.github.io/ziptility-tools/dist/practice-v1.0.0.js"></script>

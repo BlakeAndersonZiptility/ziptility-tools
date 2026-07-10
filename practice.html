@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<!-- Local preview / QA page. Mirrors the production Webflow embed exactly
+     (mount div + script). Run `npm run dev:practice` and open
+     http://localhost:8000/practice.html, or `npm run build:practice:dev`
+     and open this file directly.
+     data-bank-base points at the local dist copy so this page fetches
+     bank JSON without a real deploy: run
+     `node scripts/build-practice-banks.mjs` first to populate it.
+     Fonts (Archivo + Geist) self-load from Google Fonts (main.js), same
+     as production, no site-licensed-font fallback concern here. -->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Ziptility Operator Practice Tests: preview</title>
+</head>
+<body>
+  <div id="ziptility-practice" data-bank-base="./dist/practice-banks/"><noscript>This tool requires JavaScript.</noscript></div>
+  <script defer src="./dist/practice-dev.js"></script>
+</body>
+</html>

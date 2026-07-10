@@ -1,0 +1,2101 @@
+{
+ "id": "operator-math-1",
+ "title": "Operator Math Practice Test",
+ "discipline": "Operator Math",
+ "level": "Levels 1-2 (ABC Class I-II)",
+ "durationMin": 120,
+ "refCount": 100,
+ "version": "2026-06-12",
+ "questions": [
+  {
+   "id": "XC-ALL-MATH-0001",
+   "text": "A pump delivers 350 gpm. What is this flow expressed in MGD?",
+   "choices": [
+    "0.50 MGD",
+    "0.35 MGD",
+    "5.04 MGD",
+    "0.24 MGD"
+   ],
+   "correctIndex": 0,
+   "explanation": "350 gpm x 1440 min/day = 504,000 gpd. 504,000 / 1,000,000 = 0.50 MGD.",
+   "domain": "MATH",
+   "topic": "units-conversions",
+   "difficulty": "Easy",
+   "cognitive": "Application",
+   "formula": "MGD = gpm x 1440 / 1,000,000",
+   "calculator": "gpm-mgd",
+   "citation": null
+  },
+  {
+   "id": "XC-ALL-MATH-0002",
+   "text": "A plant treats 2.0 MGD. What is the average flow in gpm?",
+   "choices": [
+    "833 gpm",
+    "1,389 gpm",
+    "1,440 gpm",
+    "2,000 gpm"
+   ],
+   "correctIndex": 1,
+   "explanation": "2.0 MGD = 2,000,000 gpd. 2,000,000 / 1440 min/day = 1,389 gpm.",
+   "domain": "MATH",
+   "topic": "units-conversions",
+   "difficulty": "Easy",
+   "cognitive": "Application",
+   "formula": "gpm = MGD x 1,000,000 / 1440",
+   "calculator": "gpm-mgd",
+   "citation": null
+  },
+  {
+   "id": "XC-ALL-MATH-0003",
+   "text": "Your crew drains 500 cubic feet of water out of a storage basin for an inspection. How much water went out, in gallons?",
+   "choices": [
+    "66.8 gal",
+    "500 gal",
+    "3,740 gal",
+    "37,400 gal"
+   ],
+   "correctIndex": 2,
+   "explanation": "500 cu ft x 7.48 gal/cu ft = 3,740 gallons.",
+   "domain": "MATH",
+   "topic": "units-conversions",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": "gallons = cubic feet x 7.48",
+   "calculator": "vol-box",
+   "citation": null
+  },
+  {
+   "id": "XC-ALL-MATH-0004",
+   "text": "A pressure gauge reads 45 psi. What is the equivalent head in feet of water?",
+   "choices": [
+    "19.5 ft",
+    "45 ft",
+    "90 ft",
+    "104 ft"
+   ],
+   "correctIndex": 3,
+   "explanation": "45 psi x 2.31 ft/psi = 103.95, about 104 feet of head.",
+   "domain": "MATH",
+   "topic": "units-conversions",
+   "difficulty": "Easy",
+   "cognitive": "Application",
+   "formula": "feet of head = psi x 2.31",
+   "calculator": "pressure-head",
+   "citation": null
+  },
+  {
+   "id": "XC-ALL-MATH-0005",
+   "text": "A circular clarifier is 60 ft in diameter. What is its surface area?",
+   "choices": [
+    "2,827 sq ft",
+    "188 sq ft",
+    "3,600 sq ft",
+    "1,414 sq ft"
+   ],
+   "correctIndex": 0,
+   "explanation": "Area = 0.785 x 60 x 60 = 0.785 x 3,600 = 2,826, about 2,827 sq ft.",
+   "domain": "MATH",
+   "topic": "area",
+   "difficulty": "Easy",
+   "cognitive": "Application",
+   "formula": "area = 0.785 x diameter squared",
+   "calculator": "area-circle",
+   "citation": null
+  },
+  {
+   "id": "XC-ALL-MATH-0006",
+   "text": "A rectangular sedimentation basin is 80 ft long and 30 ft wide. What is its surface area?",
+   "choices": [
+    "110 sq ft",
+    "2,400 sq ft",
+    "220 sq ft",
+    "1,200 sq ft"
+   ],
+   "correctIndex": 1,
+   "explanation": "Area = length x width = 80 x 30 = 2,400 sq ft.",
+   "domain": "MATH",
+   "topic": "area",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": "area = length x width",
+   "calculator": "area-rect",
+   "citation": null
+  },
+  {
+   "id": "XC-ALL-MATH-0007",
+   "text": "A rectangular tank is 50 ft long, 20 ft wide, and 12 ft deep. What is its volume in gallons?",
+   "choices": [
+    "12,000 gal",
+    "1,200 gal",
+    "89,760 gal",
+    "898,000 gal"
+   ],
+   "correctIndex": 2,
+   "explanation": "50 x 20 x 12 = 12,000 cu ft. 12,000 x 7.48 = 89,760 gallons.",
+   "domain": "MATH",
+   "topic": "volume",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": "gallons = L x W x D x 7.48",
+   "calculator": "vol-box",
+   "citation": null
+  },
+  {
+   "id": "XC-ALL-MATH-0008",
+   "text": "A cylindrical tank is 40 ft in diameter and 20 ft deep. What is its volume in gallons?",
+   "choices": [
+    "25,120 gal",
+    "23,550 gal",
+    "1,500,000 gal",
+    "187,900 gal"
+   ],
+   "correctIndex": 3,
+   "explanation": "Volume = 0.785 x 40 x 40 x 20 = 25,120 cu ft. 25,120 x 7.48 = 187,898, about 187,900 gallons.",
+   "domain": "MATH",
+   "topic": "volume",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": "gallons = 0.785 x diameter squared x depth x 7.48",
+   "calculator": "vol-cyl",
+   "citation": null
+  },
+  {
+   "id": "XC-ALL-MATH-0009",
+   "text": "How many gallons are contained in 1,000 ft of 8-inch diameter pipe?",
+   "choices": [
+    "2,610 gal",
+    "349 gal",
+    "31,300 gal",
+    "5,230 gal"
+   ],
+   "correctIndex": 0,
+   "explanation": "8 in = 0.667 ft. Area = 0.785 x 0.667 x 0.667 = 0.349 sq ft. Volume = 0.349 x 1,000 = 349 cu ft. 349 x 7.48 = 2,610 gallons.",
+   "domain": "MATH",
+   "topic": "volume",
+   "difficulty": "Medium",
+   "cognitive": "Analysis",
+   "formula": "gallons = 0.785 x diameter squared x length x 7.48 (convert inches to feet first)",
+   "calculator": "vol-cyl",
+   "citation": null
+  },
+  {
+   "id": "XC-ALL-MATH-0010",
+   "text": "Water flows at 1.5 cfs through a 12-inch diameter pipe. What is the velocity?",
+   "choices": [
+    "1.2 ft/s",
+    "1.9 ft/s",
+    "0.5 ft/s",
+    "3.0 ft/s"
+   ],
+   "correctIndex": 1,
+   "explanation": "A 12-inch pipe is 1.0 ft in diameter. Area = 0.785 x 1 x 1 = 0.785 sq ft. Velocity = 1.5 / 0.785 = 1.9 ft/s.",
+   "domain": "MATH",
+   "topic": "flow-velocity",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": "velocity = flow / area",
+   "calculator": "velocity",
+   "citation": null
+  },
+  {
+   "id": "XC-ALL-MATH-0011",
+   "text": "A flow of 2.0 MGD passes through a channel 2 ft wide with water 1.5 ft deep. What is the velocity in ft/s?",
+   "choices": [
+    "0.67 ft/s",
+    "1.5 ft/s",
+    "1.0 ft/s",
+    "3.1 ft/s"
+   ],
+   "correctIndex": 2,
+   "explanation": "2.0 MGD x 1.547 = 3.094 cfs. Channel area = 2 x 1.5 = 3 sq ft. Velocity = 3.094 / 3 = 1.03, about 1.0 ft/s.",
+   "domain": "MATH",
+   "topic": "flow-velocity",
+   "difficulty": "Hard",
+   "cognitive": "Analysis",
+   "formula": "convert MGD to cfs (x 1.547), then velocity = flow / area",
+   "calculator": "velocity",
+   "citation": null
+  },
+  {
+   "id": "XC-ALL-MATH-0012",
+   "text": "Water moves at 2.0 ft/s through a channel with a cross-sectional area of 4 sq ft. What is the flow in cfs?",
+   "choices": [
+    "2 cfs",
+    "0.5 cfs",
+    "32 cfs",
+    "8 cfs"
+   ],
+   "correctIndex": 3,
+   "explanation": "Flow = velocity x area = 2.0 x 4 = 8 cfs.",
+   "domain": "MATH",
+   "topic": "flow-velocity",
+   "difficulty": "Easy",
+   "cognitive": "Application",
+   "formula": "flow = velocity x area",
+   "calculator": "velocity",
+   "citation": null
+  },
+  {
+   "id": "XC-ALL-MATH-0013",
+   "text": "A 100,000-gallon tank receives a flow of 0.5 MGD. What is the detention time in hours?",
+   "choices": [
+    "4.8 hr",
+    "2.0 hr",
+    "0.2 hr",
+    "48 hr"
+   ],
+   "correctIndex": 0,
+   "explanation": "DT = volume / flow = 100,000 / 500,000 = 0.2 day. 0.2 x 24 = 4.8 hours.",
+   "domain": "MATH",
+   "topic": "detention-time",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": "detention time = volume / flow",
+   "calculator": "detention",
+   "citation": null
+  },
+  {
+   "id": "XC-ALL-MATH-0014",
+   "text": "A clearwell holds 50,000 gallons and the flow is 350 gpm. What is the detention time in hours?",
+   "choices": [
+    "143 hr",
+    "2.4 hr",
+    "0.14 hr",
+    "4.8 hr"
+   ],
+   "correctIndex": 1,
+   "explanation": "DT = 50,000 / 350 = 142.9 minutes. 142.9 / 60 = 2.4 hours.",
+   "domain": "MATH",
+   "topic": "detention-time",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": "detention time = volume / flow",
+   "calculator": "detention",
+   "citation": null
+  },
+  {
+   "id": "XC-ALL-MATH-0015",
+   "text": "A sedimentation basin holds 90,000 gallons and treats 0.6 MGD. What is the detention time in hours?",
+   "choices": [
+    "1.5 hr",
+    "6.7 hr",
+    "3.6 hr",
+    "36 hr"
+   ],
+   "correctIndex": 2,
+   "explanation": "DT = 90,000 / 600,000 = 0.15 day. 0.15 x 24 = 3.6 hours.",
+   "domain": "MATH",
+   "topic": "detention-time",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": "detention time = volume / flow",
+   "calculator": "detention",
+   "citation": null
+  },
+  {
+   "id": "XC-ALL-MATH-0016",
+   "text": "A plant feeds chlorine at 2.5 mg/L while treating 1.5 MGD. Using the pounds formula, what is the chlorine feed in pounds per day?",
+   "choices": [
+    "12.5 lb/day",
+    "3.75 lb/day",
+    "313 lb/day",
+    "31.3 lb/day"
+   ],
+   "correctIndex": 3,
+   "explanation": "lb/day = MGD x mg/L x 8.34 = 1.5 x 2.5 x 8.34 = 31.3 lb/day.",
+   "domain": "MATH",
+   "topic": "dosage-8.34",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": "lb/day = MGD x mg/L x 8.34",
+   "calculator": "chlorine-dose",
+   "citation": null
+  },
+  {
+   "id": "XC-ALL-MATH-0017",
+   "text": "A plant feeds 40 lb/day of chlorine to a flow of 2.0 MGD. What is the dosage in mg/L?",
+   "choices": [
+    "2.4 mg/L",
+    "20 mg/L",
+    "4.8 mg/L",
+    "0.42 mg/L"
+   ],
+   "correctIndex": 0,
+   "explanation": "mg/L = lb/day / (MGD x 8.34) = 40 / (2.0 x 8.34) = 40 / 16.68 = 2.4 mg/L.",
+   "domain": "MATH",
+   "topic": "dosage-8.34",
+   "difficulty": "Medium",
+   "cognitive": "Analysis",
+   "formula": "mg/L = lb/day / (MGD x 8.34)",
+   "calculator": "chlorine-dose",
+   "citation": null
+  },
+  {
+   "id": "XC-ALL-MATH-0018",
+   "text": "The chlorine dose is 3.0 mg/L and the measured residual is 0.6 mg/L. What is the chlorine demand?",
+   "choices": [
+    "3.6 mg/L",
+    "2.4 mg/L",
+    "0.6 mg/L",
+    "1.8 mg/L"
+   ],
+   "correctIndex": 1,
+   "explanation": "Demand = dose - residual = 3.0 - 0.6 = 2.4 mg/L.",
+   "domain": "MATH",
+   "topic": "dosage-8.34",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": "chlorine demand = dose - residual",
+   "calculator": "chlorine-dose",
+   "citation": null
+  },
+  {
+   "id": "XC-ALL-MATH-0019",
+   "text": "You need 30 lb/day of chlorine using calcium hypochlorite that is 65 percent available chlorine. How many lb/day of product is required?",
+   "choices": [
+    "19.5 lb/day",
+    "30 lb/day",
+    "46.2 lb/day",
+    "65 lb/day"
+   ],
+   "correctIndex": 2,
+   "explanation": "Product lb/day = chlorine needed / fraction available = 30 / 0.65 = 46.2 lb/day.",
+   "domain": "MATH",
+   "topic": "dosage-8.34",
+   "difficulty": "Medium",
+   "cognitive": "Analysis",
+   "formula": "product lb/day = chemical lb/day / (percent available / 100)",
+   "calculator": "chem-feed",
+   "citation": null
+  },
+  {
+   "id": "XC-ALL-MATH-0020",
+   "text": "A system feeds 50 lb/day of chlorine at a dosage of 2.5 mg/L. What is the flow in MGD?",
+   "choices": [
+    "20 MGD",
+    "0.42 MGD",
+    "1.04 MGD",
+    "2.4 MGD"
+   ],
+   "correctIndex": 3,
+   "explanation": "MGD = lb/day / (mg/L x 8.34) = 50 / (2.5 x 8.34) = 50 / 20.85 = 2.4 MGD.",
+   "domain": "MATH",
+   "topic": "dosage-8.34",
+   "difficulty": "Hard",
+   "cognitive": "Analysis",
+   "formula": "MGD = lb/day / (mg/L x 8.34)",
+   "calculator": "chlorine-dose",
+   "citation": null
+  },
+  {
+   "id": "XC-ALL-MATH-0021",
+   "text": "How many lb/day of fluoride ion are needed to dose 2.0 MGD at 0.8 mg/L?",
+   "choices": [
+    "13.3 lb/day",
+    "1.6 lb/day",
+    "16.7 lb/day",
+    "133 lb/day"
+   ],
+   "correctIndex": 0,
+   "explanation": "lb/day = MGD x mg/L x 8.34 = 2.0 x 0.8 x 8.34 = 13.3 lb/day of fluoride ion.",
+   "domain": "MATH",
+   "topic": "dosage-8.34",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": "lb/day = MGD x mg/L x 8.34",
+   "calculator": "chem-feed",
+   "citation": null
+  },
+  {
+   "id": "XC-ALL-MATH-0022",
+   "text": "A clarifier surface is 1,500 sq ft and treats 0.5 MGD. What is the surface overflow rate in gpd/sq ft?",
+   "choices": [
+    "3,000 gpd/sq ft",
+    "333 gpd/sq ft",
+    "750 gpd/sq ft",
+    "33 gpd/sq ft"
+   ],
+   "correctIndex": 1,
+   "explanation": "Surface overflow rate = flow / area = 500,000 gpd / 1,500 sq ft = 333 gpd/sq ft.",
+   "domain": "MATH",
+   "topic": "loading-rates",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": "surface overflow rate = flow (gpd) / surface area (sq ft)",
+   "calculator": "surface-loading",
+   "citation": null
+  },
+  {
+   "id": "XC-ALL-MATH-0023",
+   "text": "A clarifier has 200 ft of weir and discharges 0.6 MGD. What is the weir overflow rate in gpd/ft?",
+   "choices": [
+    "333 gpd/ft",
+    "1,200 gpd/ft",
+    "3,000 gpd/ft",
+    "120 gpd/ft"
+   ],
+   "correctIndex": 2,
+   "explanation": "Weir overflow rate = flow / weir length = 600,000 gpd / 200 ft = 3,000 gpd/ft.",
+   "domain": "MATH",
+   "topic": "loading-rates",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": "weir overflow rate = flow (gpd) / weir length (ft)",
+   "calculator": "weir-overflow",
+   "citation": null
+  },
+  {
+   "id": "XC-ALL-MATH-0024",
+   "text": "Flow to an aeration basin is 0.8 MGD with a BOD of 180 mg/L. What is the BOD loading in lb/day?",
+   "choices": [
+    "144 lb/day",
+    "1,440 lb/day",
+    "12,000 lb/day",
+    "1,200 lb/day"
+   ],
+   "correctIndex": 3,
+   "explanation": "lb/day = MGD x mg/L x 8.34 = 0.8 x 180 x 8.34 = 1,201, about 1,200 lb/day.",
+   "domain": "MATH",
+   "topic": "loading-rates",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": "lb/day = MGD x mg/L x 8.34",
+   "calculator": "organic-loading",
+   "citation": null
+  },
+  {
+   "id": "XC-ALL-MATH-0025",
+   "text": "A filter is 400 sq ft and treats 2.0 MGD. What is the filtration rate in gpm/sq ft?",
+   "choices": [
+    "3.5 gpm/sq ft",
+    "5,000 gpm/sq ft",
+    "1.4 gpm/sq ft",
+    "7.0 gpm/sq ft"
+   ],
+   "correctIndex": 0,
+   "explanation": "2.0 MGD = 1,389 gpm. Rate = 1,389 / 400 = 3.5 gpm/sq ft.",
+   "domain": "MATH",
+   "topic": "loading-rates",
+   "difficulty": "Hard",
+   "cognitive": "Analysis",
+   "formula": "filtration rate = flow (gpm) / filter area (sq ft); convert MGD to gpm first",
+   "calculator": "filtration-rate",
+   "citation": null
+  },
+  {
+   "id": "XC-ALL-MATH-0026",
+   "text": "A treatment plant takes BOD from 200 mg/L in the influent down to 20 mg/L in the effluent. What percent removal is the plant achieving?",
+   "choices": [
+    "10 percent",
+    "90 percent",
+    "80 percent",
+    "180 percent"
+   ],
+   "correctIndex": 1,
+   "explanation": "Percent removal = (in - out) / in x 100 = (200 - 20) / 200 x 100 = 90 percent.",
+   "domain": "MATH",
+   "topic": "percent-removal",
+   "difficulty": "Easy",
+   "cognitive": "Application",
+   "formula": "percent removal = (influent - effluent) / influent x 100",
+   "calculator": "removal",
+   "citation": null
+  },
+  {
+   "id": "XC-ALL-MATH-0027",
+   "text": "Influent TSS is 240 mg/L and effluent TSS is 30 mg/L. What is the percent removal?",
+   "choices": [
+    "12.5 percent",
+    "21 percent",
+    "87.5 percent",
+    "8 percent"
+   ],
+   "correctIndex": 2,
+   "explanation": "Percent removal = (240 - 30) / 240 x 100 = 210 / 240 x 100 = 87.5 percent.",
+   "domain": "MATH",
+   "topic": "percent-removal",
+   "difficulty": "Easy",
+   "cognitive": "Application",
+   "formula": "percent removal = (influent - effluent) / influent x 100",
+   "calculator": "removal",
+   "citation": null
+  },
+  {
+   "id": "XC-ALL-MATH-0028",
+   "text": "A pump moves 500 gpm against 100 ft of total head. What is the water horsepower?",
+   "choices": [
+    "50 whp",
+    "3.2 whp",
+    "25 whp",
+    "12.6 whp"
+   ],
+   "correctIndex": 3,
+   "explanation": "Water horsepower = (gpm x head) / 3960 = (500 x 100) / 3960 = 12.6 whp.",
+   "domain": "MATH",
+   "topic": "pumping-hp",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": "water hp = (gpm x head ft) / 3960",
+   "calculator": "water-hp",
+   "citation": null
+  },
+  {
+   "id": "XC-ALL-MATH-0029",
+   "text": "If the water horsepower is 12.6 and the pump efficiency is 80 percent, what is the brake horsepower?",
+   "choices": [
+    "15.8 bhp",
+    "10.1 bhp",
+    "12.6 bhp",
+    "18.0 bhp"
+   ],
+   "correctIndex": 0,
+   "explanation": "Brake horsepower = water hp / pump efficiency = 12.6 / 0.80 = 15.8 bhp.",
+   "domain": "MATH",
+   "topic": "pumping-hp",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": "brake hp = water hp / pump efficiency",
+   "calculator": "hp",
+   "citation": null
+  },
+  {
+   "id": "XC-ALL-MATH-0030",
+   "text": "The brake horsepower is 15.8 and the motor efficiency is 90 percent. What is the motor input horsepower?",
+   "choices": [
+    "14.2 hp",
+    "17.6 hp",
+    "15.8 hp",
+    "19.5 hp"
+   ],
+   "correctIndex": 1,
+   "explanation": "Motor input hp = brake hp / motor efficiency = 15.8 / 0.90 = 17.6 hp.",
+   "domain": "MATH",
+   "topic": "pumping-hp",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": "motor input hp = brake hp / motor efficiency",
+   "calculator": "motor-hp",
+   "citation": null
+  },
+  {
+   "id": "XC-ALL-MATH-0031",
+   "text": "You blend 1.0 MGD of water at 300 mg/L hardness with 0.5 MGD of water at 0 mg/L hardness. What is the blended hardness?",
+   "choices": [
+    "150 mg/L",
+    "300 mg/L",
+    "200 mg/L",
+    "100 mg/L"
+   ],
+   "correctIndex": 2,
+   "explanation": "Blended = (Q1 x C1 + Q2 x C2) / (Q1 + Q2) = (1.0 x 300 + 0.5 x 0) / 1.5 = 300 / 1.5 = 200 mg/L.",
+   "domain": "MATH",
+   "topic": "blending-dilution",
+   "difficulty": "Hard",
+   "cognitive": "Analysis",
+   "formula": "blended concentration = (Q1 x C1 + Q2 x C2) / (Q1 + Q2)",
+   "calculator": "concentration",
+   "citation": null
+  },
+  {
+   "id": "XC-ALL-MATH-0032",
+   "text": "How many gallons of a 50 percent stock solution are needed to make 20 gallons of a 5 percent solution?",
+   "choices": [
+    "10 gal",
+    "200 gal",
+    "0.5 gal",
+    "2 gal"
+   ],
+   "correctIndex": 3,
+   "explanation": "C1 x V1 = C2 x V2. 50 x V1 = 5 x 20. V1 = 100 / 50 = 2 gallons of stock.",
+   "domain": "MATH",
+   "topic": "blending-dilution",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": "C1 x V1 = C2 x V2",
+   "calculator": "dilution",
+   "citation": null
+  },
+  {
+   "id": "XC-ALL-MATH-0033",
+   "text": "A well produces 200 gpm with a drawdown of 40 ft. What is the specific capacity in gpm/ft?",
+   "choices": [
+    "5 gpm/ft",
+    "0.2 gpm/ft",
+    "8,000 gpm/ft",
+    "240 gpm/ft"
+   ],
+   "correctIndex": 0,
+   "explanation": "Specific capacity = yield / drawdown = 200 / 40 = 5 gpm/ft.",
+   "domain": "MATH",
+   "topic": "efficiency",
+   "difficulty": "Easy",
+   "cognitive": "Application",
+   "formula": "specific capacity = well yield (gpm) / drawdown (ft)",
+   "calculator": "drawdown",
+   "citation": null
+  },
+  {
+   "id": "XC-ALL-MATH-0109",
+   "text": "A booster station meters 2,500 gallons over a 5-minute run. What is the pumping rate in gpm?",
+   "choices": [
+    "500 gpm",
+    "125 gpm",
+    "2,500 gpm",
+    "50 gpm"
+   ],
+   "correctIndex": 0,
+   "explanation": "Rate is volume divided by time: 2,500 gallons / 5 minutes = 500 gpm.",
+   "domain": "MATH",
+   "topic": "units-conversions",
+   "difficulty": "Easy",
+   "cognitive": "Application",
+   "formula": "gpm = gallons / minutes",
+   "calculator": null,
+   "citation": null
+  },
+  {
+   "id": "XC-ALL-MATH-0110",
+   "text": "Flow through a meter vault reads 2.0 cfs. What is that in gallons per minute?",
+   "choices": [
+    "449 gpm",
+    "898 gpm",
+    "1,797 gpm",
+    "120 gpm"
+   ],
+   "correctIndex": 1,
+   "explanation": "One cfs is 448.8 gpm, so 2.0 cfs x 448.8 = about 898 gpm.",
+   "domain": "MATH",
+   "topic": "units-conversions",
+   "difficulty": "Easy",
+   "cognitive": "Application",
+   "formula": "gpm = cfs x 448.8",
+   "calculator": "gpm-mgd",
+   "citation": null
+  },
+  {
+   "id": "XC-ALL-MATH-0111",
+   "text": "A 1.0 MGD plant runs at a steady rate all day. About how many cubic feet per second is that?",
+   "choices": [
+    "0.65 cfs",
+    "15.5 cfs",
+    "1.55 cfs",
+    "448 cfs"
+   ],
+   "correctIndex": 2,
+   "explanation": "One MGD equals about 1.547 cfs, so a 1.0 MGD plant moves about 1.55 cfs.",
+   "domain": "MATH",
+   "topic": "units-conversions",
+   "difficulty": "Easy",
+   "cognitive": "Application",
+   "formula": "cfs = MGD x 1.547",
+   "calculator": "gpm-mgd",
+   "citation": null
+  },
+  {
+   "id": "XC-ALL-MATH-0112",
+   "text": "A day tank holds 300 gallons of water. Using the certification convention, how much does that water weigh?",
+   "choices": [
+    "250 lb",
+    "3,000 lb",
+    "1,251 lb",
+    "2,502 lb"
+   ],
+   "correctIndex": 3,
+   "explanation": "Water weighs 8.34 pounds per gallon by certification convention: 300 x 8.34 = 2,502 lb.",
+   "domain": "MATH",
+   "topic": "units-conversions",
+   "difficulty": "Easy",
+   "cognitive": "Application",
+   "formula": "lb = gallons x 8.34",
+   "calculator": "mass",
+   "citation": null
+  },
+  {
+   "id": "XC-ALL-MATH-0113",
+   "text": "A storage reservoir drops 2.0 acre-feet during a peak day. How many gallons left storage?",
+   "choices": [
+    "652,000 gallons",
+    "326,000 gallons",
+    "87,120 gallons",
+    "2,000,000 gallons"
+   ],
+   "correctIndex": 0,
+   "explanation": "One acre-foot is 325,851 gallons. 2.0 x 325,851 = about 652,000 gallons.",
+   "domain": "MATH",
+   "topic": "units-conversions",
+   "difficulty": "Easy",
+   "cognitive": "Application",
+   "formula": "gallons = acre-feet x 325,851",
+   "calculator": null,
+   "citation": null
+  },
+  {
+   "id": "XC-ALL-MATH-0114",
+   "text": "A well pumps 250 gpm and runs 14 hours in a day. How much water did it produce that day?",
+   "choices": [
+    "360,000 gallons",
+    "210,000 gallons",
+    "3,500 gallons",
+    "21,000 gallons"
+   ],
+   "correctIndex": 1,
+   "explanation": "250 gpm x 60 minutes x 14 hours = 210,000 gallons.",
+   "domain": "MATH",
+   "topic": "units-conversions",
+   "difficulty": "Easy",
+   "cognitive": "Application",
+   "formula": "gallons = gpm x 60 x hours",
+   "calculator": null,
+   "citation": null
+  },
+  {
+   "id": "XC-ALL-MATH-0115",
+   "text": "A plant treats 480,000 gallons between midnight and 8:00 a.m. at a steady rate. If that pace holds all day, what is the daily flow in MGD?",
+   "choices": [
+    "0.48 MGD",
+    "3.84 MGD",
+    "1.44 MGD",
+    "0.06 MGD"
+   ],
+   "correctIndex": 2,
+   "explanation": "480,000 gallons in 8 hours is 60,000 gallons per hour. Over 24 hours that is 1,440,000 gallons, which is 1.44 MGD.",
+   "domain": "MATH",
+   "topic": "units-conversions",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": "MGD = (gallons / hours) x 24 / 1,000,000",
+   "calculator": "gpm-mgd",
+   "citation": null
+  },
+  {
+   "id": "XC-ALL-MATH-0116",
+   "text": "A storm drops 1.5 inches of rain on a 40-acre plant site. If every drop ran off, about how many gallons would that be?",
+   "choices": [
+    "652,000 gallons",
+    "16,300,000 gallons",
+    "195,000 gallons",
+    "1,630,000 gallons"
+   ],
+   "correctIndex": 3,
+   "explanation": "1.5 inches is 0.125 feet. 0.125 ft x 40 acres = 5 acre-feet, and 5 x 325,851 = about 1.63 million gallons.",
+   "domain": "MATH",
+   "topic": "units-conversions",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": "gallons = (inches / 12) x acres x 325,851",
+   "calculator": null,
+   "citation": null
+  },
+  {
+   "id": "XC-ALL-MATH-0117",
+   "text": "A chlorinator feeds 42 pounds of gas over a full week of steady operation. What is the average feed in pounds per day?",
+   "choices": [
+    "6.0 lb/day",
+    "0.6 lb/day",
+    "294 lb/day",
+    "1.75 lb/day"
+   ],
+   "correctIndex": 0,
+   "explanation": "42 pounds across 7 days is 42 / 7 = 6.0 pounds per day.",
+   "domain": "MATH",
+   "topic": "units-conversions",
+   "difficulty": "Easy",
+   "cognitive": "Application",
+   "formula": "lb/day = total lb / days",
+   "calculator": null,
+   "citation": null
+  },
+  {
+   "id": "XC-ALL-MATH-0118",
+   "text": "A main flushes at 4.5 ft/s. How far does that water travel in one minute?",
+   "choices": [
+    "4.5 ft",
+    "270 ft",
+    "45 ft",
+    "2,700 ft"
+   ],
+   "correctIndex": 1,
+   "explanation": "Distance is velocity times time: 4.5 ft/s x 60 s = 270 feet every minute.",
+   "domain": "MATH",
+   "topic": "units-conversions",
+   "difficulty": "Easy",
+   "cognitive": "Application",
+   "formula": "distance = velocity x time",
+   "calculator": "velocity",
+   "citation": null
+  },
+  {
+   "id": "XC-ALL-MATH-0119",
+   "text": "A sludge drying bed measures 60 ft by 25 ft. What is its surface area?",
+   "choices": [
+    "170 sq ft",
+    "750 sq ft",
+    "1,500 sq ft",
+    "15,000 sq ft"
+   ],
+   "correctIndex": 2,
+   "explanation": "Rectangle area is length times width: 60 x 25 = 1,500 square feet.",
+   "domain": "MATH",
+   "topic": "area",
+   "difficulty": "Easy",
+   "cognitive": "Application",
+   "formula": "area = L x W",
+   "calculator": "area-rect",
+   "citation": null
+  },
+  {
+   "id": "XC-ALL-MATH-0120",
+   "text": "A clarifier is 50 ft in diameter. What is its surface area, to the nearest 10 square feet?",
+   "choices": [
+    "7,850 sq ft",
+    "157 sq ft",
+    "3,930 sq ft",
+    "1,960 sq ft"
+   ],
+   "correctIndex": 3,
+   "explanation": "Circle area is 0.785 x D squared: 0.785 x 50 x 50 = about 1,960 square feet.",
+   "domain": "MATH",
+   "topic": "area",
+   "difficulty": "Easy",
+   "cognitive": "Application",
+   "formula": "area = 0.785 x D^2",
+   "calculator": "area-circle",
+   "citation": null
+  },
+  {
+   "id": "XC-ALL-MATH-0121",
+   "text": "A chlorine contact basin is 30 ft long, 12 ft wide, and 10 ft deep. How many gallons does it hold when full?",
+   "choices": [
+    "26,900 gallons",
+    "3,600 gallons",
+    "269,000 gallons",
+    "13,500 gallons"
+   ],
+   "correctIndex": 0,
+   "explanation": "Volume is 30 x 12 x 10 = 3,600 cubic feet, and 3,600 x 7.48 = about 26,900 gallons.",
+   "domain": "MATH",
+   "topic": "volume",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": "gallons = L x W x D x 7.48",
+   "calculator": "vol-box",
+   "citation": null
+  },
+  {
+   "id": "XC-ALL-MATH-0122",
+   "text": "A standpipe is 20 ft in diameter and currently holds 35 ft of water. About how many gallons is that?",
+   "choices": [
+    "11,000 gallons",
+    "82,200 gallons",
+    "822,000 gallons",
+    "41,100 gallons"
+   ],
+   "correctIndex": 1,
+   "explanation": "Cylinder volume is 0.785 x 20 x 20 x 35 = about 11,000 cubic feet. Times 7.48 gives about 82,200 gallons.",
+   "domain": "MATH",
+   "topic": "volume",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": "gallons = 0.785 x D^2 x depth x 7.48",
+   "calculator": "vol-cyl",
+   "citation": null
+  },
+  {
+   "id": "XC-ALL-MATH-0123",
+   "text": "A rectangular basin 40 ft by 20 ft holds water 6 ft deep. The basin itself is 12 ft deep. How many gallons are in it right now?",
+   "choices": [
+    "71,800 gallons",
+    "4,800 gallons",
+    "35,900 gallons",
+    "17,950 gallons"
+   ],
+   "correctIndex": 2,
+   "explanation": "Use the water depth, not the wall height: 40 x 20 x 6 = 4,800 cubic feet, x 7.48 = about 35,900 gallons.",
+   "domain": "MATH",
+   "topic": "volume",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": "gallons = L x W x water depth x 7.48",
+   "calculator": "vol-box",
+   "citation": null
+  },
+  {
+   "id": "XC-ALL-MATH-0124",
+   "text": "A chemical tote is a cylinder 4 ft in diameter and 5 ft tall. What is its volume in cubic feet?",
+   "choices": [
+    "251 cu ft",
+    "31.4 cu ft",
+    "125.6 cu ft",
+    "62.8 cu ft"
+   ],
+   "correctIndex": 3,
+   "explanation": "0.785 x 4 x 4 x 5 = 62.8 cubic feet.",
+   "domain": "MATH",
+   "topic": "volume",
+   "difficulty": "Easy",
+   "cognitive": "Application",
+   "formula": "volume = 0.785 x D^2 x H",
+   "calculator": "vol-cyl",
+   "citation": null
+  },
+  {
+   "id": "XC-ALL-MATH-0125",
+   "text": "Crews excavate a trench 120 ft long, 3 ft wide, and 5 ft deep. How many cubic yards of spoil come out?",
+   "choices": [
+    "66.7 cu yd",
+    "1,800 cu yd",
+    "200 cu yd",
+    "600 cu yd"
+   ],
+   "correctIndex": 0,
+   "explanation": "Volume is 120 x 3 x 5 = 1,800 cubic feet. A cubic yard is 27 cubic feet, so 1,800 / 27 = about 66.7 cubic yards.",
+   "domain": "MATH",
+   "topic": "volume",
+   "difficulty": "Hard",
+   "cognitive": "Application",
+   "formula": "cu yd = (L x W x D) / 27",
+   "calculator": "vol-box",
+   "citation": null
+  },
+  {
+   "id": "XC-ALL-MATH-0126",
+   "text": "Water moves at 3.0 ft/s through a channel with a 2.5 square-foot cross-section. What is the flow?",
+   "choices": [
+    "0.83 cfs",
+    "7.5 cfs",
+    "5.5 cfs",
+    "75 cfs"
+   ],
+   "correctIndex": 1,
+   "explanation": "Flow is area times velocity: Q = 2.5 x 3.0 = 7.5 cfs.",
+   "domain": "MATH",
+   "topic": "flow-velocity",
+   "difficulty": "Easy",
+   "cognitive": "Application",
+   "formula": "Q = A x V",
+   "calculator": "velocity",
+   "citation": null
+  },
+  {
+   "id": "XC-ALL-MATH-0127",
+   "text": "An 8-inch main carries 350 gpm. What is the velocity in the pipe?",
+   "choices": [
+    "1.0 ft/s",
+    "4.5 ft/s",
+    "2.2 ft/s",
+    "0.5 ft/s"
+   ],
+   "correctIndex": 2,
+   "explanation": "Convert flow: 350 / 448.8 = 0.78 cfs. Pipe area: 0.785 x (8/12)^2 = 0.35 sq ft. Velocity = 0.78 / 0.35 = about 2.2 ft/s.",
+   "domain": "MATH",
+   "topic": "flow-velocity",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": "V = Q / A",
+   "calculator": "velocity",
+   "citation": null
+  },
+  {
+   "id": "XC-ALL-MATH-0128",
+   "text": "A 12-inch line flows full at 3.0 ft/s. About what flow is that in gpm?",
+   "choices": [
+    "530 gpm",
+    "2,120 gpm",
+    "106 gpm",
+    "1,060 gpm"
+   ],
+   "correctIndex": 3,
+   "explanation": "A 12-inch pipe has an area of 0.785 x 1 x 1 = 0.785 sq ft. Q = 0.785 x 3.0 = 2.36 cfs, and 2.36 x 448.8 = about 1,060 gpm.",
+   "domain": "MATH",
+   "topic": "flow-velocity",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": "gpm = A x V x 448.8",
+   "calculator": "velocity",
+   "citation": null
+  },
+  {
+   "id": "XC-ALL-MATH-0129",
+   "text": "Flushing water moves through 1,200 feet of main at 2.5 ft/s. How long does it take the water to travel the full length?",
+   "choices": [
+    "8 minutes",
+    "48 minutes",
+    "2 minutes",
+    "30 minutes"
+   ],
+   "correctIndex": 0,
+   "explanation": "Time is distance over velocity: 1,200 / 2.5 = 480 seconds, which is 8 minutes.",
+   "domain": "MATH",
+   "topic": "flow-velocity",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": "time = distance / velocity",
+   "calculator": "velocity",
+   "citation": null
+  },
+  {
+   "id": "XC-ALL-MATH-0130",
+   "text": "Flow stays constant as a main necks down from 12 inches to 6 inches. The 12-inch section runs at 2.0 ft/s. What is the velocity in the 6-inch section?",
+   "choices": [
+    "4.0 ft/s",
+    "8.0 ft/s",
+    "1.0 ft/s",
+    "2.0 ft/s"
+   ],
+   "correctIndex": 1,
+   "explanation": "Same flow through a quarter of the area means four times the velocity: 2.0 x 4 = 8.0 ft/s.",
+   "domain": "MATH",
+   "topic": "flow-velocity",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": "V2 = V1 x (D1/D2)^2",
+   "calculator": "velocity",
+   "citation": null
+  },
+  {
+   "id": "XC-ALL-MATH-0131",
+   "text": "A service line fills a 5-gallon bucket in 20 seconds. What is the flow in gpm?",
+   "choices": [
+    "4 gpm",
+    "25 gpm",
+    "15 gpm",
+    "1.5 gpm"
+   ],
+   "correctIndex": 2,
+   "explanation": "20 seconds is a third of a minute, so the line delivers 5 x 3 = 15 gallons per minute.",
+   "domain": "MATH",
+   "topic": "flow-velocity",
+   "difficulty": "Easy",
+   "cognitive": "Application",
+   "formula": "gpm = gallons / (seconds/60)",
+   "calculator": null,
+   "citation": null
+  },
+  {
+   "id": "XC-ALL-MATH-0132",
+   "text": "A rectangular channel 3 ft wide flows 18 inches deep at 2.0 ft/s. What is the flow in MGD?",
+   "choices": [
+    "2.9 MGD",
+    "9.0 MGD",
+    "0.58 MGD",
+    "5.8 MGD"
+   ],
+   "correctIndex": 3,
+   "explanation": "Area is 3 x 1.5 = 4.5 sq ft. Q = 4.5 x 2.0 = 9.0 cfs. One cfs is 0.6463 MGD, so 9.0 x 0.6463 = about 5.8 MGD.",
+   "domain": "MATH",
+   "topic": "flow-velocity",
+   "difficulty": "Hard",
+   "cognitive": "Application",
+   "formula": "MGD = A x V x 0.6463",
+   "calculator": "velocity",
+   "citation": null
+  },
+  {
+   "id": "XC-ALL-MATH-0133",
+   "text": "A clearwell holds 120,000 gallons and the plant pumps through it at 1,000 gpm. What is the detention time?",
+   "choices": [
+    "2 hours",
+    "1 hour",
+    "12 hours",
+    "20 minutes"
+   ],
+   "correctIndex": 0,
+   "explanation": "Detention time is volume over flow: 120,000 / 1,000 = 120 minutes, which is 2 hours.",
+   "domain": "MATH",
+   "topic": "detention-time",
+   "difficulty": "Easy",
+   "cognitive": "Application",
+   "formula": "DT = volume / flow",
+   "calculator": "detention",
+   "citation": null
+  },
+  {
+   "id": "XC-ALL-MATH-0134",
+   "text": "An equalization basin holds 0.25 MG and receives a steady 1.2 MGD. What is the detention time in hours?",
+   "choices": [
+    "0.2 hours",
+    "5 hours",
+    "12 hours",
+    "50 hours"
+   ],
+   "correctIndex": 1,
+   "explanation": "0.25 MG / 1.2 MGD = 0.208 days. Times 24 gives about 5 hours.",
+   "domain": "MATH",
+   "topic": "detention-time",
+   "difficulty": "Easy",
+   "cognitive": "Application",
+   "formula": "DT (hr) = (volume MG / flow MGD) x 24",
+   "calculator": "detention",
+   "citation": null
+  },
+  {
+   "id": "XC-ALL-MATH-0135",
+   "text": "A sedimentation basin is 80 ft long, 30 ft wide, and 12 ft deep, and treats 2.0 MGD. What is the detention time in hours?",
+   "choices": [
+    "1.3 hours",
+    "5.2 hours",
+    "2.6 hours",
+    "0.6 hours"
+   ],
+   "correctIndex": 2,
+   "explanation": "Volume is 80 x 30 x 12 x 7.48 = about 215,400 gallons. Flow is 2,000,000 / 24 = 83,333 gallons per hour. 215,400 / 83,333 = about 2.6 hours.",
+   "domain": "MATH",
+   "topic": "detention-time",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": "DT = (L x W x D x 7.48) / (gpd / 24)",
+   "calculator": "detention",
+   "citation": null
+  },
+  {
+   "id": "XC-ALL-MATH-0136",
+   "text": "Operators want 30 minutes of contact time at a flow of 600 gpm. What tank volume does that take?",
+   "choices": [
+    "1,800 gallons",
+    "36,000 gallons",
+    "20 gallons",
+    "18,000 gallons"
+   ],
+   "correctIndex": 3,
+   "explanation": "Rearrange detention time: volume = flow x time = 600 gpm x 30 min = 18,000 gallons.",
+   "domain": "MATH",
+   "topic": "detention-time",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": "volume = flow x DT",
+   "calculator": "detention",
+   "citation": null
+  },
+  {
+   "id": "XC-ALL-MATH-0137",
+   "text": "A wet well holds 2,400 gallons between pump-off and pump-on. Inflow is 300 gpm with the pump off. How long until the pump starts?",
+   "choices": [
+    "8 minutes",
+    "0.8 minutes",
+    "80 minutes",
+    "12.5 minutes"
+   ],
+   "correctIndex": 0,
+   "explanation": "Fill time is volume over inflow: 2,400 / 300 = 8 minutes.",
+   "domain": "MATH",
+   "topic": "detention-time",
+   "difficulty": "Easy",
+   "cognitive": "Application",
+   "formula": "time = volume / inflow",
+   "calculator": "cycle-time",
+   "citation": null
+  },
+  {
+   "id": "XC-ALL-MATH-0138",
+   "text": "A plant runs two clearwells in series, 40,000 gallons and 60,000 gallons, at a steady 500 gpm. What is the total detention time in hours?",
+   "choices": [
+    "2.0 hours",
+    "3.3 hours",
+    "1.3 hours",
+    "6.7 hours"
+   ],
+   "correctIndex": 1,
+   "explanation": "Tanks in series add their volumes: 100,000 gallons / 500 gpm = 200 minutes, which is about 3.3 hours.",
+   "domain": "MATH",
+   "topic": "detention-time",
+   "difficulty": "Hard",
+   "cognitive": "Application",
+   "formula": "DT = total volume / flow",
+   "calculator": "detention",
+   "citation": null
+  },
+  {
+   "id": "XC-ALL-MATH-0139",
+   "text": "Flow through a 50,000-gallon contact tank rises from 200 gpm to 400 gpm. What is the new detention time?",
+   "choices": [
+    "4.2 hours",
+    "8.3 hours",
+    "2.1 hours",
+    "1.0 hours"
+   ],
+   "correctIndex": 2,
+   "explanation": "At 400 gpm: 50,000 / 400 = 125 minutes, which is about 2.1 hours. Twice the flow means half the contact time.",
+   "domain": "MATH",
+   "topic": "detention-time",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": "DT = volume / flow",
+   "calculator": "detention",
+   "citation": null
+  },
+  {
+   "id": "XC-ALL-MATH-0140",
+   "text": "A plant treats 1.0 MGD at a chlorine dose of 3.0 mg/L. How many pounds of chlorine per day is that?",
+   "choices": [
+    "8.3 lb/day",
+    "250 lb/day",
+    "2.5 lb/day",
+    "25 lb/day"
+   ],
+   "correctIndex": 3,
+   "explanation": "The pounds formula: lb/day = MGD x mg/L x 8.34 = 1.0 x 3.0 x 8.34 = about 25 lb/day.",
+   "domain": "MATH",
+   "topic": "dosage-8.34",
+   "difficulty": "Easy",
+   "cognitive": "Application",
+   "formula": "lb/day = MGD x mg/L x 8.34",
+   "calculator": "chlorine-dose",
+   "citation": null
+  },
+  {
+   "id": "XC-ALL-MATH-0141",
+   "text": "An operator feeds 42 lb/day of chlorine into a flow of 1.8 MGD. What dose is the water receiving?",
+   "choices": [
+    "2.8 mg/L",
+    "5.0 mg/L",
+    "0.36 mg/L",
+    "23 mg/L"
+   ],
+   "correctIndex": 0,
+   "explanation": "Rearrange the pounds formula: mg/L = lb/day / (MGD x 8.34) = 42 / (1.8 x 8.34) = about 2.8 mg/L.",
+   "domain": "MATH",
+   "topic": "dosage-8.34",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": "mg/L = lb/day / (MGD x 8.34)",
+   "calculator": "chlorine-dose",
+   "citation": null
+  },
+  {
+   "id": "XC-ALL-MATH-0142",
+   "text": "A 0.5 MGD system needs a 6.0 mg/L dose. The hypochlorite on hand is 12.5 percent available chlorine. How many pounds of hypochlorite solution per day?",
+   "choices": [
+    "25 lb/day",
+    "200 lb/day",
+    "320 lb/day",
+    "100 lb/day"
+   ],
+   "correctIndex": 1,
+   "explanation": "Pure chlorine: 0.5 x 6.0 x 8.34 = 25 lb/day. The product is only 12.5 percent chlorine, so 25 / 0.125 = 200 lb of solution per day.",
+   "domain": "MATH",
+   "topic": "dosage-8.34",
+   "difficulty": "Hard",
+   "cognitive": "Application",
+   "formula": "lb product = (MGD x mg/L x 8.34) / strength",
+   "calculator": "chem-feed",
+   "citation": null
+  },
+  {
+   "id": "XC-ALL-MATH-0143",
+   "text": "In the pounds formula, what does the 8.34 represent?",
+   "choices": [
+    "The gallons in one cubic foot",
+    "The pounds in one kilogram",
+    "The weight of one gallon of water in pounds",
+    "The specific gravity of chlorine"
+   ],
+   "correctIndex": 2,
+   "explanation": "One gallon of water weighs 8.34 pounds. That is why flow in MGD times concentration in mg/L times 8.34 gives pounds per day.",
+   "domain": "MATH",
+   "topic": "dosage-8.34",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": "lb/day = MGD x mg/L x 8.34",
+   "calculator": null,
+   "citation": null
+  },
+  {
+   "id": "XC-ALL-MATH-0144",
+   "text": "Chlorine demand is 2.2 mg/L and the operator wants a 0.8 mg/L free residual leaving the plant. At 1.5 MGD, what feed rate does that take?",
+   "choices": [
+    "28 lb/day",
+    "10 lb/day",
+    "3 lb/day",
+    "38 lb/day"
+   ],
+   "correctIndex": 3,
+   "explanation": "Dose = demand + residual = 2.2 + 0.8 = 3.0 mg/L. Then 1.5 x 3.0 x 8.34 = about 38 lb/day.",
+   "domain": "MATH",
+   "topic": "dosage-8.34",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": "dose = demand + residual; lb/day = MGD x mg/L x 8.34",
+   "calculator": "chlorine-dose",
+   "citation": null
+  },
+  {
+   "id": "XC-ALL-MATH-0145",
+   "text": "A fluoride system doses 0.9 mg/L into 750,000 gallons per day. How many pounds of fluoride ion is that per day?",
+   "choices": [
+    "5.6 lb/day",
+    "0.56 lb/day",
+    "56 lb/day",
+    "7.5 lb/day"
+   ],
+   "correctIndex": 0,
+   "explanation": "750,000 gpd is 0.75 MGD. 0.75 x 0.9 x 8.34 = about 5.6 lb/day.",
+   "domain": "MATH",
+   "topic": "dosage-8.34",
+   "difficulty": "Easy",
+   "cognitive": "Application",
+   "formula": "lb/day = MGD x mg/L x 8.34",
+   "calculator": "chem-feed",
+   "citation": null
+  },
+  {
+   "id": "XC-ALL-MATH-0146",
+   "text": "A polymer feed runs at 1.2 mg/L on a 2.0 MGD flow. What is the feed rate in pounds per day?",
+   "choices": [
+    "10 lb/day",
+    "20 lb/day",
+    "2 lb/day",
+    "200 lb/day"
+   ],
+   "correctIndex": 1,
+   "explanation": "1.2 x 2.0 x 8.34 = about 20 lb/day.",
+   "domain": "MATH",
+   "topic": "dosage-8.34",
+   "difficulty": "Easy",
+   "cognitive": "Application",
+   "formula": "lb/day = MGD x mg/L x 8.34",
+   "calculator": "chem-feed",
+   "citation": null
+  },
+  {
+   "id": "XC-ALL-MATH-0147",
+   "text": "A chlorinator ran at 30 lb/day for 12 hours, then sat idle the rest of the day. Total flow for the full day was 1.0 MG. What average dose did the day's water receive?",
+   "choices": [
+    "3.6 mg/L",
+    "0.9 mg/L",
+    "1.8 mg/L",
+    "30 mg/L"
+   ],
+   "correctIndex": 2,
+   "explanation": "At 30 lb/day for 12 hours the feeder delivered 15 pounds. Dose = 15 / (1.0 x 8.34) = about 1.8 mg/L.",
+   "domain": "MATH",
+   "topic": "dosage-8.34",
+   "difficulty": "Hard",
+   "cognitive": "Application",
+   "formula": "mg/L = lb fed / (MG x 8.34)",
+   "calculator": "chlorine-dose",
+   "citation": null
+  },
+  {
+   "id": "XC-ALL-MATH-0148",
+   "text": "Liquid hypochlorite at 12.5 percent carries about 1.04 pounds of available chlorine per gallon. How many gallons does it take to feed 13 pounds of chlorine?",
+   "choices": [
+    "1.25 gallons",
+    "104 gallons",
+    "6.5 gallons",
+    "12.5 gallons"
+   ],
+   "correctIndex": 3,
+   "explanation": "Gallons = pounds needed / pounds per gallon = 13 / 1.04 = about 12.5 gallons.",
+   "domain": "MATH",
+   "topic": "dosage-8.34",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": "gallons = lb needed / lb per gallon",
+   "calculator": "chem-feed",
+   "citation": null
+  },
+  {
+   "id": "XC-ALL-MATH-0149",
+   "text": "A new well needs disinfecting at 50 mg/L. The well casing and column hold 4,000 gallons of water. How many pounds of chlorine is that?",
+   "choices": [
+    "1.7 lb",
+    "0.17 lb",
+    "17 lb",
+    "4.2 lb"
+   ],
+   "correctIndex": 0,
+   "explanation": "4,000 gallons is 0.004 MG. 0.004 x 50 x 8.34 = about 1.7 pounds of chlorine.",
+   "domain": "MATH",
+   "topic": "dosage-8.34",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": "lb = MG x mg/L x 8.34",
+   "calculator": "chlorine-dose",
+   "citation": null
+  },
+  {
+   "id": "XC-ALL-MATH-0150",
+   "text": "Dosing 1.0 mg/L into 1.0 million gallons of water takes how many pounds of chemical?",
+   "choices": [
+    "1.0 lb",
+    "8.34 lb",
+    "3.785 lb",
+    "62.4 lb"
+   ],
+   "correctIndex": 1,
+   "explanation": "That is the pounds formula at its simplest: 1.0 MG x 1.0 mg/L x 8.34 = 8.34 pounds.",
+   "domain": "MATH",
+   "topic": "dosage-8.34",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": "lb = MG x mg/L x 8.34",
+   "calculator": "chlorine-dose",
+   "citation": null
+  },
+  {
+   "id": "XC-ALL-MATH-0151",
+   "text": "A plant fed 62 pounds of alum while treating 2.5 million gallons. What was the alum dose?",
+   "choices": [
+    "7.4 mg/L",
+    "0.3 mg/L",
+    "3.0 mg/L",
+    "25 mg/L"
+   ],
+   "correctIndex": 2,
+   "explanation": "mg/L = lb / (MG x 8.34) = 62 / (2.5 x 8.34) = about 3.0 mg/L.",
+   "domain": "MATH",
+   "topic": "dosage-8.34",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": "mg/L = lb / (MG x 8.34)",
+   "calculator": "chem-feed",
+   "citation": null
+  },
+  {
+   "id": "XC-ALL-MATH-0152",
+   "text": "A 60-ft diameter clarifier treats 1.5 MGD. What is the surface overflow rate?",
+   "choices": [
+    "530 gpd/sq ft",
+    "1,060 gpd/sq ft",
+    "265 gpd/sq ft",
+    "53 gpd/sq ft"
+   ],
+   "correctIndex": 0,
+   "explanation": "Surface area is 0.785 x 60 x 60 = 2,826 sq ft. SOR = 1,500,000 / 2,826 = about 530 gpd per square foot.",
+   "domain": "MATH",
+   "topic": "loading-rates",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": "SOR = gpd / surface area",
+   "calculator": "surface-loading",
+   "citation": null
+  },
+  {
+   "id": "XC-ALL-MATH-0153",
+   "text": "A circular clarifier has 188 feet of weir and passes 1.2 MGD. What is the weir overflow rate?",
+   "choices": [
+    "3,200 gpd/ft",
+    "6,400 gpd/ft",
+    "640 gpd/ft",
+    "12,800 gpd/ft"
+   ],
+   "correctIndex": 1,
+   "explanation": "Weir overflow rate is flow over weir length: 1,200,000 / 188 = about 6,400 gpd per foot of weir.",
+   "domain": "MATH",
+   "topic": "loading-rates",
+   "difficulty": "Easy",
+   "cognitive": "Application",
+   "formula": "WOR = gpd / weir length",
+   "calculator": "weir-overflow",
+   "citation": null
+  },
+  {
+   "id": "XC-ALL-MATH-0154",
+   "text": "A filter box measures 20 ft by 20 ft and passes 1,200 gpm. What is the filtration rate?",
+   "choices": [
+    "0.3 gpm/sq ft",
+    "6.0 gpm/sq ft",
+    "3.0 gpm/sq ft",
+    "1.5 gpm/sq ft"
+   ],
+   "correctIndex": 2,
+   "explanation": "Filter area is 20 x 20 = 400 sq ft. Rate = 1,200 / 400 = 3.0 gpm per square foot.",
+   "domain": "MATH",
+   "topic": "loading-rates",
+   "difficulty": "Easy",
+   "cognitive": "Application",
+   "formula": "rate = gpm / filter area",
+   "calculator": "filtration-rate",
+   "citation": null
+  },
+  {
+   "id": "XC-ALL-MATH-0155",
+   "text": "Backwash on a 400-square-foot filter runs at 6,000 gpm. What is the backwash rate?",
+   "choices": [
+    "7.5 gpm/sq ft",
+    "1.5 gpm/sq ft",
+    "30 gpm/sq ft",
+    "15 gpm/sq ft"
+   ],
+   "correctIndex": 3,
+   "explanation": "Backwash rate is backwash flow over filter area: 6,000 / 400 = 15 gpm per square foot.",
+   "domain": "MATH",
+   "topic": "loading-rates",
+   "difficulty": "Easy",
+   "cognitive": "Application",
+   "formula": "rate = backwash gpm / filter area",
+   "calculator": "filtration-rate",
+   "citation": null
+  },
+  {
+   "id": "XC-ALL-MATH-0156",
+   "text": "A lagoon receives 0.3 MGD with an influent BOD of 200 mg/L. What is the organic loading in pounds of BOD per day?",
+   "choices": [
+    "500 lb/day",
+    "250 lb/day",
+    "60 lb/day",
+    "5,000 lb/day"
+   ],
+   "correctIndex": 0,
+   "explanation": "Organic loading uses the pounds formula: 0.3 x 200 x 8.34 = about 500 pounds of BOD per day.",
+   "domain": "MATH",
+   "topic": "loading-rates",
+   "difficulty": "Hard",
+   "cognitive": "Application",
+   "formula": "lb/day = MGD x mg/L x 8.34",
+   "calculator": "organic-loading",
+   "citation": null
+  },
+  {
+   "id": "XC-ALL-MATH-0157",
+   "text": "A trickling filter 50 ft in diameter receives 0.5 MGD including recirculation. What is the hydraulic loading?",
+   "choices": [
+    "510 gpd/sq ft",
+    "255 gpd/sq ft",
+    "127 gpd/sq ft",
+    "25 gpd/sq ft"
+   ],
+   "correctIndex": 1,
+   "explanation": "Area is 0.785 x 50 x 50 = about 1,960 sq ft. Loading = 500,000 / 1,960 = about 255 gpd per square foot.",
+   "domain": "MATH",
+   "topic": "loading-rates",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": "loading = gpd / surface area",
+   "calculator": "loading",
+   "citation": null
+  },
+  {
+   "id": "XC-ALL-MATH-0158",
+   "text": "A 250,000-gallon basin receives 1.0 MGD. How many times does the basin volume turn over in a day?",
+   "choices": [
+    "0.25 times",
+    "2 times",
+    "4 times",
+    "8 times"
+   ],
+   "correctIndex": 2,
+   "explanation": "Turnovers per day = daily flow / basin volume = 1,000,000 / 250,000 = 4.",
+   "domain": "MATH",
+   "topic": "loading-rates",
+   "difficulty": "Easy",
+   "cognitive": "Application",
+   "formula": "turnovers = gpd / volume",
+   "calculator": null,
+   "citation": null
+  },
+  {
+   "id": "XC-ALL-MATH-0159",
+   "text": "A gravity thickener 30 ft in diameter receives 60,000 gpd of sludge at 8,000 mg/L solids. What is the solids loading in pounds per day per square foot?",
+   "choices": [
+    "2.8 lb/day/sq ft",
+    "11.3 lb/day/sq ft",
+    "0.6 lb/day/sq ft",
+    "5.7 lb/day/sq ft"
+   ],
+   "correctIndex": 3,
+   "explanation": "Solids: 0.06 MGD x 8,000 x 8.34 = about 4,000 lb/day. Area: 0.785 x 30 x 30 = 706 sq ft. Loading = 4,000 / 706 = about 5.7.",
+   "domain": "MATH",
+   "topic": "loading-rates",
+   "difficulty": "Hard",
+   "cognitive": "Application",
+   "formula": "loading = (MGD x mg/L x 8.34) / area",
+   "calculator": "solids-loading",
+   "citation": null
+  },
+  {
+   "id": "XC-ALL-MATH-0160",
+   "text": "A grit channel removes 45 of the 50 pounds of grit that enter it each day. What is the removal efficiency?",
+   "choices": [
+    "90 percent",
+    "45 percent",
+    "95 percent",
+    "10 percent"
+   ],
+   "correctIndex": 0,
+   "explanation": "Removal is what came out over what went in: 45 / 50 = 0.90, which is 90 percent.",
+   "domain": "MATH",
+   "topic": "percent-removal",
+   "difficulty": "Easy",
+   "cognitive": "Application",
+   "formula": "% removal = removed / influent x 100",
+   "calculator": "removal",
+   "citation": null
+  },
+  {
+   "id": "XC-ALL-MATH-0161",
+   "text": "Influent TSS is 210 mg/L and the primary clarifier effluent runs 126 mg/L. What percent is the primary removing?",
+   "choices": [
+    "60 percent",
+    "40 percent",
+    "84 percent",
+    "16 percent"
+   ],
+   "correctIndex": 1,
+   "explanation": "Removal = (in - out) / in = (210 - 126) / 210 = 0.40, which is 40 percent.",
+   "domain": "MATH",
+   "topic": "percent-removal",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": "% removal = (in - out) / in x 100",
+   "calculator": "removal",
+   "citation": null
+  },
+  {
+   "id": "XC-ALL-MATH-0162",
+   "text": "A filter takes turbidity from 4.0 NTU down to 0.2 NTU. What is the percent removal?",
+   "choices": [
+    "90 percent",
+    "5 percent",
+    "95 percent",
+    "99 percent"
+   ],
+   "correctIndex": 2,
+   "explanation": "Removal = (4.0 - 0.2) / 4.0 = 0.95, which is 95 percent.",
+   "domain": "MATH",
+   "topic": "percent-removal",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": "% removal = (in - out) / in x 100",
+   "calculator": "removal",
+   "citation": null
+  },
+  {
+   "id": "XC-ALL-MATH-0163",
+   "text": "Two processes in series each remove 50 percent of incoming solids. What is the overall removal across both?",
+   "choices": [
+    "100 percent",
+    "50 percent",
+    "25 percent",
+    "75 percent"
+   ],
+   "correctIndex": 3,
+   "explanation": "The first stage leaves 50 percent. The second removes half of THAT, leaving 25 percent. Overall removal is 75 percent.",
+   "domain": "MATH",
+   "topic": "percent-removal",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": "overall = 1 - (remaining1 x remaining2)",
+   "calculator": "removal",
+   "citation": null
+  },
+  {
+   "id": "XC-ALL-MATH-0164",
+   "text": "A permit requires 85 percent BOD removal. Influent BOD is 240 mg/L. What is the highest effluent BOD that still complies?",
+   "choices": [
+    "36 mg/L",
+    "204 mg/L",
+    "24 mg/L",
+    "48 mg/L"
+   ],
+   "correctIndex": 0,
+   "explanation": "If 85 percent must come out, 15 percent may remain: 240 x 0.15 = 36 mg/L.",
+   "domain": "MATH",
+   "topic": "percent-removal",
+   "difficulty": "Hard",
+   "cognitive": "Application",
+   "formula": "max effluent = influent x (1 - required removal)",
+   "calculator": "removal",
+   "citation": null
+  },
+  {
+   "id": "XC-ALL-MATH-0165",
+   "text": "A pressure gauge at the base of a standpipe reads 26 psi. How high is the water above the gauge?",
+   "choices": [
+    "26 ft",
+    "60 ft",
+    "11 ft",
+    "120 ft"
+   ],
+   "correctIndex": 1,
+   "explanation": "Each psi supports 2.31 feet of water: 26 x 2.31 = about 60 feet.",
+   "domain": "MATH",
+   "topic": "pressure-head",
+   "difficulty": "Easy",
+   "cognitive": "Application",
+   "formula": "head (ft) = psi x 2.31",
+   "calculator": "pressure-head",
+   "citation": null
+  },
+  {
+   "id": "XC-ALL-MATH-0166",
+   "text": "A tank's water surface sits 92.4 feet above a home's meter. Ignoring friction, what static pressure does the home see?",
+   "choices": [
+    "92 psi",
+    "21 psi",
+    "40 psi",
+    "80 psi"
+   ],
+   "correctIndex": 2,
+   "explanation": "Pressure is head divided by 2.31: 92.4 / 2.31 = 40 psi.",
+   "domain": "MATH",
+   "topic": "pressure-head",
+   "difficulty": "Easy",
+   "cognitive": "Application",
+   "formula": "psi = head / 2.31",
+   "calculator": "pressure-head",
+   "citation": null
+  },
+  {
+   "id": "XC-ALL-MATH-0167",
+   "text": "An elevated tank's overflow sits at 165 ft, with the water level 15 ft below overflow. What is the static pressure at a hydrant at elevation zero?",
+   "choices": [
+    "71 psi",
+    "33 psi",
+    "150 psi",
+    "65 psi"
+   ],
+   "correctIndex": 3,
+   "explanation": "Actual water level is 165 - 15 = 150 ft. Pressure = 150 / 2.31 = about 65 psi.",
+   "domain": "MATH",
+   "topic": "pressure-head",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": "psi = (water level - elevation) / 2.31",
+   "calculator": "pressure-head",
+   "citation": null
+  },
+  {
+   "id": "XC-ALL-MATH-0168",
+   "text": "One psi of pressure pushes a column of water up about how far?",
+   "choices": [
+    "2.31 ft",
+    "0.433 ft",
+    "8.34 ft",
+    "1.0 ft"
+   ],
+   "correctIndex": 0,
+   "explanation": "One psi equals 2.31 feet of water column. Its inverse, 0.433 psi per foot, is the same fact turned around.",
+   "domain": "MATH",
+   "topic": "pressure-head",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": "1 psi = 2.31 ft of water",
+   "calculator": "pressure-head",
+   "citation": null
+  },
+  {
+   "id": "XC-ALL-MATH-0169",
+   "text": "A pump's suction gauge reads 5 psi and its discharge gauge reads 65 psi. How much head is the pump adding?",
+   "choices": [
+    "150 ft",
+    "139 ft",
+    "26 ft",
+    "60 ft"
+   ],
+   "correctIndex": 1,
+   "explanation": "The pump adds 65 - 5 = 60 psi, and 60 x 2.31 = about 139 feet of head.",
+   "domain": "MATH",
+   "topic": "pressure-head",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": "head added = (discharge psi - suction psi) x 2.31",
+   "calculator": "pressure-head",
+   "citation": null
+  },
+  {
+   "id": "XC-ALL-MATH-0170",
+   "text": "A zone's tank water level sits at 180 ft elevation. A pressure-reducing valve sits at 30 ft elevation. What static pressure arrives at the valve?",
+   "choices": [
+    "55 psi",
+    "78 psi",
+    "65 psi",
+    "150 psi"
+   ],
+   "correctIndex": 2,
+   "explanation": "Head at the valve is 180 - 30 = 150 ft. Pressure = 150 / 2.31 = about 65 psi.",
+   "domain": "MATH",
+   "topic": "pressure-head",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": "psi = (HGL - elevation) / 2.31",
+   "calculator": "pressure-head",
+   "citation": null
+  },
+  {
+   "id": "XC-ALL-MATH-0171",
+   "text": "Using the 0.433 factor, what is the pressure at the bottom of a standpipe holding 80 feet of water?",
+   "choices": [
+    "185 psi",
+    "17 psi",
+    "80 psi",
+    "35 psi"
+   ],
+   "correctIndex": 3,
+   "explanation": "Pressure = 80 x 0.433 = about 35 psi. Same answer as dividing by 2.31; the two factors are inverses.",
+   "domain": "MATH",
+   "topic": "pressure-head",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": "psi = head x 0.433",
+   "calculator": "pressure-head",
+   "citation": null
+  },
+  {
+   "id": "XC-ALL-MATH-0172",
+   "text": "A gauge reads 48 psi at an elevation of 60 ft. What is the hydraulic grade line elevation at that point?",
+   "choices": [
+    "171 ft",
+    "111 ft",
+    "108 ft",
+    "48 ft"
+   ],
+   "correctIndex": 0,
+   "explanation": "Convert pressure to head: 48 x 2.31 = about 111 ft. Add the gauge elevation: 111 + 60 = about 171 ft. That is the HGL.",
+   "domain": "MATH",
+   "topic": "pressure-head",
+   "difficulty": "Hard",
+   "cognitive": "Application",
+   "formula": "HGL = psi x 2.31 + elevation",
+   "calculator": "pressure-head",
+   "citation": null
+  },
+  {
+   "id": "XC-ALL-MATH-0173",
+   "text": "A lift station pump raises 400 gpm through 80 feet of total head. What water horsepower is the pump putting into the water?",
+   "choices": [
+    "3.2 whp",
+    "8.1 whp",
+    "32 whp",
+    "16.2 whp"
+   ],
+   "correctIndex": 1,
+   "explanation": "Water horsepower = gpm x head / 3,960 = 400 x 80 / 3,960 = about 8.1.",
+   "domain": "MATH",
+   "topic": "pumping-hp",
+   "difficulty": "Easy",
+   "cognitive": "Application",
+   "formula": "whp = gpm x ft / 3960",
+   "calculator": "water-hp",
+   "citation": null
+  },
+  {
+   "id": "XC-ALL-MATH-0174",
+   "text": "What does the 3,960 in the water horsepower formula do?",
+   "choices": [
+    "Accounts for motor efficiency",
+    "Converts psi into feet",
+    "Converts gpm times feet of head into horsepower",
+    "Accounts for the weight of chlorine"
+   ],
+   "correctIndex": 2,
+   "explanation": "It is the unit conversion: 33,000 ft-lb per minute per horsepower divided by 8.34 lb per gallon gives 3,960. Flow times head divided by it yields horsepower.",
+   "domain": "MATH",
+   "topic": "pumping-hp",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": "whp = gpm x ft / 3960",
+   "calculator": "water-hp",
+   "citation": null
+  },
+  {
+   "id": "XC-ALL-MATH-0175",
+   "text": "A pump must produce 10 water horsepower and the pump itself is 70 percent efficient. What brake horsepower must the motor deliver to the shaft?",
+   "choices": [
+    "7.0 bhp",
+    "10.7 bhp",
+    "20 bhp",
+    "14.3 bhp"
+   ],
+   "correctIndex": 3,
+   "explanation": "Brake horsepower = water horsepower / pump efficiency = 10 / 0.70 = about 14.3.",
+   "domain": "MATH",
+   "topic": "pumping-hp",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": "bhp = whp / pump efficiency",
+   "calculator": "hp",
+   "citation": null
+  },
+  {
+   "id": "XC-ALL-MATH-0176",
+   "text": "Brake horsepower is 12 and the motor is 90 percent efficient. What horsepower does the motor draw from the power line?",
+   "choices": [
+    "13.3 hp",
+    "10.8 hp",
+    "6.0 hp",
+    "24 hp"
+   ],
+   "correctIndex": 0,
+   "explanation": "Input power = brake horsepower / motor efficiency = 12 / 0.90 = about 13.3 horsepower.",
+   "domain": "MATH",
+   "topic": "pumping-hp",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": "input hp = bhp / motor efficiency",
+   "calculator": "motor-hp",
+   "citation": null
+  },
+  {
+   "id": "XC-ALL-MATH-0177",
+   "text": "A motor nameplate reads 25 hp. About how many kilowatts is that at full output?",
+   "choices": [
+    "33.5 kW",
+    "18.7 kW",
+    "25 kW",
+    "7.5 kW"
+   ],
+   "correctIndex": 1,
+   "explanation": "One horsepower is 0.746 kilowatts: 25 x 0.746 = about 18.7 kW.",
+   "domain": "MATH",
+   "topic": "pumping-hp",
+   "difficulty": "Easy",
+   "cognitive": "Application",
+   "formula": "kW = hp x 0.746",
+   "calculator": "elec-power",
+   "citation": null
+  },
+  {
+   "id": "XC-ALL-MATH-0178",
+   "text": "A pump moves 600 gpm at 100 feet of head with a wire-to-water efficiency of 65 percent. What horsepower is being drawn from the line?",
+   "choices": [
+    "15.2 hp",
+    "9.8 hp",
+    "23.3 hp",
+    "46.6 hp"
+   ],
+   "correctIndex": 2,
+   "explanation": "Water horsepower = 600 x 100 / 3,960 = about 15.2. Wire-to-water covers all losses, so line draw = 15.2 / 0.65 = about 23.3 horsepower.",
+   "domain": "MATH",
+   "topic": "pumping-hp",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": "line hp = (gpm x ft / 3960) / wire-to-water eff",
+   "calculator": "wire-to-water",
+   "citation": null
+  },
+  {
+   "id": "XC-ALL-MATH-0179",
+   "text": "Two identical pumps run in parallel against the same head. Each delivers 300 gpm at that head. About what total flow do they deliver together?",
+   "choices": [
+    "300 gpm",
+    "900 gpm",
+    "150 gpm",
+    "600 gpm"
+   ],
+   "correctIndex": 3,
+   "explanation": "In parallel, flows add at the same head: 300 + 300 = about 600 gpm (slightly less in a real system as head rises with flow).",
+   "domain": "MATH",
+   "topic": "pumping-hp",
+   "difficulty": "Easy",
+   "cognitive": "Application",
+   "formula": "parallel: total gpm = sum of pump flows",
+   "calculator": "hp",
+   "citation": null
+  },
+  {
+   "id": "XC-ALL-MATH-0180",
+   "text": "You need 50 gallons of a 1 percent solution, mixed down from 12.5 percent hypochlorite. How many gallons of the 12.5 percent product do you start with?",
+   "choices": [
+    "4 gallons",
+    "0.4 gallons",
+    "6.25 gallons",
+    "8 gallons"
+   ],
+   "correctIndex": 0,
+   "explanation": "C1 x V1 = C2 x V2. V1 = (1 x 50) / 12.5 = 4 gallons of strong product, then fill to 50 with water.",
+   "domain": "MATH",
+   "topic": "blending-dilution",
+   "difficulty": "Easy",
+   "cognitive": "Application",
+   "formula": "C1V1 = C2V2",
+   "calculator": "dilution",
+   "citation": null
+  },
+  {
+   "id": "XC-ALL-MATH-0181",
+   "text": "One pump fills a reservoir in 6 hours. A second identical pump joins it. About how long does filling take now?",
+   "choices": [
+    "12 hours",
+    "3 hours",
+    "6 hours",
+    "1.5 hours"
+   ],
+   "correctIndex": 1,
+   "explanation": "Two identical pumps double the fill rate, so the time halves: 6 / 2 = 3 hours.",
+   "domain": "MATH",
+   "topic": "ratios-proportions",
+   "difficulty": "Easy",
+   "cognitive": "Application",
+   "formula": "time = work / rate",
+   "calculator": null,
+   "citation": null
+  },
+  {
+   "id": "XC-ALL-MATH-0182",
+   "text": "A system blends 0.5 MGD of well water carrying 0.8 mg/L of a mineral with 1.5 MGD of surface water carrying 0.2 mg/L of the same mineral. What is the blended concentration?",
+   "choices": [
+    "0.50 mg/L",
+    "0.70 mg/L",
+    "0.35 mg/L",
+    "1.0 mg/L"
+   ],
+   "correctIndex": 2,
+   "explanation": "Weight each source by its flow: (0.5 x 0.8 + 1.5 x 0.2) / (0.5 + 1.5) = 0.7 / 2.0 = 0.35 mg/L.",
+   "domain": "MATH",
+   "topic": "blending-dilution",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": "blend = sum(flow x conc) / total flow",
+   "calculator": "concentration",
+   "citation": null
+  },
+  {
+   "id": "XC-ALL-MATH-0183",
+   "text": "Sludge runs 4 percent solids. How many pounds of dry solids are in 1,000 gallons of that sludge?",
+   "choices": [
+    "33 lb",
+    "8,340 lb",
+    "167 lb",
+    "334 lb"
+   ],
+   "correctIndex": 3,
+   "explanation": "1,000 gallons weighs about 8,340 pounds. Four percent of that is dry solids: 8,340 x 0.04 = about 334 pounds.",
+   "domain": "MATH",
+   "topic": "ratios-proportions",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": "dry lb = gallons x 8.34 x % solids",
+   "calculator": "mass",
+   "citation": null
+  },
+  {
+   "id": "XC-ALL-MATH-0184",
+   "text": "The plant uses 3 gallons of polymer for every 100,000 gallons treated. How much polymer does 1.5 million gallons take?",
+   "choices": [
+    "45 gallons",
+    "4.5 gallons",
+    "30 gallons",
+    "15 gallons"
+   ],
+   "correctIndex": 0,
+   "explanation": "1.5 million is fifteen 100,000-gallon blocks: 3 x 15 = 45 gallons.",
+   "domain": "MATH",
+   "topic": "ratios-proportions",
+   "difficulty": "Easy",
+   "cognitive": "Application",
+   "formula": "scale by the ratio",
+   "calculator": null,
+   "citation": null
+  },
+  {
+   "id": "XC-ALL-MATH-0185",
+   "text": "A make-down calls for 1 gallon of chemical per 100 gallons of water. How many gallons of chemical go into a 5,000-gallon batch of water?",
+   "choices": [
+    "500 gallons",
+    "50 gallons",
+    "5 gallons",
+    "0.5 gallons"
+   ],
+   "correctIndex": 1,
+   "explanation": "5,000 / 100 = 50 batches of the ratio, so 50 gallons of chemical.",
+   "domain": "MATH",
+   "topic": "blending-dilution",
+   "difficulty": "Easy",
+   "cognitive": "Application",
+   "formula": "chemical = water / ratio",
+   "calculator": "dilution",
+   "citation": null
+  }
+ ]
+}

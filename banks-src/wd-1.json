@@ -1,0 +1,2386 @@
+{
+ "id": "wd-1",
+ "title": "Water Distribution Operator Practice Test, Class I",
+ "discipline": "Water Distribution",
+ "level": "Entry level (ABC Class I)",
+ "durationMin": 120,
+ "refCount": 100,
+ "version": "2026-07-11",
+ "questions": [
+  {
+   "id": "WD-ALL-PROC-0001",
+   "text": "What is the main advantage of PVC pipe over unlined cast iron or steel pipe for buried water mains, when it comes to corrosion?",
+   "choices": [
+    "PVC is heavier than metal pipe, which resists being crushed by traffic loads",
+    "PVC is non-metallic, so it does not corrode from electrolysis or ordinary soil corrosion the way metal pipe does",
+    "PVC is joined with the same mechanical couplings as ductile iron pipe",
+    "PVC has a rougher interior than metal pipe, which helps trap sediment before it reaches the customer"
+   ],
+   "correctIndex": 1,
+   "explanation": "Because PVC is non-metallic, it does not corrode from electrolysis or ordinary soil corrosion the way cast iron, ductile iron, or steel can, so it typically needs no coatings or cathodic protection for that purpose. Its real vulnerabilities are different: ultraviolet degradation if stored in sunlight, and damage from being bedded against sharp rock.",
+   "domain": "PROC",
+   "topic": "mains-and-materials",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "AWWA Manual M23, PVC Pipe: Design and Installation; PVC is non-metallic and therefore not subject to the electrolytic or galvanic corrosion that affects ductile iron, cast iron, or steel pipe."
+  },
+  {
+   "id": "WD-ALL-PROC-0002",
+   "text": "A newly installed section of nonmetallic (PVC) water main goes in without tracer wire. Why does that create a long-term problem, and what is the standard prevention operators are taught?",
+   "choices": [
+    "PVC pipe dissolves gradually in groundwater, so it must be replaced with metal pipe within a few years",
+    "Nonmetallic pipe cannot carry a disinfectant residual, so it must always be paired with a metal main",
+    "Nonmetallic pipe cannot be found later with a standard magnetic or metal-detecting locator, so the standard fix is installing durable tracer wire (or electronic marker balls) on all new nonmetallic pipe",
+    "PVC pipe is too flexible to hold pressure on its own, so it needs a metal casing around it"
+   ],
+   "correctIndex": 2,
+   "explanation": "Metal pipe and metal valve or curb boxes are readily found with magnetic locators, but nonmetallic pipe is the hard case: pulse-generating locating tools reach only about 250 to 300 feet, and ground-penetrating radar needs dry sandy soil and specialized skill. The standard prevention is durable tracer wire (copper-clad steel, not old phone wire) or electronic marker balls on every new nonmetallic main, brought to the surface at valve boxes.",
+   "domain": "PROC",
+   "topic": "mains-and-materials",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "Water Research Foundation, Pipe Location and Leakage Management (WRF #4144, 2014): nonmetallic pipe cannot be located with magnetic or metal detectors, so durable tracer wire or electronic marker balls on all new nonmetallic pipe is the standard prevention."
+  },
+  {
+   "id": "WD-ALL-PROC-0003",
+   "text": "What does a pipe's C-factor describe?",
+   "choices": [
+    "How many pounds per square inch the pipe can hold before it bursts",
+    "How many years the pipe is expected to last before replacement",
+    "How thick the pipe wall is, expressed as a schedule number",
+    "How rough or smooth the interior of the pipe is, which affects friction loss as water flows through it"
+   ],
+   "correctIndex": 3,
+   "explanation": "The C-factor is the Hazen-Williams roughness coefficient, describing how smooth or rough the inside of a pipe is. A higher C-factor means a smoother interior and less friction loss for the same flow, which is why a newly installed PVC main and an old, tuberculated cast iron main of identical diameter do not carry water the same way.",
+   "domain": "PROC",
+   "topic": "mains-and-materials",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "AWWA Manual M22 and general Hazen-Williams formula literature; the C-factor is the pipe roughness coefficient used in the Hazen-Williams head-loss equation."
+  },
+  {
+   "id": "WD-ALL-PROC-0004",
+   "text": "An old, unlined cast iron main has developed tuberculation on its interior. What is tuberculation, and what does it do to the pipe's performance?",
+   "choices": [
+    "A buildup of iron corrosion nodules on the interior wall that narrows the effective diameter and roughens the surface, cutting the pipe's carrying capacity",
+    "A protective coating the manufacturer applies at the factory to guard against ultraviolet damage",
+    "A type of joint used to connect two sections of cast iron pipe",
+    "A bacterial film that forms only on plastic pipe, never on metal pipe"
+   ],
+   "correctIndex": 0,
+   "explanation": "Tuberculation is the buildup of iron oxide corrosion nodules (tubercles) on an unlined or poorly lined iron pipe interior. As the nodules grow, they shrink the pipe's effective diameter and roughen the surface, lowering the C-factor and cutting carrying capacity, which is why an old unlined main can carry noticeably less flow than its nominal size suggests. Cement or bituminous lining, and reducing water corrosivity, are the standard preventions.",
+   "domain": "PROC",
+   "topic": "mains-and-materials",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "General water-distribution pipe-materials engineering reference; gray cast iron pipe's unlined interior is subject to tuberculation, corrosion-nodule buildup that reduces diameter and increases roughness, controlled by cement-mortar or bituminous lining."
+  },
+  {
+   "id": "WD-ALL-PROC-0005",
+   "text": "A distribution main shows two breaks on a 2-mile rural run last year. A different main shows two breaks on a 200-foot segment in the same period. Why do these two records represent very different levels of risk, even though the raw break count is identical?",
+   "choices": [
+    "They represent the same risk, because raw break count alone is what matters for asset planning",
+    "Two breaks on a short 200-foot segment is a much stronger signal of a genuinely weak or failing pipe than two breaks spread across 2 miles, which is a far lower break rate per foot of pipe",
+    "The 2-mile main is automatically the higher risk, because it serves more customers",
+    "The 200-foot segment is not a real risk, because short segments cannot be prioritized for replacement"
+   ],
+   "correctIndex": 1,
+   "explanation": "Counts lie without length, age, and material. Two breaks on a short 200-foot run is a much higher break rate per foot of pipe than two breaks scattered across 2 miles, and a tight cluster of breaks usually points to a genuinely weak pipe section (bad soil, poor bedding, a manufacturing batch issue) rather than random bad luck. Reading break counts without normalizing for pipe length is how utilities misidentify which mains are actually failing.",
+   "domain": "PROC",
+   "topic": "mains-and-materials",
+   "difficulty": "Hard",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "General water-utility asset-management practice (e.g., AWWA/EPA asset management guidance); break-rate analysis is normalized per unit length of main rather than read as a raw count, because raw counts without length, age, and material context misrepresent true failure risk."
+  },
+  {
+   "id": "WD-ALL-PROC-0006",
+   "text": "On a distribution system map, why is it useful to record a water main's pressure zone as its own field, separate from its size and material?",
+   "choices": [
+    "Pressure zone is used only for billing purposes and has no operational value",
+    "Pressure zone determines what color the pipe must be painted",
+    "Knowing which pressure zone a main sits in tells the operator which area to isolate correctly during a break, instead of guessing or shutting down the wrong area",
+    "Pressure zone is the same thing as pipe material, so it does not need a separate field"
+   ],
+   "correctIndex": 2,
+   "explanation": "A pressure zone is a defined area of the system held in a pressure band by control valves and boosters. Recording which zone a main belongs to lets an operator quickly confirm which area a break or repair affects, so the correct section gets isolated instead of shutting down the wrong part of town.",
+   "domain": "PROC",
+   "topic": "mains-and-materials",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "Distribution system mapping and recordkeeping reference (standard operator-fundamentals training); pressure zone is recorded as a main attribute specifically because it keeps operators from isolating the wrong area during a break."
+  },
+  {
+   "id": "WD-ALL-PROC-0007",
+   "text": "What is the practical difference between a transmission main and a distribution main?",
+   "choices": [
+    "Transmission mains carry only raw, untreated water, while distribution mains carry only finished water",
+    "Transmission mains are always made of PVC, while distribution mains are always made of ductile iron",
+    "There is no real difference; the two terms are interchangeable in every system",
+    "Transmission mains are the larger pipes moving bulk water; distribution mains are the smaller pipes serving individual customers"
+   ],
+   "correctIndex": 3,
+   "explanation": "Transmission mains are the larger-diameter pipes that move water in bulk from sources and storage toward service areas, often feeding storage tanks and major zone backbones. Distribution mains are the smaller pipes that run through streets and feed individual services, making up most of a small system's total pipe mileage.",
+   "domain": "PROC",
+   "topic": "mains-and-materials",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "Distribution system fundamentals reference (standard operator-fundamentals training); transmission mains move bulk water toward service areas while distribution mains are the smaller pipes serving individual connections."
+  },
+  {
+   "id": "WD-ALL-PROC-0008",
+   "text": "A utility's distribution database records some mains as material 'DI,' others as 'Ductile,' others as 'D.I.,' and others as 'ductile iron.' Why does this inconsistency matter operationally, beyond just looking messy?",
+   "choices": [
+    "It breaks trend analysis, since a query for one spelling will miss records tagged with the others",
+    "It has no real effect, because every operator already knows all four spellings mean the same thing",
+    "It means the pipe itself was installed incorrectly",
+    "It only matters for billing software, not for asset management"
+   ],
+   "correctIndex": 0,
+   "explanation": "Standardizing material to one dropdown value (for example, always 'Ductile Iron') rather than allowing free text is what keeps the database useful for trend analysis. A report or map filter built to find ductile iron mains only catches records using the exact standardized value, so spelling variants like 'DI,' 'D.I.,' or 'ductile' silently undercount the true inventory and can misdirect capital planning.",
+   "domain": "PROC",
+   "topic": "mains-and-materials",
+   "difficulty": "Hard",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "Distribution system recordkeeping reference (standard operator-fundamentals training on GIS and asset recordkeeping); standardized dropdown values for pipe material, rather than free text, are what keep asset reporting and trend analysis accurate."
+  },
+  {
+   "id": "WD-ALL-PROC-0009",
+   "text": "New nonmetallic pipe is left stacked at a utility yard for several weeks before installation, sitting in direct sunlight. What risk does this create, and what is the standard precaution?",
+   "choices": [
+    "There is no risk; PVC pipe is unaffected by sunlight and weather while stockpiled",
+    "Ultraviolet exposure degrades PVC pipe, so stockpiled pipe should be covered or kept out of direct sunlight",
+    "The pipe will absorb chlorine from the air and over-disinfect the system once installed",
+    "Sunlight only affects ductile iron pipe, never PVC"
+   ],
+   "correctIndex": 1,
+   "explanation": "PVC pipe degrades under prolonged ultraviolet exposure, so both trench-side pipe left open more than a few days and pipe stockpiled at the yard for future use should be covered or kept out of direct sunlight, using backfill, opaque covers, or shade rather than assuming a short delay is harmless.",
+   "domain": "PROC",
+   "topic": "mains-and-materials",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "AWWA Manual M23, PVC Pipe: Design and Installation; PVC pipe is subject to ultraviolet degradation and should not be stored in direct sunlight, including pipe held in utility yard stock."
+  },
+  {
+   "id": "WD-ALL-PROC-0010",
+   "text": "Why is galvanized steel pipe now avoided for new potable water service lines and mains in most systems?",
+   "choices": [
+    "It is not strong enough to hold normal system pressure",
+    "It cannot be buried underground at any depth",
+    "It corrodes internally, restricting flow and causing discolored water",
+    "It is more expensive per foot than ductile iron pipe"
+   ],
+   "correctIndex": 2,
+   "explanation": "Galvanized steel pipe's zinc coating breaks down over years of service, exposing the steel underneath to internal corrosion. That corrosion restricts flow over time and is a common contributor to red or discolored water complaints, which is why it has largely been phased out for new potable water piping in favor of ductile iron, PVC, or copper.",
+   "domain": "PROC",
+   "topic": "mains-and-materials",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "General water-distribution and plumbing pipe-materials reference; galvanized steel pipe's zinc coating degrades over time, leading to internal corrosion and discolored water."
+  },
+  {
+   "id": "WD-ALL-PROC-0011",
+   "text": "A water main crosses beneath a sanitary sewer line. Per the widely used Ten States Standards (Great Lakes Upper Mississippi River Board Recommended Standards for Water Works), what is the minimum vertical separation required at that crossing?",
+   "choices": [
+    "6 inches",
+    "10 feet",
+    "24 inches",
+    "18 inches"
+   ],
+   "correctIndex": 3,
+   "explanation": "The Ten States Standards recommend a minimum 18-inch vertical separation where a water main crosses above or below a sewer or force main, and a 10-foot horizontal separation where the two are installed in parallel. Mixing up the two figures, or their axis, is a common exam trap.",
+   "domain": "PROC",
+   "topic": "mains-and-materials",
+   "difficulty": "Hard",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "Recommended Standards for Water Works (Great Lakes Upper Mississippi River Board of State Public Health and Environmental Managers, 1997), the widely adopted Ten States Standards; 10-foot horizontal parallel separation, 18-inch vertical crossing separation between water mains and sewer lines."
+  },
+  {
+   "id": "WD-ALL-PROC-0012",
+   "text": "Per the same Ten States Standards separation guidance, what is the minimum horizontal separation recommended between a water main and a parallel sanitary sewer or sewer force main?",
+   "choices": [
+    "10 feet",
+    "18 inches",
+    "2 feet",
+    "50 feet"
+   ],
+   "correctIndex": 0,
+   "explanation": "The Ten States Standards recommend a minimum 10-foot horizontal separation between water mains and sanitary sewers or sewer force mains installed in parallel, with an 18-inch vertical separation at crossings. Actual local requirements can vary, but 10 feet horizontal is the widely cited baseline figure operators are taught.",
+   "domain": "PROC",
+   "topic": "mains-and-materials",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "Recommended Standards for Water Works (Great Lakes Upper Mississippi River Board, 1997), Ten States Standards; 10-foot horizontal parallel separation between water mains and sewer lines."
+  },
+  {
+   "id": "WD-ALL-EQIP-0001",
+   "text": "A gate valve in a distribution main is found half open after a repair. Why is this a problem, even if water is still flowing through it?",
+   "choices": [
+    "It is not a problem, gate valves are designed to throttle flow at any position",
+    "A gate valve is meant to be fully open or fully closed, never used to throttle flow",
+    "It only matters if the valve is also leaking at the stem",
+    "A half-open gate valve will close itself within a few hours"
+   ],
+   "correctIndex": 1,
+   "explanation": "Gate valves are meant to be operated full open or full closed, not used to throttle flow. A valve left half open becomes a permanent restriction and a future complaint, and the throttled position damages the seats and can cause vibration and chattering. Any valve found partially open should be fully closed or fully reopened and the position corrected and recorded.",
+   "domain": "EQIP",
+   "topic": "valves-hydrants",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "Established valve engineering consensus, consistent with AWWA gate valve standards (e.g., the C509/C515 family); gate valves are intended for full-open or full-closed service, not throttling."
+  },
+  {
+   "id": "WD-ALL-EQIP-0002",
+   "text": "An operator is closing a large isolation valve during a planned shutdown. What is the correct technique to avoid creating a water hammer event?",
+   "choices": [
+    "Close the valve as quickly as possible to minimize the time water is flowing",
+    "Water hammer only happens when opening a valve, never when closing one",
+    "Operate the valve slowly in small increments, pausing between turns to let the system stabilize",
+    "Water hammer cannot occur on a properly sized main, no matter how fast a valve is closed"
+   ],
+   "correctIndex": 2,
+   "explanation": "Water hammer comes from a rapid change in velocity, which creates a pressure transient that can exceed normal operating pressure and break weak pipe, especially near pumps or dead ends. The operator's control over this is technique: quarter-turn, pause, listen, repeat, giving the system time to stabilize rather than closing or opening a valve quickly.",
+   "domain": "EQIP",
+   "topic": "valves-hydrants",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "Distribution system operations reference (standard operator-fundamentals valve operating checklist); slow, incremental valve operation is the standard technique to prevent water hammer, especially near pumps and dead ends."
+  },
+  {
+   "id": "WD-ALL-EQIP-0003",
+   "text": "What is the primary job of a check valve installed on a pump's discharge line?",
+   "choices": [
+    "To let the operator manually throttle the pump's output",
+    "To completely isolate the pump from the main for maintenance",
+    "To relieve excess pressure by venting water to the atmosphere",
+    "To allow flow in one direction only, preventing backflow through the pump"
+   ],
+   "correctIndex": 3,
+   "explanation": "A check valve opens with forward flow and closes automatically when flow tries to reverse. On a pump discharge line, that keeps the discharge column and downstream water from draining back through the impeller when the pump stops, protecting against backspin, backflow, and loss of prime.",
+   "domain": "EQIP",
+   "topic": "valves-hydrants",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "Established valve engineering consensus, consistent with AWWA swing check valve standard C508; a check valve's function is to permit one-way flow and prevent reverse flow, protecting a pump from backspin on shutdown."
+  },
+  {
+   "id": "WD-ALL-EQIP-0004",
+   "text": "An operator notices a check valve slamming and vibrating every time a booster pump starts and stops. What does this behavior most likely indicate?",
+   "choices": [
+    "There is trouble with the check valve itself or unusual pressure behavior elsewhere in the system",
+    "This is completely normal and requires no attention",
+    "The pump is oversized and should simply be run continuously to avoid starting and stopping",
+    "The check valve should be removed since it is causing the noise"
+   ],
+   "correctIndex": 0,
+   "explanation": "Operators rarely operate a check valve directly, but they must recognize trouble: slamming, vibration, and unusual pressure behavior during pump starts and stops are signs of a check valve or system pressure issue that needs investigation, not something to ignore or fix by removing the valve.",
+   "domain": "EQIP",
+   "topic": "valves-hydrants",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "Distribution system operations reference (standard operator-fundamentals valve troubleshooting); slamming or vibration at a check valve during pump starts and stops signals trouble that should be investigated, not ignored."
+  },
+  {
+   "id": "WD-ALL-EQIP-0005",
+   "text": "A butterfly valve on a large transmission main is found partially open, with its position indicator showing 'open.' What does this situation illustrate about position indicators?",
+   "choices": [
+    "Position indicators are always accurate and never need verification",
+    "A position indicator must be field-verified; it can read open while the disc is partway shut",
+    "Position indicators are accurate only if recently calibrated against a known standard",
+    "A partially open butterfly valve causes no operational issue, unlike a partially open gate valve"
+   ],
+   "correctIndex": 1,
+   "explanation": "A mis-set limit switch or unverified indicator can display 'open' while the disc is actually only partially rotated, creating false confidence. Because a partially open butterfly disc still creates headloss and vibration and is sensitive to debris and seat damage, operators are taught to verify actual position rather than trust an indicator that has never been confirmed against the field condition.",
+   "domain": "EQIP",
+   "topic": "valves-hydrants",
+   "difficulty": "Hard",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "Distribution system valve records and operations reference (standard operator-fundamentals training on valves and hydrants); a position indicator that was never field-verified is a documented source of false confidence in valve status."
+  },
+  {
+   "id": "WD-ALL-EQIP-0006",
+   "text": "What distinguishes an air release valve from an air/vacuum valve in a distribution system?",
+   "choices": [
+    "They are two names for the exact same device, with no functional difference",
+    "An air release valve handles large fill-and-drain volumes; an air/vacuum valve bleeds small air pockets",
+    "An air release valve bleeds small air pockets; an air/vacuum valve handles large fill-and-drain volumes",
+    "An air/vacuum valve is only used to control pressure surges, never air"
+   ],
+   "correctIndex": 2,
+   "explanation": "Air release valves bleed small pockets of air that accumulate under pressure during normal operation. Air/vacuum valves admit large volumes of air to prevent a vacuum during draining and release air during filling; a combination valve does both jobs in one body. All three types are placed at high points, along long pipeline runs, and near pump discharge headers, where trapped air causes air binding and lost capacity.",
+   "domain": "EQIP",
+   "topic": "valves-hydrants",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "Distribution system valve reference (standard operator-fundamentals training on air valves); air release valves bleed small pressurized air pockets while air/vacuum valves manage large-volume air admission and release during draining and filling."
+  },
+  {
+   "id": "WD-ALL-EQIP-0007",
+   "text": "A dry barrel fire hydrant is closed after use, but water does not drain from the barrel afterward. Why is this a serious problem in a freezing climate?",
+   "choices": [
+    "The standing water will freeze, split the barrel, and disable the hydrant",
+    "It indicates a failed pressure-relief valve that needs resetting",
+    "It means the hydrant is a wet barrel type operating correctly",
+    "It means too much water pressure is reaching the hydrant"
+   ],
+   "correctIndex": 0,
+   "explanation": "A dry barrel hydrant's main valve sits below the frost line, and the barrel above ground is meant to drain through weep ports after each closure so it will not freeze. A hydrant that does not drain is a hydrant that can freeze and split the barrel or bonnet, a documented, high-priority defect that should be recorded and scheduled for repair right away.",
+   "domain": "EQIP",
+   "topic": "valves-hydrants",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "AWWA C502 (dry-barrel fire hydrants) and standard hydrant maintenance training; a dry-barrel hydrant that fails to drain after closing is a freeze-and-failure risk requiring prompt follow-up."
+  },
+  {
+   "id": "WD-ALL-EQIP-0008",
+   "text": "Why is a wet barrel fire hydrant appropriate in a warm climate but a poor choice somewhere freezing occurs?",
+   "choices": [
+    "Wet barrel hydrants cannot be used for fire protection, only for flushing",
+    "A wet barrel hydrant stays pressurized with no drain feature, so trapped water can freeze and damage it",
+    "Wet barrel hydrants require more water pressure than dry barrel hydrants to operate at all",
+    "Wet barrel hydrants are always more expensive, which is the only reason climate matters"
+   ],
+   "correctIndex": 1,
+   "explanation": "A wet barrel hydrant keeps its barrel pressurized all the time, with each outlet having its own valve, and it has no drain-after-use feature the way a dry barrel design does. In a freezing climate, water trapped in a pressurized, undrained barrel can freeze and damage the hydrant, which is why wet barrel hydrants are used where freezing is not a concern and dry barrel hydrants are used where it is.",
+   "domain": "EQIP",
+   "topic": "valves-hydrants",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "AWWA C503 (wet-barrel fire hydrants) and standard hydrant maintenance training; wet barrel hydrants remain pressurized with no drain feature, making them appropriate only where freezing is not a concern."
+  },
+  {
+   "id": "WD-ALL-EQIP-0009",
+   "text": "A crew needs to rebuild a hydrant's internal barrel assembly. What must be verified and controlled before that work begins, per standard hydrant maintenance practice?",
+   "choices": [
+    "Nothing needs to be verified beforehand; the hydrant's own internal valve is sufficient to isolate it for any repair",
+    "The main distribution valve nearest the treatment plant must be closed instead",
+    "The work can proceed regardless of isolation, since hydrants are never under constant pressure",
+    "The hydrant's lead (auxiliary) isolation valve must be located and confirmed operable, since controlled maintenance requires controlled isolation"
+   ],
+   "correctIndex": 3,
+   "explanation": "The lead valve, also called the auxiliary or isolation valve, on the hydrant branch is part of the hydrant system, not an optional extra. If a crew does not know where it is or it does not work, the hydrant is not fully maintainable, and major work like a barrel rebuild should not begin, because controlled maintenance requires controlled isolation. Skipping this step turns a routine hydrant repair into an unplanned main shutdown.",
+   "domain": "EQIP",
+   "topic": "valves-hydrants",
+   "difficulty": "Hard",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "Standard hydrant maintenance and recordkeeping practice; major hydrant maintenance should never proceed without first verifying the lead/auxiliary isolation valve is located and operable."
+  },
+  {
+   "id": "WD-ALL-EQIP-0010",
+   "text": "During a hydrant flow test, an operator records Static PSI, Residual PSI, and Kinetic PSI. What does Residual PSI actually measure?",
+   "choices": [
+    "The pressure at the gauge-cap outlet while water flows from the second, flowing outlet",
+    "The pressure at the flowing outlet itself, used directly to calculate GPM",
+    "The pressure in the hydrant with no water flowing at all",
+    "The water pressure in the hydrant's main line upstream of the gauge outlet"
+   ],
+   "correctIndex": 0,
+   "explanation": "In a standard single-hydrant flow test, two outlets are used: a gauge-cap outlet (Outlet A) and a flow outlet (Outlet B). Static PSI is read at Outlet A with no flow. Residual PSI is read at Outlet A while water flows from Outlet B, showing what happens to system pressure under load. Kinetic PSI is the pitot reading taken in the flowing stream at Outlet B, which feeds the GPM calculation.",
+   "domain": "EQIP",
+   "topic": "valves-hydrants",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "AWWA fire hydrant flow-testing procedure and NFPA 291 flow classification reference; Residual PSI is the gauge-cap pressure measured while a second outlet flows, showing system pressure under load."
+  },
+  {
+   "id": "WD-ALL-EQIP-0011",
+   "text": "Under NFPA 291, a fire hydrant is color-coded blue on its bonnet and caps. What does that color tell a firefighter or operator about the hydrant?",
+   "choices": [
+    "The hydrant is out of service and should not be used",
+    "The hydrant can deliver 1,500 gallons per minute or more of available fire flow",
+    "The hydrant delivers less than 500 gallons per minute of available fire flow",
+    "The hydrant is a flushing-only hydrant, never used for fire protection"
+   ],
+   "correctIndex": 1,
+   "explanation": "NFPA 291 classifies hydrants by available fire flow using a color code, commonly remembered with the mnemonic Roy Only Goes Bowling: Red for under 500 GPM, Orange for 500 to 999 GPM, Green for 1,000 to 1,499 GPM, and Blue for 1,500 GPM or more. Some systems also use color for local status purposes, but the red, orange, green, blue flow ranges are the national NFPA 291 standard.",
+   "domain": "EQIP",
+   "topic": "valves-hydrants",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "NFPA 291, Recommended Practice for Fire Flow Testing and Marking of Hydrants; Blue indicates 1,500 GPM or greater available fire flow."
+  },
+  {
+   "id": "WD-ALL-EQIP-0012",
+   "text": "Per NFPA 291, a hydrant available for 750 gallons per minute of fire flow would be painted which color?",
+   "choices": [
+    "Red",
+    "Green",
+    "Orange",
+    "Blue"
+   ],
+   "correctIndex": 2,
+   "explanation": "NFPA 291's color bands are Red under 500 GPM, Orange 500 to 999 GPM, Green 1,000 to 1,499 GPM, and Blue 1,500 GPM or more. A hydrant delivering 750 GPM falls in the 500 to 999 GPM Orange band.",
+   "domain": "EQIP",
+   "topic": "valves-hydrants",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "NFPA 291, Recommended Practice for Fire Flow Testing and Marking of Hydrants; the Orange classification covers 500 to 999 GPM of available fire flow."
+  },
+  {
+   "id": "WD-ALL-EQIP-0013",
+   "text": "The standard hydrant flow formula is Q = 29.83 x C x d-squared x the square root of p. If the pitot (kinetic) pressure p doubles while d and C stay the same, what happens to the calculated flow Q?",
+   "choices": [
+    "Q increases, but by less than double, since Q scales with the square root of p, not p itself",
+    "Q exactly doubles, since flow is directly proportional to pressure",
+    "Q stays the same regardless of pressure",
+    "Q quadruples, since pressure is squared in the formula"
+   ],
+   "correctIndex": 0,
+   "explanation": "Because Q depends on the square root of p, doubling p multiplies Q by the square root of 2, about 1.41, not by 2. Q would only double if p were quadrupled, since the square root of 4 is 2. Reading the formula correctly, knowing which variable is squared and which is under a root, matters for interpreting how flow test results relate to pressure.",
+   "domain": "EQIP",
+   "topic": "valves-hydrants",
+   "difficulty": "Hard",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "Standard hydrant fire-flow pitot formula (AWWA/NFPA 291 flow-testing reference); Q = 29.83 x C x d^2 x sqrt(p), where flow scales with the square root of pitot pressure, not linearly."
+  },
+  {
+   "id": "WD-ALL-PROC-0013",
+   "text": "What jobs does finished-water storage do for a distribution system?",
+   "choices": [
+    "Treating raw water before it enters the distribution system",
+    "Metering customer usage for billing purposes",
+    "Disinfecting water on a continuous basis so no other treatment is needed",
+    "Meeting peak demand, covering a source that is temporarily offline, providing fire flow, and, when elevated, helping set system pressure"
+   ],
+   "correctIndex": 3,
+   "explanation": "Storage tanks equalize demand peaks, ride through a source being offline, provide reserve for firefighting and other emergencies, and, when elevated, help set system pressure by elevation. Keeping tanks adequately full is a first operator priority during peak demand for exactly these reasons.",
+   "domain": "PROC",
+   "topic": "storage",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "US EPA distribution-system issue paper on finished water storage facilities; storage exists to equalize demand, provide fire and emergency reserves, and (when elevated) contribute to system pressure."
+  },
+  {
+   "id": "WD-ALL-PROC-0014",
+   "text": "What is generally considered the single most important factor behind storage-tank water-quality decline?",
+   "choices": [
+    "Excessive water age, most often from under-utilization of the tank or short-circuiting inside it",
+    "A chlorine dose that is set too high at the treatment plant",
+    "Using a covered tank instead of an uncovered reservoir",
+    "Testing the tank's water quality too frequently"
+   ],
+   "correctIndex": 0,
+   "explanation": "Excessive water age, driven by under-utilization (water not being cycled through) and short-circuiting inside the tank, is treated as probably the single most important factor in storage water-quality decline. Long detention time feeds microbial growth, disinfection byproduct formation, and disinfectant residual loss.",
+   "domain": "PROC",
+   "topic": "storage",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "US EPA distribution-system issue paper on finished water storage facilities; excessive water age from under-utilization and short-circuiting is identified as probably the single most important factor in storage water-quality decline."
+  },
+  {
+   "id": "WD-ALL-PROC-0015",
+   "text": "What water turnover rate is commonly recommended as a starting point for finished-water storage tanks?",
+   "choices": [
+    "A complete turnover once a year is generally adequate for a typical tank",
+    "A complete turnover roughly every 3 to 5 days is commonly recommended as a starting point",
+    "Turnover mainly affects taste, not microbial or residual quality",
+    "Keeping a tank as full as possible is generally the safer default, with turnover a secondary concern"
+   ],
+   "correctIndex": 1,
+   "explanation": "A complete water turnover roughly every 3 to 5 days is a commonly cited starting point, though the right number depends on the individual facility (demand, fire-flow reserve, design, and source water quality all factor in). Routinely fluctuating tank levels, not keeping a tank perpetually topped off, is how operators manage water age down.",
+   "domain": "PROC",
+   "topic": "storage",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "US EPA distribution-system issue paper on finished water storage facilities, citing Kirmeyer et al. 1999; a 3-to-5-day complete turnover is a commonly cited starting recommendation, individualized per facility."
+  },
+  {
+   "id": "WD-ALL-PROC-0016",
+   "text": "Storage tank inspections are commonly grouped into routine, periodic, and comprehensive levels. What does the comprehensive level involve, and roughly how often is it recommended?",
+   "choices": [
+    "Comprehensive inspections evaluate component condition and are recommended roughly every 3 to 5 years",
+    "Comprehensive inspections typically occur annually and focus on visible deterioration and coating condition",
+    "Comprehensive inspections become less frequent after a tank's first 10 years in service",
+    "Comprehensive inspections occur every 1 to 2 years using robotic or diver inspection of the interior"
+   ],
+   "correctIndex": 0,
+   "explanation": "Routine inspections (exterior and grounds, daily to weekly) and periodic inspections (areas not reachable from the ground, roughly every 1 to 4 months) are lighter-touch checks. Comprehensive inspections evaluate the current condition of tank components in depth, often requiring the facility to be taken out of service and drained unless robotic devices or divers are used, and are recommended roughly every 3 to 5 years for structural condition.",
+   "domain": "PROC",
+   "topic": "storage",
+   "difficulty": "Hard",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "US EPA distribution-system issue paper on finished water storage facilities, citing AWWA Manual M42 (Steel Water-Storage Tanks, 1998) and Kirmeyer et al. 1999; comprehensive tank inspections are recommended roughly every 3 to 5 years."
+  },
+  {
+   "id": "WD-ALL-PROC-0017",
+   "text": "Why do operators check roof access hatches and vent screens on covered storage tanks as part of routine maintenance?",
+   "choices": [
+    "Roof hatches and vents mostly affect a tank's appearance, not its water quality",
+    "Screened vents matter more for taste and odor control than for pathogen entry",
+    "Sealing hatches is primarily about preventing vandalism, with contamination as a secondary concern",
+    "Bird droppings and insects can enter through poorly sealed roof hatches and vents, a documented contamination cause"
+   ],
+   "correctIndex": 3,
+   "explanation": "Even enclosed tanks can let contaminants in through roof access hatches, sidewall joints, vent piping, and overflow piping if those openings are not sealed and screened. A documented Missouri outbreak traced Salmonella contamination to pigeon droppings that entered a covered municipal tank through a gap in the roof hatch frame, which is why checking hatch seals and vent screens is a standard part of tank maintenance.",
+   "domain": "PROC",
+   "topic": "storage",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "US EPA distribution-system issue paper on finished water storage facilities, citing the Gideon, Missouri Salmonella typhimurium outbreak (Clark et al. 1996); unsealed roof hatches and vents are documented contamination entry points even on covered tanks."
+  },
+  {
+   "id": "WD-ALL-PROC-0018",
+   "text": "What does a pressure reducing valve (PRV) do at a boundary between two pressure zones?",
+   "choices": [
+    "It pumps water from a lower zone into a higher one",
+    "It measures the total volume of water passing through a pressure zone",
+    "It holds a downstream zone to a lower pressure than the zone feeding it",
+    "It disinfects water as it crosses from one pressure zone into another"
+   ],
+   "correctIndex": 2,
+   "explanation": "A PRV protects a downstream zone by holding it to a lower pressure than the zone supplying it. Because changing a PRV setpoint without understanding the system can create customer problems or stress other parts of the system, the standard operator rule is observe first, adjust second.",
+   "domain": "PROC",
+   "topic": "pressure-zones",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "Distribution system pressure-management reference (standard operator-fundamentals training on pressure zones and control valves); a PRV protects a downstream zone by holding it to a lower pressure."
+  },
+  {
+   "id": "WD-ALL-PROC-0019",
+   "text": "An operator suspects a pressure reducing valve station needs adjustment. What is the correct first step, following the 'observe first, adjust second' rule?",
+   "choices": [
+    "Look at upstream and downstream pressures, listen for chatter, and verify stability before touching the setpoint",
+    "Adjust the setpoint immediately whenever a customer calls with a pressure complaint",
+    "Leave every PRV at its factory default setting permanently, since adjustment is never appropriate",
+    "Bypass the PRV entirely whenever pressure seems even slightly off"
+   ],
+   "correctIndex": 0,
+   "explanation": "Changing a PRV setpoint without context can create customer problems or stress other parts of the system, so the operator habit is observe first, adjust second: check upstream and downstream pressures, listen for chatter or hunting that might indicate a pilot or debris issue, and confirm the system is stable before making any change, then follow the SOP and document what was changed and why.",
+   "domain": "PROC",
+   "topic": "pressure-zones",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "Distribution system pressure-management reference (standard operator-fundamentals training on control valves); the observe-first, adjust-second rule governs PRV setpoint changes."
+  },
+  {
+   "id": "WD-ALL-PROC-0020",
+   "text": "What is the function of a booster within a pressure-zone system?",
+   "choices": [
+    "It pumps water to lift pressure into a higher pressure zone",
+    "It reduces pressure for a downstream zone automatically",
+    "It measures customer water usage for billing",
+    "It prevents backflow between two pressure zones"
+   ],
+   "correctIndex": 0,
+   "explanation": "A booster pumps water to lift pressure into a higher pressure zone. Pressure zones are managed as a system of boundaries controlled by devices like PRVs (which hold a lower pressure downstream) and boosters (which raise pressure into a higher zone), together with altitude valves that control tank filling.",
+   "domain": "PROC",
+   "topic": "pressure-zones",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "Distribution system pressure-management reference (standard operator-fundamentals training on pressure zones); a booster lifts pressure into a higher pressure zone."
+  },
+  {
+   "id": "WD-ALL-PROC-0021",
+   "text": "What does an altitude valve do in a distribution system?",
+   "choices": [
+    "It boosts pressure into a higher pressure zone",
+    "It prevents cross-connections at the tank inlet",
+    "It measures the tank's water level for billing purposes",
+    "It controls the filling of a storage tank"
+   ],
+   "correctIndex": 3,
+   "explanation": "An altitude valve controls the filling of a storage tank, typically closing once the tank reaches its set high level to stop overfilling and opening again as level drops, so it works alongside PRVs and boosters as one of the control devices that manage pressure zone boundaries.",
+   "domain": "PROC",
+   "topic": "pressure-zones",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "Distribution system pressure-management reference (standard operator-fundamentals training on pressure zones); an altitude valve controls tank filling."
+  },
+  {
+   "id": "WD-ALL-PROC-0022",
+   "text": "How does the US EPA define a cross-connection?",
+   "choices": [
+    "A connection between two water mains owned by different utilities",
+    "Any actual or potential connection between the public water supply and a source of contamination or pollution",
+    "Any pipe fitting rated for more than 150 psi",
+    "A connection that only exists on industrial properties, never on residential ones"
+   ],
+   "correctIndex": 1,
+   "explanation": "A cross-connection is any actual or potential connection between the public water supply and a source of contamination or pollution. It becomes a backflow event only when a net force pushes the contaminated side toward the potable supply, but the connection itself, whether or not it is currently causing a problem, is what the term describes.",
+   "domain": "PROC",
+   "topic": "cross-connection-backflow",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "US EPA Cross-Connection Control Manual (EPA 816-R-03-002); a cross-connection is any actual or potential connection between the public water supply and a source of contamination or pollution."
+  },
+  {
+   "id": "WD-ALL-PROC-0023",
+   "text": "What is the difference between backpressure and backsiphonage as causes of a backflow event?",
+   "choices": [
+    "They are two names for the exact same physical mechanism",
+    "Backpressure only happens in wastewater systems, never in drinking water systems",
+    "Backsiphonage can only occur if a mechanical pump is present on the customer's side",
+    "Backpressure is caused by the customer's system running at a higher pressure than the supply main; backsiphonage is caused by a vacuum or negative pressure forming in the supply main"
+   ],
+   "correctIndex": 3,
+   "explanation": "Backpressure occurs when the customer's (downstream) system is pumped, boosted, or otherwise pressurized above the supply main and pushes back through a connection. Backsiphonage occurs when negative (sub-atmospheric) pressure forms in the potable supply, for example from a sudden demand surge like heavy fire flow, and atmospheric pressure pushes a pollutant toward the low-pressure side. Both require a cross-connection plus a net force toward the potable system; removing either one prevents the event.",
+   "domain": "PROC",
+   "topic": "cross-connection-backflow",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "US EPA Cross-Connection Control Manual (EPA 816-R-03-002); backpressure is a customer-side pressure exceeding the supply, while backsiphonage is a vacuum condition in the supply pulling a pollutant toward it."
+  },
+  {
+   "id": "WD-ALL-PROC-0024",
+   "text": "What two conditions does the US EPA say are required for any backflow event to occur?",
+   "choices": [
+    "A cross-connection (the link between the two systems) and a net force pushing toward the potable supply; removing either one prevents the event",
+    "A cross-connection alone is always sufficient, regardless of pressure direction",
+    "A net force toward the potable supply alone is always sufficient, even with no physical connection",
+    "A certified backflow tester must be present at the exact moment the event occurs"
+   ],
+   "correctIndex": 0,
+   "explanation": "Two things are required for any backflow event: a link, meaning a cross-connection between the potable and nonpotable systems, and a net force toward the potable supply, from either backpressure or backsiphonage. Remove either the connection or the force and there is no event, which is exactly why both backflow prevention devices (removing the force's effect) and eliminating unnecessary cross-connections (removing the link) are both used as control strategies.",
+   "domain": "PROC",
+   "topic": "cross-connection-backflow",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "US EPA Cross-Connection Control Manual (EPA 816-R-03-002); a backflow event requires both a cross-connection and a net force toward the potable supply."
+  },
+  {
+   "id": "WD-ALL-PROC-0025",
+   "text": "An air gap is the most positive method of backflow prevention. What is the minimum vertical separation an air gap must provide, per US EPA guidance?",
+   "choices": [
+    "Exactly equal to the diameter of the supply pipe",
+    "At least twice the diameter of the supply pipe, and never less than one inch",
+    "At least ten times the diameter of the supply pipe",
+    "There is no minimum; any visible gap qualifies as an air gap"
+   ],
+   "correctIndex": 1,
+   "explanation": "An air gap must be at least twice the diameter of the supply pipe (commonly called '2D'), but never less than one inch. It protects against both backsiphonage and backpressure because it physically separates the supply from the receptacle, but it is easily defeated if that dimension is compromised, so the specific minimum matters.",
+   "domain": "PROC",
+   "topic": "cross-connection-backflow",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "US EPA Cross-Connection Control Manual (EPA 816-R-03-002); an air gap must be at least twice the supply pipe diameter, never less than one inch."
+  },
+  {
+   "id": "WD-ALL-PROC-0026",
+   "text": "A high-hazard connection (for example, a plating plant) needs a mechanical backflow preventer that protects against both backsiphonage and backpressure under constant pressure. Which device type fits, and why?",
+   "choices": [
+    "A reduced pressure principle (RP) device, the only mechanical device approved for both at high hazard",
+    "An atmospheric vacuum breaker (AVB), because it can be installed under constant pressure with no restrictions",
+    "A pressure vacuum breaker (PVB), because it protects against backpressure as well as backsiphonage",
+    "A barometric loop, because it protects against both backsiphonage and backpressure"
+   ],
+   "correctIndex": 0,
+   "explanation": "Air gaps and reduced pressure principle (RP) devices protect against both backsiphonage and backpressure. Double check valve assemblies also protect against both failure modes, but they are approved only for low-to-medium hazard. At HIGH hazard, the EPA requires an RP device or an air gap, which makes the RP the only mechanical device suited to a constant-pressure, high-hazard connection. Barometric loops, atmospheric vacuum breakers, and pressure vacuum breakers protect against backsiphonage only, never backpressure, so none of them fit this connection regardless of hazard level.",
+   "domain": "PROC",
+   "topic": "cross-connection-backflow",
+   "difficulty": "Hard",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "US EPA Cross-Connection Control Manual (EPA 816-R-03-002); reduced pressure principle devices (with air gaps) protect against both backsiphonage and backpressure, while barometric loops, AVBs, and PVBs protect against backsiphonage only."
+  },
+  {
+   "id": "WD-ALL-PROC-0027",
+   "text": "What is the difference between a containment backflow-prevention program and fixture (outlet) isolation?",
+   "choices": [
+    "They are two names for the same practice with no real difference",
+    "Fixture isolation replaces containment entirely once it is installed",
+    "Containment only applies to commercial buildings, never to residences",
+    "Containment installs a single preventer at the service entrance to protect the public system, while fixture (outlet) isolation places devices at each internal hazard to protect people inside the building"
+   ],
+   "correctIndex": 3,
+   "explanation": "Containment puts one backflow preventer at the water service entrance, isolating the customer's entire system from the main and protecting the public supply, but it does not protect people inside the building from hazards elsewhere on the property. Fixture (outlet) isolation places a device at every internal high-hazard location, protecting building occupants, but it is hard to police in large systems because internal plumbing changes constantly. The standard approach is containment as the baseline, with fixture isolation as an addition, never a replacement.",
+   "domain": "PROC",
+   "topic": "cross-connection-backflow",
+   "difficulty": "Hard",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "US EPA Cross-Connection Control Manual (EPA 816-R-03-002); containment protects the public system at the service entrance, while fixture isolation protects building occupants and supplements, rather than replaces, containment."
+  },
+  {
+   "id": "WD-ALL-PROC-0028",
+   "text": "What is the 'audit chain' concept in distribution system metering, and what is it used for?",
+   "choices": [
+    "It only tracks how much revenue the utility collected that month",
+    "It is a test performed once, at the time a meter is first installed, and never repeated",
+    "It compares what the production (source) meter measured against the sum of all customer meter readings, flagging leaks, meter under-registration, unauthorized use, or data errors when the two do not match",
+    "It compares customer meter readings against each other, without reference to the production meter"
+   ],
+   "correctIndex": 2,
+   "explanation": "The production meter at the source measures what was pumped; the sum of customer meters is what was billed. Comparing the two is the audit chain: if production is meaningfully higher than billed consumption, that gap drives an investigation into leaks, meter under-registration, unauthorized use, or data errors, rather than being written off as unexplained loss.",
+   "domain": "PROC",
+   "topic": "services-and-meters",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "Distribution system metering and water-loss reference (standard operator-fundamentals training on meters and water accounting); the production-versus-billed comparison (the audit chain) is the standard tool for investigating unaccounted-for water."
+  },
+  {
+   "id": "WD-ALL-PROC-0029",
+   "text": "Which residential meter type is specifically noted for being accurate at very low flow, good at catching leaks, drips, and night flow?",
+   "choices": [
+    "Positive displacement meters, because they physically trap known packets of water and count them, making them accurate at low flow",
+    "Propeller or turbine meters, because they are most accurate at very low, trickling flow",
+    "Compound meters, because the automatic changeover valve only opens at low flow and stays shut otherwise",
+    "Electromagnetic meters, because they require flow to be very low to induce a voltage"
+   ],
+   "correctIndex": 0,
+   "explanation": "A positive displacement (PD) meter, using a nutating disc or oscillating piston, physically traps known 'packets' of water and counts them, which makes it accurate at low flow, good at catching leaks, drips, and night flow. It is common in residential service, though it is more sensitive to debris and wears over time compared with newer metering technology.",
+   "domain": "PROC",
+   "topic": "services-and-meters",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "Distribution system metering reference (standard operator-fundamentals training on meter types); positive displacement meters trap known volumes of water, making them accurate at low flow."
+  },
+  {
+   "id": "WD-ALL-PROC-0030",
+   "text": "Why is oversizing a customer meter (sizing it to the pipe rather than to typical flow) considered a costly mistake?",
+   "choices": [
+    "It has no downside at all, since a larger meter simply allows for more future growth",
+    "It only affects fire-flow capacity, never billed revenue",
+    "It causes the meter to over-register usage, overbilling the customer",
+    "It silently loses revenue over years, since an oversized meter misses low-flow usage that a properly sized meter would register"
+   ],
+   "correctIndex": 3,
+   "explanation": "The sizing rule is to size a meter to typical flow, not just to match the pipe size. An oversized meter misses low flow, the trickle usage, leaks, and off-peak draws that a properly sized meter would catch, so oversizing is a silent revenue leak that compounds over the meter's service life rather than a one-time cost.",
+   "domain": "PROC",
+   "topic": "services-and-meters",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "Distribution system metering reference (standard operator-fundamentals training on meter sizing); oversizing a meter relative to typical flow causes silent, ongoing revenue loss from missed low-flow registration."
+  },
+  {
+   "id": "WD-ALL-MATH-0001",
+   "text": "A cylindrical elevated storage tank is 40 feet in diameter and holds water to a depth of 25 feet in the bowl. About how many gallons of water does that represent?",
+   "choices": [
+    "About 940,000 gallons",
+    "About 58,700 gallons",
+    "About 235,000 gallons",
+    "About 31,400 gallons"
+   ],
+   "correctIndex": 2,
+   "explanation": "Tank volume in gallons equals pi times radius squared times height, times 7.48 gallons per cubic foot. With a 40-foot diameter, the radius is 20 feet: pi x 20 squared x 25 x 7.48 is about 235,000 gallons.",
+   "domain": "MATH",
+   "topic": "storage",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": "V (gal) = pi x r^2 x h x 7.48, r = diameter / 2",
+   "calculator": "vol-cyl",
+   "citation": null
+  },
+  {
+   "id": "WD-ALL-MATH-0002",
+   "text": "A rectangular ground storage tank is 45 feet long, 30 feet wide, and holds water to a depth of 18 feet. About how many gallons does it hold?",
+   "choices": [
+    "About 24,300 gallons",
+    "About 182,000 gallons",
+    "About 364,000 gallons",
+    "About 10,100 gallons"
+   ],
+   "correctIndex": 1,
+   "explanation": "Rectangular tank volume in gallons equals length times width times depth of water, times 7.48 gallons per cubic foot: 45 x 30 x 18 x 7.48 is about 182,000 gallons.",
+   "domain": "MATH",
+   "topic": "storage",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": "V (gal) = L x W x H x 7.48",
+   "calculator": "vol-box",
+   "citation": null
+  },
+  {
+   "id": "WD-ALL-MATH-0003",
+   "text": "An elevated tank's overflow sits 150 feet above a hydrant at the low end of the system. Ignoring friction loss, about what static pressure does that elevation alone provide at the hydrant?",
+   "choices": [
+    "About 346 psi",
+    "About 150 psi",
+    "About 75 psi",
+    "About 65 psi"
+   ],
+   "correctIndex": 3,
+   "explanation": "Static pressure from elevation equals feet of head times 0.433 psi per foot: 150 x 0.433 is about 65 psi.",
+   "domain": "MATH",
+   "topic": "pressure-zones",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": "P (psi) = h (ft) x 0.433",
+   "calculator": "pressure-head",
+   "citation": null
+  },
+  {
+   "id": "WD-ALL-MATH-0004",
+   "text": "A gauge at a hydrant near the bottom of a pressure zone reads 39 psi with the system at rest. About how many feet of elevation (head) above that hydrant does that reading represent?",
+   "choices": [
+    "About 90 feet",
+    "About 39 feet",
+    "About 17 feet",
+    "About 180 feet"
+   ],
+   "correctIndex": 0,
+   "explanation": "Feet of head equal psi divided by 0.433: 39 / 0.433 is about 90 feet.",
+   "domain": "MATH",
+   "topic": "pressure-zones",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": "h (ft) = P (psi) / 0.433",
+   "calculator": "pressure-head",
+   "citation": null
+  },
+  {
+   "id": "WD-ALL-PROC-0031",
+   "text": "A construction crew stops work for the day with an open-ended section of new water main left in the unbackfilled trench. What is the standard precaution to keep contamination out overnight?",
+   "choices": [
+    "Leave it open overnight, since morning flushing will clear anything that gets in",
+    "Fill the pipe with chlorinated water immediately and cap it under pressure",
+    "Install a watertight plug in the open end of the pipe whenever the trench is unattended, unless groundwater would float the closed pipe",
+    "Cover only the trench itself; the pipe opening does not need separate protection"
+   ],
+   "correctIndex": 2,
+   "explanation": "Standard practice is to install watertight plugs in open-end joints whenever construction is not actively in progress, protecting the pipe interior from soil, debris, and water that would otherwise enter overnight or over a weekend.",
+   "domain": "PROC",
+   "topic": "installation-basics",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "US EPA issue paper on new or repaired water mains, citing AWWA Manual M20 (Water Chlorination Principles and Practices, 1973); use watertight plugs in open-end joints whenever construction is not actively in progress."
+  },
+  {
+   "id": "WD-ALL-PROC-0032",
+   "text": "Per the research behind AWWA's main disinfection standard, what single practice is most critical to making disinfection actually succeed after a new main is installed?",
+   "choices": [
+    "Using the highest possible chlorine dose, regardless of contact time",
+    "Keeping the pipe and fittings physically clean throughout storage, handling, and installation",
+    "Disinfecting only after a positive bacteriological sample comes back",
+    "Skipping flushing, since disinfection alone removes construction debris"
+   ],
+   "correctIndex": 1,
+   "explanation": "Physical cleanliness of new pipe sections is the key to making disinfection succeed, and sanitary handling and storage of materials may be the single most critical step against microbial contamination during construction. Disinfection is designed to inactivate a normal, limited bioburden, not to compensate for pipe that was left dirty or exposed for long periods.",
+   "domain": "PROC",
+   "topic": "installation-basics",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "US EPA issue paper on new or repaired water mains, citing Geldreich 1994 and Burlingame et al. 1993; physical cleanliness of new pipe sections, and sanitary handling and storage of materials, is identified as the single most critical step in successful main disinfection."
+  },
+  {
+   "id": "WD-ALL-PROC-0033",
+   "text": "New water main construction can introduce contamination in three distinct phases. What are they?",
+   "choices": [
+    "During and after construction only, since manufactured pipe stays sterile until it reaches the trench",
+    "Before and during construction only, since a properly sealed, completed main cannot be contaminated afterward",
+    "Before and after construction only, since the trench itself is always kept fully sanitary during installation",
+    "Manufacture/handling/storage, trench work, and post-completion conditions like leaking joints, since all can introduce contamination"
+   ],
+   "correctIndex": 3,
+   "explanation": "Contamination can occur before construction (exposure starting at manufacture and continuing through handling and storage), during construction (open trench work exposing pipe interiors to soil and water), and after construction (leaking joints, stagnant unsanitary water, cross-connections, and transitory pressures). All three phases need their own controls.",
+   "domain": "PROC",
+   "topic": "installation-basics",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "US EPA issue paper on new or repaired water mains; contamination can occur before, during, and after main construction or repair, each with distinct causes."
+  },
+  {
+   "id": "WD-ALL-PROC-0034",
+   "text": "Why do crews dewater a repair trench before working on an exposed water main, and why should the pumps and fittings used for that dewatering be reserved for clean-water work only?",
+   "choices": [
+    "Dewatering is only about crew comfort, and the equipment rule is only about preventing rust, not contamination",
+    "Sewage-grade pumps are too weak for clean water, and dewatering is just so crews are not standing in a puddle",
+    "Trench water and soil test positive for fecal indicators at meaningful rates, so keeping the pipe away from that water, and equipment sewage-free, both matter",
+    "Both steps are only needed in freezing weather, since cold water carries less contamination risk the rest of the year"
+   ],
+   "correctIndex": 2,
+   "explanation": "Sampling at main repair sites has found total coliform, fecal coliform, and other indicator organisms in a meaningful share of trench water and soil samples. Dewatering the trench, and using submersible pumps and fittings reserved for clean-water work only, keeps that contaminated water and any sewage-exposed equipment away from the pipe interior during the repair.",
+   "domain": "PROC",
+   "topic": "installation-basics",
+   "difficulty": "Hard",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "US EPA issue paper on new or repaired water mains, citing Kirmeyer et al. 2000 trench sampling data; dewater below the pipe invert and reserve equipment for clean-water use only, since trench water and soil test positive for fecal indicators at meaningful rates."
+  },
+  {
+   "id": "WD-ALL-PROC-0035",
+   "text": "Standard practice for preparing a new or repaired main for service names four contamination-control elements: hydrostatic testing, disinfection, water-quality testing, and one more. Which is the fourth?",
+   "choices": [
+    "Flushing and cleaning",
+    "Cathodic protection survey",
+    "Corrosion-coupon replacement",
+    "SCADA recalibration"
+   ],
+   "correctIndex": 0,
+   "explanation": "Preparing a new, rehabilitated, or repaired main for service has four contamination-control elements: hydrostatic (pressure) testing, flushing and cleaning, disinfection, and water-quality (bacteriological) testing.",
+   "domain": "PROC",
+   "topic": "installation-basics",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "US EPA issue paper on new or repaired water mains, citing ANSI/AWWA Standards 600-606; hydrostatic testing, flushing and cleaning, disinfection, and water-quality testing are the four contamination-control elements for placing a main into service."
+  },
+  {
+   "id": "WD-ALL-PROC-0036",
+   "text": "From a contamination-control standpoint, why do main design best practices call for minimizing the number and length of tie-ins, and keeping the flushing point close to the valve that terminates a new main?",
+   "choices": [
+    "It is purely a cost-saving measure with no water-quality benefit",
+    "Fewer tie-ins reduce entry points, and a short path supports unidirectional flow",
+    "It has no bearing on contamination, only on the construction schedule",
+    "Tie-in count only matters for billing purposes, not water quality"
+   ],
+   "correctIndex": 1,
+   "explanation": "Design best practice minimizes the number and length of tie-ins and the distance between the flushing point and the valve that terminates the new main. Fewer tie-ins reduce contamination entry opportunities, and a short, direct path supports unidirectional flow, which flushes debris and contaminated water out effectively instead of trapping it in the new section.",
+   "domain": "PROC",
+   "topic": "installation-basics",
+   "difficulty": "Hard",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "US EPA issue paper on new or repaired water mains, citing Pierson et al. 2001 design best practices; minimizing tie-ins and enabling unidirectional flow to the flushing point are design practices that reduce contamination risk."
+  },
+  {
+   "id": "WD-ALL-PROC-0037",
+   "text": "What is the commonly cited minimum water velocity needed to adequately scour sediment from the interior of a main during a flushing operation?",
+   "choices": [
+    "About 0.5 feet per second",
+    "About 10 feet per second",
+    "About 1 foot per second",
+    "About 2.5 feet per second"
+   ],
+   "correctIndex": 3,
+   "explanation": "A minimum flushing velocity of about 2.5 feet per second is commonly cited as adequate to scour the interior of a main, with 5.0 feet per second preferred where thorough biofilm removal is the goal.",
+   "domain": "PROC",
+   "topic": "mains-flushing",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "Widely used flushing-program guidance (consistent across state Rural Water Association flushing plans and general distribution operations practice); a minimum flushing velocity of about 2.5 ft/s is commonly cited, with 5.0 ft/s preferred for biofilm removal."
+  },
+  {
+   "id": "WD-ALL-PROC-0038",
+   "text": "Compared with simple conventional flushing (opening a hydrant and letting water run), why is unidirectional flushing considered the more effective method for reducing biofilm in a main?",
+   "choices": [
+    "Unidirectional flushing uses less water than conventional flushing, which is its only real advantage",
+    "Conventional (simple) flushing is always the more effective method, since it is easier to set up",
+    "Unidirectional flushing sends water through one planned path at higher velocity, removing biofilm more effectively than simple flushing",
+    "Unidirectional flushing is a wastewater-only technique, not used on drinking water mains"
+   ],
+   "correctIndex": 2,
+   "explanation": "The most effective flushing type for reducing biofilm sloughing is unidirectional flushing, since it forces water through a planned, single-direction path at a controlled, higher velocity, rather than simple flushing, which can just move debris and biofilm fragments to the next bend instead of removing them from the system.",
+   "domain": "PROC",
+   "topic": "mains-flushing",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "US EPA white paper on microbial growth and biofilms in distribution systems; unidirectional flushing is identified as the most effective flushing type for reducing biofilm, more effective than simple flushing."
+  },
+  {
+   "id": "WD-ALL-PROC-0039",
+   "text": "What is the correct way to open and close a hydrant or blow-off valve at the start and end of a flushing operation?",
+   "choices": [
+    "As quickly as possible, to minimize the duration of the operation",
+    "Slowly, to prevent a water hammer event",
+    "Speed does not matter as long as the valve ends up fully open or fully closed",
+    "Only the closing speed matters; opening speed has no effect on water hammer"
+   ],
+   "correctIndex": 1,
+   "explanation": "Valves are opened and closed slowly at the start and end of a flushing operation to prevent water hammer, the same rapid-velocity-change risk that applies to any valve operation in the distribution system.",
+   "domain": "PROC",
+   "topic": "mains-flushing",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "Standard distribution flushing procedure (widely used flushing-program guidance, consistent with general valve-operation safety practice); valves are opened and closed slowly during flushing to prevent water hammer."
+  },
+  {
+   "id": "WD-ALL-PROC-0040",
+   "text": "While flushing a section of main, why must the operator watch that pressure in other parts of the distribution system does not drop too low, commonly cited around 20 psi?",
+   "choices": [
+    "A significant pressure drop elsewhere can pull contamination in through leaks or loose joints",
+    "Low pressure elsewhere only affects customer complaints, not water safety",
+    "Pressure elsewhere is irrelevant as long as the flushing point itself maintains good flow",
+    "The only consequence of low pressure elsewhere is higher pumping energy cost"
+   ],
+   "correctIndex": 0,
+   "explanation": "A significant pressure drop anywhere in the system risks pulling contamination in through leaks, loose joints, or unprotected cross-connections elsewhere, since low or negative pressure is a documented intrusion pathway. Utility decision flows commonly use a threshold around 20 psi, below which a defined response protocol, potentially including a boil-water notification, is triggered.",
+   "domain": "PROC",
+   "topic": "mains-flushing",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "US EPA issue paper on new or repaired water mains, reproducing a Texas Natural Resource Conservation Commission (TNRCC) pressure-loss and return-to-service decision flow; a drop below 20 psi during work triggers a defined response protocol, up to a boil-water notification if the affected line cannot be adequately disinfected or flushed."
+  },
+  {
+   "id": "WD-ALL-PROC-0041",
+   "text": "What information does a standard flushing report record for each flushing event?",
+   "choices": [
+    "Only the operator's name and the date, nothing else",
+    "Only the total gallons used, since that is the only number needed for a water-loss report",
+    "Date, time, location, duration, chlorine residual, and gallons of water used, at minimum",
+    "Flushing events are not documented at all, since they are considered routine maintenance"
+   ],
+   "correctIndex": 2,
+   "explanation": "A standard flushing report records, at minimum, the date, time, location, persons responsible, duration of flushing, the chlorine residual after flushing, and the gallons of water used, so the record can support sanitary surveys, complaint tracking, and system comparisons over time.",
+   "domain": "PROC",
+   "topic": "mains-flushing",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "Standard flushing-program recordkeeping practice (widely used flushing plan templates, consistent with general operator recordkeeping standards); a flushing report records date, time, location, duration, residual, and gallons used, at minimum."
+  },
+  {
+   "id": "WD-ALL-PROC-0042",
+   "text": "A flushing operation is expected to stir up sediment that has settled in a dead-end main. What should the crew plan for before opening the hydrant?",
+   "choices": [
+    "Nothing extra; sediment in the discharge is not a concern once it leaves the main",
+    "Adding extra chlorine to the discharge stream to disinfect the sediment on its way out",
+    "Scheduling the flush for the middle of the workday to maximize visibility to customers",
+    "Directing the sediment-laden discharge away from traffic, private property, and storm drains that cannot handle the flow"
+   ],
+   "correctIndex": 3,
+   "explanation": "Flushing directs water away from traffic, pedestrians, underground utility vaults, and private property, and confirms that storm drains or natural watercourses can handle the flow, since flushing mobilizes sediment that was previously settled and stable in the main.",
+   "domain": "PROC",
+   "topic": "mains-flushing",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "Standard flushing-program guidance (widely used flushing plan practice, consistent with general distribution operations); flushing plans direct discharge water away from traffic, private property, and storm drains, since flushing mobilizes sediment."
+  },
+  {
+   "id": "WD-ALL-PROC-0043",
+   "text": "Among all the ways pathogens can enter a distribution system, how does an expert panel commonly rank water main breaks and repairs, relative to other entry routes?",
+   "choices": [
+    "As a low-risk route, well below new main installation",
+    "As a high-risk entry route, alongside treatment breakthrough, other intrusion, and cross-connections",
+    "As having no real health-risk ranking, since only the wastewater side needs a pathogen-risk ranking",
+    "As the single least likely entry route of all documented pathways"
+   ],
+   "correctIndex": 1,
+   "explanation": "An expert panel ranking of pathogen entry routes places water main breaks and/or repairs in the high-risk category, alongside water treatment contaminant breakthrough, other intrusion events, and cross-connections, ranked above new main installation and above both covered and uncovered storage reservoirs.",
+   "domain": "PROC",
+   "topic": "leak-response",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "US EPA white paper on microbial growth and biofilms in distribution systems, citing an expert panel entry-route ranking; water main breaks and repairs rank as a high-risk pathogen entry route."
+  },
+  {
+   "id": "WD-ALL-PROC-0044",
+   "text": "A main is leaking water out at a small crack, and the system experiences a sudden transient pressure drop nearby, for example from a pump starting up. What additional risk does that pressure drop create at the leak site?",
+   "choices": [
+    "The transient negative pressure can pull water and contaminants from the surrounding soil back into the pipe, through the same opening the leak was flowing out of",
+    "No additional risk exists; a leak only ever pushes water out, never pulls anything in",
+    "The pressure drop only matters if the leak is on a main serving a hospital",
+    "A leak automatically self-seals once the pressure inside the pipe drops"
+   ],
+   "correctIndex": 0,
+   "explanation": "Even well-operated systems can lose a meaningful share of produced water to leakage, and a transient negative pressure event near a leak can pull water and contaminants from the surrounding soil back into the pipe through the same opening, rather than simply reducing the outward leak flow. This is one reason leaks are treated as both a water-loss issue and a water-quality intrusion risk.",
+   "domain": "PROC",
+   "topic": "leak-response",
+   "difficulty": "Hard",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "US EPA white paper on microbial growth and biofilms in distribution systems; transient negative pressure can pull leaked water and surrounding contaminants back into the pipe at the same point water normally leaks out."
+  },
+  {
+   "id": "WD-ALL-PROC-0045",
+   "text": "A crew isolates a section of main to make an emergency leak repair and needs to dewater the trench before exposing the pipe. What equipment practice reduces the risk of contaminating the repair?",
+   "choices": [
+    "Any available pump is acceptable, since the water will be flushed out afterward regardless",
+    "Dewatering equipment should always come from the wastewater crew, since they have more powerful pumps",
+    "Dewatering is unnecessary if the repair is completed within one hour",
+    "Use submersible pumps and fittings that are reserved for clean-water work only, never equipment that has been used on sewage"
+   ],
+   "correctIndex": 3,
+   "explanation": "Dewatering equipment, including submersible pumps and fittings, should be reserved for clean-water work only. Using equipment that has been used on sewage applications risks cross-contaminating the repair, regardless of how quickly the physical fix is completed.",
+   "domain": "PROC",
+   "topic": "leak-response",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "US EPA issue paper on new or repaired water mains, citing Pierson et al. 2001; dewatering equipment reserved for clean-water use, and not shared with sewage applications, is a documented practice to avoid cross-contaminating a main repair."
+  },
+  {
+   "id": "WD-ALL-PROC-0046",
+   "text": "After a leak repair on a water main, what must happen before the repaired section is returned to normal service?",
+   "choices": [
+    "The section is disinfected per standard practice (such as a 25 mg/L chlorine dose held for 24 hours), flushed, and cleared with satisfactory bacteriological sample results",
+    "The section can return to service immediately once the physical repair is complete, since the water was never fully shut off",
+    "A single visual check for water clarity is sufficient, without any chlorine residual test or bacteriological sample",
+    "Only a pressure test is required, since bacteriological contamination is not a realistic risk from a repair"
+   ],
+   "correctIndex": 0,
+   "explanation": "Standard practice disinfects the repaired section (for example, a continuous-feed dose of about 25 mg/L chlorine held for a 24-hour contact time), flushes it, and requires satisfactory bacteriological sample results before the section returns to normal service, the same standard applied to new main installation.",
+   "domain": "PROC",
+   "topic": "leak-response",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "US EPA issue paper on new or repaired water mains, citing AWWA Standard C651 and Haas et al. 1998; a continuous-feed dose of 25 mg/L chlorine for a 24-hour contact time, followed by flushing and satisfactory bacteriological sampling, precedes return to service."
+  },
+  {
+   "id": "WD-ALL-PROC-0047",
+   "text": "During an emergency leak repair, distribution pressure drops below 20 psi and the line is significantly dewatered. Following a standard utility decision flow for this situation, what is the next question the operator must answer to decide next steps?",
+   "choices": [
+    "Should the crew simply wait until morning to address it",
+    "Can the affected line be disinfected per standard AWWA practice",
+    "Is the leak visible from the street, since only visible leaks require a formal response",
+    "Has the utility's insurance carrier been notified"
+   ],
+   "correctIndex": 1,
+   "explanation": "A standard pressure-loss and return-to-service decision flow first asks whether distribution pressure dropped below 20 psi; if so and the line was dewatered, the next question is whether the affected line can be disinfected per AWWA standards. If it cannot be disinfected, the flow moves to whether it can be adequately flushed, and if not, a boil-water notification follows.",
+   "domain": "PROC",
+   "topic": "leak-response",
+   "difficulty": "Hard",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "US EPA issue paper on new or repaired water mains, reproducing the Texas Natural Resource Conservation Commission (TNRCC) pressure-loss and return-to-service decision flow; after a significant pressure drop and dewatering, the next step is determining whether the affected line can be disinfected per AWWA standards."
+  },
+  {
+   "id": "WD-ALL-EQIP-0014",
+   "text": "Why must a centrifugal pump be properly primed before it is started?",
+   "choices": [
+    "A centrifugal pump cannot move water unless its impeller is submerged; running it dry can damage the pump",
+    "Priming is only a manufacturer recommendation with no real consequence if skipped",
+    "Centrifugal pumps self-prime automatically the moment power is applied",
+    "Priming is required only for pumps larger than 100 horsepower"
+   ],
+   "correctIndex": 0,
+   "explanation": "A centrifugal pump moves water using an impeller that must be submerged to function; it cannot run unless properly primed. Starting one dry risks damaging the impeller and seals, which is why priming is a standard pre-start step regardless of pump size.",
+   "domain": "EQIP",
+   "topic": "pump-types",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "General centrifugal pump engineering reference (Hydraulic Institute pump principles); a centrifugal pump cannot run unless the impeller is submerged and must be properly primed before starting."
+  },
+  {
+   "id": "WD-ALL-EQIP-0015",
+   "text": "What distinguishes a turbine-type centrifugal pump from the more common volute-type centrifugal pump?",
+   "choices": [
+    "A turbine centrifugal has no impeller at all, unlike a volute pump",
+    "A turbine centrifugal is a positive displacement design, while a volute pump is not",
+    "A turbine centrifugal uses stationary diffuser vanes to convert velocity into pressure head, which is more efficient and suited to high head, though the small clearances foul more easily with dirt",
+    "There is no real design difference; only the manufacturer's name for the same pump changes"
+   ],
+   "correctIndex": 2,
+   "explanation": "A volute centrifugal pump uses a spiral casing to convert the impeller's high velocity, low pressure flow into lower velocity, higher pressure discharge. A turbine centrifugal pump instead uses stationary diffuser vanes to make that conversion, which is more efficient and better suited to high head service, though its small clearances between impeller and diffuser foul more easily with dirt.",
+   "domain": "EQIP",
+   "topic": "pump-types",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "General centrifugal pump engineering reference; a volute centrifugal pump uses a spiral casing to convert velocity to pressure, while a turbine centrifugal pump uses stationary diffuser vanes, giving higher efficiency at high head but more sensitivity to fouling."
+  },
+  {
+   "id": "WD-ALL-EQIP-0016",
+   "text": "Why should a reciprocating (positive displacement) pump never be operated against a fully closed discharge valve?",
+   "choices": [
+    "A closed discharge valve has no effect on a positive displacement pump, unlike a centrifugal pump",
+    "Positive displacement pumps require a closed discharge valve to build pressure at startup",
+    "The concern only applies to pumps moving wastewater, not clean water",
+    "A fixed volume keeps moving regardless of resistance, building pressure fast and risking damage"
+   ],
+   "correctIndex": 3,
+   "explanation": "A positive displacement pump continues displacing a fixed volume of liquid per stroke or revolution no matter what resistance it meets downstream. Against a fully closed discharge valve, that fixed-volume delivery has nowhere to go, and pressure can climb very quickly to damaging levels, unlike a centrifugal pump, whose flow naturally falls off as discharge pressure rises.",
+   "domain": "EQIP",
+   "topic": "pump-types",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "General positive displacement pump engineering reference; a reciprocating or piston pump should never be operated against a closed discharge valve, since it continues displacing a fixed volume and can build damaging pressure quickly, unlike a centrifugal pump."
+  },
+  {
+   "id": "WD-ALL-EQIP-0017",
+   "text": "A self-priming, suction-lift booster pump is generally limited to roughly what maximum practical suction lift?",
+   "choices": [
+    "About 50 feet",
+    "About 22 feet",
+    "About 100 feet",
+    "There is no practical limit as long as the pump has enough horsepower"
+   ],
+   "correctIndex": 1,
+   "explanation": "Suction-lift pumps are generally limited to a practical suction lift of about 22 feet, well short of the roughly 34-foot theoretical limit set by atmospheric pressure at sea level, because friction losses and the pump's net positive suction head requirement (NPSHR) reduce the workable lift well below the theoretical maximum.",
+   "domain": "EQIP",
+   "topic": "pump-types",
+   "difficulty": "Hard",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "General pump hydraulics reference on suction lift and NPSH limitations; suction-lift pumps are generally limited to a practical suction lift of about 22 feet, well short of the roughly 34-foot theoretical atmospheric limit."
+  },
+  {
+   "id": "WD-ALL-EQIP-0018",
+   "text": "A utility has two wells; one burns roughly three times the energy to pump the same volume of water as the other. What operating practice is recommended?",
+   "choices": [
+    "Run both wells equally on a fixed rotation regardless of energy cost, to spread wear evenly",
+    "Run the more expensive well as lead, since it is likely the newer, better-maintained pump",
+    "Run the cheaper, more efficient well as the lead source and hold the more expensive well as lag, used only for peak demand",
+    "Retire the less efficient well immediately, since any efficiency gap this size means the pump has failed"
+   ],
+   "correctIndex": 2,
+   "explanation": "When one well is meaningfully less energy-efficient than another for the same output, the recommended practice is lead/lag rotation: run the cheaper well as lead by default and hold the more expensive well as lag, brought on only for peak demand, rather than letting an inefficient source run by default.",
+   "domain": "EQIP",
+   "topic": "pump-types",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "Distribution/source operations reference on lead/lag well rotation and pumping energy costs (standard operator-fundamentals training); running the cheaper well as lead and holding a substantially more expensive well as lag for peak demand only is the recommended energy practice."
+  },
+  {
+   "id": "WD-ALL-EQIP-0019",
+   "text": "An operator pumps a well harder than its aquifer can supply. What happens to drawdown, output, and the pump's demand on the motor?",
+   "choices": [
+    "Drawdown increases, GPM output drops, and the motor works harder to lift water from a lower level, a sign that Net Positive Suction Head Available (NPSHA) no longer matches what the pump requires (NPSHR)",
+    "Drawdown decreases while output rises, since pumping harder always yields more water",
+    "None of these values change, since a well's output is fixed regardless of pumping rate",
+    "Only the motor's temperature changes; drawdown and output stay constant"
+   ],
+   "correctIndex": 0,
+   "explanation": "A well's output is not fixed; it changes with the water level in the well, pump wear, and how hard the well is drawn on. Over-pumping relative to what the aquifer can supply increases drawdown, reduces GPM output, and makes the motor work harder to lift water from a lower level, a sign that Net Positive Suction Head Available no longer matches what the pump requires.",
+   "domain": "EQIP",
+   "topic": "pump-types",
+   "difficulty": "Hard",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "General well hydraulics and pump NPSH reference (standard operator-fundamentals training on wells); over-pumping a well relative to its supply increases drawdown, reduces GPM, and increases motor demand, a NPSHA-versus-NPSHR mismatch."
+  },
+  {
+   "id": "WD-ALL-EQIP-0020",
+   "text": "What is the most common type of electric motor used to drive pumps in water distribution systems?",
+   "choices": [
+    "The wound rotor induction motor, used in most standard applications",
+    "A universal (AC/DC) motor, used because it can run on either current type",
+    "The squirrel cage induction motor",
+    "A synchronous motor, used because it requires no external power source"
+   ],
+   "correctIndex": 2,
+   "explanation": "The squirrel cage induction motor is the most common motor type used to drive pumps and other water-system equipment, with wound rotor induction motors used specifically where speed control is needed.",
+   "domain": "EQIP",
+   "topic": "motors",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "General electric-motor fundamentals reference; the squirrel cage induction motor is the most common type used to drive pumps and other water-system equipment."
+  },
+  {
+   "id": "WD-ALL-EQIP-0021",
+   "text": "In a running three-phase motor, one phase unexpectedly loses power, a condition called single-phasing. What happens if the motor is not stopped?",
+   "choices": [
+    "The motor overheats and can damage itself, since it continues trying to run on the remaining phases",
+    "Nothing happens; three-phase motors run just as well on two phases indefinitely",
+    "The motor automatically switches to single-phase mode and runs at full rated output",
+    "Single-phasing only affects motors under 5 horsepower"
+   ],
+   "correctIndex": 0,
+   "explanation": "If single-phasing occurs in a running three-phase motor, the motor loses power on one phase and overheats trying to keep running on the remaining phases, damaging itself unless it is stopped promptly.",
+   "domain": "EQIP",
+   "topic": "motors",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "General electric-motor fundamentals reference; single-phasing in a running three-phase motor causes the motor to overheat and can damage it unless it is stopped."
+  },
+  {
+   "id": "WD-ALL-EQIP-0022",
+   "text": "A newly installed three-phase motor runs in the wrong direction when first started. What is the standard fix?",
+   "choices": [
+    "Reverse all three lead wires",
+    "Replace the motor entirely, since rotation direction cannot be changed after installation",
+    "Increase the voltage supplied to the motor",
+    "Reverse any two of the three lead wires"
+   ],
+   "correctIndex": 3,
+   "explanation": "Reversing any two of the three lead wires on a three-phase motor reverses its rotation direction, the standard fix for a motor found running backward after installation.",
+   "domain": "EQIP",
+   "topic": "motors",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "General electric-motor fundamentals reference; reversing any two of the three lead wires on a three-phase motor reverses its rotation direction."
+  },
+  {
+   "id": "WD-ALL-EQIP-0023",
+   "text": "What is most commonly responsible for electric motor trouble in water system equipment?",
+   "choices": [
+    "Running the motor at exactly its rated voltage",
+    "Following the manufacturer's recommended lubrication schedule",
+    "Bad bearings, shorted windings from insulation breakdown, or excessive moisture",
+    "Operating the motor below its rated horsepower"
+   ],
+   "correctIndex": 2,
+   "explanation": "Most motor trouble comes from bad bearings, shorted windings from insulation breakdown, or excessive moisture, which is why routine checks focus on bearing condition, keeping motors dry, and watching for signs of insulation wear.",
+   "domain": "EQIP",
+   "topic": "motors",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "General electric-motor maintenance reference; most motor trouble comes from bad bearings, shorted windings from insulation breakdown, or excessive moisture."
+  },
+  {
+   "id": "WD-ALL-EQIP-0024",
+   "text": "An operator notices the amperage draw on a well pump motor has been slowly rising over several months, with no change in output. What does this trend most likely indicate, and what should be checked?",
+   "choices": [
+    "The motor likely needs attention and should be checked by a qualified electrician",
+    "Rising amperage with no output change is normal and requires no follow-up",
+    "Rising amperage always means the local utility has raised its voltage supply",
+    "Only a licensed plumber, not an electrician, should investigate rising motor amperage"
+   ],
+   "correctIndex": 0,
+   "explanation": "Rising motor amperage over time, with no corresponding change in output, is a documented indicator that a motor may need repair or that mechanical wear is increasing its load. Amperage and voltage readings should be taken periodically by a qualified, trained person, since this work involves real electrical hazard.",
+   "domain": "EQIP",
+   "topic": "motors",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "General electric-motor maintenance reference; rising motor amperage over time is a documented indicator that a motor may need repair, checked periodically by a qualified person."
+  },
+  {
+   "id": "WD-ALL-EQIP-0025",
+   "text": "A well pump has been cycling on and off more than 6 times per hour. What does this commonly indicate?",
+   "choices": [
+    "Perfectly normal operation for any well pump system",
+    "A possible bladder tank failure, or a waterlogged condition in a hydropneumatic tank",
+    "A sign that the well has fully recovered from drawdown",
+    "A sign that the pump's motor is oversized for the application"
+   ],
+   "correctIndex": 1,
+   "explanation": "A pump cycling on and off more than 6 times per hour is a documented threshold suggesting a possible bladder tank failure or a waterlogged hydropneumatic tank condition. High-frequency cycling also wears out the motor, switches, and controls faster than normal operation.",
+   "domain": "EQIP",
+   "topic": "preventive-maintenance",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "Standard groundwater source preventive-maintenance reference; a pump cycling more than 6 times per hour signals a possible bladder tank failure or a waterlogged hydropneumatic tank condition."
+  },
+  {
+   "id": "WD-ALL-EQIP-0026",
+   "text": "An operator tracks a well's Specific Capacity (GPM per foot of drawdown) over time and finds it has dropped 25 percent from its baseline value. What does standard guidance recommend at this point?",
+   "choices": [
+    "No action is needed until the well stops producing water entirely",
+    "Immediately abandon the well and drill a replacement",
+    "Specific Capacity is not a meaningful metric for well health",
+    "Investigate the cause of the decline"
+   ],
+   "correctIndex": 3,
+   "explanation": "Specific Capacity (flow divided by drawdown) is a key early-warning number for well health. A drop of roughly 15 to 20 percent from baseline is a recommended trigger to investigate the cause, while a drop of 30 percent or more is a recommended trigger to plan rehabilitation, well before the well's output collapses entirely.",
+   "domain": "EQIP",
+   "topic": "preventive-maintenance",
+   "difficulty": "Hard",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "Distribution/source operations reference on well health monitoring (standard operator-fundamentals training); investigate at a 15-to-20-percent drop in Specific Capacity from baseline, and plan rehabilitation at a 30-percent-or-greater drop."
+  },
+  {
+   "id": "WD-ALL-EQIP-0027",
+   "text": "What is a commonly recommended schedule for exercising all mainline distribution valves?",
+   "choices": [
+    "No single frequency fits all valves; exercise higher-risk valves more often, on a rotating schedule",
+    "Exercise every valve exactly once, at the time it is installed, and never again",
+    "Exercise only 10 percent of the valve inventory, chosen at random, each year",
+    "Exercise all valves simultaneously on a single day each year"
+   ],
+   "correctIndex": 0,
+   "explanation": "There is no single universal frequency for exercising mainline valves; industry guidance (WRF #4237a) treats it as risk-based and context-dependent, with critical or high-consequence valves exercised more often and routine valves on a longer rotating cycle, consistent with a program that turns over roughly 30 percent of the valve inventory each year. (The half-in-spring, half-in-fall pattern is documented for hydrant flushing and dead-end main flushing, not mainline valve exercising.)",
+   "domain": "EQIP",
+   "topic": "preventive-maintenance",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "Standard water-system preventive-maintenance guidance, consistent with general distribution operations practice; exercising half of all mainline valves in spring and half in fall, so every valve is exercised at least annually, is a commonly recommended schedule."
+  },
+  {
+   "id": "WD-ALL-EQIP-0028",
+   "text": "A distribution system has 10,000 valves. A two-person crew can exercise about 25 valves per day, working roughly 250 days a year. About what share of the valve inventory does the crew cover in a year?",
+   "choices": [
+    "About 25 percent",
+    "About 60 percent",
+    "About 90 percent",
+    "About 100 percent"
+   ],
+   "correctIndex": 1,
+   "explanation": "At 25 valves per day across a 250-day work year, the crew exercises roughly 6,250 valves, which is about 60 percent of the system's 10,000 valves in a year. Turning the crew's daily rate into a specific, countable share of the inventory like this gives a manager a concrete number to use when deciding whether the program needs more staff or a contractor, rather than a vague sense of being behind.",
+   "domain": "EQIP",
+   "topic": "preventive-maintenance",
+   "difficulty": "Hard",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "Distribution system valve-maintenance program reference (standard operator-fundamentals training); counting the crew's daily valve-exercising rate against the total valve inventory turns a staffing need into a defensible, countable argument."
+  },
+  {
+   "id": "WD-ALL-EQIP-0029",
+   "text": "What is required on every pressure tank used in a public water system to protect against overpressure?",
+   "choices": [
+    "A second, backup pressure tank connected in parallel at all times",
+    "A manual pressure gauge only, with no relief mechanism required",
+    "A sight glass, with no separate relief device required",
+    "An ASME-certified pressure relief valve"
+   ],
+   "correctIndex": 3,
+   "explanation": "Every pressure tank in a public water system must have an ASME-certified pressure relief valve to protect against overpressure. Approved relief valves carry tags showing their ASME status and set pressure, and they should be checked per the manufacturer's procedures.",
+   "domain": "EQIP",
+   "topic": "preventive-maintenance",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "Standard pressure-tank safety guidance, consistent with widely adopted state drinking-water program requirements; public water system pressure tanks require an ASME-certified pressure relief valve to protect against overpressure."
+  },
+  {
+   "id": "WD-ALL-EQIP-0030",
+   "text": "How often should a chemical feed pump (chlorinator) be calibrated under standard preventive maintenance guidance, and what does calibration involve?",
+   "choices": [
+    "At least every three months (and especially after an overhaul), by measuring the solution volume the pump withdraws over a set time and comparing it to the desired feed rate",
+    "Only once, at the time of initial installation",
+    "Calibration is unnecessary as long as the residual reads within range on any given day",
+    "Once every five years, to match the tank's own inspection interval"
+   ],
+   "correctIndex": 0,
+   "explanation": "Standard preventive maintenance guidance calls for calibrating chemical feed pumps at least every three months, and especially after an overhaul. Calibration measures the solution volume the pump actually withdraws over a set time, records that value along with the speed and stroke-length settings, and compares it to the desired feed rate, adjusting per the manufacturer's instructions.",
+   "domain": "EQIP",
+   "topic": "preventive-maintenance",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "Standard groundwater system preventive-maintenance guidance; chemical feed pumps should be calibrated at least every three months, measuring withdrawn solution volume against the desired feed rate."
+  },
+  {
+   "id": "WD-ALL-MATH-0005",
+   "text": "A crew flushes a dead-end 8-inch main and reads 400 gpm on the flow meter at the blow-off. What velocity does that produce in the main, and does it clear the commonly cited 2.5 ft/s minimum scouring velocity?",
+   "choices": [
+    "About 0.6 ft/s",
+    "About 2.5 ft/s",
+    "About 5.1 ft/s",
+    "About 1.3 ft/s"
+   ],
+   "correctIndex": 1,
+   "explanation": "Velocity equals flow divided by pipe cross-sectional area. Converting 400 gpm to about 0.891 cfs and dividing by the area of an 8-inch pipe (radius 0.333 ft, area about 0.349 sq ft) gives about 2.5 ft/s, which just clears the commonly cited 2.5 ft/s minimum scouring velocity.",
+   "domain": "MATH",
+   "topic": "mains-flushing",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": "V (ft/s) = Q (cfs) / A (sq ft), Q (cfs) = gpm / 448.831, A = pi x r^2",
+   "calculator": "velocity",
+   "citation": null
+  },
+  {
+   "id": "WD-ALL-MATH-0006",
+   "text": "A crew flushes a 12-inch main at 300 gpm. What velocity does that produce in the main, and does it reach the commonly cited 2.5 ft/s minimum scouring velocity?",
+   "choices": [
+    "About 0.21 ft/s",
+    "About 1.7 ft/s",
+    "About 0.43 ft/s",
+    "About 0.85 ft/s"
+   ],
+   "correctIndex": 3,
+   "explanation": "Velocity equals flow divided by pipe cross-sectional area. Converting 300 gpm to about 0.668 cfs and dividing by the area of a 12-inch pipe (radius 0.5 ft, area about 0.785 sq ft) gives about 0.85 ft/s, well below the commonly cited 2.5 ft/s minimum scouring velocity, meaning this flow is too low to properly scour the main.",
+   "domain": "MATH",
+   "topic": "mains-flushing",
+   "difficulty": "Hard",
+   "cognitive": "Application",
+   "formula": "V (ft/s) = Q (cfs) / A (sq ft), Q (cfs) = gpm / 448.831, A = pi x r^2",
+   "calculator": "velocity",
+   "citation": null
+  },
+  {
+   "id": "WD-ALL-MATH-0007",
+   "text": "A booster pump must deliver 500 gpm against 120 feet of total dynamic head. What water horsepower is required?",
+   "choices": [
+    "About 15 hp",
+    "About 30 hp",
+    "About 7.6 hp",
+    "About 152 hp"
+   ],
+   "correctIndex": 0,
+   "explanation": "Water horsepower equals gpm times total dynamic head, divided by 3,960: (500 x 120) / 3960 is about 15 hp.",
+   "domain": "MATH",
+   "topic": "pump-types",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": "WHP = (GPM x TDH) / 3960",
+   "calculator": "hp",
+   "citation": null
+  },
+  {
+   "id": "WD-ALL-SAFE-0001",
+   "text": "At what trench depth does OSHA require some form of cave-in protection (shoring, shielding, or sloping) for workers?",
+   "choices": [
+    "3 feet or more",
+    "8 feet or more",
+    "5 feet or more",
+    "2 feet or more"
+   ],
+   "correctIndex": 2,
+   "explanation": "OSHA requires a protective system (shoring, shielding, or sloping) for trench excavations 5 feet or more in depth, regardless of how stable the soil appears. Depth alone triggers the requirement. Soil that looks stable does not waive the requirement; the 5-foot depth trigger applies regardless of how the soil appears.",
+   "domain": "SAFE",
+   "topic": "trenching-shoring",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "OSHA excavation standard, 29 CFR 1926 Subpart P; a protective system is required for trench excavations 5 feet or more in depth."
+  },
+  {
+   "id": "WD-ALL-SAFE-0002",
+   "text": "Among the three standard trench cave-in protection methods, what is 'shielding'?",
+   "choices": [
+    "Removing the trench wall itself back to a safe angle so it cannot collapse",
+    "A framework of wood or metal members supporting the trench walls in place",
+    "Filling the trench partially with water to stabilize the surrounding soil",
+    "A two-sided braced steel box, open on top, bottom, and ends, moved through the trench, with workers staying only within its walls"
+   ],
+   "correctIndex": 3,
+   "explanation": "Shielding uses a two-sided braced steel box, open on top, bottom, and ends, sometimes called a 'drag shield,' that is pulled through the trench. Workers must stay only within the shield's walls, and the trench must be dug straight and the same width as the shield, since a collapsing wall outside the shield can crush it.",
+   "domain": "SAFE",
+   "topic": "trenching-shoring",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "OSHA excavation standard, 29 CFR 1926 Subpart P; a trench shield (drag shield) is a two-sided braced box, open on top, bottom, and ends, that workers must stay within as it moves through the excavation."
+  },
+  {
+   "id": "WD-ALL-SAFE-0003",
+   "text": "A worker is in a trench 6 feet deep. Per OSHA excavation rules, how close must the nearest ladder or other means of exit be, and how far must it extend above the trench?",
+   "choices": [
+    "Within 100 feet of the worker, with no minimum extension above the trench",
+    "Within 25 feet of the worker, extending at least 3 feet above the top of the excavation",
+    "Within 10 feet, extending exactly level with the top of the trench, no higher",
+    "A ladder is not required as long as the trench has sloped walls"
+   ],
+   "correctIndex": 1,
+   "explanation": "A means of egress, such as a ladder, must be within 25 feet of workers in a trench 4 feet or more deep, and it must extend at least 3 feet above the top of the excavation so a worker climbing out has solid footing at the top.",
+   "domain": "SAFE",
+   "topic": "trenching-shoring",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "OSHA excavation standard, 29 CFR 1926 Subpart P; a means of egress must be within 25 feet of workers in a trench 4 feet or more deep, extending at least 3 feet above the excavation."
+  },
+  {
+   "id": "WD-ALL-SAFE-0004",
+   "text": "Where should excavated soil (spoil) from a trench be placed?",
+   "choices": [
+    "Directly against the trench wall, to help support it",
+    "Spread evenly around both sides of the trench for balance",
+    "At least 2 feet back from the edge of the trench, on one side only",
+    "Anywhere convenient, since spoil placement has no bearing on trench safety"
+   ],
+   "correctIndex": 2,
+   "explanation": "Spoil should be placed at least 2 feet back from the trench edge, on one side only, keeping added weight away from the excavation edge and reducing cave-in risk.",
+   "domain": "SAFE",
+   "topic": "trenching-shoring",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "OSHA excavation standard, 29 CFR 1926 Subpart P; spoil should be placed at least 2 feet back from the trench edge, on one side only, to reduce cave-in risk."
+  },
+  {
+   "id": "WD-ALL-SAFE-0005",
+   "text": "Under the national uniform color code used to mark buried utilities before excavation, what color marks an existing potable water line?",
+   "choices": [
+    "Blue",
+    "Green",
+    "Red",
+    "Yellow"
+   ],
+   "correctIndex": 0,
+   "explanation": "The national uniform color code marks potable water lines in blue, sewer and drain lines in green, electric power in red, and gas, oil, and steam lines in yellow, so a crew can identify what they are about to cross before digging.",
+   "domain": "SAFE",
+   "topic": "trenching-shoring",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "American Public Works Association (APWA) Uniform Color Code for marking underground utilities, the national standard used by one-call/locate programs; Blue marks potable water lines, Green marks sewer and drain lines, Red marks electric power, and Yellow marks gas, oil, and steam lines."
+  },
+  {
+   "id": "WD-ALL-SAFE-0006",
+   "text": "When distribution work must occur near traffic, what is a commonly cited minimum distance ahead of oncoming traffic to post warning signs or a flagger?",
+   "choices": [
+    "50 feet",
+    "1,500 feet",
+    "Distance does not matter as long as a single cone is placed at the work site",
+    "500 feet"
+   ],
+   "correctIndex": 3,
+   "explanation": "A commonly cited minimum is to post warning signs or a flagger roughly 500 feet ahead of oncoming traffic, giving drivers enough distance to see the warning and slow down before reaching the work zone.",
+   "domain": "SAFE",
+   "topic": "traffic-work-zone",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "Standard traffic-control practice for utility work zones (consistent with general traffic-control guidance); posting warnings or a flagger roughly 500 feet ahead of oncoming traffic is a commonly cited minimum for distribution work near traffic."
+  },
+  {
+   "id": "WD-ALL-SAFE-0007",
+   "text": "What is the recommended practice for physically protecting a crew working in a distribution trench near active traffic?",
+   "choices": [
+    "Rely on high-visibility vests alone, with no physical barrier needed",
+    "Position a single traffic cone roughly 10 feet from the work area",
+    "Place a solid barrier, such as a truck, between the workers and traffic; the bigger the barrier, the better",
+    "Physical barriers are unnecessary if the posted speed limit is under 25 mph"
+   ],
+   "correctIndex": 2,
+   "explanation": "Standard practice places a solid physical barrier, such as a truck, between workers and traffic, on top of warnings, vests, and flashing lights, and a bigger barrier gives better protection.",
+   "domain": "SAFE",
+   "topic": "traffic-work-zone",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "Standard traffic-control practice for utility work zones; placing a solid barrier, such as a truck, between workers and traffic, the bigger the better, is a recommended protection practice."
+  },
+  {
+   "id": "WD-ALL-SAFE-0008",
+   "text": "When scheduling routine distribution work that will require lane closures, what is a basic traffic-safety practice operators are taught?",
+   "choices": [
+    "Always perform the work during rush hour, since more witnesses improve safety",
+    "Avoid working during rush-hour traffic when the work can be scheduled around it",
+    "Traffic volume has no bearing on when work should be scheduled",
+    "Schedule all lane-closure work exclusively at night, regardless of visibility conditions"
+   ],
+   "correctIndex": 1,
+   "explanation": "A basic traffic-safety practice is to avoid scheduling work in rush-hour traffic when the job can reasonably be scheduled around it, reducing the volume and speed of traffic passing close to the crew.",
+   "domain": "SAFE",
+   "topic": "traffic-work-zone",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "Standard traffic-control practice for utility work zones; avoiding rush-hour traffic when a job can be scheduled around it is a basic work-zone safety practice."
+  },
+  {
+   "id": "WD-ALL-SAFE-0009",
+   "text": "Under OSHA's personal protective equipment standard, what must an employer do before assigning PPE for a given task?",
+   "choices": [
+    "Issue whatever PPE is on hand in the truck that day",
+    "Rely solely on the operator's personal judgment, with no formal evaluation required",
+    "Conduct a PPE evaluation (a hazard assessment) for that specific task",
+    "Purchase the most expensive available PPE for every task, regardless of the actual hazard"
+   ],
+   "correctIndex": 2,
+   "explanation": "OSHA's personal protective equipment standard requires employers to conduct a hazard assessment, commonly called a PPE evaluation, for each task before assigning protective equipment, matching the gear to the actual hazards the task presents.",
+   "domain": "SAFE",
+   "topic": "ppe",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "OSHA Personal Protective Equipment standard, 29 CFR 1910.132-134; employers must conduct a hazard assessment (PPE evaluation) for each task before assigning protective equipment."
+  },
+  {
+   "id": "WD-ALL-SAFE-0010",
+   "text": "An operator must enter a permit-required confined space, such as a large below-grade vault. What equipment must the entrant wear?",
+   "choices": [
+    "Steel-toed boots only, with no harness required",
+    "A harness connected to emergency retrieval equipment",
+    "A hard hat only, since vaults are not classified as confined spaces",
+    "Standard work gloves, since retrieval equipment is only required for spaces deeper than 20 feet"
+   ],
+   "correctIndex": 1,
+   "explanation": "Employees entering a permit-required confined space, which includes many below-grade vaults large enough to enter but with limited entry and exit, must wear a harness connected to emergency retrieval equipment, so a non-entry rescue can be performed if needed.",
+   "domain": "SAFE",
+   "topic": "ppe",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "OSHA Permit-Required Confined Spaces standard, 29 CFR 1910.146; employees entering a permit-required confined space must wear a harness connected to emergency retrieval equipment."
+  },
+  {
+   "id": "WD-ALL-SAFE-0011",
+   "text": "At what sound level can prolonged workplace noise exposure cause permanent hearing loss, per OSHA guidance?",
+   "choices": [
+    "40 decibels or greater",
+    "200 decibels or greater",
+    "Noise level does not matter; only total daily exposure time matters",
+    "85 decibels or greater"
+   ],
+   "correctIndex": 3,
+   "explanation": "Prolonged exposure to 85 decibels or greater can cause permanent hearing loss. A rough field check is whether workers must shout or cannot hear a normal voice nearby, a sign that noise is excessive and hearing protection (plugs or muffs) should be used.",
+   "domain": "SAFE",
+   "topic": "ppe",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "OSHA Occupational Noise Exposure standard, 29 CFR 1910.95; prolonged exposure to 85 decibels or greater can cause permanent hearing loss."
+  },
+  {
+   "id": "WD-ALL-ADMIN-0001",
+   "text": "What are the isolation-valve record fields most often credited with 'saving the day' during an emergency repair?",
+   "choices": [
+    "Close direction, turns required to close, normal position, current position, operability and resistance, and access notes",
+    "Purchase price, warranty expiration date, and manufacturer's marketing brochure",
+    "Only the valve's GPS coordinates, since location is the only field that matters",
+    "The name of the crew that installed the valve originally, and nothing else"
+   ],
+   "correctIndex": 0,
+   "explanation": "Close direction, turns-to-close, normal position, current position, operability and resistance, and access notes are the fields most credited with saving time during an emergency: they tell a crew which way to turn, how many turns, whether the valve was left correctly, whether it will actually move, and how to find and reach it quickly.",
+   "domain": "ADMIN",
+   "topic": "recordkeeping",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "Standard distribution valve recordkeeping practice (operator-fundamentals training on valves and hydrants); close direction, turns-to-close, normal position, current position, operability and resistance, and access notes are the fields most credited with saving time during an emergency repair."
+  },
+  {
+   "id": "WD-ALL-ADMIN-0002",
+   "text": "A valve's turns-to-close were never recorded, and the current operator does not know them. What is the correct way to handle this in the record?",
+   "choices": [
+    "Guess a reasonable number so the field is never left blank",
+    "Leave the entire record blank with no note at all",
+    "Record the field as 'Unknown' along with a note, rather than guessing a number",
+    "Delete the valve's record entirely, since incomplete data has no value"
+   ],
+   "correctIndex": 2,
+   "explanation": "'Unknown' plus a good note is acceptable and valid documentation practice, since wrong data is worse than missing data. A blank field with no explanation is a missed opportunity to flag a follow-up task, such as scheduling the valve to be exercised and its turns counted for the first time.",
+   "domain": "ADMIN",
+   "topic": "recordkeeping",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "Standard distribution recordkeeping practice (operator-fundamentals training on valves and hydrants); 'Unknown' plus a good note is acceptable and valid, since wrong data is worse than missing data."
+  },
+  {
+   "id": "WD-ALL-ADMIN-0003",
+   "text": "After operating an isolation valve during a repair, what must the crew confirm and record before leaving the site?",
+   "choices": [
+    "Nothing further; operating the valve is the only step required",
+    "Only the time the work started, with no need to record final position",
+    "Only whether the crew felt the repair went smoothly, in general terms",
+    "The valve's final position (fully open or fully closed) and the number of turns, confirmed rather than assumed"
+   ],
+   "correctIndex": 3,
+   "explanation": "The crew should confirm and record the valve's actual final position (fully open or fully closed) and the number of turns, rather than assuming the valve ended up where intended. A valve that is only assumed closed, but is actually left partially open, becomes a permanent restriction and a future complaint.",
+   "domain": "ADMIN",
+   "topic": "recordkeeping",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "Standard distribution valve operating and recordkeeping practice (operator-fundamentals training); confirming and recording the valve's final position and turns, rather than assuming it, prevents a valve from being left half open."
+  },
+  {
+   "id": "WD-ALL-ADMIN-0004",
+   "text": "A crew finds that a valve's GIS map point is roughly 30 feet off from its actual field location. What is the correct response?",
+   "choices": [
+    "Leave the map point as is, since the paper valve record card is the authoritative source",
+    "Correct the GIS point itself, since a wrong point left uncorrected is a future outage risk, not just an inconvenience",
+    "Note the discrepancy in a personal notebook only, without updating the shared map",
+    "Ignore it, since GIS accuracy has no bearing on emergency response time"
+   ],
+   "correctIndex": 1,
+   "explanation": "The correct response is to correct the GIS point itself, not just note the problem privately. A valve mapped 30 feet off, left uncorrected, is a future outage risk, since it makes the isolation point useless to whichever crew responds next, especially at night or in unfamiliar conditions.",
+   "domain": "ADMIN",
+   "topic": "recordkeeping",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "Standard distribution system GIS and recordkeeping practice (operator-fundamentals training); correcting a wrong GIS point, rather than just noting it, is standard practice, since a valve mapped incorrectly can make the isolation point useless when time matters."
+  },
+  {
+   "id": "WD-ALL-ADMIN-0005",
+   "text": "What do daily security checks at a distribution facility (well house, pump house, storage site) typically include?",
+   "choices": [
+    "Only checking that the water meter is running, with no physical inspection of the site",
+    "Only reviewing the previous month's water quality sample results",
+    "Checking fencing, locks, hatches, doors, windows, and vents for signs of intrusion, along with security lighting and alarms",
+    "Only confirming that the SCADA system shows a green status light"
+   ],
+   "correctIndex": 2,
+   "explanation": "Daily security checks typically include inspecting fencing and gates, checking hatches, locks, doors, windows, and vents for signs of intrusion, and confirming security lighting and alarms are working, catching a physical breach before it becomes a bigger problem.",
+   "domain": "ADMIN",
+   "topic": "security-basics",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "Standard water system security practice (widely used preventive-maintenance guidance); daily security checks include inspecting fencing, locks, hatches, doors, windows, and vents for intrusion, plus checking security lighting and alarms."
+  },
+  {
+   "id": "WD-ALL-ADMIN-0006",
+   "text": "An operator finds signs that a well cap or hatch may have been tampered with. What is the correct immediate response?",
+   "choices": [
+    "Contact local law enforcement and the appropriate drinking water regulatory contact right away",
+    "Note it for the next scheduled maintenance visit, with no immediate action",
+    "Reseal the cap quietly and say nothing, to avoid alarming customers",
+    "Wait for the next water quality sample results before taking any action"
+   ],
+   "correctIndex": 0,
+   "explanation": "Suspected tampering at a source, pumping, or storage facility calls for immediately contacting local law enforcement and the drinking water regulatory contact, not waiting for the next scheduled visit or for sample results to come back.",
+   "domain": "ADMIN",
+   "topic": "security-basics",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "Standard water system security practice (widely used preventive-maintenance guidance); suspected tampering should be reported to local law enforcement and the drinking water regulatory contact immediately."
+  },
+  {
+   "id": "WD-ALL-ADMIN-0007",
+   "text": "A very small system's SCADA login is known only to one operator. Why is this considered a serious operational risk?",
+   "choices": [
+    "It is not a real risk, since SCADA systems reset their own passwords automatically after a set time",
+    "It only matters for systems using cloud-based SCADA, not local systems",
+    "The risk only applies to billing software, not operational control systems",
+    "If that operator becomes unavailable, no one else can silence alarms or change setpoints"
+   ],
+   "correctIndex": 3,
+   "explanation": "SCADA passwords known to only one person are a documented single point of failure for very small water systems: if that person is unavailable, no one else can silence alarms or change setpoints, which can turn a manageable event into an unmanaged one.",
+   "domain": "ADMIN",
+   "topic": "security-basics",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "Small-system operations reference on single points of failure (operator-fundamentals training); SCADA passwords known to only one person are a documented single point of failure for very small water systems."
+  },
+  {
+   "id": "WD-ALL-ADMIN-0008",
+   "text": "What should an operator check about a wellhead cover or casing seal during routine inspection?",
+   "choices": [
+    "Only that it is painted a bright, visible color",
+    "Above grade, sloped to drain, with no cracks or wear",
+    "Only that it has been in place for less than one year",
+    "That it is buried below grade"
+   ],
+   "correctIndex": 1,
+   "explanation": "Wellhead covers and seals should be elevated above adjacent finished grade, sloped to drain away from the casing, and free of cracks or excessive wear, since a below-grade or damaged wellhead is a documented pathway for surface water and contaminants to reach the well.",
+   "domain": "ADMIN",
+   "topic": "security-basics",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "Standard groundwater source preventive-maintenance guidance; wellhead covers and seals should be elevated above adjacent grade, sloped to drain away from the casing, and free of cracks or excessive wear."
+  },
+  {
+   "id": "WD-ALL-ADMIN-0009",
+   "text": "Before a planned flushing program or shutoff affects a neighborhood, what is standard practice for informing customers?",
+   "choices": [
+    "No advance notice is needed, since flushing and planned shutoffs are considered routine",
+    "Notify affected customers in advance through billing inserts, leaflets, or door-to-door notice, stating dates and times",
+    "Notify only the customer who called in the original complaint, not the surrounding area",
+    "Post a notice only on the utility's internal bulletin board, not to customers"
+   ],
+   "correctIndex": 1,
+   "explanation": "Standard practice notifies affected customers in advance, through billing inserts, leaflets, or door-to-door notice, stating the dates and times of planned flushing or shutoffs, so customers are not caught off guard by discolored water or a temporary outage.",
+   "domain": "ADMIN",
+   "topic": "customer-interactions",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "Standard flushing-program and customer-communication guidance (widely used flushing plan practice); customers are notified in advance of planned flushing or shutoffs through billing inserts, leaflets, or door-to-door notice, stating dates and times."
+  },
+  {
+   "id": "WD-ALL-ADMIN-0010",
+   "text": "A customer calls in about discolored water at the tap. What is the appropriate operator response?",
+   "choices": [
+    "Tell the customer it is normal and no investigation is needed",
+    "Ask the customer to simply run their tap until it clears, with no record of the call",
+    "Take the complaint seriously, investigate the likely cause, and follow up with the customer",
+    "Refer every water-quality complaint straight to the state regulator without any utility-level investigation first"
+   ],
+   "correctIndex": 2,
+   "explanation": "The appropriate response takes the complaint seriously, investigates the likely cause, such as recent main work, flushing, or a corrosion issue, and follows up with the customer on what was found. This both resolves the immediate concern and feeds the utility's own complaint record for spotting patterns.",
+   "domain": "ADMIN",
+   "topic": "customer-interactions",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "Standard customer-service and troubleshooting practice for distribution systems (operator-fundamentals training); water-quality complaints are investigated for likely cause and followed up with the customer, not dismissed."
+  },
+  {
+   "id": "WD-ALL-ADMIN-0011",
+   "text": "During an active boil water advisory, a customer calls asking whether it is safe to make coffee with tap water. What is the correct operator response?",
+   "choices": [
+    "Give the guidance the official notice specifies, rather than improvising an answer",
+    "Tell the customer any answer that seems reasonable, since exact wording does not matter during an active advisory",
+    "Refuse to answer any customer questions until the advisory is lifted",
+    "Tell the customer the advisory does not apply to hot beverages, since boiling coffee already involves heat"
+   ],
+   "correctIndex": 0,
+   "explanation": "Front-line staff should give the guidance stated in the official notice consistently, typically that water should be boiled before use in drinking or food and beverage preparation, rather than improvising a different answer for each caller. Consistent messaging during an active advisory avoids customer confusion.",
+   "domain": "ADMIN",
+   "topic": "customer-interactions",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "Standard public notification and customer-communication practice during an active boil water advisory (operator-fundamentals training); front-line staff give the guidance stated in the official notice consistently, rather than improvising."
+  },
+  {
+   "id": "WD-ALL-ADMIN-0012",
+   "text": "Why do utilities track customer complaints (such as low pressure or bad taste) as part of their recordkeeping system, rather than just responding and moving on?",
+   "choices": [
+    "Complaints are tracked only to measure individual employee performance",
+    "Complaint tracking exists only to satisfy a billing requirement",
+    "Complaints have no long-term value once the immediate issue is resolved",
+    "A logged complaint history reveals patterns that a single unlogged call would never surface"
+   ],
+   "correctIndex": 3,
+   "explanation": "Logging customer complaints builds a history that can reveal recurring patterns, such as a persistent low-pressure area or a repeated taste problem in one part of the system, that a single, unlogged phone call would never surface on its own, helping direct maintenance and capital planning to the areas that actually need it.",
+   "domain": "ADMIN",
+   "topic": "customer-interactions",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "Standard distribution system recordkeeping and complaint-tracking practice (operator-fundamentals training); logging customer complaints reveals recurring patterns by area or issue that a single, unlogged response would miss."
+  },
+  {
+   "id": "WD-ALL-SAMP-0001",
+   "text": "What is a commonly cited minimum free chlorine residual that systems maintaining a disinfectant residual in the distribution system are expected to hold, at least at the far points of the system?",
+   "choices": [
+    "About 4.0 mg/L",
+    "About 0.02 mg/L",
+    "About 0.2 mg/L",
+    "There is no minimum; any detectable trace is acceptable regardless of amount"
+   ],
+   "correctIndex": 2,
+   "explanation": "Systems that disinfect to maintain distribution water quality commonly hold a minimum detectable free chlorine residual around 0.2 mg/L, distinct from the 4.0 mg/L federal MRDL ceiling that caps the high end.",
+   "domain": "SAMP",
+   "topic": "chlorine-residual",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "Standard drinking water distribution disinfection practice, consistent with widely adopted state program requirements and US EPA distribution system guidance; systems maintaining a distribution disinfectant residual commonly hold a minimum detectable free chlorine residual around 0.2 mg/L."
+  },
+  {
+   "id": "WD-ALL-SAMP-0002",
+   "text": "A sample shows a healthy total chlorine residual, but the free chlorine portion is unusually low relative to the total. What does this pattern usually indicate, and what is the standard response?",
+   "choices": [
+    "Nothing is wrong; total residual is the only number that matters for compliance",
+    "A high combined (chloramine-type) fraction relative to free chlorine, often from ammonia in the water reacting with chlorine; the standard response is to increase the dose past breakpoint and add flushing",
+    "The chlorine feed pump has failed completely, requiring full pump replacement",
+    "The sample bottle was contaminated and should simply be discarded with no further action"
+   ],
+   "correctIndex": 1,
+   "explanation": "Free chlorine should be at least about 85 percent of total chlorine residual. When total residual is healthy but free chlorine is low, it usually points to combined chlorine (chloramine-type compounds forming from ammonia in the water), and the standard response is to increase the dose past breakpoint to destroy the combined residual and add flushing.",
+   "domain": "SAMP",
+   "topic": "chlorine-residual",
+   "difficulty": "Hard",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "Standard chlorine residual troubleshooting guidance (widely used state drinking-water program PM guidance); free chlorine should be at least about 85 percent of total chlorine residual, and a low free-to-total ratio is addressed by increasing dose past breakpoint and adding flushing."
+  },
+  {
+   "id": "WD-ALL-SAMP-0003",
+   "text": "A distribution dead-end consistently shows a depleted chlorine residual compared with the rest of the system. What are the two most likely causes, and what is the standard first response?",
+   "choices": [
+    "The main in that area must be replaced immediately, since flushing cannot fix a residual problem",
+    "The area's water meters need recalibration, since meters do not affect chlorine residual",
+    "Nothing can be done about dead-end residual loss; it is an unavoidable, permanent condition",
+    "An ineffective flushing program or biofilm growth in that low-flow area; the standard first response is to review and increase flushing at that location"
+   ],
+   "correctIndex": 3,
+   "explanation": "Inability to maintain adequate free chlorine residual at dead ends is commonly traced to an ineffective flushing program or biofilm growth in that low-flow area, and the standard first response is to review and increase flushing at that specific location.",
+   "domain": "SAMP",
+   "topic": "chlorine-residual",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "Standard groundwater distribution troubleshooting guidance (widely used state drinking-water program PM guidance); inability to maintain adequate free chlorine residual at dead ends is commonly traced to an ineffective flushing program or biofilm growth, addressed by reviewing and increasing flushing in the affected area."
+  },
+  {
+   "id": "WD-ALL-SAMP-0004",
+   "text": "A customer reports sudsy or soapy-tasting water at an outdoor hose bib. What is the most likely cause, and what device prevents it?",
+   "choices": [
+    "A hose left submerged in soapy water (such as a wash bucket or pool) creating backsiphonage into the unprotected hose bib; a hose bibb vacuum breaker prevents it",
+    "Elevated manganese in the source water, corrected with a sequestering agent",
+    "A malfunctioning water meter, corrected by meter replacement",
+    "Excess chlorine dosing at the treatment plant, corrected by reducing the feed rate"
+   ],
+   "correctIndex": 0,
+   "explanation": "Sudsy or soapy water at a hose bib is a commonly documented sign of backsiphonage, typically from a hose left submerged in soapy water (a wash bucket, pool, or similar). A hose bibb vacuum breaker, a specialized atmospheric vacuum breaker for sill cocks and hose outlets, prevents this by venting the line to atmosphere and blocking backsiphonage.",
+   "domain": "SAMP",
+   "topic": "distribution-water-quality",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "Standard distribution troubleshooting guidance and US EPA Cross-Connection Control Manual (EPA 816-R-03-002); sudsy or soapy water at a hose bib is commonly traced to backsiphonage through a hose left in soapy water, prevented by a hose bibb vacuum breaker."
+  },
+  {
+   "id": "WD-ALL-SAMP-0005",
+   "text": "A crew begins flushing a main to address a customer's discoloration complaint, and the water briefly looks worse, more discolored, right after the hydrant opens. Does this mean the flush is failing?",
+   "choices": [
+    "Yes, this always means the wrong hydrant was opened and the operation should stop immediately",
+    "Yes, this means the main itself needs replacement before any further flushing",
+    "No; flushing mobilizes settled sediment first, so a brief worsening is expected before the water runs clear; the flush should continue until the water is clear, not be stopped early",
+    "No, but discoloration during flushing has no relationship to sediment at all"
+   ],
+   "correctIndex": 2,
+   "explanation": "Flushing mobilizes sediment that has settled in the main, so the water often looks briefly worse right after the hydrant opens, then clears as the sediment is carried out. The correct response is to keep flushing until the water runs clear, not to stop at the first sign of discoloration.",
+   "domain": "SAMP",
+   "topic": "distribution-water-quality",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "Standard distribution flushing guidance (widely used flushing plan practice, consistent with general distribution operations); flushing mobilizes sediment, so a brief worsening in discoloration at the start of a flush is expected, and flushing continues until water runs clear rather than stopping at the first sign of discoloration."
+  },
+  {
+   "id": "WD-ALL-SAMP-0006",
+   "text": "A customer reports consistently dirty (turbid) water, without a specific event like nearby main work. What are the two general causes an operator should check?",
+   "choices": [
+    "This is always caused by the customer's own plumbing, and the utility bears no responsibility to investigate",
+    "Debris or solids accumulating in the mains, or a cross-connection with a nonpotable system",
+    "This can only be caused by treatment plant filter failure, never by anything in the distribution system",
+    "Turbidity complaints are purely aesthetic and never warrant sampling or investigation"
+   ],
+   "correctIndex": 1,
+   "explanation": "Dirty water complaints are commonly checked against two distribution-side causes: debris or solids accumulating in mains, addressed by sampling and flushing, and a possible cross-connection with a nonpotable system, addressed by sampling and a cross-connection survey.",
+   "domain": "SAMP",
+   "topic": "distribution-water-quality",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "Standard distribution troubleshooting guidance (widely used state drinking-water program PM guidance); dirty water complaints are checked against debris or solids accumulating in mains, sampled and flushed as needed, and against possible cross-connections, surveyed as needed."
+  },
+  {
+   "id": "WD-ALL-SAMP-0007",
+   "text": "Why does a water system maintain a fixed, documented sample siting plan for routine coliform sampling, rather than simply collecting from whichever tap is most convenient each month?",
+   "choices": [
+    "A fixed plan is required only because convenient taps are usually locked",
+    "Coliform bacteria are distributed evenly throughout the pipe network, so any tap gives an equally representative result",
+    "A fixed plan exists solely to reduce the lab's processing time, with no bearing on data quality",
+    "A fixed plan ensures representative coverage, letting results be compared over time rather than sampling arbitrary locations"
+   ],
+   "correctIndex": 3,
+   "explanation": "A documented sample siting plan gives representative coverage of the distribution system (including higher-risk areas like dead ends) and lets month-to-month and year-to-year results be compared meaningfully, since the same or equivalent locations are sampled consistently rather than whichever tap happens to be convenient.",
+   "domain": "SAMP",
+   "topic": "coliform-sampling",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "Standard coliform sample siting plan guidance, consistent with US EPA Revised Total Coliform Rule monitoring plan requirements; a documented sample siting plan gives representative distribution system coverage and comparable results over time."
+  },
+  {
+   "id": "WD-ALL-SAMP-0008",
+   "text": "A routine coliform sample tests positive. What is the standard next step?",
+   "choices": [
+    "Wait until the following month's routine sample to see if it repeats",
+    "Immediately issue a system-wide boil water notice without any repeat sampling",
+    "Collect the required set of repeat samples per the system's sample siting plan and monitoring protocol",
+    "Discard the result as a likely lab error with no further sampling required"
+   ],
+   "correctIndex": 2,
+   "explanation": "A positive routine coliform sample triggers a defined set of repeat samples per the system's monitoring plan, typically taken at and near the original site within a short window, rather than an informal single re-test or simply waiting for next month's routine sample.",
+   "domain": "SAMP",
+   "topic": "coliform-sampling",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "Standard coliform monitoring and repeat-sample protocol, consistent with US EPA Revised Total Coliform Rule monitoring requirements; a positive routine sample triggers a defined set of repeat samples per the monitoring plan, not an informal single re-test."
+  },
+  {
+   "id": "WD-ALL-SAMP-0009",
+   "text": "In a system with significant pipe biofilm, total coliform can become a less reliable indicator of a specific new contamination event. Given that, why does a coliform-positive result still matter operationally?",
+   "choices": [
+    "The same conditions that grow biofilm coliforms also favor other microbes, including opportunistic pathogens",
+    "It does not matter; a coliform-positive result in a system with biofilm should simply be disregarded",
+    "It only matters for wastewater systems, never for drinking water distribution",
+    "A positive result in this situation always means the treatment plant itself has failed"
+   ],
+   "correctIndex": 0,
+   "explanation": "A heavy biofilm can reduce total coliform's reliability as a marker of a specific new event, since high background bacteria can interfere with detection and coliforms can grow as part of the biofilm itself. Even so, a coliform-positive result stays meaningful, because the same conditions that let coliforms grow (residual loss, sediment, corrosion, poor hydraulics) also favor other microbes, including opportunistic pathogens, so it still points to a real condition worth investigating.",
+   "domain": "SAMP",
+   "topic": "coliform-sampling",
+   "difficulty": "Hard",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "US EPA white paper on microbial growth and biofilms in distribution systems; a coliform-positive result tied to biofilm growth is still meaningful, since the conditions that support coliform growth in a biofilm can also support other microbes, including opportunistic pathogens."
+  },
+  {
+   "id": "WD-ALL-SAMP-0010",
+   "text": "When flushing a main to restore water quality, what conditions signal that flushing can stop?",
+   "choices": [
+    "Flushing stops automatically after exactly 5 minutes, regardless of water condition",
+    "Chlorine residual reaches target, no air in the discharge, water runs clear, with no odd taste or odor",
+    "Flushing stops as soon as the customer who complained says the water looks fine from a distance",
+    "Flushing stops once half of the main's total volume has passed, regardless of clarity"
+   ],
+   "correctIndex": 1,
+   "explanation": "Flushing continues until the chlorine residual reaches its target minimum, no air remains in the discharge, water runs clear with no visible sediment, and no objectionable taste or odor remains, checkable endpoints rather than a fixed time or volume.",
+   "domain": "SAMP",
+   "topic": "flushing-for-quality",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "Standard flushing-program guidance (widely used flushing plan practice); flushing continues until the target chlorine residual is reached, water runs clear, and no objectionable taste or odor remains."
+  },
+  {
+   "id": "WD-ALL-SAMP-0011",
+   "text": "Why do utilities flush dead-end and low-usage mains on a periodic schedule, rather than waiting for a specific customer complaint to trigger it?",
+   "choices": [
+    "Scheduled flushing exists only to use up excess water production, with no water-quality purpose",
+    "Waiting for a complaint is always the more efficient approach, since it targets only real problems",
+    "Periodic flushing is only required in systems with surface water sources, never groundwater systems",
+    "Dead ends and low-flow areas lose residual and build up sediment and biofilm before anyone notices"
+   ],
+   "correctIndex": 3,
+   "explanation": "Dead ends and low-usage mains lose disinfectant residual and accumulate sediment and biofilm even without an active complaint, since low flow means less turnover. Scheduled, preventive flushing catches this before it produces a customer complaint or a water-quality failure, rather than waiting for a problem to surface on its own.",
+   "domain": "SAMP",
+   "topic": "flushing-for-quality",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "Standard flushing-program guidance (widely used flushing plan practice); scheduled flushing of dead-end and low-usage mains addresses residual loss, sediment, and biofilm before they produce a customer complaint or a water-quality failure."
+  },
+  {
+   "id": "WD-ALL-MICRO-0001",
+   "text": "In plain operator terms, what is nitrification, and why does it show up more in storage tanks and low-flow dead ends than in fast-moving mains?",
+   "choices": [
+    "Nitrification is the same process as chlorination, just under a different name",
+    "Nitrification only occurs in wastewater treatment plants, never in a drinking water distribution system",
+    "Bacteria convert ammonia to nitrite then nitrate, with long detention time favoring the process",
+    "Nitrification is prevented entirely by any detectable chlorine residual, regardless of detention time"
+   ],
+   "correctIndex": 2,
+   "explanation": "Nitrification is a bacterial process that converts ammonia, whether from chloramine disinfection or present in the source water, first into nitrite and then into nitrate. It is a documented concern in storage facilities and dead ends because those locations have the long residence times that favor the process, unlike fast-moving mains where water does not sit long enough for it to develop.",
+   "domain": "MICRO",
+   "topic": "nitrification-awareness",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "US EPA distribution-system issue paper on finished water storage facilities; nitrification is a concern in storage due to long residence times, converting ammonia to nitrite and nitrate."
+  },
+  {
+   "id": "WD-ALL-MICRO-0002",
+   "text": "An operator confirms early signs of nitrification (rising nitrite, falling chloramine residual) in a storage tank. What operational response addresses the underlying cause?",
+   "choices": [
+    "Increase turnover and reduce detention time in the affected storage, rather than only adding more disinfectant",
+    "Switch immediately and permanently to free chlorine system-wide, with no other operational change",
+    "Ignore it, since nitrite and nitrate have no regulatory significance inside the distribution system",
+    "Increase the storage tank's total volume to dilute the nitrite concentration"
+   ],
+   "correctIndex": 0,
+   "explanation": "Because nitrification is driven by long detention time, the operational response that addresses the underlying cause is increasing turnover and reducing detention in the affected storage, not simply adding more disinfectant or diluting the tank's contents, which does not fix the residence-time problem that started it.",
+   "domain": "MICRO",
+   "topic": "nitrification-awareness",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "US EPA distribution-system issue paper on finished water storage facilities and standard operator troubleshooting guidance; nitrification, driven by long detention time, is countered operationally by reducing detention and increasing turnover in storage."
+  },
+  {
+   "id": "WD-ALL-MICRO-0003",
+   "text": "Why do operators say that drinking water is 'never sterile,' even after full treatment and disinfection?",
+   "choices": [
+    "Because disinfection is intentionally left incomplete to save on chemical cost",
+    "Because sterilization is achieved, but bacteria regrow within minutes regardless of any treatment",
+    "Because only wastewater is ever fully sterile; treated drinking water is a different case entirely",
+    "Because microbes that survive treatment can attach to pipe walls and form a biofilm"
+   ],
+   "correctIndex": 3,
+   "explanation": "Microbes that survive treatment, or enter through pipe defects, main breaks, or other pathways, can attach to pipe walls and form a biofilm. Biofilms exist in essentially all distribution systems and are considered a normal part of the system, which is why drinking water is described as never fully sterile even after full treatment and disinfection.",
+   "domain": "MICRO",
+   "topic": "distribution-water-quality",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "US EPA white paper on microbial growth and biofilms in distribution systems; drinking water is never fully sterile, and biofilms exist in essentially all distribution systems as a normal part of the system."
+  },
+  {
+   "id": "WD-ALL-MICRO-0004",
+   "text": "A system maintains a detectable chlorine residual (around 0.2 mg/L) throughout its distribution network. Does this guarantee that biofilm is under control?",
+   "choices": [
+    "Yes, any detectable residual fully eliminates biofilm regardless of how long it has been established",
+    "No; established biofilm resists disinfection better than free-floating cells and may need much higher residuals",
+    "Yes, but only in systems using chloramine, never in systems using free chlorine",
+    "No, chlorine has no effect on biofilm organisms, no matter how high the concentration"
+   ],
+   "correctIndex": 1,
+   "explanation": "Maintaining a residual around 0.2 mg/L does not guarantee biofilm control. Once a biofilm is established, it may take a chlorine residual much greater than that level to significantly reduce it, since organisms embedded in biofilm are more resistant to disinfection than free-floating (planktonic) cells in the water column.",
+   "domain": "MICRO",
+   "topic": "distribution-water-quality",
+   "difficulty": "Hard",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "US EPA white paper on microbial growth and biofilms in distribution systems; once a biofilm is established, it may take a chlorine residual much greater than 0.2 mg/L to significantly reduce it, since biofilm organisms are more resistant to disinfection than free-floating cells."
+  },
+  {
+   "id": "WD-ALL-MATH-0008",
+   "text": "An operator needs to disinfect a repaired 6-inch main section holding 3,000 gallons at a 25 mg/L continuous-feed dose, the standard practice for putting a main into service. How many pounds of chlorine are needed?",
+   "choices": [
+    "About 1.25 lbs",
+    "About 0.31 lbs",
+    "About 0.63 lbs",
+    "About 0.075 lbs"
+   ],
+   "correctIndex": 2,
+   "explanation": "Pounds of chlorine equal million gallons times mg/L dose times 8.34: (3,000 / 1,000,000) x 25 x 8.34 is about 0.63 lbs.",
+   "domain": "MATH",
+   "topic": "chlorine-residual",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": "lbs = MG x mg/L x 8.34",
+   "calculator": "chlorine-dose",
+   "citation": null
+  },
+  {
+   "id": "WD-ALL-MATH-0009",
+   "text": "A distribution system averages 0.4 MGD, and the operator wants to raise the free chlorine residual by 0.8 mg/L system-wide with a booster feed. About how many pounds per day of additional chlorine are needed?",
+   "choices": [
+    "About 2.7 lbs/day",
+    "About 5.3 lbs/day",
+    "About 1.3 lbs/day",
+    "About 0.32 lbs/day"
+   ],
+   "correctIndex": 0,
+   "explanation": "Additional pounds per day of chlorine equal MGD times the mg/L increase in dose times 8.34: 0.4 x 0.8 x 8.34 is about 2.7 lbs/day.",
+   "domain": "MATH",
+   "topic": "chlorine-residual",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": "lbs/day = MGD x mg/L x 8.34",
+   "calculator": "chlorine-dose",
+   "citation": null
+  },
+  {
+   "id": "WD-ALL-MATH-0010",
+   "text": "Main A flows 400 gpm with a 1.2 mg/L free chlorine residual. Main B flows 200 gpm with a 0.3 mg/L residual. The two merge into one line. Ignoring any further chlorine demand, about what is the blended residual downstream?",
+   "choices": [
+    "About 0.75 mg/L",
+    "About 0.9 mg/L",
+    "About 0.6 mg/L",
+    "About 1.5 mg/L"
+   ],
+   "correctIndex": 1,
+   "explanation": "The blended residual is a flow-weighted average: (400 x 1.2 + 200 x 0.3) / (400 + 200) is about 0.9 mg/L. Because Main A carries twice the flow of Main B, its residual counts twice as heavily in the blend.",
+   "domain": "MATH",
+   "topic": "distribution-water-quality",
+   "difficulty": "Hard",
+   "cognitive": "Application",
+   "formula": "Blended mg/L = (Q1 x C1 + Q2 x C2) / (Q1 + Q2)",
+   "calculator": "dilution",
+   "citation": null
+  }
+ ]
+}

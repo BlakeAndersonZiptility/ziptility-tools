@@ -1,0 +1,2291 @@
+{
+ "id": "wwc-1",
+ "title": "Wastewater Collection Operator Practice Test, Class I",
+ "discipline": "Wastewater Collections",
+ "level": "Entry level (ABC Class I)",
+ "durationMin": 120,
+ "refCount": 100,
+ "version": "2026-07-11",
+ "questions": [
+  {
+   "id": "WWC-ALL-EQIP-0001",
+   "text": "Which type of pump is the standard choice for handling raw wastewater with solids, rags, and stringy debris without clogging?",
+   "choices": [
+    "A standard end-suction centrifugal pump with an open impeller built for clean water",
+    "A non-clog pump with an impeller designed to pass solids and rags",
+    "A positive-displacement piston pump built for high-pressure clean water service",
+    "A jet pump built for shallow well suction lift"
+   ],
+   "correctIndex": 1,
+   "explanation": "Non-clog pumps use an impeller shaped to pass solids and stringy material without binding, which is why they are the standard choice for raw wastewater in lift stations. Matching the pump to the wastewater quality is a basic reliability rule; the wrong impeller design is the most common cause of a lift station pump that repeatedly clogs.",
+   "domain": "EQIP",
+   "topic": "pump-types",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "US EPA, Collection Systems Technology Fact Sheet: Sewers, Lift Station (EPA 832-F-00-073); reliability improves by using non-clog pumps suited to the particular wastewater quality."
+  },
+  {
+   "id": "WWC-ALL-EQIP-0002",
+   "text": "Which centrifugal pump type is best suited to moving large quantities of wastewater against low head?",
+   "choices": [
+    "Straight-flow centrifugal pump",
+    "Angle-flow centrifugal pump",
+    "Mixed-flow centrifugal pump",
+    "Progressive cavity pump"
+   ],
+   "correctIndex": 2,
+   "explanation": "A mixed-flow centrifugal pump has a smaller impeller outside diameter than an ordinary centrifugal pump, which increases flow volume, making it the most viable choice for pumping large quantities of wastewater at low head.",
+   "domain": "EQIP",
+   "topic": "pump-types",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "US EPA, Collection Systems Technology Fact Sheet: Sewers, Lift Station (EPA 832-F-00-073); mixed-flow centrifugal pumps are most viable for pumping large quantities of wastewater at low head."
+  },
+  {
+   "id": "WWC-ALL-EQIP-0003",
+   "text": "Which centrifugal pump type does not change the wastewater's direction as it passes into the discharge pipe, and is well suited to low-flow, high-head pumping?",
+   "choices": [
+    "Straight-flow centrifugal pump",
+    "Angle-flow centrifugal pump",
+    "Mixed-flow centrifugal pump",
+    "Vertical turbine pump"
+   ],
+   "correctIndex": 0,
+   "explanation": "A straight-flow centrifugal pump does not change the wastewater's direction as it passes into the discharge pipe, which suits it to low-flow, high-head conditions.",
+   "domain": "EQIP",
+   "topic": "pump-types",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "US EPA, Collection Systems Technology Fact Sheet: Sewers, Lift Station (EPA 832-F-00-073); straight-flow centrifugal pumps do not change wastewater direction and are well suited for low-flow, high-head conditions."
+  },
+  {
+   "id": "WWC-ALL-EQIP-0004",
+   "text": "What are the four basic performance characteristics used to describe any wastewater pump?",
+   "choices": [
+    "Voltage, amperage, resistance, and phase",
+    "Diameter, length, weight, and material",
+    "Suction lift, prime, cavitation, and slip",
+    "Capacity, head, power, and efficiency"
+   ],
+   "correctIndex": 3,
+   "explanation": "Every pump is described by capacity (flow rate, typically gpm or mgd), head (energy supplied per unit weight, in feet of water), power (energy consumed per unit time, typically kilowatt-hours), and overall efficiency (the ratio of useful hydraulic work to power input).",
+   "domain": "EQIP",
+   "topic": "pump-types",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "US EPA, Collection Systems Technology Fact Sheet: Sewers, Lift Station (EPA 832-F-00-073); all pumps share four performance characteristics: capacity, head, power, and overall efficiency."
+  },
+  {
+   "id": "WWC-ALL-EQIP-0005",
+   "text": "Across normal operating conditions, in what efficiency range do most wastewater lift-station pump systems run?",
+   "choices": [
+    "95 to 99 percent",
+    "75 to 85 percent",
+    "40 to 50 percent",
+    "20 to 30 percent"
+   ],
+   "correctIndex": 1,
+   "explanation": "Pump systems in wastewater lift stations typically operate at 75 to 85 percent efficiency most of the time; overall efficiency depends on the installed pump type, the control system, and how much the influent flow fluctuates.",
+   "domain": "EQIP",
+   "topic": "pump-types",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "US EPA, Collection Systems Technology Fact Sheet: Sewers, Lift Station (EPA 832-F-00-073); pump systems operate at 75 to 85 percent efficiency most of the time."
+  },
+  {
+   "id": "WWC-ALL-EQIP-0006",
+   "text": "What is the main operating benefit of switching a lift station from constant-speed to variable-speed pumping?",
+   "choices": [
+    "Pump discharge tracks inflow, so the wet well holds less storage and stays near a constant level",
+    "The wet well can be eliminated entirely, since no storage volume is ever needed",
+    "The station no longer needs any standby pump, since one pump now covers every flow condition",
+    "Pump maintenance is no longer required, since variable-speed pumps do not wear"
+   ],
+   "correctIndex": 0,
+   "explanation": "Variable-speed pumping lets the pump discharge track the inflow rate closely, so the wet-well level stays near a constant elevation and only a nominal storage volume is needed, unlike constant-speed pumping where the well cycles between start and stop levels.",
+   "domain": "EQIP",
+   "topic": "pump-types",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "US EPA, Collection Systems Technology Fact Sheet: Sewers, Lift Station (EPA 832-F-00-073); variable-speed pumping matches lift station discharge to inflow so only nominal wet-well storage volume is needed and the well water level stays near a constant elevation."
+  },
+  {
+   "id": "WWC-ALL-EQIP-0007",
+   "text": "What are the four basic elements of a force main?",
+   "choices": [
+    "Wet well, dry well, screen, and grinder",
+    "Manhole, invert, bench, and channel",
+    "Basin, weir, baffle, and launder",
+    "Pipe, valves, surge control, cleaning system"
+   ],
+   "correctIndex": 3,
+   "explanation": "A force main's four elements are pipe, valves, pressure-surge control devices, and a cleaning system; it is the pressurized pipe that carries wastewater from the discharge side of a pump to a discharge point.",
+   "domain": "EQIP",
+   "topic": "valves",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "US EPA, Wastewater Technology Fact Sheet: Sewers, Force Main (EPA 832-F-00-071); a force main's four elements are pipe, valves, pressure-surge control devices, and a cleaning system."
+  },
+  {
+   "id": "WWC-ALL-EQIP-0008",
+   "text": "Why are air-release and vacuum valves installed at the unavoidable high points of a force main?",
+   "choices": [
+    "To add chlorine at the point of highest turbulence",
+    "To measure flow rate where velocity is most stable",
+    "To release trapped air and admit air on shutdown",
+    "To provide a sampling tap for laboratory testing"
+   ],
+   "correctIndex": 2,
+   "explanation": "High points in a force main trap air, which promotes sulfide corrosion and can block flow, so air-release and vacuum valves are installed at unavoidable high points to release trapped air during operation and admit air on shutdown.",
+   "domain": "EQIP",
+   "topic": "valves",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "US EPA, Wastewater Technology Fact Sheet: Sewers, Force Main (EPA 832-F-00-071); avoid high points, which trap air and cause sulfide corrosion, and install gas-relief and vacuum valves at unavoidable high points."
+  },
+  {
+   "id": "WWC-ALL-EQIP-0009",
+   "text": "Responding to a lift-station alarm, an operator checks the force-main check valve and finds its counterweight feels spongy and soft to the touch. What does this most likely indicate?",
+   "choices": [
+    "The pump has lost prime and is not moving any water",
+    "The pump is actively pumping, moving water through the main",
+    "The check valve is stuck fully closed and blocking flow",
+    "The force main has ruptured somewhere downstream of the station"
+   ],
+   "correctIndex": 1,
+   "explanation": "A check valve counterweight that feels spongy or soft means the pump is actively pumping; a firm, settled counterweight means it is not. This quick field check tells an operator what is happening at a lift station before opening anything up.",
+   "domain": "EQIP",
+   "topic": "valves",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "New England Interstate Water Pollution Control Commission, Optimizing O&M and Rehabilitation of Sanitary Sewer Collection Systems (December 2003); a check valve counterweight that feels spongy or soft means the pump is pumping, a firm settled counterweight means it is not."
+  },
+  {
+   "id": "WWC-ALL-EQIP-0010",
+   "text": "Where are blowoff valves installed along a force main?",
+   "choices": [
+    "At low points, to drain or clear the line",
+    "At high points, to release trapped air",
+    "At the pump discharge only, to control pressure surges",
+    "At the midpoint of every run, regardless of elevation"
+   ],
+   "correctIndex": 0,
+   "explanation": "Blowoff valves are installed at the low points of a force main, where they let an operator drain or clear the line; this pairs with air-release and vacuum valves at the high points.",
+   "domain": "EQIP",
+   "topic": "valves",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "US EPA, Wastewater Technology Fact Sheet: Sewers, Force Main (EPA 832-F-00-071); install gas-relief and vacuum valves at unavoidable high points, blowoffs at low points."
+  },
+  {
+   "id": "WWC-ALL-EQIP-0011",
+   "text": "What is the purpose of a cone or ball valve installed at a force-main pump's discharge?",
+   "choices": [
+    "To filter grit out of the wastewater stream before it enters the main",
+    "To meter the total daily flow for billing purposes",
+    "To allow the pipe to be jetted for routine cleaning",
+    "To control the pressure surge that occurs during pump start-up and shutdown"
+   ],
+   "correctIndex": 3,
+   "explanation": "Pressure surges during pump start-up and shutdown, lasting only 2 to 15 seconds, are controlled by cone or ball valves at the pump discharge or by surge tanks.",
+   "domain": "EQIP",
+   "topic": "valves",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "US EPA, Wastewater Technology Fact Sheet: Sewers, Force Main (EPA 832-F-00-071); pressure surges are controlled by cone or ball valves at the pump discharge or by surge tanks."
+  },
+  {
+   "id": "WWC-ALL-EQIP-0012",
+   "text": "When multiple pumps serve the same force main, why should they be brought online one at a time, slowly, rather than all at once?",
+   "choices": [
+    "Bringing pumps on together always trips the main circuit breaker",
+    "Simultaneous starts use less electricity than staggered starts",
+    "Bringing pumps on together risks water hammer from the sudden pressure surge",
+    "Regulations require a minimum 30 minute gap between any two pump starts"
+   ],
+   "correctIndex": 2,
+   "explanation": "Pumps should be brought online one at a time, slowly, to avoid water hammer, the abrupt pressure surge that can occur during pump start-up and shutdown.",
+   "domain": "EQIP",
+   "topic": "valves",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "US EPA, Wastewater Technology Fact Sheet: Sewers, Force Main (EPA 832-F-00-071), and City of Austin force-main operating procedure; bring pumps on one at a time, slowly, to avoid water hammer."
+  },
+  {
+   "id": "WWC-ALL-EQIP-0013",
+   "text": "What are the three recognized classes of collection-system maintenance?",
+   "choices": [
+    "Corrective, preventive, and predictive",
+    "Emergency, routine, and seasonal",
+    "Mechanical, electrical, and structural",
+    "Daily, weekly, and annual"
+   ],
+   "correctIndex": 0,
+   "explanation": "The three accepted classes of maintenance are corrective (reactive, fixing things after they fail), preventive (proactive and scheduled by problem area, run time, or calendar), and predictive (also proactive, based on tracking baseline performance data over time to predict failure before it happens).",
+   "domain": "EQIP",
+   "topic": "preventive-maintenance",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "US EPA / NEIWPCC, Optimizing O&M and Rehabilitation of Sanitary Sewer Collection Systems (December 2003); there are three accepted classes of maintenance: corrective, preventive, and predictive."
+  },
+  {
+   "id": "WWC-ALL-EQIP-0014",
+   "text": "Which class of maintenance is defined by tracking baseline performance data over time to predict a failure before it happens?",
+   "choices": [
+    "Corrective maintenance",
+    "Predictive maintenance",
+    "Preventive maintenance",
+    "Emergency maintenance"
+   ],
+   "correctIndex": 1,
+   "explanation": "Predictive maintenance is proactive: an operator sets baseline performance data, watches performance criteria over time, and predicts failure before it happens, which distinguishes it from preventive maintenance's fixed schedule.",
+   "domain": "EQIP",
+   "topic": "preventive-maintenance",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "US EPA / NEIWPCC, Optimizing O&M and Rehabilitation of Sanitary Sewer Collection Systems (December 2003); predictive maintenance sets baseline performance data, watches performance criteria over time, and predicts failure before it happens."
+  },
+  {
+   "id": "WWC-ALL-EQIP-0015",
+   "text": "What size of corrective-maintenance backlog generally signals that an operator is in control of the workload?",
+   "choices": [
+    "Six months or more",
+    "One year or more",
+    "Two weeks or less",
+    "No established benchmark"
+   ],
+   "correctIndex": 2,
+   "explanation": "A corrective-maintenance backlog of two weeks or less means the operator is in control; by contrast, any corrective work order older than six months should be explainable.",
+   "domain": "EQIP",
+   "topic": "preventive-maintenance",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "US EPA, Guide for Evaluating CMOM Programs at Sanitary Sewer Collection Systems (EPA 305-B-05-002, January 2005); a corrective-maintenance backlog of two weeks or less means the operator is in control, and any corrective work order older than six months should be explainable."
+  },
+  {
+   "id": "WWC-ALL-EQIP-0016",
+   "text": "During a lift-station inspection, which observation is a documented sign of inadequate maintenance?",
+   "choices": [
+    "A logbook entry recorded at the start of every shift",
+    "A spare-parts inventory kept current for critical components",
+    "A generator that is exercised under load on a schedule",
+    "A check valve that does not close when the pump stops"
+   ],
+   "correctIndex": 3,
+   "explanation": "A check valve that does not close when the pump stops is on the documented list of signs of inadequate maintenance, alongside poor housekeeping, excessive grease in the wet well, corrosion on railings and ladders, and dead instrumentation or alarms.",
+   "domain": "EQIP",
+   "topic": "preventive-maintenance",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "US EPA, Guide for Evaluating CMOM Programs at Sanitary Sewer Collection Systems (EPA 305-B-05-002, January 2005); signs of inadequate maintenance include check valves not closing when pumps stop, among other listed indicators."
+  },
+  {
+   "id": "WWC-ALL-EQIP-0017",
+   "text": "A collection-system pump trips on overload and, after being reset, trips again within minutes, repeating this pattern each time it is reset. What does this pattern most likely mean?",
+   "choices": [
+    "The overload relay itself is miscalibrated and should simply be adjusted looser",
+    "The pump is ragged or clogged and needs to be pulled and cleared, not repeatedly reset",
+    "The pump motor is oversized for the application and should be downsized",
+    "The incoming voltage is fluctuating and the fix is a larger transformer"
+   ],
+   "correctIndex": 1,
+   "explanation": "A pump that trips on overload immediately after every reset is telling an operator it is clogged or ragged, not that the reset button needs pressing again; repeatedly resetting instead of pulling the pump to clear it is how pumps get burned up in service.",
+   "domain": "EQIP",
+   "topic": "preventive-maintenance",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "New England Interstate Water Pollution Control Commission, Optimizing O&M and Rehabilitation of Sanitary Sewer Collection Systems (December 2003); if a breaker is off and the motor is hot to the touch, do not attempt to reset and start it, because the motor likely tripped on overload and restarting bakes it."
+  },
+  {
+   "id": "WWC-ALL-EQIP-0018",
+   "text": "In a well-run collection-system maintenance program, what share of the total maintenance budget should emergency repairs reasonably represent?",
+   "choices": [
+    "About 5 to 10 percent",
+    "About 50 to 60 percent",
+    "About 90 percent",
+    "About 0 percent"
+   ],
+   "correctIndex": 0,
+   "explanation": "Emergency repairs should be a small share of the maintenance budget; five to ten percent would not be excessive in a well-run program, in contrast with utilities that spend as much as 90 percent of maintenance resources on corrective work.",
+   "domain": "EQIP",
+   "topic": "preventive-maintenance",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "US EPA, Guide for Evaluating CMOM Programs at Sanitary Sewer Collection Systems (EPA 305-B-05-002, January 2005); emergency repairs should be a small share of the maintenance budget, and 5 to 10 percent would not be excessive."
+  },
+  {
+   "id": "WWC-ALL-PROC-0001",
+   "text": "What is the most frequently used piece of sewer cleaning equipment?",
+   "choices": [
+    "The bucket machine",
+    "The cable machine",
+    "A high-velocity jet cleaner",
+    "Hand rodding equipment"
+   ],
+   "correctIndex": 2,
+   "explanation": "High-velocity jet cleaners are truck- or trailer-mounted and self-contained, making them the most frequently used sewer-maintenance equipment: the most flexible option and the one that uses the least personnel.",
+   "domain": "PROC",
+   "topic": "cleaning-cctv-equipment",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "US EPA / NEIWPCC, Optimizing O&M and Rehabilitation of Sanitary Sewer Collection Systems (December 2003); high-velocity jet cleaners are the most frequently used sewer-maintenance equipment, the most flexible, and use the least personnel."
+  },
+  {
+   "id": "WWC-ALL-PROC-0002",
+   "text": "Adding what accessory turns a high-velocity jet cleaner into a combination machine?",
+   "choices": [
+    "A root-cutter nozzle",
+    "A second engine",
+    "A second hose reel",
+    "A vacuum unit"
+   ],
+   "correctIndex": 3,
+   "explanation": "Adding a vacuum unit to a high-velocity jet cleaner turns it into a combination machine, able to both jet and vacuum debris in one pass.",
+   "domain": "PROC",
+   "topic": "cleaning-cctv-equipment",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "US EPA / NEIWPCC, Optimizing O&M and Rehabilitation of Sanitary Sewer Collection Systems (December 2003); add a vacuum unit and a jet cleaner becomes a combination machine."
+  },
+  {
+   "id": "WWC-ALL-PROC-0003",
+   "text": "What is the key limitation of power rodders as sewer-cleaning equipment?",
+   "choices": [
+    "They cannot move sand and gravel or remove any debris",
+    "They can only be used in sewers larger than 24 inches in diameter",
+    "They require a full bypass pumping setup before every use",
+    "They cannot cut roots or break up hardened grease"
+   ],
+   "correctIndex": 0,
+   "explanation": "Power rodders rotate, push, and pull steel rods; they are effective on roots and hardened grease, but they cannot move sand and gravel and do not remove debris from the system at all, which is their key limitation.",
+   "domain": "PROC",
+   "topic": "cleaning-cctv-equipment",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "US EPA / NEIWPCC, Optimizing O&M and Rehabilitation of Sanitary Sewer Collection Systems (December 2003); power rodders are effective on roots and hardened grease but not on sand and gravel, which they cannot move, and rodding does not remove debris from the system."
+  },
+  {
+   "id": "WWC-ALL-PROC-0004",
+   "text": "Power rodders are generally most effective up to what pipe diameter?",
+   "choices": [
+    "6 inches",
+    "12 inches",
+    "24 inches",
+    "36 inches"
+   ],
+   "correctIndex": 1,
+   "explanation": "Rodding is most effective in sewers up to about 12 inches in diameter.",
+   "domain": "PROC",
+   "topic": "cleaning-cctv-equipment",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "US EPA / NEIWPCC, Optimizing O&M and Rehabilitation of Sanitary Sewer Collection Systems (December 2003); rodding is most effective up to 12-inch diameter."
+  },
+  {
+   "id": "WWC-ALL-PROC-0005",
+   "text": "Which cleaning equipment pulls a jawed bucket through the pipe using winches, and gives the best cleaning with the least operator error?",
+   "choices": [
+    "The cable machine",
+    "The jet cleaner",
+    "The bucket machine",
+    "The root saw"
+   ],
+   "correctIndex": 2,
+   "explanation": "The bucket machine pulls a jawed bucket through the pipe with winches; it gives the best cleaning with the least operator error but is very labor-intensive, and is used mainly to pull large debris from larger sewers.",
+   "domain": "PROC",
+   "topic": "cleaning-cctv-equipment",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "US EPA / NEIWPCC, Optimizing O&M and Rehabilitation of Sanitary Sewer Collection Systems (December 2003); the bucket machine gives the best cleaning with the least operator error but is very labor-intensive."
+  },
+  {
+   "id": "WWC-ALL-PROC-0006",
+   "text": "What is the main advantage of CCTV inspection over a manned walk-through inspection of a large sewer?",
+   "choices": [
+    "CCTV cameras cost less to purchase than a walk-through inspector's safety gear",
+    "CCTV crews can inspect without any prior cleaning of the line",
+    "CCTV footage does not need to be reviewed by a certified coder",
+    "CCTV eliminates the need for confined-space entry"
+   ],
+   "correctIndex": 3,
+   "explanation": "CCTV, a self-propelled or pulled camera with a light, is used routinely for preventive maintenance and I and I investigation and eliminates the need for confined-space entry that a manned walk-through inspection would require.",
+   "domain": "PROC",
+   "topic": "cleaning-cctv-equipment",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "US EPA, Guide for Evaluating CMOM Programs at Sanitary Sewer Collection Systems (EPA 305-B-05-002, January 2005); CCTV is used routinely in preventive maintenance and for I/I investigation, and it eliminates confined-space entry."
+  },
+  {
+   "id": "WWC-ALL-PROC-0007",
+   "text": "A crew needs to inspect a sewer segment that stays flooded and cannot be dewatered. Which inspection technology is built to work in that condition?",
+   "choices": [
+    "Sonar imaging",
+    "Lamping",
+    "A raft camera",
+    "Mandrel testing"
+   ],
+   "correctIndex": 0,
+   "explanation": "Sonar emits a pulse that images the pipe interior and works in flooded or inaccessible sections, which is why it is especially useful for inverted siphons that stay full under pressure.",
+   "domain": "PROC",
+   "topic": "cleaning-cctv-equipment",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "US EPA, Guide for Evaluating CMOM Programs at Sanitary Sewer Collection Systems (EPA 305-B-05-002, January 2005); sonar works in flooded or inaccessible sections and is especially useful for inverted siphons that are always full under pressure."
+  },
+  {
+   "id": "WWC-ALL-PROC-0008",
+   "text": "What is the main limitation of a lamping inspection, in which a still camera is lowered into a manhole and a strobe shoots down the pipe?",
+   "choices": [
+    "It requires flow in the pipe to float the camera into position",
+    "It only reaches the first 10 to 12 feet upstream and downstream",
+    "It cannot be performed without first shutting down the entire sewer segment",
+    "It produces no permanent record of any kind"
+   ],
+   "correctIndex": 1,
+   "explanation": "Lamping only reaches the first 10 to 12 feet upstream and downstream of the manhole, though it needs no confined-space entry.",
+   "domain": "PROC",
+   "topic": "cleaning-cctv-equipment",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "US EPA, Guide for Evaluating CMOM Programs at Sanitary Sewer Collection Systems (EPA 305-B-05-002, January 2005); lamping only reaches the first 10 to 12 feet upstream and downstream but needs no confined-space entry."
+  },
+  {
+   "id": "WWC-ALL-PROC-0009",
+   "text": "What does jetting do that flushing does not?",
+   "choices": [
+    "Jetting only applies to storm sewers, never to sanitary sewers",
+    "Jetting adds chemical root retardant to the water stream",
+    "Jetting drives high-velocity water to remove debris and cut roots",
+    "Jetting requires the line to be completely dry before starting"
+   ],
+   "correctIndex": 2,
+   "explanation": "Flushing introduces a heavy flow of water at a manhole to move lighter deposits; jetting goes further, directing high-velocity water against the pipe walls to remove heavier debris and grease and to cut roots in small-diameter pipe.",
+   "domain": "PROC",
+   "topic": "rodders-and-jetters",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "US EPA / NEIWPCC, Optimizing O&M and Rehabilitation of Sanitary Sewer Collection Systems (December 2003); jetting drives high-velocity water against the walls to remove heavier debris, grease, and clogs, and cuts roots in small-diameter pipe."
+  },
+  {
+   "id": "WWC-ALL-PROC-0010",
+   "text": "Balling, which forces water through a spinning threaded rubber ball, is most effective in what range of sewer sizes?",
+   "choices": [
+    "2 to 4 inches",
+    "50 to 60 inches",
+    "36 to 48 inches",
+    "5 to 24 inches"
+   ],
+   "correctIndex": 3,
+   "explanation": "Balling is most effective in sewers ranging from 5 to 24 inches in diameter.",
+   "domain": "PROC",
+   "topic": "rodders-and-jetters",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "Wisconsin DNR, Collection System Maintenance Part 2: Rehabilitative Program (PUB-WT-847-2006); balling is most effective for sewers ranging in size from 5 to 24 inches."
+  },
+  {
+   "id": "WWC-ALL-PROC-0011",
+   "text": "Why should mechanical cleaning tools such as cutters and brushes generally be avoided in plastic sewer pipe?",
+   "choices": [
+    "They can score the pipe wall and increase roughness, which slows the flow",
+    "They are more expensive per hour to operate than hydraulic methods",
+    "They are incompatible with any pipe joined by solvent welding",
+    "They require a two person crew instead of one"
+   ],
+   "correctIndex": 0,
+   "explanation": "Mechanical cleaning tools such as cutters and brushes can score a plastic pipe's wall and increase its roughness, which slows the flow rate through the pipe, so high-velocity flushing is the preferred method instead.",
+   "domain": "PROC",
+   "topic": "rodders-and-jetters",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "US EPA / NEIWPCC, Optimizing O&M and Rehabilitation of Sanitary Sewer Collection Systems (December 2003); mechanical tools should not be used in plastic pipe because they score the wall and increase roughness, which slows flow."
+  },
+  {
+   "id": "WWC-ALL-PROC-0012",
+   "text": "What is the recommended method of choice for cleaning plastic sewer pipe?",
+   "choices": [
+    "Power rodding with a metal cutter",
+    "High-velocity flushing",
+    "The bucket machine",
+    "Chemical root retardant on every cycle"
+   ],
+   "correctIndex": 1,
+   "explanation": "High-velocity flushing is the least likely method to damage plastic pipe and is the recommended method of choice for it.",
+   "domain": "PROC",
+   "topic": "rodders-and-jetters",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "US EPA / NEIWPCC, Optimizing O&M and Rehabilitation of Sanitary Sewer Collection Systems (December 2003); high-velocity flushing is the least likely to damage plastic and is the method of choice."
+  },
+  {
+   "id": "WWC-ALL-PROC-0013",
+   "text": "During hydraulic cleaning, what is the non-negotiable rule for handling the sand and gravel that gets moved?",
+   "choices": [
+    "Leave it in the line, it will settle out again farther downstream",
+    "Wash it into the nearest storm drain to keep it out of the sanitary system",
+    "Remove it at the nearest downstream manhole as you go",
+    "Collect it only at the treatment plant headworks, never in the field"
+   ],
+   "correctIndex": 2,
+   "explanation": "The non-negotiable rule is to remove sand and gravel at the nearest downstream manhole as you go, or it migrates to the pump station and the plant.",
+   "domain": "PROC",
+   "topic": "rodders-and-jetters",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "US EPA / NEIWPCC, Optimizing O&M and Rehabilitation of Sanitary Sewer Collection Systems (December 2003); Wisconsin DNR, Collection System Maintenance Part 2; remove sand and gravel at the nearest downstream manhole as you go."
+  },
+  {
+   "id": "WWC-ALL-PROC-0014",
+   "text": "A commonly cited system-wide guideline for how often to clean an entire gravity-sewer system runs on approximately what cycle?",
+   "choices": [
+    "Every 6 months for every foot of pipe in the system",
+    "Every 25 years, with no adjustment for local conditions",
+    "Once every three to four years, with mandatory adjustment for local conditions",
+    "Once every seven to twelve years, or 8 to 14 percent per year"
+   ],
+   "correctIndex": 3,
+   "explanation": "A system-wide guideline is once every seven to twelve years, a rate of 8 to 14 percent of the system per year, adjusted up or down from that baseline to match actual conditions such as grease load or pipe age.",
+   "domain": "PROC",
+   "topic": "rodders-and-jetters",
+   "difficulty": "Hard",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "US EPA, Guide for Evaluating CMOM Programs at Sanitary Sewer Collection Systems (EPA 305-B-05-002, January 2005); a system-wide guideline is once every seven to twelve years, a rate of 8 to 14 percent per year."
+  },
+  {
+   "id": "WWC-ALL-PROC-0015",
+   "text": "A crew is about to jet a badly cracked, end-of-life sewer segment at full working pressure. What risk does this specific situation add, beyond the risk of an ordinary jetting job?",
+   "choices": [
+    "It can remove pipe and soil through the cracks, create a void, and cause a sinkhole",
+    "It will automatically trigger a mandatory environmental impact review before work can proceed",
+    "It voids the pipe manufacturer's warranty regardless of the pipe's actual condition",
+    "It requires the crew to pull a new permit before the work can continue"
+   ],
+   "correctIndex": 0,
+   "explanation": "Jetting a badly cracked pipe at end of life can remove pipe and soil through the cracks, creating a void that can cause a sinkhole and more sanitary sewer overflows, which is why that condition needs a different plan than routine jetting.",
+   "domain": "PROC",
+   "topic": "rodders-and-jetters",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "Central Valley Clean Water Association / BACWA, Sanitary Sewer Overflow Reduction Strategies (SSORS) Best Management Practices manual (2009); do not jet a badly cracked pipe at end of life, since you can remove pipe and soil, create a void, and cause a sinkhole and more SSOs."
+  },
+  {
+   "id": "WWC-ALL-MATH-0001",
+   "text": "A lift-station pump moves 600 gpm against a total dynamic head of 33 feet. What is the water horsepower?",
+   "choices": [
+    "50.0 water horsepower",
+    "5.0 water horsepower",
+    "0.5 water horsepower",
+    "19,800 water horsepower"
+   ],
+   "correctIndex": 1,
+   "explanation": "Water horsepower equals gpm times head in feet, divided by 3,960: 600 times 33 is 19,800, divided by 3,960 is 5.0 water horsepower.",
+   "domain": "MATH",
+   "topic": "pump-types",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": "Water HP = (gpm x Head, ft) / 3,960",
+   "calculator": "water-hp",
+   "citation": null
+  },
+  {
+   "id": "WWC-ALL-MATH-0002",
+   "text": "A standby pump at a lift station is rated to deliver 440 gpm at a total head of 90 feet. What water horsepower does that represent?",
+   "choices": [
+    "1.0 water horsepower",
+    "39,600 water horsepower",
+    "10.0 water horsepower",
+    "100.0 water horsepower"
+   ],
+   "correctIndex": 2,
+   "explanation": "Water horsepower equals gpm times head in feet, divided by 3,960: 440 times 90 is 39,600, divided by 3,960 is 10.0 water horsepower.",
+   "domain": "MATH",
+   "topic": "pump-types",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": "Water HP = (gpm x Head, ft) / 3,960",
+   "calculator": "water-hp",
+   "citation": null
+  },
+  {
+   "id": "WWC-ALL-PROC-0016",
+   "text": "Why does the collection-system numbering rule require that each manhole and cleanout keep a unique ID that is never renumbered?",
+   "choices": [
+    "Maps, inventory, and work orders keyed to that ID survive staff turnover",
+    "Renumbering to match a new GIS system, done carefully, causes no real problems",
+    "The ID is only used internally and never appears on any historical record",
+    "It exists only to satisfy a state reporting form, not for daily operations"
+   ],
+   "correctIndex": 0,
+   "explanation": "Numbering every manhole and cleanout with a unique, permanent ID that is never renumbered is the single rule under everything else, because the maps, the historical inventory, and the work orders are all keyed to those same IDs, and that link has to survive staff turnover.",
+   "domain": "PROC",
+   "topic": "sewers-manholes",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "US EPA / NEIWPCC, Optimizing O&M and Rehabilitation of Sanitary Sewer Collection Systems (December 2003); CA Water Boards, SSORS Best Management Practices manual (2009); number every manhole and cleanout with a unique, permanent ID that is never renumbered."
+  },
+  {
+   "id": "WWC-ALL-PROC-0017",
+   "text": "In a properly kept collection-system map, how is a sewer segment identified?",
+   "choices": [
+    "By the pipe's installation date only",
+    "By its upstream and downstream manhole IDs, in that order",
+    "By the name of the street above it, with no other reference",
+    "By a randomly assigned barcode with no relationship to the manholes"
+   ],
+   "correctIndex": 1,
+   "explanation": "Manholes are the nodes; sewer segments are identified by their upstream and downstream manholes, always written in the same order (upstream first), with an extra indicator needed when parallel pipes run between the same two manholes.",
+   "domain": "PROC",
+   "topic": "sewers-manholes",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "US EPA / NEIWPCC, Optimizing O&M and Rehabilitation of Sanitary Sewer Collection Systems (December 2003); sewer segments are identified by their upstream and downstream manholes, always written in the same order, upstream first."
+  },
+  {
+   "id": "WWC-ALL-PROC-0018",
+   "text": "What is a commonly cited baseline manhole inspection frequency, with problem manholes inspected more often?",
+   "choices": [
+    "Once every ten years",
+    "Once a month",
+    "Once every six months",
+    "Once every two years"
+   ],
+   "correctIndex": 3,
+   "explanation": "Manhole inspection frequency is routinely every one to five years, with a baseline such as once every two years and more frequent inspection of problem manholes.",
+   "domain": "PROC",
+   "topic": "sewers-manholes",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "US EPA, Guide for Evaluating CMOM Programs at Sanitary Sewer Collection Systems (EPA 305-B-05-002, January 2005); manhole inspection frequency is routinely every one to five years, with a baseline such as once every two years."
+  },
+  {
+   "id": "WWC-ALL-PROC-0019",
+   "text": "A visual manhole inspection record should note which of the following as a documented item?",
+   "choices": [
+    "The manhole's original installation contractor",
+    "The current property owner's billing account number",
+    "Atmospheric hazard readings, especially H2S",
+    "The manhole casting's original purchase price"
+   ],
+   "correctIndex": 2,
+   "explanation": "Visual manhole records should note cracks or breaks, grease or grit accumulation, flow characteristics, inflow, infiltration, corrosion, offsets, frame condition, evidence of surcharge, and atmospheric hazard readings, especially H2S.",
+   "domain": "PROC",
+   "topic": "sewers-manholes",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "US EPA, Guide for Evaluating CMOM Programs at Sanitary Sewer Collection Systems (EPA 305-B-05-002, January 2005); visual manhole records should note cracks, grease, flow characteristics, infiltration, corrosion, and atmospheric hazard readings especially H2S."
+  },
+  {
+   "id": "WWC-ALL-PROC-0020",
+   "text": "What three problems most often drive manhole rehabilitation?",
+   "choices": [
+    "Infiltration at rings and joints, traffic-load fatigue, and H2S corrosion",
+    "Low water pressure, chlorine taste complaints, and meter drift",
+    "Vandalism, graffiti, and illegal dumping of yard waste",
+    "Frost heave, tree root cosmetic staining, and paint fading on the cover"
+   ],
+   "correctIndex": 0,
+   "explanation": "Most manholes need rehabilitation for three main reasons: infiltration of groundwater and rainwater at rings, joints, and connections; structural fatigue from traffic loading and shifting soils; and corrosion from hydrogen sulfide.",
+   "domain": "PROC",
+   "topic": "sewers-manholes",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "Wisconsin DNR, Collection System Maintenance Part 2: Rehabilitative Program (PUB-WT-847-2006); manholes need rehabilitation due to infiltration at rings and joints, structural fatigue from traffic and soil, and corrosion from hydrogen sulfide."
+  },
+  {
+   "id": "WWC-ALL-PROC-0021",
+   "text": "Under the PACP structural condition grading scale, what does a Grade 5 rating mean?",
+   "choices": [
+    "Failure unlikely in the foreseeable future",
+    "Condition is good for at least 20 more years",
+    "Failed, or may fail within 5 years",
+    "Condition is fair, good for 10 to 20 more years"
+   ],
+   "correctIndex": 2,
+   "explanation": "On the PACP structural-condition grading scale, Grade 5 means failed or may fail within 5 years, the most urgent condition on the scale, with Grade 4 at 5 to 10 years, Grade 3 at 10 to 20 years, Grade 2 at least 20 years, and Grade 1 unlikely to fail in the foreseeable future.",
+   "domain": "PROC",
+   "topic": "sewers-manholes",
+   "difficulty": "Hard",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "NASSCO PACP structural-condition grading, via CA Water Boards, SSORS Best Management Practices manual (2009); Grade 5 means failed or may fail within 5 years."
+  },
+  {
+   "id": "WWC-ALL-PROC-0022",
+   "text": "A sewer-line map is missing invert elevations and slope data for a segment with a chronic clog. Why does this gap matter operationally?",
+   "choices": [
+    "A crew cannot confirm the grade or diagnose a sag without inverts and slope data",
+    "Invert elevations are required only for billing, not operations",
+    "It only matters for new construction permits, not for maintaining an existing segment",
+    "GPS coordinates alone fully substitute for invert and slope data on any map"
+   ],
+   "correctIndex": 0,
+   "explanation": "A sewer-line map should show pipe diameter, material, length between manhole centers, flow direction, invert elevations, and slopes; without that data, a crew cannot confirm a segment's grade or diagnose whether a sag or offset, rather than debris alone, is behind a chronic clog.",
+   "domain": "PROC",
+   "topic": "sewers-manholes",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "US EPA / NEIWPCC, Optimizing O&M and Rehabilitation of Sanitary Sewer Collection Systems (December 2003); a sewer-line map should show pipe diameter, material, length, flow direction, invert elevations, and slopes."
+  },
+  {
+   "id": "WWC-ALL-PROC-0023",
+   "text": "Why is clay pipe, common in sewers installed before the late 1980s, more vulnerable to root damage than PVC pipe?",
+   "choices": [
+    "Clay pipe is heavier, which attracts root growth toward the pipe",
+    "PVC pipe is installed at a shallower depth, which is the only reason it sees fewer roots",
+    "Clay pipe is more easily penetrated by roots than PVC, which has fewer joints",
+    "Clay pipe is installed at greater depth, which exposes roots to soil layers where they thrive"
+   ],
+   "correctIndex": 2,
+   "explanation": "Clay pipe, commonly installed until the late 1980s, is more easily penetrated and damaged by tree roots, while PVC pipe is more resistant to root intrusion because it typically has fewer joints, the entry points roots exploit.",
+   "domain": "PROC",
+   "topic": "pipe-materials-and-joints",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "Wisconsin DNR, Collection System Maintenance Part 2: Rehabilitative Program (PUB-WT-847-2006); clay tile pipe is more easily penetrated and damaged by tree roots, while PVC pipe is more resistant because it typically has fewer joints."
+  },
+  {
+   "id": "WWC-ALL-PROC-0024",
+   "text": "What is the most common material pairing used for force mains, with a lined variant reserved for highly corrosive wastewater?",
+   "choices": [
+    "Vitrified clay and cast iron, with a rubber-lined cast iron variant for corrosive service",
+    "Fiberglass and copper, with a lead-lined fiberglass variant for corrosive service",
+    "Concrete and asbestos-cement exclusively, with no lined variant available",
+    "Ductile iron and PVC, with polyethylene-lined ductile iron for highly corrosive wastewater"
+   ],
+   "correctIndex": 3,
+   "explanation": "Ductile iron and PVC are the most common force-main materials, with polyethylene-lined ductile iron, sometimes called poly-bond-lined, used for highly corrosive wastewater.",
+   "domain": "PROC",
+   "topic": "pipe-materials-and-joints",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "US EPA, Wastewater Technology Fact Sheet: Sewers, Force Main (EPA 832-F-00-071); ductile iron and PVC are the most common materials, with polyethylene-lined ductile iron used for highly corrosive wastewater."
+  },
+  {
+   "id": "WWC-ALL-PROC-0025",
+   "text": "Compared to a gravity sewer carrying the same flow, how is a pressurized force main typically sized?",
+   "choices": [
+    "The same diameter as the equivalent gravity sewer",
+    "One to two pipe sizes smaller",
+    "Three to four pipe sizes larger",
+    "Twice the diameter of the equivalent gravity sewer"
+   ],
+   "correctIndex": 1,
+   "explanation": "A pressurized force main is typically one to two pipe sizes smaller than a gravity sewer carrying the same flow, since pumping lets a smaller pipe convey the flow that a gravity line would need a larger diameter to carry unpressurized.",
+   "domain": "PROC",
+   "topic": "pipe-materials-and-joints",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "US EPA, Wastewater Technology Fact Sheet: Sewers, Force Main (EPA 832-F-00-071); a pressurized force main is typically one to two pipe sizes smaller than a gravity sewer carrying the same flow."
+  },
+  {
+   "id": "WWC-ALL-PROC-0026",
+   "text": "Which hydraulic equation is the standard companion to Manning's formula for pressurized pipe, such as a force main?",
+   "choices": [
+    "The Chezy equation",
+    "The Hazen-Williams equation",
+    "The Darcy-Weisbach equation",
+    "Bernoulli's equation"
+   ],
+   "correctIndex": 1,
+   "explanation": "For pressurized pipe such as force mains and pressure systems, the companion equation to Manning's is Hazen-Williams, typically applied with a C coefficient of 130 to 140 for plastic pipe.",
+   "domain": "PROC",
+   "topic": "pipe-materials-and-joints",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "US EPA, Wastewater Technology Fact Sheet: Pressure Sewers (EPA 832-F-02-006); for pressurized pipe, the companion to Manning's formula is the Hazen-Williams equation with a C coefficient of 130 to 140 for plastic."
+  },
+  {
+   "id": "WWC-ALL-PROC-0027",
+   "text": "A cleaning crew scores a plastic sewer pipe's interior wall with the wrong tool, roughening it. In Manning's-formula terms, what is the hydraulic consequence?",
+   "choices": [
+    "A lower roughness coefficient (n), so the pipe carries more flow at the same slope",
+    "No change to the coefficient (n), so the pipe's flow stays the same",
+    "The pipe's diameter effectively increases, so its capacity rises",
+    "A higher roughness coefficient (n), so the pipe carries less flow at the same slope"
+   ],
+   "correctIndex": 3,
+   "explanation": "A rougher wall, from corrosion or from a scored plastic liner, carries less flow at the same slope in Manning's formula, which is the real cost of damaging a pipe wall during cleaning.",
+   "domain": "PROC",
+   "topic": "pipe-materials-and-joints",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "Water Environment Federation / NEIWPCC, cited in Wastewater Collections for Small Water Systems digest; a rougher wall, from corrosion or a scored plastic liner, carries less flow at the same slope."
+  },
+  {
+   "id": "WWC-ALL-PROC-0028",
+   "text": "In conventional gravity sewer construction, manholes are typically spaced no more than how far apart?",
+   "choices": [
+    "100 feet",
+    "1,000 feet",
+    "400 feet",
+    "2,500 feet"
+   ],
+   "correctIndex": 2,
+   "explanation": "Conventional gravity sewers are generally 8 inches or larger, 3 to 25 feet deep, with manholes spaced no more than 400 feet apart.",
+   "domain": "PROC",
+   "topic": "pipe-materials-and-joints",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "US EPA, Decentralized Fact Sheet: Small Diameter Gravity Sewers (EPA 832-F-00-038, September 2000); conventional sewers are generally 8 inches or larger, 3 to 25 feet deep, with manholes no more than 400 feet apart."
+  },
+  {
+   "id": "WWC-ALL-PROC-0029",
+   "text": "What is infiltration and inflow (I/I), in plain terms?",
+   "choices": [
+    "The treated effluent discharged from the plant during dry weather",
+    "Clear water, groundwater and stormwater, leaking into a sanitary sewer",
+    "The portion of sewage strength attributable to garbage disposals",
+    "A regulatory term for any flow increase caused by new home connections"
+   ],
+   "correctIndex": 1,
+   "explanation": "Infiltration and inflow is the clear water, groundwater and stormwater, that leaks into a sanitary sewer built only for sewage; it is the single biggest driver of wet-weather sanitary sewer overflows and basement backups, and every gallon of it still costs money to treat.",
+   "domain": "PROC",
+   "topic": "inflow-infiltration",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "US EPA New England, Guide for Estimating Infiltration and Inflow (June 2014); infiltration and inflow is the clear water, groundwater and stormwater, that leaks into a sanitary sewer built only for sewage."
+  },
+  {
+   "id": "WWC-ALL-PROC-0030",
+   "text": "What is the key difference in timing between inflow and infiltration during a storm?",
+   "choices": [
+    "Inflow peaks during the storm, while infiltration peaks after heavy rain",
+    "Infiltration peaks during the storm itself, while inflow peaks weeks later",
+    "Both peak at exactly the same time, with no distinguishing signature",
+    "Neither is related to rainfall, and both only track the season"
+   ],
+   "correctIndex": 0,
+   "explanation": "Inflow is storm-driven and peaks during the storm; infiltration is groundwater-driven and peaks after sustained or heavy rain, which is the tell an operator uses to separate the two on a flow chart.",
+   "domain": "PROC",
+   "topic": "inflow-infiltration",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "US EPA New England, Guide for Estimating Infiltration and Inflow (June 2014); City of Columbia Missouri Sewer Utility, Sanitary Sewer Evaluation Study; inflow is storm-driven and peaks during the storm, infiltration is groundwater-driven and peaks after sustained or heavy rain."
+  },
+  {
+   "id": "WWC-ALL-PROC-0031",
+   "text": "Which of these is a documented source of inflow into a sanitary sewer system?",
+   "choices": [
+    "Groundwater seeping in through a cracked pipe joint",
+    "A properly vented and trapped plumbing fixture inside a home",
+    "A sewer main flowing at design capacity under dry weather conditions",
+    "A roof downspout or sump pump piped directly into the sewer"
+   ],
+   "correctIndex": 3,
+   "explanation": "Rainfall-derived inflow enters a sanitary sewer fast and directly through roof leaders, yard and foundation drains, sump pumps, cross-connections, and leaky or holed manhole covers, unlike infiltration, which is groundwater seeping in through pipe and joint defects.",
+   "domain": "PROC",
+   "topic": "inflow-infiltration",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "US EPA New England, Guide for Estimating Infiltration and Inflow (June 2014); rainfall-derived inflow enters fast and directly through roof leaders, yard and foundation drains, sump pumps, cross-connections, and leaky or holed manhole covers."
+  },
+  {
+   "id": "WWC-ALL-PROC-0032",
+   "text": "What share of total I/I do studies confirm can come from service laterals alone?",
+   "choices": [
+    "Less than 5 percent",
+    "About 10 to 15 percent",
+    "More than 50 percent",
+    "About 25 to 30 percent"
+   ],
+   "correctIndex": 2,
+   "explanation": "Studies confirm laterals can be more than 50 percent of total I/I, and service laterals also have proportionally more SSOs than the rest of the system, which is why they are a severity indicator for the mains they feed.",
+   "domain": "PROC",
+   "topic": "inflow-infiltration",
+   "difficulty": "Hard",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "CA Water Boards, SSORS Best Management Practices manual (2009); studies confirm laterals can be more than 50 percent of total I/I."
+  },
+  {
+   "id": "WWC-ALL-PROC-0033",
+   "text": "What is the Property Line Clean-Out (PLCO), and which direction should it allow a cleaning tool to travel?",
+   "choices": [
+    "A two-way cleanout with no directional restriction",
+    "A one-way cleanout in the direction of flow into the main",
+    "A cleanout that only opens during a declared sanitary sewer overflow emergency",
+    "A sealed access point that is never opened except by the manufacturer"
+   ],
+   "correctIndex": 1,
+   "explanation": "The Property Line Clean-Out is the most critical lateral component; per the Uniform Plumbing Code it should be the same size as the service line, have an access box raised to grade, and be a one-way cleanout in the direction of flow into the main so cleaning tools travel toward the main, not the house.",
+   "domain": "PROC",
+   "topic": "inflow-infiltration",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "CA Water Boards, SSORS Best Management Practices manual (2009), citing the Uniform Plumbing Code; the Property Line Clean-Out should be a one-way cleanout in the direction of flow into the main."
+  },
+  {
+   "id": "WWC-ALL-PROC-0034",
+   "text": "A local ordinance sets a hard infiltration limit for sewers 24 inches in diameter and smaller. What is a commonly cited example limit, expressed per inch of diameter per day per mile?",
+   "choices": [
+    "20 gallons per inch of diameter per day per mile",
+    "100 gallons per inch of diameter per day per mile",
+    "200 gallons per inch of diameter per day per mile",
+    "2,000 gallons per inch of diameter per day per mile"
+   ],
+   "correctIndex": 2,
+   "explanation": "Edmond, Oklahoma's 1980 ordinance caps allowable infiltration for existing sanitary sewers 24 inches in diameter and smaller at no more than 200 gallons per inch of sewer diameter per day per mile, an example of a local ordinance setting a hard acceptance number.",
+   "domain": "PROC",
+   "topic": "inflow-infiltration",
+   "difficulty": "Hard",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "New England Interstate Water Pollution Control Commission, cited in Wastewater Collections for Small Water Systems digest; Edmond, Oklahoma caps allowable infiltration at no more than 200 gallons per inch of diameter per day per mile for sewers 24 inches and smaller."
+  },
+  {
+   "id": "WWC-ALL-PROC-0035",
+   "text": "What are the three components that make up total wet-weather sewer flow?",
+   "choices": [
+    "Peak flow, average flow, and minimum flow, tracked over a year",
+    "Domestic flow, commercial flow, and industrial flow sources",
+    "Wet flow, dry flow, and seasonal flow, tracked separately",
+    "Base sanitary flow, groundwater infiltration, and rainfall inflow"
+   ],
+   "correctIndex": 3,
+   "explanation": "Wet-weather flow has three components: base sanitary flow (BSF), the normal sewage; groundwater infiltration (GWI), which seeps in and varies with the season and groundwater table; and rainfall-derived inflow and infiltration (RDII), which enters fast through direct connections during a storm.",
+   "domain": "PROC",
+   "topic": "inflow-infiltration",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "US EPA New England, Guide for Estimating Infiltration and Inflow (June 2014); Water Environment Federation (WSEC-2017-FS-001); wet-weather flow has three components: base sanitary flow, groundwater infiltration, and rainfall-derived inflow."
+  },
+  {
+   "id": "WWC-ALL-PROC-0036",
+   "text": "What are the four purposes of sewer inspection?",
+   "choices": [
+    "Bill the customer, log the meter read, close the work order, and file the permit",
+    "Know what is in the system, where it is, its condition, and prevent problems",
+    "Test chlorine residual, test pH, test turbidity, and test hardness",
+    "Confirm ownership, confirm easement, confirm zoning, and confirm tax status"
+   ],
+   "correctIndex": 1,
+   "explanation": "Inspection has four purposes: know what is in the system (inventory), where it is, what condition it is in (assessment), and prevent problems.",
+   "domain": "PROC",
+   "topic": "cleaning-cctv",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "US EPA / NEIWPCC, Optimizing O&M and Rehabilitation of Sanitary Sewer Collection Systems (December 2003); inspection has four purposes: inventory, location, condition assessment, and preventing problems."
+  },
+  {
+   "id": "WWC-ALL-PROC-0037",
+   "text": "Before any CCTV inspection, what must always happen first?",
+   "choices": [
+    "The sewer must be cleaned",
+    "The sewer must be taken permanently out of service",
+    "The manhole covers must be repainted",
+    "The downstream lift station must be shut off"
+   ],
+   "correctIndex": 0,
+   "explanation": "Always clean a sewer before inspecting it, so the camera records the pipe's true condition rather than debris that cleaning would have removed anyway.",
+   "domain": "PROC",
+   "topic": "cleaning-cctv",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "US EPA, Guide for Evaluating CMOM Programs at Sanitary Sewer Collection Systems (EPA 305-B-05-002, January 2005); always clean a sewer before inspecting it."
+  },
+  {
+   "id": "WWC-ALL-PROC-0038",
+   "text": "Which NASSCO certification program applies specifically to manholes?",
+   "choices": [
+    "PACP",
+    "LACP",
+    "MACP",
+    "SSES"
+   ],
+   "correctIndex": 2,
+   "explanation": "NASSCO runs three certification programs: PACP for mainline sewers, LACP for laterals, and MACP, the Manhole Assessment Certification Program, for manholes.",
+   "domain": "PROC",
+   "topic": "cleaning-cctv",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "Metropolitan Sewer District of Greater Cincinnati, Standards for CCTV Sewer Inspections (PACP/LACP/MACP, NASSCO V7.0); NASSCO runs PACP for mains, LACP for laterals, and MACP for manholes."
+  },
+  {
+   "id": "WWC-ALL-PROC-0039",
+   "text": "In northern climates, why is early spring, during runoff and high groundwater, a good time to schedule sewer inspection?",
+   "choices": [
+    "It is the only season when CCTV equipment operates reliably in cold climates",
+    "It is required by federal law regardless of local conditions",
+    "It has no bearing on scheduling, since any season works identically",
+    "It is when I&I shows up most clearly, during runoff and high groundwater"
+   ],
+   "correctIndex": 3,
+   "explanation": "In the north, schedule inspection during early spring runoff and high groundwater to find infiltration and inflow, since that is when I/I shows up most clearly in the flow.",
+   "domain": "PROC",
+   "topic": "cleaning-cctv",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "US EPA / NEIWPCC, Optimizing O&M and Rehabilitation of Sanitary Sewer Collection Systems (December 2003); in the north, schedule inspection during early spring runoff and high groundwater to find I/I."
+  },
+  {
+   "id": "WWC-ALL-PROC-0040",
+   "text": "What is the best way to confirm that a sewer is not penetrated by roots?",
+   "choices": [
+    "A mandrel test",
+    "An air test",
+    "A dye-water test",
+    "A smoke test"
+   ],
+   "correctIndex": 1,
+   "explanation": "An air test, which checks the integrity of mains, laterals, and manholes, is the best way to confirm a sewer is not penetrated by roots.",
+   "domain": "PROC",
+   "topic": "cleaning-cctv",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "CA Water Boards, SSORS Best Management Practices manual (2009); an air test is the best way to confirm a sewer is not penetrated by roots."
+  },
+  {
+   "id": "WWC-ALL-PROC-0041",
+   "text": "After the whole collection system has been fully CCTV-inspected once, what is the recommended approach going forward?",
+   "choices": [
+    "Prioritize re-inspection by need, since the most valuable data comes from the worst assets",
+    "Re-televise the entire system again immediately on the same fixed cycle",
+    "Stop all future inspection, since the system is now fully documented",
+    "Inspect only new construction going forward, ignoring the existing system entirely"
+   ],
+   "correctIndex": 0,
+   "explanation": "Once the system is fully inspected, prioritize by need rather than re-televising everything, since the most valuable data comes from inspecting the worst assets.",
+   "domain": "PROC",
+   "topic": "cleaning-cctv",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "US EPA / NEIWPCC, Optimizing O&M and Rehabilitation of Sanitary Sewer Collection Systems (December 2003); once the system is fully inspected, prioritize by need rather than re-televising everything."
+  },
+  {
+   "id": "WWC-ALL-PROC-0042",
+   "text": "What are the four objectives of sewer rehabilitation?",
+   "choices": [
+    "Ensure structural integrity, limit I/I loss, limit exfiltration, and limit backups",
+    "Maximize pipe diameter, minimize manhole count, minimize cost, and maximize contractor profit",
+    "Meet the permit deadline, satisfy the inspector, close the work order, and bill the customer",
+    "Reduce noise, reduce odor, reduce visible staining, and reduce customer complaints"
+   ],
+   "correctIndex": 0,
+   "explanation": "Sewer rehabilitation has four objectives: ensure structural integrity, limit loss of capacity from I/I, limit groundwater contamination by controlling exfiltration, and limit backups and overflows by maintaining pipe integrity.",
+   "domain": "PROC",
+   "topic": "repair-and-restoration-basics",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "US EPA / NEIWPCC, Optimizing O&M and Rehabilitation of Sanitary Sewer Collection Systems (December 2003); sewer rehabilitation has four objectives: structural integrity, limiting I/I capacity loss, limiting exfiltration contamination, and limiting backups and overflows."
+  },
+  {
+   "id": "WWC-ALL-PROC-0043",
+   "text": "Which trenchless rehabilitation method actually increases a pipe's hydraulic capacity rather than reducing it?",
+   "choices": [
+    "Slip-lining method",
+    "Cured-in-place pipe (CIPP)",
+    "Fold-and-form lining",
+    "Pipe-bursting method"
+   ],
+   "correctIndex": 3,
+   "explanation": "Pipe bursting breaks the old pipe outward while pulling a new, equal-or-larger pipe behind it, which is why it yields the largest increase in hydraulic capacity of the trenchless methods, unlike slip-lining, fold-and-form, and CIPP, which all reduce diameter somewhat.",
+   "domain": "PROC",
+   "topic": "repair-and-restoration-basics",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "US EPA / NEIWPCC, Optimizing O&M and Rehabilitation of Sanitary Sewer Collection Systems (December 2003); pipe bursting pulls a new equal-or-larger pipe behind it and yields the largest increase in hydraulic capacity."
+  },
+  {
+   "id": "WWC-ALL-PROC-0044",
+   "text": "Why does slip-lining reduce a sewer's original hydraulic capacity?",
+   "choices": [
+    "The liner's surface is rougher than the original pipe, increasing resistance to flow",
+    "Slip-lining increases the roughness of the interior surface",
+    "A smaller-diameter liner pipe is pulled through the existing host pipe",
+    "Slip-lining is only used on pipes already flowing under capacity"
+   ],
+   "correctIndex": 2,
+   "explanation": "Slip-lining pulls a smaller-diameter liner pipe through the existing host pipe to create a continuous, watertight liner, which is why the finished pipe has a smaller diameter than the original.",
+   "domain": "PROC",
+   "topic": "repair-and-restoration-basics",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "Wisconsin DNR, Collection System Maintenance Part 2: Rehabilitative Program (PUB-WT-847-2006); slip-lining pulls a liner pipe of slightly smaller diameter into the existing pipe."
+  },
+  {
+   "id": "WWC-ALL-PROC-0045",
+   "text": "Cured-in-place pipe (CIPP) lining requires what preparation before the resin-soaked liner can be installed?",
+   "choices": [
+    "A full structural load test under live traffic",
+    "Thorough cleaning of the host pipe",
+    "Pre-chlorination of the resin",
+    "A minimum 6-month dry-out period"
+   ],
+   "correctIndex": 1,
+   "explanation": "Cured-in-place pipe inverts a resin-soaked felt tube into the pipe and cures it against the wall, which needs thorough cleaning of the host pipe first, and service is interrupted while the liner cures.",
+   "domain": "PROC",
+   "topic": "repair-and-restoration-basics",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "US EPA / NEIWPCC, Optimizing O&M and Rehabilitation of Sanitary Sewer Collection Systems (December 2003); CIPP needs thorough cleaning first, and service is interrupted while curing."
+  },
+  {
+   "id": "WWC-ALL-PROC-0046",
+   "text": "Pipe bursting works best, and is least likely to go off course, under what pipe condition?",
+   "choices": [
+    "Where the existing line has multiple sags along its length",
+    "Only in force mains, never in gravity sewers",
+    "Only where the pipe has already collapsed completely",
+    "Where there are no sags in the existing line"
+   ],
+   "correctIndex": 3,
+   "explanation": "Pipe bursting works best where there are no sags, because the new line seeks the path of least resistance and existing sags would otherwise get worse during the pull.",
+   "domain": "PROC",
+   "topic": "repair-and-restoration-basics",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "US EPA / NEIWPCC, Optimizing O&M and Rehabilitation of Sanitary Sewer Collection Systems (December 2003); pipe bursting works best where there are no sags, because the new line seeks the path of least resistance."
+  },
+  {
+   "id": "WWC-ALL-PROC-0047",
+   "text": "As the amount of excavation a repair would require goes up, what generally happens to the relative cost-effectiveness of a trenchless method?",
+   "choices": [
+    "It becomes more cost-effective compared to dig-and-replace",
+    "It becomes irrelevant to cost comparisons",
+    "Trenchless methods become unavailable past a certain excavation depth",
+    "Dig-and-replace always remains cheaper regardless of excavation depth"
+   ],
+   "correctIndex": 0,
+   "explanation": "The greater the excavation a repair would require, the more cost-effective trenchless rehabilitation becomes compared to digging up and replacing the pipe.",
+   "domain": "PROC",
+   "topic": "repair-and-restoration-basics",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "US EPA / NEIWPCC, Optimizing O&M and Rehabilitation of Sanitary Sewer Collection Systems (December 2003); the greater the excavation required, the more cost-effective trenchless becomes."
+  },
+  {
+   "id": "WWC-ALL-MATH-0003",
+   "text": "A gravity sewer drops 3.6 feet over a 600-foot run. What is the slope, expressed as a percentage?",
+   "choices": [
+    "6.0 percent",
+    "0.6 percent",
+    "0.06 percent",
+    "0.006 percent"
+   ],
+   "correctIndex": 1,
+   "explanation": "Slope equals drop divided by run, times 100: 3.6 divided by 600 is 0.006, times 100 is 0.6 percent.",
+   "domain": "MATH",
+   "topic": "pipe-hydraulics",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": "Slope (%) = (Drop, ft / Run, ft) x 100",
+   "calculator": null,
+   "citation": null
+  },
+  {
+   "id": "WWC-ALL-MATH-0004",
+   "text": "A 12-inch sewer (1.0 ft diameter) flows full at 1.57 cubic feet per second (cfs). What is the velocity of flow?",
+   "choices": [
+    "0.01 ft/s",
+    "1.57 ft/s",
+    "2.0 ft/s",
+    "4.0 ft/s"
+   ],
+   "correctIndex": 2,
+   "explanation": "Velocity equals flow divided by area, and area equals 0.785 times diameter squared: 0.785 times 1.0 squared is 0.785 square feet, and 1.57 divided by 0.785 is 2.0 feet per second.",
+   "domain": "MATH",
+   "topic": "pipe-hydraulics",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": "V = Q / A, A = 0.785 x D^2",
+   "calculator": "velocity",
+   "citation": null
+  },
+  {
+   "id": "WWC-ALL-MATH-0005",
+   "text": "A 12-inch sewer (1.0 ft diameter) flows full at a velocity of 3.0 ft/s. What is the flow, in cubic feet per second (cfs)?",
+   "choices": [
+    "3.0 cfs",
+    "3.8 cfs",
+    "9.4 cfs",
+    "2.4 cfs"
+   ],
+   "correctIndex": 3,
+   "explanation": "Flow equals area times velocity, and area equals 0.785 times diameter squared: 0.785 times 1.0 squared is 0.785 square feet, times 3.0 feet per second is about 2.4 cubic feet per second.",
+   "domain": "MATH",
+   "topic": "pipe-hydraulics",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": "Q = A x V, A = 0.785 x D^2",
+   "calculator": "velocity",
+   "citation": null
+  },
+  {
+   "id": "WWC-ALL-PROC-0048",
+   "text": "What is the main advantage of a dry-well lift station over a submersible station?",
+   "choices": [
+    "Easy access for routine inspection and maintenance, and easier repair",
+    "Lower construction cost than a submersible station of the same capacity",
+    "No dry-pit ventilation requirement of any kind",
+    "No need for any standby pump at all"
+   ],
+   "correctIndex": 0,
+   "explanation": "A dry-well station houses pumps and valves in an easily accessible pump room, giving easy access for routine visual inspection and maintenance, and it is generally easier to repair than a submersible station.",
+   "domain": "PROC",
+   "topic": "lift-stations",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "US EPA, Collection Systems Technology Fact Sheet: Sewers, Lift Station (EPA 832-F-00-073); a dry-well station gives easy access for routine visual inspection and maintenance and is generally easier to repair than submersible pumps."
+  },
+  {
+   "id": "WWC-ALL-PROC-0049",
+   "text": "What is the current industry-wide trend for small and medium dry-well lift stations?",
+   "choices": [
+    "Keep building dry-well stations exclusively, regardless of size",
+    "Replace small and medium dry-well stations with submersible stations",
+    "Phase out submersible stations in favor of dry-well stations at every size",
+    "Require dual dry-well and submersible pumps at every new station"
+   ],
+   "correctIndex": 1,
+   "explanation": "The current industry-wide trend is to replace small and medium dry-well lift stations, typically under 6,350 gpm, with submersible stations, mainly for lower cost, smaller footprint, and simplified operation and maintenance.",
+   "domain": "PROC",
+   "topic": "lift-stations",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "US EPA, Collection Systems Technology Fact Sheet: Sewers, Lift Station (EPA 832-F-00-073); the industry-wide trend is to replace small and medium dry-well stations with submersible stations for lower cost, smaller footprint, and simplified O&M."
+  },
+  {
+   "id": "WWC-ALL-PROC-0050",
+   "text": "Why should a designer avoid a lift station when gravity conveyance is feasible?",
+   "choices": [
+    "Lift stations cost less than gravity sewers below the 10-foot depth threshold",
+    "Regulations prohibit gravity sewers deeper than 10 feet under any circumstance",
+    "Gravity conveyance is cheap, while lift stations are costly to build and maintain",
+    "Lift stations require no ongoing operation once installed"
+   ],
+   "correctIndex": 2,
+   "explanation": "Because gravity conveyance is cheap and lift stations are costly to build, operate, and maintain, pumping should be avoided when technically feasible; gravity-sewer cost only rises sharply once trenches go deeper than about 10 feet.",
+   "domain": "PROC",
+   "topic": "lift-stations",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "US EPA, Collection Systems Technology Fact Sheet: Sewers, Lift Station (EPA 832-F-00-073); wastewater pumping should be avoided when possible, since gravity conveyance is cheap and lift stations are costly to build, operate, and maintain."
+  },
+  {
+   "id": "WWC-ALL-PROC-0051",
+   "text": "Which of the following is part of a documented weekly lift-station inspection?",
+   "choices": [
+    "The exterior paint condition of the station building",
+    "The station's landscaping and fencing",
+    "The accounting ledger for the station's utility bill",
+    "The motor's temperature, amperage, alignment, vibration, and noise"
+   ],
+   "correctIndex": 3,
+   "explanation": "A weekly lift-station inspection observes pump bearings, packing, and seals; motor temperature, amperage, alignment, vibration, and noise; check and pressure-relief valves; oil and lubrication; belt wear; and the generator exercised under load.",
+   "domain": "PROC",
+   "topic": "lift-stations",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "US EPA, Collection Systems Technology Fact Sheet: Sewers, Lift Station (EPA 832-F-00-073); a weekly inspection observes motor temperature, amperage, alignment, vibration, and noise, among other items."
+  },
+  {
+   "id": "WWC-ALL-PROC-0052",
+   "text": "Why should a wet well never be pumped completely dry?",
+   "choices": [
+    "A completely dry wet well releases odor and should be avoided",
+    "A completely dry wet well voids the pump manufacturer's warranty",
+    "A dry wet well trips the low-level float into a permanent fault state",
+    "There is no operational reason, only an aesthetic preference"
+   ],
+   "correctIndex": 0,
+   "explanation": "Wet wells should always hold some level of sewage to minimize odor release, which is one of the documented wet-well design rules alongside detention-time limits and a self-cleaning bottom slope.",
+   "domain": "PROC",
+   "topic": "wet-wells",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "US EPA, Collection Systems Technology Fact Sheet: Sewers, Lift Station (EPA 832-F-00-073); wet-wells should always hold some level of sewage to minimize odor release."
+  },
+  {
+   "id": "WWC-ALL-PROC-0053",
+   "text": "What is the minimum recommended wet-well bottom slope for self-cleaning?",
+   "choices": [
+    "1:4",
+    "1:1",
+    "2:1",
+    "10:1"
+   ],
+   "correctIndex": 2,
+   "explanation": "The minimum recommended wet-well bottom slope is 2:1, which allows self-cleaning and minimizes debris deposit at the bottom of the well.",
+   "domain": "PROC",
+   "topic": "wet-wells",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "US EPA, Collection Systems Technology Fact Sheet: Sewers, Lift Station (EPA 832-F-00-073); minimum recommended wet-well bottom slope is 2:1 to allow self-cleaning and minimize debris deposit."
+  },
+  {
+   "id": "WWC-ALL-PROC-0054",
+   "text": "What two failure modes does wet-well sizing balance against each other?",
+   "choices": [
+    "Too much ventilation versus too little ventilation",
+    "Too much short-cycling versus too much odor and septic buildup",
+    "Too much standby power versus too little standby power",
+    "Too many valves versus too few valves in the system"
+   ],
+   "correctIndex": 1,
+   "explanation": "Wet-wells are sized large enough to prevent rapid pump cycling but small enough to prevent long detention time and the associated odor release; too small and the pump short-cycles, too large and the contents go septic and smell.",
+   "domain": "PROC",
+   "topic": "wet-wells",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "US EPA, Collection Systems Technology Fact Sheet: Sewers, Lift Station (EPA 832-F-00-073); wet-wells are sized to prevent rapid pump cycling while avoiding long detention time and odor release."
+  },
+  {
+   "id": "WWC-ALL-PROC-0055",
+   "text": "Which pump-station control method is described as a trapped air column that senses pressure and level?",
+   "choices": [
+    "A floating mercury switch",
+    "A mechanical clutch",
+    "An electrode at a fixed cut-off level",
+    "A trapped air column, or bubbler system"
+   ],
+   "correctIndex": 3,
+   "explanation": "A trapped air column, or bubbler system, that senses pressure and level is commonly used for pump-station control.",
+   "domain": "PROC",
+   "topic": "floats-and-controls",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "US EPA, Collection Systems Technology Fact Sheet: Sewers, Lift Station (EPA 832-F-00-073); a trapped air column, or bubbler system, that senses pressure and level is commonly used for pump station control."
+  },
+  {
+   "id": "WWC-ALL-PROC-0056",
+   "text": "Why should a single ultrasonic or transducer level sensor never be the only level control on a wet well?",
+   "choices": [
+    "Ultrasonic sensors can blank out during high-flow wet weather and foaming",
+    "Ultrasonic sensors are illegal to use in any permit-required confined space",
+    "Ultrasonic sensors only fail during dry weather, never during storms",
+    "Ultrasonic sensors need no calibration of any kind, unlike floats"
+   ],
+   "correctIndex": 0,
+   "explanation": "Ultrasonic and transducer level sensors can blank out in high-flow wet weather and during foaming, which is why they should be backed by redundant float control so a blanked sensor does not become a missed overflow.",
+   "domain": "PROC",
+   "topic": "floats-and-controls",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "Standard collection-system SCADA and instrumentation practice: ultrasonic and transducer level sensors are subject to blanking out in high-flow, foaming wet-well conditions, consistent with CA Water Boards, SSORS Best Management Practices manual (2009) telemetry and SCADA guidance."
+  },
+  {
+   "id": "WWC-ALL-PROC-0057",
+   "text": "Which of these is a documented pump-station level-control method, alongside floats and bubbler systems?",
+   "choices": [
+    "A laser rangefinder aimed at the water surface",
+    "A sight glass read manually once per shift",
+    "An electrode-based control method at cut-off levels",
+    "A sonar-based method, the same technology used for flooded-pipe inspection"
+   ],
+   "correctIndex": 2,
+   "explanation": "Pump-station control alternatives include a trapped air column (bubbler system), electrodes placed at cut-off levels, floats, mechanical clutches, floating mercury switches, and variable speed drives.",
+   "domain": "PROC",
+   "topic": "floats-and-controls",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "US EPA, Collection Systems Technology Fact Sheet: Sewers, Lift Station (EPA 832-F-00-073); control alternatives include electrodes placed at cut-off levels, floats, mechanical clutches, and floating mercury switches."
+  },
+  {
+   "id": "WWC-ALL-PROC-0058",
+   "text": "What is the SOP response time for sending an individual to a lift station after a priority alarm comes in?",
+   "choices": [
+    "Within one hour",
+    "Within ten minutes",
+    "Within one business day",
+    "Only after a second alarm"
+   ],
+   "correctIndex": 1,
+   "explanation": "When a priority pump-station alarm comes in, the SOP is to send an individual to the station within ten minutes.",
+   "domain": "PROC",
+   "topic": "alarms",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "New England Interstate Water Pollution Control Commission, cited in Wastewater Collections for Small Water Systems digest; the SOP is to send an individual to the station within ten minutes of a priority alarm."
+  },
+  {
+   "id": "WWC-ALL-PROC-0059",
+   "text": "What is the key functional difference between full SCADA monitoring and a bare-minimum telemetry system with an auto-dialer?",
+   "choices": [
+    "There is no real difference between the two systems",
+    "Bare telemetry predicts failure early, while SCADA only alarms after",
+    "SCADA requires no power supply, while telemetry does",
+    "SCADA constantly monitors and can predict failure before it happens"
+   ],
+   "correctIndex": 3,
+   "explanation": "SCADA constantly monitors operation, can diagnose pumps, and can predict failures before they happen, while less-comprehensive telemetry with auto-dialers should be the minimum but typically only alarms after failure.",
+   "domain": "PROC",
+   "topic": "alarms",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "CA Water Boards, SSORS Best Management Practices manual (2009); SCADA constantly monitors and can predict failures before they happen, while telemetry with auto-dialers typically only alarms after failure."
+  },
+  {
+   "id": "WWC-ALL-PROC-0060",
+   "text": "What is the minimum required alarm equipment for even a very small, unstaffed lift station?",
+   "choices": [
+    "An audible and visual high-water alarm",
+    "A full SCADA system with a dedicated fiber-optic link",
+    "No alarm equipment is required for very small stations",
+    "A staffed control room operating around the clock"
+   ],
+   "correctIndex": 0,
+   "explanation": "All pump stations except continuously staffed and very small ones should have secondary power and at least basic telemetry transmitting high and low water-level alarms; even very small stations need an audible and visual high-water alarm.",
+   "domain": "PROC",
+   "topic": "alarms",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "US EPA / NEIWPCC, Optimizing O&M and Rehabilitation of Sanitary Sewer Collection Systems (December 2003); even very small stations need an audible and visual high-water alarm."
+  },
+  {
+   "id": "WWC-ALL-EQIP-0019",
+   "text": "A breaker has tripped on a lift-station pump motor. The motor is only warm to the touch, not hot. What is acceptable practice?",
+   "choices": [
+    "Never restart a tripped pump under any circumstance, regardless of motor temperature",
+    "One restart attempt is acceptable if the motor is only warm, not hot",
+    "Always restart immediately regardless of how the motor feels",
+    "Wait exactly 24 hours before any restart attempt, regardless of motor temperature"
+   ],
+   "correctIndex": 1,
+   "explanation": "If a breaker is off and the pump motor is hot to the touch, do not attempt to reset and start it, since the motor likely tripped on overload and restarting bakes it; if the motor is only warm, one restart attempt is acceptable.",
+   "domain": "EQIP",
+   "topic": "basic-electrical",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "New England Interstate Water Pollution Control Commission, Optimizing O&M and Rehabilitation of Sanitary Sewer Collection Systems (December 2003); if the motor is only warm, one restart attempt is acceptable, but a hot motor means do not restart."
+  },
+  {
+   "id": "WWC-ALL-EQIP-0020",
+   "text": "What voltage can be fatal to a person if a good ground path exists?",
+   "choices": [
+    "500 volts",
+    "5 volts",
+    "50 volts",
+    "1,000 volts"
+   ],
+   "correctIndex": 2,
+   "explanation": "As little as 50 volts can be fatal if a good ground is made, since electricity can paralyze the nervous system and stop breathing and the heart.",
+   "domain": "EQIP",
+   "topic": "basic-electrical",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "Oklahoma DEQ / OSHA Title 29 electrical safety guidance, cited in the Distribution and Collection Operator Study Guide; as little as 50 volts can be fatal if a good ground is made."
+  },
+  {
+   "id": "WWC-ALL-MATH-0006",
+   "text": "A rectangular wet well is 6 feet by 5 feet, with water standing 4 feet deep. How many gallons does that represent?",
+   "choices": [
+    "About 120 gallons",
+    "About 224 gallons",
+    "About 1,795 gallons",
+    "About 898 gallons"
+   ],
+   "correctIndex": 3,
+   "explanation": "Wet-well volume in gallons equals length times width times depth, times 7.48 gallons per cubic foot: 6 times 5 times 4 is 120 cubic feet, times 7.48 is about 898 gallons.",
+   "domain": "MATH",
+   "topic": "wet-wells",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": "Wet-well volume (gal) = L x W x Depth (ft) x 7.48",
+   "calculator": "vol-box",
+   "citation": null
+  },
+  {
+   "id": "WWC-ALL-MATH-0007",
+   "text": "During a level check, a crew measures a rectangular wet well at 8 feet long and 7 feet wide, with 5 feet of standing water. How many gallons of sewage does the well currently hold?",
+   "choices": [
+    "About 2,094 gallons",
+    "About 280 gallons",
+    "About 419 gallons",
+    "About 4,189 gallons"
+   ],
+   "correctIndex": 0,
+   "explanation": "Wet-well volume in gallons equals length times width times depth, times 7.48 gallons per cubic foot: 8 times 7 times 5 is 280 cubic feet, times 7.48 is about 2,094 gallons.",
+   "domain": "MATH",
+   "topic": "wet-wells",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": "Wet-well volume (gal) = L x W x Depth (ft) x 7.48",
+   "calculator": "vol-box",
+   "citation": null
+  },
+  {
+   "id": "WWC-ALL-MATH-0008",
+   "text": "A wet well has a working volume of 800 gallons between the start and stop floats. The pump's capacity is 500 gpm and inflow is 150 gpm. What is the total pump cycle time?",
+   "choices": [
+    "About 2.3 minutes",
+    "About 7.6 minutes",
+    "About 6.9 minutes",
+    "About 6.6 minutes"
+   ],
+   "correctIndex": 1,
+   "explanation": "Cycle time equals run time plus fill time. Run time equals working volume divided by pump rate minus inflow: 800 divided by (500 minus 150) is 2.29 minutes. Fill time equals working volume divided by inflow: 800 divided by 150 is 5.33 minutes. The total cycle time is about 7.6 minutes.",
+   "domain": "MATH",
+   "topic": "floats-and-controls",
+   "difficulty": "Hard",
+   "cognitive": "Application",
+   "formula": "Cycle time = Working vol / (Pump - Inflow) + Working vol / Inflow",
+   "calculator": "cycle-time",
+   "citation": null
+  },
+  {
+   "id": "WWC-ALL-MATH-0009",
+   "text": "A lift-station pump is cycling too often, and the float spacing sets a 950-gallon working volume. If the pump moves 420 gpm and inflow to the well runs 100 gpm, how long does one full cycle take?",
+   "choices": [
+    "About 3.0 minutes",
+    "About 11.3 minutes",
+    "About 12.5 minutes",
+    "About 11.8 minutes"
+   ],
+   "correctIndex": 2,
+   "explanation": "Cycle time equals run time plus fill time. Run time equals working volume divided by pump rate minus inflow: 950 divided by (420 minus 100) is 2.97 minutes. Fill time equals working volume divided by inflow: 950 divided by 100 is 9.5 minutes. The total cycle time is about 12.5 minutes.",
+   "domain": "MATH",
+   "topic": "floats-and-controls",
+   "difficulty": "Hard",
+   "cognitive": "Application",
+   "formula": "Cycle time = Working vol / (Pump - Inflow) + Working vol / Inflow",
+   "calculator": "cycle-time",
+   "citation": null
+  },
+  {
+   "id": "WWC-ALL-MATH-0010",
+   "text": "During a drawdown test with the influent isolated, a wet well 7 feet by 6 feet drops 3.5 feet in 4 minutes. What is the pump's capacity, in gpm?",
+   "choices": [
+    "About 37 gpm",
+    "About 1,100 gpm",
+    "About 550 gpm",
+    "About 275 gpm"
+   ],
+   "correctIndex": 3,
+   "explanation": "Pump capacity from a drawdown test, with inflow isolated, equals the volume pumped down divided by the time: 7 times 6 times 3.5 is 147 cubic feet, times 7.48 is about 1,100 gallons, divided by 4 minutes is about 275 gpm.",
+   "domain": "MATH",
+   "topic": "wet-wells",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": "Pump capacity (gpm) = Volume pumped down (gal) / Time (min)",
+   "calculator": "drawdown",
+   "citation": null
+  },
+  {
+   "id": "WWC-ALL-PROC-0061",
+   "text": "Where should a flow monitor be placed to avoid a false reading caused by turbulence?",
+   "choices": [
+    "A short distance downstream of a bend, once the turbulence has mostly settled",
+    "Immediately below a manhole with two inlets and no clear tributary area",
+    "At any point along the pipe, regardless of turbulence",
+    "Away from bends in the pipe"
+   ],
+   "correctIndex": 3,
+   "explanation": "Flow monitors should be placed away from bends, since bends create turbulence that distorts the reading; other placement rules include locating upstream of pump stations and in manholes with one inlet and one outlet to isolate a tributary area.",
+   "domain": "PROC",
+   "topic": "flow-monitoring",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "CA Water Boards, SSORS Best Management Practices manual (2009); place flow monitors away from bends, since bends cause turbulence."
+  },
+  {
+   "id": "WWC-ALL-PROC-0062",
+   "text": "Why should a flow monitor generally be placed upstream of a pump station rather than immediately downstream of it?",
+   "choices": [
+    "A pump station's storage and cycling would attenuate the reading",
+    "Downstream monitoring equipment always gets damaged by pump discharge surges",
+    "Regulations prohibit any flow monitoring downstream of a pump station",
+    "Upstream placement is always cheaper to install, regardless of accuracy"
+   ],
+   "correctIndex": 0,
+   "explanation": "Flow monitors are placed upstream of pump stations to avoid the attenuation, the smoothing-out of the true flow signal, that a pump station's own storage and cycling would otherwise introduce into the reading.",
+   "domain": "PROC",
+   "topic": "flow-monitoring",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "CA Water Boards, SSORS Best Management Practices manual (2009); place flow monitors upstream of pump stations to avoid attenuation."
+  },
+  {
+   "id": "WWC-ALL-PROC-0063",
+   "text": "For a small system with a limited monitoring budget, what is a documented low-cost way to spot excessive-I/I areas instead of metering every manhole?",
+   "choices": [
+    "Waiting for a resident complaint before checking any manhole",
+    "Visually monitoring manholes during low-flow periods",
+    "Installing a permanent flow meter in every manhole in the system",
+    "Hiring a third-party lab to run a full hydraulic model regardless of system size"
+   ],
+   "correctIndex": 1,
+   "explanation": "For small systems, visually monitoring manholes during low-flow periods is a cheap way to spot excessive-I/I areas instead of metering everything.",
+   "domain": "PROC",
+   "topic": "flow-monitoring",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "US EPA, Guide for Evaluating CMOM Programs at Sanitary Sewer Collection Systems (EPA 305-B-05-002, January 2005); for small systems, visually monitoring manholes during low-flow periods is a cheap way to spot excessive I/I areas."
+  },
+  {
+   "id": "WWC-ALL-PROC-0064",
+   "text": "When screening a collection system for capacity problems by pipe size, which pipe size is generally considered a lower priority, having capacity for its designed development unless severely degraded?",
+   "choices": [
+    "18 to 24 inches",
+    "10 to 15 inches",
+    "8 inches and smaller",
+    "36 inches and larger"
+   ],
+   "correctIndex": 2,
+   "explanation": "Screening by pipe size, lines 10 inches and larger are the potential capacity-deficiency candidates, while sewers 8 inches and smaller generally have capacity for their designed development unless severely degraded, making them a lower priority.",
+   "domain": "PROC",
+   "topic": "flow-monitoring",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "CA Water Boards, SSORS Best Management Practices manual (2009); sewers 8 inches and smaller generally have capacity for their designed development unless severely degraded."
+  },
+  {
+   "id": "WWC-ALL-PROC-0065",
+   "text": "What gallons-per-day-per-person (gpdpp) screening figure has EPA guidance historically used for I/I screening, even though it is now considered an overstatement given modern low-flow toilets?",
+   "choices": [
+    "180 gpdpp",
+    "60 gpdpp",
+    "80 gpdpp",
+    "120 gpdpp"
+   ],
+   "correctIndex": 3,
+   "explanation": "Existing EPA guidance uses 120 gallons per day per person for I/I screening, but that figure dates to 1985, when 3.5-gallon-per-flush toilets were standard; since the Energy Policy Act of 1992 capped new toilets at 1.6 gallons per flush, per-person flows today run lower.",
+   "domain": "PROC",
+   "topic": "i-and-i-identification",
+   "difficulty": "Hard",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "US EPA New England, Guide for Estimating Infiltration and Inflow (June 2014); existing EPA guidance uses 120 gpdpp, a figure dating to 1985 before low-flow toilets became standard."
+  },
+  {
+   "id": "WWC-ALL-PROC-0066",
+   "text": "How is groundwater infiltration (GWI) typically estimated from plant flow data?",
+   "choices": [
+    "By averaging nighttime flows, midnight to 6 am, during dry weather",
+    "By averaging the highest single hourly flow reading of the entire year",
+    "By multiplying the average daily flow by a fixed factor of 3, regardless of conditions",
+    "By counting the number of rainy days in the previous month"
+   ],
+   "correctIndex": 0,
+   "explanation": "Groundwater infiltration is estimated by averaging the nighttime flows, midnight to 6 am, during dry weather, after subtracting any significant industrial or commercial nighttime flow, since those nighttime flows are mostly groundwater.",
+   "domain": "PROC",
+   "topic": "i-and-i-identification",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "US EPA New England, Guide for Estimating Infiltration and Inflow (June 2014); estimate GWI by averaging the nighttime flows, midnight to 6 am, during dry weather."
+  },
+  {
+   "id": "WWC-ALL-PROC-0067",
+   "text": "By definition, when is infiltration and inflow (I/I) considered excessive?",
+   "choices": [
+    "Only when a state regulator personally inspects the site and issues a written finding",
+    "Only when it causes overflows or bypasses, or only when treatment cost exceeds elimination cost",
+    "Only when it exceeds 50 percent of total dry-weather flow, with no other trigger",
+    "Only when the utility's own staff subjectively decide it looks excessive"
+   ],
+   "correctIndex": 1,
+   "explanation": "I/I is excessive when it causes overflows or bypasses, by definition excessive, or when the cost to transport and treat it exceeds the cost to eliminate it, found by a cost-effectiveness analysis; correction is also required if it creates health or environmental risk even when not excessive on cost.",
+   "domain": "PROC",
+   "topic": "i-and-i-identification",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "US EPA New England, Guide for Estimating Infiltration and Inflow (June 2014); I/I is excessive when it causes overflows or bypasses, or when the cost to transport and treat it exceeds the cost to eliminate it."
+  },
+  {
+   "id": "WWC-ALL-PROC-0068",
+   "text": "How is the peak inflow rate typically identified from a storm flow record?",
+   "choices": [
+    "It is read from the plant's annual average flow, with no reference to any single storm",
+    "It is fixed by state rule at a single gpd/acre number that never changes between systems",
+    "It is the largest one-hour difference between storm flow and prior dry-weather flow",
+    "It is always exactly equal to the total daily rainfall in inches, converted directly to MGD"
+   ],
+   "correctIndex": 2,
+   "explanation": "Peak inflow rate is identified by comparing flow during a significant storm against the dry-weather flow just before it, after subtracting base sanitary flow and pre-storm infiltration; the peak inflow rate is the largest one-hour difference between storm flow and prior dry-weather flow.",
+   "domain": "PROC",
+   "topic": "i-and-i-identification",
+   "difficulty": "Hard",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "US EPA New England, Guide for Estimating Infiltration and Inflow (June 2014); peak inflow rate is the largest one-hour difference between storm flow and prior dry-weather flow."
+  },
+  {
+   "id": "WWC-ALL-PROC-0069",
+   "text": "What causes hydrogen sulfide (H2S) to form in a collection system?",
+   "choices": [
+    "Chlorine reacting directly with iron pipe walls",
+    "Ultraviolet light breaking down dissolved oxygen in the wastewater",
+    "Cold temperatures alone, with no biological process involved",
+    "Anaerobic bacteria acting on slow-moving or septic wastewater"
+   ],
+   "correctIndex": 3,
+   "explanation": "Hydrogen sulfide gas is produced by anaerobic bacteria acting on slow-moving or septic wastewater, and it is a major source of odor in collection systems.",
+   "domain": "PROC",
+   "topic": "odor-corrosion-h2s",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "Wisconsin DNR, Collection System Maintenance Part 2: Rehabilitative Program (PUB-WT-847-2006); hydrogen sulfide gas is produced by anaerobic bacteria in slow moving wastewater."
+  },
+  {
+   "id": "WWC-ALL-PROC-0070",
+   "text": "Why does wastewater leaving a force main tend to need more frequent cleaning to control corrosion?",
+   "choices": [
+    "The wet well depletes oxygen, leaving the wastewater septic and carrying sulfides",
+    "Force mains add dissolved oxygen to the wastewater, which accelerates pipe corrosion",
+    "Force-main wastewater is always colder than gravity-sewer wastewater, and cold water corrodes pipe faster",
+    "Force mains are built exclusively from bare steel, which corrodes faster than any other material"
+   ],
+   "correctIndex": 0,
+   "explanation": "The wet well depletes dissolved oxygen, so the wastewater leaving the force main is septic, lacking oxygen and carrying sulfides, which means frequent cleaning is needed to remove solids and grease and minimize corrosion.",
+   "domain": "PROC",
+   "topic": "odor-corrosion-h2s",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "US EPA, Wastewater Technology Fact Sheet: Sewers, Force Main (EPA 832-F-00-071); the wet well depletes dissolved oxygen, so wastewater leaving the force main is septic and carries sulfides, requiring frequent cleaning."
+  },
+  {
+   "id": "WWC-ALL-PROC-0071",
+   "text": "When adding chemicals such as ferric chloride or potassium permanganate upstream of a lift station for odor and corrosion control, what should an operator monitor for?",
+   "choices": [
+    "These chemicals have no documented effect once added to the wastewater stream",
+    "Effects on downstream treatment processes, such as extended aeration",
+    "Whether the chemical changes the color of the lift station's exterior paint",
+    "Whether the chemical is compatible with the operator's personal vehicle"
+   ],
+   "correctIndex": 1,
+   "explanation": "Chemicals typically used for odor control, including chlorine, hydrogen peroxide, metal salts such as ferric chloride and ferrous sulfate, oxygen, air, and potassium permanganate, must be monitored closely to avoid affecting downstream treatment processes such as extended aeration.",
+   "domain": "PROC",
+   "topic": "odor-corrosion-h2s",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "US EPA, Collection Systems Technology Fact Sheet: Sewers, Lift Station (EPA 832-F-00-073); odor-control chemicals must be monitored closely to avoid affecting downstream treatment processes such as extended aeration."
+  },
+  {
+   "id": "WWC-ALL-PROC-0072",
+   "text": "What is the documented order of actions in responding to a sanitary sewer overflow?",
+   "choices": [
+    "Contain first, then notify, then stop the source, then mitigate",
+    "Notify first, then stop the source, then contain it, then mitigate",
+    "Stop the source, contain and return the wastewater, mitigate, then notify",
+    "Mitigate first, then notify, then stop the source, then contain it"
+   ],
+   "correctIndex": 2,
+   "explanation": "The documented order for SSO response is to stop the source, contain and return the wastewater to the system, mitigate the effects, and then notify the affected residents and agencies.",
+   "domain": "PROC",
+   "topic": "sso-response-basics",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "CA Water Boards, SSORS Best Management Practices manual (2009); SSO response order is stop the source, contain and return wastewater to the system, mitigate the effects, and notify."
+  },
+  {
+   "id": "WWC-ALL-PROC-0073",
+   "text": "Under a typical state notification framework, initial regulatory notification of a sanitary sewer overflow must generally be made within what timeframe of becoming aware of it?",
+   "choices": [
+    "30 days",
+    "5 days",
+    "90 days",
+    "24 hours"
+   ],
+   "correctIndex": 3,
+   "explanation": "Generally, initial regulatory notification of an SSO must be made within 24 hours of becoming aware of it, by speaking with an official rather than leaving a voicemail, with a written report following within five days.",
+   "domain": "PROC",
+   "topic": "sso-response-basics",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "US EPA / NEIWPCC, Optimizing O&M and Rehabilitation of Sanitary Sewer Collection Systems (December 2003); initial regulatory notification must generally be made within 24 hours, with a written report within five days."
+  },
+  {
+   "id": "WWC-ALL-PROC-0074",
+   "text": "What is the minimum content a documented sanitary sewer overflow report must include?",
+   "choices": [
+    "Date, time, location, cause, estimated volume, how it was stopped, and remediation",
+    "Operator name, badge number, shift start time, and radio call sign",
+    "Total dollar cost, invoice number, payment date, and vendor name",
+    "A photograph, GPS pin, timestamp, and camera model"
+   ],
+   "correctIndex": 0,
+   "explanation": "The minimum SSO report content is date, time, location, cause, estimated volume, how it was stopped, and remediation.",
+   "domain": "PROC",
+   "topic": "sso-response-basics",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "US EPA, Guide for Evaluating CMOM Programs at Sanitary Sewer Collection Systems (EPA 305-B-05-002, January 2005); the minimum SSO report content is date, time, location, cause, estimated volume, how it was stopped, and remediation."
+  },
+  {
+   "id": "WWC-ALL-MATH-0011",
+   "text": "A collection-system basin's average dry-weather flow is 0.35 MGD. During a storm, flow peaks at 1.05 MGD. What is the estimated infiltration and inflow (I&I)?",
+   "choices": [
+    "1.40 MGD",
+    "0.70 MGD",
+    "3.0 MGD",
+    "1.05 MGD"
+   ],
+   "correctIndex": 1,
+   "explanation": "Infiltration and inflow is estimated as wet-weather flow minus dry-weather flow: 1.05 MGD minus 0.35 MGD is 0.70 MGD of estimated I&I.",
+   "domain": "MATH",
+   "topic": "i-and-i-identification",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": "I&I (MGD) = Wet-weather flow - Dry-weather flow",
+   "calculator": null,
+   "citation": null
+  },
+  {
+   "id": "WWC-ALL-SAFE-0001",
+   "text": "Under a permit-required confined-space program, what is the acceptable oxygen range for entry?",
+   "choices": [
+    "25.0 percent to 30.0 percent",
+    "5.0 percent to 12.0 percent",
+    "19.5 percent to 23.5 percent",
+    "10.0 percent to 15.0 percent"
+   ],
+   "correctIndex": 2,
+   "explanation": "Permit-required atmosphere limits set an acceptable oxygen entry level of 19.5 percent to 23.5 percent; normal breathing air is 20.9 percent oxygen, and the space must never fall below 19.5 percent.",
+   "domain": "SAFE",
+   "topic": "confined-space",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "OSHA Permit-Required Confined Spaces standard, 29 CFR 1910.146, as reflected on the entry permit form; acceptable oxygen entry level is 19.5 percent to 23.5 percent."
+  },
+  {
+   "id": "WWC-ALL-SAFE-0002",
+   "text": "Who is responsible for preparing and signing the entry permit, verifying that all atmospheric tests are done, and ensuring conditions stay acceptable until the work is finished?",
+   "choices": [
+    "The relief entrant",
+    "The equipment vendor",
+    "The attendant",
+    "The entry supervisor"
+   ],
+   "correctIndex": 3,
+   "explanation": "The entry supervisor prepares and signs the permit before entry, knows the hazards, verifies all atmospheric tests are done and all procedures and equipment are in place, and ensures acceptable conditions continue until the work is done.",
+   "domain": "SAFE",
+   "topic": "confined-space",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "OSHA Permit-Required Confined Spaces standard, 29 CFR 1910.146; the entry supervisor prepares and signs the permit, verifies atmospheric tests, and ensures acceptable conditions continue until work is done."
+  },
+  {
+   "id": "WWC-ALL-SAFE-0003",
+   "text": "How often must a confined-space rescue team practice a simulated rescue?",
+   "choices": [
+    "At least once every 12 months",
+    "Only once, at initial certification",
+    "Every 5 years",
+    "Every 3 years, regardless of team turnover"
+   ],
+   "correctIndex": 0,
+   "explanation": "On-site rescue teams get the same training as entrants plus PPE and rescue-equipment use and first aid including CPR, and simulated rescues must be performed at least once every 12 months.",
+   "domain": "SAFE",
+   "topic": "confined-space",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "OSHA Permit-Required Confined Spaces standard, 29 CFR 1910.146; simulated rescues must be performed at least once every 12 months."
+  },
+  {
+   "id": "WWC-ALL-SAFE-0004",
+   "text": "Even when initial atmospheric testing shows a confined space is safe, what must still happen before and during entry?",
+   "choices": [
+    "Nothing further is required once the initial test reads safe",
+    "The space must still be ventilated with forced-air, intrinsically safe equipment",
+    "The permit process may be skipped once the initial reading tests safe",
+    "Only a single entrant is allowed, with no attendant required, once the space tests safe"
+   ],
+   "correctIndex": 1,
+   "explanation": "Confined spaces must be ventilated with specially designed forced-air ventilators, even if instruments show the atmosphere is safe, and the blowers must be intrinsically safe so they cannot create a spark, since some of the gases involved are explosive.",
+   "domain": "SAFE",
+   "topic": "confined-space",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "OSHA Permit-Required Confined Spaces standard, 29 CFR 1910.146; confined spaces must be ventilated with forced-air ventilators, even if instruments show the atmosphere is safe, using intrinsically safe blowers."
+  },
+  {
+   "id": "WWC-ALL-SAFE-0005",
+   "text": "At what trench depth must a worker have access to a ladder positioned within 25 feet and extending at least 3 feet above the excavation wall?",
+   "choices": [
+    "15 feet or more",
+    "2 feet or more",
+    "4 feet or more",
+    "8 feet or more"
+   ],
+   "correctIndex": 2,
+   "explanation": "A ladder is required for each worker in a trench 4 feet or more deep, and the ladder must be within 25 feet of the worker and extend at least 3 feet above the excavation wall.",
+   "domain": "SAFE",
+   "topic": "trenching-shoring",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "OSHA excavation standard, 29 CFR 1926.651(c)(2); a ladder is required for trenches 4 feet or more deep, positioned within 25 feet and extending at least 3 feet above the excavation."
+  },
+  {
+   "id": "WWC-ALL-SAFE-0006",
+   "text": "How far back from the trench edge must excavated spoil be placed, and on how many sides?",
+   "choices": [
+    "At least 10 feet back, on both sides equally",
+    "At least 5 feet back, on both sides equally",
+    "At least 6 inches back, on one side only",
+    "At least 2 feet back, on one side only"
+   ],
+   "correctIndex": 3,
+   "explanation": "Spoil, the dirt removed from a trench, must be placed at least 2 feet back from the trench, on one side only.",
+   "domain": "SAFE",
+   "topic": "trenching-shoring",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "OSHA excavation standard, 29 CFR 1926 Subpart P, as reflected in standard trench-safety training; spoil must be placed at least 2 feet back from the trench, on one side only."
+  },
+  {
+   "id": "WWC-ALL-SAFE-0007",
+   "text": "Which condition is documented as raising a trench's cave-in risk?",
+   "choices": [
+    "A trench excavated in freezing or near-freezing conditions",
+    "A trench that runs parallel to an existing underground utility line",
+    "A trench less than 3 feet deep with sloped walls",
+    "A trench that has sat open, undisturbed, for less than one hour"
+   ],
+   "correctIndex": 0,
+   "explanation": "Conditions that raise cave-in risk include low cohesion, high moisture content, freezing conditions, and recent prior excavation at the same site, along with trench depth, soil weight, nearby equipment weight, and vibration.",
+   "domain": "SAFE",
+   "topic": "trenching-shoring",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "OSHA excavation standard, 29 CFR 1926 Subpart P, as reflected in standard trench-safety training; freezing conditions, low cohesion, high moisture, and recent prior excavation raise cave-in risk."
+  },
+  {
+   "id": "WWC-ALL-SAFE-0008",
+   "text": "At approximately what concentration can hydrogen sulfide (H2S) cause death within a few minutes?",
+   "choices": [
+    "0.02 percent",
+    "0.2 percent",
+    "2.0 percent",
+    "0.002 percent"
+   ],
+   "correctIndex": 1,
+   "explanation": "Hydrogen sulfide causes death within a few minutes at a concentration of about 0.2 percent, since it paralyzes the respiratory center and, at high enough concentration, unconsciousness comes suddenly, followed by death without prompt rescue.",
+   "domain": "SAFE",
+   "topic": "hydrogen-sulfide",
+   "difficulty": "Hard",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "Oklahoma DEQ gas-hazard reference, cited in the Distribution and Collection Operator Study Guide; death occurs in a few minutes at 0.2 percent hydrogen sulfide."
+  },
+  {
+   "id": "WWC-ALL-SAFE-0009",
+   "text": "Why can an operator not rely on smell to detect a dangerous hydrogen sulfide (H2S) concentration?",
+   "choices": [
+    "The rotten-egg smell gets stronger without limit as concentration rises, so smell is actually a reliable warning",
+    "H2S has no odor at any concentration, so smell was never a valid indicator",
+    "H2S paralyzes the sense of smell, so the odor becomes undetectable at the highest, most dangerous concentrations",
+    "H2S only smells dangerous when mixed with chlorine gas"
+   ],
+   "correctIndex": 2,
+   "explanation": "Hydrogen sulfide quickly numbs the sense of smell, so the rotten-egg odor fading does not mean the gas is gone; it can mean the opposite, which is why atmospheric monitoring, not the nose, must be trusted to judge H2S danger.",
+   "domain": "SAFE",
+   "topic": "hydrogen-sulfide",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "New England Interstate Water Pollution Control Commission, cited in Wastewater Collections for Small Water Systems digest; H2S quickly numbs the sense of smell, so a fading odor does not mean the gas is gone."
+  },
+  {
+   "id": "WWC-ALL-SAFE-0010",
+   "text": "What documented warning equipment should always be used by a crew working near traffic, alongside signs or a flagger?",
+   "choices": [
+    "A single reflective cone, placed at the crew's discretion",
+    "A single strobe light mounted on the work vehicle",
+    "Cones and warning tape",
+    "High-visibility vests and flashing lights"
+   ],
+   "correctIndex": 3,
+   "explanation": "Traffic-control practice for collection-system work always calls for warnings including high-visibility vests and flashing lights, in addition to signs or a flagger and a physical barrier where practical.",
+   "domain": "SAFE",
+   "topic": "traffic-zones",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "Distribution and Collection Operator Study Guide, traffic-control practice for utility work near traffic; always use warnings including vests and flashing lights."
+  },
+  {
+   "id": "WWC-ALL-ADMIN-0001",
+   "text": "How long should MIS (management information system) records for a collection-system maintenance program typically be kept?",
+   "choices": [
+    "At least three years",
+    "At least three months",
+    "Only for the current fiscal quarter",
+    "No retention guideline exists"
+   ],
+   "correctIndex": 0,
+   "explanation": "MIS records should be kept at least three years, which supports the same 'if it's not recorded, it didn't happen' discipline applied to water-main break records.",
+   "domain": "ADMIN",
+   "topic": "recordkeeping",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "US EPA, Guide for Evaluating CMOM Programs at Sanitary Sewer Collection Systems (EPA 305-B-05-002, January 2005); MIS records should be kept at least three years."
+  },
+  {
+   "id": "WWC-ALL-ADMIN-0002",
+   "text": "A mainline sewer stoppage overflows out of a lateral cleanout rather than a mainline manhole. Which asset should the emergency work order credit?",
+   "choices": [
+    "The lateral cleanout, since that is where the overflow physically surfaced",
+    "The main that actually failed, not just the lateral cleanout where the overflow surfaced",
+    "Overflow work orders are not tied to any specific asset",
+    "Whichever asset is closest to a paved street, regardless of where the failure occurred"
+   ],
+   "correctIndex": 1,
+   "explanation": "Track emergency work to the asset that actually failed, not just where the overflow surfaced, since many mainline stoppages overflow out of a lateral cleanout, so the correct main should get the credit.",
+   "domain": "ADMIN",
+   "topic": "recordkeeping",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "CA Water Boards, SSORS Best Management Practices manual (2009); track emergency work to the asset that actually failed, not just where the overflow surfaced."
+  },
+  {
+   "id": "WWC-ALL-ADMIN-0003",
+   "text": "When a utility changes how it records a particular field in its maintenance data, what should it document to keep long-term trends readable?",
+   "choices": [
+    "Rewriting old records to match, with no note of the change date",
+    "Only the department name",
+    "The date the recording method changed",
+    "Only the name of the employee who requested the change"
+   ],
+   "correctIndex": 2,
+   "explanation": "When you change how you record something, document the change date so long-term trends stay readable, the same 'garbage in, garbage out' discipline that keeps years of maintenance data comparable.",
+   "domain": "ADMIN",
+   "topic": "recordkeeping",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "CA Water Boards, SSORS Best Management Practices manual (2009); when you change how you record something, document the change date so long-term trends stay readable."
+  },
+  {
+   "id": "WWC-ALL-ADMIN-0004",
+   "text": "What do routine security checks at an unstaffed lift station typically include?",
+   "choices": [
+    "Only checking the station's electrical supply is functioning properly",
+    "Only checking for accumulated debris inside the station",
+    "Only checking that the control panel door is fully latched",
+    "Checking fencing, gates, locks, hatches, and panels for signs of tampering"
+   ],
+   "correctIndex": 3,
+   "explanation": "Standard collection-system security practice includes checking fencing, gates, locks, hatches, and control-panel doors for signs of forced entry or tampering as part of the routine site inspection, alongside the mechanical checks.",
+   "domain": "ADMIN",
+   "topic": "security",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "Standard collection-system security practice, consistent with widely used utility site-security preventive-maintenance guidance; routine checks include fencing, gates, locks, hatches, and control-panel doors for signs of tampering."
+  },
+  {
+   "id": "WWC-ALL-ADMIN-0005",
+   "text": "A crew finds a manhole cover or lift-station hatch that has clearly been pried open, with no scheduled work to explain it. What is the correct immediate response?",
+   "choices": [
+    "Report it as a possible security incident, per the tampering procedure",
+    "Assume it was scheduled work that was not logged, and take no further action",
+    "Quietly close it back up and say nothing, since it is probably nothing",
+    "Wait until the next annual inspection cycle to note it in passing"
+   ],
+   "correctIndex": 0,
+   "explanation": "Suspected tampering with a manhole cover or lift-station hatch should be treated as a possible security incident, reported per the utility's tampering-response procedure, and the access point should be inspected for damage or an unsafe condition before normal access resumes.",
+   "domain": "ADMIN",
+   "topic": "security",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "Standard collection-system security practice, consistent with widely used utility site-security preventive-maintenance guidance; suspected tampering should be reported and the site inspected before normal access resumes."
+  }
+ ]
+}

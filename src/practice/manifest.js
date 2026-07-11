@@ -7,9 +7,9 @@
    filename in dist/practice-banks/ (bank-loader.js), a different thing
    from the bank JSON's own internal "version" field (a content-revision
    date quiz.js/quiz-engine.js use for localStorage session invalidation).
-   Wave-1 note: operator-math-1 + regulations-1 ship today; the other 4
-   Wave-1 entries (WT L1, WD L1, WWT L1, WWC L1) land here as their banks
-   clear the verify gate + Blake's flags pass (practice-tests/HANDOFF.md). */
+   Wave-1 note: math, regulations, water distribution, and wastewater
+   collection ship today; WT L1 + WWT L1 land next session after their
+   banks clear the verify gate + Blake (practice-tests/HANDOFF.md). */
 export const BANK_BASE_URL = 'https://blakeandersonziptility.github.io/ziptility-tools/dist/practice-banks/';
 
 export const TESTS = [
@@ -31,6 +31,30 @@ export const TESTS = [
     discipline: 'Regulations (Federal)',
     level: 'Entry to working level (ABC Class I-II)',
     questionCount: 103,
+    durationMin: 120,
+    refCount: 100,
+    bankVersion: '1.0.0'
+  },
+  {
+    id: 'wd-1',
+    title: 'Water distribution operator practice test, Class I',
+    badge: 'Water distribution · Class I entry level',
+    discipline: 'Water Distribution',
+    level: 'Entry level (ABC Class I)',
+    description: 'Mains, valves, hydrants, storage, pumps, cross-connection control, flushing, sampling, and crew safety. Machine-checked math and cited answers.',
+    questionCount: 125,
+    durationMin: 120,
+    refCount: 100,
+    bankVersion: '1.0.0'
+  },
+  {
+    id: 'wwc-1',
+    title: 'Wastewater collection operator practice test, Class I',
+    badge: 'Wastewater collection · Class I entry level',
+    discipline: 'Wastewater Collections',
+    level: 'Entry level (ABC Class I)',
+    description: 'Gravity mains, manholes, lift stations, cleaning and CCTV, infiltration and inflow, SSO response, and confined-space and trench safety. Cited answers throughout.',
+    questionCount: 120,
     durationMin: 120,
     refCount: 100,
     bankVersion: '1.0.0'

@@ -1,0 +1,2272 @@
+{
+ "id": "wwt-1",
+ "title": "Wastewater Treatment Operator Practice Test, Class I",
+ "discipline": "Wastewater Treatment",
+ "level": "Entry level (ABC Class I)",
+ "durationMin": 120,
+ "refCount": 100,
+ "version": "2026-07-11",
+ "questions": [
+  {
+   "id": "WWT-ALL-EQIP-0001",
+   "text": "A raw sewage pump at a wastewater plant uses a mechanical seal, and a small stream of clean seal water is fed continuously across the seal faces while the pump runs. What is the main purpose of that seal water?",
+   "choices": [
+    "It lubricates and cools the seal faces while keeping sewage grit and solids away from them",
+    "It raises the pump's discharge pressure so the pump can reach a higher point in the force main",
+    "It dilutes the raw sewage so the impeller passes solids more easily",
+    "It cools the pump motor windings during long runs at full speed"
+   ],
+   "correctIndex": 0,
+   "explanation": "Seal water is a continuous flush of clean water directed across the mechanical seal faces. It lubricates and cools the faces so they do not run dry and overheat, and it keeps abrasive grit and solids carried in raw sewage from working into the seal area and grinding away the seal faces, which is a leading cause of early seal failure on raw sewage pumps.",
+   "domain": "EQIP",
+   "topic": "pump-types",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "WEF MOP 11 (Operation of Municipal Wastewater Treatment Plants): confirms seal water on raw sewage pump mechanical seals lubricates and cools the seal faces and excludes grit from the seal area to prevent premature seal wear."
+  },
+  {
+   "id": "WWT-ALL-EQIP-0002",
+   "text": "At an activated sludge plant, an operator compares two pump flows on the same shift: the return activated sludge (RAS) pumps are moving roughly ten times more flow than the waste activated sludge (WAS) pumps. What does this difference reflect about the two pumps' jobs?",
+   "choices": [
+    "RAS pumps handle a thinner stream, while WAS pumps handle thick sludge needing a slower, higher pressure flow",
+    "RAS pumps return most settled sludge to the aeration basin, while WAS removes only the daily excess biomass",
+    "RAS pumps are timed to run only during peak flow hours, while WAS pumps must run continuously around the clock",
+    "RAS pumps serve the primary clarifier, while WAS pumps serve the secondary clarifier and see less flow"
+   ],
+   "correctIndex": 1,
+   "explanation": "RAS pumps return the great majority of the sludge settled in the secondary clarifier back to the aeration basin to keep the biological process supplied with active biomass (MLSS), so their flow is large and continuous. WAS pumps remove only the small daily excess of biomass that growth produces, so their flow is a small fraction of RAS by comparison. The large flow gap reflects that difference in job, not a difference in sludge thickness or which clarifier the pumps serve.",
+   "domain": "EQIP",
+   "topic": "pump-types",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "WEF MOP 11 (Operation of Municipal Wastewater Treatment Plants): confirms RAS pumping returns the bulk of settled sludge to sustain MLSS while WAS pumping removes only the smaller daily excess biomass, explaining the large flow difference between the two duties."
+  },
+  {
+   "id": "WWT-ALL-EQIP-0003",
+   "text": "At a wastewater treatment plant, a progressive cavity pump feeds thickened sludge from a holding tank. The tank runs empty for a few minutes while the pump keeps running before an operator notices and shuts it down. What damage should the operator expect to find?",
+   "choices": [
+    "The mechanical seal on the pump's shaft cracked from a sudden spike in discharge pressure",
+    "The pump's impeller lost balance and began vibrating heavily inside the volute casing",
+    "The rubber stator overheated and wore away with nothing left to lubricate or cool it",
+    "The check valve on the pump's suction line stuck open and let sludge flow backward"
+   ],
+   "correctIndex": 2,
+   "explanation": "The rotor and stator in a progressive cavity pump depend on the pumped fluid to lubricate and cool the tight seal line between them as the rotor turns. With the tank empty and no sludge present, that lubrication disappears and friction heat builds quickly, which wears away the rubber stator and can also damage the rotor. This is why progressive cavity sludge pumps are commonly protected with low level shutoffs or dry run alarms.",
+   "domain": "EQIP",
+   "topic": "pump-types",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "WEF MOP 11 (Operation of Municipal Wastewater Treatment Plants): confirms progressive cavity (rotor and stator) pumps used for sludge are damaged by dry running because the elastomer stator depends on the pumped fluid for lubrication and cooling."
+  },
+  {
+   "id": "WWT-ALL-EQIP-0004",
+   "text": "Some small package activated sludge plants move return sludge using an air lift pump instead of a mechanical pump. How does an air lift pump move sludge up through its riser pipe?",
+   "choices": [
+    "A small centrifugal impeller at the base of the riser pipe pushes sludge upward under pressure",
+    "A vacuum pump draws air from the top of the riser pipe, pulling sludge upward behind it",
+    "A rotating screw set inside the riser pipe carries sludge upward along its threads",
+    "Air injected near the pipe's base lowers the mixture's density so it rises out the top"
+   ],
+   "correctIndex": 3,
+   "explanation": "An air lift pump has no moving parts in the sludge stream. Compressed air is released near the bottom of a submerged riser pipe, mixing with the sludge and creating a lighter, less dense column inside the pipe than the sludge surrounding it outside. That density difference pushes the air and sludge mixture up and out the top of the riser, which is why air lifts are popular for RAS and WAS duty in small, low maintenance package plants.",
+   "domain": "EQIP",
+   "topic": "pump-types",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "WEF MOP 11 (Operation of Municipal Wastewater Treatment Plants): confirms air lift pumps move sludge by injecting compressed air near the base of a submerged riser pipe to reduce the density of the air and sludge column so it rises, with no moving parts in the sludge stream."
+  },
+  {
+   "id": "WWT-ALL-EQIP-0005",
+   "text": "A headworks needs to lift raw sewage carrying heavy rag and grit loading up to the bar screens, and the plant wants equipment known for handling that debris with minimal clogging and low maintenance. Which pump technology best fits that need?",
+   "choices": [
+    "An Archimedes screw pump, an open helical screw that lifts sewage along an incline",
+    "A jet pump that uses a high velocity water stream to eject sewage upward",
+    "A diaphragm pump that flexes a rubber membrane to push sewage through a check valve",
+    "A regenerative turbine pump that recirculates flow through multiple impeller stages"
+   ],
+   "correctIndex": 0,
+   "explanation": "The Archimedes screw pump is an open, slow turning helical screw set at an incline that carries raw sewage, along with its rags, grit, and debris, up to the headworks without the tight clearances or narrow passages that cause clogging in other pump types. That open design plus a simple, low speed drive is why screw pumps are a standard choice for raw sewage lift stations ahead of screening.",
+   "domain": "EQIP",
+   "topic": "pump-types",
+   "difficulty": "Easy",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "WEF MOP 11 (Operation of Municipal Wastewater Treatment Plants): confirms Archimedes screw pumps are a standard raw sewage lift technology because their open helical design passes rags, grit, and debris without clogging."
+  },
+  {
+   "id": "WWT-ALL-EQIP-0006",
+   "text": "A wastewater lift station has two identical centrifugal pumps piped so both discharge into the same header, and they are started together to run in parallel against the same system. Compared to running just one pump alone, what happens to the combined output?",
+   "choices": [
+    "Total flow exactly doubles, since two identical pumps in parallel always double flow at the same head",
+    "Total flow increases, but less than double, since combined flow pushes the system to a higher head",
+    "Total flow stays the same as one pump, but the discharge pressure doubles across the shared header",
+    "Total flow drops below the single pump flow, because the pumps interfere with each other's suction"
+   ],
+   "correctIndex": 1,
+   "explanation": "When two identical pumps run in parallel, they combine their flows at whatever head the shared system settles at. Because the system curve gets steeper as flow rises, the higher combined flow pushes the pumps to operate at a higher head than either pump saw running alone, and at that higher head each pump delivers a bit less than its single pump flow. The result is more total flow than one pump alone, but less than twice the single pump flow.",
+   "domain": "EQIP",
+   "topic": "pump-types",
+   "difficulty": "Hard",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "WEF MOP 11 (Operation of Municipal Wastewater Treatment Plants): confirms that identical centrifugal pumps operated in parallel against a common system curve deliver combined flow less than double the single pump flow, because rising friction losses push the operating point to a higher head."
+  },
+  {
+   "id": "WWT-ALL-EQIP-0007",
+   "text": "A wastewater treatment plant's aeration system uses either a positive displacement (rotary lobe) blower or a centrifugal blower to supply air. What basic difference separates how these two blower types respond to changes in discharge backpressure?",
+   "choices": [
+    "A positive displacement blower's air volume shifts more as backpressure changes, while a centrifugal blower holds close to a steady volume",
+    "Both blower types hold a nearly constant air volume regardless of backpressure, differing only in drive motor size",
+    "A positive displacement blower holds close to a steady air volume as backpressure changes, while a centrifugal blower's output shifts more",
+    "Both blower types are highly sensitive to backpressure changes, differing only in how fast their output falls off"
+   ],
+   "correctIndex": 2,
+   "explanation": "A positive displacement (rotary lobe) blower traps a fixed volume of air with each rotation of its lobes, so it keeps pushing close to that same volume regardless of moderate changes in downstream backpressure, though the pressure it works against does change. A centrifugal blower generates flow through impeller velocity, and its air output falls off more as backpressure rises, similar to how a centrifugal pump's flow falls off against a higher head.",
+   "domain": "EQIP",
+   "topic": "blowers",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "WEF MOP 11 (Operation of Municipal Wastewater Treatment Plants): confirms positive displacement blowers deliver a nearly constant air volume across backpressure changes, while centrifugal blower output varies more with backpressure."
+  },
+  {
+   "id": "WWT-ALL-EQIP-0008",
+   "text": "At a wastewater treatment plant, every blower feeding the aeration basins draws intake air through an inlet air filter before the air reaches the lobes or impeller. What is the main purpose of that inlet filter?",
+   "choices": [
+    "It cools the intake air before compression to reduce the blower's discharge temperature",
+    "It removes moisture from the intake air so condensation cannot form inside the piping",
+    "It reduces the noise of intake air rushing into the blower during startup and running",
+    "It keeps dust and debris out of the blower's moving parts and the diffusers downstream"
+   ],
+   "correctIndex": 3,
+   "explanation": "An inlet air filter traps dust, dirt, and other airborne debris before it can reach the blower's rotating lobes or impeller, where it would cause wear, or pass downstream into the diffusers, where it would cause clogging and uneven air distribution. Keeping that filter clean protects both the blower internals and the diffuser system.",
+   "domain": "EQIP",
+   "topic": "blowers",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "WEF MOP 11 (Operation of Municipal Wastewater Treatment Plants): confirms blower inlet filters protect internal moving parts and downstream diffusers by removing dust and debris from intake air."
+  },
+  {
+   "id": "WWT-ALL-EQIP-0009",
+   "text": "At a wastewater treatment plant, a rotary lobe blower feeds an aeration basin through a discharge line that includes a pressure relief valve. During a basin isolation, the downstream discharge valve is accidentally left fully closed while the blower keeps running. What protects the blower and piping from damage in that moment?",
+   "choices": [
+    "The relief valve opens once pressure passes its set point, venting the excess air the blower keeps producing",
+    "The blower automatically reverses its lobe rotation once backpressure rises, pulling air out through the inlet filter",
+    "The rising backpressure alone slows the blower's air output smoothly to zero before any damage can occur",
+    "The inlet filter collapses inward at high backpressure, cutting off intake air and stalling the blower safely"
+   ],
+   "correctIndex": 0,
+   "explanation": "A positive displacement blower keeps forcing a fixed volume of air through with every rotation no matter what is downstream, so if the discharge path is blocked, pressure builds quickly and can rupture piping or damage the blower. The relief valve is set to open at a safe pressure limit, venting the excess air the blower keeps producing so pressure cannot climb past that point until the blockage is cleared.",
+   "domain": "EQIP",
+   "topic": "blowers",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "WEF MOP 11 (Operation of Municipal Wastewater Treatment Plants): confirms positive displacement blowers require a discharge pressure relief valve because their fixed volume output causes pressure to climb rapidly against a blocked or closed discharge."
+  },
+  {
+   "id": "WWT-ALL-EQIP-0010",
+   "text": "At a wastewater treatment plant, an operator throttles a centrifugal blower's discharge valve further and further to cut back aeration air during a low load period. Past a certain point, the blower starts pulsing, airflow briefly reverses, and the unit shakes and rattles on its mounts. What is happening?",
+   "choices": [
+    "The inlet filter has become fully clogged, starving the blower of intake air and causing it to stall repeatedly",
+    "The blower has been throttled below its minimum flow and has entered surge, a pulsing, unstable condition",
+    "The blower has exceeded its maximum rated flow, overloading the drive motor and causing it to hunt for speed",
+    "A worn blower belt is slipping intermittently, causing the output to pulse in rhythm with the belt's slip cycle"
+   ],
+   "correctIndex": 1,
+   "explanation": "Centrifugal blowers have a minimum flow below which the air column in the system can no longer stay stable against the blower's discharge pressure. Push the flow below that point, usually by over throttling the discharge, and the blower enters surge: airflow breaks down, briefly reverses, and the machine pulses, vibrates, and can suffer real mechanical damage if allowed to continue. Operators avoid surge by keeping flow above the blower's rated minimum, often using a bypass or blow off valve instead of throttling too far.",
+   "domain": "EQIP",
+   "topic": "blowers",
+   "difficulty": "Hard",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "WEF MOP 11 (Operation of Municipal Wastewater Treatment Plants): confirms centrifugal blowers throttled below their minimum stable flow enter surge, a pulsing, unstable condition with momentary flow reversal and vibration."
+  },
+  {
+   "id": "WWT-ALL-EQIP-0011",
+   "text": "A wastewater treatment plant is comparing two aeration basins fed by the same blower header: one has diffusers mounted 12 feet below the water surface, the other has diffusers mounted 20 feet below the surface. To deliver the same airflow to each, what does the blower have to do differently for the deeper basin?",
+   "choices": [
+    "Produce a lower discharge pressure, since deeper water compresses the rising air bubbles and reduces the pressure the blower must supply",
+    "Run at the same discharge pressure, since diffuser depth affects bubble size but not the pressure needed to push air through them",
+    "Produce a higher discharge pressure, since it must overcome the greater hydrostatic head of water sitting above the deeper diffusers",
+    "Run at a lower flow rate only, since pressure requirements do not change with diffuser depth in a shared header system"
+   ],
+   "correctIndex": 2,
+   "explanation": "Air leaving a diffuser has to push past the weight of the water column sitting above it before it can rise as a bubble. A diffuser at 20 feet has 8 more feet of water above it than one at 12 feet, so the blower has to produce a correspondingly higher discharge pressure to deliver the same airflow to the deeper basin. This is why blower discharge pressure requirements are set based on diffuser submergence depth plus piping friction losses.",
+   "domain": "EQIP",
+   "topic": "blowers",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "WEF MOP 11 (Operation of Municipal Wastewater Treatment Plants): confirms required blower discharge pressure rises with diffuser submergence depth because the blower must overcome the hydrostatic head of the water column above the diffusers."
+  },
+  {
+   "id": "WWT-ALL-EQIP-0012",
+   "text": "A wastewater treatment plant runs two blowers that both discharge into the same aeration header, but only one blower runs at a time while the other stays on standby. Each blower's discharge line has its own check valve. What does that check valve protect against while the standby blower is idle?",
+   "choices": [
+    "Moisture from the intake air slowly condensing inside the idle blower's discharge piping",
+    "The idle blower's inlet filter collapsing from vacuum created by the running blower on the header",
+    "The running blower's motor overloading from having to supply air to both units at once",
+    "Air flowing backward into the idle blower and spinning its lobes or impeller in reverse"
+   ],
+   "correctIndex": 3,
+   "explanation": "With two blowers tied into one shared header, if the idle blower had no check valve, pressurized air from the running unit could push backward through the idle blower's casing, spinning its lobes or impeller in reverse. That reverse spin can damage bearings and seals not built to run backward, and it also wastes air that should be going to the aeration basin. The check valve on each unit's discharge line closes off that backward path whenever its blower is not running.",
+   "domain": "EQIP",
+   "topic": "blowers",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "WEF MOP 11 (Operation of Municipal Wastewater Treatment Plants): confirms discharge check valves on blowers sharing a common header prevent backflow of pressurized air into an idle unit, which would otherwise drive its lobes or impeller in reverse."
+  },
+  {
+   "id": "WWT-ALL-ADMIN-0001",
+   "text": "Under federal NPDES requirements, who is authorized to sign and certify a Discharge Monitoring Report before it is submitted to the permitting authority?",
+   "choices": [
+    "The official authorized to certify the report's accuracy",
+    "Any certified operator who happened to collect that day's samples",
+    "The contract laboratory that analyzed the samples",
+    "The technician who last calibrated the flow meter"
+   ],
+   "correctIndex": 0,
+   "explanation": "A Discharge Monitoring Report is a legal certification, not just a data sheet. Federal rules require it to be signed by a responsible official, or a duly authorized representative, who can be held accountable for the accuracy of what is reported. Operators, lab staff, and technicians may generate the underlying data, but they are not the signing authority.",
+   "domain": "ADMIN",
+   "topic": "recordkeeping",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "40 CFR 122.22 (Signatories to permit applications and reports): DMRs must be signed and certified by a responsible official or duly authorized representative, not by any staff member who happens to touch the sample."
+  },
+  {
+   "id": "WWT-ALL-ADMIN-0002",
+   "text": "A wastewater treatment plant operator is clearing out old paperwork. The operator finds discharge monitoring records tied to a sample collected two years and six months ago, with no permit violation linked to that sample. Under the federal minimum retention requirement for NPDES monitoring records, what should the operator do with these records?",
+   "choices": [
+    "Discard them; paperwork only needs 2 years of retention.",
+    "Keep them; federal rules set retention at 3 years from the sample date.",
+    "Discard them; retention only applies to records tied to a reported violation.",
+    "Keep them, but only until the next permit renewal."
+   ],
+   "correctIndex": 1,
+   "explanation": "The federal minimum for NPDES monitoring records is retention for at least three years from the date of the sample, measurement, report, or application. That clock runs regardless of whether the result showed a violation, so at two and a half years the records are still inside the required window and must be kept.",
+   "domain": "ADMIN",
+   "topic": "recordkeeping",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "40 CFR 122.41(j)(2): permittees must retain records of all required monitoring information for at least 3 years from the date of the sample, measurement, report, or application."
+  },
+  {
+   "id": "WWT-ALL-ADMIN-0003",
+   "text": "A wastewater treatment plant operator is completing the sampling log for a compliance sample required under the plant's NPDES permit. The lead operator personally collects and bottles the sample, while a supervisor stands nearby and observes but does not touch the sample or the equipment. Whose name satisfies the federal recordkeeping requirement for the field recording who performed the sampling?",
+   "choices": [
+    "The lead operator, since that person physically collected the sample",
+    "The supervisor, since that person outranks the lead operator",
+    "Both names, since anyone present during the sampling should be listed",
+    "Neither name; only the analyzing laboratory is recorded for that field"
+   ],
+   "correctIndex": 0,
+   "explanation": "Federal recordkeeping requirements for NPDES monitoring records call for documenting the individual who performed the sampling, not just whoever happened to be present. Since the lead operator is the one who physically collected the sample, that is the name the record must show for this field.",
+   "domain": "ADMIN",
+   "topic": "recordkeeping",
+   "difficulty": "Easy",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "40 CFR 122.41(j)(3)(ii): monitoring records must identify the individual(s) who performed the sampling or measurements, a separate requirement from documenting who performed the analysis."
+  },
+  {
+   "id": "WWT-ALL-ADMIN-0004",
+   "text": "At a wastewater treatment plant, what is standard practice for controlling access to a chemical storage area, such as a chlorine or polymer room?",
+   "choices": [
+    "Left unlocked during business hours for faster emergency response",
+    "Locked only during chemical deliveries, open the rest of the time",
+    "Kept locked, with access limited to trained personnel",
+    "Open to all staff, as long as they sign a visitor log first"
+   ],
+   "correctIndex": 2,
+   "explanation": "Chemical storage and feed areas hold hazardous materials, so plants keep them locked and limit entry to personnel trained to safely handle the chemicals stored there. That control reduces the chance of accidental exposure, incompatible mixing, or tampering by someone who does not know the hazards or the handling steps.",
+   "domain": "ADMIN",
+   "topic": "security-basics",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "WEF MOP 11, Operation of Municipal Wastewater Treatment Plants: chemical storage and feed areas are kept secured, with access limited to personnel trained on the chemicals stored there."
+  },
+  {
+   "id": "WWT-ALL-ADMIN-0005",
+   "text": "A delivery driver arrives at a wastewater treatment plant to drop off chemical totes and asks the operator for permission to enter the secured chemical storage yard alone, while the operator finishes another task nearby. What is the appropriate response?",
+   "choices": [
+    "Let the driver in alone; scheduled chemical deliveries do not require an escort.",
+    "Let the driver in alone; the area is unrestricted once the delivery is confirmed.",
+    "Deny entry and reschedule the delivery, since the operator is occupied.",
+    "Escort the driver into the storage yard, or have another staff member do it."
+   ],
+   "correctIndex": 3,
+   "explanation": "Standard plant security practice treats delivery drivers and other outside personnel as visitors who need supervision inside secured or restricted areas, even for routine, scheduled work. Escorting the driver, either by the operator or another staff member, keeps the chemical storage yard under staff observation the whole time someone unfamiliar with the plant's hazards and procedures is inside it.",
+   "domain": "ADMIN",
+   "topic": "security-basics",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "WEF MOP 11, Operation of Municipal Wastewater Treatment Plants: visitors and delivery or contract personnel are escorted, not given unsupervised access to secured or restricted plant areas."
+  },
+  {
+   "id": "WWT-ALL-SAMP-0001",
+   "text": "A lab technician runs a BOD5 test on a wastewater sample. What does the result represent?",
+   "choices": [
+    "The amount of dissolved oxygen used by microorganisms to break down organic matter in the sample.",
+    "The total weight of suspended organic and inorganic solids filtered out of the sample before incubation.",
+    "The total amount of oxygen required to chemically oxidize all organic matter present in the sample.",
+    "The number of live bacteria colonies that grow from the sample after a set incubation period."
+   ],
+   "correctIndex": 0,
+   "explanation": "BOD5 is a biological test. Microorganisms in the sample consume dissolved oxygen as they break down the organic matter present, and the amount of oxygen used over the incubation period is reported as the BOD value.",
+   "domain": "SAMP",
+   "topic": "bod",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "WEF MOP 11 (Operation of Municipal Wastewater Treatment Plants): BOD5 measures the dissolved oxygen consumed by microorganisms as they biologically stabilize organic matter in a sample over a set incubation period."
+  },
+  {
+   "id": "WWT-ALL-SAMP-0002",
+   "text": "A wastewater lab tech is setting up a BOD5 test on raw influent, which is far more concentrated with organic matter than typical plant effluent. Before incubating, the tech dilutes the sample with aerated dilution water rather than testing it full strength. What is the reason for this step?",
+   "choices": [
+    "To reduce the total incubation time needed before a valid result can be read.",
+    "To leave enough dissolved oxygen in the bottle to measure at the end of incubation.",
+    "To match the sample's temperature to the standard incubation temperature before testing.",
+    "To remove settleable solids that would otherwise interfere with the oxygen readings."
+   ],
+   "correctIndex": 1,
+   "explanation": "A high strength sample like raw influent has enough organic matter to consume all the dissolved oxygen in the bottle well before the incubation period ends. Diluting the sample with aerated dilution water lowers the oxygen demand per bottle so some measurable dissolved oxygen is still left at the end of incubation, which is what makes the oxygen depletion calculation possible.",
+   "domain": "SAMP",
+   "topic": "bod",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "WEF MOP 11 (Operation of Municipal Wastewater Treatment Plants): high strength samples such as raw influent are diluted with aerated dilution water before BOD5 incubation so dissolved oxygen is not fully depleted before the 5 day test period ends."
+  },
+  {
+   "id": "WWT-ALL-SAMP-0003",
+   "text": "BOD bottles from a batch of samples containing algae were accidentally incubated with some light exposure instead of staying fully dark for the 5 day period. The resulting BOD values for that batch came back lower than expected. What most likely caused the low reading?",
+   "choices": [
+    "The light sped up microbial decomposition, so the oxygen demand was fully satisfied earlier than the standard incubation period.",
+    "The light raised the temperature inside the bottles above 20 C, which slowed the oxygen consuming reactions.",
+    "The light let algae in the sample photosynthesize, adding oxygen back and offsetting some of what the microorganisms consumed.",
+    "The light caused dissolved oxygen to escape from the bottles as gas, leaving too little left to show a valid drop."
+   ],
+   "correctIndex": 2,
+   "explanation": "BOD bottles are incubated in the dark specifically to stop algae from photosynthesizing. If light reaches a sample that contains algae, the algae produce oxygen during the incubation period, which offsets some of the oxygen the microorganisms consume. That extra oxygen makes the measured drop in dissolved oxygen smaller than it should be, so the calculated BOD comes back lower than the true value.",
+   "domain": "SAMP",
+   "topic": "bod",
+   "difficulty": "Hard",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "WEF MOP 11 (Operation of Municipal Wastewater Treatment Plants): BOD5 bottles are incubated in the dark because light can let algae in the sample photosynthesize and add oxygen back into the bottle, producing an artificially low BOD result."
+  },
+  {
+   "id": "WWT-ALL-SAMP-0004",
+   "text": "In the standard laboratory method, how is the total suspended solids (TSS) result for a wastewater sample obtained?",
+   "choices": [
+    "By measuring how much light scatters through the sample as it passes through a clear cell.",
+    "By titrating the sample against a standard reagent until a color change marks the endpoint.",
+    "By comparing the electrical conductivity of the sample against a set of known standard solutions.",
+    "By filtering a measured volume, drying the filter, and weighing it to find the solids retained."
+   ],
+   "correctIndex": 3,
+   "explanation": "TSS is a gravimetric, or weight based, test. A measured volume of sample is filtered through a glass fiber filter, the filter is dried, and the mass of solids retained on the filter is used to calculate the suspended solids concentration.",
+   "domain": "SAMP",
+   "topic": "tss",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "WEF MOP 11 (Operation of Municipal Wastewater Treatment Plants): total suspended solids (TSS) is determined gravimetrically by filtering a measured sample volume, then drying and weighing the filter to find the mass of solids retained."
+  },
+  {
+   "id": "WWT-ALL-SAMP-0005",
+   "text": "A wastewater sample from the aeration basin is heavily loaded with solids. While running a TSS test, the tech finds the filter clogs and filtration nearly stops well before the planned sample volume has passed through. What should the tech do to get a valid result?",
+   "choices": [
+    "Stop at a smaller volume the filter can handle, and calculate the result from that volume.",
+    "Keep applying vacuum until the full planned volume eventually passes through the clogged filter.",
+    "Switch to a larger pore size filter paper so the same volume can pass through faster.",
+    "Report the test as invalid and skip a TSS result for that sample entirely."
+   ],
+   "correctIndex": 0,
+   "explanation": "When a sample carries too much solids load to filter the full planned volume in a reasonable time, the tech filters a smaller measured volume instead, then calculates the TSS concentration using that actual volume filtered rather than the originally planned one.",
+   "domain": "SAMP",
+   "topic": "tss",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "WEF MOP 11 (Operation of Municipal Wastewater Treatment Plants): when a heavily loaded sample clogs the filter before the planned volume passes, standard practice is to filter a smaller measured volume and calculate TSS from the volume actually filtered."
+  },
+  {
+   "id": "WWT-ALL-SAMP-0006",
+   "text": "Which method do wastewater operators most commonly use to check dissolved oxygen in an aeration basin during daily rounds?",
+   "choices": [
+    "A wet chemical titration run at the bench using a burette and a color change endpoint.",
+    "A handheld membrane electrode meter with a probe lowered directly into the basin.",
+    "A benchtop conductivity meter calibrated against a set of known standard solutions.",
+    "A turbidity tube read by eye against a printed reference chart."
+   ],
+   "correctIndex": 1,
+   "explanation": "For routine, day to day dissolved oxygen checks in an aeration basin, operators typically use a handheld membrane electrode meter. The probe is lowered directly into the basin and gives a fast, on the spot reading without needing bench glassware.",
+   "domain": "SAMP",
+   "topic": "do",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "WEF MOP 11 (Operation of Municipal Wastewater Treatment Plants): routine field dissolved oxygen checks in aeration basins are typically taken with a handheld membrane electrode DO meter rather than a bench titration."
+  },
+  {
+   "id": "WWT-ALL-SAMP-0007",
+   "text": "An operator takes DO readings in two aeration basins on the same day using a freshly calibrated meter. Both basins are independently confirmed to be at 100 percent oxygen saturation, one running at 15 C and the other at 25 C. The meter reads a noticeably higher dissolved oxygen value, in mg/L, in the cooler basin. What explains the difference?",
+   "choices": [
+    "The meter's membrane responds faster in colder water, which inflates the reading.",
+    "Colder water contains more dissolved solids, which raises the apparent oxygen reading.",
+    "The calibration performed that morning had already drifted by the time the warmer basin was read.",
+    "Cold water holds more dissolved oxygen at 100 percent saturation than warm water does."
+   ],
+   "correctIndex": 3,
+   "explanation": "Dissolved oxygen solubility in water depends on temperature. Colder water can physically hold more dissolved oxygen at 100 percent saturation than warmer water. That means the saturation concentration itself, in mg/L, is higher in the 15 C basin than in the 25 C basin, so two basins that are both truly at saturation will still show different mg/L readings.",
+   "domain": "SAMP",
+   "topic": "do",
+   "difficulty": "Hard",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "Standard water chemistry as applied in WEF MOP 11 (Operation of Municipal Wastewater Treatment Plants): dissolved oxygen concentration at 100 percent saturation is temperature dependent, with colder water holding a higher saturation concentration, in mg/L, than warmer water."
+  },
+  {
+   "id": "WWT-ALL-SAMP-0008",
+   "text": "A composite wastewater sample is collected for BOD analysis but is left in an uncooled container at outdoor summer temperature for several hours before it reaches the lab. What is the most likely effect on the eventual test result?",
+   "choices": [
+    "The result will read higher than the true value, because warm storage adds extra oxygen to the sample.",
+    "The result will be unaffected, because BOD only measures activity that happens during the official incubation period.",
+    "The result will likely read low, because biological activity already used up part of the oxygen demand.",
+    "The result cannot be calculated at all once a sample has gone unrefrigerated for several hours before reaching the lab."
+   ],
+   "correctIndex": 2,
+   "explanation": "Cooling a BOD sample to about 4 C promptly after collection slows the microorganisms down so the oxygen demand is preserved for the formal incubation period. If a sample sits warm for hours before reaching the lab, biological activity keeps working the whole time, using up part of the true oxygen demand before the official test even starts. That makes the measured BOD come back lower than the sample's true oxygen demand.",
+   "domain": "SAMP",
+   "topic": "preservation-holdtime",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "Standard Methods for the Examination of Water and Wastewater (per WEF MOP 11): BOD samples are cooled to about 4 C promptly after collection because biological activity in a warm sample keeps exerting oxygen demand before incubation begins, which biases the result low."
+  },
+  {
+   "id": "WWT-ALL-SAMP-0009",
+   "text": "As part of daily QA/QC, an operator checks a DO meter each morning against water saturated air before using it for basin readings. One morning, the calibration check shows the meter reading well outside the acceptable range even after following the normal calibration steps. What should the operator do before using the meter that day?",
+   "choices": [
+    "Apply a fixed numeric offset to every field reading to correct for the gap seen during calibration.",
+    "Use the meter as normal, since a single failed calibration check rarely affects the accuracy of field readings.",
+    "Wait until the next scheduled calibration date to address the problem, and log today's readings as preliminary.",
+    "Hold the meter out of service for official readings until it is serviced and passes a calibration check."
+   ],
+   "correctIndex": 3,
+   "explanation": "A calibration check exists to confirm an instrument is trustworthy before it is used for official readings. When a DO meter fails that check even after the normal calibration steps, the correct response is to take it out of service for reportable readings until it is serviced and passes a calibration check, not to keep using it with an assumed correction or on the original schedule.",
+   "domain": "SAMP",
+   "topic": "qa-qc",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "General wastewater lab QA/QC practice (WEF MOP 11, Operation of Municipal Wastewater Treatment Plants): an instrument that fails its daily calibration check is held out of service until it is serviced and passes calibration."
+  },
+  {
+   "id": "WWT-ALL-EQIP-0013",
+   "text": "A wastewater treatment plant aeration basin uses fine bubble diffusers rather than coarse bubble diffusers to add oxygen to the mixed liquor. What is the main advantage of the fine bubble design?",
+   "choices": [
+    "Higher oxygen transfer efficiency per volume of air used",
+    "Lower maintenance from strong resistance to pore fouling",
+    "Lower equipment and installation cost than coarse bubble systems",
+    "Reduced need for upstream blower air filtration systems"
+   ],
+   "correctIndex": 0,
+   "explanation": "Fine bubble diffusers create smaller bubbles than coarse bubble diffusers, giving the air more surface area and a longer contact time as it rises through the water column. That combination transfers oxygen into the mixed liquor more efficiently per unit of air supplied, which is why fine bubble diffusers are the standard choice where energy efficiency is the priority.",
+   "domain": "EQIP",
+   "topic": "aeration-equipment",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "WEF MOP 11 (Operation of Municipal Wastewater Treatment Plants): fine bubble diffusers achieve higher oxygen transfer efficiency than coarse bubble diffusers because of smaller bubble size and greater air-water contact area."
+  },
+  {
+   "id": "WWT-ALL-EQIP-0014",
+   "text": "At a wastewater treatment plant, how does a mechanical surface aerator add oxygen to the mixed liquor in an aeration basin?",
+   "choices": [
+    "It injects compressed air through diffusers submerged near the tank floor",
+    "It agitates and splashes the surface to draw in atmospheric oxygen",
+    "It bubbles pure oxygen gas through a sealed, covered basin",
+    "It circulates ozone gas through the mixed liquor for treatment"
+   ],
+   "correctIndex": 1,
+   "explanation": "A mechanical surface aerator uses a rotating paddle, brush, or turbine at the water surface to agitate and splash the mixed liquor. That splashing action entrains atmospheric oxygen into the water, a different mechanism than diffused air systems that inject compressed air below the surface through diffusers.",
+   "domain": "EQIP",
+   "topic": "aeration-equipment",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "WEF MOP 11 (Operation of Municipal Wastewater Treatment Plants): mechanical surface aerators transfer oxygen by agitating the liquid surface to promote atmospheric oxygen absorption, distinct from diffused subsurface air systems."
+  },
+  {
+   "id": "WWT-ALL-EQIP-0015",
+   "text": "At a wastewater treatment plant, an operator is choosing where to mount a new dissolved oxygen probe in an aeration basin. Why should the probe avoid a spot directly beside an active diffuser or inside a poorly mixed corner?",
+   "choices": [
+    "Either spot exceeds the probe's maximum rated submersion depth",
+    "Either spot would place the probe outside its calibration temperature range",
+    "Either spot would give an unrepresentative reading of basin conditions",
+    "Either spot requires a longer signal cable than the probe ships with"
+   ],
+   "correctIndex": 2,
+   "explanation": "A dissolved oxygen probe should be mounted where the reading reflects the basin's overall, typically mixed condition. Right beside an active diffuser the reading runs artificially high from the concentrated air bubbles, and in a poorly mixed corner the reading fails to reflect the bulk of the basin because oxygen is not well distributed there. Both locations defeat the purpose of using the probe to manage the whole basin.",
+   "domain": "EQIP",
+   "topic": "aeration-equipment",
+   "difficulty": "Easy",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "WEF MOP 11 (Operation of Municipal Wastewater Treatment Plants): dissolved oxygen probes should be located to reflect representative, well mixed basin conditions rather than localized extremes near diffusers or in dead zones."
+  },
+  {
+   "id": "WWT-ALL-EQIP-0016",
+   "text": "At a wastewater treatment plant, the membrane diffusers in an aeration basin have accumulated biological slime and mineral scale. At a constant blower airflow rate, what operating change would this fouling most likely cause?",
+   "choices": [
+    "A measurable drop in the mixed liquor's oxygen demand",
+    "A decrease in the electrical current drawn by the blower motor",
+    "A shift to smaller, finer bubbles at the diffuser surface",
+    "A rise in the header pressure needed to move the same airflow"
+   ],
+   "correctIndex": 3,
+   "explanation": "Biological slime and mineral scale narrow the diffuser openings and add resistance to the air path through them. To push the same volume of air through a more restricted diffuser, the blower has to work against higher resistance, which shows up as a rise in header (discharge) pressure at a constant airflow rate. That pressure rise is a standard operating sign used to flag diffusers that are due for cleaning.",
+   "domain": "EQIP",
+   "topic": "aeration-equipment",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "WEF MOP 11 (Operation of Municipal Wastewater Treatment Plants): fouled or scaled diffusers increase resistance to airflow, producing a rise in blower header pressure at a given airflow rate, a recognized indicator for diffuser cleaning."
+  },
+  {
+   "id": "WWT-ALL-EQIP-0017",
+   "text": "At a wastewater treatment plant, while walking the deck of an aeration basin, an operator sees a fine, even bubble pattern across most of the surface, but one section shows large gaps with only a few big bubbles breaking through. What does this pattern most likely indicate?",
+   "choices": [
+    "The blower is delivering too much total airflow to the basin",
+    "Diffusers in that section have become fouled or clogged",
+    "The mixed liquor in that section has an unusually high oxygen level",
+    "A polymer feed pump is over-dosing into that section of the basin"
+   ],
+   "correctIndex": 1,
+   "explanation": "An uneven bubble pattern, with a large gap and only a few big bubbles breaking the surface in one section while the rest of the basin shows a fine, even pattern, is a classic visual sign that diffusers in that section have fouled or clogged. Air that would normally exit through many small openings instead escapes through fewer, larger openings, producing the coarse, patchy pattern the operator sees.",
+   "domain": "EQIP",
+   "topic": "aeration-equipment",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "WEF MOP 11 (Operation of Municipal Wastewater Treatment Plants): an uneven or patchy surface bubble pattern in an aeration basin is a recognized visual indicator of fouled or clogged diffusers in that section."
+  },
+  {
+   "id": "WWT-ALL-EQIP-0018",
+   "text": "A wastewater treatment plant's aeration basin regularly receives a high-strength waste stream that fouls fine bubble diffusers quickly, driving up cleaning frequency. If the plant switches to coarse bubble diffusers to reduce the fouling problem, what operating trade-off should it expect?",
+   "choices": [
+    "Higher chemical costs to reach the same oxygen transfer target",
+    "Faster mechanical wear on the sludge collector mechanism",
+    "Lower oxygen transfer efficiency, needing more total airflow",
+    "Greater reliance on continuous manual bubble pattern checks"
+   ],
+   "correctIndex": 2,
+   "explanation": "Coarse bubble diffusers resist fouling better than fine bubble diffusers because their openings are larger, which is why they suit a heavily fouling waste stream. The trade-off is a lower oxygen transfer efficiency, so the blower has to deliver more total airflow to transfer the same amount of oxygen into the mixed liquor.",
+   "domain": "EQIP",
+   "topic": "aeration-equipment",
+   "difficulty": "Hard",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "WEF MOP 11 (Operation of Municipal Wastewater Treatment Plants): coarse bubble diffusers offer greater resistance to fouling than fine bubble diffusers but transfer oxygen less efficiently, requiring higher airflow to achieve the same oxygen transfer."
+  },
+  {
+   "id": "WWT-ALL-EQIP-0019",
+   "text": "At a wastewater treatment plant, a clarifier's rotating sludge collector drive includes a shear pin as part of its mechanism. What is the shear pin's function?",
+   "choices": [
+    "It breaks under excess torque to protect the drive",
+    "It keeps water from leaking past the drive shaft seal",
+    "It lubricates the gear reducer during normal rotation",
+    "It senses the rotational speed of the collector arm"
+   ],
+   "correctIndex": 0,
+   "explanation": "A shear pin is a deliberately weak link built into a rotating drive. When the collector mechanism meets an obstruction or overload that would otherwise damage the gear reducer or drive shaft, the pin shears first, stopping the mechanism and protecting the more expensive components from major damage.",
+   "domain": "EQIP",
+   "topic": "clarifier-mechanisms",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "WEF MOP 11 (Operation of Municipal Wastewater Treatment Plants): shear pins in clarifier collector drives are designed to fail under excessive torque, protecting the drive mechanism from damage caused by obstructions or overload."
+  },
+  {
+   "id": "WWT-ALL-EQIP-0020",
+   "text": "At a wastewater treatment plant, what is the function of a clarifier's surface skimmer mechanism?",
+   "choices": [
+    "It scrapes settled sludge along the tank floor toward the hopper",
+    "It levels the effluent weir to maintain uniform flow distribution",
+    "It aerates the surface layer of the clarifier to prevent algae growth",
+    "It pushes floating scum and grease across the surface into a trough"
+   ],
+   "correctIndex": 3,
+   "explanation": "The surface skimmer is a mechanism, often a rotating arm or blade, that moves floating scum, grease, and other buoyant material across the water surface and into a scum trough for removal, keeping it out of the clarified effluent.",
+   "domain": "EQIP",
+   "topic": "clarifier-mechanisms",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "WEF MOP 11 (Operation of Municipal Wastewater Treatment Plants): clarifier skimmer mechanisms remove floating scum and grease from the water surface by directing it into a scum trough."
+  },
+  {
+   "id": "WWT-ALL-EQIP-0021",
+   "text": "At a wastewater treatment plant, a clarifier's rotating collector mechanism trips on a high torque alarm and shuts down. What should the operator do before restarting the drive?",
+   "choices": [
+    "Restart the drive right away to clear any temporary buildup",
+    "Check for an obstruction or excess solids load on the collector arm",
+    "Raise the drive motor's speed setting to push through the resistance",
+    "Disable the torque alarm so the collector can keep running under load"
+   ],
+   "correctIndex": 1,
+   "explanation": "A high torque alarm is a protective trip that signals the collector mechanism is meeting more resistance than normal, often from an obstruction, excess grit, or a heavy solids load. Before restarting, the operator should investigate and clear the cause so the drive is not started back up into the same overload condition.",
+   "domain": "EQIP",
+   "topic": "clarifier-mechanisms",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "WEF MOP 11 (Operation of Municipal Wastewater Treatment Plants): a clarifier collector drive torque alarm indicates excessive resistance, and standard practice is to investigate and clear the cause of the overload before restarting the mechanism."
+  },
+  {
+   "id": "WWT-ALL-EQIP-0022",
+   "text": "At a wastewater treatment plant, an operator notices water cascading heavily over one section of a clarifier's effluent weir while barely trickling over another section, with algae built up along the low-flow section. What should the operator do to correct this?",
+   "choices": [
+    "Level the weir plates so flow spreads evenly along the length",
+    "Raise the influent flow rate until every section overflows equally",
+    "Remove the weir plates entirely to allow unrestricted flow",
+    "Increase the chlorine dose to the clarifier to kill the algae growth"
+   ],
+   "correctIndex": 0,
+   "explanation": "Algae tends to build up in the low-flow section of an uneven weir because that section is not getting enough flow and turbulence to keep it clean. The correct fix is to level the weir plates so flow, and the self-cleaning turbulence that comes with it, is distributed evenly along the full length of the weir.",
+   "domain": "EQIP",
+   "topic": "clarifier-mechanisms",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "WEF MOP 11 (Operation of Municipal Wastewater Treatment Plants): uneven clarifier effluent weirs promote algae growth on low-flow sections and are corrected by leveling the weir plates to distribute flow evenly."
+  },
+  {
+   "id": "WWT-ALL-EQIP-0023",
+   "text": "At a wastewater treatment plant, a circular clarifier's rake mechanism is turning at its normal speed, but sludge has begun building up on the tank floor near the outer wall instead of moving toward the center hopper. What is the most likely cause?",
+   "choices": [
+    "The torque alarm on the collector drive has been disabled",
+    "The clarifier's effluent weir has fallen out of level",
+    "The rake blades are worn and no longer sweep the floor",
+    "The skimmer arm is now turning faster than the rake arm"
+   ],
+   "correctIndex": 2,
+   "explanation": "When the rake arm turns at normal speed but sludge still accumulates instead of reaching the hopper, the blades or squeegees that physically contact the floor have likely worn down. Worn blades no longer make good contact with the tank floor, so they leave sludge behind even though the arm itself keeps rotating correctly.",
+   "domain": "EQIP",
+   "topic": "clarifier-mechanisms",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "WEF MOP 11 (Operation of Municipal Wastewater Treatment Plants): worn rake blades or squeegees on a clarifier collector mechanism fail to sweep settled sludge to the hopper even when the drive continues to rotate normally."
+  },
+  {
+   "id": "WWT-ALL-EQIP-0024",
+   "text": "At a wastewater treatment plant, an operator tracks the torque reading on a clarifier's collector drive over several weeks and watches it climb steadily during normal operation, even though it has not yet reached the alarm setpoint. What does this trend most likely indicate?",
+   "choices": [
+    "The effluent weir has become perfectly level across its full length",
+    "The skimmer arm has been removed for scheduled maintenance",
+    "The dissolved oxygen level in the clarifier has risen",
+    "The collector mechanism is gaining drag from grit and sludge"
+   ],
+   "correctIndex": 3,
+   "explanation": "A steady, gradual climb in torque over several weeks, without a sudden trip, points to a mechanical load building up over time rather than a single obstruction. Grit or sludge accumulating around the mechanism adds drag that the drive has to work against, and the rising torque reading is an early warning sign an operator can use to schedule cleaning before the alarm trips.",
+   "domain": "EQIP",
+   "topic": "clarifier-mechanisms",
+   "difficulty": "Hard",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "WEF MOP 11 (Operation of Municipal Wastewater Treatment Plants): a gradual rise in collector drive torque over time is a recognized early indicator of grit or sludge accumulation adding mechanical drag, distinct from a sudden torque trip caused by an obstruction."
+  },
+  {
+   "id": "WWT-ALL-EQIP-0025",
+   "text": "At a wastewater treatment plant, which valve type is the best choice for isolating a line carrying thickened sludge?",
+   "choices": [
+    "Gate valve",
+    "Plug valve",
+    "Globe valve",
+    "Butterfly valve"
+   ],
+   "correctIndex": 1,
+   "explanation": "A plug valve has a straight through, full port bore with no pockets or ledges for solids to lodge in, so it can fully open to pass thickened sludge without catching debris. That design makes it the standard isolation valve choice for sludge and other solids laden lines in wastewater service.",
+   "domain": "EQIP",
+   "topic": "valves",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "WEF Manual of Practice No. 11 (Operation of Municipal Wastewater Treatment Plants): plug valves with full port, straight through bores are the standard isolation valve for sludge and solids laden lines because they resist clogging."
+  },
+  {
+   "id": "WWT-ALL-EQIP-0026",
+   "text": "At a wastewater treatment plant, what design feature allows a pinch valve to handle abrasive sludge and slurries without the flow contacting any metal parts?",
+   "choices": [
+    "A flexible sleeve that squeezes shut across the bore",
+    "A tapered metal plug that rotates a quarter turn in the body",
+    "A metal disc that swings shut on a hinge pin",
+    "A wedge shaped gate that lowers straight into the flow path"
+   ],
+   "correctIndex": 0,
+   "explanation": "A pinch valve closes by squeezing a flexible sleeve shut across the full bore, so nothing but the sleeve itself ever touches the sludge or slurry passing through. Keeping abrasive solids off any metal seat or body surface is why pinch valves hold up well in gritty, abrasive sludge service.",
+   "domain": "EQIP",
+   "topic": "valves",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "WEF Manual of Practice No. 11 (Operation of Municipal Wastewater Treatment Plants): pinch valves close with a flexible sleeve that is compressed shut, keeping the process fluid off all metal parts, which suits them to abrasive slurry and sludge service."
+  },
+  {
+   "id": "WWT-ALL-EQIP-0027",
+   "text": "A swing check valve on a waste activated sludge line at a treatment plant keeps failing to seat fully, because rags and stringy material collect on the hinged disc. Which check valve design better resists this problem in solids laden service?",
+   "choices": [
+    "Spring loaded check valve",
+    "Foot valve with a strainer",
+    "Ball check valve",
+    "Wafer check valve"
+   ],
+   "correctIndex": 2,
+   "explanation": "A ball check valve closes with a full round ball that lifts completely out of the flow path when open and drops onto a seat when flow reverses, leaving no hinge, disc edge, or narrow seating gap for rags to catch on. That full flow design is why ball check valves are favored over swing check valves for raw sludge and other stringy, solids laden streams.",
+   "domain": "EQIP",
+   "topic": "valves",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "WEF Manual of Practice No. 11 (Operation of Municipal Wastewater Treatment Plants): ball check valves resist fouling by rags and solids better than swing check valves and are preferred in raw sludge and solids laden service."
+  },
+  {
+   "id": "WWT-ALL-EQIP-0028",
+   "text": "Air release valves installed on wastewater force mains at a treatment plant typically need more frequent inspection than the same valve type in clean water service. What is the most likely reason?",
+   "choices": [
+    "Higher line velocity erodes the valve body faster over time",
+    "Force mains run at far higher pressure than clean water lines",
+    "Wastewater is corrosive enough to dissolve the valve's springs",
+    "Grease and solids foul the valve's small float and air passage"
+   ],
+   "correctIndex": 3,
+   "explanation": "The float and small air passage inside an air release valve are easily fouled by the grease, rags, and solids carried in wastewater, which clean water does not carry. That fouling risk is why wastewater force main air valves need closer, more frequent inspection than the same valve type in clean water service.",
+   "domain": "EQIP",
+   "topic": "valves",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "WEF Manual of Practice No. 11 (Operation of Municipal Wastewater Treatment Plants): air release valves on wastewater force mains require more frequent maintenance than in clean water service because grease and solids foul the float mechanism and orifice."
+  },
+  {
+   "id": "WWT-ALL-EQIP-0029",
+   "text": "An eccentric, non lubricated plug valve is chosen over a lubricated plug valve for a frequently cycled sludge isolation point at a treatment plant. Why does the eccentric design hold up better under repeated cycling?",
+   "choices": [
+    "The plug carries a permanent lubricant film that never needs replacing",
+    "The plug cams away from the seat as it opens, avoiding drag on each stroke",
+    "The stem uses a mechanical seal instead of packing, so it never needs adjustment",
+    "The body is rubber lined, so the seat flexes aside as the plug turns"
+   ],
+   "correctIndex": 1,
+   "explanation": "An eccentric plug valve is mounted off center, so as the plug rotates open it cams away from the seat instead of dragging across it the way a straight, concentric plug does. Because the seat and plug only touch at the very last moment of closing, repeated open and close cycles cause far less seat wear, which is why this design is preferred for sludge points that get isolated often.",
+   "domain": "EQIP",
+   "topic": "valves",
+   "difficulty": "Hard",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "WEF Manual of Practice No. 11 (Operation of Municipal Wastewater Treatment Plants): eccentric, non lubricated plug valves cam the plug away from the seat during opening, reducing seat wear under frequent cycling compared to lubricated plug valve designs."
+  },
+  {
+   "id": "WWT-ALL-EQIP-0030",
+   "text": "At a wastewater treatment plant, what is the main job of the overload relay built into a motor starter for a blower motor?",
+   "choices": [
+    "Cut power to the motor if current draw stays too high for too long",
+    "Step down incoming voltage before it reaches the motor windings",
+    "Store backup power so the motor keeps running through a brief outage",
+    "Filter electrical noise so nearby instruments are not affected"
+   ],
+   "correctIndex": 0,
+   "explanation": "An overload relay monitors the current the motor is drawing and cuts power to the starter if that current stays above a safe level long enough to risk overheating the windings. That protective function is why every motor starter includes overload protection sized to the specific motor it serves.",
+   "domain": "EQIP",
+   "topic": "motors",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "WEF Manual of Practice No. 11 (Operation of Municipal Wastewater Treatment Plants): a motor starter's overload relay protects the motor by disconnecting power when current draw remains excessive long enough to risk winding damage."
+  },
+  {
+   "id": "WWT-ALL-EQIP-0031",
+   "text": "What does a megger test check on a wastewater treatment plant motor that is taken out of service for inspection?",
+   "choices": [
+    "The physical alignment between the motor shaft and the pump shaft",
+    "The amount of vibration produced while the motor runs under load",
+    "The insulation resistance between the windings and the motor frame",
+    "The temperature rise of the bearings after an hour of continuous run time"
+   ],
+   "correctIndex": 2,
+   "explanation": "A megger, or insulation resistance tester, applies a test voltage between the motor windings and the grounded frame and reads the resistance of the insulation separating them. Low insulation resistance points to moisture intrusion or breakdown that could lead to a ground fault, so plant staff run this check on motors pulled for inspection.",
+   "domain": "EQIP",
+   "topic": "motors",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "WEF Manual of Practice No. 11 (Operation of Municipal Wastewater Treatment Plants): a megger test measures insulation resistance between motor windings and frame to detect insulation breakdown before a motor is returned to service."
+  },
+  {
+   "id": "WWT-ALL-EQIP-0032",
+   "text": "A return activated sludge pump motor at a treatment plant trips on overload repeatedly, even though the pump and piping show no signs of a mechanical jam. What should the operator check first?",
+   "choices": [
+    "Whether the wet well level alarm has been silenced",
+    "Whether the motor is drawing amperage above its nameplate rating",
+    "Whether the operator log shows the pump running longer than usual",
+    "Whether the pump's discharge pressure gauge needs recalibration"
+   ],
+   "correctIndex": 1,
+   "explanation": "With no mechanical jam evident, comparing the motor's actual amperage draw to its nameplate rating is the direct way to confirm whether the motor is genuinely overloaded electrically, which points toward causes such as a failing bearing, winding trouble, or a supply voltage problem rather than a jammed pump.",
+   "domain": "EQIP",
+   "topic": "motors",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "WEF Manual of Practice No. 11 (Operation of Municipal Wastewater Treatment Plants): repeated overload tripping with no mechanical jam calls for comparing measured motor amperage against the nameplate rating to isolate an electrical cause."
+  },
+  {
+   "id": "WWT-ALL-EQIP-0033",
+   "text": "A wastewater treatment plant replaces an across the line motor starter on a large return activated sludge pump with a variable frequency drive. Besides adjusting speed, what change does the operator typically see in the motor's starting current?",
+   "choices": [
+    "The inrush current at startup becomes several times higher than across the line starting",
+    "The motor now draws its full nameplate current continuously, even at idle",
+    "The motor no longer draws any current until it reaches full speed",
+    "The inrush current at startup drops sharply compared to across the line starting"
+   ],
+   "correctIndex": 3,
+   "explanation": "Across the line starting connects a motor directly to full voltage and frequency, producing a large inrush current spike. A variable frequency drive instead ramps the frequency and voltage up gradually, so the motor accelerates smoothly and draws far less inrush current at startup, which reduces electrical and mechanical stress on the motor and driven pump.",
+   "domain": "EQIP",
+   "topic": "motors",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "WEF Manual of Practice No. 11 (Operation of Municipal Wastewater Treatment Plants): a variable frequency drive's gradual ramp up of frequency and voltage greatly reduces motor starting inrush current compared with across the line starting."
+  },
+  {
+   "id": "WWT-ALL-EQIP-0034",
+   "text": "Before an operator connects a megger to test a treatment plant motor's insulation resistance, what must be done first?",
+   "choices": [
+    "Increase the motor's overload relay setting to prevent nuisance tripping during the test",
+    "Run the motor briefly under load to warm up the windings before testing",
+    "Lock out and disconnect the motor from all power sources",
+    "Apply a light coat of dielectric grease to the motor's terminal leads"
+   ],
+   "correctIndex": 2,
+   "explanation": "A megger applies its own test voltage to the windings, so the motor must first be locked out and fully disconnected from all power sources. Testing a motor that is still connected to a live circuit risks a dangerous shock and can also damage the megger or give a false reading.",
+   "domain": "EQIP",
+   "topic": "motors",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "OSHA 29 CFR 1910.147 (The Control of Hazardous Energy, lockout and tagout): equipment must be locked out and disconnected from all energy sources before service work such as insulation resistance testing is performed on it."
+  },
+  {
+   "id": "WWT-ALL-EQIP-0035",
+   "text": "A treatment plant electrician replaces a failed blower motor with a smaller replacement motor, but reuses the motor starter's existing overload heater elements, which were sized for the original, larger motor. What risk does this create?",
+   "choices": [
+    "The new motor can overheat and burn out without the overload ever tripping",
+    "The starter trips on every startup attempt, so the motor cannot run at all",
+    "The overload relay misreads the new motor's voltage and shuts down the panel",
+    "The new motor draws less starting current, which extends heater life for years"
+   ],
+   "correctIndex": 0,
+   "explanation": "Overload heater elements are selected to match a specific motor's full load current rating, so the relay trips before the motor's windings are damaged by sustained overcurrent. Heaters sized for a larger motor allow more current to flow before tripping than the smaller replacement motor can safely handle, so the smaller motor can overheat and burn out without the overload relay ever tripping to protect it.",
+   "domain": "EQIP",
+   "topic": "motors",
+   "difficulty": "Hard",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "WEF Manual of Practice No. 11 (Operation of Municipal Wastewater Treatment Plants): motor starter overload heater elements must be sized to the specific motor's nameplate full load current, since mismatched heaters fail to protect a smaller replacement motor from overcurrent damage."
+  },
+  {
+   "id": "WWT-ALL-EQIP-0036",
+   "text": "An operator lubricating a pump bearing at a wastewater treatment plant adds extra grease beyond the amount listed on the manufacturer's lubrication chart, reasoning that more grease gives better protection. What is the most likely result?",
+   "choices": [
+    "The bearing runs cooler because the extra grease absorbs the added heat.",
+    "The extra grease can force lubricant past the bearing seals.",
+    "The added grease extends the interval before the pump's next lubrication task is due.",
+    "The added grease permanently lowers the bearing's rated maximum operating speed."
+   ],
+   "correctIndex": 1,
+   "explanation": "Packing a bearing housing with more grease than the manufacturer's chart calls for raises the internal pressure inside the housing. That excess pressure looks for a way out and commonly forces grease past the bearing's seals, which can then lead to seal damage and lost lubricant at the seal face. This is why preventive maintenance procedures specify an exact grease quantity rather than leaving the amount to an operator's judgment.",
+   "domain": "EQIP",
+   "topic": "preventive-maintenance",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "WEF MOP 11 (Operation of Municipal Wastewater Treatment Plants), preventive maintenance chapter: bearing lubrication should follow the manufacturer's specified grease type and quantity, since over-lubrication can force grease past seals and raise operating temperature."
+  },
+  {
+   "id": "WWT-ALL-EQIP-0037",
+   "text": "During a scheduled belt drive inspection on a mechanical surface aerator at a wastewater treatment plant, an operator finds the V-belt has excessive slack and is visibly slipping on the pulley while the unit runs under normal load. What is the most appropriate correction?",
+   "choices": [
+    "Adjust the belt tension to the manufacturer's specification.",
+    "Apply a belt dressing spray to increase pulley friction.",
+    "Replace the V-belt drive with a rigid chain and sprocket set.",
+    "Increase the motor speed to compensate for the slipping belt."
+   ],
+   "correctIndex": 0,
+   "explanation": "A slipping, slack V-belt is corrected by adjusting its tension to the value on the manufacturer's specification, typically by moving the motor base or an adjustable sheave until the belt shows the correct deflection under a standard test load. Restoring proper tension stops the slip, returns full power transfer to the aerator, and prevents accelerated wear of the belt and the pulley grooves.",
+   "domain": "EQIP",
+   "topic": "preventive-maintenance",
+   "difficulty": "Easy",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "WEF MOP 11 (Operation of Municipal Wastewater Treatment Plants), mechanical maintenance chapter: V-belt drives require periodic tension checks and adjustment to manufacturer specification to prevent slippage and premature wear."
+  },
+  {
+   "id": "WWT-ALL-EQIP-0038",
+   "text": "A wastewater treatment plant's chain driven bar screen has a chain lubrication task listed on its preventive maintenance schedule. What is the primary purpose of regularly lubricating the drive chain?",
+   "choices": [
+    "To increase the amperage draw on the screen's drive motor circuit.",
+    "To prevent the screen's motor control panel from overheating in the field.",
+    "To reduce friction and wear between the chain links and sprockets.",
+    "To reduce the total amount of screenings the bar screen removes from flow."
+   ],
+   "correctIndex": 2,
+   "explanation": "Regular lubrication keeps the chain links and sprocket teeth from grinding metal to metal under load. Reducing that friction and wear prevents premature stretch, or elongation, of the chain and extends the working life of both the chain and the sprockets, which is why it is a standard recurring task on a bar screen's preventive maintenance schedule.",
+   "domain": "EQIP",
+   "topic": "preventive-maintenance",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "WEF MOP 11 (Operation of Municipal Wastewater Treatment Plants), preventive maintenance chapter: chain and sprocket drives on mechanical screening equipment require scheduled lubrication to reduce friction and wear between moving parts."
+  },
+  {
+   "id": "WWT-ALL-EQIP-0039",
+   "text": "A standby, engine driven pump at a wastewater treatment plant is scheduled for an oil change every 250 hours of actual run time rather than on a fixed calendar date. What is the main advantage of basing this task on run hours instead of the calendar?",
+   "choices": [
+    "It removes the need to check the oil level between scheduled changes.",
+    "It guarantees the standby engine will never need an unscheduled repair.",
+    "It lets one fixed interval apply the same way to every engine model at the plant.",
+    "It ties the service interval to actual use, since standby run time varies."
+   ],
+   "correctIndex": 3,
+   "explanation": "Standby engine driven equipment sits idle for unpredictable stretches and then runs during power outages, alarms, or periodic testing, so a fixed calendar date does not reflect how much actual wear the engine has accumulated. Tracking run hours with an hour meter ties the oil change, and similar service tasks, to the engine's real use, so service happens based on wear rather than on the passage of time alone.",
+   "domain": "EQIP",
+   "topic": "preventive-maintenance",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "WEF MOP 11 (Operation of Municipal Wastewater Treatment Plants), preventive maintenance chapter: standby and intermittently operated equipment should be serviced on elapsed run time intervals tracked with an hour meter, since calendar based scheduling does not reflect actual use."
+  },
+  {
+   "id": "WWT-ALL-EQIP-0040",
+   "text": "As part of seasonal preventive maintenance before winter, an operator inspects a sodium hypochlorite feed line that runs outdoors along an exposed pipe rack at the wastewater treatment plant. Which action best protects this line from cold weather damage?",
+   "choices": [
+    "Confirm the line's heat trace and insulation are working along the exposed run.",
+    "Increase the chemical feed rate so the line stays warmer from the higher flow.",
+    "Drain the feed line completely and leave the dosing pump shut down for the winter.",
+    "Switch the disinfectant to a different chemical product for the cold season."
+   ],
+   "correctIndex": 0,
+   "explanation": "Chemical feed piping routed outdoors on an exposed rack is vulnerable to freezing and cracking in cold weather. Seasonal preventive maintenance should confirm that heat trace cable and insulation on that exposed run are intact and functioning before winter arrives, since that is the measure that directly protects the pipe and keeps the line in service through cold weather.",
+   "domain": "EQIP",
+   "topic": "preventive-maintenance",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "WEF MOP 11 (Operation of Municipal Wastewater Treatment Plants), preventive maintenance chapter: exposed chemical feed piping requires seasonal verification of heat tracing and insulation to prevent freeze damage."
+  },
+  {
+   "id": "WWT-ALL-EQIP-0041",
+   "text": "A mechanic at a wastewater treatment plant replaces the same bearing on a return activated sludge pump for the third time in eight months. Which preventive maintenance practice would most help the plant find out why this failure keeps recurring?",
+   "choices": [
+    "Installing a larger replacement bearing without further investigation.",
+    "Reviewing the maintenance log for a pattern in past repair dates and symptoms.",
+    "Increasing the lubrication frequency without checking the current lubrication practice.",
+    "Treating each bearing failure as an isolated, unrelated wear event."
+   ],
+   "correctIndex": 1,
+   "explanation": "When the same component fails repeatedly, the maintenance log, meaning the dates, symptoms, parts used, and any notes from each prior repair, is the record that lets the plant spot the pattern and start narrowing down a root cause, such as misalignment, contamination, or an incorrect lubrication practice, instead of continuing to replace the part and guess at the fix.",
+   "domain": "EQIP",
+   "topic": "preventive-maintenance",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "WEF MOP 11 (Operation of Municipal Wastewater Treatment Plants), preventive maintenance chapter: equipment maintenance records support root cause analysis of recurring failures by documenting repair history over time."
+  },
+  {
+   "id": "WWT-ALL-EQIP-0042",
+   "text": "A small wastewater treatment plant has only one influent pump, and that pump's replacement motor has a ten week lead time from the manufacturer. What is the best spare parts practice for this pump's motor?",
+   "choices": [
+    "Order the replacement motor only after the current motor actually fails.",
+    "Rely on an informal understanding that a nearby plant might lend a spare motor.",
+    "Reduce the pump's daily run time to lower the odds the motor will fail.",
+    "Keep a spare motor in stock, given the long lead time and no backup pump."
+   ],
+   "correctIndex": 3,
+   "explanation": "When equipment has no redundancy, meaning only one influent pump serves the plant, and its replacement part has a long procurement lead time, standard spare parts practice is to keep that critical spare on hand on site. That way a failure results in a swap measured in hours rather than the weeks it would take to order and receive a new motor after the fact.",
+   "domain": "EQIP",
+   "topic": "preventive-maintenance",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "WEF MOP 11 (Operation of Municipal Wastewater Treatment Plants), preventive maintenance chapter: critical spare parts for equipment with no redundancy and long procurement lead times should be stocked on site."
+  },
+  {
+   "id": "WWT-ALL-EQIP-0043",
+   "text": "Before attaching a grease gun to a bearing's zerk fitting during a scheduled lubrication task, an operator wipes the fitting clean with a rag. What is the purpose of this step?",
+   "choices": [
+    "To confirm the fitting uses the correct grease color for that piece of equipment.",
+    "To reduce the number of grease gun strokes needed to complete the service.",
+    "To keep dirt on the fitting from being forced into the bearing with the grease.",
+    "To check that the fitting's thread size matches the grease gun coupler."
+   ],
+   "correctIndex": 2,
+   "explanation": "A zerk fitting sits exposed to dust and grime between lubrication tasks. Wiping it clean before connecting the grease gun keeps that contamination from being pushed directly into the bearing along with the fresh grease. Dirt forced into a bearing this way acts as an abrasive inside the bearing and shortens its service life, which is why this quick wipe down step is part of standard lubrication practice.",
+   "domain": "EQIP",
+   "topic": "preventive-maintenance",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "WEF MOP 11 (Operation of Municipal Wastewater Treatment Plants), preventive maintenance chapter: grease fittings should be wiped clean before lubrication to prevent contaminants from entering the bearing."
+  },
+  {
+   "id": "WWT-ALL-EQIP-0044",
+   "text": "A wastewater treatment plant electrician compares a fuse and a circuit breaker, each protecting a different motor circuit. What is the key functional difference between the two devices after each has interrupted an overcurrent?",
+   "choices": [
+    "A fuse must be replaced, while a breaker can be reset and reused.",
+    "A fuse can be reset and reused, while a breaker must be replaced.",
+    "Both devices must be replaced after a single overcurrent event.",
+    "Neither device can be restored to service without a full panel replacement."
+   ],
+   "correctIndex": 0,
+   "explanation": "A fuse is a sacrificial, one-time device, its internal element melts to open the circuit, so it cannot be reused and must be physically replaced. A circuit breaker uses a mechanical trip mechanism, so once the fault is cleared, an electrician can manually reset the breaker's handle and put the circuit back in service without replacing the device. That reset versus replace distinction is the core practical difference between the two.",
+   "domain": "EQIP",
+   "topic": "electrical-power",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "OSHA 29 CFR 1910.334 and standard electrical maintenance practice: overcurrent protective devices include fuses, which are replaced after opening, and circuit breakers, which are mechanically reset after tripping."
+  },
+  {
+   "id": "WWT-ALL-EQIP-0045",
+   "text": "An overload relay protecting a wastewater treatment plant blower motor is set well above the motor's nameplate full load amperage. What is the main risk created by this setting?",
+   "choices": [
+    "The blower motor will draw noticeably less current than its nameplate rating suggests.",
+    "The overload relay will trip too often during ordinary motor starting conditions.",
+    "The blower will run at a higher, more energy efficient operating speed.",
+    "The relay will not trip in time to stop sustained overcurrent, risking damage."
+   ],
+   "correctIndex": 3,
+   "explanation": "An overload relay is meant to trip before a sustained overcurrent condition overheats the motor windings. If it is set well above the motor's nameplate full load amperage, the motor can be pulling more current than it is rated for while the relay still allows it to keep running, letting sustained overheating continue undetected and risking motor damage. The setting must be matched to the motor's nameplate rating to provide effective protection.",
+   "domain": "EQIP",
+   "topic": "electrical-power",
+   "difficulty": "Hard",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "NEC (NFPA 70) Article 430 Part III, Section 430.32, motor overload protection: overload relays must be set to match the motor's nameplate full load amperage to provide effective overcurrent protection."
+  },
+  {
+   "id": "WWT-ALL-EQIP-0046",
+   "text": "A wastewater treatment plant's standby generator is connected to the plant's electrical system through a properly installed transfer switch. What is the primary safety purpose of this transfer switch?",
+   "choices": [
+    "It automatically starts the generator's fuel pump before each scheduled test run.",
+    "It keeps the generator and utility power from feeding the circuit together.",
+    "It converts the generator's three phase output into single phase power.",
+    "It increases the generator's fuel efficiency during extended runs."
+   ],
+   "correctIndex": 1,
+   "explanation": "A transfer switch is built so that only one power source, either the utility or the standby generator, can be connected to the plant's circuits at any moment. This prevents the generator from backfeeding power onto the utility line while utility crews may be working on it, and it also protects the generator from being damaged by utility power flowing back into it. That interlocked, one source at a time function is the switch's primary safety purpose.",
+   "domain": "EQIP",
+   "topic": "electrical-power",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "NFPA 70 (National Electrical Code), Article 702, Optional Standby Systems: transfer equipment must prevent the interconnection of normal and standby power sources to avoid backfeed onto utility lines."
+  },
+  {
+   "id": "WWT-ALL-PROC-0001",
+   "text": "What type of material is a bar screen at the headworks primarily designed to remove?",
+   "choices": [
+    "Large solids and rags such as sticks and plastics",
+    "Dissolved organic compounds such as sugars and proteins",
+    "Fine grit particles such as sand and gravel",
+    "Pathogenic organisms such as bacteria and viruses"
+   ],
+   "correctIndex": 0,
+   "explanation": "A bar screen is the first mechanical step at the headworks. Its bars are sized to catch large solids and debris, things like rags, sticks, and plastics, before they can damage or clog pumps, valves, and piping further into the plant.",
+   "domain": "PROC",
+   "topic": "preliminary-primary",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "WEF MOP 11 (Operation of Municipal Wastewater Treatment Plants): bar screens at the headworks remove large solids and debris to protect downstream pumps and equipment from damage and clogging."
+  },
+  {
+   "id": "WWT-ALL-PROC-0002",
+   "text": "What is grit, as removed during preliminary treatment, primarily composed of?",
+   "choices": [
+    "Light organic material such as fats and oils",
+    "Dense inorganic material such as sand and gravel",
+    "Dissolved material such as salts, minerals, and metals",
+    "Biological material such as floc and cells"
+   ],
+   "correctIndex": 1,
+   "explanation": "Grit is heavy, inert, inorganic material, mainly sand and gravel along with similar dense particles, that enters the collection system through infiltration, stormwater, or industrial connections. Because it is dense and abrasive, it settles out quickly and must be removed early to protect pumps and mechanical equipment from wear.",
+   "domain": "PROC",
+   "topic": "preliminary-primary",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "WEF MOP 11 (Operation of Municipal Wastewater Treatment Plants): grit is defined as heavy, inert inorganic solids such as sand and gravel removed during preliminary treatment."
+  },
+  {
+   "id": "WWT-ALL-PROC-0003",
+   "text": "A treatment plant's grit removal process has been out of service for several weeks, and untreated grit is passing through to downstream units. Which operational problem is the plant most likely to experience as a result?",
+   "choices": [
+    "Increased chlorine demand in the disinfection process",
+    "Elevated biochemical oxygen demand in the final effluent",
+    "Excessive wear and abrasion on pumps and mechanical equipment",
+    "Reduced settling of biological floc in the secondary clarifier"
+   ],
+   "correctIndex": 2,
+   "explanation": "Grit is dense and abrasive. When it bypasses removal, it travels through pipes, pumps, and mechanical equipment further into the plant, causing accelerated wear and abrasion on impellers, piping, and other moving parts.",
+   "domain": "PROC",
+   "topic": "preliminary-primary",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "WEF MOP 11 (Operation of Municipal Wastewater Treatment Plants): grit that bypasses removal causes excessive wear and abrasion on downstream pumps, piping, and mechanical equipment."
+  },
+  {
+   "id": "WWT-ALL-PROC-0004",
+   "text": "A primary clarifier is removing about 30 percent of the influent biochemical oxygen demand, with no other process changes noted. How should an operator interpret this level of removal?",
+   "choices": [
+    "As unusually low, pointing to a hydraulic short-circuiting problem",
+    "As unusually high, pointing to an overloaded secondary process",
+    "As evidence that grit removal is not functioning properly",
+    "As within the typical range for primary clarification"
+   ],
+   "correctIndex": 3,
+   "explanation": "Primary clarification typically removes roughly 25 to 35 percent of influent biochemical oxygen demand through settling and floatables removal, with the larger share of BOD reduction left to secondary treatment. A removal rate of about 30 percent falls squarely within this expected range and does not signal a problem.",
+   "domain": "PROC",
+   "topic": "preliminary-primary",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "WEF MOP 11 (Operation of Municipal Wastewater Treatment Plants): properly functioning primary clarification typically removes approximately 25 to 35 percent of influent BOD."
+  },
+  {
+   "id": "WWT-ALL-PROC-0005",
+   "text": "A primary clarifier that normally removes 50 to 65 percent of influent total suspended solids is now removing only about 20 percent, and influent flow has been running well above the design rate. What is the most likely cause of this drop in removal?",
+   "choices": [
+    "A hydraulic overload that reduced settling detention time",
+    "Sludge withdrawal that was too frequent for the tank",
+    "Weir length that was extended beyond the design specification",
+    "Grit loading that dropped below typical influent levels"
+   ],
+   "correctIndex": 0,
+   "explanation": "When influent flow rises well above a clarifier's design rate, water moves through the tank faster and cuts the detention time solids need to settle out. Much of the suspended solids load then passes through with the effluent instead of settling, which explains the sharp drop in TSS removal.",
+   "domain": "PROC",
+   "topic": "preliminary-primary",
+   "difficulty": "Hard",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "WEF MOP 11 (Operation of Municipal Wastewater Treatment Plants): hydraulic overload that shortens detention time in a primary clarifier reduces settling efficiency and lowers total suspended solids removal."
+  },
+  {
+   "id": "WWT-ALL-PROC-0006",
+   "text": "During a routine check of a primary clarifier, an operator sees grease and other floatable material collecting on the surface. Which process removes this material before it reaches the effluent weir?",
+   "choices": [
+    "Backwashing the tank from the bottom upward",
+    "Skimming the surface with a mechanical skimmer arm",
+    "Adding chlorine to disperse the floating material",
+    "Increasing the sludge recirculation rate through the tank"
+   ],
+   "correctIndex": 1,
+   "explanation": "Primary clarifiers are equipped with a mechanical skimmer that moves across the surface and pushes floating scum, grease, and other lightweight material into a collection trough or hopper, keeping it from carrying over the effluent weir.",
+   "domain": "PROC",
+   "topic": "preliminary-primary",
+   "difficulty": "Easy",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "WEF MOP 11 (Operation of Municipal Wastewater Treatment Plants): scum on the surface of a primary clarifier is removed by a mechanical skimmer that collects floatable material for separate handling."
+  },
+  {
+   "id": "WWT-ALL-PROC-0007",
+   "text": "In a facultative wastewater lagoon, how are the three vertical zones distinguished from top to bottom?",
+   "choices": [
+    "An anaerobic surface layer, a facultative middle zone, and an aerobic bottom layer",
+    "An aerobic surface layer, an anaerobic middle zone, and a facultative bottom layer",
+    "An aerobic surface layer, a facultative middle zone, and an anaerobic bottom layer",
+    "A facultative surface layer, an aerobic middle zone, and an anaerobic bottom layer"
+   ],
+   "correctIndex": 2,
+   "explanation": "A facultative lagoon naturally stratifies into three zones. Sunlight and algae keep the surface layer aerobic, a facultative middle zone shifts between aerobic and anaerobic depending on depth and mixing, and settled solids at the bottom decompose anaerobically.",
+   "domain": "PROC",
+   "topic": "lagoons",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "WEF MOP 11 (Operation of Municipal Wastewater Treatment Plants): facultative lagoons stratify into an aerobic surface zone, a facultative middle zone, and an anaerobic bottom zone."
+  },
+  {
+   "id": "WWT-ALL-PROC-0008",
+   "text": "An operator tracks dissolved oxygen in a facultative lagoon over a 24-hour period and finds it is highest in the late afternoon and lowest just before sunrise. What is the most likely explanation for this pattern?",
+   "choices": [
+    "Wind mixing that is strongest during the afternoon hours",
+    "Effluent discharge that is scheduled only during daylight hours",
+    "Bacterial respiration that increases sharply after sunset",
+    "Algal photosynthesis that peaks in daytime sunlight"
+   ],
+   "correctIndex": 3,
+   "explanation": "Algae in a facultative lagoon photosynthesize during daylight, releasing oxygen and pushing dissolved oxygen to its daily peak in the afternoon. Without sunlight overnight, photosynthesis stops while respiration and decomposition continue consuming oxygen, so dissolved oxygen drops to its lowest point just before sunrise.",
+   "domain": "PROC",
+   "topic": "lagoons",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "WEF MOP 11 (Operation of Municipal Wastewater Treatment Plants): dissolved oxygen in facultative lagoons follows a diurnal pattern driven by algal photosynthesis, peaking in daylight and reaching a low point before sunrise."
+  },
+  {
+   "id": "WWT-ALL-PROC-0009",
+   "text": "Dye testing in a wastewater lagoon shows that a large portion of the flow travels directly from the inlet to the outlet in far less time than the calculated detention time. What condition does this indicate?",
+   "choices": [
+    "Excessive algae growth reducing available sunlight penetration",
+    "Short-circuiting of flow between the inlet and outlet",
+    "Anaerobic conditions developing throughout the water column",
+    "Hydraulic loading that is below the design capacity"
+   ],
+   "correctIndex": 1,
+   "explanation": "When dye or another tracer moves from inlet to outlet much faster than the calculated detention time predicts, a portion of the flow is bypassing most of the lagoon volume through a direct path. This is short-circuiting, and it reduces the effective treatment time for that portion of the flow.",
+   "domain": "PROC",
+   "topic": "lagoons",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "WEF MOP 11 (Operation of Municipal Wastewater Treatment Plants): tracer studies showing flow arriving at the outlet well before the calculated detention time indicate short-circuiting within a treatment lagoon."
+  },
+  {
+   "id": "WWT-ALL-PROC-0010",
+   "text": "An operator walking the berm of a wastewater lagoon finds a section with burrowing animal holes and eroded soil. What should the operator do first to address this condition?",
+   "choices": [
+    "Raise the influent flow to increase water level at the berm",
+    "Apply chlorine to the affected section of the berm",
+    "Repair the eroded section and eliminate the burrows",
+    "Drain the lagoon completely until the berm can be rebuilt"
+   ],
+   "correctIndex": 2,
+   "explanation": "Burrowing animals and erosion weaken a lagoon berm and can eventually lead to a breach. Routine berm walks are meant to catch this early, and the correct response is to repair the eroded soil and eliminate the burrows promptly to keep the berm structurally sound.",
+   "domain": "PROC",
+   "topic": "lagoons",
+   "difficulty": "Easy",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "WEF MOP 11 (Operation of Municipal Wastewater Treatment Plants): lagoon berms require routine inspection, with erosion and burrowing animal damage repaired promptly to maintain dike integrity."
+  },
+  {
+   "id": "WWT-ALL-PROC-0011",
+   "text": "In the activated sludge process, what is the main purpose of the aeration basin?",
+   "choices": [
+    "Mix wastewater with microorganisms and supply oxygen for treatment",
+    "Remove grit and other large solids before biological treatment begins",
+    "Store settled sludge before it goes to a digester",
+    "Kill pathogens in the wastewater before it is discharged"
+   ],
+   "correctIndex": 0,
+   "explanation": "The aeration basin is where biological treatment happens. It mixes incoming wastewater with an active population of microorganisms (the mixed liquor) and supplies oxygen through diffusers or mechanical aerators so those organisms can break down organic matter.",
+   "domain": "PROC",
+   "topic": "activated-sludge",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "WEF MOP 11, Operation of Municipal Wastewater Treatment Plants: describes the aeration basin as the unit where wastewater is mixed with the biomass and aerated to support aerobic biological treatment."
+  },
+  {
+   "id": "WWT-ALL-PROC-0012",
+   "text": "What is the main purpose of the secondary clarifier that follows the aeration basin in an activated sludge system?",
+   "choices": [
+    "Add oxygen to the mixed liquor to support the microorganisms",
+    "Let the biological solids settle out so the effluent runs clear",
+    "Break down organic matter using microorganisms in suspension",
+    "Screen out rags and grit before the wastewater enters treatment"
+   ],
+   "correctIndex": 1,
+   "explanation": "The secondary clarifier gives the mixed liquor time to settle by gravity. The biological solids sink to the bottom, where they are collected for return or wasting, while the clarified water passes over the effluent weir on to the next step.",
+   "domain": "PROC",
+   "topic": "activated-sludge",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "WEF MOP 11, Operation of Municipal Wastewater Treatment Plants: describes the secondary clarifier as the unit that separates settled biological solids from the treated effluent following the aeration basin."
+  },
+  {
+   "id": "WWT-ALL-PROC-0013",
+   "text": "An operator samples the aeration basin and measures the mixed liquor suspended solids (MLSS). What does this reading tell the operator?",
+   "choices": [
+    "The concentration of dissolved oxygen available to the microorganisms",
+    "The amount of grease and oil floating on the aeration basin surface",
+    "The concentration of the working biomass in the aeration basin",
+    "The chlorine residual remaining after secondary treatment"
+   ],
+   "correctIndex": 2,
+   "explanation": "MLSS stands for mixed liquor suspended solids. It measures the concentration of suspended solids, mostly living microorganisms, in the aeration basin. This is the working biomass that does the actual work of breaking down organic matter.",
+   "domain": "PROC",
+   "topic": "activated-sludge",
+   "difficulty": "Easy",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "WEF MOP 11, Operation of Municipal Wastewater Treatment Plants: defines mixed liquor suspended solids as the measure of active biomass concentration maintained in the aeration basin."
+  },
+  {
+   "id": "WWT-ALL-PROC-0014",
+   "text": "The dissolved oxygen meter in the aeration basin reads 0.3 mg/L, well below the typical target of about 2 mg/L for conventional activated sludge. What does this low reading tell the operator about the process?",
+   "choices": [
+    "The microorganisms are already getting more oxygen than the process needs",
+    "The mixed liquor has too many solids for the clarifier to handle",
+    "The aeration basin is receiving too little wastewater flow",
+    "The microorganisms are not getting enough oxygen for aerobic treatment"
+   ],
+   "correctIndex": 3,
+   "explanation": "A dissolved oxygen reading of 0.3 mg/L is well under the roughly 2 mg/L target for a conventional activated sludge basin. This tells the operator the microorganisms are not getting enough oxygen to treat the wastewater aerobically, and aeration needs attention.",
+   "domain": "PROC",
+   "topic": "activated-sludge",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "WEF MOP 11, Operation of Municipal Wastewater Treatment Plants: recommends maintaining aeration basin dissolved oxygen at approximately 2 mg/L to support adequate aerobic biological activity."
+  },
+  {
+   "id": "WWT-ALL-PROC-0015",
+   "text": "The RAS (return activated sludge) pumps have been off for repairs for two days, and the aeration basin's suspended solids concentration is steadily dropping. What is the most likely reason?",
+   "choices": [
+    "Settled sludge from the clarifier is no longer returning to the basin",
+    "The dissolved oxygen concentration in the aeration basin has become too high",
+    "The waste activated sludge line has become clogged and stopped wasting",
+    "The influent bar screen has become blocked and reduced flow to the plant"
+   ],
+   "correctIndex": 0,
+   "explanation": "RAS continuously returns settled sludge from the clarifier back to the aeration basin, which is what maintains the working biomass there. With the RAS pumps off for two days, that sludge stops coming back, so the aeration basin's suspended solids concentration steadily drops.",
+   "domain": "PROC",
+   "topic": "activated-sludge",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "WEF MOP 11, Operation of Municipal Wastewater Treatment Plants: describes return activated sludge as the mechanism that continuously replenishes the biomass in the aeration basin from clarifier underflow."
+  },
+  {
+   "id": "WWT-ALL-PROC-0016",
+   "text": "Mixed liquor suspended solids in the aeration basin have been climbing above the normal range for several days. Which adjustment directly reduces the amount of biomass carried in the process?",
+   "choices": [
+    "Increase the return activated sludge rate",
+    "Increase the waste activated sludge rate",
+    "Increase the aeration basin dissolved oxygen setpoint",
+    "Increase the plant influent flow rate"
+   ],
+   "correctIndex": 1,
+   "explanation": "Wasting activated sludge removes excess biomass from the system entirely, rather than just moving it around. Increasing the waste activated sludge rate is how an operator brings a climbing mixed liquor suspended solids concentration back down to the normal range.",
+   "domain": "PROC",
+   "topic": "activated-sludge",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "WEF MOP 11, Operation of Municipal Wastewater Treatment Plants: describes wasting activated sludge as the method operators use to control the quantity of biomass maintained in the process."
+  },
+  {
+   "id": "WWT-ALL-PROC-0017",
+   "text": "An operator observes the aeration basin mixed liquor and notes a dark brown color with an earthy odor. What does this observation indicate about the process?",
+   "choices": [
+    "The activated sludge process is currently septic and lacks oxygen",
+    "The mixed liquor suspended solids concentration is too low",
+    "The activated sludge process is healthy and treating normally",
+    "The clarifier is failing to settle solids properly"
+   ],
+   "correctIndex": 2,
+   "explanation": "A dark brown, earthy smelling mixed liquor is the classic sign of a healthy activated sludge process. It shows the biomass is active and treating the wastewater as expected, with no signs of septic or oxygen starved conditions.",
+   "domain": "PROC",
+   "topic": "activated-sludge",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "WEF MOP 11, Operation of Municipal Wastewater Treatment Plants: describes dark brown mixed liquor with an earthy odor as characteristic of a healthy, well treated activated sludge process."
+  },
+  {
+   "id": "WWT-ALL-PROC-0018",
+   "text": "Thick, white, billowy foam like soap suds is covering the surface of the aeration basin. What does this foam most likely indicate?",
+   "choices": [
+    "The sludge in the process is old and has a high sludge age",
+    "The mixed liquor dissolved oxygen concentration is too high",
+    "The return activated sludge rate is set too high",
+    "The sludge in the process is young and has a low sludge age"
+   ],
+   "correctIndex": 3,
+   "explanation": "Thick white, billowy foam on the aeration basin surface is a classic sign of young sludge, meaning the sludge has a low sludge age. It is common during startup or after a heavy wasting period, before the biomass has fully matured.",
+   "domain": "PROC",
+   "topic": "activated-sludge",
+   "difficulty": "Hard",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "WEF MOP 11, Operation of Municipal Wastewater Treatment Plants: identifies thick white billowy foam on the aeration basin surface as a sign of young sludge with a low sludge age."
+  },
+  {
+   "id": "WWT-ALL-PROC-0019",
+   "text": "A thick, dark, greasy scum has built up on the aeration basin surface instead of the usual light foam. What does this scum most likely indicate about the sludge?",
+   "choices": [
+    "The sludge has been in the process too long and is old",
+    "The sludge has been in the process too briefly and is young",
+    "The mixed liquor dissolved oxygen concentration is too low",
+    "The waste activated sludge rate has been set too high"
+   ],
+   "correctIndex": 0,
+   "explanation": "A thick, dark, greasy scum replacing the usual light foam is a classic sign of old sludge, meaning the sludge has a high sludge age. It tends to build up when solids have been retained in the process for an extended time.",
+   "domain": "PROC",
+   "topic": "activated-sludge",
+   "difficulty": "Hard",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "WEF MOP 11, Operation of Municipal Wastewater Treatment Plants: identifies thick, dark, greasy scum on the aeration basin surface as a sign of old sludge with a high sludge age."
+  },
+  {
+   "id": "WWT-ALL-PROC-0020",
+   "text": "The mixed liquor in the aeration basin settles slowly and does not compact well in the clarifier, letting the sludge blanket creep up toward the effluent weir. What condition does this describe?",
+   "choices": [
+    "Young sludge that has not yet built up enough biomass",
+    "Septic mixed liquor caused by a lack of dissolved oxygen",
+    "Bulking sludge that will not settle and compact properly",
+    "Nitrogen gas lifting settled solids back to the surface"
+   ],
+   "correctIndex": 2,
+   "explanation": "Sludge that settles slowly and will not compact well is described as bulking. It lets the sludge blanket rise in the clarifier and can lead to solids carrying over the effluent weir if it is not corrected.",
+   "domain": "PROC",
+   "topic": "activated-sludge",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "WEF MOP 11, Operation of Municipal Wastewater Treatment Plants: describes bulking sludge as mixed liquor that settles and compacts poorly, allowing the sludge blanket to rise in the clarifier."
+  },
+  {
+   "id": "WWT-ALL-PROC-0021",
+   "text": "Which tool does an operator use to measure the sludge blanket depth in a secondary clarifier?",
+   "choices": [
+    "A sludge judge",
+    "A turbidimeter",
+    "A pH meter",
+    "A dissolved oxygen meter"
+   ],
+   "correctIndex": 0,
+   "explanation": "A sludge judge is a clear tube lowered to the tank bottom and capped so it can be pulled up intact. This lets the operator see and measure exactly where the settled sludge blanket starts, showing how much solids are stored in the clarifier.",
+   "domain": "PROC",
+   "topic": "secondary-clarification",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "WEF MOP 11, Operation of Municipal Wastewater Treatment Plants: describes the sludge judge (core sampler) as the standard field tool for measuring sludge blanket depth in secondary clarifiers."
+  },
+  {
+   "id": "WWT-ALL-PROC-0022",
+   "text": "An operator checks the secondary clarifier each morning and finds the sludge blanket depth has crept higher for three days in a row, while plant flow and mixed liquor suspended solids have stayed steady. What adjustment should the operator make first?",
+   "choices": [
+    "Lower the return activated sludge rate",
+    "Raise the return activated sludge rate",
+    "Raise the waste activated sludge rate",
+    "Lower the waste activated sludge rate"
+   ],
+   "correctIndex": 1,
+   "explanation": "Raising the RAS rate pulls settled solids out of the clarifier faster, shortening how long sludge sits in the tank and bringing the blanket depth back down toward normal, while flow and MLSS stay the same.",
+   "domain": "PROC",
+   "topic": "secondary-clarification",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "WEF MOP 11, Operation of Municipal Wastewater Treatment Plants: identifies the return activated sludge rate as the primary control for adjusting sludge blanket depth in the secondary clarifier."
+  },
+  {
+   "id": "WWT-ALL-PROC-0023",
+   "text": "An operator notices clumps of sludge breaking the surface of the secondary clarifier. Small gas bubbles are visible clinging to the clumps, and the sludge volume index from that morning's test was in the normal range. What is the most likely cause?",
+   "choices": [
+    "Filamentous organisms overgrowing in the aeration basin",
+    "Grease and scum collecting on the clarifier surface",
+    "Denitrification occurring in the sludge blanket",
+    "Hydraulic overload pushing solids over the weir"
+   ],
+   "correctIndex": 2,
+   "explanation": "Denitrifying bacteria in the sludge blanket convert nitrate to nitrogen gas, and the gas bubbles get trapped in the settled floc, lifting clumps of otherwise normal sludge to the surface. Because the sludge itself still settles and compacts normally, the SVI test comes back in the normal range, which is the clue that separates rising sludge from bulking.",
+   "domain": "PROC",
+   "topic": "secondary-clarification",
+   "difficulty": "Hard",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "WEF MOP 11, Operation of Municipal Wastewater Treatment Plants: distinguishes rising sludge, caused by nitrogen gas from denitrification lifting floc clumps with a normal SVI, from bulking sludge, caused by filamentous growth with an elevated SVI."
+  },
+  {
+   "id": "WWT-ALL-PROC-0024",
+   "text": "An operator runs a settling test and finds the mixed liquor settles slowly and will not compact into a dense layer, with the sludge volume index reading well above normal. What condition does this most likely indicate?",
+   "choices": [
+    "A sudden increase in mixed liquor pH",
+    "A heavy return of digester supernatant",
+    "A rapid increase in influent flow",
+    "An overgrowth of filamentous organisms"
+   ],
+   "correctIndex": 3,
+   "explanation": "An elevated sludge volume index paired with slow, loose settling means the sludge is not compacting the way healthy floc should. This is the signature of bulking sludge, caused by filamentous organisms that outgrow the floc forming bacteria and bridge between floc particles, keeping them from packing down tightly.",
+   "domain": "PROC",
+   "topic": "secondary-clarification",
+   "difficulty": "Easy",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "WEF MOP 11, Operation of Municipal Wastewater Treatment Plants: identifies an elevated sludge volume index with poor compaction as the diagnostic sign of bulking sludge, caused by overgrowth of filamentous organisms in the mixed liquor."
+  },
+  {
+   "id": "WWT-ALL-PROC-0025",
+   "text": "An operator finds that solids are carrying over the effluent weir on only one side of the secondary clarifier, while the rest of the weir stays clear. What should the operator check first?",
+   "choices": [
+    "Whether the effluent weir is level",
+    "Whether the RAS pump is running",
+    "Whether the aeration basin DO is too low",
+    "Whether the influent screen is clogged"
+   ],
+   "correctIndex": 0,
+   "explanation": "When part of a clarifier weir sits even slightly lower than the rest, flow concentrates there instead of spreading evenly around the tank, and the higher local velocity drags settled solids up and over that section. Checking and correcting the weir level is the direct fix for a one sided carryover pattern.",
+   "domain": "PROC",
+   "topic": "secondary-clarification",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "WEF MOP 11, Operation of Municipal Wastewater Treatment Plants: identifies an unlevel effluent weir as a cause of localized solids carryover, and calls for weirs to be kept level and clean for even flow distribution."
+  },
+  {
+   "id": "WWT-ALL-PROC-0026",
+   "text": "During a period of low nighttime flow, an operator notices the trickling filter surface starting to dry out between doses, and filter flies are increasing. What should the operator do?",
+   "choices": [
+    "Reduce the recirculation rate",
+    "Increase the recirculation rate",
+    "Increase the waste sludge withdrawal rate",
+    "Reduce the aeration basin dissolved oxygen level"
+   ],
+   "correctIndex": 1,
+   "explanation": "Increasing the recirculation rate adds flow back through the distributor during low flow periods, keeping the arm turning at a normal rate and the filter surface consistently wet. A wet surface discourages filter fly larvae from establishing in the slime layer and prevents the dry, cracked spots that recirculation is meant to avoid.",
+   "domain": "PROC",
+   "topic": "fixed-film",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "WEF MOP 11, Operation of Municipal Wastewater Treatment Plants: describes recirculation as the standard method for maintaining hydraulic loading and surface wetting on a trickling filter during low flow periods, which also helps control filter fly populations."
+  },
+  {
+   "id": "WWT-ALL-PROC-0027",
+   "text": "An operator notices standing water pooling on the surface of a rock trickling filter between distributor passes, and flow is draining through the media more slowly than normal. What is the most likely cause?",
+   "choices": [
+    "The distributor arm rotating too fast",
+    "A recent drop in influent BOD",
+    "Excess slime growth clogging the media",
+    "A leaking nozzle on the distributor arm"
+   ],
+   "correctIndex": 2,
+   "explanation": "Ponding happens when the biological slime layer on the media grows faster than it sloughs off, and the extra growth fills in the open voids between the rock media. With less open space for water to pass through, flow backs up and pools on the surface between distributor passes instead of draining down freely.",
+   "domain": "PROC",
+   "topic": "fixed-film",
+   "difficulty": "Hard",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "WEF MOP 11, Operation of Municipal Wastewater Treatment Plants: identifies excess biological slime growth clogging the voids in trickling filter media as the cause of ponding, which reduces the open area available for flow to pass through."
+  },
+  {
+   "id": "WWT-ALL-PROC-0028",
+   "text": "What is the primary function of the rotary distributor arm on a trickling filter?",
+   "choices": [
+    "To aerate the wastewater before it reaches the media",
+    "To remove grit and debris from the influent",
+    "To mix return sludge into the incoming flow",
+    "To spread wastewater evenly across the filter media"
+   ],
+   "correctIndex": 3,
+   "explanation": "The rotary distributor arm has spray nozzles that release wastewater as the arm turns, laying down a thin, even sheet of flow across the surface of the media bed. Even distribution keeps the whole bed wetted and growing biofilm uniformly, instead of overloading some spots and drying out others.",
+   "domain": "PROC",
+   "topic": "fixed-film",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "WEF MOP 11, Operation of Municipal Wastewater Treatment Plants: describes the rotary distributor as the mechanism that spreads wastewater evenly across the trickling filter media surface."
+  },
+  {
+   "id": "WWT-ALL-PROC-0029",
+   "text": "An operator finds a large population of snails grazing on the slime layer of a trickling filter. What does this snail population most likely indicate about the filter?",
+   "choices": [
+    "The filter is under relatively light organic loading",
+    "The filter is receiving industrial slug loading",
+    "The filter is running at too high a recirculation rate",
+    "The filter is operating with blocked ventilation ports"
+   ],
+   "correctIndex": 0,
+   "explanation": "Snails feed on the biological slime layer, and they tend to build up large populations on trickling filters that are lightly loaded, where the slime layer stays thin enough for them to graze without being overwhelmed by regrowth. A heavy snail population is generally a sign of light organic loading, though large numbers can eventually shed shells that clog underdrains.",
+   "domain": "PROC",
+   "topic": "fixed-film",
+   "difficulty": "Easy",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "WEF MOP 11, Operation of Municipal Wastewater Treatment Plants: notes that snails commonly populate lightly loaded trickling filters, where they graze the biological slime layer."
+  },
+  {
+   "id": "WWT-ALL-PROC-0030",
+   "text": "On a standard rotating biological contactor (RBC), approximately what portion of the media disk surface is submerged in wastewater at any moment?",
+   "choices": [
+    "About 85 percent",
+    "About 65 percent",
+    "About 25 percent",
+    "About 40 percent"
+   ],
+   "correctIndex": 3,
+   "explanation": "RBC media disks are mounted on a horizontal shaft and rotate slowly through a tank so that roughly 40 percent of each disk stays submerged in wastewater at any given moment, while the rest is exposed to air. This alternating cycle lets the attached biofilm take up organic matter from the wastewater and then pick up oxygen from the air as the disk turns.",
+   "domain": "PROC",
+   "topic": "fixed-film",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "WEF MOP 11, Operation of Municipal Wastewater Treatment Plants: states that approximately 40 percent of a rotating biological contactor's media surface is submerged in wastewater at any time during normal operation."
+  },
+  {
+   "id": "WWT-ALL-PROC-0031",
+   "text": "What is the main purpose of a chlorine contact chamber at a wastewater treatment plant?",
+   "choices": [
+    "To cool the effluent before it reaches the receiving stream",
+    "To hold effluent long enough for chlorine to inactivate pathogens",
+    "To settle remaining solids out of the effluent before disinfection",
+    "To raise the dissolved oxygen level of the effluent before discharge"
+   ],
+   "correctIndex": 1,
+   "explanation": "A chlorine contact chamber is a baffled basin sized to hold effluent long enough for chlorine to react with and inactivate pathogens before the water leaves the plant. The baffling prevents short circuiting so every parcel of flow gets the detention time it needs for disinfection to work.",
+   "domain": "PROC",
+   "topic": "disinfection",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "WEF MOP 11, Operation of Municipal Wastewater Treatment Plants: confirms the chlorine contact chamber is designed to provide detention time for chlorine to react with and inactivate microorganisms before discharge."
+  },
+  {
+   "id": "WWT-ALL-PROC-0032",
+   "text": "Which chemical is most commonly fed to remove chlorine residual from wastewater effluent before discharge?",
+   "choices": [
+    "Sodium bisulfite",
+    "Sodium hypochlorite",
+    "Calcium hypochlorite",
+    "Aluminum sulfate"
+   ],
+   "correctIndex": 0,
+   "explanation": "Sodium bisulfite (along with related sulfite compounds and sulfur dioxide gas) reacts with free and combined chlorine and reduces it to chloride, removing the toxic residual before the effluent reaches the receiving stream.",
+   "domain": "PROC",
+   "topic": "disinfection",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "WEF MOP 11, Operation of Municipal Wastewater Treatment Plants: identifies sulfite compounds such as sodium bisulfite as standard dechlorination chemicals in wastewater treatment."
+  },
+  {
+   "id": "WWT-ALL-PROC-0033",
+   "text": "Effluent leaving the chlorine contact chamber shows a free chlorine residual of 2.5 mg/L. Why must this effluent be dechlorinated before it reaches the creek?",
+   "choices": [
+    "It raises the turbidity of the receiving stream",
+    "It increases the hardness of the receiving stream",
+    "It is toxic to fish and other aquatic life",
+    "It lowers the alkalinity of the receiving stream"
+   ],
+   "correctIndex": 2,
+   "explanation": "Free chlorine residual, even at low concentrations like 2.5 mg/L, is toxic to fish and other aquatic organisms. Dechlorination (commonly with sodium bisulfite or sulfur dioxide) neutralizes the residual so the effluent no longer threatens aquatic life when it is discharged to the creek.",
+   "domain": "PROC",
+   "topic": "disinfection",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "WEF MOP 11, Operation of Municipal Wastewater Treatment Plants: confirms that chlorine residual is toxic to aquatic life and must be neutralized by dechlorination before discharge."
+  },
+  {
+   "id": "WWT-ALL-PROC-0034",
+   "text": "Effluent turbidity rises sharply just before it enters the UV disinfection channel. What effect does this most likely have on disinfection performance?",
+   "choices": [
+    "Particles increase the chlorine demand of the effluent and reduce disinfection",
+    "Particles raise the effluent temperature and shorten UV lamp life",
+    "Particles increase the flow velocity through the channel and shorten exposure time",
+    "Particles shield microorganisms from UV light and reduce the dose they receive"
+   ],
+   "correctIndex": 3,
+   "explanation": "In UV disinfection, suspended particles physically shield or shadow microorganisms from the UV light, so organisms riding inside or behind a particle never receive a lethal dose. This is why UV systems require low turbidity effluent, and why a turbidity spike is a direct threat to disinfection performance even if the UV dose setting has not changed.",
+   "domain": "PROC",
+   "topic": "disinfection",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "WEF MOP 11, Operation of Municipal Wastewater Treatment Plants: confirms that elevated turbidity and suspended solids shield microorganisms from UV light and reduce disinfection effectiveness."
+  },
+  {
+   "id": "WWT-ALL-PROC-0035",
+   "text": "A UV disinfection system shows declining dose readings over several weeks, even though flow and lamp settings have not changed. Routine inspection finds a chalky white coating on the lamp sleeves. What should the operator do first?",
+   "choices": [
+    "Replace the lamps, since declining dose means they have failed",
+    "Clean the sleeves to remove the scale and restore UV dose",
+    "Increase the plant chlorine dose to compensate for the lower UV output",
+    "Reduce the effluent flow rate until the coating dissolves on its own"
+   ],
+   "correctIndex": 1,
+   "explanation": "A chalky white coating on UV lamp sleeves is mineral scale, which blocks UV light from reaching the water and drives down the delivered dose even when flow and lamp settings are unchanged. The correct first response is to clean the sleeves, mechanically or with an approved cleaning solution, to restore UV transmittance and dose.",
+   "domain": "PROC",
+   "topic": "disinfection",
+   "difficulty": "Hard",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "WEF MOP 11, Operation of Municipal Wastewater Treatment Plants: confirms that mineral scale fouling on UV lamp sleeves reduces UV transmittance and must be removed by cleaning to restore disinfection performance."
+  },
+  {
+   "id": "WWT-ALL-PROC-0036",
+   "text": "What is the main purpose of sludge thickening in a wastewater treatment plant?",
+   "choices": [
+    "To concentrate solids and reduce sludge volume",
+    "To reduce the pathogen content of the sludge",
+    "To reduce the volatile solids content of the sludge",
+    "To increase the pH of the sludge for storage"
+   ],
+   "correctIndex": 0,
+   "explanation": "Thickening removes water from dilute sludge to increase its solids concentration, which shrinks the volume that must be pumped, stored, or fed to the next process such as digestion. Thickening is a physical concentration step, it does not stabilize the sludge or reduce pathogens.",
+   "domain": "PROC",
+   "topic": "solids-digestion-dewatering",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "WEF MOP 11, Operation of Municipal Wastewater Treatment Plants: confirms thickening increases sludge solids concentration to reduce volume ahead of further treatment."
+  },
+  {
+   "id": "WWT-ALL-PROC-0037",
+   "text": "An operator wants to check whether an anaerobic digester is stabilizing sludge effectively. Which measurement best indicates digestion progress?",
+   "choices": [
+    "Percent reduction in total suspended solids",
+    "Percent reduction in total alkalinity",
+    "Percent reduction in volatile solids",
+    "Percent reduction in fecal coliform count"
+   ],
+   "correctIndex": 2,
+   "explanation": "Volatile solids represent the organic fraction of sludge that anaerobic digestion breaks down into gas and stabilized residue. Tracking percent volatile solids reduction between raw and digested sludge is the standard way operators confirm the digester is doing its job of stabilizing the sludge.",
+   "domain": "PROC",
+   "topic": "solids-digestion-dewatering",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "WEF MOP 11, Operation of Municipal Wastewater Treatment Plants: confirms percent volatile solids reduction is the standard measure of anaerobic digestion performance and stabilization."
+  },
+  {
+   "id": "WWT-ALL-PROC-0038",
+   "text": "Digested sludge at a plant needs to be converted into a solid cake so it can be hauled off site by truck instead of pumped as a liquid. Which piece of equipment accomplishes this?",
+   "choices": [
+    "Gravity thickener",
+    "Dissolved air flotation unit",
+    "Rotary drum screen",
+    "Belt filter press"
+   ],
+   "correctIndex": 3,
+   "explanation": "A belt filter press dewaters sludge by feeding it between two porous belts that travel through a series of rollers, squeezing out water under increasing pressure. The result is a stackable sludge cake, well above the solids content of thickened sludge, that can be loaded directly into a truck for hauling.",
+   "domain": "PROC",
+   "topic": "solids-digestion-dewatering",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "WEF MOP 11, Operation of Municipal Wastewater Treatment Plants: confirms the belt filter press dewaters sludge into a solid cake by pressing it between two belts, distinct from thickening which produces a pumpable slurry."
+  },
+  {
+   "id": "WWT-ALL-PROC-0039",
+   "text": "Over the past week, an anaerobic digester's gas production has dropped, the pH has fallen below normal, and volatile acid levels are rising. What does this pattern most likely indicate?",
+   "choices": [
+    "The digester is stabilizing sludge faster than normal",
+    "The digester is souring from organic overload",
+    "The digester is receiving too little raw sludge feed",
+    "The digester is overheating due to a heating system malfunction"
+   ],
+   "correctIndex": 1,
+   "explanation": "Falling pH together with rising volatile acids and dropping gas production is the classic signature of a digester going sour: the methane forming bacteria cannot keep up with an organic overload, acids accumulate faster than the digester's alkalinity can buffer them, and gas production falls as the process becomes unstable. The operator response is to cut back the feed rate and add alkalinity to restore balance.",
+   "domain": "PROC",
+   "topic": "solids-digestion-dewatering",
+   "difficulty": "Hard",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "WEF MOP 11, Operation of Municipal Wastewater Treatment Plants: confirms that falling pH, rising volatile acids, and declining gas production together indicate anaerobic digester overload and souring."
+  },
+  {
+   "id": "WWT-ALL-SAFE-0001",
+   "text": "Under which condition does hydrogen sulfide (H2S) gas most commonly form in a wastewater collection or treatment system?",
+   "choices": [
+    "Anaerobic conditions with organic matter breakdown",
+    "Aerobic conditions with a high dissolved oxygen level",
+    "Cold weather with reduced biological activity",
+    "High chlorine residual from disinfection"
+   ],
+   "correctIndex": 0,
+   "explanation": "Hydrogen sulfide forms when organic matter in wastewater is broken down by bacteria under anaerobic, oxygen deficient conditions. This is common in warm weather, low flow periods, and areas with long detention time such as force mains and lift stations, where dissolved oxygen is used up faster than it can be replaced.",
+   "domain": "SAFE",
+   "topic": "hydrogen-sulfide",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "WEF MOP 11, Operation of Municipal Wastewater Treatment Plants: hydrogen sulfide forms when organic matter decomposes under anaerobic (oxygen deficient) conditions, common in warm, low flow, or long detention time wastewater systems."
+  },
+  {
+   "id": "WWT-ALL-SAFE-0002",
+   "text": "An operator lowers a calibrated gas meter into a deep wet well before entry. Because hydrogen sulfide (H2S) is heavier than air, where should the operator expect the highest reading?",
+   "choices": [
+    "At the top opening, right at ground level",
+    "Spread evenly from top to bottom of the space",
+    "Near the bottom of the wet well",
+    "Only in the air directly above the influent pipe"
+   ],
+   "correctIndex": 2,
+   "explanation": "Hydrogen sulfide is heavier than air, so it sinks and collects in the lowest points of an enclosed structure such as a wet well. An operator testing the atmosphere should expect the highest concentration near the bottom of the space, not at the opening or spread evenly throughout.",
+   "domain": "SAFE",
+   "topic": "hydrogen-sulfide",
+   "difficulty": "Easy",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "OSHA Hydrogen Sulfide Safety and Health Topics guidance: hydrogen sulfide is heavier than air and can collect in low lying, poorly ventilated areas such as wet wells and below grade structures."
+  },
+  {
+   "id": "WWT-ALL-SAFE-0003",
+   "text": "A calibrated gas meter reads 120 ppm hydrogen sulfide (H2S) at the bottom of a wastewater wet well. The NIOSH immediately dangerous to life or health (IDLH) concentration for hydrogen sulfide is 100 ppm. Based on this reading, what does it mean for entry into the space?",
+   "choices": [
+    "Entry without respiratory protection is acceptable, since the reading is only slightly above the limit",
+    "Entry requires supplied air respiratory protection, since the reading is above the IDLH level",
+    "Entry is fine after a few minutes of ventilation, with no need to retest the atmosphere",
+    "Entry is allowed without protection as long as the exposure stays under 15 minutes"
+   ],
+   "correctIndex": 1,
+   "explanation": "A reading of 120 ppm is above the NIOSH IDLH value of 100 ppm for hydrogen sulfide, meaning the atmosphere is considered immediately dangerous to life or health. At or above this level, entry requires supplied air respiratory protection such as an SCBA, or the space must not be entered until retesting confirms the level has dropped and stayed down.",
+   "domain": "SAFE",
+   "topic": "hydrogen-sulfide",
+   "difficulty": "Hard",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "NIOSH Immediately Dangerous to Life or Health (IDLH) values: the IDLH concentration for hydrogen sulfide is 100 ppm, above which supplied air respiratory protection is required for entry."
+  },
+  {
+   "id": "WWT-ALL-SAFE-0004",
+   "text": "Under OSHA's confined space rule, what specific factor makes a confined space a permit required confined space rather than a general, non-permit confined space?",
+   "choices": [
+    "It is not designed for continuous employee occupancy",
+    "It is large enough for a worker to enter and perform assigned work",
+    "It has limited or restricted means for entry or exit",
+    "It contains or could contain a hazardous atmosphere"
+   ],
+   "correctIndex": 3,
+   "explanation": "All confined spaces share three basic features: they are large enough to enter and work in, have limited or restricted entry and exit, and are not designed for continuous occupancy. A confined space becomes a permit required confined space specifically when it also contains, or could contain, a hazardous atmosphere, a material that could engulf an entrant, an internal shape that could trap someone, or another recognized serious hazard.",
+   "domain": "SAFE",
+   "topic": "confined-space",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "OSHA 29 CFR 1910.146: a confined space becomes permit required when it contains or has the potential to contain a hazardous atmosphere or other recognized serious safety or health hazard, beyond the three basic elements common to all confined spaces."
+  },
+  {
+   "id": "WWT-ALL-SAFE-0005",
+   "text": "A wastewater lift station wet well has been sealed for several days. Before any worker opens it up and enters, what must be done to determine whether the space is safe?",
+   "choices": [
+    "Check the maintenance log to see when the space was last entered",
+    "Ventilate the space for a set period and enter without further checks",
+    "Test the atmosphere with a calibrated gas detector",
+    "Ask the previous shift whether the space seemed safe at that time"
+   ],
+   "correctIndex": 2,
+   "explanation": "Before any worker enters a permit required confined space such as a sealed wet well, the atmosphere must be tested with a calibrated direct reading gas detector to check for oxygen deficiency, flammable gas, and toxic gas such as hydrogen sulfide. A log entry, a general ventilation step, or secondhand information from a previous shift cannot substitute for an actual current reading.",
+   "domain": "SAFE",
+   "topic": "confined-space",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "OSHA 29 CFR 1910.146: the atmosphere of a permit required confined space must be tested with a calibrated direct reading instrument before any worker is allowed to enter."
+  },
+  {
+   "id": "WWT-ALL-SAFE-0006",
+   "text": "A wastewater operator inside a permit required confined space suddenly collapses. A coworker standing outside the space is not part of the rescue team and has no rescue training. What should the coworker do?",
+   "choices": [
+    "Stay outside the space and immediately call for the trained rescue team",
+    "Enter the space right away and pull the coworker out",
+    "Remove the entry permit and ventilate the space before doing anything else",
+    "Wait at the entrance for the coworker to respond before taking action"
+   ],
+   "correctIndex": 0,
+   "explanation": "An untrained coworker must never enter a permit required confined space to attempt a rescue. The correct action is to stay outside, sound the alarm, and call the trained and equipped rescue service immediately, since entering without training and proper equipment commonly turns one emergency into two.",
+   "domain": "SAFE",
+   "topic": "confined-space",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "OSHA 29 CFR 1910.146: employees who are not trained and equipped as part of the designated rescue service must not enter a permit space to attempt to rescue a downed entrant."
+  },
+  {
+   "id": "WWT-ALL-SAFE-0007",
+   "text": "To limit the risk of pathogen exposure, which practice is prohibited while working in wastewater treatment process areas?",
+   "choices": [
+    "Wearing puncture resistant gloves",
+    "Eating, drinking, or tobacco use",
+    "Taking a routine grab sample",
+    "Recording flow meter readings"
+   ],
+   "correctIndex": 1,
+   "explanation": "Eating, drinking, or using tobacco in wastewater process areas is prohibited because hands, surfaces, and the air in these areas can carry pathogens from raw wastewater. Bringing food, drink, or tobacco to the mouth in these areas creates a direct path for pathogens to enter the body, so this activity is kept out of process areas entirely.",
+   "domain": "SAFE",
+   "topic": "ppe",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "WEF MOP 11, Operation of Municipal Wastewater Treatment Plants, and CDC occupational health guidance for wastewater workers: eating, drinking, and tobacco use are prohibited in process areas where workers may be exposed to pathogens in wastewater."
+  },
+  {
+   "id": "WWT-ALL-SAFE-0008",
+   "text": "What hygiene practice should a wastewater operator follow immediately after removing gloves that were used while handling raw wastewater or screenings?",
+   "choices": [
+    "Rinse the gloves in tap water and reuse them for the next task",
+    "Wipe hands on a uniform or rag before continuing work",
+    "Apply hand sanitizer only, without washing with soap and water",
+    "Wash hands thoroughly with soap and water"
+   ],
+   "correctIndex": 3,
+   "explanation": "After removing gloves used while handling raw wastewater or screenings, an operator should wash hands thoroughly with soap and water. This is the standard hygiene practice for removing pathogens picked up during wastewater work, especially before eating, drinking, or touching the face.",
+   "domain": "SAFE",
+   "topic": "ppe",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "CDC guidance for wastewater and sewage workers: hands must be washed thoroughly with soap and water after removing gloves and before eating, drinking, or touching the face, to prevent pathogen transmission."
+  },
+  {
+   "id": "WWT-ALL-SAFE-0009",
+   "text": "An operator is about to manually clear debris from a bar screen where wastewater is actively splashing upward toward face height. Beyond gloves, what additional PPE should the operator put on before starting this task?",
+   "choices": [
+    "Hearing protection such as ear plugs or ear muffs",
+    "Steel toe safety boots",
+    "Face shield or splash goggles",
+    "Knee pads"
+   ],
+   "correctIndex": 2,
+   "explanation": "When a task creates a risk of wastewater splashing toward the face, such as manually clearing a bar screen, the operator needs face and eye protection like a face shield or splash goggles in addition to gloves. This blocks pathogen laden splash from reaching the eyes, nose, and mouth.",
+   "domain": "SAFE",
+   "topic": "ppe",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "OSHA General Industry PPE standard, 29 CFR 1910.132 and 1910.133, as applied to wastewater operations: face and eye protection such as a face shield or splash goggles is required when a task creates a risk of wastewater splashing toward the face."
+  },
+  {
+   "id": "WWT-ALL-MATH-0037",
+   "text": "An aeration basin holds 1.5 million gallons. The plant sends a steady flow of 4.0 MGD to the basin. About how many hours of detention time does the basin provide?",
+   "choices": [
+    "2.7 hours",
+    "9.0 hours",
+    "0.4 hours",
+    "64 hours"
+   ],
+   "correctIndex": 1,
+   "explanation": "Detention time equals basin volume divided by flow, expressed in matching units, then converted to hours. Dividing 1.5 million gallons by 4.0 MGD gives 0.375 days. Multiplying by 24 hours per day gives 9.0 hours of detention time.",
+   "domain": "MATH",
+   "topic": "detention-time",
+   "difficulty": "Easy",
+   "cognitive": "Application",
+   "formula": "DT (hr) = (V, gal / Q, gpd) x 24",
+   "calculator": "detention",
+   "citation": null
+  },
+  {
+   "id": "WWT-ALL-MATH-0038",
+   "text": "A secondary clarifier holds 150,000 gallons. Flow to the clarifier is steady at 125 gpm. About how many hours of detention time does the clarifier provide?",
+   "choices": [
+    "29 hours",
+    "480 hours",
+    "20 hours",
+    "0.8 hours"
+   ],
+   "correctIndex": 2,
+   "explanation": "Detention time equals basin volume divided by flow, with flow converted to matching time units. Converting 125 gpm to a daily flow (125 times 1,440 minutes per day equals 180,000 gallons per day), then dividing the 150,000 gallon clarifier volume by that daily flow gives 0.833 days. Multiplying by 24 hours per day gives 20 hours of detention time.",
+   "domain": "MATH",
+   "topic": "detention-time",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": "DT (hr) = [V (gal) / (Q (gpm) x 1440)] x 24",
+   "calculator": "detention",
+   "citation": null
+  },
+  {
+   "id": "WWT-ALL-MATH-0039",
+   "text": "A gravity thickener has a surface area of 300 square feet and receives a flow of 45,000 gallons per day. About how many gallons per day per square foot is the hydraulic loading rate on the thickener?",
+   "choices": [
+    "150 gpd/sq ft",
+    "15 gpd/sq ft",
+    "1,500 gpd/sq ft",
+    "6.25 gpd/sq ft"
+   ],
+   "correctIndex": 0,
+   "explanation": "Hydraulic loading rate is flow divided by surface area. Dividing the 45,000 gallon per day flow by the 300 square foot thickener surface gives 150 gallons per day per square foot.",
+   "domain": "MATH",
+   "topic": "loading-rates",
+   "difficulty": "Easy",
+   "cognitive": "Application",
+   "formula": "Loading rate (gpd/sq ft) = Flow (gpd) / Area (sq ft)",
+   "calculator": "surface-loading",
+   "citation": null
+  },
+  {
+   "id": "WWT-ALL-MATH-0040",
+   "text": "An aeration basin holds 60,000 cubic feet and receives a BOD load of 3,000 pounds per day. About how many pounds of BOD per day per 1,000 cubic feet is the organic loading rate on the basin?",
+   "choices": [
+    "20 lb BOD/day/1,000 cu ft",
+    "500 lb BOD/day/1,000 cu ft",
+    "0.05 lb BOD/day/1,000 cu ft",
+    "50 lb BOD/day/1,000 cu ft"
+   ],
+   "correctIndex": 3,
+   "explanation": "Organic loading rate is the BOD load divided by basin volume expressed in thousands of cubic feet. The 60,000 cubic foot basin equals 60 thousand cubic feet, and 3,000 pounds per day divided by 60 gives 50 pounds of BOD per day per 1,000 cubic feet.",
+   "domain": "MATH",
+   "topic": "loading-rates",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": "Organic loading rate (lb BOD/day/1,000 cu ft) = BOD load (lb/day) / [Volume (cu ft) / 1,000]",
+   "calculator": "organic-loading",
+   "citation": null
+  },
+  {
+   "id": "WWT-ALL-MATH-0041",
+   "text": "A secondary clarifier has a surface area of 2,500 square feet. Flow to the clarifier is 3.0 MGD and the mixed liquor suspended solids concentration entering the clarifier is 2,200 mg/L. About how many pounds per day per square foot of solids loading is the clarifier receiving?",
+   "choices": [
+    "55 lb/day/sq ft",
+    "22 lb/day/sq ft",
+    "2.6 lb/day/sq ft",
+    "0.045 lb/day/sq ft"
+   ],
+   "correctIndex": 1,
+   "explanation": "Solids loading rate is the pounds of solids applied per day divided by the clarifier's surface area. The pounds formula gives 3.0 MGD times 2,200 mg/L times 8.34, or about 55,044 pounds of solids per day. Dividing by the 2,500 square foot surface area gives about 22 pounds per day per square foot.",
+   "domain": "MATH",
+   "topic": "loading-rates",
+   "difficulty": "Hard",
+   "cognitive": "Application",
+   "formula": "Solids loading rate (lb/day/sq ft) = (Q, MGD x MLSS, mg/L x 8.34) / Area (sq ft)",
+   "calculator": "loading",
+   "citation": null
+  },
+  {
+   "id": "WWT-ALL-MATH-0042",
+   "text": "An aeration basin holds 400,000 gallons and the mixed liquor suspended solids concentration is 2,500 mg/L. About how many pounds of MLSS are in the basin?",
+   "choices": [
+    "120 lb",
+    "8,340,000 lb",
+    "8,340 lb",
+    "1,000 lb"
+   ],
+   "correctIndex": 2,
+   "explanation": "Pounds of MLSS in the basin equal basin volume in million gallons times the MLSS concentration in mg/L times 8.34. Converting 400,000 gallons to 0.4 million gallons, then multiplying by 2,500 mg/L and by 8.34, gives about 8,340 pounds of MLSS in the basin.",
+   "domain": "MATH",
+   "topic": "mlss-mass",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": "lb MLSS = Volume (MG) x MLSS (mg/L) x 8.34",
+   "calculator": "mass",
+   "citation": null
+  },
+  {
+   "id": "WWT-ALL-MATH-0043",
+   "text": "An aeration basin's influent carries 220 mg/L of BOD, and testing shows only 33 mg/L remains in the effluent. About what percent of the incoming BOD does the process remove?",
+   "choices": [
+    "85 percent",
+    "15 percent",
+    "65 percent",
+    "33 percent"
+   ],
+   "correctIndex": 0,
+   "explanation": "The process removes 220 minus 33, or 187 mg/L of BOD. Dividing the amount removed by the influent concentration and multiplying by 100 gives 187 divided by 220 times 100, which equals 85 percent. Percent removal always uses the influent value as the denominator, since that is the starting load the process is measured against.",
+   "domain": "MATH",
+   "topic": "percent-removal",
+   "difficulty": "Easy",
+   "cognitive": "Application",
+   "formula": "Percent removal = (influent - effluent) / influent x 100",
+   "calculator": "removal",
+   "citation": null
+  },
+  {
+   "id": "WWT-ALL-MATH-0044",
+   "text": "A secondary clarifier receives flow carrying 175 mg/L of TSS, and the clarified effluent tests at 28 mg/L of TSS. About what percent of the suspended solids does the clarifier remove?",
+   "choices": [
+    "16 percent",
+    "28 percent",
+    "42 percent",
+    "84 percent"
+   ],
+   "correctIndex": 3,
+   "explanation": "The clarifier removes 175 minus 28, or 147 mg/L of TSS. Dividing that by the influent concentration of 175 mg/L and multiplying by 100 gives 147 divided by 175 times 100, which equals 84 percent. Percent removal is always the amount taken out divided by what came in, not the amount left over.",
+   "domain": "MATH",
+   "topic": "percent-removal",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": "Percent removal = (influent - effluent) / influent x 100",
+   "calculator": "removal",
+   "citation": null
+  },
+  {
+   "id": "WWT-ALL-MATH-0045",
+   "text": "Raw wastewater entering a small package plant measures 300 mg/L of BOD. By the time it leaves as final effluent, BOD has dropped to 27 mg/L. About what percent of the incoming BOD load has been removed?",
+   "choices": [
+    "9 percent",
+    "91 percent",
+    "73 percent",
+    "27 percent"
+   ],
+   "correctIndex": 1,
+   "explanation": "The plant removes 300 minus 27, or 273 mg/L of BOD. Dividing that by the influent concentration of 300 mg/L and multiplying by 100 gives 273 divided by 300 times 100, which equals 91 percent. Percent removal is the amount taken out divided by what came in, not the leftover amount or the raw effluent reading.",
+   "domain": "MATH",
+   "topic": "percent-removal",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": "Percent removal = (influent - effluent) / influent x 100",
+   "calculator": "removal",
+   "citation": null
+  },
+  {
+   "id": "WWT-ALL-MATH-0046",
+   "text": "A treatment plant's influent pump has to overcome 60 feet of total dynamic head while handling 750 gallons per minute of incoming raw sewage. About how much water horsepower must the pump supply?",
+   "choices": [
+    "0.2 hp",
+    "1.4 hp",
+    "11.4 hp",
+    "113.7 hp"
+   ],
+   "correctIndex": 2,
+   "explanation": "Water horsepower equals flow in gpm times total head in feet times 8.34 (the weight of a gallon of water), divided by 33,000 (the ft-lb per minute in one horsepower). Here that is 750 times 60 times 8.34, divided by 33,000, which works out to about 11.4 horsepower. All three factors, flow, head, and the 8.34 constant, have to be included, and the result is divided by 33,000, not a smaller or larger number.",
+   "domain": "MATH",
+   "topic": "pumping-hp",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": "Water horsepower = (flow in gpm x total head in ft x 8.34) / 33,000",
+   "calculator": "hp",
+   "citation": null
+  },
+  {
+   "id": "WWT-ALL-MATH-0047",
+   "text": "An aeration basin holds 1,850,000 gallons of mixed liquor with an MLSS concentration of 2,200 mg/L. About how many pounds of MLSS are in the basin?",
+   "choices": [
+    "4,070 lbs",
+    "34 lbs",
+    "339,000 lbs",
+    "33,900 lbs"
+   ],
+   "correctIndex": 3,
+   "explanation": "Convert 1,850,000 gallons to million gallons first: 1,850,000 divided by 1,000,000 equals 1.85 MG. Multiply the volume by the MLSS concentration and by 8.34: 1.85 times 2,200 times 8.34 equals about 33,900 pounds of MLSS in the basin. All three factors, the converted volume, the concentration, and 8.34, have to be included and multiplied together.",
+   "domain": "MATH",
+   "topic": "concentration",
+   "difficulty": "Hard",
+   "cognitive": "Application",
+   "formula": "Pounds of MLSS = basin volume (MG) x MLSS concentration (mg/L) x 8.34",
+   "calculator": "mass",
+   "citation": null
+  }
+ ]
+}

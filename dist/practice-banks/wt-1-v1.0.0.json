@@ -1,0 +1,2443 @@
+{
+ "id": "wt-1",
+ "title": "Water Treatment Operator Practice Test, Class I",
+ "discipline": "Water Treatment",
+ "level": "Entry level (ABC Class I)",
+ "durationMin": 120,
+ "refCount": 100,
+ "version": "2026-07-11",
+ "questions": [
+  {
+   "id": "WT-ALL-PROC-0002",
+   "text": "What is the main purpose of a sedimentation basin in a conventional treatment plant?",
+   "choices": [
+    "To disinfect the water",
+    "To let settled floc drop out by gravity before filtration",
+    "To add coagulant",
+    "To measure turbidity"
+   ],
+   "correctIndex": 1,
+   "explanation": "Sedimentation removes the bulk of the floc by gravity settling, so the filters that follow receive a much lighter load.",
+   "domain": "PROC",
+   "topic": "sedimentation-clarification",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "module water-treatment-sedimentation; AWWA WSO"
+  },
+  {
+   "id": "WT-ALL-PROC-0005",
+   "text": "Which condition signals that a filter run should end and the filter needs a backwash?",
+   "choices": [
+    "The disinfectant residual rises",
+    "The coagulant runs out",
+    "The pH reaches 7.0",
+    "Head loss climbs too high or turbidity breaks through the bed"
+   ],
+   "correctIndex": 3,
+   "explanation": "As a filter loads with floc, head loss climbs and eventually turbidity starts to break through. Either one ends the run and calls for a backwash.",
+   "domain": "PROC",
+   "topic": "filtration",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "module water-treatment-filtration; AWWA WSO"
+  },
+  {
+   "id": "WT-ALL-PROC-0006",
+   "text": "A filter has a surface area of 200 square feet and treats 1,000 gpm. What is the filtration rate?",
+   "choices": [
+    "5 gpm per square foot",
+    "0.2 gpm per square foot",
+    "200 gpm per square foot",
+    "2 gpm per square foot"
+   ],
+   "correctIndex": 0,
+   "explanation": "Filtration rate = flow / filter area = 1,000 gpm / 200 sq ft = 5 gpm per square foot.",
+   "domain": "PROC",
+   "topic": "filtration",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": "filtration rate (gpm/sq ft) = flow (gpm) / area (sq ft)",
+   "calculator": "filtration-rate",
+   "citation": "Recomputed by hand; Operator Calculator filtration-rate"
+  },
+  {
+   "id": "WT-ALL-REGS-0001",
+   "text": "For conventional or direct filtration, combined filter effluent turbidity must stay at or below what level in nearly all monthly samples?",
+   "choices": [
+    "5.0 NTU",
+    "0.3 NTU",
+    "1.0 NTU",
+    "0.5 NTU"
+   ],
+   "correctIndex": 1,
+   "explanation": "Under the surface water treatment rules, combined filter effluent must be at or below 0.3 NTU in nearly every monthly sample and never above 1 NTU for conventional or direct filtration.",
+   "domain": "REGS",
+   "topic": "surface-water-rules",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "40 CFR 141 Surface Water Treatment Rules; module water-treatment-filtration"
+  },
+  {
+   "id": "WT-ALL-PROC-0007",
+   "text": "The CT value used to prove disinfection is the product of which two quantities?",
+   "choices": [
+    "Chlorine dose and plant flow",
+    "Disinfectant residual and contact time",
+    "Contact time divided by residual",
+    "Turbidity and temperature"
+   ],
+   "correctIndex": 1,
+   "explanation": "CT is concentration times time: the disinfectant residual (mg/L) multiplied by the contact time (minutes). The plant compares delivered CT against the CT the rule requires.",
+   "domain": "PROC",
+   "topic": "disinfection-ct",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "module water-treatment-disinfection; EPA Surface Water Treatment Rules"
+  },
+  {
+   "id": "WT-ALL-PROC-0009",
+   "text": "Which barrier is the reliable defense against chlorine-resistant Cryptosporidium?",
+   "choices": [
+    "A higher free chlorine residual",
+    "Chloramines",
+    "Ultraviolet light (or ozone)",
+    "Fluoridation"
+   ],
+   "correctIndex": 2,
+   "explanation": "Cryptosporidium oocysts resist chlorine. UV light inactivates them at modest doses and ozone is also effective, so UV is the dependable barrier paired with filtration.",
+   "domain": "PROC",
+   "topic": "disinfection-ct",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "module water-treatment-disinfection; EPA LT2 rule"
+  },
+  {
+   "id": "WT-ALL-PROC-0010",
+   "text": "Why does surface water usually require more extensive treatment than a protected groundwater source?",
+   "choices": [
+    "It is exposed to runoff, turbidity, and pathogens and swings with the seasons",
+    "It is always colder",
+    "It contains more dissolved minerals in every case",
+    "It never needs disinfection"
+   ],
+   "correctIndex": 0,
+   "explanation": "Surface water is open to the watershed, so it picks up turbidity, organic matter, and pathogens and changes with runoff and season, which is why it gets the full conventional train.",
+   "domain": "PROC",
+   "topic": "source-water",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "module water-treatment-source-water; AWWA WSO"
+  },
+  {
+   "id": "WT-ALL-PROC-0012",
+   "text": "A heavy storm sends a spike of turbidity into a surface intake. What should the operator expect to adjust downstream?",
+   "choices": [
+    "Nothing; the dose is fixed",
+    "The coagulant dose, because the raw water changed",
+    "Only the plant lighting",
+    "The distribution pressure"
+   ],
+   "correctIndex": 1,
+   "explanation": "Raw water shifts with runoff, so a turbidity spike usually means the coagulant dose has to rise. This is why operators jar-test rather than set the dose once.",
+   "domain": "PROC",
+   "topic": "source-water",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "module water-treatment-source-water; module water-treatment-coagulation"
+  },
+  {
+   "id": "WT-ALL-MICRO-0001",
+   "text": "Why is a surface water system generally held to more pathogen-removal requirements than a deep, protected groundwater system?",
+   "choices": [
+    "Surface water is more directly exposed to pathogen contamination",
+    "Groundwater is never tested",
+    "Surface water is always softer",
+    "Groundwater cannot be disinfected"
+   ],
+   "correctIndex": 0,
+   "explanation": "Surface water sits open to the watershed and its pathogens, so the rules require demonstrated log-removal of Giardia, viruses, and Cryptosporidium; a protected aquifer is naturally less exposed.",
+   "domain": "MICRO",
+   "topic": "source-water",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "module water-treatment-source-water; EPA Surface Water Treatment Rules"
+  },
+  {
+   "id": "WT-ALL-PROC-0013",
+   "text": "What is typically done with the spent filter backwash water a plant produces?",
+   "choices": [
+    "It is sent straight to the drinking water",
+    "It is usually recycled back to the head of the plant",
+    "It is always discharged to a stream untreated",
+    "It is used as disinfectant"
+   ],
+   "correctIndex": 1,
+   "explanation": "Spent backwash water is a residual the plant manages, most often by recycling it to the head of the plant, which recovers water but returns its solids load.",
+   "domain": "PROC",
+   "topic": "residuals-corrosion-control",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "module water-treatment-residuals; AWWA WSO"
+  },
+  {
+   "id": "WT-ALL-PROC-0016",
+   "text": "What is the purpose of a jar test at a drinking water treatment plant?",
+   "choices": [
+    "To find the coagulant dose that gives the best floc and settling for the water.",
+    "To measure the residual chlorine remaining in the finished water leaving the plant.",
+    "To check the filter media for cracking and mudballs during a routine bed inspection.",
+    "To confirm the clearwell holds enough contact time to meet the disinfection CT target."
+   ],
+   "correctIndex": 0,
+   "explanation": "A jar test simulates coagulation, flocculation, and sedimentation at bench scale using several samples of the same raw water dosed at different coagulant levels. Comparing floc formation and settling across the jars lets the operator pick the dose that performs best before committing that dose to the full scale process.",
+   "domain": "PROC",
+   "topic": "coagulation-flocculation",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "AWWA WSO: Water Treatment describes jar testing as the standard bench scale method operators use to select coagulant dose before full scale application."
+  },
+  {
+   "id": "WT-ALL-PROC-0017",
+   "text": "An operator at a drinking water treatment plant runs a jar test with six jars dosed at different coagulant levels. Twenty minutes after mixing stops, one jar shows large floc that settled quickly, leaving clear water on top. What does this jar indicate?",
+   "choices": [
+    "The dose in that jar is overdosing the water and should be reduced.",
+    "The dose in that jar is close to the best dose for today's raw water.",
+    "The raw water's alkalinity is too low for any tested dose to work well.",
+    "The mixing speed used during the test was too fast for floc to form."
+   ],
+   "correctIndex": 1,
+   "explanation": "Every jar in a jar test receives the same raw water, the same mixing sequence, and the same settling time, so the coagulant dose is the only variable between jars. A jar that produces large, fast settling floc and a clear supernatant is showing the operator the dose that works best for the water on hand, which is why that dose becomes the target for the full scale feed.",
+   "domain": "PROC",
+   "topic": "coagulation-flocculation",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "AWWA WSO: Water Treatment describes the jar test procedure as holding mixing and settling time constant across jars so the operator can identify the coagulant dose that produces the best floc and settling."
+  },
+  {
+   "id": "WT-ALL-PROC-0018",
+   "text": "An operator at a drinking water treatment plant wants to confirm that the coagulant metering pump is actually delivering the feed rate shown on its dial. What field check should the operator perform?",
+   "choices": [
+    "Compare today's raw water turbidity reading to yesterday's intake meter reading.",
+    "Run a jar test on the raw water to find the best coagulant dose.",
+    "Time how long the pump takes to draw down a measured volume from the day tank.",
+    "Read the coagulant supplier's safety data sheet for the listed dose range."
+   ],
+   "correctIndex": 2,
+   "explanation": "A drawdown test, timing how far the level in a calibrated day tank drops over a known time, gives the operator a direct, physical measurement of the pump's actual feed rate. Comparing that measured rate to the dial setting confirms whether the pump is delivering what it claims, catching calibration drift or blockages the dial alone would not reveal.",
+   "domain": "PROC",
+   "topic": "coagulation-flocculation",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "AWWA WSO: Water Treatment describes chemical feed pump calibration as verified in the field with a drawdown test measuring actual delivered volume against a timed interval."
+  },
+  {
+   "id": "WT-ALL-PROC-0019",
+   "text": "In a properly operating flocculation basin at a drinking water treatment plant, how should the floc typically appear as the water moves from the inlet toward the outlet?",
+   "choices": [
+    "The floc should stay the same small, pinpoint size all the way through the basin.",
+    "The floc should break apart into finer particles as it nears the outlet end.",
+    "The floc should shrink and mostly dissolve back into the water by the outlet.",
+    "The floc should grow larger and more visible as it moves toward the outlet."
+   ],
+   "correctIndex": 3,
+   "explanation": "A flocculation basin lets destabilized particles collide and stick together under gentle mixing. In a properly operating basin, floc visibly grows as it travels from the inlet to the outlet, moving from small, barely visible specks to larger, well formed floc that is ready to settle in the next basin.",
+   "domain": "PROC",
+   "topic": "coagulation-flocculation",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "AWWA WSO: Water Treatment describes properly formed floc as growing progressively larger and more visible as water travels through the flocculation basin toward the outlet."
+  },
+  {
+   "id": "WT-ALL-PROC-0020",
+   "text": "A drinking water treatment plant's raw water temperature drops sharply in winter. The operator notices floc is forming more slowly and looks smaller than usual, even though the coagulant dose has not changed. What should the operator expect to do to keep floc quality up?",
+   "choices": [
+    "Allow more flocculation time or raise the coagulant dose for the cold water.",
+    "Lower the coagulant dose since cold water needs less coagulant to form floc.",
+    "Shorten the flocculation time since cold water settles floc more quickly.",
+    "Add a stronger disinfectant dose to help the coagulant react faster in the cold water."
+   ],
+   "correctIndex": 0,
+   "explanation": "Cold water is more viscous and slows the chemical reactions and particle collisions that build floc, so floc tends to form more slowly and stay smaller in winter. Operators commonly compensate by giving the water more time in the flocculation basin, raising the coagulant dose, or both, to keep floc size and settling quality where they need to be.",
+   "domain": "PROC",
+   "topic": "coagulation-flocculation",
+   "difficulty": "Hard",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "AWWA WSO: Water Treatment notes that low water temperature slows coagulation and flocculation reactions, commonly requiring increased detention time or coagulant dose to maintain floc quality."
+  },
+  {
+   "id": "WT-ALL-PROC-0021",
+   "text": "At a drinking water treatment plant, the primary coagulant dose is within its normal range, but the floc forming in the flocculation basin stays small and fragile and settles poorly. What can the operator add to help build larger, stronger floc?",
+   "choices": [
+    "A higher dose of the disinfectant used at the entry point of the plant.",
+    "A polymer coagulant aid fed along with the primary coagulant.",
+    "A corrosion inhibitor normally fed for distribution system protection.",
+    "A dechlorination chemical normally fed ahead of the clearwell."
+   ],
+   "correctIndex": 1,
+   "explanation": "When the primary coagulant dose is already in its normal range but floc stays small and weak, a polymer coagulant aid is commonly fed in addition to the primary coagulant to bridge particles together, building larger, tougher floc that settles better.",
+   "domain": "PROC",
+   "topic": "coagulation-flocculation",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "AWWA WSO: Water Treatment describes polymer coagulant aids as used alongside a primary coagulant to increase floc size and strength when floc stays weak despite proper primary dosing."
+  },
+  {
+   "id": "WT-ALL-PROC-0022",
+   "text": "Sedimentation basins at a drinking water treatment plant typically discharge over a long effluent weir that spans much of the basin width. What is the main reason for spreading the outlet this way?",
+   "choices": [
+    "It lets operators measure the plant's total flow more accurately.",
+    "It reduces the amount of coagulant needed earlier in the process.",
+    "It keeps flow per foot of weir low so settled floc stays down.",
+    "It allows the basin to be built with a shallower water depth."
+   ],
+   "correctIndex": 2,
+   "explanation": "Spreading the outlet flow over a long weir keeps the flow per foot of weir, the weir loading rate, low. That keeps water velocity near the outlet low enough that settled floc stays on the basin floor instead of being pulled up and carried out with the effluent.",
+   "domain": "PROC",
+   "topic": "sedimentation",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "AWWA WSO: Water Treatment describes sedimentation basin effluent weirs as sized and spread to keep the weir loading rate low enough to prevent settled floc from being drawn up and carried over the weir."
+  },
+  {
+   "id": "WT-ALL-PROC-0023",
+   "text": "An operator checks a sedimentation basin at a drinking water treatment plant and finds the sludge blanket has risen much higher than normal, close to the outlet weirs. What should the operator do first?",
+   "choices": [
+    "Increase the sludge draw off rate to lower the blanket depth.",
+    "Raise the coagulant dose feeding into the rapid mix step.",
+    "Reduce the plant's disinfectant dose at the point of entry.",
+    "Speed up the backwash rate on the filters downstream of the basin."
+   ],
+   "correctIndex": 0,
+   "explanation": "A rising sludge blanket means solids are accumulating faster than they are being removed. The direct fix is to draw off, or waste, sludge more often or at a higher rate, lowering the blanket back down before it reaches the outlet weirs and carries solids into the settled water.",
+   "domain": "PROC",
+   "topic": "sedimentation",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "AWWA WSO: Water Treatment describes a rising sludge blanket in a sedimentation basin as controlled by increasing the sludge draw off rate to keep solids from reaching the outlet."
+  },
+  {
+   "id": "WT-ALL-PROC-0024",
+   "text": "A sedimentation basin's mechanical sludge collector at a drinking water treatment plant has been broken for several days without the operator noticing. Clumps of dark solids are now rising and floating on the basin surface. What most likely caused this?",
+   "choices": [
+    "The raw water turbidity dropped low enough that no floc was forming.",
+    "The coagulant dose was raised too high and overdosed the water.",
+    "The settled sludge sat too long, went septic, and gas lifted it up.",
+    "The basin's effluent weir was set too high and backed up the flow."
+   ],
+   "correctIndex": 2,
+   "explanation": "With the collector broken, settled sludge sat undisturbed on the basin floor for days instead of being moved to the hopper and removed. Left in place that long, the sludge goes septic and produces gas as it decomposes, and that gas lifts clumps of solids up off the floor to float on the surface.",
+   "domain": "PROC",
+   "topic": "sedimentation",
+   "difficulty": "Hard",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "AWWA WSO: Water Treatment notes that sludge left too long in a sedimentation basin without removal can go septic, with gas production lifting solids to float on the surface."
+  },
+  {
+   "id": "WT-ALL-PROC-0025",
+   "text": "On a routine, day to day basis, how do operators at a drinking water treatment plant most commonly judge whether a sedimentation basin is performing well?",
+   "choices": [
+    "By counting the number of sludge collector flights installed in the basin.",
+    "By monitoring the turbidity of the water settled and leaving the basin.",
+    "By recording the ambient air temperature above the basin each morning.",
+    "By measuring the total dissolved solids in the raw water entering the plant."
+   ],
+   "correctIndex": 1,
+   "explanation": "Settled water turbidity, the water leaving the sedimentation basin, is the routine, easy to measure indicator operators use to judge sedimentation performance day to day. Rising settled water turbidity signals a problem with coagulation, flocculation, or the basin itself before it can affect the filters.",
+   "domain": "PROC",
+   "topic": "sedimentation",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "AWWA WSO: Water Treatment identifies settled water turbidity leaving the sedimentation basin as the routine operational indicator used to monitor basin performance."
+  },
+  {
+   "id": "WT-ALL-PROC-0026",
+   "text": "A drinking water treatment plant increases the flow through an existing sedimentation basin without adding basin surface area. What effect should the operator expect on settling performance?",
+   "choices": [
+    "Detention time in the basin will increase, improving settling performance.",
+    "Larger floc particles will begin to fail to settle before the outlet.",
+    "Sludge blanket depth will drop lower and stop needing regular draw off.",
+    "Smaller, lighter floc particles will increasingly carry over the outlet."
+   ],
+   "correctIndex": 3,
+   "explanation": "Raising the flow through a basin whose surface area stays fixed raises the surface loading rate. Particles need enough time to settle before the water reaches the outlet, and small, lightweight floc has the slowest settling velocity, so it is the first to be carried out when loading goes up.",
+   "domain": "PROC",
+   "topic": "sedimentation",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "AWWA WSO: Water Treatment describes increasing flow through a sedimentation basin without increasing surface area as raising the surface loading rate, causing the smallest, slowest settling floc to carry over first."
+  },
+  {
+   "id": "WT-ALL-SAFE-0001",
+   "text": "What is standard practice for securing a 150-pound chlorine cylinder while it is in storage or connected for feed?",
+   "choices": [
+    "Chain or strap it upright to a wall or rack",
+    "Lay it on its side on a padded cradle",
+    "Stack it two high with the valve facing inward",
+    "Set it loose on a rubber mat to absorb shock"
+   ],
+   "correctIndex": 0,
+   "explanation": "A 150-pound chlorine cylinder must be stored and used in an upright position and secured with a chain or strap to a wall, rack, or cart so it cannot tip over or roll. This keeps the valve accessible and protected and prevents damage that could cause a leak.",
+   "domain": "SAFE",
+   "topic": "chlorine-gas",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "AWWA Manual M20, Water Chlorination/Chloramination Practices and Principles: 150-pound chlorine cylinders must be stored and used upright and secured with a chain or strap to prevent tipping."
+  },
+  {
+   "id": "WT-ALL-SAFE-0002",
+   "text": "An operator checking a chlorine cylinder connection detects a faint chlorine odor but cannot see exactly where the gas is escaping. Which action will visually confirm the exact leak location?",
+   "choices": [
+    "Spray soapy water on the fitting and watch for bubbles",
+    "Wave an open bottle of ammonia near the fitting",
+    "Hold a strip of moist pH paper near the fitting",
+    "Listen for a hissing sound while running a hand along the line"
+   ],
+   "correctIndex": 1,
+   "explanation": "Ammonia reacts with chlorine gas to form a dense white cloud of ammonium chloride right at the point of release. Waving an open bottle of ammonia near a suspected fitting is the standard way operators visually pinpoint the exact location of a chlorine leak without getting too close.",
+   "domain": "SAFE",
+   "topic": "chlorine-gas",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "AWWA Manual M20, Water Chlorination/Chloramination Practices and Principles: waving an open container of ammonia near a suspected chlorine leak produces a visible white cloud that marks the exact leak location."
+  },
+  {
+   "id": "WT-ALL-SAFE-0003",
+   "text": "A gauge shows a chlorine cylinder is leaking gas at a water treatment plant. What is the correct immediate response for nearby personnel?",
+   "choices": [
+    "Move downwind and downhill to a low-lying area",
+    "Apply water directly to the leaking valve to dilute the gas",
+    "Move upwind and to higher ground away from the leak",
+    "Stay in place and breathe through a wet cloth over the nose and mouth"
+   ],
+   "correctIndex": 2,
+   "explanation": "Because chlorine gas is heavier than air and collects in low areas, personnel near a leak should immediately move upwind and to higher ground to get away from the gas, rather than attempting to treat the leak or the exposure themselves.",
+   "domain": "SAFE",
+   "topic": "chlorine-gas",
+   "difficulty": "Easy",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "AWWA Manual M20, Water Chlorination/Chloramination Practices and Principles: because chlorine gas is heavier than air, personnel responding to a leak should move upwind and to higher ground, and water should never be applied directly to a leaking container."
+  },
+  {
+   "id": "WT-ALL-SAFE-0004",
+   "text": "On a one-ton chlorine container, the two valves are aligned one directly above the other before use. Which valve should be opened to withdraw chlorine gas rather than liquid?",
+   "choices": [
+    "The valve turned on first, regardless of position",
+    "The valve nearest the container's data plate",
+    "The bottom valve, positioned below the liquid level",
+    "The top valve, positioned above the liquid level"
+   ],
+   "correctIndex": 3,
+   "explanation": "When a one-ton container is properly positioned with its two valves aligned vertically, the top valve draws from the vapor space above the liquid chlorine. Opening the top valve is the correct way to withdraw chlorine gas rather than liquid.",
+   "domain": "SAFE",
+   "topic": "chlorine-gas",
+   "difficulty": "Hard",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "AWWA Manual M20, Water Chlorination/Chloramination Practices and Principles: on a one-ton chlorine container with valves aligned vertically, the top valve withdraws chlorine gas from the vapor space while the bottom valve withdraws liquid chlorine."
+  },
+  {
+   "id": "WT-ALL-SAFE-0005",
+   "text": "An operator is preparing to transfer concentrated sodium hydroxide from a bulk container into a day tank, a task with a splash hazard. Which eye and face protection is appropriate for this task?",
+   "choices": [
+    "Chemical splash goggles with a face shield",
+    "Standard safety glasses with side shields",
+    "Safety glasses with an anti-fog coating",
+    "A face shield alone, with no goggles underneath"
+   ],
+   "correctIndex": 0,
+   "explanation": "Transferring concentrated caustic is a splash hazard, so it calls for chemical splash goggles that seal around the eyes, with a face shield worn over them for added face protection.",
+   "domain": "SAFE",
+   "topic": "ppe",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "OSHA 29 CFR 1910.133, eye and face protection: tasks with a splash hazard from corrosive chemicals require chemical splash goggles, with a face shield added for additional protection."
+  },
+  {
+   "id": "WT-ALL-SAFE-0006",
+   "text": "Under OSHA's respiratory protection standard, what must happen before an operator is assigned a tight-fitting respirator for chemical handling work?",
+   "choices": [
+    "A visual check of the respirator's seal",
+    "A medical evaluation and a fit test",
+    "A verbal check that it feels comfortable",
+    "A sign-off from a coworker who uses the same size"
+   ],
+   "correctIndex": 1,
+   "explanation": "Before an operator can be assigned a tight-fitting respirator, OSHA requires a medical evaluation to confirm the operator can safely wear one, plus an individual fit test to confirm that specific respirator seals properly on that operator's face.",
+   "domain": "SAFE",
+   "topic": "ppe",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "OSHA 29 CFR 1910.134, respiratory protection: before assignment of a tight-fitting respirator, the employer must provide a medical evaluation and conduct a fit test for that individual."
+  },
+  {
+   "id": "WT-ALL-SAFE-0007",
+   "text": "A lab technician needs to prepare a standard solution using concentrated hydrochloric acid, which gives off corrosive fumes. Where should this step be performed?",
+   "choices": [
+    "At the open bench, with a window cracked for airflow",
+    "Inside a closed cabinet with the door shut",
+    "Inside an operating fume hood with the sash lowered",
+    "Over an open floor drain for quick spill cleanup"
+   ],
+   "correctIndex": 2,
+   "explanation": "Concentrated acids that give off corrosive fumes must be handled inside a properly operating fume hood, with the sash kept at the correct working height, because the hood provides continuous directional airflow that captures and exhausts fumes away from the technician.",
+   "domain": "SAFE",
+   "topic": "lab-safety",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "OSHA 29 CFR 1910.1450, Occupational Exposure to Hazardous Chemicals in Laboratories: work that generates hazardous fumes, such as with concentrated acids, must be performed in a functioning fume hood."
+  },
+  {
+   "id": "WT-ALL-SAFE-0008",
+   "text": "Under OSHA's Hazard Communication Standard, what document must be accessible to lab personnel for each hazardous chemical, listing its hazards and safe handling and storage information?",
+   "choices": [
+    "The chemical manufacturer's sales invoice",
+    "The lab's annual chemical purchase log",
+    "The equipment operating manual",
+    "The chemical's Safety Data Sheet"
+   ],
+   "correctIndex": 3,
+   "explanation": "OSHA's Hazard Communication Standard requires that a Safety Data Sheet be readily accessible to lab personnel for every hazardous chemical, since the SDS lists the chemical's hazards, safe handling practices, storage requirements, and emergency response information.",
+   "domain": "SAFE",
+   "topic": "lab-safety",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "OSHA 29 CFR 1910.1200, Hazard Communication Standard: employers must maintain and make accessible a Safety Data Sheet for each hazardous chemical present in the workplace, including the lab."
+  },
+  {
+   "id": "WT-ALL-ADMIN-0001",
+   "text": "How long must a public water system keep records of bacteriological (total coliform) analysis results under federal drinking water recordkeeping rules?",
+   "choices": [
+    "5 years",
+    "1 year",
+    "3 years",
+    "10 years"
+   ],
+   "correctIndex": 0,
+   "explanation": "Federal drinking water recordkeeping rules require a public water system to keep bacteriological (total coliform) analysis results for at least 5 years. This period applies specifically to microbiological monitoring data and is shorter than the period required for chemical analysis records.",
+   "domain": "ADMIN",
+   "topic": "recordkeeping",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "40 CFR 141.33(a): sets the minimum retention period for public water system records of bacteriological analyses at not less than 5 years."
+  },
+  {
+   "id": "WT-ALL-ADMIN-0002",
+   "text": "A water system reviewing its files finds chemical analysis reports from 9 years ago still in storage. Under federal drinking water recordkeeping rules, what should the system do with these reports?",
+   "choices": [
+    "Discard them now, because chemical analysis records only need to be kept for 5 years.",
+    "Keep them, because chemical analysis records must be kept for at least 10 years.",
+    "Discard them now, because chemical analysis records only need to be kept for 3 years.",
+    "Discard them now, because records only need to be kept until the next sanitary survey."
+   ],
+   "correctIndex": 1,
+   "explanation": "Chemical analysis records must be kept for at least 10 years. At 9 years old, these reports have not yet reached that minimum, so they must still be retained. Only after a chemical analysis record passes the 10-year mark may it be discarded.",
+   "domain": "ADMIN",
+   "topic": "recordkeeping",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "40 CFR 141.33(a): sets the minimum retention period for public water system records of chemical analyses at not less than 10 years."
+  },
+  {
+   "id": "WT-ALL-ADMIN-0003",
+   "text": "A new operator takes over recordkeeping duties and wants to stop missing monthly report deadlines. What administrative tool should the operator set up to track upcoming due dates?",
+   "choices": [
+    "A sanitary survey checklist",
+    "A cross-connection control inventory",
+    "A compliance calendar",
+    "A consumer confidence report template"
+   ],
+   "correctIndex": 2,
+   "explanation": "A compliance calendar is the administrative tool built to track recurring regulatory monitoring and reporting due dates across a year. Setting one up gives the new operator a single place to see every upcoming deadline instead of relying on memory, which directly solves the missed deadline problem.",
+   "domain": "ADMIN",
+   "topic": "compliance-calendar",
+   "difficulty": "Easy",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "AWWA WSO: Water Treatment (operator fundamentals, administrative practices): confirms that water systems use a compliance calendar to track recurring regulatory monitoring and reporting due dates."
+  },
+  {
+   "id": "WT-ALL-REGS-0003",
+   "text": "A water main break causes a sudden loss of pressure in part of a distribution system, and the utility issues a boil water notice as a Tier 1 public notification. Under the federal Public Notification Rule, what must the utility do to satisfy the delivery requirement for this notice?",
+   "choices": [
+    "Mail a written notice to each customer within the next billing cycle.",
+    "Post one notice at the treatment plant and treat the requirement as met.",
+    "Wait for the primacy agency to issue the notice to the public.",
+    "Use broadcast media, posting, or hand delivery to reach everyone served."
+   ],
+   "correctIndex": 3,
+   "explanation": "A Tier 1 public notice, the most urgent category under the Public Notification Rule, must be delivered in a form and manner reasonably calculated to reach everyone served. The utility meets that standard by using one or more accepted methods, such as broadcast media, posting notices throughout the served area, or hand delivery, so residential, transient, and non-transient users are all likely to see it. A boil water notice issued after a sudden pressure loss is a typical real-world example of this delivery requirement in action.",
+   "domain": "REGS",
+   "topic": "public-notification",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "40 CFR 141.202 (EPA Public Notification Rule, Tier 1 form and manner): a Tier 1 notice must reach everyone served through one or more delivery methods such as broadcast media, posting, or hand delivery."
+  },
+  {
+   "id": "WT-ALL-REGS-0004",
+   "text": "Which 2018 federal law established the requirement for community water systems serving more than 3,300 people to complete a risk and resilience assessment and an emergency response plan?",
+   "choices": [
+    "The Clean Water Act",
+    "America's Water Infrastructure Act",
+    "The Bioterrorism Act of 2002",
+    "The Safe Drinking Water Act"
+   ],
+   "correctIndex": 1,
+   "explanation": "America's Water Infrastructure Act, signed into law in 2018, added Section 2013 to require community water systems serving more than 3,300 people to complete a risk and resilience assessment and then certify an emergency response plan. This replaced the earlier vulnerability assessment duty from 2002 with a broader look at physical, source water, treatment, and electronic system risks. Operators should recognize this law as the current federal basis for utility security planning.",
+   "domain": "REGS",
+   "topic": "security-basics",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "America's Water Infrastructure Act, Section 2013 (amending Safe Drinking Water Act Section 1433): requires community water systems over 3,300 people to complete a risk and resilience assessment and emergency response plan."
+  },
+  {
+   "id": "WT-ALL-PROC-0027",
+   "text": "At a drinking water treatment plant, why does an operator route a filter's effluent to waste for a few minutes right after the filter is returned to service following a backwash?",
+   "choices": [
+    "To measure the filter's maximum hydraulic capacity before resuming normal flow",
+    "To keep the higher turbidity water produced during ripening out of the clearwell",
+    "To confirm the backwash pumps have fully shut off before the influent valve reopens",
+    "To give the chemical feed system time to recalibrate for the returning filter"
+   ],
+   "correctIndex": 1,
+   "explanation": "A filter's media has not yet fully reformed its floc mat right after backwash, so the first minutes of filtered water run higher in turbidity than the rest of the run, a pattern called ripening. Routing that water to waste instead of the clearwell keeps it out of the water sent toward distribution until the filter settles into normal, low-turbidity performance.",
+   "domain": "PROC",
+   "topic": "filtration",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "AWWA WSO: Water Treatment, filter-to-waste practice. Verifies that filtered water is diverted to waste after backwash to keep the ripening turbidity spike out of the clearwell."
+  },
+  {
+   "id": "WT-ALL-PROC-0028",
+   "text": "A drinking water plant operator returns a filter to service after backwashing. Turbidity in the filtered water rises slightly above normal for the first several minutes of the run, then drops to a low, stable level for the rest of the run. What does this pattern show?",
+   "choices": [
+    "The filter media was overexpanded during backwash and lost bed depth",
+    "Gravel from the underdrain support layer is migrating into the media",
+    "The coagulant dose feeding the filter dropped enough to cause floc carryover",
+    "The filter bed is ripening and has not yet reached full removal efficiency"
+   ],
+   "correctIndex": 3,
+   "explanation": "Right after a backwash, the floc mat inside the media has been disrupted, so the bed has not yet rebuilt its full particle-capture efficiency. This produces a short-lived turbidity peak at the start of the run that falls off as trapped floc accumulates in the bed, a normal pattern known as ripening.",
+   "domain": "PROC",
+   "topic": "filtration",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "AWWA WSO: Water Treatment, filter ripening curve. Verifies that filtered water turbidity peaks briefly at the start of a run before settling to baseline as the media ripens."
+  },
+  {
+   "id": "WT-ALL-PROC-0029",
+   "text": "An operator is setting the backwash flow rate for a rapid sand filter at a drinking water plant. Why must the rate be high enough to expand the media bed, but not so high that media grains are carried out of the filter box?",
+   "choices": [
+    "Grain to grain rubbing scours trapped floc loose, while too high a rate carries fine media out over the wash troughs",
+    "A higher rate raises the filter's hydraulic loading capacity, while too high a rate shortens the next filter run",
+    "An adequate rate sanitizes the media against bacteria, while too high a rate strips chlorine residual from the clearwell",
+    "An adequate rate compacts the bed into a tighter arrangement, while too high a rate causes the bed to reach terminal headloss early"
+   ],
+   "correctIndex": 0,
+   "explanation": "Expanding the bed during backwash lets individual grains move against each other, and that grain to grain contact scrubs off the floc trapped from the previous run. If the rate climbs too high, the lightest media grains get carried past the wash troughs and lost from the filter box, which is why the rate is kept within a controlled range.",
+   "domain": "PROC",
+   "topic": "filtration",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "AWWA WSO: Water Treatment, backwash rate and bed expansion. Verifies that backwash rate is set to expand and fluidize the media enough for grain to grain scouring without carrying media out of the filter box."
+  },
+  {
+   "id": "WT-ALL-PROC-0030",
+   "text": "What is the most common operational cause of mudballs forming inside a rapid sand filter's media bed at a drinking water plant?",
+   "choices": [
+    "Running a coagulant dose that is higher than the raw water demands",
+    "Running the filter at a rate slower than its design capacity",
+    "Backwashing that is too infrequent or too weak to fully clean the media",
+    "Feeding a disinfectant residual that is higher than the distribution target"
+   ],
+   "correctIndex": 2,
+   "explanation": "Mudballs form when floc and fine debris trapped in the media are not fully broken apart and washed away, so they gradually cement together into small clumps. Backwashing that happens too rarely, or that does not expand and scour the bed enough, is the operational condition that lets this buildup continue run after run.",
+   "domain": "PROC",
+   "topic": "filtration",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "AWWA WSO: Water Treatment, filter troubleshooting. Verifies that mudballs form when backwashing is too infrequent or insufficient to fully clean and expand the media."
+  },
+  {
+   "id": "WT-ALL-PROC-0031",
+   "text": "A filter at a drinking water treatment plant runs at a high filtration rate and is allowed to build up excessive headloss before backwashing. Partway through the run, negative pressure develops within the media bed and dissolved gas comes out of solution, binding the grains together. What operating condition led to this air binding?",
+   "choices": [
+    "The filtration rate dropped below the minimum needed to keep the bed fluidized",
+    "The headloss through the bed exceeded the available driving head above the media",
+    "The backwash water used on the prior cycle was colder than the water being filtered",
+    "The chlorine residual entering the filter reacted with debris trapped in the media"
+   ],
+   "correctIndex": 1,
+   "explanation": "As water moves down through a clogging filter bed, headloss builds. If that headloss grows larger than the hydrostatic head of water standing above the media, the pressure at some depth in the bed drops below atmospheric. That negative pressure lets dissolved gases separate out of the water and collect in the pore spaces, binding the grains together and worsening the filter's performance.",
+   "domain": "PROC",
+   "topic": "filtration",
+   "difficulty": "Hard",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "AWWA WSO: Water Treatment, air binding in filters. Verifies that air binding occurs when headloss through the media exceeds the available driving head, creating negative pressure that releases dissolved gases into the bed."
+  },
+  {
+   "id": "WT-ALL-PROC-0032",
+   "text": "In a dual media filter at a drinking water treatment plant, why is a layer of coarser, less dense anthracite placed on top of a layer of finer sand?",
+   "choices": [
+    "It spreads particle capture through the bed's depth instead of concentrating it at the surface",
+    "It lets the anthracite layer disinfect the water before it reaches the sand layer below",
+    "It lets the anthracite strain out nearly all particles at the surface, leaving little for the sand layer to do",
+    "It lets the two media layers be backwashed on separate, alternating schedules"
+   ],
+   "correctIndex": 0,
+   "explanation": "Placing the coarser, lighter anthracite above the finer, denser sand lets the largest particles get trapped in the open spaces near the top of the bed, while progressively finer particles are captured deeper down where the sand grains are smaller and more tightly packed. This depth filtration spreads the particle load through the whole bed instead of clogging the surface quickly, so the filter can run longer between backwashes than a single-media sand filter.",
+   "domain": "PROC",
+   "topic": "filtration",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "AWWA WSO: Water Treatment, dual media filtration. Verifies that coarse anthracite over fine sand is designed to filter through the depth of the bed rather than concentrating particle capture at the surface."
+  },
+  {
+   "id": "WT-ALL-PROC-0033",
+   "text": "When calculating CT credit for a clearwell at a drinking water plant, why do operators use T10, the time it takes the first 10 percent of the flow to pass through the basin, instead of the basin's full theoretical detention time?",
+   "choices": [
+    "T10 accounts for the extra time added by the disinfectant's decay rate as it moves through the basin",
+    "T10 reflects the average time the entire volume of water spends in the basin under normal flow",
+    "T10 corrects for the loss of disinfectant residual caused by reaction with the basin wall material",
+    "T10 is the contact time reaching the fastest moving, least protected part of the flow"
+   ],
+   "correctIndex": 3,
+   "explanation": "In a real basin, water does not move through as a single uniform plug. Some water short-circuits and reaches the outlet much faster than the theoretical detention time, volume divided by flow, would suggest. T10 is the time it takes the fastest moving ten percent of the flow to pass through, so using it gives a conservative, worst-case contact time that will not overstate the disinfection credit the plant is actually achieving.",
+   "domain": "PROC",
+   "topic": "disinfection-ct",
+   "difficulty": "Hard",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "EPA Disinfection Profiling and Benchmarking Guidance Manual, T10 and baffling factor. Verifies that T10 represents the contact time of the fastest moving 10 percent of flow, used to conservatively account for short-circuiting in CT calculations."
+  },
+  {
+   "id": "WT-ALL-PROC-0034",
+   "text": "A drinking water plant needs to raise its CT credit during a high demand period but does not want to increase the chlorine dose. Which operational change accomplishes this?",
+   "choices": [
+    "Increase the rate of flow leaving the clearwell toward the distribution system",
+    "Lower the water level maintained in the clearwell",
+    "Raise the clearwell water level to add contact volume and time",
+    "Shorten the piping path between the clearwell inlet and outlet"
+   ],
+   "correctIndex": 2,
+   "explanation": "CT credit is the product of disinfectant residual and contact time. If the dose, and therefore the residual, is held constant, the only way to raise CT is to increase contact time. Raising the water level in the clearwell increases the volume of water held in contact with the disinfectant, which lengthens contact time for a given flow rate and raises the CT credit without touching the chlorine dose.",
+   "domain": "PROC",
+   "topic": "disinfection-ct",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "AWWA WSO: Water Treatment, CT credit operations. Verifies that raising the clearwell water level increases detention volume and time, raising CT credit without changing the disinfectant dose."
+  },
+  {
+   "id": "WT-ALL-PROC-0035",
+   "text": "At a drinking water plant using chlorine disinfection, what must an operator maintain in the water entering the distribution system at the entry point?",
+   "choices": [
+    "A water temperature above 68 degrees Fahrenheit at all times",
+    "A detectable disinfectant residual at all times",
+    "A dissolved oxygen level above 5 mg/L at all times",
+    "A turbidity reading of exactly zero NTU at all times"
+   ],
+   "correctIndex": 1,
+   "explanation": "Federal drinking water rules require that water entering the distribution system carry a detectable disinfectant residual at all times, so that any pathogens that survive treatment or enter afterward are still exposed to some level of protection as the water moves toward customers. This is why operators continuously monitor residual at the entry point rather than relying only on periodic sampling.",
+   "domain": "PROC",
+   "topic": "disinfection-ct",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "EPA Surface Water Treatment Rule, 40 CFR 141.72, disinfectant residual requirement. Verifies that a detectable disinfectant residual must be maintained in water entering the distribution system at all times."
+  },
+  {
+   "id": "WT-ALL-PROC-0036",
+   "text": "A drinking water plant's disinfection process is designed around CT tables that specify the contact time needed for a given chlorine residual. As raw water temperature drops in winter, how does the required CT for the same level of pathogen inactivation change?",
+   "choices": [
+    "The required CT increases, so the plant needs more residual, more contact time, or both",
+    "The required CT decreases, so the plant can lower its residual or shorten contact time",
+    "The required CT stays the same, because temperature does not affect disinfection kinetics",
+    "The required CT depends on pH alone and does not change with temperature"
+   ],
+   "correctIndex": 0,
+   "explanation": "Chlorine inactivates pathogens more slowly in cold water than in warm water, so achieving the same level of inactivation in winter requires a larger CT value. Since CT is the product of residual and contact time, the plant has to raise its residual, extend contact time, or adjust both to keep meeting the higher CT requirement that colder temperatures demand.",
+   "domain": "PROC",
+   "topic": "disinfection-ct",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "EPA Surface Water Treatment Rule Guidance Manual for Compliance with the Filtration and Disinfection Requirements, CT tables by temperature. Verifies that required CT for a given inactivation level increases as water temperature decreases."
+  },
+  {
+   "id": "WT-ALL-PROC-0037",
+   "text": "When a drinking water plant calculates its CT compliance value for a given day, why does it use the contact time available at the peak hourly flow rather than the average daily flow?",
+   "choices": [
+    "Peak hourly flow produces the highest chlorine demand, which simplifies the residual measurement",
+    "Peak hourly flow is the easiest flow rate to hold steady for sampling purposes",
+    "Peak hourly flow matches the flow rate used to size the treatment plant's intake structure",
+    "Peak hourly flow gives the shortest contact time, the worst case for disinfection credit"
+   ],
+   "correctIndex": 3,
+   "explanation": "For a basin of fixed volume, contact time falls as flow rate rises. Peak hourly flow is the highest flow the plant sees in a day, so it produces the shortest possible contact time through the clearwell or contact basin. Using that worst-case time to calculate CT compliance ensures the plant is still meeting its disinfection requirement even during its least favorable hour, not just on average.",
+   "domain": "PROC",
+   "topic": "disinfection-ct",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "EPA Surface Water Treatment Rule Guidance Manual, CT compliance calculation. Verifies that CT compliance is calculated using peak hourly flow because it yields the shortest, most conservative contact time."
+  },
+  {
+   "id": "WT-ALL-PROC-0038",
+   "text": "A drinking water treatment plant currently disinfects with free chlorine and serves a large service area with long pipeline travel times. Operators cannot maintain a detectable disinfectant residual at the far ends of the distribution system. Which change to the plant's disinfection process is most likely to solve this problem?",
+   "choices": [
+    "Switch the secondary disinfectant from free chlorine to chloramine",
+    "Shorten the clearwell contact time before the water leaves the plant",
+    "Increase the free chlorine dose at the point of entry to the system",
+    "Reduce the finished water pH before it leaves the plant"
+   ],
+   "correctIndex": 0,
+   "explanation": "Chloramine is a weaker disinfectant than free chlorine but a far more stable one. It resists decay from reactions with pipe walls, biofilm, and organic matter, so it holds a measurable residual across long detention times in the distribution system. Plants with large service areas or long travel times commonly switch their secondary disinfectant to chloramine specifically to keep a detectable residual reaching the most distant customers.",
+   "domain": "PROC",
+   "topic": "disinfection-ct",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "AWWA Water Treatment Plant Operation (WSO series); confirms chloramine is used as a secondary disinfectant because it maintains a stable residual over long distribution system detention times, unlike the faster decaying free chlorine."
+  },
+  {
+   "id": "WT-ALL-PROC-0039",
+   "text": "Under the Surface Water Treatment Rule, what is the minimum disinfectant residual concentration a treatment plant must maintain in the water as it enters the distribution system?",
+   "choices": [
+    "0.5 mg/L",
+    "0.2 mg/L",
+    "1.0 mg/L",
+    "4.0 mg/L"
+   ],
+   "correctIndex": 1,
+   "explanation": "The Surface Water Treatment Rule requires a treatment plant to maintain a disinfectant residual of at least 0.2 mg/L in the water as it enters the distribution system. This floor exists so a measurable residual is still present by the time the water reaches the most distant customers.",
+   "domain": "PROC",
+   "topic": "disinfection-ct",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "EPA 40 CFR 141.72, Surface Water Treatment Rule; confirms the 0.2 mg/L minimum disinfectant residual required in water entering the distribution system."
+  },
+  {
+   "id": "WT-ALL-PROC-0040",
+   "text": "In a water treatment plant's disinfection byproduct monitoring program, total trihalomethane (TTHM) and haloacetic acid (HAA5) sample results are compared against which type of standard?",
+   "choices": [
+    "A maximum contaminant level",
+    "An action level",
+    "A treatment technique credit",
+    "A secondary aesthetic standard"
+   ],
+   "correctIndex": 0,
+   "explanation": "TTHM and HAA5 are both regulated as primary drinking water contaminants with maximum contaminant levels. A plant's disinfection byproduct monitoring results are compared against these maximum contaminant levels, typically averaged across sampling locations and time, to determine whether the system is in compliance.",
+   "domain": "PROC",
+   "topic": "disinfection-ct",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "EPA 40 CFR 141.64, Stage 2 Disinfectants and Disinfection Byproducts Rule; confirms TTHM and HAA5 are regulated through maximum contaminant levels."
+  },
+  {
+   "id": "WT-ALL-PROC-0041",
+   "text": "A drinking water treatment plant needs to choose a disinfectant to satisfy its primary disinfection CT requirement for Giardia and virus inactivation before adding a separate residual disinfectant for the distribution system. Which of these disinfectants is generally unsuitable for that primary disinfection step because it needs a far higher CT than the others to reach the same inactivation?",
+   "choices": [
+    "Chlorine dioxide",
+    "Ozone",
+    "Free chlorine",
+    "Chloramine"
+   ],
+   "correctIndex": 3,
+   "explanation": "Chloramine is a much weaker disinfectant than free chlorine, chlorine dioxide, or ozone. To reach the same log inactivation of Giardia or viruses, a plant relying on chloramine would need a CT value far higher than these other disinfectants require, more than a practical contact time can provide. This is why chloramine is used as a secondary, residual disinfectant to hold a stable residual in the distribution system while a stronger disinfectant carries the primary CT requirement.",
+   "domain": "PROC",
+   "topic": "disinfection-ct",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "EPA Guidance Manual for Disinfection Profiling and Benchmarking; confirms chloramine requires substantially higher CT values than free chlorine, chlorine dioxide, or ozone for equivalent pathogen inactivation."
+  },
+  {
+   "id": "WT-ALL-PROC-0042",
+   "text": "A water treatment plant's chlorine contact chamber has a theoretical detention time of 60 minutes based on its volume and flow rate, but poor internal baffling lets some of the water move through the chamber faster than the average. For CT credit purposes, how does this baffling condition affect the contact time the plant may actually use?",
+   "choices": [
+    "The plant may use a contact time longer than the theoretical 60 minutes",
+    "The plant must use a contact time shorter than the theoretical 60 minutes",
+    "The plant may use the full theoretical 60 minutes without adjustment",
+    "The baffling condition has no effect on the contact time used for CT credit"
+   ],
+   "correctIndex": 1,
+   "explanation": "Contact chambers rarely achieve perfect plug flow. A baffling factor is applied to the theoretical detention time to get the actual contact time credited for CT, and a poorly baffled chamber earns a low baffling factor. That shortens the contact time the plant may claim well below the theoretical 60 minutes.",
+   "domain": "PROC",
+   "topic": "disinfection-ct",
+   "difficulty": "Hard",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "EPA Disinfection Profiling and Benchmarking Guidance Manual; confirms poor baffling reduces the effective contact time credited for CT below the theoretical detention time."
+  },
+  {
+   "id": "WT-ALL-PROC-0043",
+   "text": "A drinking water treatment plant's finished water has a low pH, and operators are concerned this will cause corrosion in the distribution system and household plumbing. Which treatment adjustment directly addresses this concern?",
+   "choices": [
+    "Raise the finished water disinfectant residual",
+    "Raise the finished water fluoride dose",
+    "Raise the finished water pH",
+    "Raise the finished water filtration rate"
+   ],
+   "correctIndex": 2,
+   "explanation": "Low pH water is aggressive and tends to dissolve metal from pipes and fixtures instead of allowing a protective mineral scale to form. Raising the finished water's pH with a chemical feed, such as a caustic or lime feed, is the direct treatment response that reduces this corrosivity and helps a protective layer form on interior pipe surfaces.",
+   "domain": "PROC",
+   "topic": "corrosion-control",
+   "difficulty": "Easy",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "AWWA Water Treatment Plant Operation (WSO series), corrosion control chapter; confirms raising finished water pH reduces corrosivity and promotes protective scale formation."
+  },
+  {
+   "id": "WT-ALL-PROC-0044",
+   "text": "Customers on a drinking water system with known corrosive finished water report blue-green stains on plumbing fixtures near their hot water taps. What does this observation most likely indicate?",
+   "choices": [
+    "Iron corrosion in the water mains",
+    "Manganese deposits in the storage tank",
+    "Copper corrosion in household plumbing",
+    "Biological growth in the service line"
+   ],
+   "correctIndex": 2,
+   "explanation": "Blue-green staining at fixtures, especially near hot water taps, is a classic sign of copper corrosion in household plumbing. Corrosive water dissolves copper from the pipe wall, and the dissolved copper leaves this characteristic blue-green residue where water sits or drips.",
+   "domain": "PROC",
+   "topic": "corrosion-control",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "AWWA Water Treatment Plant Operation (WSO series), corrosion control chapter; confirms blue-green staining at fixtures is a recognized indicator of copper corrosion in household plumbing."
+  },
+  {
+   "id": "WT-ALL-PROC-0045",
+   "text": "A drinking water treatment plant raises its finished water pH to reduce corrosivity, but the pH drops significantly by the time the water reaches the far end of the distribution system. The source water has very low alkalinity. What is the most likely explanation for this pH drop?",
+   "choices": [
+    "The water's hardness is too low to hold the pH steady",
+    "The water lacks enough buffering capacity to resist the pH shift",
+    "The chlorine residual has fully dissipated by that point in the system",
+    "The water has picked up dissolved oxygen during its travel time"
+   ],
+   "correctIndex": 1,
+   "explanation": "Alkalinity gives water its buffering capacity, its ability to resist a change in pH when it contacts pipe surfaces or picks up small amounts of acid or base along the way. A low alkalinity source can be pushed to a target pH at the plant, but without enough buffering capacity that pH will not hold, and it drifts as the water moves through the system. This is why corrosion control programs often adjust both pH and alkalinity together.",
+   "domain": "PROC",
+   "topic": "corrosion-control",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "AWWA WSO: Water Treatment, corrosion control chapter: confirms alkalinity provides the buffering capacity needed to hold a corrosion control pH stable through the distribution system."
+  },
+  {
+   "id": "WT-ALL-PROC-0046",
+   "text": "A customer asks a water treatment plant operator where the lead detected in a tap water sample most likely came from. What is the correct, general answer?",
+   "choices": [
+    "Lead naturally present in the source water",
+    "Lead added during the disinfection process",
+    "Lead service lines or household plumbing components",
+    "Lead residue from the treatment plant's filter media"
+   ],
+   "correctIndex": 2,
+   "explanation": "Lead almost never originates in the source water or at the treatment plant. It typically enters tap water after the water leaves the plant, from lead service lines, lead solder on older pipe joints, or brass fixtures containing lead, especially when the water is corrosive enough to dissolve small amounts of it. This is why operators point customers toward their service line and household plumbing rather than the source water or the treatment process.",
+   "domain": "PROC",
+   "topic": "corrosion-control",
+   "difficulty": "Easy",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "EPA Lead and Copper Rule overview materials; confirms lead in tap water typically originates from lead service lines and household plumbing components rather than the source water or treatment process."
+  },
+  {
+   "id": "WT-ALL-PROC-0047",
+   "text": "Inside a drinking water treatment plant, a technician connects a section of copper pipe directly to a cast iron pipe in the plant's process piping without installing a dielectric fitting. What is the most likely long-term result at that connection?",
+   "choices": [
+    "Uniform corrosion of the copper pipe from low pH water",
+    "Pitting corrosion caused by high water velocity at the joint",
+    "Tuberculation buildup inside the cast iron pipe",
+    "Accelerated corrosion at the joint from the dissimilar metals"
+   ],
+   "correctIndex": 3,
+   "explanation": "Joining two dissimilar metals, such as copper and cast iron, without a dielectric fitting to electrically isolate them sets up conditions for galvanic corrosion. One metal acts as the anode and corrodes at an accelerated rate right at the connection. A dielectric fitting breaks this electrical contact and is installed specifically to prevent this accelerated corrosion at the joint.",
+   "domain": "PROC",
+   "topic": "corrosion-control",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "AWWA WSO: Water Treatment, corrosion control chapter: confirms that joining dissimilar metals without a dielectric fitting causes accelerated galvanic corrosion at the connection."
+  },
+  {
+   "id": "WT-ALL-EQIP-0001",
+   "text": "At a drinking water treatment plant, what is the primary job of the raw water pumps, also called low lift pumps?",
+   "choices": [
+    "Move untreated water from the source into the treatment process",
+    "Move treated water from the clearwell into the distribution system",
+    "Move wash water from the clearwell backward through the filters",
+    "Move settled sludge from the sedimentation basin to disposal"
+   ],
+   "correctIndex": 0,
+   "explanation": "Raw water pumps, also called low lift pumps, are the first pumps in a treatment plant. Their job is to move untreated water from the source, such as a river, lake, or well field, into the treatment process. They set up the flow that every downstream unit process depends on.",
+   "domain": "EQIP",
+   "topic": "pump-types",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "AWWA WSO: Water Treatment (plant pumping systems): raw water, or low lift, pumps move untreated source water into the treatment process ahead of the unit processes."
+  },
+  {
+   "id": "WT-ALL-EQIP-0002",
+   "text": "At a drinking water treatment plant, what is the primary job of the high service pumps?",
+   "choices": [
+    "Deliver untreated water from the source to the headworks",
+    "Deliver finished water from the clearwell to the distribution system",
+    "Deliver wash water from the clearwell up through the filters",
+    "Deliver chemical solution from the day tank to the feed point"
+   ],
+   "correctIndex": 1,
+   "explanation": "High service pumps, also called high lift pumps, are the last pumps in the treatment train. They take finished water out of the clearwell and push it into the distribution system at the pressure the system needs.",
+   "domain": "EQIP",
+   "topic": "pump-types",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "AWWA WSO: Water Treatment (plant pumping systems): high service pumps take finished water from the clearwell and deliver it under pressure into the distribution system."
+  },
+  {
+   "id": "WT-ALL-EQIP-0003",
+   "text": "A drinking water treatment plant is comparing its pumps and needs the one built to deliver a very high flow rate against a comparatively low discharge head. Which pump fits that description?",
+   "choices": [
+    "The raw water pump",
+    "The high service pump",
+    "The backwash pump",
+    "The chemical feed pump"
+   ],
+   "correctIndex": 2,
+   "explanation": "Backwash pumps are sized for a high flow rate over a short period, since they must lift and expand the filter media bed. Because they only need to push water up through the filter and out through the wash trough, the head they work against is comparatively low. That combination, high flow with low head, sets the backwash pump apart from the plant's other pumps.",
+   "domain": "EQIP",
+   "topic": "pump-types",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "AWWA WSO: Water Treatment (filtration and pump sizing): backwash pumps are sized for high flow rate at comparatively low discharge head, unlike high service pumps sized for high head at lower flow."
+  },
+  {
+   "id": "WT-ALL-EQIP-0004",
+   "text": "An operator at a drinking water treatment plant partly closes the discharge valve on a running centrifugal pump to cut back flow. What happens to the pump's discharge pressure as the valve is closed?",
+   "choices": [
+    "It drops toward zero",
+    "It stays exactly the same",
+    "It fluctuates randomly",
+    "It rises toward shutoff head"
+   ],
+   "correctIndex": 3,
+   "explanation": "A centrifugal pump's discharge pressure and flow trade off against each other along its performance curve. Closing the discharge valve adds resistance, so flow drops and the pump rides up its curve toward shutoff head, the maximum pressure the pump produces at zero flow. Discharge pressure rises as the valve is throttled down.",
+   "domain": "EQIP",
+   "topic": "pump-types",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "AWWA WSO: Water Treatment (centrifugal pump operation): throttling a centrifugal pump's discharge valve moves its operating point toward shutoff head, reducing flow and raising discharge pressure."
+  },
+  {
+   "id": "WT-ALL-EQIP-0005",
+   "text": "At a drinking water treatment plant, wear rings inside a centrifugal pump control the small clearance between the impeller and the casing. What happens to pump performance as these wear rings wear down and the clearance grows?",
+   "choices": [
+    "Capacity and efficiency drop from internal recirculation",
+    "Capacity and efficiency rise as friction losses go down",
+    "Capacity stays the same but the motor draws less current",
+    "Capacity stays the same but the discharge pressure spikes"
+   ],
+   "correctIndex": 0,
+   "explanation": "Wear rings keep a tight, close clearance between the rotating impeller and the stationary casing. As this clearance grows from normal wear, more water leaks internally from the high pressure discharge side back to the low pressure suction side. That internal recirculation reduces the pump's net capacity and wastes energy, showing up as lower efficiency at the same operating point.",
+   "domain": "EQIP",
+   "topic": "pump-types",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "AWWA WSO: Water Treatment (centrifugal pump maintenance): worn wear rings increase internal clearance, allowing recirculation that reduces pump capacity and efficiency."
+  },
+  {
+   "id": "WT-ALL-EQIP-0006",
+   "text": "A centrifugal pump at a drinking water treatment plant sits above the water level of its source, with a foot valve installed at the bottom of the suction pipe. What is the purpose of this foot valve?",
+   "choices": [
+    "It measures flow rate entering the suction pipe",
+    "It keeps the suction line primed after the pump shuts down",
+    "It reduces water hammer when the pump shuts down",
+    "It boosts suction pressure to help the pump start"
+   ],
+   "correctIndex": 1,
+   "explanation": "A foot valve is a check valve with a strainer, submerged at the intake end of a suction pipe that runs above the source water level. When the pump shuts down, the foot valve closes and holds the water column in the suction line and pump casing in place instead of letting it drain back to the source. That keeps the pump primed and ready for its next start.",
+   "domain": "EQIP",
+   "topic": "pump-types",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "AWWA WSO: Water Treatment (centrifugal pump suction piping): a foot valve at the base of a suction lift pipe holds the suction line and pump casing full of water after shutdown, keeping the pump primed."
+  },
+  {
+   "id": "WT-ALL-EQIP-0007",
+   "text": "A pump motor's nameplate at a drinking water treatment plant lists a Full Load Amperage (FLA) rating. What does this rating tell an operator?",
+   "choices": [
+    "The maximum voltage the motor can safely accept",
+    "The motor's rated output speed in revolutions per minute",
+    "The current the motor draws when operating at its rated horsepower",
+    "The percentage above rated horsepower the motor is built to handle"
+   ],
+   "correctIndex": 2,
+   "explanation": "Full Load Amperage, or FLA, is the current a motor draws when it is running at its rated horsepower under normal, rated conditions. An operator can compare a measured running amperage against the FLA on the nameplate to judge whether the motor is loaded normally, underloaded, or overloaded.",
+   "domain": "EQIP",
+   "topic": "motors",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "AWWA WSO: Water Treatment (motor nameplate data): the Full Load Amperage rating on a motor nameplate states the current draw at the motor's rated horsepower."
+  },
+  {
+   "id": "WT-ALL-EQIP-0008",
+   "text": "A pump motor's nameplate at a drinking water treatment plant lists a Service Factor of 1.15. During a short period of unusually high demand, the motor ends up running at 1.10 times its rated horsepower. Based on the nameplate rating, is this within the motor's design capability?",
+   "choices": [
+    "No, because any load above the rated horsepower will immediately damage the motor",
+    "No, because the Service Factor only applies to voltage, not horsepower",
+    "Yes, but only if the motor is run at reduced speed during that period",
+    "Yes, because 1.10 is below the 1.15 Service Factor limit"
+   ],
+   "correctIndex": 3,
+   "explanation": "A Service Factor of 1.15 means the motor is built to handle up to 15 percent above its rated horsepower without exceeding its design limits. Running at 1.10 times rated horsepower falls inside that 1.15 margin, so the motor is operating within its design capability.",
+   "domain": "EQIP",
+   "topic": "motors",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "AWWA WSO: Water Treatment (motor nameplate data): the Service Factor states the multiple of rated horsepower a motor can carry without exceeding its design limits."
+  },
+  {
+   "id": "WT-ALL-EQIP-0009",
+   "text": "A pump motor's nameplate at a drinking water treatment plant lists a frequency rating of 60 Hz. What does this value represent?",
+   "choices": [
+    "The frequency of the AC power supply the motor is designed to run on",
+    "The number of magnetic poles built into the motor",
+    "The motor's rated output speed in revolutions per minute",
+    "The number of times the motor can be started per hour"
+   ],
+   "correctIndex": 0,
+   "explanation": "The Hz value on a motor's nameplate states the frequency of the alternating current power supply the motor is built to run on. In the United States, that is almost always 60 Hz. Running the motor on the wrong frequency changes its speed and can cause overheating.",
+   "domain": "EQIP",
+   "topic": "motors",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "AWWA WSO: Water Treatment (motor nameplate data): the frequency rating on a motor nameplate, in Hertz, states the AC supply frequency the motor is designed for."
+  },
+  {
+   "id": "WT-ALL-EQIP-0010",
+   "text": "A drinking water treatment plant is replacing a pump motor located in a damp, splash-prone spot near the filters. Why would a Totally Enclosed Fan Cooled (TEFC) motor be a better choice there than an open drip proof motor?",
+   "choices": [
+    "A TEFC motor draws less current at the same horsepower",
+    "A TEFC motor runs at a higher speed for the same frequency",
+    "A TEFC motor keeps moisture and spray out of its internal windings",
+    "A TEFC motor requires less frequent lubrication of its bearings"
+   ],
+   "correctIndex": 2,
+   "explanation": "A Totally Enclosed Fan Cooled motor has a sealed frame, with an external fan blowing air over the outside to cool it, instead of pulling ventilating air through the inside like an open drip proof motor does. That sealed design keeps moisture and spray away from the windings, which is exactly what a damp, splash-prone spot near the filters calls for.",
+   "domain": "EQIP",
+   "topic": "motors",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "AWWA WSO: Water Treatment (motor selection and enclosures): TEFC motors seal the windings from surrounding air and are preferred in damp or washdown areas, unlike open drip proof motors."
+  },
+  {
+   "id": "WT-ALL-EQIP-0011",
+   "text": "A three-phase induction motor at a drinking water treatment plant has a nameplate speed of 1,750 RPM, but its calculated synchronous speed at 60 Hz works out to 1,800 RPM. What accounts for the actual rated speed being lower than synchronous speed?",
+   "choices": [
+    "Normal manufacturing tolerance in how the windings are wound",
+    "A worn bearing letting the rotor lag behind the magnetic field",
+    "Voltage supplied to the motor that runs slightly below nameplate",
+    "Slip, the small lag needed between rotor and field to induce torque"
+   ],
+   "correctIndex": 3,
+   "explanation": "An induction motor's rotor never quite catches up to the speed of the rotating magnetic field. That gap, called slip, is what induces current in the rotor and produces torque in the first place. A rated speed of 1,750 RPM against a synchronous speed of 1,800 RPM reflects the normal slip built into how an induction motor works, not a defect.",
+   "domain": "EQIP",
+   "topic": "motors",
+   "difficulty": "Hard",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "AWWA WSO: Water Treatment (motor fundamentals): an induction motor's rotor turns slightly slower than synchronous speed, a difference called slip, necessary to induce rotor current and produce torque."
+  },
+  {
+   "id": "WT-ALL-EQIP-0012",
+   "text": "Compared to a fully open gate valve of the same size, why does a fully open globe valve cause more head loss in a treatment plant pipeline?",
+   "choices": [
+    "The valve forces water through an S-shaped path, creating turbulence.",
+    "The valve disc rotates a quarter turn but still partly blocks the opening.",
+    "The valve permanently narrows the pipeline diameter at its end connections.",
+    "The valve closes using a flexible diaphragm that narrows the flow passage."
+   ],
+   "correctIndex": 0,
+   "explanation": "A globe valve forces the flow to change direction as it passes through the seat opening, often compared to an S-shaped path, which creates more turbulence and friction loss than a gate valve, whose wedge-shaped disc allows a nearly straight-through path with little obstruction when fully open. That higher head loss is actually useful, since it lets a globe valve provide fine throttling control, while a gate valve is meant for full-open or full-closed isolation service.",
+   "domain": "EQIP",
+   "topic": "valves",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "AWWA / WSO Water Treatment operator training texts: describe the S-shaped flow path through a globe valve seat as the mechanism that produces higher head loss than a gate valve of the same size when fully open."
+  },
+  {
+   "id": "WT-ALL-EQIP-0013",
+   "text": "What basic design feature distinguishes a butterfly valve from a gate valve of the same pipeline size at a treatment plant?",
+   "choices": [
+    "A wedge-shaped disc that lifts straight out of the flow path when open",
+    "A disc that rotates a quarter turn to open or close",
+    "A flexible sleeve that squeezes shut around the flow path when closed",
+    "A ball with a bored hole that lines up with the pipe when open"
+   ],
+   "correctIndex": 1,
+   "explanation": "A butterfly valve uses a disc mounted on a center shaft that rotates a quarter turn, 90 degrees, to swing from fully closed to fully open. That quarter-turn design makes butterfly valves compact and quick to operate, which is why they are common on large diameter plant piping where a gate valve of the same size would be bulkier and slower to operate.",
+   "domain": "EQIP",
+   "topic": "valves",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "AWWA / WSO Water Treatment operator training texts: describe the butterfly valve as a quarter-turn, rotating-disc valve, distinct from the linear-motion gate valve."
+  },
+  {
+   "id": "WT-ALL-EQIP-0014",
+   "text": "A treatment plant's finished water storage tank is equipped with an altitude valve on its inlet line. What does this valve do as the tank reaches its set high water level?",
+   "choices": [
+    "It opens fully to speed up filling before the tank overflows.",
+    "It opens a bypass line that sends excess water back to the plant.",
+    "It closes automatically, restricting or stopping further inflow to the tank.",
+    "It releases air trapped at the top of the tank to relieve pressure."
+   ],
+   "correctIndex": 2,
+   "explanation": "An altitude valve senses the water level, through hydraulic pressure, in the tank it serves and closes, or throttles down, as the tank approaches its set high level, stopping or restricting further inflow so the tank cannot overflow. Some designs still allow water to flow back out of the tank through a separate bypass when demand draws the level back down.",
+   "domain": "EQIP",
+   "topic": "valves",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "AWWA M-series operator training texts on storage facilities: describe the altitude valve's function of closing, or throttling, on high tank level to prevent overflow."
+  },
+  {
+   "id": "WT-ALL-EQIP-0015",
+   "text": "While walking through a treatment plant's piping gallery, an operator wants to confirm, just by looking, that a rising-stem gate valve is fully open without touching the handwheel. What should the operator look for?",
+   "choices": [
+    "The handwheel spins freely with no resistance at all.",
+    "The valve body feels distinctly warm to the touch.",
+    "The pipe just downstream begins to vibrate slightly.",
+    "The stem sits at its highest visible point."
+   ],
+   "correctIndex": 3,
+   "explanation": "On a rising-stem gate valve, the stem travels up out of the valve body as the wedge-shaped disc lifts clear of the flow path. When the stem sits at its highest visible point above the handwheel, the disc is fully retracted and the valve is fully open, giving the operator a quick visual check without touching the valve.",
+   "domain": "EQIP",
+   "topic": "valves",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "AWWA / WSO Water Treatment operator training texts: describe the rising stem on a gate valve as a visual indicator of valve position, at its highest point when the valve is fully open."
+  },
+  {
+   "id": "WT-ALL-EQIP-0016",
+   "text": "During a walkthrough of the high service pump piping at a treatment plant, an operator finds a valve with no handwheel, lever, or actuator of any kind. It opens and closes only in response to the direction of water flow through it. Which type of valve is this?",
+   "choices": [
+    "Check valve",
+    "Gate valve",
+    "Globe valve",
+    "Butterfly valve"
+   ],
+   "correctIndex": 0,
+   "explanation": "A check valve has no handwheel, lever, or external actuator. Its disc or flapper opens when flow pushes through in the intended direction and closes on its own when flow slows or reverses, which matches the behavior described. That automatic, flow-direction response is what separates a check valve from every other common plant valve, which all need an operator or actuator to move them.",
+   "domain": "EQIP",
+   "topic": "valves",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "AWWA / WSO Water Treatment operator training texts: describe the check valve as a self-actuated valve that opens and closes automatically based on the direction of flow, unlike manually or mechanically actuated valves."
+  },
+  {
+   "id": "WT-ALL-EQIP-0017",
+   "text": "At a treatment plant, a chemical metering pump draws from a small day tank instead of directly from the large bulk storage tank. What is the main purpose of using a day tank?",
+   "choices": [
+    "It raises the chemical to a stronger concentration before feeding.",
+    "It limits the amount of chemical kept near the feed pump.",
+    "It filters solid particles out of the chemical before it is fed.",
+    "It cools the chemical to extend its shelf life before use."
+   ],
+   "correctIndex": 1,
+   "explanation": "A day tank holds only a limited, short-term supply, often about a day's worth, of chemical solution at the concentration used for feeding. Keeping that small volume near the metering pump, instead of feeding straight from a large bulk tank, limits how much chemical could spill or release if the day tank or feed line ever failed, and it lets operators track daily usage by watching the tank level.",
+   "domain": "EQIP",
+   "topic": "chemical-feeders",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "AWWA / WSO Water Treatment operator training texts: describe the day tank's function of limiting the volume of chemical held near the feed pump to reduce spill and exposure risk."
+  },
+  {
+   "id": "WT-ALL-EQIP-0018",
+   "text": "A treatment plant's day tank for liquid chemical sits on a shelf above the injection point on the process pipeline. An operator shuts off the metering pump, but chemical continues to drain into the process water anyway. Which failed or missing component most likely explains this?",
+   "choices": [
+    "The check valve on the pump's suction line",
+    "The calibration column on the pump",
+    "The anti-siphon valve on the discharge line",
+    "The pressure relief valve on the day tank vent"
+   ],
+   "correctIndex": 2,
+   "explanation": "When a day tank sits above the injection point, gravity alone can push, or siphon, chemical through the pump and discharge line even after the pump stops, causing an uncontrolled overfeed. An anti-siphon valve, sometimes called a backpressure valve, on the discharge line holds back pressure and closes when the pump is not running, which blocks that gravity flow. A missing or failed anti-siphon valve is the most likely explanation for chemical continuing to drain once the pump is off.",
+   "domain": "EQIP",
+   "topic": "chemical-feeders",
+   "difficulty": "Hard",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "AWWA / WSO Water Treatment operator training texts: describe the anti-siphon, or backpressure, valve's role in preventing gravity siphoning and overfeed from an elevated day tank when a metering pump is shut off."
+  },
+  {
+   "id": "WT-ALL-EQIP-0019",
+   "text": "At a treatment plant that feeds powdered lime for pH adjustment, what is the basic function of the dry chemical feeder?",
+   "choices": [
+    "It dissolves the lime completely before it ever leaves the feeder.",
+    "It heats the lime to keep it from absorbing moisture in storage.",
+    "It screens the lime to remove any oversized particles before feeding.",
+    "It feeds a measured amount of dry lime into a mixer."
+   ],
+   "correctIndex": 3,
+   "explanation": "A dry chemical feeder meters a controlled, measured amount of powdered or granular chemical, such as lime, out of a hopper and into a mixing or dissolving tank, where it is combined with water to form a solution or slurry before it is fed into the process. The feeder's basic function is dosing that measured amount, not dissolving, heating, or screening the material.",
+   "domain": "EQIP",
+   "topic": "chemical-feeders",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "AWWA / WSO Water Treatment operator training texts: describe the dry chemical feeder's function of metering a measured amount of dry chemical into a mixing or dissolving tank."
+  },
+  {
+   "id": "WT-ALL-EQIP-0020",
+   "text": "A treatment plant stores several carboys of liquid sodium hypochlorite in the chemical feed room, each one sitting inside its own containment tray. If one carboy develops a crack and leaks, what does the containment tray accomplish?",
+   "choices": [
+    "It contains the leak so it cannot reach the drain.",
+    "It neutralizes the leaked chemical through a built-in chemical reaction.",
+    "It sounds an alarm automatically to alert nearby staff.",
+    "It ventilates fumes from the leak safely outside the building."
+   ],
+   "correctIndex": 0,
+   "explanation": "Secondary containment, such as a tray or curbed area under each carboy, is a passive physical barrier. If a carboy cracks or leaks, the tray holds the liquid chemical so it cannot spread across the floor, reach a floor drain, or contact staff, giving operators time to notice the leak and clean it up safely.",
+   "domain": "EQIP",
+   "topic": "chemical-feeders",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "AWWA / WSO Water Treatment operator training texts: describe secondary containment, such as a tray, under chemical storage containers as a physical barrier that holds a leak or spill to keep it from spreading or reaching a floor drain."
+  },
+  {
+   "id": "WT-ALL-EQIP-0021",
+   "text": "A treatment plant operator needs to lower the daily chemical dose from a diaphragm metering pump slightly, without changing how fast the pump is cycling. Which adjustment accomplishes this?",
+   "choices": [
+    "Reducing the pump's discharge line pressure",
+    "Shortening the pump's stroke length",
+    "Lowering the voltage supplied to the pump motor",
+    "Narrowing the diameter of the suction tubing"
+   ],
+   "correctIndex": 1,
+   "explanation": "On a diaphragm metering pump, the dose delivered per stroke is set mechanically by the stroke length, how far the diaphragm travels, while stroke frequency, or speed, sets how many strokes happen per minute. Shortening the stroke length reduces the volume delivered on each stroke, lowering the total dose without changing how fast the pump is cycling.",
+   "domain": "EQIP",
+   "topic": "chemical-feeders",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "AWWA / WSO Water Treatment operator training texts: describe stroke length as the adjustment that sets the volume delivered per stroke on a diaphragm metering pump, independent of stroke frequency."
+  },
+  {
+   "id": "WT-ALL-EQIP-0022",
+   "text": "A sodium hypochlorite metering pump at a water treatment plant is stroking at its normal rate, but the day tank level is not dropping and the chlorine residual leaving the plant has fallen to zero. An operator opens a valve on the pump discharge and only air comes out, no liquid. What should the operator check first?",
+   "choices": [
+    "The motor's power supply, for a tripped breaker or blown fuse",
+    "The discharge tubing near the injection point, for a fully clogged quill",
+    "The suction line, for trapped air or a loose fitting",
+    "The stroke length dial, for a setting turned down too low"
+   ],
+   "correctIndex": 2,
+   "explanation": "A pump that keeps stroking but only puts out air, not liquid, points to lost prime from air on the suction side. Common causes include a loose suction fitting, a cracked section of tubing, or a foot valve stuck open, any of which let air into the line instead of chemical. Checking the suction line and re-priming the pump restores flow.",
+   "domain": "EQIP",
+   "topic": "chemical-feeders",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "AWWA WSO: Water Treatment (operator training manual); verifies that a metering pump stroking with no liquid discharge points to lost prime from air entering the suction side, not a downstream or electrical fault."
+  },
+  {
+   "id": "WT-ALL-EQIP-0023",
+   "text": "A water treatment plant feeds sodium hypochlorite from a day tank kept in a warm chemical room. Over a few weeks, an operator notices small gas bubbles collecting in the clear suction tubing and the metering pump losing prime more often, even though the tank is kept full. What is the most likely cause?",
+   "choices": [
+    "Hypochlorite solution breaking down and releasing oxygen gas as it warms",
+    "A worn diaphragm letting chemical leak past the pump's check valves",
+    "Calcium deposits building up inside the suction tubing and narrowing it",
+    "A blocked vent on the day tank cutting off suction to the pump"
+   ],
+   "correctIndex": 0,
+   "explanation": "Sodium hypochlorite breaks down over time, faster in warm temperatures, and one byproduct of that breakdown is oxygen gas. The gas collects as bubbles in the suction tubing and can gas bind the pump, causing it to lose prime even with a full tank. Keeping hypochlorite cool and using fresh stock slows this breakdown.",
+   "domain": "EQIP",
+   "topic": "chemical-feeders",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "AWWA WSO: Water Treatment (operator training manual); verifies that sodium hypochlorite decomposition releases oxygen gas, causing gas binding and prime loss in feed pumps, especially at warmer storage temperatures."
+  },
+  {
+   "id": "WT-ALL-EQIP-0024",
+   "text": "At a water treatment plant, a chemical feed pump's dial has not been touched in months, but the actual chlorine dose being delivered has slowly dropped. What is the most likely reason the pump's real output no longer matches its dial setting?",
+   "choices": [
+    "The plant's overall water production increased, changing the required dose",
+    "The chemical solution in the day tank grew more concentrated over time",
+    "The pump's electrical timer drifted out of sync with the plant clock",
+    "Diaphragm and check valve wear reduced its output per stroke"
+   ],
+   "correctIndex": 3,
+   "explanation": "Mechanical wear inside the pump, in the diaphragm and check valves, changes how much liquid moves on each stroke even though the dial setting has not been touched. This kind of drift is why a pump's actual output needs to be checked against its setting from time to time instead of just trusting the dial.",
+   "domain": "EQIP",
+   "topic": "chemical-feeders",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "AWWA WSO: Water Treatment (operator training manual); verifies that mechanical wear in a chemical feed pump's diaphragm and check valves causes its actual output to drift from the dial setting over time."
+  },
+  {
+   "id": "WT-ALL-EQIP-0025",
+   "text": "At a water treatment plant, when greasing an electric motor bearing as part of routine preventive maintenance, what mistake do operators most commonly make?",
+   "choices": [
+    "Letting the bearing run for months without adding any grease",
+    "Adding too much grease, causing the bearing to overheat",
+    "Mixing two incompatible grease types in the same bearing",
+    "Applying grease with the motor stopped instead of left running"
+   ],
+   "correctIndex": 1,
+   "explanation": "Over greasing is the most common lubrication mistake operators make on motor and pump bearings. The extra grease has nowhere to go, so it churns inside the bearing, raises internal temperature, and can break down the grease or damage seals. The fix is to follow the manufacturer's specified amount and interval, not add grease every time a bearing is checked.",
+   "domain": "EQIP",
+   "topic": "preventive-maintenance",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "AWWA WSO: Water Treatment (operator training manual); verifies that over lubrication, not under lubrication or grease mixing, is identified as the most common bearing lubrication error in routine preventive maintenance."
+  },
+  {
+   "id": "WT-ALL-EQIP-0026",
+   "text": "At a water treatment plant, an operator tightens the packing gland on a pump shaft until no water drips from it at all, then walks away satisfied the leak is fixed. A few hours later, the packing is smoking and the shaft sleeve underneath is scored. What should the operator have done differently?",
+   "choices": [
+    "Replaced the packing with a mechanical seal before adjusting anything",
+    "Tightened the gland further to stop the leak completely",
+    "Loosened the gland completely and let it leak freely for the shift",
+    "Tightened the gland only enough to leave a slow, steady drip"
+   ],
+   "correctIndex": 3,
+   "explanation": "Packing needs a slight, steady drip to stay cool and lubricated as the shaft turns. Tightening it until the leak stops completely removes that film of water, so friction builds, the packing overheats and smokes, and the shaft sleeve gets scored. The fix is to back the gland off and retighten gradually until only a slow drip remains.",
+   "domain": "EQIP",
+   "topic": "preventive-maintenance",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "AWWA WSO: Water Treatment (operator training manual); verifies that pump packing must be adjusted to leave a slow, steady drip for cooling and lubrication, and that packing tightened until leak-free will overheat and score the shaft."
+  },
+  {
+   "id": "WT-ALL-EQIP-0027",
+   "text": "A water treatment plant runs two identical high service pumps in a lead/lag setup. The lead pump runs about 20 hours a day, while the lag pump only kicks on during peak demand and runs about 2 hours a day. Both pumps are currently serviced on the same calendar based schedule. What change would better match preventive maintenance to actual wear on each pump?",
+   "choices": [
+    "Swap the lead and lag roles every week so wear evens out over time",
+    "Shorten the calendar interval for both pumps so service happens more often",
+    "Schedule each pump's tasks by its own run hours from an hour meter",
+    "Keep the calendar schedule, but inspect the lead pump more closely each visit"
+   ],
+   "correctIndex": 2,
+   "explanation": "Calendar based schedules assume roughly equal use, but here the lead pump logs about ten times the run hours of the lag pump. An hour meter on each pump lets the crew base tasks like oil changes and packing checks on actual operating time, so the harder working lead pump gets serviced sooner and the lightly used lag pump is not over serviced.",
+   "domain": "EQIP",
+   "topic": "preventive-maintenance",
+   "difficulty": "Hard",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "AWWA WSO: Water Treatment (operator training manual); verifies that preventive maintenance for pumps with unequal duty cycles should be scheduled from hour meter readings rather than a fixed calendar interval."
+  },
+  {
+   "id": "WT-ALL-EQIP-0028",
+   "text": "At a water treatment plant, why does a preventive maintenance program call for logging each repair, part replacement, and service date for a piece of equipment?",
+   "choices": [
+    "It builds a service history that helps spot repeat problems and plan ahead",
+    "It satisfies the manufacturer's warranty paperwork requirement",
+    "It gives the operator a reason to shut equipment down for review more often",
+    "It replaces the need for a manufacturer's operation and maintenance manual"
+   ],
+   "correctIndex": 0,
+   "explanation": "A maintenance log ties dates, parts, and problems to a specific piece of equipment over time. That history lets an operator see patterns, like a bearing that keeps failing early or a pump that needs packing more often than others, and use that pattern to plan repairs or replacement before a failure happens.",
+   "domain": "EQIP",
+   "topic": "preventive-maintenance",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "AWWA WSO: Water Treatment (operator training manual); verifies that maintenance record keeping in a preventive maintenance program serves to build equipment service history for identifying trends and planning future work."
+  },
+  {
+   "id": "WT-ALL-EQIP-0029",
+   "text": "When setting up preventive maintenance tasks and intervals for a new pump at a water treatment plant, what should an operator use as the primary basis for the schedule?",
+   "choices": [
+    "The maintenance schedule already used for a similar pump elsewhere in the plant",
+    "The manufacturer's operation and maintenance manual for that specific pump",
+    "The plant's general preventive maintenance calendar, applied the same to all rotating equipment",
+    "The vendor's sales brochure for the pump, since it lists the pump's key features"
+   ],
+   "correctIndex": 1,
+   "explanation": "Every pump has its own wear points, lubrication needs, and service intervals set by its manufacturer based on its design and materials. The operation and maintenance manual for that specific unit is the primary source for building its PM task list and intervals, even if other pumps in the plant look similar.",
+   "domain": "EQIP",
+   "topic": "preventive-maintenance",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "AWWA WSO: Water Treatment (operator training manual); verifies that the manufacturer's operation and maintenance manual is the primary source for setting a pump's preventive maintenance tasks and intervals."
+  },
+  {
+   "id": "WT-ALL-EQIP-0030",
+   "text": "The only high service pump at a small water treatment plant develops a failed mechanical seal. The plant has no spare seal on hand, and the part takes four days to arrive from the distributor, leaving the plant without normal pumping capacity that whole time. What preventive maintenance practice would have reduced this downtime?",
+   "choices": [
+    "Running a backup generator so the pump keeps working through a power loss",
+    "Scheduling a second operator to be on call for weekend emergencies",
+    "Keeping a spare seal on site as a critical spare part",
+    "Installing a second identical pump in parallel to share the load"
+   ],
+   "correctIndex": 2,
+   "explanation": "The failure itself was a normal mechanical seal wear item, not a power or staffing problem, so the fix has to target parts availability. Keeping a spare seal on site for that pump as a stocked critical part means the crew can swap it in right away instead of waiting days for a shipment.",
+   "domain": "EQIP",
+   "topic": "preventive-maintenance",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "AWWA WSO: Water Treatment (operator training manual); verifies that stocking critical spare parts, such as pump seals, for essential equipment is a preventive maintenance practice that reduces downtime from part failures."
+  },
+  {
+   "id": "WT-ALL-EQIP-0031",
+   "text": "At a water treatment plant, beyond fixed interval tasks like lubrication and packing checks, what is an example of a condition based preventive maintenance practice for rotating equipment such as pumps and motors?",
+   "choices": [
+    "Replacing bearings on a fixed calendar interval regardless of their condition",
+    "Wiping down the equipment's exterior housing on a set weekly schedule",
+    "Following the same fixed lubrication schedule listed in the manufacturer's manual",
+    "Comparing vibration and bearing temperature readings against a baseline"
+   ],
+   "correctIndex": 3,
+   "explanation": "Condition based PM uses actual equipment readings, like vibration levels or bearing temperature, checked against a known baseline, to catch developing problems before they cause a failure. That is different from fixed interval tasks that happen on a set schedule regardless of the equipment's actual condition.",
+   "domain": "EQIP",
+   "topic": "preventive-maintenance",
+   "difficulty": "Hard",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "AWWA WSO: Water Treatment (operator training manual); verifies that condition based preventive maintenance uses measurements such as vibration and bearing temperature compared to a baseline, distinct from fixed interval time based tasks."
+  },
+  {
+   "id": "WT-ALL-SAMP-0001",
+   "text": "What unit does a laboratory nephelometer use to report a turbidity reading?",
+   "choices": [
+    "Nephelometric Turbidity Units (NTU)",
+    "Milligrams per liter (mg/L)",
+    "Parts per million (ppm)",
+    "Colony forming units (CFU)"
+   ],
+   "correctIndex": 0,
+   "explanation": "NTU is the standard unit for turbidity measured by the nephelometric method. A nephelometer measures the amount of light scattered by particles in water at a set angle, and the result is reported in Nephelometric Turbidity Units.",
+   "domain": "SAMP",
+   "topic": "turbidity",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "AWWA Manual M12, Simplified Procedures for Water Examination: turbidity measured by the nephelometric method is reported in Nephelometric Turbidity Units (NTU)."
+  },
+  {
+   "id": "WT-ALL-SAMP-0002",
+   "text": "What effect do trapped air bubbles in a sample cell typically have on a nephelometric turbidity reading?",
+   "choices": [
+    "They cause the reading to register falsely low",
+    "They cause the reading to register falsely high",
+    "They have no measurable effect on the reading",
+    "They cause the reading to drift without any consistent pattern"
+   ],
+   "correctIndex": 1,
+   "explanation": "Trapped air bubbles scatter light the same way suspended particles do, so they add to the scattered light the detector picks up and push the reading higher than the sample's true turbidity. This is why operators tap or degas bubbles out of the cell before taking a reading.",
+   "domain": "SAMP",
+   "topic": "turbidity",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "Standard Methods for the Examination of Water and Wastewater, Method 2130 (Turbidity): air bubbles in a sample cell are a known interference that produces a falsely elevated turbidity reading."
+  },
+  {
+   "id": "WT-ALL-SAMP-0003",
+   "text": "An operator checks a bench turbidimeter each morning against a sealed calibration standard. Today's reading falls outside the acceptable range printed on the standard's certificate. What should the operator do before reporting any results from this instrument?",
+   "choices": [
+    "Report today's results as usual and note the deviation later",
+    "Adjust the reported values manually to offset the difference",
+    "Recalibrate the instrument before reporting results",
+    "Switch to reading the samples by visual estimation instead"
+   ],
+   "correctIndex": 2,
+   "explanation": "When a calibration check falls outside the acceptable range, the instrument must be recalibrated against the standard before it is trusted for reportable results. A failed check means the readings coming from that instrument cannot currently be relied on.",
+   "domain": "SAMP",
+   "topic": "turbidity",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "AWWA Manual M12, Simplified Procedures for Water Examination: an instrument that fails its daily calibration check must be recalibrated before it is used to report results."
+  },
+  {
+   "id": "WT-ALL-SAMP-0004",
+   "text": "In the DPD colorimetric method for chlorine residual, what does the intensity of the pink color that develops in the sample indicate?",
+   "choices": [
+    "The dissolved oxygen level in the sample",
+    "The pH level of the sample",
+    "The total dissolved solids in the sample",
+    "The chlorine residual in the sample"
+   ],
+   "correctIndex": 3,
+   "explanation": "DPD (N,N-diethyl-p-phenylenediamine) reacts with chlorine to form a pink color, and the depth of that color is proportional to the chlorine residual present in the sample. This is why the result is read against a comparator or photometer calibrated in chlorine concentration.",
+   "domain": "SAMP",
+   "topic": "chlorine-residual",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "Standard Methods for the Examination of Water and Wastewater, Method 4500-Cl G (DPD Colorimetric Method): the intensity of the pink color produced is proportional to the chlorine residual concentration in the sample."
+  },
+  {
+   "id": "WT-ALL-SAMP-0005",
+   "text": "An operator draws a chlorine residual sample and, because of an equipment problem, cannot run the DPD test for over an hour afterward. What is the most appropriate action for that sample?",
+   "choices": [
+    "Discard it and collect a fresh sample to test right away",
+    "Run the test anyway and record the result without comment",
+    "Add extra DPD reagent to make up for the delay",
+    "Refrigerate the sample and test it the next morning"
+   ],
+   "correctIndex": 0,
+   "explanation": "Chlorine residual is not a stable parameter, it reacts and fades with time and light, so it needs to be measured essentially right after collection to give a trustworthy result. When a sample sits too long before testing, the correct response is to collect a new sample and test it promptly rather than trust a stale reading.",
+   "domain": "SAMP",
+   "topic": "chlorine-residual",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "Standard Methods for the Examination of Water and Wastewater, Method 4500-Cl (Residual Chlorine): chlorine residual must be determined immediately after sample collection because the residual is not stable over time."
+  },
+  {
+   "id": "WT-ALL-SAMP-0006",
+   "text": "An operator has already measured free chlorine on a sample by adding the DPD reagent and reading the color immediately. To determine the total chlorine residual on that same sample, what should the operator do next?",
+   "choices": [
+    "Repeat the free chlorine reading and average the two results",
+    "Add potassium iodide reagent and read the color once it stabilizes",
+    "Dilute the sample with distilled water and read it again right away",
+    "Filter the sample to remove particles and reread the original color"
+   ],
+   "correctIndex": 1,
+   "explanation": "In the DPD method, the free chlorine reading is taken immediately after adding the DPD reagent. Adding potassium iodide to that same sample converts the combined chlorine (chloramines) into a form that reacts with the DPD, and once the color stabilizes, that final reading reflects the total chlorine residual.",
+   "domain": "SAMP",
+   "topic": "chlorine-residual",
+   "difficulty": "Hard",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "Standard Methods for the Examination of Water and Wastewater, Method 4500-Cl G (DPD Colorimetric Method): potassium iodide is added after the free chlorine reading to develop the additional color needed for the total chlorine result."
+  },
+  {
+   "id": "WT-ALL-SAMP-0007",
+   "text": "Sterile bottles used for total coliform sampling contain a small amount of sodium thiosulfate. What is this substance's purpose?",
+   "choices": [
+    "It holds the sample at a fixed pH for shipping",
+    "It supplies a nutrient source for bacterial growth",
+    "It neutralizes chlorine residual so it cannot suppress bacteria",
+    "It disinfects the inside of the bottle before the sample is added"
+   ],
+   "correctIndex": 2,
+   "explanation": "Sodium thiosulfate is a dechlorinating agent. It reacts with and neutralizes any chlorine residual in the tap water so the residual cannot kill or suppress the bacteria the test is trying to detect, which would otherwise cause a false negative result.",
+   "domain": "SAMP",
+   "topic": "coliform-sampling",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "Standard Methods for the Examination of Water and Wastewater, Method 9060 (Samples for Microbiological Examination): sterile sample containers for chlorinated water include sodium thiosulfate to neutralize residual chlorine before analysis."
+  },
+  {
+   "id": "WT-ALL-SAMP-0008",
+   "text": "An operator arrives to collect a routine total coliform sample from an outdoor tap fitted with a screen aerator. What should the operator do before filling the sterile sample bottle?",
+   "choices": [
+    "Fill the bottle right away to capture water close to the main",
+    "Rinse the sterile bottle with tap water a few times before filling it",
+    "Leave the aerator screen in place, since screens do not affect results",
+    "Remove the aerator, disinfect the tap opening, and flush it briefly"
+   ],
+   "correctIndex": 3,
+   "explanation": "Before collecting a bacteriological sample, the aerator or screen should come off, the tap opening should be disinfected, and the tap should run briefly. This clears out anything growing in the fixture itself so the result reflects the water in the system, not contamination from the tap hardware.",
+   "domain": "SAMP",
+   "topic": "coliform-sampling",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "Standard Methods for the Examination of Water and Wastewater, Method 9060 (Samples for Microbiological Examination): fixtures such as aerators should be removed and the tap disinfected and flushed before a bacteriological sample is collected."
+  },
+  {
+   "id": "WT-ALL-SAMP-0009",
+   "text": "A total coliform sample is collected at 8 a.m. from a rural sample point roughly two hours from the certified lab by vehicle. What must the operator do to keep that sample valid for analysis?",
+   "choices": [
+    "Keep it cold on ice and get it to the lab within the required holding time",
+    "Add a locally purchased chlorine neutralizer if the bottle's tablet seems missing",
+    "Freeze the sample solid during transport to stop all bacterial activity",
+    "Split the sample into two smaller sterile containers to speed up processing"
+   ],
+   "correctIndex": 0,
+   "explanation": "Microbiological samples must stay cool, on ice or refrigerated, from the moment of collection and reach the lab so analysis can begin within the required holding time. Cooling slows bacterial change without killing the organisms the test is meant to find.",
+   "domain": "SAMP",
+   "topic": "coliform-sampling",
+   "difficulty": "Hard",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "Standard Methods for the Examination of Water and Wastewater, Method 9060 (Samples for Microbiological Examination): microbiological samples must be held on ice and analyzed within the specified holding time after collection."
+  },
+  {
+   "id": "WT-ALL-SAMP-0010",
+   "text": "What is the standard purpose of refrigerating a water sample at about 4 degrees Celsius (39 degrees Fahrenheit) between collection and laboratory analysis?",
+   "choices": [
+    "To sterilize the inside of the sample container",
+    "To slow chemical and biological changes in the sample",
+    "To increase the sample's dissolved oxygen level",
+    "To raise and hold the sample's pH at a more stable level"
+   ],
+   "correctIndex": 1,
+   "explanation": "Cooling a sample slows the rate of chemical reactions and biological activity, such as bacterial growth, that would otherwise change the sample's characteristics before it reaches the lab. This keeps the result closer to what the water actually looked like at the moment of collection.",
+   "domain": "SAMP",
+   "topic": "preservation-holdtime",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "Standard Methods for the Examination of Water and Wastewater, Method 1060 (Collection and Preservation of Samples): cooling a sample to approximately 4 degrees Celsius slows chemical and biological change between collection and analysis."
+  },
+  {
+   "id": "WT-ALL-SAMP-0011",
+   "text": "A metals sample bottle arrives at the lab three weeks after collection. No acid preservative was ever added, in the field or at the lab. What should the lab do with that sample?",
+   "choices": [
+    "Analyze it as received and note the missing preservative in the report",
+    "Add the acid preservative at the lab now and proceed with analysis",
+    "Reject the sample and request a properly preserved replacement",
+    "Neutralize the sample with a base before running the metals test"
+   ],
+   "correctIndex": 2,
+   "explanation": "Metals samples are acid-preserved to keep metals in solution and off the container walls. The method gives a lab a narrow out: an unpreserved sample returned within about two weeks of collection may be acidified at the lab, mixed, held 16 hours, and verified below pH 2 before analysis. Three weeks unpreserved is past that window, so the sample can no longer be trusted and the lab should reject it and request a properly collected replacement.",
+   "domain": "SAMP",
+   "topic": "preservation-holdtime",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "EPA Method 200.7, sample collection, preservation, and storage section: unpreserved metals samples may be acid-preserved at the laboratory only when returned within about two weeks of collection, then mixed, held 16 hours, and verified pH below 2 before analysis."
+  },
+  {
+   "id": "WT-ALL-SAMP-0012",
+   "text": "In a laboratory quality control program, what is the main purpose of running a duplicate, the same sample analyzed twice?",
+   "choices": [
+    "To confirm the sample was collected at the correct site",
+    "To calibrate the instrument before the next batch of samples",
+    "To meet a regulatory requirement for minimum sample volume",
+    "To check the precision, or repeatability, of the test method"
+   ],
+   "correctIndex": 3,
+   "explanation": "Running the same sample through the method twice and comparing the two results shows how repeatable, or precise, the method is. Close agreement between the duplicate results means the method is performing consistently.",
+   "domain": "SAMP",
+   "topic": "qa-qc",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "Standard Methods for the Examination of Water and Wastewater, Method 1020 (Quality Assurance): duplicate analyses are used to evaluate the precision of an analytical method."
+  },
+  {
+   "id": "WT-ALL-SAMP-0013",
+   "text": "A lab runs a method blank, reagent water carried through the same process as the samples, alongside a batch of samples, and the blank shows a measurable level of the contaminant being tested. What does this result most likely indicate?",
+   "choices": [
+    "The reagents, glassware, or process introduced contamination",
+    "The samples in the batch are contaminated and should be resampled",
+    "The calibration curve used for the batch has expired",
+    "The instrument's detection limit needs to be raised"
+   ],
+   "correctIndex": 0,
+   "explanation": "A method blank is meant to be free of the contaminant being tested. If it shows a measurable level, the contamination came from somewhere in the lab process itself, the reagents, the glassware, or handling, and the whole batch's results are suspect until that source is found and corrected.",
+   "domain": "SAMP",
+   "topic": "qa-qc",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "Standard Methods for the Examination of Water and Wastewater, Method 1020 (Quality Assurance): a measurable result in a method blank indicates contamination from reagents, glassware, or the analytical process rather than the samples themselves."
+  },
+  {
+   "id": "WT-ALL-SAMP-0014",
+   "text": "An operator plots daily calibration check results on a control chart and notices the values gradually drifting toward the upper control limit over two weeks, even though each individual check still passes. What should the operator do?",
+   "choices": [
+    "Continue as normal, since each daily check still passes",
+    "Wait until a check actually fails before taking any action",
+    "Investigate and fix the cause of the drift before a check fails",
+    "Discard the older control chart points so the trend no longer shows"
+   ],
+   "correctIndex": 2,
+   "explanation": "A control chart is meant to reveal trends, not just single failures. A steady drift toward a control limit signals that something in the calibration or measurement process is changing, and the correct response is to investigate and correct the cause before a check actually fails and calls prior results into question.",
+   "domain": "SAMP",
+   "topic": "qa-qc",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "Standard Methods for the Examination of Water and Wastewater, Method 1020 (Quality Assurance): control charts are used to detect trends in calibration or check data so a developing problem can be corrected before an individual check fails."
+  },
+  {
+   "id": "WT-ALL-MICRO-0002",
+   "text": "Total coliform bacteria show up in many routine drinking water samples. What is true about most of the total coliform organisms detected in these samples?",
+   "choices": [
+    "They multiply rapidly whenever a measurable free chlorine residual is present.",
+    "They are usually harmless themselves, but their presence can signal a contamination pathway.",
+    "They are found only in human and animal feces, never in soil or on plants.",
+    "They belong to the virus family rather than to the bacteria family."
+   ],
+   "correctIndex": 1,
+   "explanation": "Most total coliform bacteria are not pathogens themselves. Their value to a water system is as a warning sign. Routine detection means a pathway may exist for contamination to reach the water, even when the specific bacteria found pose little direct health risk. That is why a total coliform detection triggers follow up sampling rather than being ignored.",
+   "domain": "MICRO",
+   "topic": "indicator-organisms",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "EPA Revised Total Coliform Rule guidance describes total coliform bacteria as generally not harmful themselves, with their presence used as a signal that a pathway for contamination may exist in the water system."
+  },
+  {
+   "id": "WT-ALL-MICRO-0003",
+   "text": "A distribution system sample comes back positive for E. coli. E. coli itself rarely causes serious illness in a healthy adult. Why does this result still concern the operator?",
+   "choices": [
+    "It confirms the chlorine residual has dropped to zero throughout the entire distribution system.",
+    "It means the sample must be immediately sent for Cryptosporidium speciation testing.",
+    "It shows filtration at the treatment plant has completely failed for that day.",
+    "It signals recent fecal contamination, so other fecal borne pathogens could also be present."
+   ],
+   "correctIndex": 3,
+   "explanation": "E. coli lives specifically in the intestines of humans and warm blooded animals, so its presence in a sample is the clearest sign that fecal material has reached the water. E. coli itself is usually not what makes people sick, but its detection means the water was recently exposed to a fecal source, and other fecal borne pathogens such as Salmonella, norovirus, or Giardia could have arrived by the same route. That is why an E. coli positive triggers immediate follow up regardless of whether anyone becomes ill from the E. coli itself.",
+   "domain": "MICRO",
+   "topic": "indicator-organisms",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "CDC fact sheet on the Total Coliform Rule and E. coli confirms that E. coli originates in the intestines of humans and warm blooded animals, and that its detection indicates recent fecal contamination that may carry other pathogens."
+  },
+  {
+   "id": "WT-ALL-MICRO-0004",
+   "text": "Giardia lamblia and Cryptosporidium parvum are both significant concerns for surface water treatment. What type of organism are they?",
+   "choices": [
+    "Protozoan parasites that form a resistant cyst or oocyst stage.",
+    "Bacteria that form protective spores under harsh conditions.",
+    "Viruses that need a living host cell to multiply.",
+    "Fungi that spread through airborne spores in damp areas."
+   ],
+   "correctIndex": 0,
+   "explanation": "Giardia lamblia and Cryptosporidium parvum are both protozoan parasites. Each one survives outside a host by forming a hardy resistant stage, a cyst for Giardia and an oocyst for Cryptosporidium. That resistant structure is central to why these organisms are such a concern for surface water treatment, since it lets them persist in water long after leaving an animal or human host.",
+   "domain": "MICRO",
+   "topic": "pathogens",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "CDC waterborne disease guidance classifies Giardia lamblia and Cryptosporidium parvum as protozoan parasites that survive in water through a resistant cyst or oocyst stage."
+  },
+  {
+   "id": "WT-ALL-MICRO-0005",
+   "text": "Spring snowmelt sends a large volume of runoff across pasture and range land into the reservoir that feeds a surface water treatment plant. Which contamination risk should the operator expect to rise at the reservoir because of this runoff?",
+   "choices": [
+    "A rise in confined aquifer recharge reaching the reservoir from underground.",
+    "A rise in Giardia and Cryptosporidium levels from fecal waste carried in the runoff.",
+    "A rise in fungal spore counts drifting into the reservoir from the surrounding air.",
+    "A rise in dissolved chlorine residual carried into the reservoir from upstream."
+   ],
+   "correctIndex": 1,
+   "explanation": "Giardia and Cryptosporidium live in the intestines of infected wildlife and livestock. When snowmelt or heavy rain runs across pasture and range land, it picks up fecal waste and carries these organisms into the reservoir that feeds the treatment plant. That is why operators expect a higher risk of these organisms after a large runoff event and often increase monitoring or adjust treatment in response.",
+   "domain": "MICRO",
+   "topic": "pathogens",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "EPA Surface Water Treatment Rule source water guidance identifies runoff carrying animal fecal waste from land such as pasture and range land as a pathway that raises Giardia and Cryptosporidium levels in surface water after precipitation events."
+  },
+  {
+   "id": "WT-ALL-MICRO-0006",
+   "text": "Certain groups face a higher risk of severe illness if they are exposed to waterborne pathogens such as Cryptosporidium or Giardia. Which group is considered most vulnerable?",
+   "choices": [
+    "Marathon runners in excellent physical condition.",
+    "Adults with no chronic health conditions.",
+    "People with severely weakened immune systems.",
+    "Teenagers with active involvement in competitive sports."
+   ],
+   "correctIndex": 2,
+   "explanation": "CDC guidance on Cryptosporidium and Giardia identifies people with severely weakened immune systems, such as those with HIV or AIDS, transplant recipients, or people on chemotherapy, as the group most likely to develop severe, prolonged, or life threatening illness from these parasites. Operators and public health officials give this group special attention during a boil water notice or any suspected contamination event.",
+   "domain": "MICRO",
+   "topic": "waterborne-disease",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "CDC cryptosporidiosis and giardiasis fact sheets identify people with severely weakened immune systems as the population at greatest risk of severe or prolonged illness from these waterborne parasites."
+  },
+  {
+   "id": "WT-ALL-PROC-0048",
+   "text": "Compared with a typical surface water source, a groundwater source usually shows what pattern in raw water temperature across the seasons?",
+   "choices": [
+    "It stays fairly stable through the year",
+    "It swings widely with each storm event",
+    "It drops sharply every winter and rebounds in spring",
+    "It rises and falls with the daily air temperature"
+   ],
+   "correctIndex": 0,
+   "explanation": "Groundwater sits below the surface where soil and rock buffer it from surface heating and cooling, so its temperature stays fairly steady year round. This steadiness is one of the standard traits operators use to tell groundwater and surface sources apart.",
+   "domain": "PROC",
+   "topic": "source-water",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "AWWA WSO: Water Treatment, Water Sources chapter: states that groundwater temperature remains relatively constant year round because the surrounding soil and rock insulate it from surface conditions."
+  },
+  {
+   "id": "WT-ALL-PROC-0049",
+   "text": "Why does raw groundwater typically arrive at the well with lower turbidity than raw water drawn from a river or lake?",
+   "choices": [
+    "Chlorine added at the wellhead settles the particles quickly",
+    "Soil and rock layers filter out particles as the water percolates down",
+    "Underground pressure settles out any suspended particles before the well",
+    "Wells are drilled only into locations with naturally clear water"
+   ],
+   "correctIndex": 1,
+   "explanation": "As rainwater and surface water percolate down through soil and rock to recharge an aquifer, the pore spaces in that material strain out particles much like a sand filter does. That is why groundwater typically arrives at the well with low, stable turbidity compared with an open surface source.",
+   "domain": "PROC",
+   "topic": "source-water",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "AWWA WSO: Water Treatment, Water Sources chapter: identifies soil and rock as a natural filtering medium that gives groundwater lower turbidity than surface water."
+  },
+  {
+   "id": "WT-ALL-PROC-0050",
+   "text": "Why does groundwater typically carry more dissolved minerals, such as calcium and magnesium, than water from an open lake or river?",
+   "choices": [
+    "Groundwater sits at a lower temperature that dissolves more gas",
+    "Groundwater picks up minerals from the well pump and piping materials",
+    "Groundwater stays in long contact with rock and soil that release minerals",
+    "Groundwater is naturally more acidic and dissolves metal well casings"
+   ],
+   "correctIndex": 2,
+   "explanation": "As groundwater travels slowly through mineral bearing rock and soil, it stays in contact with those materials long enough to dissolve calcium, magnesium, and other minerals. That extended contact is why groundwater tends to be harder than water from an open surface source.",
+   "domain": "PROC",
+   "topic": "source-water",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "AWWA WSO: Water Treatment, Water Sources chapter: attributes groundwater's higher mineral content and hardness to extended contact with rock and soil formations."
+  },
+  {
+   "id": "WT-ALL-PROC-0051",
+   "text": "What is a watershed, in the context of protecting a surface water source?",
+   "choices": [
+    "The treatment plant's service area that receives finished water",
+    "The underground rock formation that stores a confined aquifer",
+    "The distance a well must be set back from a contamination source",
+    "The land area where rain and snowmelt drain toward a common water body"
+   ],
+   "correctIndex": 3,
+   "explanation": "A watershed is the land area over which precipitation and runoff collect and drain into a particular river, lake, or reservoir. Managing land use within that area is central to protecting a surface water source at its origin.",
+   "domain": "PROC",
+   "topic": "source-water",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "AWWA WSO: Water Treatment, Water Sources chapter: defines a watershed as the land area draining to a common surface water body and the basis for source water protection programs."
+  },
+  {
+   "id": "WT-ALL-PROC-0052",
+   "text": "What is the purpose of a wellhead protection area around a public water supply well?",
+   "choices": [
+    "To manage land use near the well and protect its aquifer from contamination",
+    "To provide a zone where new wells may be drilled without a permit",
+    "To mark the point where chlorine residual sampling begins",
+    "To set the daily pumping limit allowed for the well"
+   ],
+   "correctIndex": 0,
+   "explanation": "A wellhead protection area is a mapped zone around a supply well where land uses and activities are managed so contaminants are less likely to reach the aquifer that feeds the well. It protects the source before the water is even pumped.",
+   "domain": "PROC",
+   "topic": "source-water",
+   "difficulty": "Easy",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "AWWA WSO: Water Treatment, Water Sources chapter: describes wellhead protection areas as delineated zones where land use is managed to reduce the risk of groundwater contamination reaching a supply well."
+  },
+  {
+   "id": "WT-ALL-PROC-0053",
+   "text": "In late summer, the raw water reservoir turns visibly green and gives off a musty, earthy odor. What condition should the operator suspect?",
+   "choices": [
+    "A sudden drop in raw water hardness",
+    "An algae bloom in the warm, nutrient rich water",
+    "A cross connection with a nearby sewer line",
+    "A drop in dissolved oxygen caused by cold weather"
+   ],
+   "correctIndex": 1,
+   "explanation": "Warm water, sunlight, and nutrients in late summer create ideal conditions for algae to grow. A bloom typically shows up as green color plus a musty or earthy taste and odor in the raw water, a pattern operators are trained to recognize and report.",
+   "domain": "PROC",
+   "topic": "source-water",
+   "difficulty": "Easy",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "AWWA WSO: Water Treatment, Water Sources chapter: identifies late summer algae blooms in nutrient rich surface water as a common cause of green color and musty or earthy taste and odor in raw water."
+  },
+  {
+   "id": "WT-ALL-PROC-0054",
+   "text": "What does the term groundwater under the direct influence of surface water (GWUDI) describe?",
+   "choices": [
+    "A confined aquifer that a nearby river recharges once a decade",
+    "A well casing that has cracked and allows storm water to enter directly",
+    "A groundwater source that shows surface water traits and pathogen risk",
+    "A shallow well that produces less water during a drought"
+   ],
+   "correctIndex": 2,
+   "explanation": "The term describes a groundwater source situated closely enough to a surface water body that it shows surface water like behavior, such as rapid turbidity or temperature shifts tied to weather, or the presence of organisms typical of surface water. Because of that, it is regulated and treated as if it were a surface water source.",
+   "domain": "PROC",
+   "topic": "source-water",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "EPA 40 CFR 141.2: defines groundwater under the direct influence of surface water by significant, rapid shifts in water quality characteristics tied to surface conditions or the presence of surface water organisms and pathogens."
+  },
+  {
+   "id": "WT-ALL-PROC-0055",
+   "text": "In a deep lake or reservoir during summer, what typically forms as warm surface water and cool bottom water separate into distinct layers?",
+   "choices": [
+    "A confining layer that isolates the reservoir from its watershed",
+    "A sediment blanket that seals the bottom from oxygen exchange",
+    "A saltwater wedge that pushes upstream from the outlet",
+    "A thermocline that divides the warm and cool layers"
+   ],
+   "correctIndex": 3,
+   "explanation": "As surface water warms in summer, it becomes less dense and floats above the cooler, denser water near the bottom. The narrow transition zone between those two layers is the thermocline, a seasonal feature operators watch because it sets up conditions for turnover later in the year.",
+   "domain": "PROC",
+   "topic": "source-water",
+   "difficulty": "Medium",
+   "cognitive": "Recall",
+   "formula": null,
+   "calculator": null,
+   "citation": "AWWA WSO: Water Treatment, Water Sources chapter: describes summer thermal stratification in lakes and reservoirs, with the thermocline forming the boundary between the warm upper layer and the cool lower layer."
+  },
+  {
+   "id": "WT-ALL-PROC-0056",
+   "text": "A reservoir that has been thermally stratified all summer begins its fall turnover, mixing the warm and cool layers. What change should the operator expect in the raw water reaching the intake?",
+   "choices": [
+    "A short term rise in taste and odor compounds and dissolved iron or manganese",
+    "A permanent drop in raw water hardness for the rest of the year",
+    "A steady rise in raw water temperature that continues through winter",
+    "An immediate loss of chlorine residual throughout the distribution system"
+   ],
+   "correctIndex": 0,
+   "explanation": "When a reservoir turns over, the oxygen poor bottom water that had been isolated all summer mixes with the rest of the reservoir. That mixing carries dissolved iron, manganese, and taste and odor compounds up toward the intake, so operators typically see a short term jump in these parameters right around turnover.",
+   "domain": "PROC",
+   "topic": "source-water",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "AWWA WSO: Water Treatment, Water Sources chapter: describes fall and spring turnover mixing oxygen depleted bottom water into the reservoir, temporarily raising iron, manganese, and taste and odor compounds reaching the intake."
+  },
+  {
+   "id": "WT-ALL-PROC-0057",
+   "text": "Every spring, snowmelt runoff swells the river that feeds the treatment plant's intake. Which pair of raw water characteristics typically rises together during this period?",
+   "choices": [
+    "Hardness and total alkalinity",
+    "Turbidity and natural organic matter (color)",
+    "Dissolved mineral content and temperature",
+    "Chlorine demand and finished water pH"
+   ],
+   "correctIndex": 1,
+   "explanation": "Melting snow carries eroded soil and decaying plant material into the river, so turbidity and natural organic matter, which shows up as color, both climb together during spring runoff. Operators watch this pattern because it affects coagulant dose and disinfection byproduct precursor loading.",
+   "domain": "PROC",
+   "topic": "source-water",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "AWWA WSO: Water Treatment, Water Sources chapter: notes that spring snowmelt and runoff carry eroded soil and organic material into surface sources, raising both turbidity and natural organic matter together."
+  },
+  {
+   "id": "WT-ALL-PROC-0058",
+   "text": "A utility has two groundwater sources. Well A draws from a shallow, unconfined aquifer under sandy soil near a river. Well B draws from a deep, confined aquifer beneath a thick clay layer. Which source is more vulnerable to surface contamination reaching it quickly?",
+   "choices": [
+    "Well B, because water moves faster through a deep aquifer",
+    "Well B, because pumping a deep well pulls surface contaminants down to it quickly",
+    "Well A, because sandy soil with no confining layer lets contaminants move down quickly",
+    "Well B, because its confining clay layer breaks down and adds turbidity over time"
+   ],
+   "correctIndex": 2,
+   "explanation": "Well A sits under permeable sandy soil with no confining layer, so surface contaminants can move down into that aquifer relatively quickly. Well B's thick clay confining layer restricts downward movement and protects the deeper aquifer, which makes Well A the more vulnerable source.",
+   "domain": "PROC",
+   "topic": "source-water",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "AWWA WSO: Water Treatment, Water Sources chapter: explains that an unconfined aquifer under permeable soil is more vulnerable to surface contamination than a confined aquifer protected by a low permeability clay layer."
+  },
+  {
+   "id": "WT-ALL-PROC-0059",
+   "text": "A shallow well sits 200 feet from a pasture where cattle graze, with only 15 feet of sandy soil above the water table and no confining clay layer. Occasional total coliform detections have shown up in raw water samples. What is the most likely explanation for this pattern?",
+   "choices": [
+    "The well casing was installed with the wrong pipe material",
+    "Chlorine residual is decaying before reaching the sample tap",
+    "The sample bottles were not sterilized before collection",
+    "Manure runoff is percolating down through the unconfined soil"
+   ],
+   "correctIndex": 3,
+   "explanation": "With only 15 feet of sandy, unconfined soil above the aquifer and cattle grazing 200 feet away, there is little protective depth or confining material to stop manure laden water from percolating down into the aquifer. That is the most likely source of the recurring coliform detections given the site conditions described.",
+   "domain": "PROC",
+   "topic": "source-water",
+   "difficulty": "Hard",
+   "cognitive": "Application",
+   "formula": null,
+   "calculator": null,
+   "citation": "AWWA WSO: Water Treatment, Water Sources chapter: explains that a shallow, unconfined aquifer near livestock or manure sources with little protective soil depth is vulnerable to pathogen contamination percolating down from the land surface."
+  },
+  {
+   "id": "WT-ALL-MATH-0001",
+   "text": "A clearwell provides 30 minutes of contact time to water carrying a free chlorine residual of 2.0 mg/L. About what CT value (concentration times time) is the plant achieving through the clearwell?",
+   "choices": [
+    "About 60 mg/L-min",
+    "About 32 mg/L-min",
+    "About 15 mg/L-min",
+    "About 30 mg/L-min"
+   ],
+   "correctIndex": 0,
+   "explanation": "CT is found by multiplying the disinfectant residual concentration by the contact time: 2.0 mg/L x 30 min = 60 mg/L-min. Operators compare this CT value against regulatory tables to confirm adequate Giardia and virus inactivation credit.",
+   "domain": "MATH",
+   "topic": "disinfection-ct",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": "CT (mg/L-min) = residual concentration (mg/L) x contact time (min)",
+   "calculator": "ct-disinfection",
+   "citation": null
+  },
+  {
+   "id": "WT-ALL-MATH-0002",
+   "text": "A plant must achieve a CT value of 72 mg/L-min to meet its required Giardia inactivation credit. The clearwell is maintaining a free chlorine residual of 1.2 mg/L. About what minimum contact time is needed to meet that requirement?",
+   "choices": [
+    "About 86 minutes",
+    "About 72 minutes",
+    "About 60 minutes",
+    "About 30 minutes"
+   ],
+   "correctIndex": 2,
+   "explanation": "The CT formula is residual concentration times contact time. To find the minimum time needed for a required CT, divide the required CT by the residual: 72 mg/L-min / 1.2 mg/L = 60 minutes. That is the contact time the clearwell must provide to earn the needed inactivation credit.",
+   "domain": "MATH",
+   "topic": "disinfection-ct",
+   "difficulty": "Hard",
+   "cognitive": "Application",
+   "formula": "T (min) = CT required (mg/L-min) / residual concentration (mg/L)",
+   "calculator": "ct-disinfection",
+   "citation": null
+  },
+  {
+   "id": "WT-ALL-MATH-0003",
+   "text": "An operator sets the chlorinator to feed a 2.2 mg/L dose into a flow of 0.75 MGD. About how many pounds of chlorine per day is the chlorinator now feeding?",
+   "choices": [
+    "About 1.7 lb/day",
+    "About 13.8 lb/day",
+    "About 24.5 lb/day",
+    "About 6.3 lb/day"
+   ],
+   "correctIndex": 1,
+   "explanation": "The standard pounds formula is dose times flow times 8.34, the weight of a gallon of water in pounds. Here that is 2.2 mg/L x 0.75 MGD x 8.34, or about 13.8 pounds of chlorine per day.",
+   "domain": "MATH",
+   "topic": "chlorine-dose",
+   "difficulty": "Easy",
+   "cognitive": "Application",
+   "formula": "lb/day = dose (mg/L) x flow (MGD) x 8.34",
+   "calculator": "chlorine-dose",
+   "citation": null
+  },
+  {
+   "id": "WT-ALL-MATH-0004",
+   "text": "A well station must deliver 18 lb/day of chlorine to disinfect its flow, and the only product on hand is calcium hypochlorite at 70 percent available chlorine. About how many pounds of that hypochlorite product does the operator need to feed each day?",
+   "choices": [
+    "About 25.7 lb/day",
+    "About 18.0 lb/day",
+    "About 12.6 lb/day",
+    "About 60.0 lb/day"
+   ],
+   "correctIndex": 0,
+   "explanation": "Calcium hypochlorite is only 70 percent available chlorine, so more product must be fed than the pure chlorine weight needed. Divide the required chlorine by the decimal form of the percent strength: 18 lb/day / 0.70 = about 25.7 lb/day of product.",
+   "domain": "MATH",
+   "topic": "chlorine-dose",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": "Product feed (lb/day) = chlorine required (lb/day) / (percent available chlorine / 100)",
+   "calculator": "chlorine-dose",
+   "citation": null
+  },
+  {
+   "id": "WT-ALL-MATH-0005",
+   "text": "The clearwell at a small plant holds 80,000 gallons, and the operator is pumping a steady 400 gpm through it. About how long is water staying in the clearwell, in hours?",
+   "choices": [
+    "About 200 hours",
+    "About 8.3 hours",
+    "About 0.3 hours",
+    "About 3.3 hours"
+   ],
+   "correctIndex": 3,
+   "explanation": "Detention time equals volume divided by flow: 80,000 gallons / 400 gpm = 200 minutes. Converting to hours by dividing by 60 gives about 3.3 hours, the time water actually spends in the clearwell.",
+   "domain": "MATH",
+   "topic": "detention-time",
+   "difficulty": "Easy",
+   "cognitive": "Application",
+   "formula": "Detention time (hr) = Volume (gal) / Flow (gpm) / 60",
+   "calculator": "detention",
+   "citation": null
+  },
+  {
+   "id": "WT-ALL-MATH-0006",
+   "text": "A new sedimentation basin is holding 0.30 MG of water while treating a steady flow of 1.5 MGD. About how many hours of detention time is that basin providing?",
+   "choices": [
+    "About 0.2 hours",
+    "About 2.4 hours",
+    "About 4.8 hours",
+    "About 120 hours"
+   ],
+   "correctIndex": 2,
+   "explanation": "Detention time equals basin volume divided by flow: 0.30 MG / 1.5 MGD = 0.2 days. Converting days to hours by multiplying by 24 gives about 4.8 hours, the time water spends in the basin.",
+   "domain": "MATH",
+   "topic": "detention-time",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": "Detention time (hr) = (Volume (MG) / Flow (MGD)) x 24",
+   "calculator": "detention",
+   "citation": null
+  },
+  {
+   "id": "WT-ALL-MATH-0007",
+   "text": "A rapid sand filter has a surface area of 300 square feet. It is passing 1.08 MGD at a steady rate. About how many gallons per minute per square foot is the filter loading?",
+   "choices": [
+    "About 1.3 gpm per square foot",
+    "About 2.5 gpm per square foot",
+    "About 3.6 gpm per square foot",
+    "About 0.4 gpm per square foot"
+   ],
+   "correctIndex": 1,
+   "explanation": "Filtration rate equals flow divided by filter surface area. Converting 1.08 MGD to gallons per minute gives about 750 gpm (1,080,000 gallons per day divided by 1,440 minutes per day). Dividing 750 gpm by the 300 square foot filter area gives about 2.5 gpm per square foot, a typical loading rate for a rapid sand filter.",
+   "domain": "MATH",
+   "topic": "filtration-rate",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": "Filtration rate (gpm/sq ft) = flow (gpm) / filter area (sq ft)",
+   "calculator": "filtration-rate",
+   "citation": null
+  },
+  {
+   "id": "WT-ALL-MATH-0008",
+   "text": "A filter bed measures 200 square feet and is passing a steady 600 gpm. About how many gallons per minute per square foot is the filter loading?",
+   "choices": [
+    "About 3.0 gpm per square foot",
+    "About 1.5 gpm per square foot",
+    "About 6.0 gpm per square foot",
+    "About 0.3 gpm per square foot"
+   ],
+   "correctIndex": 0,
+   "explanation": "Filtration rate equals flow divided by filter surface area. Dividing the 600 gpm flow by the 200 square foot filter area gives 3.0 gpm per square foot, a typical loading rate for a granular media filter.",
+   "domain": "MATH",
+   "topic": "filtration-rate",
+   "difficulty": "Easy",
+   "cognitive": "Application",
+   "formula": "Filtration rate (gpm/sq ft) = flow (gpm) / filter area (sq ft)",
+   "calculator": "filtration-rate",
+   "citation": null
+  },
+  {
+   "id": "WT-ALL-MATH-0009",
+   "text": "A plant's raw water intake meter totalizes in cubic feet. Over one hour of steady operation, the reading advances 4,000 cubic feet. About how many gallons per minute is the plant taking in?",
+   "choices": [
+    "About 67 gallons per minute",
+    "About 8 gallons per minute",
+    "About 1,000 gallons per minute",
+    "About 500 gallons per minute"
+   ],
+   "correctIndex": 3,
+   "explanation": "One cubic foot equals 7.48 gallons. The 4,000 cubic foot reading converts to about 29,920 gallons for the hour (4,000 x 7.48). Dividing by the 60 minutes in that hour gives about 500 gallons per minute.",
+   "domain": "MATH",
+   "topic": "flow-conversion",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": "Flow (gpm) = (cubic feet x 7.48 gal/cu ft) / minutes",
+   "calculator": "gpm-mgd",
+   "citation": null
+  },
+  {
+   "id": "WT-ALL-MATH-0010",
+   "text": "A booster pump must move 650 gpm against 140 feet of total dynamic head. The pump is 75 percent efficient. About how many brake horsepower does the pump require?",
+   "choices": [
+    "About 17.3 brake horsepower",
+    "About 3.7 brake horsepower",
+    "About 30.7 brake horsepower",
+    "About 23.0 brake horsepower"
+   ],
+   "correctIndex": 2,
+   "explanation": "Water horsepower equals gpm times head in feet times 8.34, divided by 33,000. For this pump that is 650 x 140 x 8.34 divided by 33,000, or about 23.0 water horsepower. Brake horsepower accounts for the pump's mechanical efficiency, so the water horsepower is divided by the 0.75 efficiency: 23.0 divided by 0.75 is about 30.7 brake horsepower.",
+   "domain": "MATH",
+   "topic": "pumping-hp",
+   "difficulty": "Hard",
+   "cognitive": "Application",
+   "formula": "BHP = (gpm x TDH(ft) x 8.34) / (33,000 x pump efficiency)",
+   "calculator": "hp",
+   "citation": null
+  },
+  {
+   "id": "WT-ALL-MATH-0011",
+   "text": "A liquid polymer stock solution is mixed at 8 percent strength. About how many mg/L does that concentration equal?",
+   "choices": [
+    "About 8 mg/L",
+    "About 8,000 mg/L",
+    "About 800,000 mg/L",
+    "About 80,000 mg/L"
+   ],
+   "correctIndex": 3,
+   "explanation": "A one percent solution equals 10,000 mg/L (1 gram per 100 mL works out to 10,000 milligrams per liter). At 8 percent strength, the concentration is 8 x 10,000, or about 80,000 mg/L.",
+   "domain": "MATH",
+   "topic": "concentration",
+   "difficulty": "Medium",
+   "cognitive": "Application",
+   "formula": "Concentration (mg/L) = percent strength x 10,000 mg/L per percent",
+   "calculator": "concentration",
+   "citation": null
+  }
+ ]
+}

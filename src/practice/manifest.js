@@ -7,9 +7,9 @@
    filename in dist/practice-banks/ (bank-loader.js), a different thing
    from the bank JSON's own internal "version" field (a content-revision
    date quiz.js/quiz-engine.js use for localStorage session invalidation).
-   Wave-1 note: math, regulations, water distribution, and wastewater
-   collection ship today; WT L1 + WWT L1 land next session after their
-   banks clear the verify gate + Blake (practice-tests/HANDOFF.md). */
+   Wave-1 note: all six Wave-1 tests ship as of practice-v1.3.0 (WT L1 +
+   WWT L1 added 2026-07-11 after their banks closed the two-lens verify
+   gate and Blake's nod; practice-tests/HANDOFF.md). */
 export const BANK_BASE_URL = 'https://blakeandersonziptility.github.io/ziptility-tools/dist/practice-banks/';
 
 export const TESTS = [
@@ -55,6 +55,30 @@ export const TESTS = [
     level: 'Entry level (ABC Class I)',
     description: 'Gravity mains, manholes, lift stations, cleaning and CCTV, infiltration and inflow, SSO response, and confined-space and trench safety. Cited answers throughout.',
     questionCount: 120,
+    durationMin: 120,
+    refCount: 100,
+    bankVersion: '1.0.0'
+  },
+  {
+    id: 'wt-1',
+    title: 'Water treatment operator practice test, Class I',
+    badge: 'Water treatment · Class I entry level',
+    discipline: 'Water Treatment',
+    level: 'Entry level (ABC Class I)',
+    description: 'Coagulation and jar testing, sedimentation, filtration, disinfection and CT, source water, plant pumps and chemical feeders, lab work, and chlorine safety. Machine-checked math and cited answers.',
+    questionCount: 128,
+    durationMin: 120,
+    refCount: 100,
+    bankVersion: '1.0.0'
+  },
+  {
+    id: 'wwt-1',
+    title: 'Wastewater treatment operator practice test, Class I',
+    badge: 'Wastewater treatment · Class I entry level',
+    discipline: 'Wastewater Treatment',
+    level: 'Entry level (ABC Class I)',
+    description: 'Preliminary and primary treatment, activated sludge, clarifiers, trickling filters and lagoons, disinfection, solids handling, blowers and clarifier drives, lab work, and H2S and confined-space safety. Cited answers throughout.',
+    questionCount: 119,
     durationMin: 120,
     refCount: 100,
     bankVersion: '1.0.0'

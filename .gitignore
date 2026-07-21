@@ -2,3 +2,5 @@ node_modules/
 dist/calculator-dev.js
 dist/practice-dev.js
 *.png
+.claude/
+preview-src.html

@@ -39,6 +39,6 @@ export default [
       values.cs=cs; computed.push("cs");
       if(v.meas!=null&&cs!==0){ values.pct=v.meas/cs*100; computed.push("pct"); }
       return {values,computed,error:""}; },
-    interpret:(m)=>{ if(m.pct!=null) return {level:"info",text:m.pct.toFixed(0)+"% of saturation at this temperature. Warm water holds less oxygen — saturation is ~9.0 mg/L at 20 °C but only ~7.5 at 30 °C."};
-      if(m.cs!=null) return {level:"info",text:"Maximum DO this water can hold at this temperature (sea level). Compare your aeration target against it — you can't aerate past saturation."}; return null; }}
+    interpret:(m)=>{ if(m.pct!=null) return {level:"info",text:m.pct.toFixed(0)+"% of saturation at this temperature. Warm water holds less oxygen: saturation is ~9.0 mg/L at 20 °C but only ~7.5 at 30 °C."};
+      if(m.cs!=null) return {level:"info",text:"Maximum DO this water can hold at this temperature (sea level). Compare your aeration target against it: you can't aerate past saturation."}; return null; }}
 ];

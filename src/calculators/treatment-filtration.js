@@ -6,14 +6,14 @@ const LMH_PER_GFD = LITERS/0.09290304/24;
 
 export default [
 
-  { id:"ct-disinfection", cat:"Treatment & Filtration", domains:["water"], title:"CT — Disinfection", formula:"Residual × Contact Time = CT", note:"Enter residual + time. Add required CT for a compliance ratio.",
+  { id:"ct-disinfection", cat:"Treatment & Filtration", domains:["water"], title:"CT: Disinfection", formula:"Residual × Contact Time = CT", note:"Enter residual + time. Add required CT for a compliance ratio.",
     fields:[{k:"conc",label:"Residual mg/L"},{k:"time",label:"Contact min"},{k:"ct",label:"CT achieved"},{k:"req",label:"CT required"},{k:"ratio",label:"CT ratio"}],
     solve:(v)=>{ const values={}, computed=[]; let ct=v.ct;
       if(v.conc!=null&&v.time!=null){ ct=v.conc*v.time; values.ct=ct; computed.push("ct"); }
       else if(v.ct==null) return {values:{},computed:[],error:"Enter residual + contact time."};
       if(v.req!=null&&ct!=null){ values.ratio=ct/v.req; computed.push("ratio"); }
       return {values,computed,error:""}; },
-    interpret:(m)=>{ if(m.ratio==null) return null; return m.ratio>=1 ? {level:"good",text:"CT ratio ≥ 1 — the required disinfection CT is met."} : {level:"alert",text:"CT ratio < 1 — required disinfection credit not met. Increase residual or contact time."}; }},
+    interpret:(m)=>{ if(m.ratio==null) return null; return m.ratio>=1 ? {level:"good",text:"CT ratio ≥ 1: the required disinfection CT is met."} : {level:"alert",text:"CT ratio < 1: required disinfection credit not met. Increase residual or contact time."}; }},
   { id:"filtration-rate", cat:"Treatment & Filtration", domains:["water"], title:"Filtration / Backwash Rate", formula:"Flow gpm ÷ Filter area ft² = gpm/ft²", note:"Enter any two values.",
     fields:[{k:"flow",label:"Flow gpm"},{k:"area",label:"Area ft²"},{k:"rate",label:"Rate gpm/ft²"}],
     solve:(v)=>{ if(v.flow!=null&&v.area!=null) return {values:{rate:v.flow/v.area},computed:["rate"],error:""};
@@ -46,10 +46,10 @@ export default [
       if(v.ufrv!=null&&v.hrs!=null&&v.hrs!==0) return {values:{rate:v.ufrv/(v.hrs*60)},computed:["rate"],error:""};
       return {values:{},computed:[],error:"Enter rate (or flow + area) plus run hours or UFRV."}; },
     interpret:(m)=>{ if(m.ufrv==null) return null;
-      if(m.ufrv>=10000) return {level:"good",text:"≥10,000 gal/ft² — excellent run volume."};
-      if(m.ufrv>=5000) return {level:"good",text:"≥5,000 gal/ft² — generally acceptable. Many plants target 4,000–6,000+; compare to your filter's design."};
-      if(m.ufrv>=2000) return {level:"watch",text:"2,000–5,000 gal/ft² — below the usual ≥5,000 benchmark; watch washwater use and run times. Many plants target 4,000–6,000+."};
-      return {level:"alert",text:"Under 2,000 gal/ft² — short runs; investigate pretreatment, media condition, or backwash effectiveness."}; }},
+      if(m.ufrv>=10000) return {level:"good",text:"≥10,000 gal/ft²: excellent run volume."};
+      if(m.ufrv>=5000) return {level:"good",text:"≥5,000 gal/ft²: generally acceptable. Many plants target 4,000–6,000+; compare to your filter's design."};
+      if(m.ufrv>=2000) return {level:"watch",text:"2,000–5,000 gal/ft²: below the usual ≥5,000 benchmark; watch washwater use and run times. Many plants target 4,000–6,000+."};
+      return {level:"alert",text:"Under 2,000 gal/ft²: short runs; investigate pretreatment, media condition, or backwash effectiveness."}; }},
   { id:"water-stability", cat:"Treatment & Filtration", domains:["water"], title:"Water Stability (Langelier & Ryznar)", formula:"LSI = pH − pHs · RSI = 2·pHs − pH\npHs = (9.3 + A + B) − (C + D)", note:"Corrosion vs. scaling tendency. Enter pH, temp, TDS, calcium hardness and alkalinity (both as CaCO₃).",
     keywords:["LSI","langelier","ryznar","RSI","corrosion","scaling","saturation index"], seeAlso:["hardness","alkalinity"],
     fields:[{k:"ph",label:"pH"},{k:"tempf",label:"Temp °F"},{k:"tds",label:"TDS mg/L"},{k:"ca",label:"Ca hardness mg/L as CaCO₃"},{k:"alk",label:"Alkalinity mg/L as CaCO₃"},{k:"phs",label:"pHs (saturation)"},{k:"lsi",label:"LSI"},{k:"rsi",label:"Ryznar RSI"}],
@@ -60,9 +60,9 @@ export default [
       const phs=(9.3+A+B)-(Cc+D);
       return {values:{phs, lsi:v.ph-phs, rsi:2*phs-v.ph},computed:["phs","lsi","rsi"],error:""}; },
     interpret:(m)=>{ if(m.lsi==null) return null;
-      const ry=m.rsi>8.5?" Ryznar agrees — RSI over 8.5 is very aggressive.":(m.rsi<5.5?" Ryznar agrees — RSI under 5.5 means heavy scale.":" Ryznar RSI "+m.rsi.toFixed(1)+" (6.2–6.8 ≈ neutral).");
-      if(m.lsi<-0.5) return {level:"alert",text:"LSI under −0.5 — corrosive water; it will attack metal pipe and fittings. Consider pH/alkalinity adjustment."+ry};
-      if(m.lsi>0.5) return {level:"watch",text:"LSI over +0.5 — scale-forming water; expect CaCO₃ deposits in pipes and heaters."+ry};
-      return {level:"good",text:"LSI between −0.5 and +0.5 — approximately balanced water."+ry}; },
+      const ry=m.rsi>8.5?" Ryznar agrees: RSI over 8.5 is very aggressive.":(m.rsi<5.5?" Ryznar agrees: RSI under 5.5 means heavy scale.":" Ryznar RSI "+m.rsi.toFixed(1)+" (6.2–6.8 ≈ neutral).");
+      if(m.lsi<-0.5) return {level:"alert",text:"LSI under −0.5: corrosive water; it will attack metal pipe and fittings. Consider pH/alkalinity adjustment."+ry};
+      if(m.lsi>0.5) return {level:"watch",text:"LSI over +0.5: scale-forming water; expect CaCO₃ deposits in pipes and heaters."+ry};
+      return {level:"good",text:"LSI between −0.5 and +0.5: approximately balanced water."+ry}; },
     links:[{label:"Langelier index explained",href:"https://www.lenntech.com/calculators/langelier/index/langelier.htm"}]}
 ];

@@ -46,13 +46,13 @@ export function initApp(){
     if(items.length===0){ const other=state.mode==='water'?'wastewater':'water', otherLbl=other==='water'?'Water':'Wastewater';
       const q=state.query.trim().toLowerCase();
       const otherN=calculators.filter(c=>c.domains.includes(other) && hay(c).includes(q)).length;
-      grid.innerHTML='<div class="empty">No matches in '+(state.mode==='water'?'Water':'Wastewater')+' mode.'+(otherN>0?(' Found <b>'+otherN+'</b> in '+otherLbl+' — <button type="button" id="switchMode" class="linkbtn">switch to '+otherLbl+'</button>.'):' Try clearing the search.')+'</div>';
+      grid.innerHTML='<div class="empty">No matches in '+(state.mode==='water'?'Water':'Wastewater')+' mode.'+(otherN>0?(' Found <b>'+otherN+'</b> in '+otherLbl+'. <button type="button" id="switchMode" class="linkbtn">switch to '+otherLbl+'</button>.'):' Try clearing the search.')+'</div>';
       if(otherN>0) document.getElementById('switchMode').onclick=()=>setMode(other); return; }
     items.forEach(c=>{
       const card=document.createElement('div'); card.className='card';
       let tgl=c.toggle? c.toggle.def : null;
       let fieldsHtml='';
-      c.fields.forEach(f=>{ const inp='<input id="'+c.id+'__'+f.k+'" inputmode="decimal" autocomplete="off" spellcheck="false" placeholder="—">';
+      c.fields.forEach(f=>{ const inp='<input id="'+c.id+'__'+f.k+'" inputmode="decimal" autocomplete="off" spellcheck="false" placeholder="–">';
         const body=f.unit? ('<div class="uf">'+inp+unitSelectHtml(c,f)+'</div>') : inp;
         const hide=f.show&&f.show!==tgl;
         fieldsHtml+='<div class="field"'+(f.show?' data-show="'+f.show+'"':'')+(hide?' style="display:none"':'')+'><label for="'+c.id+'__'+f.k+'">'+f.label+'</label>'+body+'</div>'; });
@@ -93,7 +93,7 @@ export function initApp(){
     msg.textContent=''; let bad=false;
     c.fields.forEach((f,idx)=>{ if(f.k in res.values){ const val=res.values[f.k]; if(val==null||!isFinite(val)){ bad=true; return; }
       writeField(f, inputs[idx], val); if(res.computed.includes(f.k)) inputs[idx].classList.add('computed'); } });
-    if(bad){ msg.textContent='Check inputs — result is undefined (divide by zero?).'; return; }
+    if(bad){ msg.textContent='Check inputs: result is undefined (divide by zero?).'; return; }
     if(c.interpret){ const merged=Object.assign({}, v, res.values); const ins=c.interpret(merged);
       if(ins){ insEl.className='insight show '+ins.level; insEl.innerHTML='<span class="lead">Note</span>'+ins.text; } }
   }
@@ -102,8 +102,8 @@ export function initApp(){
     const parts=[]; c.fields.forEach((f,idx)=>{ if(f.show&&f.show!==tgl) return;
       const val=inputs[idx].value.trim(); if(val!==''){ let u=''; if(f.unit){ u=' '+UNITS[f.unit][selFor(inputs[idx]).value].label; } parts.push(f.label+': '+val+u); } });
     const msg=document.getElementById('msg-'+c.id);
-    if(parts.length===0){ msg.className='msg'; msg.textContent='Nothing to copy yet — run a calculation first.'; return; }
-    const text=c.title+' — '+parts.join('; ');
+    if(parts.length===0){ msg.className='msg'; msg.textContent='Nothing to copy yet. Run a calculation first.'; return; }
+    const text=c.title+': '+parts.join('; ');
     const done=()=>{ msg.className='msg ok'; msg.textContent='Copied to clipboard.'; setTimeout(()=>{ if(msg.textContent==='Copied to clipboard.'){msg.textContent='';msg.className='msg';} },1800); };
     if(navigator.clipboard&&navigator.clipboard.writeText){ navigator.clipboard.writeText(text).then(done,()=>fallbackCopy(text,done)); } else fallbackCopy(text,done);
   }

@@ -40,7 +40,7 @@ export default [
       addSources(v,values,computed,lbs);
       return {values,computed,error:""}; },
     interpret:(m)=>{ if(m.lbs==null) return null; return {level:"info",text:"AWWA C654 commonly targets ~50 mg/L. Mix through the water column, hold per your state's guidance, then pump to waste and pass bac-T before returning to service."}; },
-    links:[{label:"AWWA C654 — Disinfection of Wells",href:"https://store.awwa.org/AWWA-C654-21-Disinfection-of-Wells"}]},
+    links:[{label:"AWWA C654: Disinfection of Wells",href:"https://store.awwa.org/AWWA-C654-21-Disinfection-of-Wells"}]},
   { id:"tank-chlorination", cat:"Field Disinfection", domains:["water"], title:"Tank Chlorination", formula:"lbs Cl = mg/L × MG × 8.34 · product = lbs ÷ strength%", note:"Works both ways: target residual → amount to add, or amount added → resulting mg/L. "+SRC_NOTE,
     keywords:["bleach","HTH","shock","hypochlorite","cal-hypo"], seeAlso:["tank-volume-field"], toggle:SRC_TOGGLE,
     fields:[Object.assign({},DIA,{label:"Dia (optional)"}),{k:"depth",label:"Depth (optional)",unit:"length",def:"ft",units:["ft","in","m"]},{k:"gal",label:"Tank volume",unit:"volume",def:"gal",units:["gal","L","m3","MG"]},{k:"dose",label:"Target residual mg/L"},{k:"lbs",label:"Chlorine lbs"}].concat(LIQ,DRY),
@@ -53,7 +53,7 @@ export default [
         if(p!=null){ lbs=v.liqgal*D834*p/100; if(v.liqpct==null){ values.liqpct=p; computed.push("liqpct"); } } }
       if(lbs==null&&v.drylbs!=null&&v.src!=="liquid"){ const p=(v.drypct!=null)?v.drypct:(v.src==="granular"?65:null);
         if(p!=null){ lbs=v.drylbs*p/100; if(v.drypct==null){ values.drypct=p; computed.push("drypct"); } } }
-      if(lbs==null) return {values:{},computed:[],error:"Enter a target residual — or what you added (product amount, or chlorine lbs)."};
+      if(lbs==null) return {values:{},computed:[],error:"Enter a target residual, or what you added (product amount, or chlorine lbs)."};
       values.dose=lbs/((gal/1e6)*D834); computed.push("dose"); if(v.lbs==null){ values.lbs=lbs; computed.push("lbs"); }
       return {values,computed,error:""}; }},
   { id:"main-disinfection", cat:"Field Disinfection", domains:["water"], title:"Water-Main Disinfection (AWWA C651)", formula:"Vol gal = 0.0408 × dia in² × length ft\nlbs Cl = mg/L × MG × 8.34 · product = lbs ÷ strength%", note:"New or repaired mains. Dose defaults to 25 mg/L (C651 continuous-feed, 24-hr hold). "+SRC_NOTE,
@@ -67,5 +67,5 @@ export default [
       addSources(v,values,computed,lbs);
       return {values,computed,error:""}; },
     interpret:(m)=>{ if(m.lbs==null) return null; return {level:"info",text:"C651 continuous-feed: hold 25 mg/L free chlorine for 24 hours with ≥10 mg/L remaining at the end, then flush to a safe residual and pass bac-T before service."}; },
-    links:[{label:"EPA — Disinfecting new or repaired water mains",href:"https://www.epa.gov/sites/default/files/2015-09/documents/neworrepairedwatermains.pdf"}]}
+    links:[{label:"EPA: Disinfecting new or repaired water mains",href:"https://www.epa.gov/sites/default/files/2015-09/documents/neworrepairedwatermains.pdf"}]}
 ];

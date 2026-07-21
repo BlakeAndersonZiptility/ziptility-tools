@@ -21,7 +21,7 @@ export default [
       if(v.flow!=null&&v.rate!=null) return {values:{area:v.flow/v.rate},computed:["area"],error:""};
       if(v.area!=null&&v.rate!=null) return {values:{flow:v.area*v.rate},computed:["flow"],error:""};
       return {values:{},computed:[],error:"Enter any two values."}; },
-    interpret:(m)=>{ if(m.rate==null) return null; return {level:"info",text:"Typical clarifier overflow ~400–800 gpd/ft² (varies by type and flow) — compare to design."}; }},
+    interpret:(m)=>{ if(m.rate==null) return null; return {level:"info",text:"Typical clarifier overflow ~400–800 gpd/ft² (varies by type and flow). Compare to design."}; }},
   { id:"weir-overflow", cat:"Loading & Mass", domains:["wastewater"], title:"Weir Overflow Rate", formula:"Flow gpd ÷ Weir length ft = gpd/ft", note:"Enter any two values.",
     fields:[{k:"flow",label:"Flow gpd"},{k:"len",label:"Weir length ft"},{k:"rate",label:"Rate gpd/ft"}],
     solve:(v)=>{ if(v.flow!=null&&v.len!=null) return {values:{rate:v.flow/v.len},computed:["rate"],error:""};

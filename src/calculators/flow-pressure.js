@@ -4,7 +4,7 @@ import { convSolve, countNN, converter } from '../calc-helpers.js';
 
 export default [
 
-  { id:"gpm-mgd", cat:"Flow & Pressure", domains:["water","wastewater"], title:"Flow — gpm / MGD", formula:"gpm × 1440 ÷ 1,000,000 = MGD", note:"Enter one value.",
+  { id:"gpm-mgd", cat:"Flow & Pressure", domains:["water","wastewater"], title:"Flow: gpm / MGD", formula:"gpm × 1440 ÷ 1,000,000 = MGD", note:"Enter one value.",
     fields:[{k:"gpm",label:"gpm"},{k:"mgd",label:"MGD"},{k:"ml",label:"mL/min"}], solve:convSolve({gpm:1, mgd:0.00144, ml:3785.41})},
   { id:"detention", cat:"Flow & Pressure", domains:["water","wastewater"], title:"Detention Time", formula:"Volume ÷ Flow = Time", note:"Enter any two. Units must be compatible.",
     fields:[{k:"vol",label:"Volume"},{k:"flow",label:"Flow / time"},{k:"t",label:"Detention Time"}],
@@ -18,13 +18,13 @@ export default [
       if(v.q!=null&&v.a!=null) return {values:{vel:v.q/v.a},computed:["vel"],error:""};
       if(v.q!=null&&v.vel!=null) return {values:{a:v.q/v.vel},computed:["a"],error:""};
       return {values:{},computed:[],error:"Enter any two values."}; },
-    interpret:(m)=>{ if(m.vel==null) return null; return m.vel>=2 ? {level:"good",text:"At or above 2 ft/s — meets typical self-cleansing velocity for gravity sewers."} : {level:"watch",text:"Below 2 ft/s — under typical self-cleansing velocity; solids may settle."}; },
+    interpret:(m)=>{ if(m.vel==null) return null; return m.vel>=2 ? {level:"good",text:"At or above 2 ft/s: meets typical self-cleansing velocity for gravity sewers."} : {level:"watch",text:"Below 2 ft/s: under typical self-cleansing velocity; solids may settle."}; },
     links:[{label:"Mapping your sewer collection system",href:"https://www.ziptility.com/blog/sewer-collection-system-mapping-small-utilities"}]},
   { id:"pressure-head", cat:"Flow & Pressure", domains:["water"], title:"Pressure / Head", formula:"psi × 2.3067 = ft of head", note:"Enter one value.",
     keywords:["head","psi"], seeAlso:["head-loss"],
     fields:[{k:"psi",label:"psi"},{k:"ft",label:"Head ft"}], solve:convSolve({psi:1, ft:PSI2FT}),
-    interpret:(m)=>{ if(m.psi==null) return null; if(m.psi<20) return {level:"alert",text:"Under 20 psi — below the minimum distribution pressure most states require."};
-      if(m.psi<=80) return {level:"good",text:"20–80 psi — within the normal distribution range."}; return {level:"watch",text:"Over 80 psi — high; can stress mains and fixtures (consider a PRV)."}; }},
+    interpret:(m)=>{ if(m.psi==null) return null; if(m.psi<20) return {level:"alert",text:"Under 20 psi: below the minimum distribution pressure most states require."};
+      if(m.psi<=80) return {level:"good",text:"20–80 psi: within the normal distribution range."}; return {level:"watch",text:"Over 80 psi: high; can stress mains and fixtures (consider a PRV)."}; }},
   { id:"cycle-time", cat:"Flow & Pressure", domains:["wastewater"], title:"Lift Station Cycle Time", formula:"Storage ÷ (Pump − Inflow) = Cycle (min)", note:"Pump-down time. Enter pump, inflow, storage (gal & gpm).",
     fields:[{k:"pump",label:"Pump gpm"},{k:"inflow",label:"Inflow gpm"},{k:"stor",label:"Storage gal"},{k:"cyc",label:"Cycle min"}],
     solve:(v)=>{ if(v.pump!=null&&v.inflow!=null&&v.stor!=null){ const net=v.pump-v.inflow; return {values:{cyc:net!==0?v.stor/net:NaN},computed:["cyc"],error:""}; }
@@ -41,11 +41,11 @@ export default [
         values.q20=q*Math.pow(v.static-20,0.54)/Math.pow(v.static-v.resid,0.54); computed.push("q20"); }
       return {values,computed,error:""}; },
     interpret:(m)=>{ const q=m.q20!=null?m.q20:m.q; if(q==null) return null;
-      const tail=m.q20!=null?"":" (Observed at test pressure — add static & residual psi for the NFPA 20-psi rating.)";
-      if(q>=1500) return {level:"good",text:"Class AA — ≥1,500 gpm (light blue bonnet)."+tail};
-      if(q>=1000) return {level:"good",text:"Class A — 1,000–1,499 gpm (green bonnet)."+tail};
-      if(q>=500) return {level:"watch",text:"Class B — 500–999 gpm (orange bonnet)."+tail};
-      return {level:"alert",text:"Class C — under 500 gpm (red bonnet). Check for closed valves, tuberculation, or undersized mains."+tail}; },
+      const tail=m.q20!=null?"":" (Observed at test pressure. Add static & residual psi for the NFPA 20-psi rating.)";
+      if(q>=1500) return {level:"good",text:"Class AA: ≥1,500 gpm (light blue bonnet)."+tail};
+      if(q>=1000) return {level:"good",text:"Class A: 1,000–1,499 gpm (green bonnet)."+tail};
+      if(q>=500) return {level:"watch",text:"Class B: 500–999 gpm (orange bonnet)."+tail};
+      return {level:"alert",text:"Class C: under 500 gpm (red bonnet). Check for closed valves, tuberculation, or undersized mains."+tail}; },
     links:[{label:"NFPA 291 hydrant flow testing explained",href:"https://www.mwua.org/nfpa-291-hydrant-flow-testing/"}]},
   { id:"head-loss", cat:"Flow & Pressure", domains:["water","wastewater"], title:"Friction Head Loss (Hazen-Williams)", formula:"hf ft/100ft = 0.2083 × (100/C)^1.852 × gpm^1.852 ÷ dia in^4.8655", note:"C-factor: PVC 150 · new ductile iron 140 (default) · steel 120 · old cast iron 100. Add length for total loss.",
     keywords:["hazen","williams","friction","pressure drop","pipe sizing"], seeAlso:["pressure-head","velocity"],
@@ -58,9 +58,9 @@ export default [
       if(v.len!=null){ values.loss=values.hf100*v.len/100; values.psi=values.loss/PSI2FT; computed.push("loss","psi"); }
       return {values,computed,error:""}; },
     interpret:(m)=>{ if(m.vel==null) return null;
-      if(m.vel>8) return {level:"alert",text:"Velocity over 8 ft/s — very high for distribution; expect heavy friction loss and surge risk. The pipe is likely undersized for this flow."};
-      if(m.vel>5) return {level:"watch",text:"Velocity 5–8 ft/s — workable but lossy; typical distribution design targets ~2–5 ft/s."};
-      return {level:"info",text:"Velocity in the normal 0–5 ft/s range. Friction loss grows with flow^1.85 — doubling flow roughly 3.6×'s the loss."}; },
+      if(m.vel>8) return {level:"alert",text:"Velocity over 8 ft/s: very high for distribution; expect heavy friction loss and surge risk. The pipe is likely undersized for this flow."};
+      if(m.vel>5) return {level:"watch",text:"Velocity 5–8 ft/s: workable but lossy; typical distribution design targets ~2–5 ft/s."};
+      return {level:"info",text:"Velocity in the normal 0–5 ft/s range. Friction loss grows with flow^1.85: doubling flow roughly 3.6×'s the loss."}; },
     links:[{label:"Hazen-Williams formula & C-factors",href:"https://www.engineeringtoolbox.com/hazen-williams-water-d_797.html"}]},
   { id:"sewer-capacity", cat:"Flow & Pressure", domains:["wastewater"], title:"Gravity Sewer Capacity (Manning)", formula:"Q = (1.486/n) × A × R^⅔ × √S   (full circular pipe)", note:"n: PVC 0.010–0.013 (default 0.013) · concrete 0.013–0.015 · clay 0.013. Slope in ft per 100 ft (%).",
     keywords:["manning","slope","gravity sewer","full pipe"], seeAlso:["velocity","cycle-time"],
@@ -71,9 +71,9 @@ export default [
       const A=PI4*v.dia*v.dia, R=v.dia/4, qcfs=(1.486/n)*A*Math.pow(R,2/3)*Math.sqrt(v.slope/100);
       values.q=qcfs*448.8312; values.vel=qcfs/A; computed.push("q","vel");
       return {values,computed,error:""}; },
-    interpret:(m)=>{ if(m.vel==null) return null; return m.vel>=2 ? {level:"good",text:"Full-pipe velocity ≥ 2 ft/s — meets typical self-cleansing velocity for gravity sewers."} : {level:"watch",text:"Full-pipe velocity under 2 ft/s — below typical self-cleansing velocity; solids may settle at this slope."}; },
+    interpret:(m)=>{ if(m.vel==null) return null; return m.vel>=2 ? {level:"good",text:"Full-pipe velocity ≥ 2 ft/s: meets typical self-cleansing velocity for gravity sewers."} : {level:"watch",text:"Full-pipe velocity under 2 ft/s: below typical self-cleansing velocity; solids may settle at this slope."}; },
     links:[{label:"Manning's formula for gravity flow",href:"https://www.engineeringtoolbox.com/mannings-formula-gravity-flow-d_800.html"}]},
-  { id:"weir-flow", cat:"Flow & Pressure", domains:["water","wastewater"], title:"Weir Flow (V-notch / Rectangular)", formula:"90° V-notch: Q cfs = 2.49 × H^2.48\nRectangular (contracted): Q = 3.33 × (L − 0.2H) × H^1.5", note:"Measure head a few feet upstream of the weir. Fill in the head for your weir type — only that line computes.",
+  { id:"weir-flow", cat:"Flow & Pressure", domains:["water","wastewater"], title:"Weir Flow (V-notch / Rectangular)", formula:"90° V-notch: Q cfs = 2.49 × H^2.48\nRectangular (contracted): Q = 3.33 × (L − 0.2H) × H^1.5", note:"Measure head a few feet upstream of the weir. Fill in the head for your weir type. Only that line computes.",
     keywords:["v-notch","weir","flume","flow measurement"], seeAlso:["gpm-mgd"],
     fields:[{k:"hv",label:"V-notch head",unit:"length",def:"ft",units:["ft","in"]},{k:"qv",label:"V-notch flow",unit:"flow",def:"gpm",units:["gpm","mgd","cfs"]},{k:"crest",label:"Rect crest length",unit:"length",def:"ft",units:["ft","in"]},{k:"hr",label:"Rect head",unit:"length",def:"ft",units:["ft","in"]},{k:"qr",label:"Rect flow",unit:"flow",def:"gpm",units:["gpm","mgd","cfs"]}],
     solve:(v)=>{ const values={}, computed=[];

@@ -44,7 +44,7 @@ export function buildShell(){
   <div class="cta-inner">
     <div class="cta-txt">
       <h3>Built by people who actually run small systems</h3>
-      <p>Ziptility puts your map, assets, work orders, and compliance records in one place — no GIS degree required. These numbers are easier to track when they live in your system, not a clipboard.</p>
+      <p>Ziptility puts your map, assets, work orders, and compliance records in one place: no GIS degree required. These numbers are easier to track when they live in your system, not a clipboard.</p>
     </div>
     <div class="cta-actions">
       <a class="cta-btn cta-primary" href="https://www.ziptility.com/request-a-free-demo-ziptility-utility-management-software" target="_blank" rel="noopener">Book a demo</a>
@@ -57,7 +57,7 @@ export function buildShell(){
 
 <footer>
   <div class="disclaimer">
-    <strong>Always verify before field use.</strong> This is a working aid for common operator math, not a substitute for your own check, your system&#39;s engineering, or regulatory requirements. The guidance notes are general rules of thumb — your permit, process, and state rules govern. Confirm any number that drives a compliance, dosing, or safety decision.
+    <strong>Always verify before field use.</strong> This is a working aid for common operator math, not a substitute for your own check, your system&#39;s engineering, or regulatory requirements. The guidance notes are general rules of thumb: your permit, process, and state rules govern. Confirm any number that drives a compliance, dosing, or safety decision.
   </div>
   <div class="ref">
     <h3>Reference constants</h3>

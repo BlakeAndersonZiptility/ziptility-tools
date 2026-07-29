@@ -12,10 +12,10 @@ know what is serving right now, read the page.
 
 | Artifact | Status |
 |---|---|
-| `practice-v1.5.0.js` | released, not yet pointed at by any page (supersedes v1.4.0; adds the contrast fix) |
-| `manager-v1.1.0.js` | released, not yet pointed at by any page (supersedes v1.0.0; adds the design-audit fixes) |
-| `calculator-v2.7.0.js` | released, not yet pointed at by any page (supersedes v2.6.0; adds the contrast and mobile-gate fixes) |
-| `reportcard-v1.0.0.js` | released, not yet pointed at by any page |
+| `practice-v1.6.0.js` | released, not yet pointed at by any page (supersedes v1.5.0; adds the design pass) |
+| `manager-v1.2.0.js` | released, not yet pointed at by any page (supersedes v1.1.0; adds the design pass) |
+| `calculator-v2.8.0.js` | released, not yet pointed at by any page (supersedes v2.7.0; adds the design pass) |
+| `reportcard-v1.1.0.js` | released, not yet pointed at by any page (supersedes v1.0.0; adds the design pass) |
 
 Nothing on the live site has moved. Every page still serves the version it
 served this morning, because a page only changes when its `src` changes,
@@ -39,7 +39,7 @@ one attribute:
   <div aria-hidden="true" style="height:88px;background:#0c1f30;border-bottom:3px solid #ff442f"></div>
   <noscript>This tool requires JavaScript. Please enable it to use the free practice test.</noscript>
 </div>
-<script defer src="https://blakeandersonziptility.github.io/ziptility-tools/dist/practice-v1.5.0.js"></script>
+<script defer src="https://blakeandersonziptility.github.io/ziptility-tools/dist/practice-v1.6.0.js"></script>
 ```
 
 **`data-test` is the page's own slug**, the last segment of its URL, so
@@ -114,7 +114,7 @@ that gets the engagement.
 **Leave it off until all six pages are published**, or the hub links to
 404s. It is one attribute, added last.
 
-The hub embed also wants its `src` moved to `practice-v1.5.0.js` to pick up
+The hub embed also wants its `src` moved to `practice-v1.6.0.js` to pick up
 the blank-description fix: five of the six cards currently render an empty
 description paragraph in production.
 
@@ -129,7 +129,7 @@ pinned per page.
 <div id="ziptility-manager-tools" data-tool="repair-or-replace">
   <noscript>This tool requires JavaScript. Please enable it to use the free calculator.</noscript>
 </div>
-<script defer src="https://blakeandersonziptility.github.io/ziptility-tools/dist/manager-v1.1.0.js"></script>
+<script defer src="https://blakeandersonziptility.github.io/ziptility-tools/dist/manager-v1.2.0.js"></script>
 ```
 
 | Page URL | `data-tool` |
@@ -165,7 +165,7 @@ D26's six), and the citations stand as they are.
 <div id="ziptility-report-card">
   <noscript>This tool requires JavaScript. Please enable it to use the free report card.</noscript>
 </div>
-<script defer src="https://blakeandersonziptility.github.io/ziptility-tools/dist/reportcard-v1.0.0.js"></script>
+<script defer src="https://blakeandersonziptility.github.io/ziptility-tools/dist/reportcard-v1.1.0.js"></script>
 ```
 
 Wrapper: class `.zip-reportcard-embed`. This one changes height a lot
@@ -196,7 +196,7 @@ completely and sends nothing.
 
 ## 4. What changed under the existing pages
 
-**`/tools/calculator`** should move to **`calculator-v2.7.0.js`**, which
+**`/tools/calculator`** should move to **`calculator-v2.8.0.js`**, which
 carries two changes.
 
 *Deep links.* Every link the practice tests emit
@@ -260,7 +260,7 @@ one back. Removed in v2.6.0.
 Both properties now run in CI (`scripts/check-neutral-lane.mjs`) on all
 four bundles, because both had drifted back in once already.
 
-**`/tools/practice`** wants **`practice-v1.5.0.js`** for the
+**`/tools/practice`** wants **`practice-v1.6.0.js`** for the
 blank-description fix, whether or not the six pages ship at the same time.
 Five of its six cards render an empty description in production today.
 

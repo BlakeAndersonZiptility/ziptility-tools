@@ -7,6 +7,20 @@ Runtime truth is the live embed on the page, never this file (LEDGER
 L-005). Versions below are what was live or newly cut on 2026-07-29; to
 know what is serving right now, read the page.
 
+**Released and serving from the CDN as of 2026-07-29** (each verified HTTP
+200 and driven in a browser from the CDN, not from a dev build):
+
+| Artifact | Status |
+|---|---|
+| `practice-v1.4.0.js` | released, not yet pointed at by any page |
+| `manager-v1.0.0.js` | released, not yet pointed at by any page |
+| `calculator-v2.5.0.js` | released, not yet pointed at by any page |
+| `reportcard-v*` | **not released**, see section 3 |
+
+Nothing on the live site has moved. Every page still serves the version it
+served this morning, because a page only changes when its `src` changes,
+and that is Blake's call.
+
 Deploy is one edit: change the version in the `<script src>` and publish.
 Artifacts are immutable, so **merging to main never changes what a visitor
 sees**. Rollback is the same edit in reverse and takes about a minute.
@@ -159,7 +173,7 @@ own Methodology sheet. This section updates when those two clear.
 
 ## 4. What changed under the existing pages
 
-**`/tools/calculator`** should move to the next calculator release. Every
+**`/tools/calculator`** should move to **`calculator-v2.5.0.js`**. Every
 deep link the practice tests emit (`/tools/calculator#chlorine-dose` and 27
 others) was dead: cards carried no id, and the grid renders one category at
 a time so the target card was not in the document at all. Both are fixed
@@ -167,8 +181,25 @@ and all 28 are verified to land on their card. Until the embed is
 repointed, those links keep dropping readers at the top of a page of 50+
 calculators.
 
-**`/tools/practice`** wants `practice-v1.4.0.js` for the blank-description
-fix, whether or not the six pages ship at the same time.
+**`/tools/practice`** wants **`practice-v1.4.0.js`** for the
+blank-description fix, whether or not the six pages ship at the same time.
+Five of its six cards render an empty description in production today.
+
+### A provenance note on what is serving right now
+
+`calculator-v2.4.1.js`, the version production serves until that repoint,
+has **no tag and no GitHub Release**. It was built and committed by hand in
+`dc75a6f` and `f5f6bff`, bypassing the release workflow, so it carries no
+workflow SHA banner either. Nothing is wrong with the bytes; they are what
+has been serving since 2026-07-25 and they hold the live HubSpot form GUID.
+It is only that "which commit produced production" is a `git log` search
+rather than a tag.
+
+Deliberately not backfilled: pushing a `v2.4.1` tag now would trigger the
+release workflow, which would correctly refuse ("versions are immutable")
+and leave a red failed run that reads like a problem when it is not.
+`v2.5.0` was cut through the workflow properly, so the gap closes on its
+own the moment the embed is repointed.
 
 ---
 

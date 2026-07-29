@@ -86,8 +86,16 @@
   padding:.9rem 1.6rem; transition:background var(--dur) var(--ease), border-color var(--dur) var(--ease), color var(--dur) var(--ease);
 }
 #ziptility-report-card .zrc-btn[disabled]{ opacity:.5; cursor:not-allowed; }
-#ziptility-report-card .zrc-btn-primary{ background:var(--tomato); color:var(--white); }
-#ziptility-report-card .zrc-btn-primary:hover:not([disabled]){ background:var(--tomato-press); }
+/* D2: white-on-tomato measured 3.43:1. 15px/700 text does not qualify for
+   the WCAG large-text carve-out (needs 18.66px bold or 24px regular), so
+   4.5:1 is the real floor and tomato fails it on every primary button on
+   every screen. White-on-tomato-press measures 6.07:1, so tomato-press is
+   now the RESTING background, not just the old hover state. Hover darkens
+   further with brightness() rather than swapping to a new named colour:
+   darkening an already-passing background can only raise its contrast
+   against white text, never risk it, so no new ratio needs checking. */
+#ziptility-report-card .zrc-btn-primary{ background:var(--tomato-press); color:var(--white); }
+#ziptility-report-card .zrc-btn-primary:hover:not([disabled]){ filter:brightness(0.85); }
 #ziptility-report-card .zrc-btn-secondary{ background:transparent; color:var(--tomato-press); border-color:var(--tomato); }
 #ziptility-report-card .zrc-btn-secondary:hover:not([disabled]){ background:var(--tomato-tint); }
 #ziptility-report-card .zrc-btn-quiet{ background:var(--white); color:var(--midnight); border-color:var(--n200); }
@@ -133,19 +141,33 @@
 /* ---------- jump nav ---------- */
 #ziptility-report-card .zrc-jumpnav{ margin-bottom:22px; }
 #ziptility-report-card .zrc-jumpgroup{ margin-bottom:8px; }
+/* D4: --n400 measured 2.46-2.56:1 here, which fails 4.5:1. This eyebrow
+   names WHICH dimension a chip is about - informational, not decorative -
+   so it does not get a decorative-text pass. --n600 measures ~7.6:1 on
+   white and stays a CSS custom property in print, so it survives there
+   too (checked: this is not one of the print rules that hard-codes #000). */
 #ziptility-report-card .zrc-jumpgroup-label{
   display:block; font-family:var(--font-ui); font-size:11px; font-weight:700; letter-spacing:.04em;
-  text-transform:uppercase; color:var(--n400); margin-bottom:5px;
+  text-transform:uppercase; color:var(--n600); margin-bottom:5px;
 }
-#ziptility-report-card .zrc-jumprow{ display:flex; flex-wrap:wrap; gap:6px; }
+/* D3: chips measured 28px tall at both 500px and 1280px - below the 44px
+   touch-target floor at every width, since nothing here was responsive to
+   begin with. min-height (not just padding) guarantees 44px regardless of
+   the short "T7"-style label, and the gap widens from 6px so a near-miss
+   lands on empty space instead of the neighbouring chip. */
+#ziptility-report-card .zrc-jumprow{ display:flex; flex-wrap:wrap; gap:10px; }
 #ziptility-report-card .zrc-jumpbtn{
+  display:inline-flex; align-items:center; justify-content:center;
   font-family:var(--font-ui); font-weight:600; font-size:12px; color:var(--n600);
   background:var(--white); border:1px solid var(--n200); border-radius:var(--radius-sm);
-  padding:5px 8px; cursor:pointer; min-width:38px;
+  padding:5px 10px; cursor:pointer; min-width:44px; min-height:44px;
 }
 #ziptility-report-card .zrc-jumpbtn:hover{ border-color:var(--n300); }
 #ziptility-report-card .zrc-jumpbtn-answered{ color:var(--midnight); border-color:var(--n300); background:var(--n50); }
 #ziptility-report-card .zrc-jumpbtn-current{ border-color:var(--tomato); background:var(--tomato-tint); color:var(--midnight); }
+/* Used both as a <button> (intake.js) and an <a> (results.js's All-23
+   jump nav, C4) - links get the same reset so the two look identical. */
+#ziptility-report-card a.zrc-jumpbtn{ text-decoration:none; }
 
 /* ---------- cards ---------- */
 #ziptility-report-card .zrc-card{
@@ -213,7 +235,11 @@
 #ziptility-report-card .zrc-profile-help{ font-size:13px; line-height:1.4; color:var(--n500); margin:0 0 2px; }
 #ziptility-report-card .zrc-profile-select,
 #ziptility-report-card .zrc-profile-input{
-  font-family:var(--font-ui); font-size:15px; padding:12px 14px;
+  /* D5: was 15px, which iOS Safari treats as "small enough to zoom in on
+     focus" (the cutoff is 16px). That zoom-and-you-have-to-zoom-back-out
+     is exactly the kind of friction a "30 to 45 minute annual update"
+     tool cannot afford. */
+  font-family:var(--font-ui); font-size:16px; padding:12px 14px;
   border-radius:var(--radius); border:2px solid var(--n200); background:var(--white); color:var(--midnight);
 }
 #ziptility-report-card .zrc-profile-select:hover,
@@ -234,13 +260,6 @@
 #ziptility-report-card .zrc-composite-letter{ font-family:var(--font-sans); font-weight:900; font-size:32px; line-height:1; }
 #ziptility-report-card .zrc-composite-name{ font-family:var(--font-ui); font-size:13px; font-weight:600; }
 #ziptility-report-card .zrc-composite-card-sub{ font-family:var(--font-ui); font-size:12px; color:var(--n500); margin-top:10px; }
-
-#ziptility-report-card .zrc-cap-note{
-  background:#fffbeb; border:1px solid #fcd34d; border-radius:var(--radius); padding:16px 18px; margin-top:6px;
-}
-#ziptility-report-card .zrc-cap-descriptive{ margin:0 0 4px; font-size:14.5px; color:var(--n700); }
-#ziptility-report-card .zrc-cap-practical{ margin:0 0 8px; font-size:17px; font-weight:800; color:#92400e; }
-#ziptility-report-card .zrc-cap-explain{ margin:0; font-size:14px; line-height:1.5; color:var(--n700); }
 
 /* ---------- results: grouped bars ---------- */
 #ziptility-report-card .zrc-bars-grid{ display:grid; grid-template-columns:1fr; gap:32px; }
@@ -268,7 +287,9 @@
 #ziptility-report-card .zrc-redline-card{
   background:var(--white); border-radius:var(--radius); border-left:4px solid #dc2626; padding:16px 18px;
 }
-#ziptility-report-card .zrc-redline-leg{ font-family:var(--font-ui); font-size:11px; font-weight:700; letter-spacing:.03em; text-transform:uppercase; color:var(--n400); margin-bottom:4px; }
+#ziptility-report-card .zrc-redline-head{ display:flex; align-items:center; justify-content:space-between; gap:8px; margin-bottom:4px; }
+/* D4: same n400->n600 fix as .zrc-jumpgroup-label above; same reasoning. */
+#ziptility-report-card .zrc-redline-leg{ font-family:var(--font-ui); font-size:11px; font-weight:700; letter-spacing:.03em; text-transform:uppercase; color:var(--n600); margin:0; }
 #ziptility-report-card .zrc-redline-name{ font-size:17px; font-weight:800; color:var(--midnight); margin:0 0 6px; }
 #ziptility-report-card .zrc-redline-grade{ font-family:var(--font-ui); font-size:13px; font-weight:700; color:#b91c1c; }
 #ziptility-report-card .zrc-redline-clear{ font-size:15px; color:#15803d; font-weight:600; margin:0; }
@@ -284,21 +305,74 @@
 #ziptility-report-card .zrc-actionplan-card{
   background:var(--warm-50); border-radius:var(--radius); padding:18px 20px;
 }
+/* D4: same n400->n600 fix as .zrc-jumpgroup-label above; same reasoning. */
 #ziptility-report-card .zrc-onerungup-leg,
 #ziptility-report-card .zrc-actionplan-leg{
   display:block; font-family:var(--font-ui); font-size:11px; font-weight:700; letter-spacing:.03em;
-  text-transform:uppercase; color:var(--n400); margin-bottom:4px;
+  text-transform:uppercase; color:var(--n600); margin-bottom:4px;
 }
 #ziptility-report-card .zrc-actionplan-head{ display:flex; justify-content:space-between; align-items:baseline; gap:10px; }
 #ziptility-report-card .zrc-actionplan-grade{ font-family:var(--font-ui); font-size:12px; font-weight:700; color:var(--n700); }
 #ziptility-report-card .zrc-onerungup-transition{ font-family:var(--font-ui); font-size:13px; font-weight:600; color:var(--n700); margin:2px 0 10px; }
 #ziptility-report-card .zrc-action-text{ font-size:14px; line-height:1.55; color:var(--n700); white-space:pre-line; margin:8px 0 0; }
 
+/* ---------- C1: "what this means" line (dim.rungs[grade], the reader's
+   own chosen description, surfaced back on results everywhere a grade is
+   shown) ---------- */
+#ziptility-report-card .zrc-whatmeans{ font-size:14px; line-height:1.55; color:var(--n700); margin:8px 0 0; }
+#ziptility-report-card .zrc-whatmeans-label{ font-weight:700; color:var(--midnight); }
+
+/* ---------- C3: compact cross-reference, used in place of a repeated
+   full card when a one-rung-up or action-plan entry duplicates a
+   dimension already shown in full in the red-line panel above ---------- */
+#ziptility-report-card .zrc-see-above{ display:flex; align-items:center; }
+#ziptility-report-card .zrc-see-above-link{
+  font-family:var(--font-ui); font-size:14px; font-weight:600; color:var(--tomato-press);
+}
+
+/* ---------- C4: citation collapsed behind a closed-by-default <details>
+   on screen only (see the @media print override further down, which
+   forces it open there instead) ---------- */
+#ziptility-report-card .zrc-cite-details{ margin-top:6px; }
+#ziptility-report-card .zrc-cite-summary{
+  font-family:var(--font-ui); font-size:12px; font-weight:600; color:var(--n700);
+  cursor:pointer; list-style:none;
+}
+#ziptility-report-card .zrc-cite-summary::-webkit-details-marker{ display:none; }
+#ziptility-report-card .zrc-cite-summary::before{ content:'▸ '; }
+#ziptility-report-card .zrc-cite-details[open] > .zrc-cite-summary::before{ content:'▾ '; }
+#ziptility-report-card .zrc-cite-details .zrc-cite{ margin:4px 0 0; }
+
+/* ---------- C2: the Practical Grade lead, shown first and larger when
+   two or more critical dimensions cap the composite (config.js
+   PRACTICAL_CAP_THRESHOLD) ---------- */
+#ziptility-report-card .zrc-practical-lead{ margin:0 0 18px; }
+#ziptility-report-card .zrc-practical-grade-big{
+  display:inline-flex; flex-direction:column; align-items:center; gap:2px;
+  border-radius:var(--radius-lg); padding:16px 30px; margin-bottom:14px;
+}
+#ziptility-report-card .zrc-practical-letter{ font-family:var(--font-sans); font-weight:900; font-size:52px; line-height:1; }
+#ziptility-report-card .zrc-practical-label{ font-family:var(--font-ui); font-size:13px; font-weight:700; text-transform:uppercase; letter-spacing:.04em; }
+#ziptility-report-card .zrc-practical-explain{ font-size:16.5px; line-height:1.55; color:var(--n700); margin:0; max-width:640px; }
+#ziptility-report-card .zrc-composite-secondary-label{
+  font-family:var(--font-ui); font-size:12px; font-weight:700; text-transform:uppercase;
+  letter-spacing:.03em; color:var(--n600); margin:0 0 10px;
+}
+/* Demoted, not hidden: the composite still needs to be seen, just clearly
+   secondary to the Practical Grade above it. */
+#ziptility-report-card .zrc-composite-grid-secondary .zrc-composite-letter{ font-size:22px; }
+#ziptility-report-card .zrc-composite-grid-secondary .zrc-composite-card{ padding:14px 12px; }
+
+/* ---------- landing: Start subtext (D1) ---------- */
+#ziptility-report-card .zrc-start-wrap{ display:flex; flex-direction:column; align-items:flex-start; gap:6px; }
+#ziptility-report-card .zrc-start-subtext{ font-size:13px; color:var(--n600); margin:0; max-width:260px; }
+
 /* ---------- soft capture (R14: below the fully rendered result only) ---------- */
 #ziptility-report-card .zrc-softcapture{ background:var(--warm-50); border-radius:var(--radius-lg); padding:26px 24px; }
 #ziptility-report-card .zrc-softcapture-row{ display:flex; gap:10px; flex-wrap:wrap; margin-top:10px; }
 #ziptility-report-card .zrc-email-input{
-  flex:1; min-width:220px; font-family:var(--font-ui); font-size:15px; padding:12px 14px;
+  /* D5: same 15px-to-16px iOS-zoom fix as the profile inputs above. */
+  flex:1; min-width:220px; font-family:var(--font-ui); font-size:16px; padding:12px 14px;
   border-radius:var(--radius); border:2px solid var(--n200); background:var(--white); color:var(--midnight);
 }
 
@@ -329,12 +403,41 @@
   #ziptility-report-card .zrc-redline-card,
   #ziptility-report-card .zrc-onerungup-card,
   #ziptility-report-card .zrc-actionplan-card{ box-shadow:none!important; border:1px solid #999; }
-  #ziptility-report-card section{ break-inside:avoid-page; margin:24px 0; }
+  /* E1: this used to also carry break-inside:avoid-page, which pushes an
+     ENTIRE section to the next page rather than letting it flow, and every
+     section here (e.g. "All 23 dimensions") is far taller than one page.
+     Measured: 9 pages with ~40% blank on three of them. The per-card rules
+     two lines down already protect the thing a board actually reads card
+     by card, so the blanket section rule was pure waste. Removing it
+     alone should save 2 to 3 pages. */
+  #ziptility-report-card section{ margin:24px 0; }
   #ziptility-report-card .zrc-redline-card,
   #ziptility-report-card .zrc-onerungup-card,
   #ziptility-report-card .zrc-actionplan-card,
   #ziptility-report-card .zrc-composite-card{ break-inside:avoid; }
   #ziptility-report-card .zrc-redline-section{ background:#fff; border:1px solid #999; }
+
+  /* D6: measured .zrc-cite at ~8.6pt and .zrc-action-text at ~10.5pt in
+     print, both under the 12pt floor - and these are the regulatory
+     citation on all 23 cards and the actual next-step text, not
+     decoration. Explicit pt overrides, with a little headroom above the
+     floor rather than landing exactly on it. */
+  #ziptility-report-card .zrc-cite{ font-size:12.5pt; line-height:1.4; }
+  #ziptility-report-card .zrc-action-text{ font-size:12.5pt; line-height:1.4; }
+  #ziptility-report-card .zrc-whatmeans{ font-size:12.5pt; line-height:1.4; }
+
+  /* C4: the citation disclosure is a screen-only affordance (a board
+     reading paper cannot click anything), so the toggle itself is always
+     hidden in print. The actual opening happens in main.js's
+     beforeprint/afterprint handler, which flips the real `open` attribute
+     for the print and restores it after - verified necessary because a
+     CSS-only override does not work in current Chromium (a closed
+     <details>'s content sits behind an internal UA wrapper a child
+     element's own `display` cannot reach). The rule below is defence in
+     depth for any engine where the plain CSS override does work, not the
+     mechanism this actually depends on. */
+  #ziptility-report-card .zrc-cite-summary{ display:none!important; }
+  #ziptility-report-card .zrc-cite-details:not([open]) > :not(summary){ display:block!important; }
 
   /* Never split one dimension's card, or a composite/red-line/action card,
      across a page break - a board handout is skimmed card by card. */

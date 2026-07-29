@@ -13,6 +13,57 @@ import { RED_LINE_IDS } from '../config.js';
 
 const RED_LINE_SET = new Set(RED_LINE_IDS);
 
+/* C1: dim.rungs[grade] is the substantive rung description the reader
+   actually chose during intake (e.g. T7 at F = "Multiple ongoing
+   violations and/or enforcement actions."). Before this fix it never
+   reappeared anywhere on results - a board member reading "Asset
+   Inventory: C Fairly Stable" learned nothing dimension-specific about
+   their own utility. This is the one shared line that puts it back,
+   reused under every bar row and on every red-line / one-rung-up /
+   action-plan card. No new copy: the text already exists in rubric.json. */
+function buildWhatThisMeans(dim, grade) {
+  if (!dim || !grade || !dim.rungs || !dim.rungs[grade]) return null;
+  const p = el('p', 'zrc-whatmeans');
+  p.appendChild(el('span', 'zrc-whatmeans-label', 'What this means: '));
+  p.appendChild(document.createTextNode(dim.rungs[grade]));
+  return p;
+}
+
+/* C3: the red-line panel is the one place a flagged dimension gets its
+   full card (name, current grade, what it means, the next action, the
+   citation). One-rung-up and Action plan cross-reference it instead of
+   repeating it - see buildSeeAboveCard. Anchor id lives here, alongside
+   the panel that owns it, so the two can never drift out of sync. */
+function redlineAnchorId(id) {
+  return 'zrc-redline-' + id;
+}
+
+/* C4: anchor for a dimension's row in "All 23 dimensions", for the
+   compact jump nav at the top of that section. */
+function dimRowAnchorId(id) {
+  return 'zrc-allrow-' + id;
+}
+
+/* C3: compact cross-reference in place of a repeated full card. */
+function buildSeeAboveCard(cardClass, leg, id, name) {
+  const card = el('div', cardClass + ' zrc-see-above');
+  card.appendChild(el('span', cardClass.indexOf('actionplan') > -1 ? 'zrc-actionplan-leg' : 'zrc-onerungup-leg', LEG_NAMES[leg] + ' · ' + id));
+  const link = document.createElement('a');
+  link.className = 'zrc-see-above-link';
+  link.href = '#' + redlineAnchorId(id);
+  link.textContent = 'See ' + name + ' above';
+  card.appendChild(link);
+  return card;
+}
+
+/* Joins names the way a person would say them out loud: "A", "A and B",
+   "A, B, and C". Used only in the practical-grade sentence (C2). */
+function joinNames(names) {
+  if (names.length <= 1) return names.join('');
+  if (names.length === 2) return names[0] + ' and ' + names[1];
+  return names.slice(0, -1).join(', ') + ', and ' + names[names.length - 1];
+}
+
 /* PRINT-ONLY LOGO. On screen this tool shows no brand mark - the host
    page's own header/footer carry it (R14 neutrality, and see
    HANDOFF-WEB.md on why no tool bundle renders a logo on screen). A
@@ -90,6 +141,11 @@ export function renderResults(root, opts) {
   dimensions.forEach((d) => { byId[d.id] = d; });
 
   const s = score(grades, dimensions);
+  /* C3: the set of dimensions the red-line panel already shows in full.
+     One-rung-up and Action plan check membership here rather than
+     re-deriving it, so "already covered" always means exactly what the
+     red-line panel rendered - never a second, slightly different rule. */
+  const redLineCovered = new Set(s.flags.map((f) => f.id));
 
   const wrap = el('div', 'zrc-results');
 
@@ -106,9 +162,9 @@ export function renderResults(root, opts) {
   wrap.appendChild(buildComposite(s, gradeLabels));
   wrap.appendChild(buildGroupedBars(dimensions, grades, gradeLabels));
   wrap.appendChild(buildWheelSection(dimensions, grades, s.overall.grade));
-  wrap.appendChild(buildRedLinePanel(s, gradeLabels));
-  wrap.appendChild(buildOneRungUp(s, byId, gradeLabels));
-  wrap.appendChild(buildActionPlan(dimensions, grades, gradeLabels, onEdit));
+  wrap.appendChild(buildRedLinePanel(s, byId, gradeLabels, dimensions, onEdit));
+  wrap.appendChild(buildOneRungUp(s, byId, gradeLabels, redLineCovered));
+  wrap.appendChild(buildActionPlan(dimensions, grades, gradeLabels, onEdit, redLineCovered));
   wrap.appendChild(buildSoftCapture());
   wrap.appendChild(buildPrintFooter());
 
@@ -118,31 +174,62 @@ export function renderResults(root, opts) {
   if (heading) { heading.tabIndex = -1; heading.focus(); }
 }
 
+/* C2 + C5: when capped, the Practical Grade leads - larger, first, and
+   naming which dimensions triggered it - with the descriptive composite
+   demoted below it as secondary context. Before this fix the order was
+   four cheerful "C" cards THEN a smaller box naming the cap, so cropping
+   the top of the screen (or a phone that never scrolls that far) handed a
+   board four C's and lost the D entirely. "Critical dimension" is the one
+   term used everywhere here (D7/C5): no more "diagnostic flags". */
 function buildComposite(s, gradeLabels) {
   const section = el('section', 'zrc-composite');
-  section.appendChild(el('h1', 'zrc-h1', s.overall.grade ? HEADLINE[s.overall.grade] : 'Answer a few dimensions to see your picture'));
+  const capped = s.practical.capped;
+  const leadGrade = capped ? s.practical.grade : s.overall.grade;
 
-  const grid = el('div', 'zrc-composite-grid');
+  /* D7: h2, not h1 - the host page owns the one true H1. */
+  section.appendChild(el('h2', 'zrc-h1', leadGrade ? HEADLINE[leadGrade] : 'Answer a few dimensions to see your picture'));
+
+  if (capped) {
+    section.appendChild(buildPracticalLead(s, gradeLabels));
+    section.appendChild(el(
+      'p',
+      'zrc-composite-secondary-label',
+      'Descriptive composite (the plain average, before the cap)'
+    ));
+  }
+
+  const grid = el('div', 'zrc-composite-grid' + (capped ? ' zrc-composite-grid-secondary' : ''));
   s.legAverages.forEach((la) => {
     grid.appendChild(compositeCard(LEG_NAMES[la.leg], la.grade, la.answered, la.total, gradeLabels));
   });
   grid.appendChild(compositeCard('Overall', s.overall.grade, s.answered, s.total, gradeLabels));
   section.appendChild(grid);
 
-  if (s.practical.capped) {
-    const capNote = el('div', 'zrc-cap-note');
-    capNote.appendChild(el('p', 'zrc-cap-descriptive', 'Descriptive composite: ' + gradeText(s.practical.descriptiveGrade, gradeLabels) + '.'));
-    capNote.appendChild(el('p', 'zrc-cap-practical', 'Practical Grade: ' + s.practical.grade + ' (capped by diagnostic flags)'));
-    capNote.appendChild(el(
-      'p',
-      'zrc-cap-explain',
-      'Two or more critical dimensions scored F. When that happens the practical grade is capped at D no ' +
-      'matter how high the composite reads above. Both numbers are shown here on purpose: the composite ' +
-      'still reflects the average condition, the practical grade reflects the condition that matters most.'
-    ));
-    section.appendChild(capNote);
-  }
   return section;
+}
+
+/* C2: named per the brief's own example - "Two of your critical
+   dimensions scored F: Regulatory Compliance and Rate Adequacy. Your
+   Practical Grade is D, and that is the one to act on." s.flags already
+   carries exactly the dimensions that tripped the cap (scoring.js), so
+   this only reads that list out loud rather than re-deciding anything. */
+function buildPracticalLead(s, gradeLabels) {
+  const wrap = el('div', 'zrc-practical-lead');
+
+  const big = el('div', 'zrc-practical-grade-big');
+  const colors = GRADE_COLORS[s.practical.grade];
+  big.style.color = colors.fg;
+  big.style.background = colors.bg;
+  big.appendChild(el('span', 'zrc-practical-letter', s.practical.grade));
+  big.appendChild(el('span', 'zrc-practical-label', 'Practical Grade'));
+  wrap.appendChild(big);
+
+  const names = joinNames(s.flags.map((f) => f.name));
+  const sentence = s.flags.length + ' of your critical dimensions scored F: ' + names + '. ' +
+    'Your Practical Grade is ' + s.practical.grade + ', and that is the one to act on.';
+  wrap.appendChild(el('p', 'zrc-practical-explain', sentence));
+
+  return wrap;
 }
 
 function compositeCard(label, grade, answered, total, gradeLabels) {
@@ -171,6 +258,14 @@ function buildGroupedBars(dimensions, grades, gradeLabels) {
     'zrc-section-lede',
     'Grouped by Technical, Managerial, and Financial capacity. Every bar carries its letter and its name as text; colour is never the only signal.'
   ));
+  /* C4: nine screen-heights of identical rows with no way to jump, on
+     mobile especially. Reuses the exact jump-nav pattern from intake.js
+     (same classes, so the D3 touch-target fix applies to both at once),
+     as real in-page anchors rather than a JS click handler - nothing to
+     wire up, and it degrades to nothing (rather than breaking) anywhere
+     anchors don't work. Screen only: there is nothing to "jump" to on a
+     printed page. */
+  section.appendChild(buildAllDimsJumpNav(dimensions, grades));
 
   const grid = el('div', 'zrc-bars-grid');
   LEGS.forEach((leg) => {
@@ -191,12 +286,44 @@ function buildGroupedBars(dimensions, grades, gradeLabels) {
   return section;
 }
 
+/* C4: a compact per-leg anchor row at the top of "All 23 dimensions",
+   built the same way as intake.js's buildJumpNav. Real anchors (<a
+   href="#...">), not buttons with a click handler: there is no screen to
+   change here, just a scroll within the same one, and an anchor degrades
+   safely if scripting or CSS somehow fails. */
+function buildAllDimsJumpNav(dimensions, grades) {
+  const nav = el('nav', 'zrc-jumpnav zrc-noprint');
+  nav.setAttribute('aria-label', 'Jump to a dimension below');
+  LEGS.forEach((leg) => {
+    const group = el('div', 'zrc-jumpgroup');
+    group.appendChild(el('span', 'zrc-jumpgroup-label', LEG_NAMES[leg]));
+    const row = el('div', 'zrc-jumprow');
+    dimensions.forEach((d) => {
+      if (d.leg !== leg) return;
+      const answered = Boolean(grades[d.id]);
+      const a = document.createElement('a');
+      a.className = 'zrc-jumpbtn' + (answered ? ' zrc-jumpbtn-answered' : '');
+      a.href = '#' + dimRowAnchorId(d.id);
+      a.textContent = d.id + (answered ? ' ✓' : '');
+      a.setAttribute('aria-label', d.id + ', ' + d.name);
+      row.appendChild(a);
+    });
+    group.appendChild(row);
+    nav.appendChild(group);
+  });
+  return nav;
+}
+
 function buildBarRow(d, grade, gradeLabels) {
   const row = el('div', 'zrc-bar-row');
+  row.id = dimRowAnchorId(d.id);
 
   const head = el('div', 'zrc-bar-head');
   const nameSpan = el('span', 'zrc-bar-name', d.name + ' ');
-  if (RED_LINE_SET.has(d.id)) nameSpan.appendChild(el('span', 'zrc-critical-tag', 'critical'));
+  /* C5: "critical dimension" everywhere - this badge used to just say
+     "critical", the cap note said "diagnostic flags", and nothing tied
+     the two together. */
+  if (RED_LINE_SET.has(d.id)) nameSpan.appendChild(el('span', 'zrc-critical-tag', 'critical dimension'));
   head.appendChild(nameSpan);
   head.appendChild(el('span', 'zrc-bar-gradetext', gradeText(grade, gradeLabels)));
   row.appendChild(head);
@@ -209,7 +336,23 @@ function buildBarRow(d, grade, gradeLabels) {
   track.appendChild(fill);
   row.appendChild(track);
 
-  row.appendChild(el('p', 'zrc-cite', d.citation));
+  /* C1: the reader's own chosen description, put back in front of them. */
+  const meaning = buildWhatThisMeans(d, grade);
+  if (meaning) row.appendChild(meaning);
+
+  /* C4: the citation collapses behind a closed-by-default <details> on
+     screen (23 of these is most of the mobile wall this fixes), and the
+     @media print rule above forces it open with the toggle hidden, since
+     a printed page can't be clicked. */
+  const details = document.createElement('details');
+  details.className = 'zrc-cite-details';
+  const summary = document.createElement('summary');
+  summary.className = 'zrc-cite-summary';
+  summary.textContent = 'Citation';
+  details.appendChild(summary);
+  details.appendChild(el('p', 'zrc-cite', d.citation));
+  row.appendChild(details);
+
   return row;
 }
 
@@ -301,7 +444,13 @@ function buildWheelSvg(dimensions, grades, overallGrade) {
   return svg;
 }
 
-function buildRedLinePanel(s, gradeLabels) {
+/* C1/C3: the red-line panel is now the FULL card - name, current grade,
+   what it means, the next action, the citation - because it is the one
+   this section's callers (one-rung-up, action plan) defer to instead of
+   repeating themselves. byId and dimensions/onEdit let it show and link
+   exactly what those other cards show, so "the full card" really is
+   full, not a reason to look elsewhere. */
+function buildRedLinePanel(s, byId, gradeLabels, dimensions, onEdit) {
   const section = el('section', 'zrc-redline-section');
   section.appendChild(el('h2', 'zrc-h2', 'These need attention first'));
   section.appendChild(el(
@@ -317,17 +466,40 @@ function buildRedLinePanel(s, gradeLabels) {
 
   const list = el('div', 'zrc-redline-list');
   s.flags.forEach((f) => {
+    const dim = byId[f.id];
     const card = el('div', 'zrc-redline-card');
-    card.appendChild(el('div', 'zrc-redline-leg', LEG_NAMES[f.leg] + ' · ' + f.id));
+    card.id = redlineAnchorId(f.id);
+
+    const head = el('div', 'zrc-redline-head');
+    head.appendChild(el('div', 'zrc-redline-leg', LEG_NAMES[f.leg] + ' · ' + f.id));
+    head.appendChild(el('span', 'zrc-critical-tag', 'critical dimension'));
+    card.appendChild(head);
+
     card.appendChild(el('h3', 'zrc-redline-name', f.name));
     card.appendChild(el('div', 'zrc-redline-grade', 'Currently: ' + gradeText(f.grade, gradeLabels)));
+
+    if (dim) {
+      const meaning = buildWhatThisMeans(dim, f.grade);
+      if (meaning) card.appendChild(meaning);
+      const action = actionFor(dim, f.grade);
+      if (action) card.appendChild(el('p', 'zrc-action-text', action));
+      card.appendChild(el('p', 'zrc-cite', dim.citation));
+    }
+
+    if (onEdit && dimensions) {
+      const editBtn = el('button', 'zrc-link-btn zrc-noprint', 'Revisit this dimension');
+      editBtn.type = 'button';
+      editBtn.addEventListener('click', () => onEdit(dimensions.findIndex((d) => d.id === f.id)));
+      card.appendChild(editBtn);
+    }
+
     list.appendChild(card);
   });
   section.appendChild(list);
   return section;
 }
 
-function buildOneRungUp(s, byId, gradeLabels) {
+function buildOneRungUp(s, byId, gradeLabels, redLineCovered) {
   const section = el('section', 'zrc-onerungup-section');
   section.appendChild(el('h2', 'zrc-h2', 'Your next move: one rung up'));
   section.appendChild(el('p', 'zrc-section-lede', 'The three dimensions where moving up one letter would help the most.'));
@@ -339,6 +511,13 @@ function buildOneRungUp(s, byId, gradeLabels) {
 
   const list = el('div', 'zrc-onerungup-list');
   s.oneRungUp.forEach((r) => {
+    /* C3: this dimension already has a full card in the red-line panel
+       above - repeating it here read as three overlapping lists rather
+       than one diagnosis, so this cross-references instead. */
+    if (redLineCovered.has(r.id)) {
+      list.appendChild(buildSeeAboveCard('zrc-onerungup-card', r.leg, r.id, r.name));
+      return;
+    }
     const dim = byId[r.id];
     const card = el('div', 'zrc-onerungup-card');
     card.appendChild(el('div', 'zrc-onerungup-leg', LEG_NAMES[r.leg] + ' · ' + r.id));
@@ -348,6 +527,8 @@ function buildOneRungUp(s, byId, gradeLabels) {
       'zrc-onerungup-transition',
       'Currently ' + gradeText(r.current, gradeLabels) + '. Target: ' + gradeText(r.target, gradeLabels) + '.'
     ));
+    const meaning = buildWhatThisMeans(dim, r.current);
+    if (meaning) card.appendChild(meaning);
     const action = actionFor(dim, r.current);
     if (action) card.appendChild(el('p', 'zrc-action-text', action));
     list.appendChild(card);
@@ -356,7 +537,7 @@ function buildOneRungUp(s, byId, gradeLabels) {
   return section;
 }
 
-function buildActionPlan(dimensions, grades, gradeLabels, onEdit) {
+function buildActionPlan(dimensions, grades, gradeLabels, onEdit, redLineCovered) {
   const section = el('section', 'zrc-actionplan-section');
   section.appendChild(el('h2', 'zrc-h2', 'Action plan'));
   section.appendChild(el('p', 'zrc-section-lede', 'Every graded dimension below A, with the specific next step and its source.'));
@@ -373,6 +554,13 @@ function buildActionPlan(dimensions, grades, gradeLabels, onEdit) {
 
   const list = el('div', 'zrc-actionplan-list');
   items.forEach((d) => {
+    /* C3: same cross-reference rule as one-rung-up above, against the
+       same red-line coverage set, so "already shown above" means one
+       thing everywhere on this screen. */
+    if (redLineCovered.has(d.id)) {
+      list.appendChild(buildSeeAboveCard('zrc-actionplan-card', d.leg, d.id, d.name));
+      return;
+    }
     const g = grades[d.id];
     const card = el('div', 'zrc-actionplan-card');
 
@@ -383,6 +571,8 @@ function buildActionPlan(dimensions, grades, gradeLabels, onEdit) {
 
     card.appendChild(el('h3', null, d.name));
 
+    const meaning = buildWhatThisMeans(d, g);
+    if (meaning) card.appendChild(meaning);
     const action = actionFor(d, g);
     if (action) card.appendChild(el('p', 'zrc-action-text', action));
     card.appendChild(el('p', 'zrc-cite', d.citation));

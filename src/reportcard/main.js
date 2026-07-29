@@ -10,7 +10,7 @@ import CSS from './styles.css';
 import RUBRIC from './data/rubric.json';
 import { score } from './scoring.js';
 import { loadState, saveState } from './storage.js';
-import { ensureOrders } from './rung-order.js';
+import { ensureOrders, makeOrders } from './rung-order.js';
 import { submitAssessment } from './submit.js';
 import { renderLanding } from './ui/landing.js';
 import { renderIntake, updateAnswerFeedback } from './ui/intake.js';
@@ -45,6 +45,33 @@ function boot() {
     ff.href = 'https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Geist:wght@400;500;600&display=swap';
     document.head.append(pc1, pc2, ff);
   }
+
+  /* C4 print fix: a CSS-only "force a closed <details> open in print"
+     rule does not actually work in current Chromium. Verified directly:
+     with `details:not([open]) > :not(summary){ display:block!important }`
+     applied, the citation <p> itself computes display:block and a real
+     non-zero height in isolation, but the <details> ancestor still
+     collapses to zero height in the rendered page - closed <details>
+     content sits behind an internal UA wrapper a light-DOM child's own
+     display cannot reach into. The citation styles.css still adds are
+     harmless defence in depth, not the actual fix.
+     The real fix is the native `open` attribute, flipped only around the
+     print itself via the platform's only print lifecycle hooks
+     (beforeprint/afterprint fire on window, not per element, which is why
+     this lives once at boot rather than being re-wired on every render),
+     and restored immediately after - so "closed by default" stays true
+     for every render the reader actually looks at on screen. */
+  window.addEventListener('beforeprint', () => {
+    mount.querySelectorAll('.zrc-cite-details').forEach((d) => {
+      d.dataset.zrcWasOpen = d.open ? '1' : '0';
+      d.open = true;
+    });
+  });
+  window.addEventListener('afterprint', () => {
+    mount.querySelectorAll('.zrc-cite-details').forEach((d) => {
+      d.open = d.dataset.zrcWasOpen === '1';
+    });
+  });
 
   const dims = RUBRIC.dimensions;
   const gradeLabels = RUBRIC.gradeLabels;
@@ -88,6 +115,23 @@ function boot() {
     if (typeof atIdx === 'number') idx = clampIdx(atIdx);
     persist();
     render();
+  }
+  /* D1 fix: Start must be a genuine restart, not a second Resume. Before
+     this fix onStart and onResume both called goIntake(idx), so a saved
+     assessment made "Start the Report Card" land wherever the reader had
+     left off (verified live: 23/23 saved, click Start, land on F6),
+     which breaks the annual-update workflow this tool is meant for - the
+     only way to begin a fresh assessment was clearing localStorage by
+     hand.
+     A genuine restart clears the answers AND regenerates the rung order:
+     a new assessment deserves a new shuffle (see rung-order.js on why the
+     shuffle exists), and reusing last year's shuffle would leave a stale
+     positional pattern sitting under this year's blind intake. */
+  function startFresh() {
+    idx = 0;
+    grades = {};
+    orders = makeOrders(dims);
+    goIntake(0);
   }
   /* The optional closing block sits between the last dimension and the
      score: demographics last is standard survey practice, because a wall
@@ -147,7 +191,7 @@ function boot() {
         hasSaved: s.answered > 0,
         savedCount: s.answered,
         total: s.total,
-        onStart: () => goIntake(idx),
+        onStart: startFresh,
         onResume: () => goIntake(idx)
       });
     } else if (screen === 'intake') {

@@ -64,7 +64,8 @@ export function renderProfile(root, opts) {
   topbar.appendChild(backBtn);
   wrap.appendChild(topbar);
 
-  const heading = el('h1', 'zrc-h1', 'A few optional questions');
+  /* D7: h2, not h1 - the host page owns the one true H1 (see landing.js). */
+  const heading = el('h2', 'zrc-h1', 'A few optional questions');
   heading.tabIndex = -1;
   wrap.appendChild(heading);
 

@@ -16,7 +16,10 @@ export function renderLanding(root, { hasSaved, savedCount, total, onStart, onRe
   eyebrow.appendChild(el('span', null, 'Free. Ungated. Nothing sold.'));
   wrap.appendChild(eyebrow);
 
-  wrap.appendChild(el('h1', 'zrc-h1', 'An honest picture of your utility'));
+  /* D7: an h2 styled as the tool's headline, not an h1. The host Webflow
+     page owns the page's one true H1; this tool is embedded content, same
+     pattern the practice bundle already uses. */
+  wrap.appendChild(el('h2', 'zrc-h1', 'An honest picture of your utility'));
 
   wrap.appendChild(el(
     'p',
@@ -54,10 +57,24 @@ export function renderLanding(root, { hasSaved, savedCount, total, onStart, onRe
   wrap.appendChild(facts);
 
   const actions = el('div', 'zrc-actions');
+
+  const startWrap = el('div', 'zrc-start-wrap');
   const startBtn = el('button', 'zrc-btn zrc-btn-primary', 'Start the Report Card');
   startBtn.type = 'button';
   startBtn.addEventListener('click', onStart);
-  actions.appendChild(startBtn);
+  startWrap.appendChild(startBtn);
+  /* D1: Start now genuinely restarts (main.js's startFresh), which means
+     it also wipes whatever the reader had saved. That has to be said
+     before the click, not discovered after it. Only shown once there is
+     something to lose. */
+  if (hasSaved) {
+    startWrap.appendChild(el(
+      'p',
+      'zrc-start-subtext',
+      'Starts over from question 1 and clears your saved answers.'
+    ));
+  }
+  actions.appendChild(startWrap);
 
   if (hasSaved) {
     const resumeBtn = el(

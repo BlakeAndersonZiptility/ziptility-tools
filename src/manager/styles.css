@@ -1,0 +1,153 @@
+/* Ziptility Manager Toolbox - styles for the three manager-facing tools.
+   Token block copied verbatim from src/ui/styles.css's DS 4.0 reskin
+   section (per the build brief: "copy the token block ... rather than
+   inventing values") rather than duplicated-and-drifted. Everything below
+   the tokens is new markup (.zmt-* classes) built for the single-tool card
+   layout these pages use, not the operator calculator's category grid. */
+
+:root {
+  --brand-navy: #0c1f30;         /* Ziptility midnight-blue (design lock) */
+  --brand-red: #ff442f;          /* Ziptility tomato (design lock) - single accent */
+  --brand-red-dark: #c5341f;
+  --brand-font-display: 'Archivo', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --brand-font-body: 'Archivo', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --brand-font-mono: 'Geist', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --bg: #fbf8f5;                 /* warm linen page */
+  --card: #ffffff;
+  --ink: #0c1f30;
+  --muted: #6b7785;
+  --line: #e5ded4;
+  --line-soft: #f1ebe2;
+  --accent: var(--brand-red);
+  --accent-dark: var(--brand-red-dark);
+  --good: #1E9E6A;
+  --shadow: 0 1px 2px rgba(12, 31, 48, .05), 0 10px 28px rgba(12, 31, 48, .07);
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body { font-family: var(--brand-font-body); color: var(--ink); background: var(--bg); -webkit-font-smoothing: antialiased; line-height: 1.45; }
+
+.zmt-head { max-width: 760px; margin: 0 auto; padding: 20px 16px 6px; }
+.zmt-eyebrow { font-family: var(--brand-font-mono); font-size: 11.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin: 0 0 6px; }
+.zmt-head h1 { font-family: var(--brand-font-display); font-weight: 900; font-size: 24px; letter-spacing: -.02em; margin: 0 0 6px; }
+.zmt-tagline { margin: 0; font-size: 14px; color: var(--muted); line-height: 1.55; max-width: 62ch; }
+
+main { max-width: 760px; margin: 0 auto; padding: 10px 16px 20px; }
+.zmt-card { background: var(--card); border: 1px solid var(--line); border-radius: 10px; box-shadow: var(--shadow); padding: 20px 20px 18px; }
+.zmt-card-head { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 6px; }
+.zmt-formula { font-family: var(--brand-font-mono); font-size: 12.5px; color: var(--ink); background: #f6eee6; border: 1px solid #ece1d3; border-radius: 6px; padding: 5px 8px; }
+
+.zmt-section { font-family: var(--brand-font-display); font-weight: 700; font-size: 12px; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); margin: 16px 0 8px; }
+.zmt-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 14px; }
+.zmt-field { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.zmt-field label { font-size: 12px; font-weight: 600; color: var(--muted); }
+.zmt-field input { width: 100%; font-family: var(--brand-font-mono); font-size: 14.5px; color: var(--ink); background: #fff; border: 1px solid var(--line); border-radius: 8px; padding: 9px 10px; }
+.zmt-field input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(255, 68, 47, .14); }
+.zmt-field input.zmt-computed { background: #fff1ee; border-color: var(--accent); box-shadow: inset 3px 0 0 var(--accent); font-weight: 600; }
+.zmt-uf { display: flex; gap: 6px; }
+.zmt-uf input { flex: 1; min-width: 0; }
+.zmt-uf select { flex: none; font-family: var(--brand-font-mono); font-size: 12px; color: var(--accent-dark); background: #ffe9e5; border: 1px solid var(--line); border-radius: 8px; padding: 0 6px; }
+.zmt-rot { font-size: 11px; color: var(--muted); font-style: italic; }
+
+.zmt-advanced { margin-top: 10px; }
+.zmt-advanced summary { cursor: pointer; font-family: var(--brand-font-display); font-weight: 600; font-size: 12.5px; color: var(--accent-dark); }
+.zmt-advanced .zmt-fields { margin-top: 10px; }
+
+.zmt-seg { display: inline-flex; background: var(--line-soft); border: 1px solid var(--line); border-radius: 999px; padding: 3px; gap: 3px; }
+.zmt-seg button { cursor: pointer; font-family: var(--brand-font-display); font-weight: 600; font-size: 12px; color: var(--muted); background: transparent; border: none; border-radius: 999px; padding: 6px 13px; }
+.zmt-seg button[aria-pressed="true"] { color: #fff; background: var(--ink); }
+
+.zmt-actions { display: flex; gap: 9px; margin-top: 16px; flex-wrap: wrap; }
+.zmt-btn { cursor: pointer; font-family: var(--brand-font-display); font-weight: 600; font-size: 13.5px; border-radius: 9px; padding: 10px 16px; border: 1px solid transparent; }
+.zmt-btn-calc { background: var(--accent); color: #fff; flex: 1 1 140px; box-shadow: 0 3px 10px rgba(255, 68, 47, .25); }
+.zmt-btn-calc:hover { background: var(--accent-dark); }
+.zmt-btn-clear, .zmt-btn-print { background: #fff; color: var(--muted); border-color: var(--line); }
+.zmt-btn-clear:hover, .zmt-btn-print:hover { border-color: var(--muted); color: var(--ink); }
+
+.zmt-msg { font-size: 12.5px; margin-top: 10px; color: var(--accent-dark); font-weight: 600; }
+
+.zmt-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; margin-top: 14px; }
+.zmt-stat { background: var(--line-soft); border-radius: 8px; padding: 10px 12px; }
+.zmt-stat-label { display: block; font-size: 11px; color: var(--muted); font-weight: 600; margin-bottom: 3px; }
+.zmt-stat-val { display: block; font-family: var(--brand-font-mono); font-weight: 700; font-size: 17px; color: var(--ink); }
+/* Verdicts/flags always carry a text label alongside color - never color
+   alone (accessibility rule from the neutral-lane spec). */
+.zmt-chip.zmt-stat { border-left: 4px solid; }
+.zmt-chip-replace.zmt-stat, .zmt-chip-alert.zmt-stat { border-color: #A12020; background: #FDECEC; }
+.zmt-chip-alert .zmt-stat-val { color: #A12020; }
+.zmt-chip-good.zmt-stat { border-color: #136A47; background: #E9F7F0; }
+.zmt-chip-good .zmt-stat-val { color: #136A47; }
+.zmt-chip-watch.zmt-stat { border-color: #8A5A00; background: #FFF6E6; }
+.zmt-chip-watch .zmt-stat-val { color: #8A5A00; }
+
+.zmt-flag.zmt-chip { display: inline-block; margin: 8px 8px 0 0; padding: 6px 11px; border-radius: 999px; font-size: 12px; font-weight: 600; border: 1px solid; }
+.zmt-flag.zmt-chip-watch { color: #8A5A00; background: #FFF6E6; border-color: #F0D08A; }
+
+.zmt-insight { margin-top: 12px; font-size: 13px; border-radius: 8px; padding: 10px 12px; line-height: 1.55; display: none; border: 1px solid; }
+.zmt-insight.zmt-show { display: block; }
+.zmt-insight .zmt-lead { font-family: var(--brand-font-display); font-weight: 700; margin-right: 4px; }
+.zmt-insight.zmt-good { background: #E9F7F0; border-color: #9FD8BE; color: #136A47; }
+.zmt-insight.zmt-watch { background: #FFF6E6; border-color: #F0D08A; color: #8A5A00; }
+.zmt-insight.zmt-alert { background: #FDECEC; border-color: #F2B5B5; color: #A12020; }
+.zmt-insight.zmt-info { background: #EEF3F8; border-color: #CFDBE8; color: #3C5A74; }
+
+.zmt-links { margin-top: 14px; padding-top: 10px; border-top: 1px solid var(--line-soft); font-size: 12px; color: var(--muted); }
+.zmt-links a { color: var(--accent); font-weight: 600; text-decoration: none; }
+.zmt-links a:hover { text-decoration: underline; }
+
+/* Soft capture: only ever reachable after a result exists (render.js
+   un-hides this button). No gate anywhere in front of the answer. */
+.zmt-capture-open { margin-top: 14px; cursor: pointer; background: #fff; color: var(--accent-dark); border: 1px solid var(--line); border-radius: 9px; padding: 9px 14px; font-family: var(--brand-font-display); font-weight: 600; font-size: 13px; }
+.zmt-capture-open:hover { border-color: var(--accent); }
+.zmt-capture-open[hidden] { display: none; }
+
+.zmt-error { background: #fff; border: 1px solid var(--line); border-left: 3px solid var(--accent); border-radius: 10px; padding: 16px; margin: 20px auto; max-width: 700px; font-size: 13.5px; line-height: 1.5; }
+
+.zmt-foot { max-width: 760px; margin: 8px auto 0; padding: 16px 16px 40px; color: var(--muted); font-size: 12px; }
+.zmt-disclaimer { background: #fff; border: 1px solid var(--line); border-left: 3px solid var(--accent); border-radius: 10px; padding: 14px 16px; line-height: 1.55; }
+.zmt-disclaimer strong { color: var(--ink); }
+.zmt-colophon { margin-top: 12px; }
+.zmt-colophon a { color: var(--brand-red); text-decoration: none; }
+.zmt-colophon a:hover { text-decoration: underline; }
+
+/* Modal (soft capture) */
+.zmt-modal { position: fixed; inset: 0; z-index: 60; display: none; align-items: center; justify-content: center; padding: 18px; background: rgba(14, 42, 71, .55); backdrop-filter: blur(3px); }
+.zmt-modal.zmt-show { display: flex; }
+.zmt-modal-card { background: #fff; border-radius: 16px; max-width: 420px; width: 100%; padding: 24px; box-shadow: 0 24px 60px rgba(14, 42, 71, .3); position: relative; }
+.zmt-modal-card h3 { font-family: var(--brand-font-display); font-weight: 700; font-size: 18px; margin: 0 0 6px; }
+.zmt-modal-card p { margin: 0 0 14px; font-size: 13px; color: var(--muted); line-height: 1.5; }
+.zmt-modal-field { display: flex; flex-direction: column; gap: 5px; margin-bottom: 11px; }
+.zmt-modal-field label { font-size: 12px; font-weight: 600; color: var(--muted); }
+.zmt-modal-field input { font-family: var(--brand-font-body); font-size: 14px; border: 1px solid var(--line); border-radius: 9px; padding: 10px 11px; }
+.zmt-modal-field input:focus { outline: none; border-color: var(--brand-red); box-shadow: 0 0 0 3px rgba(255, 68, 47, .14); }
+.zmt-modal-submit { width: 100%; background: var(--brand-red); color: #fff; border: none; border-radius: 10px; padding: 12px; font-family: var(--brand-font-display); font-weight: 700; font-size: 14px; cursor: pointer; margin-top: 4px; }
+.zmt-modal-submit:hover { background: var(--brand-red-dark); }
+.zmt-modal-close { position: absolute; top: 14px; right: 14px; background: none; border: none; cursor: pointer; color: var(--muted); font-size: 22px; line-height: 1; }
+.zmt-modal-fine { font-size: 11px; color: var(--muted); margin-top: 11px; line-height: 1.4; }
+.zmt-modal-ok { display: none; text-align: center; padding: 12px 0; }
+.zmt-modal-ok .zmt-check { width: 44px; height: 44px; border-radius: 50%; background: #E9F7F0; color: var(--good); display: grid; place-items: center; margin: 0 auto 12px; font-size: 20px; }
+
+/* Print/PDF: legible, high contrast (>=12pt, per the neutral-lane rule) */
+@media print {
+  .zmt-actions, .zmt-capture-open, .zmt-modal { display: none !important; }
+  body { background: #fff; }
+  .zmt-card { box-shadow: none; border: 1px solid #000; }
+  .zmt-field input, .zmt-stat-val { font-size: 13pt; color: #000; }
+  .zmt-disclaimer { border-color: #000; }
+}
+
+/* Gated/in-app embed: nothing extra to hide here (no CTA band exists in
+   this bundle to begin with), kept for parity with the calculator/practice
+   idiom in case a future embed wants a hook. */
+body.zmt-embed-app .zmt-foot { display: none; }
+
+@media (max-width: 560px) {
+  .zmt-fields { grid-template-columns: 1fr; }
+}
+
+@media (prefers-color-scheme: dark) {
+  /* This bundle only ships on Webflow pages with the site's light chrome;
+     no dark-mode host exists yet, so no override is defined here on
+     purpose (nothing to test against) rather than guessing colors. */
+}

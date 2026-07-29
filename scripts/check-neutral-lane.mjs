@@ -131,8 +131,22 @@ const PROSE_RULES = [
     why: 'pricing is commercial-lane content and does not belong on an ungated tool' },
   { name: 'gate before the value',
     re: /enter your email to (?:see|get|view|unlock|download)|unlock your (?:score|results?|report)|(?:email|sign\s?up|account)\s+(?:is\s+)?required/i,
-    why: 'completion is the conversion; a gate in front of the result is a defect by rule (R14)' }
+    why: 'completion is the conversion; a gate in front of the result is a defect by rule (R14)' },
+  /* On the live page the Webflow global header and footer wrap the tool and
+     carry the brand. A logo inside the bundle is the brand twice on one
+     screen. \b matters: "analogous" contains the letters l-o-g-o and an
+     unbounded match flags the report card's own AWWA rung descriptors. */
+  { name: 'inline logo',
+    re: /\blogo\b|[-_]logo\b|\blogo[-_]|wordmark|brandmark|\bmasthead\b/i,
+    why: 'the page chrome carries the brand; a logo inside the tool is the brand twice' }
 ];
+
+/* HTML comments are commentary too, including inside a JS template literal
+   that builds markup, where strip() deliberately keeps the string. Blanked
+   with spaces so line numbers stay honest. */
+function blankHtmlComments(src) {
+  return src.replace(/<!--[\s\S]*?-->/g, (m) => m.replace(/[^\n]/g, ' '));
+}
 
 /* True when the match is inside a negated clause, e.g. "no email required".
    Looks only at the text BEFORE the match on that line, capped so a
@@ -160,7 +174,11 @@ for (const dir of DIRS) {
 
     const rawLines = raw.split('\n');
     const isJs = /\.(js|mjs)$/.test(file);
-    const prose = isJs ? strip(raw, { keepStrings: true }) : raw;
+    const isCss = /\.css$/.test(file);
+    /* Comments stripped, strings kept, for JS and CSS alike. CSS uses the
+       same block-comment syntax, and a stylesheet comment explaining why
+       there is no logo must not read as one. */
+    const prose = blankHtmlComments((isJs || isCss) ? strip(raw, { keepStrings: true }) : raw);
 
     prose.split('\n').forEach((line, i) => {
       for (const rule of PROSE_RULES) {

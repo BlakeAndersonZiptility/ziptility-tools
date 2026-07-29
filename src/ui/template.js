@@ -1,6 +1,18 @@
-/* Tool shell markup — moved from the legacy Webflow embed (v1), minus the
-   SEO copy (stays server-rendered in Webflow) and the logo masthead (the
-   Webflow global nav above the tool carries the brand). */
+/* Tool shell markup, moved from the legacy Webflow embed (v1), minus the
+   SEO copy (which stays server-rendered in Webflow) and minus any brand
+   mark: on the live page the Webflow global header and footer wrap this
+   tool and carry the brand, so a logo in here would be the brand twice on
+   one screen.
+
+   THE .cta BAND IS A FREE OFFER, NOT A PITCH (changed 2026-07-29). It used
+   to carry a product paragraph and a demo link, which is commercial
+   framing inside the body of an ungated tool: on this lane completion is
+   the conversion, a demo click is not a tools KPI, and scoring one as
+   success is lane bleed. The global nav carries the demo button as chrome,
+   which is where it belongs. What stays is the free formula sheet, offered
+   BELOW the working calculators so it is never a gate in front of an
+   answer. Kept as a JS comment rather than an HTML one so it does not ship
+   into every rendered page's source. */
 export function buildShell(){
   return `
 <header>
@@ -43,12 +55,11 @@ export function buildShell(){
 <div class="cta">
   <div class="cta-inner">
     <div class="cta-txt">
-      <h3>Built by people who actually run small systems</h3>
-      <p>Ziptility puts your map, assets, work orders, and compliance records in one place: no GIS degree required. These numbers are easier to track when they live in your system, not a clipboard.</p>
+      <h3>Take the formulas with you</h3>
+      <p>A printable sheet of the formulas and conversion factors behind these calculators. Free, no strings: tape it up in the plant or keep it in the truck.</p>
     </div>
     <div class="cta-actions">
-      <a class="cta-btn cta-primary" href="https://www.ziptility.com/request-a-free-demo-ziptility-utility-management-software" target="_blank" rel="noopener">Book a demo</a>
-      <button class="cta-btn cta-ghost" id="openSheet" type="button">Get the formula sheet (PDF)</button>
+      <button class="cta-btn cta-primary" id="openSheet" type="button">Get the formula sheet (PDF)</button>
     </div>
   </div>
 </div>

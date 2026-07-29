@@ -16,6 +16,15 @@ jobs:
         run: npm run test:legacy
       - name: Solver tests
         run: npm test
+      - name: Neutral-lane rules, no inline brand mark, sandbox safety
+        # The calculator sits in the ungated tools lane: completion is the
+        # conversion, a demo click is not a tools KPI, and on the live page
+        # the Webflow global header and footer already carry the brand, so a
+        # logo in the bundle is the brand twice on one screen. Both had
+        # drifted back in (a demo CTA band in the body, dead .zip-logo CSS
+        # with a comment reading "OFFICIAL LOGO SLOT"), which is why this
+        # now runs in CI rather than being left to review.
+        run: node scripts/check-neutral-lane.mjs src/ui
       - name: Build dev bundle
         run: npm run build:dev
       - name: Install Playwright Chromium

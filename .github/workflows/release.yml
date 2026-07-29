@@ -45,6 +45,8 @@ jobs:
           node-version: 22
       - run: npm ci
       - run: npm test
+      - name: Neutral-lane rules, no inline brand mark, sandbox safety
+        run: node scripts/check-neutral-lane.mjs src/ui
       - run: npm run build:dev
       - run: npx playwright install --with-deps chromium
       - run: node tests/browser.test.js

@@ -36,10 +36,18 @@
   header{background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(0,0,0,.12)), var(--navy); color:#fff; position:relative; overflow:hidden; border-bottom:3px solid var(--mode); transition:border-color .35s ease;}
   header::before{content:""; position:absolute; inset:0; background-image:linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px); background-size:28px 28px; -webkit-mask-image:linear-gradient(180deg, rgba(0,0,0,.9), rgba(0,0,0,0)); mask-image:linear-gradient(180deg, rgba(0,0,0,.9), rgba(0,0,0,0)); pointer-events:none;}
   .head-wrap{max-width:1180px; margin:0 auto; padding:20px 22px 22px; position:relative; z-index:1; display:flex; flex-wrap:wrap; align-items:center; gap:14px 20px;}
-  .brand{display:flex; align-items:center; gap:11px;}
-  /* ===== OFFICIAL LOGO SLOT: replace .word with Ziptility Brand Logo.svg (white, ~30px tall) ===== */
-  .brand .word{font-family:var(--brand-font-display); font-weight:800; font-size:27px; letter-spacing:-.025em; line-height:1; color:#fff;}
-  .brand .word .accent{color:var(--brand-red);}
+  /* NO LOGO AND NO MASTHEAD IN THIS BUNDLE, deliberately: on the live page
+     the Webflow global header and footer sit around the tool and carry the
+     brand. A second logo inside the tool would be the brand twice on one
+     screen.
+     The .brand / .brand .word / .brand .zip-logo / .head-divider rules that
+     used to live here were DEAD, left over from the v1 embed, and one of
+     them was a comment reading "OFFICIAL LOGO SLOT: replace .word with
+     Ziptility Brand Logo.svg", which read as an instruction to add one
+     back. Nothing in template.js has ever rendered a .brand element in v2.
+     Removed 2026-07-29 so the stylesheet stops describing a thing the tool
+     does not have. Recover from git history if the standalone (non-Webflow)
+     use case ever needs its own masthead. */
   .head-divider{width:1px; height:32px; background:rgba(255,255,255,.22);}
   .head-title h1{font-family:var(--brand-font-display); font-weight:600; font-size:16px; margin:0; letter-spacing:.01em;}
   .head-title p{margin:1px 0 0; font-size:12.5px; color:#A9C2DB;}
@@ -173,8 +181,6 @@
 .cta-btn:not(.cta-ghost):hover{ background:var(--brand-red-dark); border-color:var(--brand-red-dark); }
 a{ color:var(--brand-red); }
 .cta-inner{ background:linear-gradient(to bottom,#0C1F30,#0F1923); }
-.brand .word{ display:none; }
-.brand .zip-logo{ height:30px; width:auto; display:block; }
 
 /* Blake's call: in-tool Calculate buttons = brand red */
 .btn-calc{ background:var(--brand-red); box-shadow:0 3px 10px rgba(255,68,47,.25); }

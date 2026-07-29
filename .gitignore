@@ -1,6 +1,10 @@
 node_modules/
+# Unversioned dev builds. Only the immutable dist/<tool>-vX.Y.Z.js
+# artifacts are committed, by the release workflows.
 dist/calculator-dev.js
 dist/practice-dev.js
+dist/manager-dev.js
+dist/reportcard-dev.js
 *.png
 .claude/
 preview-src.html

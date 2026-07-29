@@ -15,7 +15,7 @@ know what is serving right now, read the page.
 | `practice-v1.4.0.js` | released, not yet pointed at by any page |
 | `manager-v1.0.0.js` | released, not yet pointed at by any page |
 | `calculator-v2.6.0.js` | released, not yet pointed at by any page (supersedes v2.5.0) |
-| `reportcard-v*` | **not released**, see section 3 |
+| `reportcard-v1.0.0.js` | **not cut yet.** Both of its blockers cleared 2026-07-29; holding for the design-audit fixes so the first release is not immediately superseded |
 
 Nothing on the live site has moved. Every page still serves the version it
 served this morning, because a page only changes when its `src` changes,
@@ -157,17 +157,43 @@ tool, and GA4 completion tracking.
 
 ## 3. The Utility Health Report Card
 
-**Not released. Do not build the page yet.** Two things are open, both for
-Blake, both recorded in `src/reportcard/config.js`:
+**Both former blockers are cleared** (Blake, 2026-07-29): the red-line set
+is **seven** (T5, T7, T8, M3, M8, F1, F2, matching the workbook, superseding
+D26's six), and the citations stand as they are.
 
-1. **Red-line set, 6 or 7.** The workbook marks seven; the signed ruling
-   D26 names six. Default is six.
-2. **Citation clearance.** All 23 citation rows still read
-   `[VERIFY all primary citations before publication]`. That pass is the
-   real launch gate.
+⚠ **The artifact below is not cut yet.** Version pinned here for when it
+is; confirm against the repo before pasting it into a page.
 
-The tool itself is built and its scoring is tested against the workbook's
-own Methodology sheet. This section updates when those two clear.
+```html
+<div id="ziptility-report-card">
+  <noscript>This tool requires JavaScript. Please enable it to use the free report card.</noscript>
+</div>
+<script defer src="https://blakeandersonziptility.github.io/ziptility-tools/dist/reportcard-v1.0.0.js"></script>
+```
+
+Wrapper: class `.zip-reportcard-embed`. This one changes height a lot
+between its three screens, so pin the min-height to the LANDING screen and
+let the rest grow: start at **desktop ~900 / tablet ~1000 / mobile-portrait
+~1400** and re-tune after the first render.
+
+**Three things about this tool that are not obvious from the embed:**
+
+1. **Intake is deliberately blind.** While answering, a rung shows only its
+   description: no A-to-F letter, no ordinal word, no rank colour, and in a
+   shuffled order that is fixed for the life of that assessment. That is
+   what makes the answers worth analysing rather than counting, and it is a
+   ruling, not a style choice. Letters and labels return in full on results.
+2. **It is ungated and must stay that way** (R14). No email for the score.
+   The closing profile block is optional, skipping shows the identical
+   report, and CI fails the build if a gate appears.
+3. **The printed report is a deliverable, not a byproduct.** Boards print
+   these. It carries the logo, the title and the date, and page breaks are
+   set so a dimension never splits across pages.
+
+**One thing still owed before the survey data is worth anything:** the
+HubSpot form does not exist yet. `HUBSPOT-FORM-SPEC.md` has the exact
+fields. Until its GUID goes into `src/reportcard/config.js`, the tool works
+completely and sends nothing.
 
 ---
 
@@ -192,13 +218,22 @@ formula sheet stays, reworded as an offer rather than a pitch, still below
 the working calculators so it is never a gate. **The HubSpot form id from
 STF-14 is untouched and still fires.**
 
-### No tool in this repo renders a brand mark
+### No tool renders a brand mark ON SCREEN. One does in print.
 
-Checked at runtime across all four bundles, not by grep: zero images, zero
-logo elements, zero logo background-images, zero brand SVGs, zero demo
-links. On the live page the Webflow global header and footer wrap the tool
-and carry the brand; a logo inside the bundle would be the brand twice on
-one screen.
+Checked at runtime across all four bundles, not by grep: **on screen**,
+zero images, zero logo elements, zero logo background-images, zero brand
+SVGs, zero demo links. On the live page the Webflow global header and
+footer wrap the tool and carry the brand; a logo inside the bundle would be
+the brand twice on one screen.
+
+**The report card is the one exception, and only in print** (Blake ruling
+2026-07-29). A printed report goes into a board packet with no page chrome
+around it, so it carries the navy horizontal mark with the report title and
+date. It is `display:none` on screen and `display:flex` under print, and
+`check-neutral-lane.mjs` enforces exactly that: print-scoped brand
+identifiers are exempt from the no-logo rule, and a separate check requires
+any such class to be hidden in the screen cascade, so the exemption cannot
+be used to sneak a visible logo in.
 
 The calculator's stylesheet did still carry dead `.brand` / `.brand .word`
 / `.brand .zip-logo` rules for markup v2 has never rendered, under a

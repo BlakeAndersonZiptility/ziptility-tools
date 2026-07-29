@@ -153,6 +153,26 @@ async function captureFirstQuestion(page) {
   return { stem, choices: choices.join('|') };
 }
 
+/* Serves practice.html with extra attributes baked onto the mount div
+   (data-test, data-child-pages, etc). Needed for anything that has to be
+   set BEFORE main.js's defer script runs boot() -- unlike ?embed=app /
+   ?test=, which main.js also reads from the URL, a data-* attribute has
+   no query-string equivalent, so the only way to set it before boot is to
+   have it already in the served markup. Reuses the same page.route idiom
+   as tests 9 and 11 above rather than inventing a new server. */
+async function gotoPracticeWithMountAttrs(page, attrs) {
+  await page.route(`${baseURL}/practice.html`, async (route) => {
+    const html = await readFile(path.join(ROOT, 'practice.html'), 'utf8');
+    const extra = Object.entries(attrs).map(([k, v]) => ` ${k}="${v}"`).join('');
+    const modified = html.replace(
+      '<div id="ziptility-practice" data-bank-base="./dist/practice-banks/">',
+      `<div id="ziptility-practice" data-bank-base="./dist/practice-banks/"${extra}>`
+    );
+    await route.fulfill({ status: 200, contentType: 'text/html; charset=utf-8', body: modified });
+  });
+  await page.goto(`${baseURL}/practice.html`, { waitUntil: 'load' });
+}
+
 // ---------------------------------------------------------------------
 // 1. Boot + picker
 // ---------------------------------------------------------------------
@@ -492,5 +512,155 @@ test('fetch-error state: a 500 on the bank JSON shows the error alert; Try again
     await retryBtn.click();
     await page.waitForSelector('.zq-mode-grid');
     assert.equal(await page.locator('.zq-error').count(), 0);
+  });
+});
+
+// ---------------------------------------------------------------------
+// 12. Deep link by slug: skips the picker (Q-12 split)
+// ---------------------------------------------------------------------
+test('deep link by slug: ?test=water-treatment boots straight into the Water Treatment bank, skipping the picker', async () => {
+  const { TESTS } = await import('../src/practice/manifest.js');
+  const wt = TESTS.find((t) => t.slug === 'water-treatment');
+  await withPage(async (page) => {
+    await gotoPractice(page, '?test=water-treatment');
+    await page.waitForSelector('.zq-card:has-text("Set up your test")');
+    assert.equal(await page.locator('.zq-hub-grid').count(), 0, 'deep link must skip the six-card picker');
+    assert.equal(await page.locator('.zq-title').innerText(), wt.title);
+  });
+});
+
+// ---------------------------------------------------------------------
+// 13. Deep link by id: back-compat for embeds written before the split
+// ---------------------------------------------------------------------
+test('deep link by id: ?test=wt-1 does the same thing as the slug form (back-compat)', async () => {
+  const { TESTS } = await import('../src/practice/manifest.js');
+  const wt = TESTS.find((t) => t.id === 'wt-1');
+  await withPage(async (page) => {
+    await gotoPractice(page, '?test=wt-1');
+    await page.waitForSelector('.zq-card:has-text("Set up your test")');
+    assert.equal(await page.locator('.zq-hub-grid').count(), 0, 'deep link must skip the six-card picker');
+    assert.equal(await page.locator('.zq-title').innerText(), wt.title);
+  });
+});
+
+// ---------------------------------------------------------------------
+// 14. Deep link via data-test attribute (embed form, not just query string)
+// ---------------------------------------------------------------------
+test('deep link via data-test attribute: data-test="wt-1" works the same as ?test=wt-1', async () => {
+  const { TESTS } = await import('../src/practice/manifest.js');
+  const wt = TESTS.find((t) => t.id === 'wt-1');
+  await withPage(async (page) => {
+    await gotoPracticeWithMountAttrs(page, { 'data-test': 'wt-1' });
+    await page.waitForSelector('.zq-card:has-text("Set up your test")');
+    assert.equal(await page.locator('.zq-hub-grid').count(), 0, 'deep link must skip the six-card picker');
+    assert.equal(await page.locator('.zq-title').innerText(), wt.title);
+  });
+});
+
+// ---------------------------------------------------------------------
+// 15. Unresolvable deep link: error state, never a silent hub fallback
+// ---------------------------------------------------------------------
+test('unresolvable deep link: ?test=not-a-real-test renders the error state, never the hub picker', async () => {
+  await withPage(async (page) => {
+    await gotoPractice(page, '?test=not-a-real-test');
+    await page.waitForSelector('.zq-error[role="alert"]');
+    // The old (pre-fix) behavior silently rendered the six-card hub here
+    // instead of failing loud: this is the regression guard for that.
+    assert.equal(await page.locator('.zq-hub-grid').count(), 0);
+    assert.match(await page.locator('.zq-error p').innerText(), /not-a-real-test/);
+    // Not retryable: retrying a bad slug/id just fails again, so there is
+    // no Try again button, only a way out to the hub.
+    assert.equal(await page.locator('.zq-error button', { hasText: 'Try again' }).count(), 0);
+    const hubLink = page.locator('.zq-error a', { hasText: 'All practice tests' });
+    assert.equal(await hubLink.count(), 1);
+    assert.equal(await hubLink.getAttribute('href'), '/tools/practice');
+  });
+});
+
+// ---------------------------------------------------------------------
+// 16. Picker descriptions: all six non-empty (regression guard)
+// ---------------------------------------------------------------------
+test('picker cards: all six render a non-empty description (regression guard for the 5-of-6 blank bug)', async () => {
+  const { TESTS } = await import('../src/practice/manifest.js');
+  await withPage(async (page) => {
+    await gotoPractice(page);
+    await page.waitForSelector('.zq-hubcard');
+    const descriptions = await page.locator('.zq-hubcard p').allInnerTexts();
+    assert.equal(descriptions.length, TESTS.length);
+    for (let i = 0; i < descriptions.length; i++) {
+      assert.ok(descriptions[i].trim().length > 0,
+        'card ' + i + ' (' + TESTS[i].id + ') rendered an empty description');
+    }
+  });
+});
+
+// ---------------------------------------------------------------------
+// 17. childPages off (default): cards stay buttons
+// ---------------------------------------------------------------------
+test('childPages off (default): picker cards are buttons, not links', async () => {
+  await withPage(async (page) => {
+    await gotoPractice(page);
+    await page.waitForSelector('.zq-hubcard');
+    const tags = await page.locator('.zq-hubcard').evaluateAll((els) => els.map((e) => e.tagName));
+    assert.ok(tags.length > 0 && tags.every((t) => t === 'BUTTON'),
+      `expected all cards to be BUTTON, got ${tags.join(',')}`);
+  });
+});
+
+// ---------------------------------------------------------------------
+// 18. childPages on (data-child-pages="1"): cards become real anchors
+// ---------------------------------------------------------------------
+test('childPages on (data-child-pages="1"): picker cards are anchors to /tools/practice/<slug>, and clicking navigates instead of launching a bank in place', async () => {
+  const { TESTS } = await import('../src/practice/manifest.js');
+  await withPage(async (page) => {
+    await gotoPracticeWithMountAttrs(page, { 'data-child-pages': '1' });
+    await page.waitForSelector('.zq-hubcard');
+    const cards = page.locator('.zq-hubcard');
+    assert.equal(await cards.count(), TESTS.length);
+    const tags = await cards.evaluateAll((els) => els.map((e) => e.tagName));
+    assert.ok(tags.every((t) => t === 'A'), `expected all cards to be A, got ${tags.join(',')}`);
+    const hrefs = await cards.evaluateAll((els) => els.map((e) => e.getAttribute('href')));
+    assert.deepEqual(hrefs, TESTS.map((t) => '/tools/practice/' + t.slug));
+
+    // Real navigation, not an in-place launch: stub the child page's route
+    // and confirm clicking the first card actually navigates the browser
+    // there. If picker.js still wired a click handler (childPages=true
+    // path), onSelect would fire instead and no navigation would happen.
+    await page.route(`${baseURL}/tools/practice/**`, (route) =>
+      route.fulfill({ status: 200, contentType: 'text/html; charset=utf-8', body: '<h1>child page stub</h1>' }));
+    await Promise.all([
+      page.waitForURL(`${baseURL}/tools/practice/${TESTS[0].slug}`),
+      cards.first().click()
+    ]);
+    assert.equal(await page.locator('.zq-mode-grid').count(), 0, 'a childPages card click must not start a run in place');
+  });
+});
+
+// ---------------------------------------------------------------------
+// 19. Results screen: "All practice tests" is a link when deep-linked,
+//     stays an in-place button when the run started from the hub
+// ---------------------------------------------------------------------
+test('results screen: "All practice tests" is a link on a deep-linked run, a button on a hub-started run', async () => {
+  await withPage(async (page) => {
+    await gotoPractice(page, '?test=water-treatment');
+    await page.waitForSelector('.zq-card:has-text("Set up your test")');
+    const size = await startRun(page, { mode: 'Practice' });
+    await answerAll(page, size);
+    await page.waitForSelector('.zq-score-hero');
+    const allTests = page.locator('.zq-score-hero .zq-btn-quiet', { hasText: 'All practice tests' });
+    assert.equal(await allTests.evaluate((el) => el.tagName), 'A',
+      'deep-linked run: "All practice tests" must be a real link, not an in-place picker swap');
+    assert.equal(await allTests.getAttribute('href'), '/tools/practice');
+  });
+
+  await withPage(async (page) => {
+    await gotoPractice(page);
+    await selectOperatorMathCard(page);
+    const size = await startRun(page, { mode: 'Practice' });
+    await answerAll(page, size);
+    await page.waitForSelector('.zq-score-hero');
+    const allTests = page.locator('.zq-score-hero .zq-btn-quiet', { hasText: 'All practice tests' });
+    assert.equal(await allTests.evaluate((el) => el.tagName), 'BUTTON',
+      'hub-started run: "All practice tests" must stay an in-place picker swap, not a link');
   });
 });

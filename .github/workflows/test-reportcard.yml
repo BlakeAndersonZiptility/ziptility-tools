@@ -1,0 +1,26 @@
+name: Test Report Card
+on:
+  pull_request:
+  push:
+    branches: [main]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm ci
+      - name: Scoring + rubric integrity
+        # Covers the 23/115/92 data shape and every branch that changes a
+        # headline letter: the leg mean, the mean-of-legs, the red-line
+        # panel, and the practical-grade cap. A utility may take this grade
+        # to its board.
+        run: npm run test:reportcard
+      - name: Neutral-lane rules and sandbox safety
+        # UNGATED by ruling R14: no email for the score, or the tool
+        # forfeits the lane's neutrality.
+        run: node scripts/check-neutral-lane.mjs src/reportcard
+      - name: Build dev bundle
+        run: npm run build:reportcard:dev

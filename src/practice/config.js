@@ -8,5 +8,12 @@
 export const CONFIG = {
   calcUrl: '/tools/calculator',
   formulaSheetUrl: '/tools/formula-sheets',
-  contactEmail: 'sales@ziptility.com' /* Blake ruling 2026-07-10 */
+  contactEmail: 'sales@ziptility.com', /* Blake ruling 2026-07-10 */
+  /* The practice-test hub. Two jobs, both added for the Q-12 split:
+     (1) on a deep-linked discipline page, "All practice tests" is a real
+     link HERE rather than an in-place swap to the six-card picker, which
+     would paint the hub's content onto a page whose whole reason to exist
+     is not being a duplicate of the hub; (2) the base each hub-to-child
+     card link is built from when childPages mode is on. */
+  hubUrl: '/tools/practice'
 };

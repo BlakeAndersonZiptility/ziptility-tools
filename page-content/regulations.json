@@ -1,0 +1,37 @@
+{
+  "bankId": "regulations-1",
+  "slug": "regulations",
+  "url": "/tools/practice/regulations",
+  "bankContentVersion": "2026-07-10",
+  "questionCount": 103,
+  "durationMin": 120,
+  "domains": {
+    "REGS": 103
+  },
+  "topicCount": 10,
+  "difficulty": {
+    "Easy": 54,
+    "Medium": 40,
+    "Hard": 9
+  },
+  "sampledIds": [
+    "XC-ALL-REGS-0205",
+    "XC-ALL-REGS-0186",
+    "XC-ALL-REGS-0052",
+    "XC-ALL-REGS-0265",
+    "XC-ALL-REGS-0222",
+    "XC-ALL-REGS-0237",
+    "XC-ALL-REGS-0275",
+    "XC-ALL-REGS-0256"
+  ],
+  "sampledTopics": [
+    "cwa-npdes",
+    "sdwa-mcls",
+    "rtcr-coliform",
+    "reporting-recordkeeping",
+    "surface-water-treatment-rule",
+    "lead-copper-rule",
+    "public-notification",
+    "emergency-security"
+  ]
+}

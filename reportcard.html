@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<!-- Local preview / QA page. Mirrors practice.html's pattern: a mount
+     div plus one script tag, matching how this ships as a Webflow
+     embed. Data (rubric.json) and scoring are bundled in by esbuild -
+     there is no fetch at runtime and so no data-bank-base equivalent to
+     set here.
+     Fonts (Archivo + Geist) self-load from Google Fonts (main.js), same
+     as production. -->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Utility Health Report Card: preview</title>
+</head>
+<body>
+  <h1>Utility Health Report Card: preview</h1>
+  <div id="ziptility-report-card"><noscript>This tool requires JavaScript.</noscript></div>
+  <script defer src="./dist/reportcard-dev.js"></script>
+</body>
+</html>

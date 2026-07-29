@@ -117,12 +117,15 @@
   #ziptility-practice .zq-card{ padding:1.25rem; }
 }
 
+/* Renders as <button> everywhere except the two places that are genuine
+   navigations (the deep-linked "All practice tests" exit, the unresolved
+   -slug error's way out), so it carries the anchor's no-underline rule. */
 #ziptility-practice .zq-btn{
   display:inline-flex; align-items:center; justify-content:center; gap:.6rem;
   font-family:var(--font-sans); font-weight:700;
   border-radius:var(--radius);
   border:2px solid transparent;
-  cursor:pointer;
+  cursor:pointer; text-decoration:none;
   transition:background var(--dur) var(--ease), color var(--dur) var(--ease),
              border-color var(--dur) var(--ease), transform var(--dur-fast) var(--ease);
 }
@@ -342,11 +345,14 @@
 }
 #ziptility-practice .zq-hub-grid{ display:grid; grid-template-columns:1fr; gap:1rem; }
 @media (min-width:600px){ #ziptility-practice .zq-hub-grid{ grid-template-columns:1fr 1fr; } }
+/* Renders as a <button> on the hub (launches in place) and as an <a> in
+   childPages mode (routes to /tools/practice/<slug>), so it carries the
+   no-underline rule the anchor form needs. */
 #ziptility-practice .zq-hubcard{
   display:block; width:100%; text-align:left;
   background:var(--white); border:none; border-radius:var(--radius);
   box-shadow:var(--shadow-sm); padding:18px; cursor:pointer;
-  font-family:inherit; color:inherit;
+  font-family:inherit; color:inherit; text-decoration:none;
   transition:box-shadow var(--dur) var(--ease), transform var(--dur) var(--ease);
 }
 #ziptility-practice .zq-hubcard:hover{ box-shadow:var(--shadow-md); transform:translateY(-3px); }

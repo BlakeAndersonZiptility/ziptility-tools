@@ -1,0 +1,308 @@
+/* Utility Health Report Card: DS 4.0 reskin. Token block is copied 1:1
+   from src/practice/styles.css (the sanctioned raw-hex site); every rule
+   below it references a token or a value computed in JS (GRADE_COLORS in
+   ui/util.js), never a bare hex typed twice. Everything nests under
+   #ziptility-report-card: no bare *, html, or body selectors, so this
+   tool can never leak style onto the host page around it. The tool
+   paints no page background; the host page owns gutters/background. */
+#ziptility-report-card{
+  --tomato:#ff442f;
+  --tomato-press:#c02100;
+  --tomato-tint:#fff4f2;
+  --midnight:#0c1f30;
+  --white:#ffffff;
+  --n50:#f8fafc;
+  --n100:#f1f5f9;
+  --n200:#e2e8f0;
+  --n300:#cbd5e1;
+  --n400:#94a3b8;
+  --n500:#64748b;
+  --n600:#475569;
+  --n700:#334155;
+  --n900:#0f172a;
+  --warm-50:#fcfaf6;
+  --warm-100:#f9f3ec;
+  --warm-400:#e6dac9;
+  --info:#0088ff;
+  --shadow-xs:0 1px 2px rgba(12,31,48,.06);
+  --shadow-sm:0 2px 8px rgba(12,31,48,.08);
+  --shadow-md:0 8px 24px rgba(12,31,48,.10);
+  --radius:10px;
+  --radius-sm:6px;
+  --radius-lg:16px;
+  --radius-pill:999px;
+  --dur:200ms;
+  --ease:cubic-bezier(.4,0,.2,1);
+  --font-sans:'Archivo', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-ui:'Geist', var(--font-sans);
+
+  margin:0;
+  color:var(--n600);
+  font-family:var(--font-sans);
+  font-size:16px;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+#ziptility-report-card *,
+#ziptility-report-card *::before,
+#ziptility-report-card *::after{ box-sizing:border-box; }
+
+#ziptility-report-card .zrc-wrap{ max-width:56rem; margin:0 auto; }
+
+/* ---------- focus (C1: #0088ff site-wide) ---------- */
+#ziptility-report-card button:focus-visible,
+#ziptility-report-card a:focus-visible,
+#ziptility-report-card input:focus-visible{
+  outline:2px solid var(--info);
+  outline-offset:2px;
+}
+#ziptility-report-card .zrc-rung:focus-within{
+  outline:2px solid var(--info);
+  outline-offset:2px;
+}
+
+/* ---------- generic type ---------- */
+#ziptility-report-card .zrc-h1{
+  font-family:var(--font-sans); font-weight:900; font-size:clamp(26px,3.4vw,38px);
+  letter-spacing:-0.02em; line-height:1.1; color:var(--midnight); margin:0 0 14px;
+}
+#ziptility-report-card .zrc-h2{
+  font-family:var(--font-sans); font-weight:900; font-size:clamp(20px,2.4vw,26px);
+  letter-spacing:-0.01em; color:var(--midnight); margin:0 0 6px;
+}
+#ziptility-report-card .zrc-h2-sm{
+  font-family:var(--font-sans); font-weight:800; font-size:19px; color:var(--midnight); margin:0 0 8px;
+}
+#ziptility-report-card .zrc-section-lede{ font-size:15px; line-height:1.55; color:var(--n600); margin:0 0 20px; max-width:640px; }
+#ziptility-report-card section{ margin:40px 0; }
+#ziptility-report-card section:first-of-type{ margin-top:0; }
+
+/* ---------- buttons ---------- */
+#ziptility-report-card .zrc-btn{
+  display:inline-flex; align-items:center; justify-content:center; gap:.5rem;
+  font-family:var(--font-sans); font-weight:700; font-size:15px;
+  border-radius:var(--radius); border:2px solid transparent; cursor:pointer;
+  padding:.9rem 1.6rem; transition:background var(--dur) var(--ease), border-color var(--dur) var(--ease), color var(--dur) var(--ease);
+}
+#ziptility-report-card .zrc-btn[disabled]{ opacity:.5; cursor:not-allowed; }
+#ziptility-report-card .zrc-btn-primary{ background:var(--tomato); color:var(--white); }
+#ziptility-report-card .zrc-btn-primary:hover:not([disabled]){ background:var(--tomato-press); }
+#ziptility-report-card .zrc-btn-secondary{ background:transparent; color:var(--tomato-press); border-color:var(--tomato); }
+#ziptility-report-card .zrc-btn-secondary:hover:not([disabled]){ background:var(--tomato-tint); }
+#ziptility-report-card .zrc-btn-quiet{ background:var(--white); color:var(--midnight); border-color:var(--n200); }
+#ziptility-report-card .zrc-btn-quiet:hover:not([disabled]){ border-color:var(--n300); }
+#ziptility-report-card .zrc-link-btn{
+  background:transparent; border:none; padding:6px 2px; cursor:pointer;
+  font-family:var(--font-ui); font-weight:600; font-size:13px; color:var(--tomato-press);
+  text-decoration:underline;
+}
+
+/* ---------- landing ---------- */
+#ziptility-report-card .zrc-landing{ padding:8px 0 24px; }
+#ziptility-report-card .zrc-eyebrow{
+  display:inline-flex; align-items:center; gap:8px; background:var(--white);
+  border:1px solid var(--n200); border-radius:var(--radius-pill); padding:6px 13px;
+  font-family:var(--font-ui); font-size:13px; font-weight:600; color:var(--n600); margin-bottom:20px;
+}
+#ziptility-report-card .zrc-eyebrow-dot{ width:7px; height:7px; border-radius:999px; background:#16a34a; }
+#ziptility-report-card .zrc-lede{ font-size:18px; line-height:1.6; color:var(--n600); max-width:620px; margin:0 0 28px; }
+#ziptility-report-card .zrc-facts{ display:grid; grid-template-columns:1fr; gap:16px; margin-bottom:28px; }
+#ziptility-report-card .zrc-fact{ background:var(--warm-50); border-radius:var(--radius); padding:18px 20px; }
+#ziptility-report-card .zrc-fact-label{ font-size:15px; font-weight:700; color:var(--midnight); margin:0 0 6px; }
+#ziptility-report-card .zrc-fact-body{ font-size:14.5px; line-height:1.55; color:var(--n600); margin:0; }
+#ziptility-report-card .zrc-actions{ display:flex; gap:12px; flex-wrap:wrap; }
+
+/* ---------- shared top bar / progress ---------- */
+#ziptility-report-card .zrc-topbar{
+  display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap;
+  font-size:13px; color:var(--n600); margin-bottom:12px;
+}
+#ziptility-report-card .zrc-topbar-count{ font-family:var(--font-ui); font-weight:600; color:var(--n700); }
+
+#ziptility-report-card .zrc-legbars{ display:flex; gap:16px; margin-bottom:22px; flex-wrap:wrap; }
+#ziptility-report-card .zrc-legbar{ flex:1; min-width:140px; }
+#ziptility-report-card .zrc-legbar-current .zrc-legbar-label span:first-child{ color:var(--midnight); }
+#ziptility-report-card .zrc-legbar-label{
+  display:flex; justify-content:space-between; font-family:var(--font-ui); font-size:12px;
+  font-weight:600; color:var(--n500); margin-bottom:4px;
+}
+#ziptility-report-card .zrc-legbar-track{ height:7px; background:var(--n200); border-radius:var(--radius-pill); overflow:hidden; }
+#ziptility-report-card .zrc-legbar-fill{ display:block; height:100%; border-radius:var(--radius-pill); transition:width var(--dur) var(--ease); }
+
+/* ---------- jump nav ---------- */
+#ziptility-report-card .zrc-jumpnav{ margin-bottom:22px; }
+#ziptility-report-card .zrc-jumpgroup{ margin-bottom:8px; }
+#ziptility-report-card .zrc-jumpgroup-label{
+  display:block; font-family:var(--font-ui); font-size:11px; font-weight:700; letter-spacing:.04em;
+  text-transform:uppercase; color:var(--n400); margin-bottom:5px;
+}
+#ziptility-report-card .zrc-jumprow{ display:flex; flex-wrap:wrap; gap:6px; }
+#ziptility-report-card .zrc-jumpbtn{
+  font-family:var(--font-ui); font-weight:600; font-size:12px; color:var(--n600);
+  background:var(--white); border:1px solid var(--n200); border-radius:var(--radius-sm);
+  padding:5px 8px; cursor:pointer; min-width:38px;
+}
+#ziptility-report-card .zrc-jumpbtn:hover{ border-color:var(--n300); }
+#ziptility-report-card .zrc-jumpbtn-answered{ color:var(--midnight); border-color:var(--n300); background:var(--n50); }
+#ziptility-report-card .zrc-jumpbtn-current{ border-color:var(--tomato); background:var(--tomato-tint); color:var(--midnight); }
+
+/* ---------- cards ---------- */
+#ziptility-report-card .zrc-card{
+  background:var(--white); border-radius:var(--radius-lg); box-shadow:var(--shadow-md); padding:1.75rem;
+}
+@media (max-width:559px){ #ziptility-report-card .zrc-card{ padding:1.25rem; } }
+
+/* ---------- intake step ---------- */
+#ziptility-report-card .zrc-step-meta{ display:flex; gap:8px; align-items:center; margin-bottom:12px; flex-wrap:wrap; }
+#ziptility-report-card .zrc-legbadge{
+  display:inline-block; font-family:var(--font-ui); font-size:12px; font-weight:600; letter-spacing:.03em;
+  text-transform:uppercase; color:var(--n700); background:var(--n100); border-radius:var(--radius-pill); padding:4px 11px;
+}
+#ziptility-report-card .zrc-critical-badge{
+  display:inline-block; font-family:var(--font-ui); font-size:12px; font-weight:700;
+  color:#b91c1c; background:#fef2f2; border-radius:var(--radius-pill); padding:4px 11px;
+}
+#ziptility-report-card .zrc-step-title{
+  font-size:clamp(21px,2.6vw,27px); font-weight:900; letter-spacing:-0.01em; color:var(--midnight); margin:0 0 8px;
+}
+#ziptility-report-card .zrc-step-def{ font-size:15.5px; line-height:1.55; color:var(--n600); margin:0 0 18px; }
+#ziptility-report-card .zrc-step-instruction{
+  font-family:var(--font-ui); font-size:13px; font-weight:600; color:var(--midnight); margin-bottom:12px;
+}
+
+/* ---------- radio rungs ---------- */
+#ziptility-report-card .zrc-ruggroup{ display:flex; flex-direction:column; gap:10px; }
+#ziptility-report-card .zrc-rung{
+  display:flex; align-items:flex-start; gap:12px; width:100%; text-align:left; cursor:pointer;
+  background:var(--white); border:2px solid var(--n200); border-radius:var(--radius); padding:13px 16px;
+  transition:border-color var(--dur) var(--ease), background var(--dur) var(--ease);
+}
+#ziptility-report-card .zrc-rung:hover{ border-color:var(--n300); }
+#ziptility-report-card .zrc-rung:has(.zrc-rung-input:checked){
+  border-color:var(--zrc-rung-fg, var(--tomato));
+  background:var(--zrc-rung-bg, var(--tomato-tint));
+}
+#ziptility-report-card .zrc-rung-input{ margin-top:3px; flex:0 0 auto; width:18px; height:18px; accent-color:var(--tomato); }
+#ziptility-report-card .zrc-rung-badge{
+  flex:0 0 auto; width:30px; height:30px; border-radius:9px; display:flex; align-items:center; justify-content:center;
+  font-family:var(--font-ui); font-weight:700; font-size:14px; background:var(--n100); color:var(--n700);
+}
+#ziptility-report-card .zrc-rung-text{ display:flex; flex-direction:column; gap:2px; flex:1; }
+#ziptility-report-card .zrc-rung-name{
+  font-family:var(--font-ui); font-size:12px; font-weight:700; letter-spacing:.03em; text-transform:uppercase; color:var(--n500);
+}
+#ziptility-report-card .zrc-rung-desc{ font-size:15px; line-height:1.5; color:var(--n700); }
+
+/* ---------- nav rows ---------- */
+#ziptility-report-card .zrc-navrow{ display:flex; gap:10px; margin-top:20px; flex-wrap:wrap; align-items:center; }
+#ziptility-report-card .zrc-navrow .zrc-btn-primary{ margin-left:auto; }
+#ziptility-report-card .zrc-viewresults-row{ text-align:center; margin-top:16px; }
+
+/* ---------- results: composite ---------- */
+#ziptility-report-card .zrc-composite-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:14px; margin-bottom:20px; }
+@media (min-width:640px){ #ziptility-report-card .zrc-composite-grid{ grid-template-columns:repeat(4,1fr); } }
+#ziptility-report-card .zrc-composite-card{
+  background:var(--white); border:1px solid var(--n200); border-radius:var(--radius-lg); padding:18px 16px; text-align:center;
+}
+#ziptility-report-card .zrc-composite-card-label{ font-family:var(--font-ui); font-size:12px; font-weight:700; letter-spacing:.03em; text-transform:uppercase; color:var(--n500); margin-bottom:10px; }
+#ziptility-report-card .zrc-composite-card-grade{
+  display:flex; flex-direction:column; align-items:center; gap:2px; border-radius:var(--radius); padding:10px 6px;
+}
+#ziptility-report-card .zrc-composite-letter{ font-family:var(--font-sans); font-weight:900; font-size:32px; line-height:1; }
+#ziptility-report-card .zrc-composite-name{ font-family:var(--font-ui); font-size:13px; font-weight:600; }
+#ziptility-report-card .zrc-composite-card-sub{ font-family:var(--font-ui); font-size:12px; color:var(--n500); margin-top:10px; }
+
+#ziptility-report-card .zrc-cap-note{
+  background:#fffbeb; border:1px solid #fcd34d; border-radius:var(--radius); padding:16px 18px; margin-top:6px;
+}
+#ziptility-report-card .zrc-cap-descriptive{ margin:0 0 4px; font-size:14.5px; color:var(--n700); }
+#ziptility-report-card .zrc-cap-practical{ margin:0 0 8px; font-size:17px; font-weight:800; color:#92400e; }
+#ziptility-report-card .zrc-cap-explain{ margin:0; font-size:14px; line-height:1.5; color:var(--n700); }
+
+/* ---------- results: grouped bars ---------- */
+#ziptility-report-card .zrc-bars-grid{ display:grid; grid-template-columns:1fr; gap:32px; }
+@media (min-width:720px){ #ziptility-report-card .zrc-bars-grid{ grid-template-columns:repeat(3,1fr); } }
+#ziptility-report-card .zrc-bars-group-title{
+  display:flex; align-items:center; gap:8px; font-size:16px; font-weight:900; letter-spacing:-0.01em; color:var(--midnight); margin:0 0 14px;
+}
+#ziptility-report-card .zrc-swatch{ width:10px; height:10px; border-radius:3px; flex:0 0 auto; }
+#ziptility-report-card .zrc-bar-row{ margin:0 0 16px; }
+#ziptility-report-card .zrc-bar-head{ display:flex; justify-content:space-between; gap:10px; align-items:baseline; margin-bottom:4px; }
+#ziptility-report-card .zrc-bar-name{ font-size:14px; color:var(--n700); }
+#ziptility-report-card .zrc-critical-tag{ font-family:var(--font-ui); font-size:11px; font-weight:700; color:#b91c1c; }
+#ziptility-report-card .zrc-bar-gradetext{ font-family:var(--font-ui); font-size:13px; font-weight:700; color:var(--n700); white-space:nowrap; }
+#ziptility-report-card .zrc-bar-track{ height:8px; border-radius:var(--radius-pill); background:var(--n100); overflow:hidden; }
+#ziptility-report-card .zrc-bar-fill{ display:block; height:100%; border-radius:var(--radius-pill); }
+#ziptility-report-card .zrc-cite{ font-family:var(--font-ui); font-size:11.5px; color:var(--n500); margin:5px 0 0; }
+
+/* ---------- results: wheel ---------- */
+#ziptility-report-card .zrc-wheel-section{ display:flex; flex-direction:column; align-items:center; text-align:center; }
+#ziptility-report-card .zrc-wheel-section svg{ display:block; }
+
+/* ---------- results: red-line panel ---------- */
+#ziptility-report-card .zrc-redline-section{ background:#fef2f2; border-radius:var(--radius-lg); padding:28px 26px; }
+#ziptility-report-card .zrc-redline-list{ display:flex; flex-direction:column; gap:12px; }
+#ziptility-report-card .zrc-redline-card{
+  background:var(--white); border-radius:var(--radius); border-left:4px solid #dc2626; padding:16px 18px;
+}
+#ziptility-report-card .zrc-redline-leg{ font-family:var(--font-ui); font-size:11px; font-weight:700; letter-spacing:.03em; text-transform:uppercase; color:var(--n400); margin-bottom:4px; }
+#ziptility-report-card .zrc-redline-name{ font-size:17px; font-weight:800; color:var(--midnight); margin:0 0 6px; }
+#ziptility-report-card .zrc-redline-grade{ font-family:var(--font-ui); font-size:13px; font-weight:700; color:#b91c1c; }
+#ziptility-report-card .zrc-redline-clear{ font-size:15px; color:#15803d; font-weight:600; margin:0; }
+
+/* ---------- results: one-rung-up / action plan ---------- */
+#ziptility-report-card .zrc-onerungup-list,
+#ziptility-report-card .zrc-actionplan-list{ display:grid; grid-template-columns:1fr; gap:14px; }
+@media (min-width:720px){
+  #ziptility-report-card .zrc-onerungup-list,
+  #ziptility-report-card .zrc-actionplan-list{ grid-template-columns:1fr 1fr; }
+}
+#ziptility-report-card .zrc-onerungup-card,
+#ziptility-report-card .zrc-actionplan-card{
+  background:var(--warm-50); border-radius:var(--radius); padding:18px 20px;
+}
+#ziptility-report-card .zrc-onerungup-leg,
+#ziptility-report-card .zrc-actionplan-leg{
+  display:block; font-family:var(--font-ui); font-size:11px; font-weight:700; letter-spacing:.03em;
+  text-transform:uppercase; color:var(--n400); margin-bottom:4px;
+}
+#ziptility-report-card .zrc-actionplan-head{ display:flex; justify-content:space-between; align-items:baseline; gap:10px; }
+#ziptility-report-card .zrc-actionplan-grade{ font-family:var(--font-ui); font-size:12px; font-weight:700; color:var(--n700); }
+#ziptility-report-card .zrc-onerungup-transition{ font-family:var(--font-ui); font-size:13px; font-weight:600; color:var(--n700); margin:2px 0 10px; }
+#ziptility-report-card .zrc-action-text{ font-size:14px; line-height:1.55; color:var(--n700); white-space:pre-line; margin:8px 0 0; }
+
+/* ---------- soft capture (R14: below the fully rendered result only) ---------- */
+#ziptility-report-card .zrc-softcapture{ background:var(--warm-50); border-radius:var(--radius-lg); padding:26px 24px; }
+#ziptility-report-card .zrc-softcapture-row{ display:flex; gap:10px; flex-wrap:wrap; margin-top:10px; }
+#ziptility-report-card .zrc-email-input{
+  flex:1; min-width:220px; font-family:var(--font-ui); font-size:15px; padding:12px 14px;
+  border-radius:var(--radius); border:2px solid var(--n200); background:var(--white); color:var(--midnight);
+}
+
+/* ---------- reduced motion ---------- */
+@media (prefers-reduced-motion:reduce){
+  #ziptility-report-card *{ transition:none!important; animation:none!important; }
+}
+
+/* ---------- print: the printed page is a deliverable, not an afterthought ---------- */
+@media print{
+  #ziptility-report-card{ font-size:12pt; line-height:1.4; color:#000; }
+  #ziptility-report-card .zrc-noprint{ display:none!important; }
+  #ziptility-report-card .zrc-wrap{ max-width:100%; }
+  #ziptility-report-card .zrc-h1{ font-size:22pt; }
+  #ziptility-report-card .zrc-h2{ font-size:16pt; }
+  #ziptility-report-card .zrc-h2-sm{ font-size:14pt; }
+  #ziptility-report-card .zrc-step-title{ font-size:16pt; }
+  #ziptility-report-card h3{ font-size:13pt; }
+  #ziptility-report-card .zrc-card,
+  #ziptility-report-card .zrc-composite-card,
+  #ziptility-report-card .zrc-redline-card,
+  #ziptility-report-card .zrc-onerungup-card,
+  #ziptility-report-card .zrc-actionplan-card{ box-shadow:none!important; border:1px solid #999; }
+  #ziptility-report-card section{ break-inside:avoid-page; margin:24px 0; }
+  #ziptility-report-card .zrc-redline-card,
+  #ziptility-report-card .zrc-onerungup-card,
+  #ziptility-report-card .zrc-actionplan-card,
+  #ziptility-report-card .zrc-composite-card{ break-inside:avoid; }
+  #ziptility-report-card .zrc-redline-section{ background:#fff; border:1px solid #999; }
+}

@@ -49,7 +49,13 @@ function boot() {
   if (!deepLinkTest) deepLinkTest = mount.dataset.test || null;
   if (embedApp) mount.classList.add('zq-embed-app');
 
+  /* Q-12 split: the hub links out to per-discipline pages instead of
+     launching in place. Off unless the embed opts in, since those pages
+     do not exist until they are built. */
+  const childPages = mount.dataset.childPages === '1';
+
   const bankBase = mount.dataset.bankBase || BANK_BASE_URL;
+  const hubUrl = mount.dataset.hubUrl || CONFIG.hubUrl;
 
   mount.innerHTML = '';
   const stage = document.createElement('div');
@@ -60,15 +66,24 @@ function boot() {
 
   function showPicker() {
     if (controller) { controller.destroy(); controller = null; }
-    renderPicker(stage, { onSelect: selectTest });
+    renderPicker(stage, { onSelect: selectTest, childPages, hubUrl });
   }
 
-  function selectTest(test) {
+  /* deepLinked: entered straight into one bank from a per-discipline page
+     rather than by picking on the hub. It changes one thing downstream:
+     "All practice tests" becomes a link to the hub instead of swapping
+     the six-card picker in place, which on /tools/practice/<discipline>
+     would render the hub's own content on the page built NOT to duplicate
+     it. See quiz-engine.js renderResults. */
+  function selectTest(test, deepLinked) {
     renderLoading(stage);
     loadBank(test.id, test.bankVersion, bankBase)
       .then((bank) => {
-        const cfg = { ...CONFIG, embedApp, title: test.title, badge: test.badge };
-        controller = initQuiz(stage, bank, cfg, { onExit: showPicker });
+        const cfg = {
+          ...CONFIG, embedApp, hubUrl,
+          title: test.title, badge: test.badge, deepLinked: !!deepLinked
+        };
+        controller = initQuiz(stage, bank, cfg, { onExit: deepLinked ? null : showPicker });
         /* test-only reach-in: mirrors the calculator's debug-hook idiom.
            Never set outside an explicit opt-in, so production pages never
            expose the controller. */
@@ -77,15 +92,28 @@ function boot() {
       .catch(() => {
         renderError(stage, {
           message: 'Could not load "' + test.title + '." Check your connection and try again.',
-          onRetry: () => selectTest(test)
+          onRetry: () => selectTest(test, deepLinked)
         });
       });
   }
 
   if (deepLinkTest) {
-    const test = TESTS.find((t) => t.id === deepLinkTest);
-    if (test) selectTest(test);
-    else showPicker();
+    /* Resolve by URL slug ("water-treatment") or internal id ("wt-1").
+       The slug is what the embed author reads off the page URL; the id is
+       kept working so every embed written before the split keeps running. */
+    const test = TESTS.find((t) => t.slug === deepLinkTest || t.id === deepLinkTest);
+    if (test) {
+      selectTest(test, true);
+    } else {
+      /* Deliberately NOT a fallback to the picker. A discipline page whose
+         data-test has a typo would then quietly render the six-card hub:
+         wrong content, on the one page that exists to not be the hub, with
+         nothing anywhere reporting a problem. Fail where someone sees it. */
+      renderError(stage, {
+        message: 'This practice test is not available at "' + deepLinkTest + '." Pick a test from the full list instead.',
+        hubUrl
+      });
+    }
   } else {
     showPicker();
   }

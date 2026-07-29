@@ -1,0 +1,52 @@
+<!-- Ziptility Operator Practice Tests: THE PER-DISCIPLINE PAGE EMBED.
+     For the six /tools/practice/<discipline> pages (the Q-12 split).
+     Source: https://github.com/BlakeAndersonZiptility/ziptility-tools
+
+     Use practice-embed.html instead for the /tools/practice hub. The only
+     difference is data-test, but the behaviour it buys is worth stating:
+     with data-test set, the reader lands INSIDE their test rather than on
+     a six-card picker they have to scan first, and the "All practice
+     tests" control at the end becomes a real link back to the hub instead
+     of repainting the hub's six cards onto this page. That second part is
+     the whole reason these pages can exist without duplicating the hub.
+
+     SET data-test TO THE PAGE'S OWN SLUG. It is the last segment of the
+     URL, so there is nothing to look up:
+
+       /tools/practice/water-treatment        data-test="water-treatment"
+       /tools/practice/water-distribution     data-test="water-distribution"
+       /tools/practice/wastewater-treatment   data-test="wastewater-treatment"
+       /tools/practice/wastewater-collection  data-test="wastewater-collection"
+       /tools/practice/operator-math          data-test="operator-math"
+       /tools/practice/regulations            data-test="regulations"
+
+     Internal bank ids (wt-1, wd-1, wwt-1, wwc-1, operator-math-1,
+     regulations-1) also resolve, for embeds written before the split. A
+     value that matches NEITHER renders a visible error with a link to the
+     hub. It deliberately does not fall back to the picker: a typo used to
+     paint the hub's six cards onto a discipline page silently, which is
+     the one failure this page cannot afford.
+
+     THIS EMBED IS NOT THE PAGE. It is the interactive layer that sits ON
+     TOP of the page's server-rendered body. That body (the discipline's
+     subject breakdown plus 8 worked sample questions, as real HTML in the
+     page source) is generated per page and lives in this repo at
+     page-content/<slug>.html. It is what clears the pages' blocking
+     unique-body build precondition, so the embed alone is not enough.
+
+     Wrapper: give the surrounding Webflow element the class
+     .zip-practice-embed with these min-heights, so nothing below shifts
+     while the app boots. Lower than the hub's, because this mounts one
+     test card rather than six:
+       desktop ~820px / tablet ~820px / mobile-landscape ~900px /
+       mobile-portrait ~1200px
+     Re-tune after the first real render, same CWV discipline as the hub.
+
+     Runtime truth is the live embed, never this copy (LEDGER L-005). The
+     version below is the live one as measured 2026-07-29.
+-->
+<div id="ziptility-practice" data-test="water-treatment">
+  <div aria-hidden="true" style="height:88px;background:#0c1f30;border-bottom:3px solid #ff442f"></div>
+  <noscript>This tool requires JavaScript. Please enable it to use the free practice test.</noscript>
+</div>
+<script defer src="https://blakeandersonziptility.github.io/ziptility-tools/dist/practice-v1.3.0.js"></script>

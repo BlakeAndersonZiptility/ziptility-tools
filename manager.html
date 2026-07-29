@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<!-- Local preview / QA page for the manager tools bundle. Mirrors the
+     production Webflow embed exactly (mount div + script). Run
+     `npm run build:manager:dev` and open this file directly.
+
+     These three tools ship as THREE SEPARATE URLs, one tool each
+     (/tools/repair-or-replace, /tools/cost-of-turnover,
+     /tools/energy-cost), so the embed always pins one tool by id. Swap
+     the ?tool= query or the data-tool attribute to preview another:
+       ?tool=repair-or-replace  (default below)
+       ?tool=cost-of-turnover
+       ?tool=energy-cost
+     Fonts (Archivo + Geist) self-load from Google Fonts (main.js), same
+     as production. -->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Ziptility manager tools: preview</title>
+</head>
+<body>
+  <h1>Ziptility manager tools: preview</h1>
+  <div id="ziptility-manager-tools" data-tool="repair-or-replace"><noscript>This tool requires JavaScript.</noscript></div>
+  <script defer src="./dist/manager-dev.js"></script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+{
+  "bankId": "wt-1",
+  "slug": "water-treatment",
+  "url": "/tools/practice/water-treatment",
+  "bankContentVersion": "2026-07-11",
+  "questionCount": 128,
+  "durationMin": 120,
+  "domains": {
+    "PROC": 52,
+    "EQIP": 31,
+    "SAMP": 14,
+    "MATH": 11,
+    "SAFE": 8,
+    "MICRO": 6,
+    "ADMIN": 3,
+    "REGS": 3
+  },
+  "topicCount": 35,
+  "difficulty": {
+    "Medium": 59,
+    "Easy": 54,
+    "Hard": 15
+  },
+  "sampledIds": [
+    "WT-ALL-PROC-0010",
+    "WT-ALL-EQIP-0017",
+    "WT-ALL-SAMP-0001",
+    "WT-ALL-MATH-0001",
+    "WT-ALL-SAFE-0001",
+    "WT-ALL-MICRO-0002",
+    "WT-ALL-ADMIN-0001",
+    "WT-ALL-REGS-0001"
+  ],
+  "sampledTopics": [
+    "source-water",
+    "chemical-feeders",
+    "turbidity",
+    "disinfection-ct",
+    "chlorine-gas",
+    "indicator-organisms",
+    "recordkeeping",
+    "surface-water-rules"
+  ]
+}

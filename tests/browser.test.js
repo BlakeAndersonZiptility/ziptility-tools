@@ -140,6 +140,36 @@ ok('?embed=app hides CTA', await page2.evaluate(() => {
   return document.body.classList.contains('embed-app') && getComputedStyle(cta).display === 'none';
 }));
 
+// deep links: every calculator id a practice question links to must land
+// ON its card. Two things had to be true and neither was: the card needs
+// an id, and the grid needs to switch to that calculator's mode+category
+// first, since it renders only one category at a time and the target is
+// otherwise not in the DOM at all. Checked against the real set of ids the
+// banks emit, not a sample, because the two bundles ship on separate
+// release trains and nothing else would notice a rename.
+const { readFileSync, readdirSync } = await import('node:fs');
+const banksDir = fileURLToPath(new URL('../banks-src', import.meta.url));
+const linkedIds = new Set();
+for (const f of readdirSync(banksDir).filter(n => n.endsWith('.json'))) {
+  for (const q of JSON.parse(readFileSync(banksDir + '/' + f, 'utf8')).questions) {
+    if (q.calculator) linkedIds.add(q.calculator);
+  }
+}
+const deepPage = await ctx.newPage();
+const badLinks = [];
+for (const id of [...linkedIds].sort()) {
+  await deepPage.goto(PREVIEW + '#' + id, { waitUntil: 'load' });
+  await deepPage.waitForSelector('.card');
+  const landed = await deepPage.evaluate((i) => {
+    const el = document.getElementById(i);
+    return !!el && el.classList.contains('card');
+  }, id);
+  if (!landed) badLinks.push(id);
+}
+ok('practice cross-links resolve: ' + linkedIds.size + ' deep links land on their card'
+   + (badLinks.length ? ' (broken: ' + badLinks.join(', ') + ')' : ''),
+   linkedIds.size > 0 && badLinks.length === 0);
+
 console.log(`\n${pass} passed, ${fail} failed; JS errors: ${jsErrors.length ? jsErrors.join('; ') : 'none'}`);
 await browser.close();
 process.exit(fail || jsErrors.length ? 1 : 0);

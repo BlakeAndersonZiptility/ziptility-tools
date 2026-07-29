@@ -1,0 +1,37 @@
+{
+  "bankId": "operator-math-1",
+  "slug": "operator-math",
+  "url": "/tools/practice/operator-math",
+  "bankContentVersion": "2026-06-12",
+  "questionCount": 110,
+  "durationMin": 120,
+  "domains": {
+    "MATH": 110
+  },
+  "topicCount": 13,
+  "difficulty": {
+    "Medium": 49,
+    "Easy": 48,
+    "Hard": 13
+  },
+  "sampledIds": [
+    "XC-ALL-MATH-0142",
+    "XC-ALL-MATH-0001",
+    "XC-ALL-MATH-0159",
+    "XC-ALL-MATH-0128",
+    "XC-ALL-MATH-0135",
+    "XC-ALL-MATH-0174",
+    "XC-ALL-MATH-0009",
+    "XC-ALL-MATH-0165"
+  ],
+  "sampledTopics": [
+    "dosage-8.34",
+    "units-conversions",
+    "loading-rates",
+    "flow-velocity",
+    "detention-time",
+    "pumping-hp",
+    "volume",
+    "pressure-head"
+  ]
+}

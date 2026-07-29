@@ -5,14 +5,9 @@
    on one page. See quiz-logic.js for the pure math/draw/score functions
    this file calls into. */
 import { fmtClock, sizesAvailable, examMinutes, drawQuestions, scoreAttempt, weakestFirstDomains } from './quiz-logic.js';
-
-/* quiz.js L58-63 */
-const DOMAIN_LABELS = {
-  MATH: 'Operator math', CHEM: 'Chemistry', MICRO: 'Microbiology',
-  REGS: 'Regulations', SAMP: 'Sampling', SAFE: 'Safety',
-  PROC: 'Process control', EQIP: 'Equipment', ADMIN: 'Administration',
-  Multiple: 'Mixed topics'
-};
+/* quiz.js L58-63. Shared with the discipline pages' generated subject
+   table so the same code never gets two names on one screen. */
+import { DOMAIN_LABELS } from './domains.js';
 
 /* quiz.js L28-41. Guarded localStorage; init must survive an environment
    where these throw (calculator sandbox rule, inherited). */
@@ -468,10 +463,26 @@ export function initQuiz(rootEl, bank, cfg, { onExit } = {}) {
     retake.addEventListener('click', () => startTest(state.mode, n));
     const changeSetup = btn('Change setup', 'zq-btn zq-btn-secondary');
     changeSetup.addEventListener('click', renderStart);
-    /* must-fix 4: page navigation to CFG.hubUrl replaced with onExit().
-       There is no page to navigate to, this is an in-place picker swap. */
-    const allTests = btn('All practice tests', 'zq-btn zq-btn-quiet');
-    allTests.addEventListener('click', () => { if (onExit) onExit(); });
+    /* must-fix 4 replaced a CFG.hubUrl navigation with onExit(), because
+       on the hub there is no page to navigate to: it is an in-place
+       picker swap. That is still right ON THE HUB, and still the default.
+       On a deep-linked discipline page (Q-12) it is wrong -- swapping in
+       the six-card picker paints the hub's own content onto the page that
+       exists specifically not to duplicate it. So when the bundle was
+       entered by deep link, this becomes a real anchor to the hub:
+       crawlable (the child-to-hub internal link the split wants),
+       middle-clickable, and correct to a screen reader, which a
+       JS location.href push is none of. */
+    const deepLinked = cfg.deepLinked && cfg.hubUrl;
+    let allTests;
+    if (deepLinked) {
+      allTests = el('a', 'zq-btn zq-btn-quiet');
+      allTests.href = cfg.hubUrl;
+      allTests.appendChild(el('span', 'zq-btn-label', 'All practice tests'));
+    } else {
+      allTests = btn('All practice tests', 'zq-btn zq-btn-quiet');
+      allTests.addEventListener('click', () => { if (onExit) onExit(); });
+    }
     again.appendChild(retake); again.appendChild(changeSetup); again.appendChild(allTests);
     hero.appendChild(again);
     stage.appendChild(hero);

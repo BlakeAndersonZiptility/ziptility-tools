@@ -1,0 +1,24 @@
+name: Test Manager Tools
+on:
+  pull_request:
+  push:
+    branches: [main]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm ci
+      - name: Manager tool math + registry schema
+        run: npm run test:manager
+      - name: Build dev bundle
+        run: npm run build:manager:dev
+      - name: Neutral-lane rules and sandbox safety
+        # These three pages live in the ungated tools lane, where completion
+        # is the conversion and a gate before the value is a defect by rule
+        # (R6, R14). Checked in CI rather than at review, because the failure
+        # is a policy breach on a live page, not a bug someone will notice.
+        run: node scripts/check-neutral-lane.mjs src/manager

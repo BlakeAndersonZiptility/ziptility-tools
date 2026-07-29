@@ -1,11 +1,9 @@
 {
   "name": "ziptility-tools",
-  "version": "2.0.0",
   "private": true,
   "type": "module",
-  "description": "Ziptility free operator calculator — water & wastewater system math. Served via GitHub Pages into ziptility.com/ops/calculator.",
+  "description": "Ziptility free tools for water and wastewater operators and managers. Versioned bundles served from GitHub Pages into ziptility.com.",
   "scripts": {
-    "build": "esbuild src/main.js --bundle --format=iife --loader:.css=text --minify --outfile=dist/calculator-v$npm_package_version.js",
     "build:dev": "esbuild src/main.js --bundle --format=iife --loader:.css=text --outfile=dist/calculator-dev.js",
     "dev": "esbuild src/main.js --bundle --format=iife --loader:.css=text --outfile=dist/calculator-dev.js --watch --servedir=.",
     "test": "node --test tests/solvers.test.js",
@@ -13,7 +11,17 @@
     "test:legacy": "node tests/legacy/test_solvers_v1.cjs",
     "build:practice:dev": "esbuild src/practice/main.js --bundle --format=iife --loader:.css=text --outfile=dist/practice-dev.js",
     "dev:practice": "esbuild src/practice/main.js --bundle --format=iife --loader:.css=text --outfile=dist/practice-dev.js --watch --servedir=.",
-    "test:practice": "node --test tests/practice-logic.test.js tests/practice-bank-schema.test.js"
+    "test:practice": "node --test tests/practice-logic.test.js tests/practice-bank-schema.test.js",
+    "build:manager:dev": "esbuild src/manager/main.js --bundle --format=iife --loader:.css=text --outfile=dist/manager-dev.js",
+    "dev:manager": "esbuild src/manager/main.js --bundle --format=iife --loader:.css=text --outfile=dist/manager-dev.js --watch --servedir=.",
+    "test:manager": "node --test tests/manager.test.js",
+    "build:reportcard:dev": "esbuild src/reportcard/main.js --bundle --format=iife --loader:.css=text --outfile=dist/reportcard-dev.js",
+    "dev:reportcard": "esbuild src/reportcard/main.js --bundle --format=iife --loader:.css=text --outfile=dist/reportcard-dev.js --watch --servedir=.",
+    "test:reportcard": "node --test tests/reportcard.test.js",
+    "build:page-content": "node scripts/build-page-content.mjs",
+    "test:page-content": "node --test tests/page-content.test.js",
+    "test:cross-tool": "node --test tests/cross-tool-links.test.js",
+    "test:all": "npm run test && npm run test:practice && npm run test:manager && npm run test:reportcard && npm run test:page-content && npm run test:cross-tool"
   },
   "devDependencies": {
     "esbuild": "^0.25.0",

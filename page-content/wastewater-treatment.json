@@ -1,0 +1,42 @@
+{
+  "bankId": "wwt-1",
+  "slug": "wastewater-treatment",
+  "url": "/tools/practice/wastewater-treatment",
+  "bankContentVersion": "2026-07-11",
+  "questionCount": 119,
+  "durationMin": 120,
+  "domains": {
+    "EQIP": 46,
+    "PROC": 39,
+    "MATH": 11,
+    "SAFE": 9,
+    "SAMP": 9,
+    "ADMIN": 5
+  },
+  "topicCount": 31,
+  "difficulty": {
+    "Medium": 53,
+    "Easy": 47,
+    "Hard": 19
+  },
+  "sampledIds": [
+    "WWT-ALL-EQIP-0036",
+    "WWT-ALL-PROC-0011",
+    "WWT-ALL-MATH-0039",
+    "WWT-ALL-SAFE-0001",
+    "WWT-ALL-SAMP-0001",
+    "WWT-ALL-ADMIN-0001",
+    "WWT-ALL-EQIP-0001",
+    "WWT-ALL-PROC-0001"
+  ],
+  "sampledTopics": [
+    "preventive-maintenance",
+    "activated-sludge",
+    "loading-rates",
+    "hydrogen-sulfide",
+    "bod",
+    "recordkeeping",
+    "pump-types",
+    "preliminary-primary"
+  ]
+}

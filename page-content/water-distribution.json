@@ -1,0 +1,43 @@
+{
+  "bankId": "wd-1",
+  "slug": "water-distribution",
+  "url": "/tools/practice/water-distribution",
+  "bankContentVersion": "2026-07-11",
+  "questionCount": 125,
+  "durationMin": 120,
+  "domains": {
+    "PROC": 47,
+    "EQIP": 30,
+    "ADMIN": 12,
+    "SAFE": 11,
+    "SAMP": 11,
+    "MATH": 10,
+    "MICRO": 4
+  },
+  "topicCount": 23,
+  "difficulty": {
+    "Medium": 73,
+    "Easy": 30,
+    "Hard": 22
+  },
+  "sampledIds": [
+    "WD-ALL-PROC-0001",
+    "WD-ALL-EQIP-0001",
+    "WD-ALL-ADMIN-0001",
+    "WD-ALL-SAFE-0001",
+    "WD-ALL-SAMP-0001",
+    "WD-ALL-MATH-0001",
+    "WD-ALL-MICRO-0001",
+    "WD-ALL-PROC-0022"
+  ],
+  "sampledTopics": [
+    "mains-and-materials",
+    "valves-hydrants",
+    "recordkeeping",
+    "trenching-shoring",
+    "chlorine-residual",
+    "storage",
+    "nitrification-awareness",
+    "cross-connection-backflow"
+  ]
+}

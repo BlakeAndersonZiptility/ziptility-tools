@@ -18,6 +18,24 @@ jobs:
         run: npm run build:practice:dev
       - name: Build practice banks
         run: node scripts/build-practice-banks.mjs
+      - name: Generated page content for the six discipline pages
+        # These fragments are committed and are what clears the split's
+        # blocking unique-body precondition, so a bank change that would
+        # silently alter or thin them fails the PR. The generator also
+        # asserts the PFAS and CHEM content holds.
+        run: npm run test:page-content
+      - name: Cross-bundle links (practice questions -> calculator ids)
+        # The two bundles ship on separate release trains, so nothing else
+        # notices when a rename on one side breaks links emitted by the other.
+        run: npm run test:cross-tool
+      - name: Committed page content is up to date with the banks
+        run: |
+          npm run build:page-content
+          if ! git diff --quiet -- page-content/; then
+            echo "page-content/ is stale. Run 'npm run build:page-content' and commit the result."
+            git diff --stat -- page-content/
+            exit 1
+          fi
       - name: Install Playwright Chromium
         run: npx playwright install --with-deps chromium
       - name: Browser tests

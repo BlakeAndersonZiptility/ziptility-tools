@@ -1,0 +1,41 @@
+{
+  "bankId": "wwc-1",
+  "slug": "wastewater-collection",
+  "url": "/tools/practice/wastewater-collection",
+  "bankContentVersion": "2026-07-11",
+  "questionCount": 120,
+  "durationMin": 120,
+  "domains": {
+    "PROC": 74,
+    "EQIP": 20,
+    "MATH": 11,
+    "SAFE": 10,
+    "ADMIN": 5
+  },
+  "topicCount": 26,
+  "difficulty": {
+    "Medium": 86,
+    "Easy": 25,
+    "Hard": 9
+  },
+  "sampledIds": [
+    "WWC-ALL-PROC-0001",
+    "WWC-ALL-EQIP-0001",
+    "WWC-ALL-MATH-0004",
+    "WWC-ALL-SAFE-0001",
+    "WWC-ALL-ADMIN-0001",
+    "WWC-ALL-PROC-0009",
+    "WWC-ALL-EQIP-0007",
+    "WWC-ALL-MATH-0006"
+  ],
+  "sampledTopics": [
+    "cleaning-cctv-equipment",
+    "pump-types",
+    "pipe-hydraulics",
+    "confined-space",
+    "recordkeeping",
+    "rodders-and-jetters",
+    "valves",
+    "wet-wells"
+  ]
+}

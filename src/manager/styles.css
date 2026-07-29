@@ -3,12 +3,18 @@
    section (per the build brief: "copy the token block ... rather than
    inventing values") rather than duplicated-and-drifted. Everything below
    the tokens is new markup (.zmt-* classes) built for the single-tool card
-   layout these pages use, not the operator calculator's category grid. */
+   layout these pages use, not the operator calculator's category grid.
+
+   2026-07-29 design-audit fixes (Look Bar FAIL -> pass): DS token binding
+   (A5), 4.5:1 label/status contrast (A1), 44px tap targets (A2), 16px
+   input font (A3), h1->h2 heading outline (A4, in ui/render.js), print
+   color-adjust (A6), plus the hero-number/lead-with-meaning/visible-label
+   comprehension fixes (C1-C5, in ui/render.js and tools/*.js interpret()). */
 
 :root {
   --brand-navy: #0c1f30;         /* Ziptility midnight-blue (design lock) */
   --brand-red: #ff442f;          /* Ziptility tomato (design lock) - single accent */
-  --brand-red-dark: #c5341f;
+  --brand-red-dark: #c02100;     /* DS --tomato-press (was a bespoke #c5341f - audit A5) */
   --brand-font-display: 'Archivo', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   --brand-font-body: 'Archivo', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   --brand-font-mono: 'Geist', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
@@ -16,12 +22,30 @@
   --card: #ffffff;
   --ink: #0c1f30;
   --muted: #6b7785;
+  /* DS --neutral-600 ("body text" per DESIGN_SYSTEM_HANDOFF.md). --muted
+     measures 3.85:1 on the tan tile background and 3.99:1 on the pink alert
+     tile - both under the 4.5:1 text floor (audit A1). This is the same
+     grey family, just dark enough to clear it on every tinted surface this
+     bundle uses; see the manager-tools QAQC report for the measured pairs. */
+  --muted-strong: #475569;
   --line: #e5ded4;
   --line-soft: #f1ebe2;
   --accent: var(--brand-red);
   --accent-dark: var(--brand-red-dark);
   --good: #1E9E6A;
   --shadow: 0 1px 2px rgba(12, 31, 48, .05), 0 10px 28px rgba(12, 31, 48, .07);
+
+  /* DS 4.0 semantic status set, bound verbatim from DESIGN_SYSTEM_HANDOFF.md
+     (audit A5: this bundle previously invented #A12020/#136A47/#8A5A00).
+     -fg is the text-safe variant: the raw --danger/--success/--warning
+     tokens measure 4.41:1 / 3.15:1 / 3.07:1 on their own -bg tint, i.e. two
+     of the three fail the 4.5:1 text floor outright, so -fg is what runs as
+     TEXT here. The raw token is used only for the non-text border accent,
+     which only needs to clear the ~3:1 non-text floor (it does, on every
+     background in this file). Measured pairs are in the QAQC report. */
+  --danger: #dc2626;  --danger-bg: #fef2f2;  --danger-border: #fca5a5;  --danger-fg: #b91c1c;
+  --success: #16a34a; --success-bg: #f0fdf4; --success-border: #86efac; --success-fg: #15803d;
+  --warning: #d97706; --warning-bg: #fffbeb; --warning-border: #fcd34d; --warning-fg: #b45309;
 }
 
 * { box-sizing: border-box; }
@@ -35,31 +59,43 @@ body { font-family: var(--brand-font-body); color: var(--ink); background: var(-
 
 main { max-width: 760px; margin: 0 auto; padding: 10px 16px 20px; }
 .zmt-card { background: var(--card); border: 1px solid var(--line); border-radius: 10px; box-shadow: var(--shadow); padding: 20px 20px 18px; }
-.zmt-card-head { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 6px; }
+.zmt-card-head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 10px; margin-bottom: 6px; }
 .zmt-formula { font-family: var(--brand-font-mono); font-size: 12.5px; color: var(--ink); background: #f6eee6; border: 1px solid #ece1d3; border-radius: 6px; padding: 5px 8px; }
 
 .zmt-section { font-family: var(--brand-font-display); font-weight: 700; font-size: 12px; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); margin: 16px 0 8px; }
 .zmt-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 14px; }
 .zmt-field { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
 .zmt-field label { font-size: 12px; font-weight: 600; color: var(--muted); }
-.zmt-field input { width: 100%; font-family: var(--brand-font-mono); font-size: 14.5px; color: var(--ink); background: #fff; border: 1px solid var(--line); border-radius: 8px; padding: 9px 10px; }
+/* Audit A3: 14.5px input text triggers iOS Safari's auto-zoom on focus. */
+.zmt-field input { width: 100%; font-family: var(--brand-font-mono); font-size: 16px; color: var(--ink); background: #fff; border: 1px solid var(--line); border-radius: 10px; padding: 9px 10px; }
 .zmt-field input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(255, 68, 47, .14); }
 .zmt-field input.zmt-computed { background: #fff1ee; border-color: var(--accent); box-shadow: inset 3px 0 0 var(--accent); font-weight: 600; }
-.zmt-uf { display: flex; gap: 6px; }
+.zmt-uf { display: flex; gap: 8px; }
 .zmt-uf input { flex: 1; min-width: 0; }
-.zmt-uf select { flex: none; font-family: var(--brand-font-mono); font-size: 12px; color: var(--accent-dark); background: #ffe9e5; border: 1px solid var(--line); border-radius: 8px; padding: 0 6px; }
+/* Audit A2: 27px tall, under the 44px tap-target floor. */
+.zmt-uf select { flex: none; height: 44px; min-height: 44px; font-family: var(--brand-font-mono); font-size: 12px; color: var(--accent-dark); background: #ffe9e5; border: 1px solid var(--line); border-radius: 10px; padding: 0 10px; }
 .zmt-rot { font-size: 11px; color: var(--muted); font-style: italic; }
 
 .zmt-advanced { margin-top: 10px; }
 .zmt-advanced summary { cursor: pointer; font-family: var(--brand-font-display); font-weight: 600; font-size: 12.5px; color: var(--accent-dark); }
 .zmt-advanced .zmt-fields { margin-top: 10px; }
 
-.zmt-seg { display: inline-flex; background: var(--line-soft); border: 1px solid var(--line); border-radius: 999px; padding: 3px; gap: 3px; }
-.zmt-seg button { cursor: pointer; font-family: var(--brand-font-display); font-weight: 600; font-size: 12px; color: var(--muted); background: transparent; border: none; border-radius: 999px; padding: 6px 13px; }
+/* Audit C4: the criticality toggle can single-handedly override the
+   verdict but had only an aria-label, no visible text. zmt-toggle-caption
+   is styled to match .zmt-field label exactly. */
+.zmt-toggle-field { display: flex; flex-direction: column; gap: 6px; align-items: flex-start; }
+.zmt-toggle-caption { font-size: 12px; font-weight: 600; color: var(--muted); }
+
+/* Audit A2: segmented buttons measured 27px tall; gap/padding widened too
+   ("miss-safe spacing") so 44px targets sitting side by side don't invite
+   a mis-tap between them. */
+.zmt-seg { display: inline-flex; background: var(--line-soft); border: 1px solid var(--line); border-radius: 999px; padding: 4px; gap: 4px; }
+.zmt-seg button { cursor: pointer; font-family: var(--brand-font-display); font-weight: 600; font-size: 12px; color: var(--muted); background: transparent; border: none; border-radius: 999px; padding: 6px 16px; min-height: 44px; display: inline-flex; align-items: center; justify-content: center; }
 .zmt-seg button[aria-pressed="true"] { color: #fff; background: var(--ink); }
 
-.zmt-actions { display: flex; gap: 9px; margin-top: 16px; flex-wrap: wrap; }
-.zmt-btn { cursor: pointer; font-family: var(--brand-font-display); font-weight: 600; font-size: 13.5px; border-radius: 9px; padding: 10px 16px; border: 1px solid transparent; }
+.zmt-actions { display: flex; gap: 10px; margin-top: 16px; flex-wrap: wrap; }
+/* Audit A2: buttons measured 38px tall. */
+.zmt-btn { cursor: pointer; font-family: var(--brand-font-display); font-weight: 600; font-size: 13.5px; border-radius: 10px; padding: 10px 16px; min-height: 44px; border: 1px solid transparent; display: inline-flex; align-items: center; justify-content: center; }
 .zmt-btn-calc { background: var(--accent); color: #fff; flex: 1 1 140px; box-shadow: 0 3px 10px rgba(255, 68, 47, .25); }
 .zmt-btn-calc:hover { background: var(--accent-dark); }
 .zmt-btn-clear, .zmt-btn-print { background: #fff; color: var(--muted); border-color: var(--line); }
@@ -67,29 +103,41 @@ main { max-width: 760px; margin: 0 auto; padding: 10px 16px 20px; }
 
 .zmt-msg { font-size: 12.5px; margin-top: 10px; color: var(--accent-dark); font-weight: 600; }
 
+/* THE HERO NUMBER (audit C2): one number per tool, promoted to a large
+   Geist numeral, with a verdict/status badge above it. Sits ahead of the
+   plain-English insight sentence and the secondary stat tiles (C3). */
+.zmt-hero { margin-top: 12px; }
+.zmt-hero .zmt-badge { margin-bottom: 10px; }
+.zmt-hero-num { font-family: var(--brand-font-mono); font-weight: 700; font-size: 36px; line-height: 1.1; letter-spacing: -.01em; color: var(--ink); }
+.zmt-hero-label { font-size: 13px; font-weight: 600; color: var(--muted-strong); margin-top: 2px; }
+
+.zmt-badge { display: inline-block; padding: 6px 14px; border-radius: 999px; font-family: var(--brand-font-display); font-weight: 700; font-size: 12px; letter-spacing: .02em; text-transform: uppercase; border: 1px solid; }
+.zmt-badge-alert { color: var(--danger-fg); background: var(--danger-bg); border-color: var(--danger-border); }
+.zmt-badge-good { color: var(--success-fg); background: var(--success-bg); border-color: var(--success-border); }
+.zmt-badge-watch { color: var(--warning-fg); background: var(--warning-bg); border-color: var(--warning-border); }
+
+/* Secondary stats: supporting detail once the hero carries the headline
+   number (C2). Audit A7: fewer tiles (2-4, down from 4-5) so the 500px
+   grid wraps evenly instead of leaving an orphan on its own row. */
 .zmt-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; margin-top: 14px; }
-.zmt-stat { background: var(--line-soft); border-radius: 8px; padding: 10px 12px; }
-.zmt-stat-label { display: block; font-size: 11px; color: var(--muted); font-weight: 600; margin-bottom: 3px; }
+.zmt-stat { background: var(--line-soft); border-radius: 10px; padding: 10px 12px; }
+/* Audit A1: label was --muted (3.85:1 / 3.99:1 on these tiles, under the
+   4.5:1 floor); --muted-strong measures 6.39:1+ on every tile background
+   this bundle uses (see the QAQC report for the full pair list). */
+.zmt-stat-label { display: block; font-size: 11px; color: var(--muted-strong); font-weight: 600; margin-bottom: 3px; }
 .zmt-stat-val { display: block; font-family: var(--brand-font-mono); font-weight: 700; font-size: 17px; color: var(--ink); }
-/* Verdicts/flags always carry a text label alongside color - never color
-   alone (accessibility rule from the neutral-lane spec). */
-.zmt-chip.zmt-stat { border-left: 4px solid; }
-.zmt-chip-replace.zmt-stat, .zmt-chip-alert.zmt-stat { border-color: #A12020; background: #FDECEC; }
-.zmt-chip-alert .zmt-stat-val { color: #A12020; }
-.zmt-chip-good.zmt-stat { border-color: #136A47; background: #E9F7F0; }
-.zmt-chip-good .zmt-stat-val { color: #136A47; }
-.zmt-chip-watch.zmt-stat { border-color: #8A5A00; background: #FFF6E6; }
-.zmt-chip-watch .zmt-stat-val { color: #8A5A00; }
 
 .zmt-flag.zmt-chip { display: inline-block; margin: 8px 8px 0 0; padding: 6px 11px; border-radius: 999px; font-size: 12px; font-weight: 600; border: 1px solid; }
-.zmt-flag.zmt-chip-watch { color: #8A5A00; background: #FFF6E6; border-color: #F0D08A; }
+.zmt-flag.zmt-chip-watch { color: var(--warning-fg); background: var(--warning-bg); border-color: var(--warning-border); }
 
 .zmt-insight { margin-top: 12px; font-size: 13px; border-radius: 8px; padding: 10px 12px; line-height: 1.55; display: none; border: 1px solid; }
 .zmt-insight.zmt-show { display: block; }
 .zmt-insight .zmt-lead { font-family: var(--brand-font-display); font-weight: 700; margin-right: 4px; }
-.zmt-insight.zmt-good { background: #E9F7F0; border-color: #9FD8BE; color: #136A47; }
-.zmt-insight.zmt-watch { background: #FFF6E6; border-color: #F0D08A; color: #8A5A00; }
-.zmt-insight.zmt-alert { background: #FDECEC; border-color: #F2B5B5; color: #A12020; }
+.zmt-insight.zmt-good { background: var(--success-bg); border-color: var(--success-border); color: var(--success-fg); }
+.zmt-insight.zmt-watch { background: var(--warning-bg); border-color: var(--warning-border); color: var(--warning-fg); }
+.zmt-insight.zmt-alert { background: var(--danger-bg); border-color: var(--danger-border); color: var(--danger-fg); }
+/* Not named in audit A5 (which scoped danger/success/warning only); this
+   pair measures 6.5:1+ already, so it is left as-is on purpose. */
 .zmt-insight.zmt-info { background: #EEF3F8; border-color: #CFDBE8; color: #3C5A74; }
 
 .zmt-links { margin-top: 14px; padding-top: 10px; border-top: 1px solid var(--line-soft); font-size: 12px; color: var(--muted); }
@@ -97,8 +145,9 @@ main { max-width: 760px; margin: 0 auto; padding: 10px 16px 20px; }
 .zmt-links a:hover { text-decoration: underline; }
 
 /* Soft capture: only ever reachable after a result exists (render.js
-   un-hides this button). No gate anywhere in front of the answer. */
-.zmt-capture-open { margin-top: 14px; cursor: pointer; background: #fff; color: var(--accent-dark); border: 1px solid var(--line); border-radius: 9px; padding: 9px 14px; font-family: var(--brand-font-display); font-weight: 600; font-size: 13px; }
+   un-hides this button). No gate anywhere in front of the answer.
+   Audit A2: measured 34px tall. */
+.zmt-capture-open { margin-top: 14px; cursor: pointer; background: #fff; color: var(--accent-dark); border: 1px solid var(--line); border-radius: 10px; padding: 9px 14px; min-height: 44px; display: inline-flex; align-items: center; justify-content: center; font-family: var(--brand-font-display); font-weight: 600; font-size: 13px; }
 .zmt-capture-open:hover { border-color: var(--accent); }
 .zmt-capture-open[hidden] { display: none; }
 
@@ -119,17 +168,22 @@ main { max-width: 760px; margin: 0 auto; padding: 10px 16px 20px; }
 .zmt-modal-card p { margin: 0 0 14px; font-size: 13px; color: var(--muted); line-height: 1.5; }
 .zmt-modal-field { display: flex; flex-direction: column; gap: 5px; margin-bottom: 11px; }
 .zmt-modal-field label { font-size: 12px; font-weight: 600; color: var(--muted); }
-.zmt-modal-field input { font-family: var(--brand-font-body); font-size: 14px; border: 1px solid var(--line); border-radius: 9px; padding: 10px 11px; }
+.zmt-modal-field input { font-family: var(--brand-font-body); font-size: 14px; border: 1px solid var(--line); border-radius: 10px; padding: 10px 11px; }
 .zmt-modal-field input:focus { outline: none; border-color: var(--brand-red); box-shadow: 0 0 0 3px rgba(255, 68, 47, .14); }
 .zmt-modal-submit { width: 100%; background: var(--brand-red); color: #fff; border: none; border-radius: 10px; padding: 12px; font-family: var(--brand-font-display); font-weight: 700; font-size: 14px; cursor: pointer; margin-top: 4px; }
 .zmt-modal-submit:hover { background: var(--brand-red-dark); }
 .zmt-modal-close { position: absolute; top: 14px; right: 14px; background: none; border: none; cursor: pointer; color: var(--muted); font-size: 22px; line-height: 1; }
 .zmt-modal-fine { font-size: 11px; color: var(--muted); margin-top: 11px; line-height: 1.4; }
 .zmt-modal-ok { display: none; text-align: center; padding: 12px 0; }
-.zmt-modal-ok .zmt-check { width: 44px; height: 44px; border-radius: 50%; background: #E9F7F0; color: var(--good); display: grid; place-items: center; margin: 0 auto 12px; font-size: 20px; }
+.zmt-modal-ok .zmt-check { width: 44px; height: 44px; border-radius: 50%; background: var(--success-bg); color: var(--good); display: grid; place-items: center; margin: 0 auto 12px; font-size: 20px; }
 
-/* Print/PDF: legible, high contrast (>=12pt, per the neutral-lane rule) */
+/* Print/PDF: legible, high contrast (>=12pt, per the neutral-lane rule).
+   Audit A6: without print-color-adjust, Chrome/Safari strip background
+   colors by default on print, so the verdict badge and the flag/insight
+   tints rendered as plain white - the board-packet purpose depends on
+   those tints surviving onto paper. */
 @media print {
+  * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
   .zmt-actions, .zmt-capture-open, .zmt-modal { display: none !important; }
   body { background: #fff; }
   .zmt-card { box-shadow: none; border: 1px solid #000; }
@@ -144,6 +198,7 @@ body.zmt-embed-app .zmt-foot { display: none; }
 
 @media (max-width: 560px) {
   .zmt-fields { grid-template-columns: 1fr; }
+  .zmt-hero-num { font-size: 32px; }
 }
 
 @media (prefers-color-scheme: dark) {

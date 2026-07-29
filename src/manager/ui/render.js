@@ -29,25 +29,65 @@ function safeSet(key, obj) {
   try { window.localStorage.setItem(key, JSON.stringify(obj)); } catch (e) { /* sandboxed iframe: ignore */ }
 }
 
-// Which computed values headline the card, per tool - the "one number" the
-// spec's Block 8 pattern asks for, plus enough context to not be color-alone.
+// Secondary stats, per tool - everything EXCEPT the one number promoted to
+// the hero (see HERO below). Audit finding C2: a wall of 4-5 equal-weight
+// tiles made a reader do mental math to see the size of the gap; the hero
+// now carries that job, so these are supporting detail, not the headline.
 const HIGHLIGHTS = {
   'repair-or-replace': [
-    { k: 'verdict', label: 'Verdict', raw: true },
     { k: 'breaksYr', label: 'Your breaks/yr', f: fmt },
     { k: 'breakEvenN', label: 'Break-even breaks/yr', f: fmt },
     { k: 'annualRepair', label: 'Annual repair cost', f: money },
     { k: 'annualizedReplace', label: 'Annualized replacement cost', f: money }
   ],
   'cost-of-turnover': [
-    { k: 'annualCost', label: 'Annual cost of churn', f: money },
     { k: 'breakEvenRaise', label: 'Retention-raise break-even ($/operator/yr)', f: money },
     { k: 'costPerDeparture', label: 'Cost per departure', f: money }
   ],
   'energy-cost': [
-    { k: 'kwhPerKgal', label: 'kWh / 1,000 gal', f: fmt },
-    { k: 'costPerKgal', label: '$ / 1,000 gal', f: money }
+    { k: 'kwhPerKgal', label: 'kWh / 1,000 gal', f: fmt }
   ]
+};
+
+// THE HERO NUMBER (audit finding C2): one number per tool, promoted to a
+// large Geist numeral, plus a status badge standing in for "the verdict".
+// Pure presentation over res.values - no solve() math is computed here
+// beyond a display-only ratio/format, so the solvers stay untouched.
+// repair-or-replace has a real verdict field; the other two tools don't, so
+// their badge is derived the same way their own interpret() derives a level.
+const HERO = {
+  'repair-or-replace': (m) => {
+    let numeral = '--', caption = 'break-even ratio unavailable';
+    if (m.breakEvenN > 0) {
+      const ratio = m.breaksYr / m.breakEvenN;
+      if (isFinite(ratio)) {
+        const r = Math.round(ratio * 10) / 10;
+        const rel = r > 1 ? 'over' : (r < 1 ? 'under' : 'at');
+        numeral = fmt(r) + 'x';
+        caption = rel + ' the break-even line';
+      }
+    }
+    return {
+      numeral, caption,
+      badge: m.verdict,
+      badgeClass: m.verdict === 'REPLACE' ? 'alert' : (m.verdict === 'KEEP REPAIRING' ? 'good' : 'watch')
+    };
+  },
+  'cost-of-turnover': (m) => ({
+    numeral: money(m.annualCost),
+    caption: 'the annual cost of churn',
+    badge: null,
+    badgeClass: null
+  }),
+  'energy-cost': (m) => {
+    const tripped = m.pmTriggered && m.pmTriggered.length > 0;
+    return {
+      numeral: money(m.costPerKgal),
+      caption: 'per 1,000 gallons',
+      badge: tripped ? 'PM check advised' : 'On track',
+      badgeClass: tripped ? 'watch' : 'good'
+    };
+  }
 };
 
 function fieldGroups(tool) {
@@ -80,9 +120,17 @@ function fieldHtml(tool, f) {
 function toggleHtml(tool) {
   if (!tool.toggle) return '';
   const t = tool.toggle;
-  return '<div class="zmt-seg" role="group" aria-label="' + escHtml(t.k) + '">' +
+  // Audit finding C4: this toggle can single-handedly override the verdict
+  // (criticality forces REPLACE) but only ever had an aria-label, no visible
+  // text. caption is a real on-screen label, styled like every field label,
+  // wired to the group via aria-labelledby instead of aria-label.
+  const caption = t.label || (t.k.charAt(0).toUpperCase() + t.k.slice(1));
+  const labelId = 'zmt-toggle-label-' + tool.id + '-' + t.k;
+  return '<div class="zmt-toggle-field">' +
+    '<span class="zmt-toggle-caption" id="' + labelId + '">' + escHtml(caption) + '</span>' +
+    '<div class="zmt-seg" role="group" aria-labelledby="' + labelId + '">' +
     t.options.map((o) => '<button type="button" data-v="' + escHtml(o.v) + '" aria-pressed="' + (o.v === t.def) + '">' + escHtml(o.label) + '</button>').join('') +
-    '</div>';
+    '</div></div>';
 }
 
 export function renderTool(mount, tool) {
@@ -95,7 +143,10 @@ export function renderTool(mount, tool) {
   const groupsHtml = groups.map((g) => {
     const normal = g.fields.filter((f) => !f.advanced);
     const advanced = g.fields.filter((f) => f.advanced);
-    let html = (g.section ? '<h3 class="zmt-section">' + escHtml(g.section) + '</h3>' : '') +
+    // Audit finding A4: this is the only heading between the page h1 and the
+    // (usually hidden) modal h3, so it must be an h2 or the outline skips a
+    // level (h1 -> h3 -> h3).
+    let html = (g.section ? '<h2 class="zmt-section">' + escHtml(g.section) + '</h2>' : '') +
       '<div class="zmt-fields">' + normal.map((f) => fieldHtml(tool, f)).join('') + '</div>';
     if (advanced.length) {
       html += '<details class="zmt-advanced"><summary>Advanced</summary><div class="zmt-fields">' +
@@ -200,28 +251,45 @@ export function renderTool(mount, tool) {
       }
     });
 
+    // Audit finding C2 (THE HERO NUMBER): one number per tool renders large,
+    // alongside a verdict/status badge, above everything else.
+    const heroFn = HERO[tool.id];
+    const hero = heroFn ? heroFn(res.values) : null;
+    let html = '';
+    if (hero) {
+      const badgeHtml = hero.badge
+        ? '<div class="zmt-badge zmt-badge-' + hero.badgeClass + '">' + escHtml(hero.badge) + '</div>'
+        : '';
+      html += '<div class="zmt-hero">' + badgeHtml +
+        '<div class="zmt-hero-num">' + escHtml(hero.numeral) + '</div>' +
+        '<div class="zmt-hero-label">' + escHtml(hero.caption) + '</div>' +
+        '</div>';
+    }
+
+    // Audit finding C3 (LEAD WITH MEANING): the plain-English sentence moves
+    // directly under the hero, before the reader ever hits a stat tile.
+    if (tool.interpret) {
+      const ins = tool.interpret(res.values);
+      if (ins) html += '<div class="zmt-insight zmt-show zmt-' + ins.level + '"><span class="zmt-lead">Note</span>' + escHtml(ins.text) + '</div>';
+    }
+
     const hl = HIGHLIGHTS[tool.id] || [];
     const statsHtml = hl.map((h) => {
       const v = res.values[h.k];
       if (v == null) return '';
-      const display = h.raw ? escHtml(String(v)) : escHtml(h.f ? h.f(v) : String(v));
-      const isVerdict = h.k === 'verdict';
-      const chipClass = isVerdict ? ' zmt-chip zmt-chip-' + (v === 'REPLACE' ? 'alert' : v === 'KEEP REPAIRING' ? 'good' : 'watch') : '';
-      return '<div class="zmt-stat' + chipClass + '"><span class="zmt-stat-label">' + escHtml(h.label) + '</span><span class="zmt-stat-val">' + display + '</span></div>';
+      const display = escHtml(h.f ? h.f(v) : String(v));
+      return '<div class="zmt-stat"><span class="zmt-stat-label">' + escHtml(h.label) + '</span><span class="zmt-stat-val">' + display + '</span></div>';
     }).join('');
-    resultEl.innerHTML = '<div class="zmt-stats">' + statsHtml + '</div>';
+    html += '<div class="zmt-stats">' + statsHtml + '</div>';
 
     if (res.values.flagOutlier === true) {
-      resultEl.innerHTML += '<div class="zmt-chip zmt-chip-watch zmt-flag">Outlier: ' + fmt(res.values.breaksPerMileYr) + ' breaks/mi/yr (>= 2x cohort avg of ' + fmt(res.values.cohortAvg) + ')</div>';
+      html += '<div class="zmt-chip zmt-chip-watch zmt-flag">Outlier: ' + fmt(res.values.breaksPerMileYr) + ' breaks/mi/yr (>= 2x cohort avg of ' + fmt(res.values.cohortAvg) + ')</div>';
     }
     if (res.values.pmTriggered && res.values.pmTriggered.length) {
-      res.values.pmTriggered.forEach((t) => { resultEl.innerHTML += '<div class="zmt-chip zmt-chip-watch zmt-flag">' + escHtml(t) + '</div>'; });
+      res.values.pmTriggered.forEach((t) => { html += '<div class="zmt-chip zmt-chip-watch zmt-flag">' + escHtml(t) + '</div>'; });
     }
 
-    if (tool.interpret) {
-      const ins = tool.interpret(res.values);
-      if (ins) resultEl.innerHTML += '<div class="zmt-insight zmt-show zmt-' + ins.level + '"><span class="zmt-lead">Note</span>' + escHtml(ins.text) + '</div>';
-    }
+    resultEl.innerHTML = html;
 
     // energy-cost only: save this period as the next period's "prior", guarded.
     if (tool.id === 'energy-cost') {
@@ -268,7 +336,14 @@ export function renderTool(mount, tool) {
 }
 
 function summarizeResult(tool, res) {
+  const parts = [];
+  const heroFn = HERO[tool.id];
+  const hero = heroFn ? heroFn(res.values) : null;
+  if (hero) {
+    if (hero.badge) parts.push('Verdict: ' + hero.badge);
+    parts.push(hero.caption.charAt(0).toUpperCase() + hero.caption.slice(1) + ': ' + hero.numeral);
+  }
   const hl = HIGHLIGHTS[tool.id] || [];
-  const parts = hl.map((h) => h.label + ': ' + (h.raw ? res.values[h.k] : (h.f ? h.f(res.values[h.k]) : res.values[h.k]))).filter(Boolean);
+  parts.push(...hl.map((h) => h.label + ': ' + (h.f ? h.f(res.values[h.k]) : res.values[h.k])).filter(Boolean));
   return tool.title + ' -- ' + parts.join('; ');
 }

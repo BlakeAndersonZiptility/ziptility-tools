@@ -31,7 +31,10 @@ export default [
       { k: 'discountRate', label: 'Discount rate % (advanced)', def: 0, section: 'Break-even', advanced: true }
     ],
     toggle: {
-      k: 'criticality', def: 'Normal',
+      // label is the visible caption render.js prints above the segmented
+      // control (audit finding C4: this toggle can override the verdict by
+      // itself and had no visible label, only an aria-label).
+      k: 'criticality', def: 'Normal', label: 'Criticality',
       options: [{ v: 'Normal', label: 'Normal' }, { v: 'High', label: 'High' }, { v: 'Critical', label: 'Critical' }]
     },
     solve: (v) => {
@@ -105,6 +108,15 @@ export default [
       const N = Math.round(m.breakEvenN * 100) / 100;
       const M = Math.round(m.breaksYr * 100) / 100;
       let text = m.verdict + '. Replacement pays for itself once this main breaks more than ' + N + ' times/yr; you are at ' + M + '.';
+
+      // Audit finding C5: numbers alone make a reader do the division in
+      // their head. Say the size of the gap in words too.
+      if (m.breakEvenN > 0 && isFinite(m.breaksYr / m.breakEvenN)) {
+        const ratio = Math.round((m.breaksYr / m.breakEvenN) * 10) / 10;
+        const rel = ratio > 1 ? 'over' : (ratio < 1 ? 'under' : 'right at');
+        text += ' You are running about ' + ratio + ' times the break-even rate, ' + rel + ' the line.';
+      }
+
       if (m.criticalityOverride) {
         text += ' Criticality is set to ' + m.criticality + ', so this recommends REPLACE regardless of the break-even math.';
       }
@@ -112,6 +124,17 @@ export default [
         text += ' Outlier flag: this segment runs about ' + (Math.round(m.breaksPerMileYr * 100) / 100) + ' breaks/mile/yr, at least 2x the cohort average of ' + m.cohortAvg + '.';
       }
       text += ' This treats a repair and a replacement as buying the same service; it ignores the consequence cost of a failure unless you raise criticality.';
+
+      // Audit finding C1: the tagline promises "one next step" but the tool
+      // never named one. Close with the action that verdict actually implies.
+      if (m.verdict === 'REPLACE') {
+        text += ' Add this segment to your capital plan, or ask your engineer for a replacement estimate.';
+      } else if (m.verdict === 'ON THE LINE') {
+        text += ' Keep monitoring. Re-run this after the next break.';
+      } else {
+        text += ' No action needed yet. Re-run this after the next break.';
+      }
+
       return { level, text };
     },
     links: [

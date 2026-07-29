@@ -73,9 +73,20 @@ export default [
       if (m.annualCost == null) return null;
       const annual = Math.round(m.annualCost);
       const per = Math.round(m.breakEvenRaise);
-      const text = 'Losing ' + m.operatorsLost + ' operator' + (m.operatorsLost === 1 ? '' : 's') + '/yr costs about $' + annual.toLocaleString('en-US') +
+      let text = 'Losing ' + m.operatorsLost + ' operator' + (m.operatorsLost === 1 ? '' : 's') + '/yr costs about $' + annual.toLocaleString('en-US') +
         '/yr (recruiting + OT backfill + ramp-up productivity loss). A retention raise would have to beat $' + per.toLocaleString('en-US') +
         ' per operator per year to lose money; anything under that line is cheaper than the churn it prevents.';
+
+      // Audit finding C5: turn the departure cost into a size a reader can
+      // feel, not just a dollar figure sitting next to a salary figure.
+      if (m.salary > 0) {
+        const pct = Math.round((m.costPerDeparture / m.salary) * 100);
+        text += ' That is about ' + pct + '% of one operator\'s fully-loaded salary, per departure.';
+      }
+
+      // Audit finding C1: this tool never named a next step. Add one.
+      text += ' Next: take this number to your next budget or staffing conversation and weigh it against what a raise or bonus would actually cost.';
+
       return { level: 'info', text };
     },
     links: [

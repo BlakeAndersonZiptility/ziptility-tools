@@ -89,7 +89,14 @@ export default [
         return { level: 'watch', text };
       }
       if (m.kwhPerKgalPrior != null) {
-        text += ' No PM trigger tripped vs the prior period.';
+        // Audit finding C5: say the size of the change, not just "no
+        // trigger tripped" (a pass/fail with no felt magnitude).
+        const pct = Math.round(m.energyPctChange * 10) / 10;
+        const dir = pct > 0 ? 'higher' : (pct < 0 ? 'lower' : 'the same as');
+        text += ' That is about ' + Math.abs(pct) + '% ' + dir + ' the prior period. No PM trigger tripped.';
+        text += ' Keep tracking each period so a real change stands out early.';
+      } else {
+        text += ' No prior period to compare yet. Enter this period again next time you run the numbers, and you will see the trend and catch a change early.';
       }
       return { level: 'good', text };
     },

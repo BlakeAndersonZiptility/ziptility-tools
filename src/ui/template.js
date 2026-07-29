@@ -56,7 +56,7 @@ export function buildShell(){
   <div class="cta-inner">
     <div class="cta-txt">
       <h3>Take the formulas with you</h3>
-      <p>A printable sheet of the formulas and conversion factors behind these calculators. Free, no strings: tape it up in the plant or keep it in the truck.</p>
+      <p>A printable sheet of the formulas and conversion factors behind these calculators. It&#39;s free: give us an email and we&#39;ll send it over, then tape it up in the plant or keep it in the truck.</p>
     </div>
     <div class="cta-actions">
       <button class="cta-btn cta-primary" id="openSheet" type="button">Get the formula sheet (PDF)</button>

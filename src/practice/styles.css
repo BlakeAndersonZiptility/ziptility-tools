@@ -133,11 +133,25 @@
 #ziptility-practice .zq-btn[disabled]{ opacity:.5; cursor:not-allowed; }
 #ziptility-practice .zq-btn .zq-arrow{ display:inline-flex; transition:transform var(--dur-fast) var(--ease); }
 
+/* G1 fix, 2026-07-29: white text on raw tomato measured 3.43:1 (WCAG relative-luminance formula),
+   below the 4.5:1 floor (design-audit G1; canon cites the same failure at ~3.4:1). This button's
+   fill is pinned to raw tomato by tests/practice-browser.test.js:412 (`.zq-btn-primary`
+   backgroundColor === rgb(255, 68, 47)) — outside this fix's permitted scope (src/ui,
+   src/practice only) — so the fill stays and the TEXT flips dark instead. MEASURED
+   var(--midnight) on #ff442f = 4.88:1, clearing the floor. Navy/midnight-on-tomato is also the
+   exact pairing the logo-contrast table already sanctions, so this is not an invented combo. The
+   arrow icon uses stroke="currentColor" (quiz-engine.js ARROW_PATH) so it follows the same color
+   automatically. */
 #ziptility-practice .zq-btn-primary{
-  background:var(--tomato); color:var(--white);
+  background:var(--tomato); color:var(--midnight);
   padding:1.15rem 2.4rem; font-size:20px;
 }
-#ziptility-practice .zq-btn-primary:hover{ background:var(--tomato-press); }
+/* Hover previously swapped to --tomato-press (#c02100): with midnight text that measures only
+   ~2.8:1, a real regression. Darkening further only makes it worse (midnight is already very
+   dark, so a darker background shrinks the gap). Fill stays pinned to raw tomato in every state
+   instead, and hover reads via a shadow lift, matching DESIGN_SYSTEM_HANDOFF.md §4's "Hover =
+   ... shadow lift" and this file's own --shadow-md token. */
+#ziptility-practice .zq-btn-primary:hover{ box-shadow:var(--shadow-md); }
 #ziptility-practice .zq-btn-primary:hover .zq-arrow{ transform:translateX(3px); }
 
 #ziptility-practice .zq-btn-secondary{
@@ -257,7 +271,10 @@
   font-family:var(--font-ui); font-weight:600; font-size:13px;
   margin-top:1px;
 }
-#ziptility-practice .zq-choice.zq-selected .zq-letter{ background:var(--tomato); color:var(--white); }
+/* Same G1 failure as .zq-btn-primary, found while fixing it (not in the original flagged list):
+   white text on raw tomato measures 3.43:1. Not test-pinned, so straight swap to --tomato-press
+   (6.07:1) rather than the text-color workaround the pinned button needed. */
+#ziptility-practice .zq-choice.zq-selected .zq-letter{ background:var(--tomato-press); color:var(--white); }
 #ziptility-practice .zq-choice.zq-correct .zq-letter{ background:var(--success); color:var(--white); }
 #ziptility-practice .zq-choice.zq-wrong .zq-letter{ background:var(--danger); color:var(--white); }
 
@@ -356,9 +373,11 @@
   transition:box-shadow var(--dur) var(--ease), transform var(--dur) var(--ease);
 }
 #ziptility-practice .zq-hubcard:hover{ box-shadow:var(--shadow-md); transform:translateY(-3px); }
+/* G1 fix, 2026-07-29: tomato text on white measured 3.43:1, below the 4.5:1 floor. No test pins
+   this color (only textContent is checked), so it moves straight to --tomato-press (6.07:1). */
 #ziptility-practice .zq-hubcard .zq-eyebrow{
   display:block; font-weight:700; font-size:12px; text-transform:uppercase;
-  letter-spacing:.06em; color:var(--tomato); margin-bottom:6px;
+  letter-spacing:.06em; color:var(--tomato-press); margin-bottom:6px;
 }
 #ziptility-practice .zq-hubcard h3{ margin:0 0 4px; font-weight:700; font-size:20px; line-height:1.25; color:var(--midnight); }
 #ziptility-practice .zq-hubcard p{ margin:0; font-size:14px; line-height:1.55; color:var(--n600); }

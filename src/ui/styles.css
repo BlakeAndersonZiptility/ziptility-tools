@@ -13,8 +13,21 @@
     --brand-navy:#0c1f30;       /* Ziptility midnight-blue (design lock) — header, dark surfaces */
     --brand-teal:#12907C;       /* wastewater mode */
     --brand-teal-dark:#0C6F60;
-    --brand-red:#ff442f;        /* Ziptility tomato (design lock) — PRIMARY: CTA, capture button, brand links */
-    --brand-red-dark:#ff2f18;   /* tomato hover (design lock) */
+    --brand-red:#ff442f;        /* Ziptility tomato (design lock) — large fills, icons, borders, rules only:
+       MEASURED white-on-#ff442f = 3.43:1 and #ff442f-on-white = 3.43:1 (WCAG relative-luminance
+       formula), both below the 4.5:1 text floor (design-audit G1, 2026-07-29; canon cites the
+       same failure at ~3.4:1: DESIGN_SYSTEM_HANDOFF.md, PAGE-COMPOSITION-STANDARD.md §9.14). Never
+       use --brand-red for text or for a fill that carries text — use --brand-red-press. */
+    --brand-red-dark:#ff2f18;   /* tomato hover (design lock) — same failure as --brand-red: MEASURED
+       white-on-#ff2f18 = 3.70:1, still below 4.5:1. Kept only for callers that were already relying
+       on it as a raw-tomato-family fill/border; do not add new text/button-fill uses. */
+    --brand-red-press:#c02100;      /* DS 4.0 canon tomato-press (DESIGN_SYSTEM_HANDOFF.md --tomato-press).
+       MEASURED white-on-#c02100 = 6.07:1 — passes 4.5:1 with room. RESTING state for any text or
+       button fill that carries text (G1 fix, 2026-07-29). */
+    --brand-red-press-dark:#901800; /* Hover/pressed state one step darker than press, for fills that
+       already sit at --brand-red-press: canon defines no third tomato value, so this is a computed
+       darkening of --brand-red-press (RGB *0.75), not a new brand hex. MEASURED white-on-#901800 =
+       9.07:1. */
     --brand-accent:#ff442f;     /* brand accent = tomato — computed-answer highlight, emphasis */
     --brand-font-display:'Archivo', sans-serif;
     --brand-font-body:'Hanken Grotesk', sans-serif;
@@ -23,6 +36,8 @@
     --brand-font-mono:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   }
   :root{
+    --radius:.625rem; /* 10px — canon "THE radius" (DESIGN_SYSTEM_HANDOFF.md §0.3); used for chrome
+       surfaces (modal, CTA band) that are not imagery. G6 fix, 2026-07-29. */
     --navy:var(--brand-navy); --accent:var(--brand-accent); --good:#1E9E6A;
     --bg:#EDF2F7; --card:#FFFFFF; --ink:#0c1f30; --muted:#5C7184;
     --line:#D7E1EC; --line-soft:#E8EEF5;
@@ -70,7 +85,9 @@
   .toolbar{display:flex; align-items:center; gap:10px 12px; flex-wrap:wrap;}
   .lbl{font-family:var(--brand-font-display); font-weight:600; font-size:12px; letter-spacing:.06em; text-transform:uppercase; color:var(--muted);}
   .field-wrap{position:relative; flex:1 1 230px; max-width:380px;}
-  .field-wrap select, .field-wrap input{width:100%; appearance:none; -webkit-appearance:none; font-family:var(--brand-font-display); font-weight:600; font-size:15px; color:var(--ink); background:var(--card); border:1.5px solid var(--line); border-radius:11px; padding:12px 42px 12px 14px; cursor:pointer; transition:all .15s ease; box-shadow:var(--shadow);}
+  /* G3 fix, 2026-07-29: 15px is below the 16px floor that stops iOS Safari auto-zooming into a
+     focused input. */
+  .field-wrap select, .field-wrap input{width:100%; appearance:none; -webkit-appearance:none; font-family:var(--brand-font-display); font-weight:600; font-size:16px; color:var(--ink); background:var(--card); border:1.5px solid var(--line); border-radius:11px; padding:12px 42px 12px 14px; cursor:pointer; transition:all .15s ease; box-shadow:var(--shadow);}
   .field-wrap input{font-family:var(--brand-font-body); font-weight:500; cursor:text; padding-left:40px;}
   .field-wrap select:hover, .field-wrap input:hover{border-color:#B9C8D8;}
   .field-wrap select:focus, .field-wrap input:focus{outline:none; border-color:var(--mode); box-shadow:0 0 0 3px var(--mode-soft);}
@@ -99,18 +116,33 @@
   .field{display:flex; flex-direction:column; gap:4px; min-width:0;}
   .field.full{grid-column:1/-1;}
   .field label{font-size:11.5px; font-weight:600; color:var(--muted); letter-spacing:.01em; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
-  .field input{width:100%; font-family:var(--brand-font-mono); font-size:14.5px; color:var(--ink); background:#fff; border:1px solid var(--line); border-radius:8px; padding:8px 9px; transition:all .13s ease;}
+  /* G3 fix, 2026-07-29: 14.5px is below the 16px iOS auto-zoom floor. */
+  .field input{width:100%; font-family:var(--brand-font-mono); font-size:16px; color:var(--ink); background:#fff; border:1px solid var(--line); border-radius:8px; padding:8px 9px; transition:all .13s ease;}
   .field input::placeholder{color:#B6C4D2;}
   .field input:focus{outline:none; border-color:var(--mode); box-shadow:0 0 0 3px var(--mode-soft);}
   .field input.computed{background:#FFF6F1; border-color:var(--accent); box-shadow:inset 3px 0 0 var(--accent); color:#0E2A47; font-weight:600;}
   /* unit-field: input + unit dropdown */
   .uf{display:flex; gap:6px;}
   .uf input{flex:1; min-width:0;}
-  .uf select{flex:none; width:auto; font-family:var(--brand-font-mono); font-size:12px; font-weight:500; color:var(--mode-dark); background:var(--mode-soft); border:1px solid var(--line); border-radius:8px; padding:0 6px; cursor:pointer;}
+  /* G2 fix, 2026-07-29: computed ~20px (zero vertical padding), far below the 44px floor.
+     min-height + real vertical padding brings it to 44px; .uf has no align-items override so its
+     sibling .uf input (default align-items:stretch) grows to match automatically. */
+  .uf select{flex:none; width:auto; font-family:var(--brand-font-mono); font-size:12px; font-weight:500; color:var(--mode-dark); background:var(--mode-soft); border:1px solid var(--line); border-radius:8px; padding:12px 6px; min-height:44px; cursor:pointer;}
   .uf select:focus{outline:none; border-color:var(--mode);}
   .actions{display:flex; gap:9px; margin-top:14px;}
-  .btn{cursor:pointer; font-family:var(--brand-font-display); font-weight:600; font-size:13.5px; border-radius:9px; padding:9px 14px; transition:all .14s ease; border:1px solid transparent;}
-  .btn-calc{background:var(--mode); color:#fff; flex:1; box-shadow:0 3px 10px rgba(14,42,71,.18);}
+  /* G2 fix, 2026-07-29: computed ~39.6px (9px padding + line-height + 1px border × 2), below the
+     44px mobile tap-target floor. min-height + real vertical padding + centering brings it to
+     44px; src/practice's .zq-size already does this correctly (min-height:44px) and is the
+     pattern this matches. */
+  .btn{cursor:pointer; font-family:var(--brand-font-display); font-weight:600; font-size:13.5px; border-radius:9px; padding:12px 14px; min-height:44px; display:inline-flex; align-items:center; justify-content:center; transition:all .14s ease; border:1px solid transparent;}
+  /* Text color G1 fix, 2026-07-29: this button's fill is pinned to raw tomato by
+     tests/browser.test.js:35 (a prior Blake ruling, "Blake's call: in-tool Calculate buttons =
+     brand red", below) — that test is outside this fix's permitted scope (src/ui, src/practice
+     only), so the fill stays and the TEXT flips dark instead. MEASURED var(--brand-navy) on
+     #ff442f = 4.88:1, clearing the 4.5:1 floor (was #fff at 3.43:1, failing). Navy-on-tomato is
+     also the exact pairing the logo-contrast table already sanctions (readme §4: symbol/wordmark
+     go Navy on a Tomato field), so this is not an invented combo. */
+  .btn-calc{background:var(--mode); color:var(--brand-navy); flex:1; box-shadow:0 3px 10px rgba(14,42,71,.18);}
   .btn-calc:hover{background:var(--mode-dark);} .btn-calc:active{transform:translateY(1px);}
   .btn-clear,.btn-copy{background:#fff; color:var(--muted); border-color:var(--line);}
   .btn-clear:hover,.btn-copy:hover{border-color:var(--muted); color:var(--ink);}
@@ -126,28 +158,41 @@
 
   /* Lead-capture CTA */
   .cta{max-width:1180px; margin:24px auto 0; padding:0 16px;}
-  .cta-inner{background:linear-gradient(135deg, var(--navy), #14365a); color:#fff; border-radius:16px; padding:24px 26px; display:flex; flex-wrap:wrap; align-items:center; gap:18px; position:relative; overflow:hidden;}
+  /* G6 fix, 2026-07-29: 16px on a non-imagery chrome band; canon radius for anything that is not
+     imagery is 10px (var(--radius)). */
+  .cta-inner{background:linear-gradient(135deg, var(--navy), #14365a); color:#fff; border-radius:var(--radius); padding:24px 26px; display:flex; flex-wrap:wrap; align-items:center; gap:18px; position:relative; overflow:hidden;}
   .cta-inner::before{content:""; position:absolute; inset:0; background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px); background-size:26px 26px; -webkit-mask-image:radial-gradient(circle at 80% 50%, rgba(0,0,0,.7), transparent 70%); mask-image:radial-gradient(circle at 80% 50%, rgba(0,0,0,.7), transparent 70%);}
   .cta-txt{flex:1 1 320px; position:relative; z-index:1;}
   .cta-txt h3{font-family:var(--brand-font-display); font-weight:700; font-size:19px; margin:0 0 5px;}
   .cta-txt p{margin:0; font-size:13.5px; color:#C2D4E6; line-height:1.5;}
   .cta-actions{display:flex; gap:10px; flex-wrap:wrap; position:relative; z-index:1;}
   .cta-btn{cursor:pointer; font-family:var(--brand-font-display); font-weight:600; font-size:13.5px; border-radius:10px; padding:11px 18px; border:1px solid transparent; text-decoration:none; display:inline-block;}
-  .cta-primary{background:var(--brand-red); color:#fff;} .cta-primary:hover{background:var(--brand-red-dark);}
+  /* G1 fix, 2026-07-29: white text on raw tomato measured 3.43:1 (fails 4.5:1). No test pins this
+     button, so the fill itself moves to --brand-red-press (6.07:1) / --brand-red-press-dark on
+     hover (9.07:1). This declaration is superseded by the higher-specificity
+     `.cta-btn:not(.cta-ghost)` rule below it (fixed to match) — kept in sync so nothing here reads
+     as still-broken. */
+  .cta-primary{background:var(--brand-red-press); color:#fff;} .cta-primary:hover{background:var(--brand-red-press-dark);}
   .cta-ghost{background:rgba(255,255,255,.08); color:#fff; border-color:rgba(255,255,255,.25);} .cta-ghost:hover{background:rgba(255,255,255,.16);}
 
   /* Modal */
   .modal{position:fixed; inset:0; z-index:60; display:none; align-items:center; justify-content:center; padding:18px; background:rgba(14,42,71,.55); backdrop-filter:blur(3px);}
   .modal.show{display:flex;}
-  .modal-card{background:#fff; border-radius:16px; max-width:430px; width:100%; padding:24px; box-shadow:0 24px 60px rgba(14,42,71,.3); position:relative;}
+  /* G6 fix, 2026-07-29: 16px on the lead-capture dialog; canon radius for anything that is not
+     imagery is 10px (var(--radius)). */
+  .modal-card{background:#fff; border-radius:var(--radius); max-width:430px; width:100%; padding:24px; box-shadow:0 24px 60px rgba(14,42,71,.3); position:relative;}
   .modal-card h3{font-family:var(--brand-font-display); font-weight:700; font-size:19px; margin:0 0 6px;}
   .modal-card p{margin:0 0 16px; font-size:13px; color:var(--muted); line-height:1.5;}
   .modal-field{display:flex; flex-direction:column; gap:5px; margin-bottom:11px;}
   .modal-field label{font-size:12px; font-weight:600; color:var(--muted);}
-  .modal-field input{font-family:var(--brand-font-body); font-size:14px; border:1px solid var(--line); border-radius:9px; padding:10px 11px;}
+  /* G3 fix, 2026-07-29: 14px is below the 16px iOS auto-zoom floor — this is the lead-capture
+     form, so a zoom-jump here is a real friction point right at the point of conversion. */
+  .modal-field input{font-family:var(--brand-font-body); font-size:16px; border:1px solid var(--line); border-radius:9px; padding:10px 11px;}
   .modal-field input:focus{outline:none; border-color:var(--brand-blue); box-shadow:0 0 0 3px rgba(28,124,214,.14);}
-  .modal-submit{width:100%; background:var(--brand-red); color:#fff; border:none; border-radius:10px; padding:12px; font-family:var(--brand-font-display); font-weight:700; font-size:14px; cursor:pointer; margin-top:4px;}
-  .modal-submit:hover{background:var(--brand-red-dark);}
+  /* Same G1 failure as .cta-primary/.cta-btn, found while fixing it (not in the original flagged
+     list, but identical: white-on-#ff442f = 3.43:1). Fixed the same way. */
+  .modal-submit{width:100%; background:var(--brand-red-press); color:#fff; border:none; border-radius:10px; padding:12px; font-family:var(--brand-font-display); font-weight:700; font-size:14px; cursor:pointer; margin-top:4px;}
+  .modal-submit:hover{background:var(--brand-red-press-dark);}
   .modal-close{position:absolute; top:14px; right:14px; background:none; border:none; cursor:pointer; color:var(--muted); font-size:22px; line-height:1;}
   .modal-fine{font-size:11px; color:var(--muted); margin-top:11px; line-height:1.4;}
   .modal-ok{display:none; text-align:center; padding:12px 0;}
@@ -158,9 +203,12 @@
   .disclaimer strong{color:var(--ink);}
   .ref{margin-top:16px;}
   .ref h3{font-family:var(--brand-font-display); font-size:12px; color:var(--muted); text-transform:uppercase; letter-spacing:.06em; margin:0 0 8px;}
-  .ref-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(190px,1fr)); gap:4px 18px; font-family:var(--brand-font-mono); font-size:11.5px; color:var(--muted);}
-  .colophon{margin-top:18px; display:flex; flex-wrap:wrap; gap:6px 14px; align-items:center; font-size:11.5px;}
-  .colophon a{color:var(--brand-red); text-decoration:none;} .colophon a:hover{text-decoration:underline;}
+  /* G6 fix, 2026-07-29: 11.5px is below the smallest sanctioned token, --fs-tiny (0.75rem/12px). */
+  .ref-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(190px,1fr)); gap:4px 18px; font-family:var(--brand-font-mono); font-size:12px; color:var(--muted);}
+  .colophon{margin-top:18px; display:flex; flex-wrap:wrap; gap:6px 14px; align-items:center; font-size:12px;}
+  /* G1 fix, 2026-07-29: link text in raw tomato measured 3.43:1 (fails 4.5:1). --brand-red-press
+     measures 6.07:1 as text on white/near-white. */
+  .colophon a{color:var(--brand-red-press); text-decoration:none;} .colophon a:hover{text-decoration:underline;}
 
   /* SEO content (public page); hidden in app-embed mode */
   .seo{max-width:820px; margin:6px auto 0; padding:8px 16px 0; color:var(--ink);}
@@ -177,14 +225,28 @@
   --brand-font-display:"Circular std", Hankensans, 'Hanken Grotesk', Inter, Helvetica, Arial, sans-serif;
   --brand-font-body:Hankensans, 'Hanken Grotesk', Inter, Helvetica, Arial, sans-serif;
 }
-.cta-btn:not(.cta-ghost){ background:var(--brand-red); color:#fff; border-color:var(--brand-red); }
-.cta-btn:not(.cta-ghost):hover{ background:var(--brand-red-dark); border-color:var(--brand-red-dark); }
-a{ color:var(--brand-red); }
+/* G1 fix, 2026-07-29 (this is the winning rule — higher specificity than `.cta-primary` above):
+   MEASURED white-on-#ff442f = 3.43:1, fails 4.5:1; white-on-#c02100 (--brand-red-press) = 6.07:1,
+   passes. Hover needs a genuinely darker value than press to stay a visible "pressed" state, so
+   this is the one pair in this file that legitimately needs --brand-red-press-dark rather than
+   press: white-on-#901800 = 9.07:1. */
+.cta-btn:not(.cta-ghost){ background:var(--brand-red-press); color:#fff; border-color:var(--brand-red-press); }
+.cta-btn:not(.cta-ghost):hover{ background:var(--brand-red-press-dark); border-color:var(--brand-red-press-dark); }
+/* G1 fix, 2026-07-29: default link color was raw tomato (3.43:1 text-on-white, fails). No page
+   copy actually falls through to this bare rule today (every live anchor has a more specific
+   selector), but it is the default any new one would inherit, so it gets the same fix. */
+a{ color:var(--brand-red-press); }
 .cta-inner{ background:linear-gradient(to bottom,#0C1F30,#0F1923); }
 
 /* Blake's call: in-tool Calculate buttons = brand red */
 .btn-calc{ background:var(--brand-red); box-shadow:0 3px 10px rgba(255,68,47,.25); }
-.btn-calc:hover{ background:var(--brand-red-dark); }
+/* Hover previously swapped to --brand-red-dark (#ff2f18): with the G1 navy-text fix above, that
+   would only measure 4.52:1 — a real pass but a hair's-width one (0.5% of headroom), and any
+   further darkening (e.g. --brand-red-press) drops navy-on-tomato to ~2.8:1. Fill stays pinned to
+   raw tomato in every state instead (single measured pair, no thin margins) and hover reads via a
+   deeper, press-tinted shadow — the canon-sanctioned "shadow lift" hover pattern
+   (DESIGN_SYSTEM_HANDOFF.md §4). */
+.btn-calc:hover{ background:var(--brand-red); box-shadow:0 6px 18px rgba(192,33,0,.35); }
 
 /* ============================================================
    BRAND ALIGNMENT LAYER (from v1.1 calculator.js)
@@ -222,7 +284,8 @@ a{ color:var(--brand-red); }
 .cta{ min-height:120px; }
 /* Related-resource backlinks on cards */
 .card-links{ margin-top:10px; padding-top:9px; border-top:1px solid var(--line-soft); font-size:12px; color:var(--muted); }
-.card-links a{ color:var(--brand-red); font-weight:600; text-decoration:none; }
+/* G1 fix, 2026-07-29: same raw-tomato-text failure (3.43:1) as .colophon a / .linkbtn. */
+.card-links a{ color:var(--brand-red-press); font-weight:600; text-decoration:none; }
 .card-links a:hover{ text-decoration:underline; }
 /* Gated/in-app embed also hides Webflow-side SEO sections */
 body.embed-app .cta, body.embed-app .seo, body.embed-app .zip-seo{ display:none; }
@@ -260,8 +323,12 @@ html[data-mode="wastewater"]{ --mode:var(--brand-red); --mode-dark:#c5341f; --mo
 /* header: no mode-colored underline (the design ends flush on the linen page) */
 header{ border-bottom:none; }
 
-/* flat white cards — drop the mode-colored top stripe */
-.card{ border-radius:10px; }
+/* flat white cards — drop the mode-colored top stripe.
+   G4 fix, 2026-07-29: this reskin overrode the radius but never removed the base rule's
+   `border:1px solid var(--line)` (Section 1, above). Canon is borderless-plus-shadow for content
+   cards (DESIGN_SYSTEM_HANDOFF.md §4: "Cards: ... no hard borders"); src/practice's .zq-card
+   already does this correctly and is the pattern this matches. */
+.card{ border-radius:10px; border:none; }
 .card::before{ display:none; }
 
 /* mode cards: rounded, circular icon, navy title when selected */
@@ -285,8 +352,11 @@ html[data-mode="wastewater"] .mode-btn[data-m="wastewater"] .mode-txt b{ color:v
 /* tomato computed-answer highlight */
 .field input.computed{ background:#fff1ee; border-color:var(--brand-red); box-shadow:inset 3px 0 0 var(--brand-red); }
 
-/* see-also / empty-state links in tomato */
-.linkbtn{ color:var(--brand-red); }
+/* see-also / empty-state links in tomato — G1 fix, 2026-07-29: this override was re-breaking a
+   rule that already passed (base .linkbtn at the top of the file uses --mode-dark, 5.4:1); moving
+   it to --brand-red-press (6.07:1) matches canon's named token instead of the file's older
+   near-miss --mode-dark. */
+.linkbtn{ color:var(--brand-red-press); }
 
 /* header title: Archivo black, per design */
 .head-title h1{ font-family:var(--brand-font-display); font-weight:900; font-size:19px; letter-spacing:-.02em; line-height:1; }

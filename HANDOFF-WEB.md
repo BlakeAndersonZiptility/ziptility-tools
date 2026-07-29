@@ -15,7 +15,7 @@ know what is serving right now, read the page.
 | `practice-v1.5.0.js` | released, not yet pointed at by any page (supersedes v1.4.0; adds the contrast fix) |
 | `manager-v1.1.0.js` | released, not yet pointed at by any page (supersedes v1.0.0; adds the design-audit fixes) |
 | `calculator-v2.7.0.js` | released, not yet pointed at by any page (supersedes v2.6.0; adds the contrast and mobile-gate fixes) |
-| `reportcard-v1.0.0.js` | **not cut yet.** Both of its blockers cleared 2026-07-29; holding for the design-audit fixes so the first release is not immediately superseded |
+| `reportcard-v1.0.0.js` | released, not yet pointed at by any page |
 
 Nothing on the live site has moved. Every page still serves the version it
 served this morning, because a page only changes when its `src` changes,
@@ -160,9 +160,6 @@ tool, and GA4 completion tracking.
 **Both former blockers are cleared** (Blake, 2026-07-29): the red-line set
 is **seven** (T5, T7, T8, M3, M8, F1, F2, matching the workbook, superseding
 D26's six), and the citations stand as they are.
-
-⚠ **The artifact below is not cut yet.** Version pinned here for when it
-is; confirm against the repo before pasting it into a page.
 
 ```html
 <div id="ziptility-report-card">

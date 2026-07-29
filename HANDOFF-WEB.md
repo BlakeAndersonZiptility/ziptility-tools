@@ -14,7 +14,7 @@ know what is serving right now, read the page.
 |---|---|
 | `practice-v1.4.0.js` | released, not yet pointed at by any page |
 | `manager-v1.0.0.js` | released, not yet pointed at by any page |
-| `calculator-v2.5.0.js` | released, not yet pointed at by any page |
+| `calculator-v2.6.0.js` | released, not yet pointed at by any page (supersedes v2.5.0) |
 | `reportcard-v*` | **not released**, see section 3 |
 
 Nothing on the live site has moved. Every page still serves the version it
@@ -173,13 +173,41 @@ own Methodology sheet. This section updates when those two clear.
 
 ## 4. What changed under the existing pages
 
-**`/tools/calculator`** should move to **`calculator-v2.5.0.js`**. Every
-deep link the practice tests emit (`/tools/calculator#chlorine-dose` and 27
-others) was dead: cards carried no id, and the grid renders one category at
-a time so the target card was not in the document at all. Both are fixed
-and all 28 are verified to land on their card. Until the embed is
-repointed, those links keep dropping readers at the top of a page of 50+
-calculators.
+**`/tools/calculator`** should move to **`calculator-v2.6.0.js`**, which
+carries two changes.
+
+*Deep links.* Every link the practice tests emit
+(`/tools/calculator#chlorine-dose` and 27 others) was dead: cards carried
+no id, and the grid renders one category at a time so the target card was
+not in the document at all. Both fixed, all 28 verified to land. Until the
+embed is repointed, those links keep dropping readers at the top of a page
+of 50+ calculators.
+
+*The demo CTA band is gone.* The tool body carried a Ziptility product
+paragraph and a "Book a demo" link. That is commercial framing inside an
+ungated tool, on the lane where completion is the conversion and where
+scoring a demo click as success is lane bleed by name. The global nav
+carries the demo button as chrome, which is where it belongs. The free
+formula sheet stays, reworded as an offer rather than a pitch, still below
+the working calculators so it is never a gate. **The HubSpot form id from
+STF-14 is untouched and still fires.**
+
+### No tool in this repo renders a brand mark
+
+Checked at runtime across all four bundles, not by grep: zero images, zero
+logo elements, zero logo background-images, zero brand SVGs, zero demo
+links. On the live page the Webflow global header and footer wrap the tool
+and carry the brand; a logo inside the bundle would be the brand twice on
+one screen.
+
+The calculator's stylesheet did still carry dead `.brand` / `.brand .word`
+/ `.brand .zip-logo` rules for markup v2 has never rendered, under a
+comment reading "OFFICIAL LOGO SLOT: replace .word with Ziptility Brand
+Logo.svg". Nothing rendered from it, but it read as an instruction to add
+one back. Removed in v2.6.0.
+
+Both properties now run in CI (`scripts/check-neutral-lane.mjs`) on all
+four bundles, because both had drifted back in once already.
 
 **`/tools/practice`** wants **`practice-v1.4.0.js`** for the
 blank-description fix, whether or not the six pages ship at the same time.

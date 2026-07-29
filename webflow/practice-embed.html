@@ -1,26 +1,44 @@
-<!-- Ziptility Operator Practice Tests: full tool renders from this one
+<!-- Ziptility Operator Practice Tests: the full tool renders from this one
      script. Source: https://github.com/BlakeAndersonZiptility/ziptility-tools
-     To deploy a new version or roll back: change ONLY the version in the
-     script src below, then publish. Versions are immutable.
 
-     Give the Webflow wrapper around this embed the class .zip-practice-embed
-     and set the min-heights below on it.
-     Wrapper min-heights (INITIAL ESTIMATES, re-tune after the first real
-     render, same CWV discipline as the calculator's .zip-calc-embed):
+     THIS FILE IS THE EMBED CONTRACT, NOT THE DEPLOY RECORD. Runtime truth
+     is the live embed on the page, never this copy (LEDGER L-005). The
+     version below is the one that was live when this file was last
+     touched (practice-v1.3.0, measured on ziptility.com/tools/practice
+     2026-07-29); to know what is serving right now, read the page.
+
+     To deploy a new version or roll back: change ONLY the version in the
+     script src, then publish. Versions are immutable, so pushing to main
+     never changes what a visitor sees. Rollback is the same edit in
+     reverse and takes about a minute.
+
+     Give the Webflow wrapper around this embed the class
+     .zip-practice-embed and set these min-heights on it, so nothing below
+     shifts while the app boots (the dark strip is a skeleton the app
+     replaces):
        desktop ~950px / tablet ~950px / mobile-landscape ~1050px /
        mobile-portrait ~1500px
-     so content below never shifts while the app boots. The dark strip
-     below is a skeleton the app replaces on boot. The bundle loads no
-     third-party tags beyond its own Google Fonts request (Archivo + Geist).
+     The bundle loads no third-party tags beyond its own Google Fonts
+     request (Archivo + Geist).
 
-     Gated/in-app variant: add data-embed="app" to the div (resolved once
-     in main.js; nothing in this bundle currently hides on it, kept for
-     parity with the calculator idiom and any future gating).
-     Deep link straight to one test, skipping the picker: add
-     data-test="operator-math-1" to the div, or append
-     ?test=operator-math-1 to the page URL. -->
+     OPTIONS (all set on the div, or as a query string on the page URL):
+       data-test="water-treatment"   pin one bank, skip the picker. Takes
+                                     the page slug ("water-treatment") or
+                                     the internal id ("wt-1"). See
+                                     practice-embed-discipline.html for the
+                                     per-discipline page this is built for.
+       data-child-pages="1"          hub only: turn the six picker cards
+                                     into links to /tools/practice/<slug>
+                                     instead of launching in place. Leave
+                                     OFF until all six pages are live, or
+                                     the hub links to 404s.
+       data-hub-url="/tools/practice"  override the hub path.
+       data-embed="app"              in-app variant (parity with the
+                                     calculator idiom; currently no visual
+                                     change).
+-->
 <div id="ziptility-practice">
   <div aria-hidden="true" style="height:88px;background:#0c1f30;border-bottom:3px solid #ff442f"></div>
   <noscript>This tool requires JavaScript. Please enable it to use the free practice tests.</noscript>
 </div>
-<script defer src="https://blakeandersonziptility.github.io/ziptility-tools/dist/practice-v1.0.0.js"></script>
+<script defer src="https://blakeandersonziptility.github.io/ziptility-tools/dist/practice-v1.3.0.js"></script>

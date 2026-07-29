@@ -50,6 +50,14 @@ export function initApp(){
       if(otherN>0) document.getElementById('switchMode').onclick=()=>setMode(other); return; }
     items.forEach(c=>{
       const card=document.createElement('div'); card.className='card';
+      /* The card carries the calculator's own id so #<id> lands ON IT.
+         Without this the only ids in the DOM were on the buttons inside
+         (calc-<id>, clear-<id>, copy-<id>), so every deep link built as
+         calcUrl + '#' + q.calculator, which is what each practice-test
+         question emits for "Run this math in the Operator Calculator",
+         resolved to nothing and dropped the reader at the top of a page
+         of 50-plus calculators. */
+      card.id=c.id;
       let tgl=c.toggle? c.toggle.def : null;
       let fieldsHtml='';
       c.fields.forEach(f=>{ const inp='<input id="'+c.id+'__'+f.k+'" inputmode="decimal" autocomplete="off" spellcheck="false" placeholder="–">';
@@ -114,6 +122,42 @@ export function initApp(){
   catSelect.addEventListener('change',()=>{ state.cat=catSelect.value; renderGrid(); });
   searchEl.addEventListener('input',()=>{ state.query=searchEl.value; renderGrid(); });
 
+  /* Deep link to one calculator: /tools/calculator#filtration-rate.
+     Every practice-test question with a `calculator` field emits exactly
+     this, as its "Run this math in the Operator Calculator" link.
+
+     Giving each card an id is necessary but not sufficient: the grid only
+     ever renders ONE category of ONE mode at a time (visibleItems()), so
+     a card the reader has not navigated to is not merely off-screen, it
+     is not in the DOM at all, and the browser has nothing to scroll to.
+     So resolve the target first, switch mode and category to wherever it
+     lives, render, and only then scroll.
+
+     Focus as well as scroll, because a keyboard or screen-reader user
+     who followed the link should arrive at the calculator rather than at
+     the top of the document with the view moved out from under them.
+     tabindex -1 makes a div focusable without adding it to the tab order. */
+  function gotoHash(){
+    let id='';
+    try{ id=decodeURIComponent((location.hash||'').replace(/^#/,'')); }catch(e){ return; }
+    if(!id) return;
+    const target=calculators.find(c=>c.id===id);
+    if(!target) return; /* not ours: leave the browser's own behaviour alone */
+
+    state.query=''; searchEl.value='';
+    if(!target.domains.includes(state.mode)) setMode(target.domains[0]);
+    state.cat=target.cat; buildSelect(); catSelect.value=state.cat;
+    renderGrid();
+
+    const card=document.getElementById(id);
+    if(!card) return;
+    card.setAttribute('tabindex','-1');
+    card.scrollIntoView({block:'start'});
+    card.focus({preventScroll:true});
+  }
+  window.addEventListener('hashchange',gotoHash);
+
   document.documentElement.dataset.mode=state.mode; /* active mode styled on first paint */
   buildSelect(); renderGrid();
+  gotoHash();
 }

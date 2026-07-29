@@ -12,9 +12,9 @@ know what is serving right now, read the page.
 
 | Artifact | Status |
 |---|---|
-| `practice-v1.4.0.js` | released, not yet pointed at by any page |
-| `manager-v1.0.0.js` | released, not yet pointed at by any page |
-| `calculator-v2.6.0.js` | released, not yet pointed at by any page (supersedes v2.5.0) |
+| `practice-v1.5.0.js` | released, not yet pointed at by any page (supersedes v1.4.0; adds the contrast fix) |
+| `manager-v1.1.0.js` | released, not yet pointed at by any page (supersedes v1.0.0; adds the design-audit fixes) |
+| `calculator-v2.7.0.js` | released, not yet pointed at by any page (supersedes v2.6.0; adds the contrast and mobile-gate fixes) |
 | `reportcard-v1.0.0.js` | **not cut yet.** Both of its blockers cleared 2026-07-29; holding for the design-audit fixes so the first release is not immediately superseded |
 
 Nothing on the live site has moved. Every page still serves the version it
@@ -39,7 +39,7 @@ one attribute:
   <div aria-hidden="true" style="height:88px;background:#0c1f30;border-bottom:3px solid #ff442f"></div>
   <noscript>This tool requires JavaScript. Please enable it to use the free practice test.</noscript>
 </div>
-<script defer src="https://blakeandersonziptility.github.io/ziptility-tools/dist/practice-v1.4.0.js"></script>
+<script defer src="https://blakeandersonziptility.github.io/ziptility-tools/dist/practice-v1.5.0.js"></script>
 ```
 
 **`data-test` is the page's own slug**, the last segment of its URL, so
@@ -114,7 +114,7 @@ that gets the engagement.
 **Leave it off until all six pages are published**, or the hub links to
 404s. It is one attribute, added last.
 
-The hub embed also wants its `src` moved to `practice-v1.4.0.js` to pick up
+The hub embed also wants its `src` moved to `practice-v1.5.0.js` to pick up
 the blank-description fix: five of the six cards currently render an empty
 description paragraph in production.
 
@@ -129,7 +129,7 @@ pinned per page.
 <div id="ziptility-manager-tools" data-tool="repair-or-replace">
   <noscript>This tool requires JavaScript. Please enable it to use the free calculator.</noscript>
 </div>
-<script defer src="https://blakeandersonziptility.github.io/ziptility-tools/dist/manager-v1.0.0.js"></script>
+<script defer src="https://blakeandersonziptility.github.io/ziptility-tools/dist/manager-v1.1.0.js"></script>
 ```
 
 | Page URL | `data-tool` |
@@ -199,7 +199,7 @@ completely and sends nothing.
 
 ## 4. What changed under the existing pages
 
-**`/tools/calculator`** should move to **`calculator-v2.6.0.js`**, which
+**`/tools/calculator`** should move to **`calculator-v2.7.0.js`**, which
 carries two changes.
 
 *Deep links.* Every link the practice tests emit
@@ -217,6 +217,25 @@ carries the demo button as chrome, which is where it belongs. The free
 formula sheet stays, reworded as an offer rather than a pitch, still below
 the working calculators so it is never a gate. **The HubSpot form id from
 STF-14 is untouched and still fires.**
+
+### A design audit ran on all four bundles (2026-07-29)
+
+Every bundle FAILED the Look Bar's 7 floor on first pass, and not on taste.
+The fixes are in the versions above. Two things worth carrying forward:
+
+**Raw tomato `#ff442f` is not readable as text.** Measured 3.37:1 against
+white in both directions, under the 4.5:1 floor, and canon already said so.
+Both bundles had made the mistake independently, on Calculate buttons, the
+CTA, link text, the practice hub's primary button and its eyebrows. Text
+and text-bearing fills now use tomato-press `#c02100`, or midnight on
+tomato where a prior ruling pins the fill. Raw tomato stays correct for
+borders, icons and rules, which only owe 3:1.
+
+**A DS token being canon does not make a PAIR of tokens accessible.**
+Measured on their own DS tint backgrounds, `--danger` is 4.41:1,
+`--success` 3.15:1 and `--warning` 3.07:1. The `-fg` variants pass and are
+what shipped. Anything binding a semantic colour to its own tint should
+measure rather than assume.
 
 ### No tool renders a brand mark ON SCREEN. One does in print.
 
@@ -244,7 +263,7 @@ one back. Removed in v2.6.0.
 Both properties now run in CI (`scripts/check-neutral-lane.mjs`) on all
 four bundles, because both had drifted back in once already.
 
-**`/tools/practice`** wants **`practice-v1.4.0.js`** for the
+**`/tools/practice`** wants **`practice-v1.5.0.js`** for the
 blank-description fix, whether or not the six pages ship at the same time.
 Five of its six cards render an empty description in production today.
 

@@ -9,6 +9,25 @@ const PREVIEW = 'file://' + fileURLToPath(new URL('../index.html', import.meta.u
 let pass = 0, fail = 0;
 const ok = (name, cond) => { if (cond) pass++; else { fail++; console.log('FAIL: ' + name); } };
 
+// WCAG relative-luminance contrast, for computed rgb(...) strings. Used below so a primary-action
+// colour swap is checked against the actual floor (4.5:1), not just pinned to one literal value -
+// design-pass 2026-07-29, replacing the raw-tomato assertion this test used to encode.
+function rgbToNums(rgb) {
+  const m = /rgba?\(([\d.]+),\s*([\d.]+),\s*([\d.]+)/.exec(rgb);
+  if (!m) throw new Error('not an rgb() string: ' + rgb);
+  return [Number(m[1]), Number(m[2]), Number(m[3])];
+}
+function relLuminance([r, g, b]) {
+  const lin = (c) => { c /= 255; return c <= 0.03928 ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4); };
+  return 0.2126 * lin(r) + 0.7152 * lin(g) + 0.0722 * lin(b);
+}
+function contrastRatio(rgbA, rgbB) {
+  const LA = relLuminance(rgbToNums(rgbA));
+  const LB = relLuminance(rgbToNums(rgbB));
+  const [hi, lo] = LA > LB ? [LA, LB] : [LB, LA];
+  return (hi + 0.05) / (lo + 0.05);
+}
+
 const browser = await chromium.launch();
 const ctx = await browser.newContext({ ignoreHTTPSErrors: true, viewport: { width: 1280, height: 900 } });
 const page = await ctx.newPage();
@@ -31,8 +50,22 @@ ok('no logo in tool masthead (global nav carries brand)', await page.evaluate(()
 // brand styling (computed)
 const bodyBg = await page.evaluate(() => getComputedStyle(document.body).backgroundColor);
 ok('warm linen background DS 4.0 (#fbf8f5), got ' + bodyBg, bodyBg === 'rgb(251, 248, 245)');
-const btnBg = await page.evaluate(() => getComputedStyle(document.querySelector('.btn-calc')).backgroundColor);
-ok('Calculate button tomato #ff442f, got ' + btnBg, btnBg === 'rgb(255, 68, 47)');
+// Design pass, 2026-07-29 (Blake ruling: design-system rules, not the superseded calculator-only
+// "Calculate buttons = brand red" call): this used to pin the raw-tomato fill by literal value,
+// which is exactly what forced the navy-text workaround the ruling retires. Assert the DS-correct
+// treatment instead - tomato-press fill, white text, AND that the pair actually clears 4.5:1 -
+// so a future regression back to raw tomato (which measures 3.43:1 and fails) is still caught,
+// without re-encoding one specific fill as the only acceptable answer.
+const btnStyle = await page.evaluate(() => {
+  const cs = getComputedStyle(document.querySelector('.btn-calc'));
+  return { bg: cs.backgroundColor, color: cs.color };
+});
+ok('Calculate button uses the DS text-bearing tomato (tomato-press #c02100), got ' + btnStyle.bg,
+  btnStyle.bg === 'rgb(192, 33, 0)');
+ok('Calculate button text is white (matches the CTA/modal primary buttons elsewhere in this file), got ' + btnStyle.color,
+  btnStyle.color === 'rgb(255, 255, 255)');
+const btnContrast = contrastRatio(btnStyle.bg, btnStyle.color);
+ok('Calculate button fill/text contrast clears 4.5:1, got ' + btnContrast.toFixed(2) + ':1', btnContrast >= 4.5);
 const h2font = await page.evaluate(() => getComputedStyle(document.querySelector('.card-head h2')).fontFamily);
 ok('heading declares Archivo stack, got ' + h2font, /Archivo/i.test(h2font));
 

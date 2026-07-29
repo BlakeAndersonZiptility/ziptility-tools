@@ -186,17 +186,13 @@ function buildComposite(s, gradeLabels) {
   const capped = s.practical.capped;
   const leadGrade = capped ? s.practical.grade : s.overall.grade;
 
-  /* D7: h2, not h1 - the host page owns the one true H1. */
-  section.appendChild(el('h2', 'zrc-h1', leadGrade ? HEADLINE[leadGrade] : 'Answer a few dimensions to see your picture'));
+  section.appendChild(buildGradePlaque(s, leadGrade, gradeLabels, capped));
 
-  if (capped) {
-    section.appendChild(buildPracticalLead(s, gradeLabels));
-    section.appendChild(el(
-      'p',
-      'zrc-composite-secondary-label',
-      'Descriptive composite (the plain average, before the cap)'
-    ));
-  }
+  section.appendChild(el(
+    'p',
+    'zrc-composite-secondary-label',
+    capped ? 'Descriptive composite (the plain average, before the cap)' : 'By capacity'
+  ));
 
   const grid = el('div', 'zrc-composite-grid' + (capped ? ' zrc-composite-grid-secondary' : ''));
   s.legAverages.forEach((la) => {
@@ -208,28 +204,51 @@ function buildComposite(s, gradeLabels) {
   return section;
 }
 
-/* C2: named per the brief's own example - "Two of your critical
-   dimensions scored F: Regulatory Compliance and Rate Adequacy. Your
-   Practical Grade is D, and that is the one to act on." s.flags already
-   carries exactly the dimensions that tripped the cap (scoring.js), so
-   this only reads that list out loud rather than re-deciding anything. */
-function buildPracticalLead(s, gradeLabels) {
-  const wrap = el('div', 'zrc-practical-lead');
+/* THE GRADE PLAQUE (design pass, 2026-07-29 - supersedes the plain-text headline plus, only when
+   capped, a small colored box). Two audits scored this bundle's results screen as "competent,
+   generic... interchangeable with any competitor" on Signature. The one number a utility's board
+   actually needs (the Practical or Overall grade) now runs as a real instrument-panel plaque -
+   dark surface, oversized letter, the headline sentence next to it - so the page has a moment
+   before it ever gets to a bar chart, on BOTH the capped and uncapped path (the old version only
+   built anything grade-shaped here when capped; most results are not capped, and got no plaque at
+   all). Same dark surface token (--gauge-dark) as src/manager's result gauge and src/ui's CTA
+   band, so a dark plaque means the same "here is the number that matters" thing everywhere in the
+   tool suite. C2's naming rule is unchanged: s.flags already carries exactly which dimensions
+   tripped the cap (scoring.js); this only reads that list out loud. */
+function buildGradePlaque(s, leadGrade, gradeLabels, capped) {
+  const plaque = el('div', 'zrc-plaque' + (leadGrade ? ' zrc-plaque-filled' : ''));
 
-  const big = el('div', 'zrc-practical-grade-big');
-  const colors = GRADE_COLORS[s.practical.grade];
-  big.style.color = colors.fg;
-  big.style.background = colors.bg;
-  big.appendChild(el('span', 'zrc-practical-letter', s.practical.grade));
-  big.appendChild(el('span', 'zrc-practical-label', 'Practical Grade'));
-  wrap.appendChild(big);
+  /* D7: h2, not h1 - the host page owns the one true H1. Kept as the FIRST .zrc-h1 in the DOM
+     either way, so renderResults' post-render focus() still lands here unchanged. */
+  const headline = el('h2', 'zrc-h1 zrc-plaque-headline',
+    leadGrade ? HEADLINE[leadGrade] : 'Answer a few dimensions to see your picture');
 
-  const names = joinNames(s.flags.map((f) => f.name));
-  const sentence = s.flags.length + ' of your critical dimensions scored F: ' + names + '. ' +
-    'Your Practical Grade is ' + s.practical.grade + ', and that is the one to act on.';
-  wrap.appendChild(el('p', 'zrc-practical-explain', sentence));
+  if (!leadGrade) { plaque.appendChild(headline); return plaque; }
 
-  return wrap;
+  const row = el('div', 'zrc-plaque-row');
+
+  const big = el('div', 'zrc-plaque-grade');
+  big.appendChild(el('span', 'zrc-plaque-letter', leadGrade));
+  big.appendChild(el('span', 'zrc-plaque-name', gradeName(leadGrade, gradeLabels)));
+  row.appendChild(big);
+
+  const text = el('div', 'zrc-plaque-text');
+  text.appendChild(headline);
+  if (capped) {
+    /* C2: named per the brief's own example - "Two of your critical dimensions scored F:
+       Regulatory Compliance and Rate Adequacy. Your Practical Grade is D, and that is the one to
+       act on." */
+    const names = joinNames(s.flags.map((f) => f.name));
+    text.appendChild(el('p', 'zrc-plaque-sub',
+      s.flags.length + ' of your critical dimensions scored F: ' + names + '. ' +
+      'Your Practical Grade is ' + leadGrade + ', and that is the one to act on.'));
+  } else {
+    text.appendChild(el('p', 'zrc-plaque-sub', s.answered + ' of ' + s.total + ' dimensions answered.'));
+  }
+  row.appendChild(text);
+  plaque.appendChild(row);
+
+  return plaque;
 }
 
 function compositeCard(label, grade, answered, total, gradeLabels) {
@@ -267,9 +286,17 @@ function buildGroupedBars(dimensions, grades, gradeLabels) {
      printed page. */
   section.appendChild(buildAllDimsJumpNav(dimensions, grades));
 
+  /* RHYTHM, 2026-07-29 (design pass): the audit's exact words were "23 identical bar-rows with no
+     width or surface variation anywhere on the screen." Each capacity group now sits in its own
+     card surface (reusing .zrc-card - the same white/shadow panel the intake step and composite
+     cards already use, so this is one more application of an existing surface, not a new one)
+     with a coloured top edge in that group's own LEG_COLOR - the same colour the small swatch
+     dot already carries, just given somewhere to read as a shape rather than a 10px dot. Three
+     visually distinct panels reads as grouped information; one flat list of 23 rows does not. */
   const grid = el('div', 'zrc-bars-grid');
   LEGS.forEach((leg) => {
-    const group = el('div', 'zrc-bars-group');
+    const group = el('div', 'zrc-bars-group zrc-card');
+    group.style.borderTop = '4px solid ' + LEG_COLOR[leg];
     const title = el('h3', 'zrc-bars-group-title');
     const swatch = el('span', 'zrc-swatch');
     swatch.style.background = LEG_COLOR[leg];
@@ -364,8 +391,15 @@ function buildWheelSection(dimensions, grades, overallGrade) {
   const section = el('section', 'zrc-wheel-section zrc-noprint');
   section.appendChild(el('h2', 'zrc-h2', 'The same picture, as a wheel'));
   section.appendChild(el('p', 'zrc-section-lede', 'A picture only. The bars above carry the same information as text.'));
+  /* WIDTH RHYTHM, 2026-07-29 (design pass): the full-width bars grid above sits right next to
+     this, so the wheel gets its own bounded, Linen-tinted "gauge" card instead of floating free
+     at the same width - a deliberate narrower measure (DS 9.7: "distinct widths down the page ...
+     is the single most common look defect" when missing), and a second surface family (warm
+     Linen vs. the bars' white cards) in the same screenful. */
+  const card = el('div', 'zrc-wheel-card');
   const svg = buildWheelSvg(dimensions, grades, overallGrade);
-  section.appendChild(svg);
+  card.appendChild(svg);
+  section.appendChild(card);
   return section;
 }
 
@@ -437,7 +471,13 @@ function buildWheelSvg(dimensions, grades, overallGrade) {
   labelTextEl.setAttribute('text-anchor', 'middle');
   labelTextEl.setAttribute('font-family', 'Geist, sans-serif');
   labelTextEl.setAttribute('font-size', '11');
-  labelTextEl.setAttribute('fill', '#94a3b8');
+  /* MUTED-TEXT AUDIT, 2026-07-29: this was --n400 (#94a3b8), which DESIGN_SYSTEM_HANDOFF.md
+     documents as "muted text" with no caveat about where it is legible. It sits on the wheel's
+     near-white center circle (fill #fcfaf6 just above), where it MEASURES ~2.6:1 and fails 4.5:1
+     - the same defect fixed everywhere else in this file (see the D4 comments in styles.css).
+     --n600 (#475569) measures ~7.4:1 on that same fill and is the token this codebase already
+     uses for every other "quiet but readable" label. */
+  labelTextEl.setAttribute('fill', '#475569');
   labelTextEl.textContent = 'overall';
   svg.appendChild(labelTextEl);
 

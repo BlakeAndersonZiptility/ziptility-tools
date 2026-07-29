@@ -23,6 +23,7 @@
   --warm-50:#fcfaf6;
   --warm-100:#f9f3ec;
   --warm-400:#e6dac9;
+  --linen:#f6eee6;
   --info:#0088ff;
   --shadow-xs:0 1px 2px rgba(12,31,48,.06);
   --shadow-sm:0 2px 8px rgba(12,31,48,.08);
@@ -279,7 +280,15 @@
 
 /* ---------- results: wheel ---------- */
 #ziptility-report-card .zrc-wheel-section{ display:flex; flex-direction:column; align-items:center; text-align:center; }
-#ziptility-report-card .zrc-wheel-section svg{ display:block; }
+/* WIDTH RHYTHM, 2026-07-29 (design pass): a bounded, Linen-tinted "gauge" card instead of the
+   wheel floating at full wrap width - a deliberately narrower measure than the bars-grid above it
+   AND the second surface family (warm vs. the bars' white cards) on the same screen. */
+#ziptility-report-card .zrc-wheel-card{
+  background:var(--warm-100); border-radius:var(--radius-lg);
+  padding:24px; max-width:340px; width:100%;
+  display:flex; align-items:center; justify-content:center;
+}
+#ziptility-report-card .zrc-wheel-card svg{ display:block; max-width:100%; height:auto; }
 
 /* ---------- results: red-line panel ---------- */
 #ziptility-report-card .zrc-redline-section{ background:#fef2f2; border-radius:var(--radius-lg); padding:28px 26px; }
@@ -343,17 +352,36 @@
 #ziptility-report-card .zrc-cite-details[open] > .zrc-cite-summary::before{ content:'▾ '; }
 #ziptility-report-card .zrc-cite-details .zrc-cite{ margin:4px 0 0; }
 
-/* ---------- C2: the Practical Grade lead, shown first and larger when
-   two or more critical dimensions cap the composite (config.js
-   PRACTICAL_CAP_THRESHOLD) ---------- */
-#ziptility-report-card .zrc-practical-lead{ margin:0 0 18px; }
-#ziptility-report-card .zrc-practical-grade-big{
-  display:inline-flex; flex-direction:column; align-items:center; gap:2px;
-  border-radius:var(--radius-lg); padding:16px 30px; margin-bottom:14px;
+/* ---------- THE GRADE PLAQUE (design pass, 2026-07-29) ----------
+   Supersedes the old ".zrc-practical-*" rules (dead now - ui/results.js no longer builds those
+   classes; recover from git history if ever needed). Renders on BOTH the capped and uncapped
+   path (see buildGradePlaque in ui/results.js), where the old practical-lead treatment only
+   existed when capped. Same dark surface as src/manager's gauge and src/ui's CTA band. */
+#ziptility-report-card .zrc-plaque{ margin:0 0 20px; }
+#ziptility-report-card .zrc-plaque-filled{
+  background:linear-gradient(160deg, var(--midnight), #14365a);
+  border-radius:var(--radius-lg);
+  padding:28px 26px;
+  color:var(--white);
 }
-#ziptility-report-card .zrc-practical-letter{ font-family:var(--font-sans); font-weight:900; font-size:52px; line-height:1; }
-#ziptility-report-card .zrc-practical-label{ font-family:var(--font-ui); font-size:13px; font-weight:700; text-transform:uppercase; letter-spacing:.04em; }
-#ziptility-report-card .zrc-practical-explain{ font-size:16.5px; line-height:1.55; color:var(--n700); margin:0; max-width:640px; }
+#ziptility-report-card .zrc-plaque-row{ display:flex; align-items:center; gap:26px; flex-wrap:wrap; }
+#ziptility-report-card .zrc-plaque-grade{
+  flex:0 0 auto; min-width:108px; display:flex; flex-direction:column; align-items:center; text-align:center; gap:4px;
+}
+#ziptility-report-card .zrc-plaque-letter{ font-family:var(--font-sans); font-weight:900; font-size:68px; line-height:1; color:var(--white); }
+/* --linen full-opacity, not a translucent white: the DS's own "text-on-dark" pair
+   (DESIGN_SYSTEM_HANDOFF.md --text-on-dark), MEASURED >=14:1 on this gradient's darkest stop. */
+#ziptility-report-card .zrc-plaque-name{ font-family:var(--font-ui); font-size:13px; font-weight:700; text-transform:uppercase; letter-spacing:.04em; color:var(--linen); }
+#ziptility-report-card .zrc-plaque-text{ flex:1 1 260px; min-width:0; }
+@media (min-width:560px){
+  #ziptility-report-card .zrc-plaque-text{ padding-left:26px; border-left:1px solid rgba(255,255,255,.18); }
+}
+/* Scoped to .zrc-plaque-filled: the "answer a few dimensions" empty state renders this same
+   headline class with NO dark background (see buildGradePlaque's early return), so an unscoped
+   white-text rule here would make that headline invisible on the page's own light background. */
+#ziptility-report-card .zrc-plaque-filled .zrc-plaque-headline{ color:var(--white); margin:0 0 8px; }
+#ziptility-report-card .zrc-plaque-sub{ font-size:15.5px; line-height:1.55; color:var(--linen); margin:0; max-width:640px; }
+
 #ziptility-report-card .zrc-composite-secondary-label{
   font-family:var(--font-ui); font-size:12px; font-weight:700; text-transform:uppercase;
   letter-spacing:.03em; color:var(--n600); margin:0 0 10px;
@@ -416,6 +444,24 @@
   #ziptility-report-card .zrc-actionplan-card,
   #ziptility-report-card .zrc-composite-card{ break-inside:avoid; }
   #ziptility-report-card .zrc-redline-section{ background:#fff; border:1px solid #999; }
+
+  /* THE GRADE PLAQUE, print (design pass, 2026-07-29): this file's print rules already convert
+     every other colour-carrying surface (redline pink, card shadows) to a plain white-plus-border
+     treatment rather than depending on print-color-adjust - a printed board packet is meant to be
+     cheap to reproduce on any printer, dark ink fills fight that. Same call here: the dark plaque
+     becomes a bordered white panel with dark text in print, so the grade and headline are still
+     the first thing on the printed page, just not as a full-bleed dark fill. */
+  #ziptility-report-card .zrc-plaque-filled{ background:#fff; border:2px solid #000; color:#000; }
+  #ziptility-report-card .zrc-plaque-filled .zrc-plaque-headline,
+  #ziptility-report-card .zrc-plaque-letter,
+  #ziptility-report-card .zrc-plaque-sub{ color:#000; }
+  #ziptility-report-card .zrc-plaque-name{ color:#333; }
+  #ziptility-report-card .zrc-plaque-text{ border-left-color:#999; }
+  /* .zrc-bars-group also carries .zrc-card (shadow, no border); this print rule matches the
+     other .zrc-card-family overrides above. The 4px LEG_COLOR top edge is an inline style
+     (ui/results.js), which wins over this shorthand for that one side and is left colored on
+     purpose - navy/slate/amber are all dark, printer-cheap colours, not a saturated fill. */
+  #ziptility-report-card .zrc-bars-group{ box-shadow:none!important; border:1px solid #999; }
 
   /* D6: measured .zrc-cite at ~8.6pt and .zrc-action-text at ~10.5pt in
      print, both under the 12pt floor - and these are the regulatory

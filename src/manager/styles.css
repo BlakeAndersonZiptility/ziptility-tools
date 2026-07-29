@@ -46,6 +46,13 @@
   --danger: #dc2626;  --danger-bg: #fef2f2;  --danger-border: #fca5a5;  --danger-fg: #b91c1c;
   --success: #16a34a; --success-bg: #f0fdf4; --success-border: #86efac; --success-fg: #15803d;
   --warning: #d97706; --warning-bg: #fffbeb; --warning-border: #fcd34d; --warning-fg: #b45309;
+
+  /* SIGNATURE, 2026-07-29 (design pass): the DS's own dark surface + text-on-dark pair
+     (DESIGN_SYSTEM_HANDOFF.md --gradient-dark and --text-on-dark), used below for the result
+     "gauge" panel. Same gradient angle/stops as src/ui's .cta-inner, so a dark band means the
+     same thing in every bundle rather than a bespoke dark for each. */
+  --gauge-dark: linear-gradient(160deg, var(--brand-navy), #14365a);
+  --linen: #f6eee6;
 }
 
 * { box-sizing: border-box; }
@@ -58,7 +65,10 @@ body { font-family: var(--brand-font-body); color: var(--ink); background: var(-
 .zmt-tagline { margin: 0; font-size: 14px; color: var(--muted); line-height: 1.55; max-width: 62ch; }
 
 main { max-width: 760px; margin: 0 auto; padding: 10px 16px 20px; }
-.zmt-card { background: var(--card); border: 1px solid var(--line); border-radius: 10px; box-shadow: var(--shadow); padding: 20px 20px 18px; }
+/* DS consistency, 2026-07-29 design pass: DESIGN_SYSTEM_HANDOFF.md §4 - "Cards: white surface,
+   10px radius, soft navy-tinted shadow ... no hard borders." This card kept a 1px border the
+   calculator's own card dropped in its G4 fix; removed here so all four bundles' cards match. */
+.zmt-card { background: var(--card); border-radius: 10px; box-shadow: var(--shadow); padding: 20px 20px 18px; }
 .zmt-card-head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 10px; margin-bottom: 6px; }
 .zmt-formula { font-family: var(--brand-font-mono); font-size: 12.5px; color: var(--ink); background: #f6eee6; border: 1px solid #ece1d3; border-radius: 6px; padding: 5px 8px; }
 
@@ -96,36 +106,58 @@ main { max-width: 760px; margin: 0 auto; padding: 10px 16px 20px; }
 .zmt-actions { display: flex; gap: 10px; margin-top: 16px; flex-wrap: wrap; }
 /* Audit A2: buttons measured 38px tall. */
 .zmt-btn { cursor: pointer; font-family: var(--brand-font-display); font-weight: 600; font-size: 13.5px; border-radius: 10px; padding: 10px 16px; min-height: 44px; border: 1px solid transparent; display: inline-flex; align-items: center; justify-content: center; }
-.zmt-btn-calc { background: var(--accent); color: #fff; flex: 1 1 140px; box-shadow: 0 3px 10px rgba(255, 68, 47, .25); }
-.zmt-btn-calc:hover { background: var(--accent-dark); }
+/* PRIMARY-ACTION FIX, 2026-07-29 (design pass, Blake ruling): this button's fill was raw tomato
+   (--accent, #ff442f) with white text - MEASURED 3.43:1, failing 4.5:1, and simply unflagged by
+   the earlier accessibility-only audit (A-series above) because that pass never re-checked this
+   file's OWN calculate button, only the shared status/label tokens. --accent-dark is already
+   DS tomato-press (#c02100, MEASURED white-on-press = 6.07:1), so this is a one-line fill swap,
+   not a new token - and it is now the SAME fill/text pairing src/ui and src/practice use for
+   their primary action, which is the point: one primary-action treatment across all four bundles. */
+.zmt-btn-calc { background: var(--accent-dark); color: #fff; flex: 1 1 140px; box-shadow: 0 3px 10px rgba(192, 33, 0, .22); }
+.zmt-btn-calc:hover { filter: brightness(0.85); }
 .zmt-btn-clear, .zmt-btn-print { background: #fff; color: var(--muted); border-color: var(--line); }
 .zmt-btn-clear:hover, .zmt-btn-print:hover { border-color: var(--muted); color: var(--ink); }
 
 .zmt-msg { font-size: 12.5px; margin-top: 10px; color: var(--accent-dark); font-weight: 600; }
 
-/* THE HERO NUMBER (audit C2): one number per tool, promoted to a large
-   Geist numeral, with a verdict/status badge above it. Sits ahead of the
-   plain-English insight sentence and the secondary stat tiles (C3). */
-.zmt-hero { margin-top: 12px; }
-.zmt-hero .zmt-badge { margin-bottom: 10px; }
-.zmt-hero-num { font-family: var(--brand-font-mono); font-weight: 700; font-size: 36px; line-height: 1.1; letter-spacing: -.01em; color: var(--ink); }
-.zmt-hero-label { font-size: 13px; font-weight: 600; color: var(--muted-strong); margin-top: 2px; }
+/* THE GAUGE (design pass, 2026-07-29 - supersedes the earlier plain-text hero, audit C2's
+   original fix). Verdict says "generic, competent, describable only as clean... the default
+   shape of every SaaS calculator on the internet" of this exact screen. The fix is not another
+   tile: the one number a reader acts on now sits in its own dark instrument-panel band - the
+   same --gauge-dark surface as src/ui's CTA - INSIDE the white input card, so the page still
+   reads as one tool but the answer is unmistakably a different kind of thing than a form field.
+   "Never beautify the subject, always beautify the craft" (DS thesis): the subject is still a
+   plain number, but it is presented like a reading on a piece of equipment, not a stat card. */
+.zmt-hero {
+  margin-top: 16px;
+  background: var(--gauge-dark);
+  border-radius: 10px; /* DS "THE radius" for chrome, not imagery - DESIGN_SYSTEM_HANDOFF.md §0.3 */
+  padding: 20px 22px 22px;
+  color: #fff;
+}
+.zmt-hero .zmt-badge { margin-bottom: 12px; }
+.zmt-hero-num { font-family: var(--brand-font-mono); font-weight: 800; font-size: 42px; line-height: 1.05; letter-spacing: -.01em; color: #fff; }
+/* --linen is the DS's own "text-on-dark" pair (DESIGN_SYSTEM_HANDOFF.md --text-on-dark), full
+   opacity rather than a translucent white, so it stays readable at any render engine's AA gamma. */
+.zmt-hero-label { font-size: 13.5px; font-weight: 600; color: var(--linen); margin-top: 4px; }
 
 .zmt-badge { display: inline-block; padding: 6px 14px; border-radius: 999px; font-family: var(--brand-font-display); font-weight: 700; font-size: 12px; letter-spacing: .02em; text-transform: uppercase; border: 1px solid; }
 .zmt-badge-alert { color: var(--danger-fg); background: var(--danger-bg); border-color: var(--danger-border); }
 .zmt-badge-good { color: var(--success-fg); background: var(--success-bg); border-color: var(--success-border); }
 .zmt-badge-watch { color: var(--warning-fg); background: var(--warning-bg); border-color: var(--warning-border); }
 
-/* Secondary stats: supporting detail once the hero carries the headline
-   number (C2). Audit A7: fewer tiles (2-4, down from 4-5) so the 500px
-   grid wraps evenly instead of leaving an orphan on its own row. */
-.zmt-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; margin-top: 14px; }
-.zmt-stat { background: var(--line-soft); border-radius: 10px; padding: 10px 12px; }
-/* Audit A1: label was --muted (3.85:1 / 3.99:1 on these tiles, under the
-   4.5:1 floor); --muted-strong measures 6.39:1+ on every tile background
-   this bundle uses (see the QAQC report for the full pair list). */
-.zmt-stat-label { display: block; font-size: 11px; color: var(--muted-strong); font-weight: 600; margin-bottom: 3px; }
-.zmt-stat-val { display: block; font-family: var(--brand-font-mono); font-weight: 700; font-size: 17px; color: var(--ink); }
+/* THE SPEC SHEET (design pass, 2026-07-29 - supersedes the "5 same-size gray tiles" shape audit
+   C2/A7 left in place). Secondary stats read as a gauge cluster's spec plate now - a single list
+   of label/value rows with a rule between them (DS 9.11: "tables are a legitimate and often
+   superior format... beats prose and beats a chart" for anything a reader compares) - rather than
+   N identical boxes repeating the same shape. Same HTML as before (render.js untouched); this is
+   a CSS-only reshape. */
+.zmt-stats { display: flex; flex-direction: column; gap: 0; margin-top: 16px; border-top: 1px solid var(--line); }
+.zmt-stat { display: flex; align-items: baseline; justify-content: space-between; gap: 14px; background: none; border-radius: 0; border-bottom: 1px solid var(--line-soft); padding: 11px 2px; }
+/* Audit A1: label was --muted (3.85:1 / 3.99:1), under the 4.5:1 floor; --muted-strong measures
+   6.39:1+ on the page background this list now sits on (see the QAQC report for the pair list). */
+.zmt-stat-label { display: block; font-size: 12.5px; color: var(--muted-strong); font-weight: 600; margin-bottom: 0; }
+.zmt-stat-val { display: block; font-family: var(--brand-font-mono); font-weight: 700; font-size: 16px; color: var(--ink); text-align: right; white-space: nowrap; }
 
 .zmt-flag.zmt-chip { display: inline-block; margin: 8px 8px 0 0; padding: 6px 11px; border-radius: 999px; font-size: 12px; font-weight: 600; border: 1px solid; }
 .zmt-flag.zmt-chip-watch { color: var(--warning-fg); background: var(--warning-bg); border-color: var(--warning-border); }
@@ -157,7 +189,9 @@ main { max-width: 760px; margin: 0 auto; padding: 10px 16px 20px; }
 .zmt-disclaimer { background: #fff; border: 1px solid var(--line); border-left: 3px solid var(--accent); border-radius: 10px; padding: 14px 16px; line-height: 1.55; }
 .zmt-disclaimer strong { color: var(--ink); }
 .zmt-colophon { margin-top: 12px; }
-.zmt-colophon a { color: var(--brand-red); text-decoration: none; }
+/* Same raw-tomato text failure as .zmt-btn-calc above (3.43:1 on white), also missed by the
+   earlier accessibility-only audit. --brand-red-dark is DS tomato-press (6.07:1). */
+.zmt-colophon a { color: var(--brand-red-dark); text-decoration: none; }
 .zmt-colophon a:hover { text-decoration: underline; }
 
 /* Modal (soft capture) */
@@ -170,8 +204,10 @@ main { max-width: 760px; margin: 0 auto; padding: 10px 16px 20px; }
 .zmt-modal-field label { font-size: 12px; font-weight: 600; color: var(--muted); }
 .zmt-modal-field input { font-family: var(--brand-font-body); font-size: 14px; border: 1px solid var(--line); border-radius: 10px; padding: 10px 11px; }
 .zmt-modal-field input:focus { outline: none; border-color: var(--brand-red); box-shadow: 0 0 0 3px rgba(255, 68, 47, .14); }
-.zmt-modal-submit { width: 100%; background: var(--brand-red); color: #fff; border: none; border-radius: 10px; padding: 12px; font-family: var(--brand-font-display); font-weight: 700; font-size: 14px; cursor: pointer; margin-top: 4px; }
-.zmt-modal-submit:hover { background: var(--brand-red-dark); }
+/* Same primary-action fix as .zmt-btn-calc: raw tomato + white text measured 3.43:1. Resting fill
+   moves to tomato-press; hover darkens further with brightness() rather than a third named token. */
+.zmt-modal-submit { width: 100%; background: var(--brand-red-dark); color: #fff; border: none; border-radius: 10px; padding: 12px; font-family: var(--brand-font-display); font-weight: 700; font-size: 14px; cursor: pointer; margin-top: 4px; }
+.zmt-modal-submit:hover { filter: brightness(0.85); }
 .zmt-modal-close { position: absolute; top: 14px; right: 14px; background: none; border: none; cursor: pointer; color: var(--muted); font-size: 22px; line-height: 1; }
 .zmt-modal-fine { font-size: 11px; color: var(--muted); margin-top: 11px; line-height: 1.4; }
 .zmt-modal-ok { display: none; text-align: center; padding: 12px 0; }

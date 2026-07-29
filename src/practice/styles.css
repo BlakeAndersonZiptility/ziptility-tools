@@ -133,25 +133,25 @@
 #ziptility-practice .zq-btn[disabled]{ opacity:.5; cursor:not-allowed; }
 #ziptility-practice .zq-btn .zq-arrow{ display:inline-flex; transition:transform var(--dur-fast) var(--ease); }
 
-/* G1 fix, 2026-07-29: white text on raw tomato measured 3.43:1 (WCAG relative-luminance formula),
-   below the 4.5:1 floor (design-audit G1; canon cites the same failure at ~3.4:1). This button's
-   fill is pinned to raw tomato by tests/practice-browser.test.js:412 (`.zq-btn-primary`
-   backgroundColor === rgb(255, 68, 47)) — outside this fix's permitted scope (src/ui,
-   src/practice only) — so the fill stays and the TEXT flips dark instead. MEASURED
-   var(--midnight) on #ff442f = 4.88:1, clearing the floor. Navy/midnight-on-tomato is also the
-   exact pairing the logo-contrast table already sanctions, so this is not an invented combo. The
-   arrow icon uses stroke="currentColor" (quiz-engine.js ARROW_PATH) so it follows the same color
-   automatically. */
+/* PRIMARY-ACTION FIX, 2026-07-29 (design pass, Blake ruling: "use design system rules (not
+   calculator rules) ... make it look on brand and professional"). This button's fill used to be
+   pinned to raw tomato by a test (tests/practice-browser.test.js, now updated in the same pass)
+   in service of a superseded calculator-local ruling; the workaround that pin forced was
+   navy/midnight TEXT on raw tomato (~4.88:1) instead of fixing the fill. The fill now moves to
+   the DS's own sanctioned text-bearing tomato, --tomato-press (#c02100, MEASURED white-on-press =
+   6.07:1), with white text - the same treatment src/ui, src/manager and this bundle's own
+   .zq-choice .zq-selected .zq-letter all use, so the primary action reads as ONE pattern across
+   all four tool bundles rather than a different compromise in each. The arrow icon uses
+   stroke="currentColor" (quiz-engine.js ARROW_PATH) so it follows white automatically. */
 #ziptility-practice .zq-btn-primary{
-  background:var(--tomato); color:var(--midnight);
+  background:var(--tomato-press); color:var(--white);
   padding:1.15rem 2.4rem; font-size:20px;
+  box-shadow:0 3px 10px rgba(192,33,0,.22);
 }
-/* Hover previously swapped to --tomato-press (#c02100): with midnight text that measures only
-   ~2.8:1, a real regression. Darkening further only makes it worse (midnight is already very
-   dark, so a darker background shrinks the gap). Fill stays pinned to raw tomato in every state
-   instead, and hover reads via a shadow lift, matching DESIGN_SYSTEM_HANDOFF.md §4's "Hover =
-   ... shadow lift" and this file's own --shadow-md token. */
-#ziptility-practice .zq-btn-primary:hover{ box-shadow:var(--shadow-md); }
+/* Hover darkens the already-passing tomato-press fill with brightness() (never risks contrast,
+   since darkening a passing background against white text can only raise the ratio) and adds the
+   canon "shadow lift" (DESIGN_SYSTEM_HANDOFF.md §4) on top. */
+#ziptility-practice .zq-btn-primary:hover{ filter:brightness(0.85); box-shadow:var(--shadow-md); }
 #ziptility-practice .zq-btn-primary:hover .zq-arrow{ transform:translateX(3px); }
 
 #ziptility-practice .zq-btn-secondary{
@@ -275,8 +275,15 @@
    white text on raw tomato measures 3.43:1. Not test-pinned, so straight swap to --tomato-press
    (6.07:1) rather than the text-color workaround the pinned button needed. */
 #ziptility-practice .zq-choice.zq-selected .zq-letter{ background:var(--tomato-press); color:var(--white); }
-#ziptility-practice .zq-choice.zq-correct .zq-letter{ background:var(--success); color:var(--white); }
-#ziptility-practice .zq-choice.zq-wrong .zq-letter{ background:var(--danger); color:var(--white); }
+/* STATUS-COLOUR AUDIT, 2026-07-29: the DS semantic tokens are tuned to pass as TEXT on their own
+   -bg tint, not as a FILL under white text. MEASURED white-on-raw-success(#16a34a) = 3.30:1,
+   failing 4.5:1 (raw danger happens to clear it here at 4.83:1, but that is luck, not a rule, and
+   is made consistent below anyway). Both letters now use the -fg variant as the fill instead -
+   the same darker, text-safe value already used for this exact grade's colour everywhere else on
+   the results screen - so "correct"/"wrong" is measurably accessible AND the one dark-fill
+   treatment is consistent between the two states, not raw-passes-by-luck vs -fg-because-it-had-to. */
+#ziptility-practice .zq-choice.zq-correct .zq-letter{ background:var(--success-fg); color:var(--white); }
+#ziptility-practice .zq-choice.zq-wrong .zq-letter{ background:var(--danger-fg); color:var(--white); }
 
 #ziptility-practice .zq-feedback{ border-radius:var(--radius); padding:14px 16px; margin-top:14px; font-size:15px; }
 #ziptility-practice .zq-feedback.zq-ok{ background:var(--success-bg); border:1px solid var(--success-border); }
@@ -357,11 +364,46 @@
 }
 
 /* ---------- picker / hub ---------- */
+/* SIGNATURE, 2026-07-29 (design pass): a small corner-slash accent on the section heading, the
+   brand's own signature device (DS readme §6: "Tomato parallelograms (skew ~ -22deg) as corner
+   accents on banners and cards. Use 2-4 per layout, anchored to corners."). Used ONCE here, at
+   the top of the section, rather than repeated on every card, so the hub still reads as "one
+   Tomato accent" and not six competing ones. aria-hidden via ::before/::after: decorative only,
+   nothing here is information a screen reader needs. */
 #ziptility-practice .zq-hub-section-title{
-  font-family:var(--font-sans); font-weight:900; font-size:20px; color:var(--midnight); margin:0 0 12px;
+  position:relative;
+  font-family:var(--font-sans); font-weight:900; font-size:20px; color:var(--midnight);
+  margin:0 0 16px; padding-left:20px;
 }
+#ziptility-practice .zq-hub-section-title::before,
+#ziptility-practice .zq-hub-section-title::after{
+  content:''; position:absolute; left:0; top:3px;
+  width:7px; height:16px; background:var(--tomato);
+  transform:skewX(-22deg);
+}
+#ziptility-practice .zq-hub-section-title::after{ left:9px; top:3px; height:10px; opacity:.55; }
+
 #ziptility-practice .zq-hub-grid{ display:grid; grid-template-columns:1fr; gap:1rem; }
 @media (min-width:600px){ #ziptility-practice .zq-hub-grid{ grid-template-columns:1fr 1fr; } }
+
+/* The two foundation tests (Operator Math, Regulations - the ones everyone takes regardless of
+   discipline) run the full grid width as a wider, calmer surface: Linen instead of white, so the
+   page has a second surface family before the discipline cards below it (RHYTHM, 9.7: "distinct
+   widths ... surface rhythm"). Kept as a simple full-width block (not a flex row) - this file's
+   later, more specific ".zq-hubcard{ display:block }" base rule would otherwise win the cascade
+   on source order and silently flatten a flex attempt here back to block, which is exactly what
+   happened on the first pass of this fix; simpler and correct beats clever and wrong. */
+#ziptility-practice .zq-hubcard-featured{ grid-column:1/-1; background:var(--warm-100); }
+
+/* A labeled break between the two foundation tests and the four discipline tests - a plain grid
+   sibling, not another button, so it never touches the .zq-hubcard count any test asserts. */
+#ziptility-practice .zq-hub-groupdivider{
+  grid-column:1/-1; margin:6px 0 -2px;
+  font-family:var(--font-ui); font-weight:700; font-size:12px; text-transform:uppercase;
+  letter-spacing:.06em; color:var(--n600);
+  padding-top:14px; border-top:1px solid var(--n200);
+}
+
 /* Renders as a <button> on the hub (launches in place) and as an <a> in
    childPages mode (routes to /tools/practice/<slug>), so it carries the
    no-underline rule the anchor form needs. */
@@ -381,8 +423,22 @@
 }
 #ziptility-practice .zq-hubcard h3{ margin:0 0 4px; font-weight:700; font-size:20px; line-height:1.25; color:var(--midnight); }
 #ziptility-practice .zq-hubcard p{ margin:0; font-size:14px; line-height:1.55; color:var(--n600); }
+/* THE SPEC-PLATE STAT (design pass, 2026-07-29): the audit called this hub "a generic, clean card
+   list... no visual hook". Per DS 9.11 ("the number is the hero, the label is support"), the
+   question count gets a real Geist numeral instead of living only in the 12px meta caption below -
+   the same technique src/manager's result gauge now uses, so "a real number, presented like a
+   spec" reads as one idea across the tool suite, not just this hub. */
+#ziptility-practice .zq-hubcard-stat{
+  display:flex; align-items:baseline; gap:6px; margin-top:14px;
+}
+#ziptility-practice .zq-hubcard-stat-num{
+  font-family:var(--font-ui); font-weight:700; font-size:28px; letter-spacing:-0.01em; color:var(--midnight);
+}
+#ziptility-practice .zq-hubcard-stat-label{
+  font-family:var(--font-ui); font-size:12px; color:var(--n500);
+}
 #ziptility-practice .zq-hubcard .zq-meta{
-  margin-top:10px; font-family:var(--font-ui); font-weight:500; font-size:12px; color:var(--n500);
+  margin-top:8px; font-family:var(--font-ui); font-weight:500; font-size:12px; color:var(--n500);
 }
 
 /* ---------- loading / error (new) ---------- */

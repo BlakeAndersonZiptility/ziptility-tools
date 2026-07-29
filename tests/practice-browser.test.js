@@ -36,6 +36,24 @@ const MIME = {
   '.css': 'text/css; charset=utf-8'
 };
 
+// WCAG relative-luminance contrast for computed rgb(...) strings - design pass 2026-07-29, see
+// tests/browser.test.js for the twin copy and the same reasoning.
+function rgbToNums(rgb) {
+  const m = /rgba?\(([\d.]+),\s*([\d.]+),\s*([\d.]+)/.exec(rgb);
+  if (!m) throw new Error('not an rgb() string: ' + rgb);
+  return [Number(m[1]), Number(m[2]), Number(m[3])];
+}
+function relLuminance([r, g, b]) {
+  const lin = (c) => { c /= 255; return c <= 0.03928 ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4); };
+  return 0.2126 * lin(r) + 0.7152 * lin(g) + 0.0722 * lin(b);
+}
+function contrastRatio(rgbA, rgbB) {
+  const LA = relLuminance(rgbToNums(rgbA));
+  const LB = relLuminance(rgbToNums(rgbB));
+  const [hi, lo] = LA > LB ? [LA, LB] : [LB, LA];
+  return (hi + 0.05) / (lo + 0.05);
+}
+
 function startServer(root) {
   return new Promise((resolve) => {
     const server = createServer(async (req, res) => {
@@ -191,9 +209,21 @@ test('boot + picker renders one card per manifest test with eyebrow/title/meta, 
       const card = page.locator('.zq-hubcard').nth(i);
       assert.equal(await card.locator('.zq-eyebrow').textContent(), TESTS[i].discipline);
       assert.equal(await card.locator('h3').innerText(), TESTS[i].title);
+      // The question count lives in the spec plate, and ONCE. This used to
+      // assert it in .zq-meta as well, which is how the card ended up saying
+      // its own number twice about 20px apart: the redundancy was encoded in
+      // the test, so removing it from the card broke the test rather than the
+      // test catching the duplication. Assert the plate carries the number and
+      // the meta line carries only what the plate does not say.
+      const statNum = await card.locator('.zq-hubcard-stat-num').innerText();
+      assert.equal(statNum.trim(), String(TESTS[i].questionCount));
       const meta = await card.locator('.zq-meta').innerText();
-      assert.match(meta, new RegExp(TESTS[i].questionCount + ' questions'));
-      assert.match(meta, /practice or timed exam/);
+      assert.match(meta, /practice or timed exam/i);
+      assert.doesNotMatch(
+        meta,
+        new RegExp('\\b' + TESTS[i].questionCount + '\\b'),
+        'the count belongs in the spec plate only; a hero number the same card repeats is not a hero'
+      );
     }
   });
 });
@@ -409,7 +439,23 @@ test('computed styles: DS4 tokens (colors, radii, fonts) and focus-visible outli
 
     const startBtn = page.locator(SETUP_START_BTN);
     assert.equal(await startBtn.evaluate((el) => getComputedStyle(el).fontSize), '20px');
-    assert.equal(await startBtn.evaluate((el) => getComputedStyle(el).backgroundColor), 'rgb(255, 68, 47)');
+    // Design pass, 2026-07-29 (Blake ruling: design-system rules, not the superseded calculator
+    // ruling this test used to pin): the fill used to be raw tomato with dark midnight text (a
+    // workaround forced by this exact assertion). Assert the DS-correct pair instead - tomato-
+    // press fill, white text - the same primary-action treatment now used across all four tool
+    // bundles - AND that it actually clears 4.5:1, so a regression back to raw tomato (3.43:1,
+    // failing) is still caught without re-encoding one literal fill as the only right answer.
+    const startBtnStyle = await startBtn.evaluate((el) => {
+      const cs = getComputedStyle(el);
+      return { bg: cs.backgroundColor, color: cs.color };
+    });
+    assert.equal(startBtnStyle.bg, 'rgb(192, 33, 0)',
+      'primary button should use the DS text-bearing tomato (tomato-press #c02100)');
+    assert.equal(startBtnStyle.color, 'rgb(255, 255, 255)',
+      'primary button text should be white now that the fill is tomato-press');
+    const startBtnContrast = contrastRatio(startBtnStyle.bg, startBtnStyle.color);
+    assert.ok(startBtnContrast >= 4.5,
+      `primary button fill/text contrast should clear 4.5:1, got ${startBtnContrast.toFixed(2)}:1`);
 
     await page.keyboard.press('Tab');
     const focusInfo = await page.evaluate(() => {

@@ -28,20 +28,52 @@ function clear(node) {
    first, then the embed sets data-child-pages="1" and the hub becomes the
    umbrella index. Real anchors, not JS navigation, so they are
    crawlable, middle-clickable, and keyboard-correct. */
+/* SIGNATURE, 2026-07-29 (design pass). The audit read this hub as "a generic, clean card list...
+   no visual hook", which is fair: six identical buttons with an eyebrow, a title and a caption is
+   the default shape of every SaaS resource grid. The manifest itself already carries a real
+   structure worth surfacing - two foundation tests everyone takes (Operator Math, Regulations)
+   and four discipline tests that split cleanly water/wastewater x distribution-collection/
+   treatment - so this renders that structure instead of flattening it into one grid. The two
+   foundation tests get a wider, featured treatment; a labeled break introduces the rest. No
+   change to selection order, card count, or any text a test reads - the six .zq-hubcard buttons
+   still render one per manifest entry, in manifest order, each with the same eyebrow/h3/p/meta
+   the tests already assert (tests/practice-browser.test.js). */
+const FOUNDATION_IDS = new Set(['operator-math-1', 'regulations-1']);
+
 export function renderPicker(rootEl, { onSelect, childPages = false, hubUrl = '/tools/practice' }) {
   clear(rootEl);
   rootEl.appendChild(el('h2', 'zq-hub-section-title', 'Pick your test'));
 
   const base = String(hubUrl).replace(/\/+$/, '');
   const grid = el('div', 'zq-hub-grid');
+  let dividerInserted = false;
   TESTS.forEach((t) => {
-    const card = el(childPages ? 'a' : 'button', 'zq-hubcard');
+    const featured = FOUNDATION_IDS.has(t.id);
+    /* The divider is a plain sibling in the grid, not a .zq-hubcard, so it never touches the
+       six-card count or the manifest-order nth() checks those tests run. */
+    if (!featured && !dividerInserted) {
+      grid.appendChild(el('div', 'zq-hub-groupdivider', 'By discipline'));
+      dividerInserted = true;
+    }
+    const card = el(childPages ? 'a' : 'button', 'zq-hubcard' + (featured ? ' zq-hubcard-featured' : ''));
     if (childPages) card.href = base + '/' + t.slug;
     else card.type = 'button';
     card.appendChild(el('span', 'zq-eyebrow', t.discipline));
     card.appendChild(el('h3', null, t.title));
     card.appendChild(el('p', null, t.description || ''));
-    card.appendChild(el('div', 'zq-meta', t.questionCount + ' questions · practice or timed exam'));
+    /* The spec plate: the number is the hero, the label is support (DS §9.11). It is a div, not a
+       second <p>, so the one-description-per-card regression guard still sees exactly one <p>.
+
+       The count is stated ONCE. The first draft of this put the numeral here AND left the old
+       "<n> questions - practice or timed exam" line below it, so every card said its own number
+       twice, about 20px apart. A hero number that the same card immediately repeats in small grey
+       text is not a hero, it is a layout that two people edited. The meta line keeps only what the
+       plate does not say: the two modes. */
+    const stat = el('div', 'zq-hubcard-stat');
+    stat.appendChild(el('span', 'zq-hubcard-stat-num', String(t.questionCount)));
+    stat.appendChild(el('span', 'zq-hubcard-stat-label', 'questions in the bank'));
+    card.appendChild(stat);
+    card.appendChild(el('div', 'zq-meta', 'Practice or timed exam'));
     if (!childPages) card.addEventListener('click', () => onSelect(t));
     grid.appendChild(card);
   });

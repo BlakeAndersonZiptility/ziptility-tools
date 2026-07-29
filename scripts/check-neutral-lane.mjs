@@ -132,14 +132,59 @@ const PROSE_RULES = [
   { name: 'gate before the value',
     re: /enter your email to (?:see|get|view|unlock|download)|unlock your (?:score|results?|report)|(?:email|sign\s?up|account)\s+(?:is\s+)?required/i,
     why: 'completion is the conversion; a gate in front of the result is a defect by rule (R14)' },
-  /* On the live page the Webflow global header and footer wrap the tool and
-     carry the brand. A logo inside the bundle is the brand twice on one
-     screen. \b matters: "analogous" contains the letters l-o-g-o and an
-     unbounded match flags the report card's own AWWA rung descriptors. */
+  /* ON SCREEN the Webflow global header and footer wrap the tool and carry
+     the brand, so a logo inside the bundle is the brand twice.
+
+     IN PRINT there is no chrome. A printed report card goes into a board
+     packet with nothing around it, so it SHOULD carry the mark (Blake
+     ruling 2026-07-29). Print-scoped identifiers are therefore exempt from
+     this rule, and the real risk they introduce (a "print" logo that is
+     actually visible on screen) is checked directly below instead.
+
+     \b matters: "analogous" contains the letters l-o-g-o, and an unbounded
+     match flags the report card's own AWWA rung descriptors. */
   { name: 'inline logo',
     re: /\blogo\b|[-_]logo\b|\blogo[-_]|wordmark|brandmark|\bmasthead\b/i,
-    why: 'the page chrome carries the brand; a logo inside the tool is the brand twice' }
+    skipIf: /print/i,
+    why: 'on screen the page chrome carries the brand; a logo inside the tool is the brand twice' }
 ];
+
+/* Every print-scoped class must be display:none in the SCREEN cascade.
+   Exempting print identifiers from the logo rule is only safe if that
+   exemption cannot be used to sneak a visible logo in: a class called
+   .zrc-print-logo that renders on screen would pass the rule above and be
+   exactly the defect it exists to catch.
+
+   Scoped to classes carrying BOTH a print token and a brand token, which
+   is exactly the set the exemption above covers. An earlier version
+   checked every class containing "print" and flagged .zmt-btn-print, the
+   manager tools' Print button: a screen control that obviously must be
+   visible on screen. Widening a check past the exemption it protects just
+   produces failures people learn to wave through.
+
+   Naive within that scope. It strips @media print blocks and then requires
+   each remaining match to carry a display:none. It cannot prove a negative
+   about the full cascade, but it catches the realistic failure, which is
+   somebody adding the mark and forgetting to hide it. */
+const BRAND_TOKEN = /logo|wordmark|brandmark|masthead/i;
+
+function printOnlyViolations(css, rel) {
+  const out = [];
+  const screenCascade = css.replace(/@media[^{]*\bprint\b[^{]*\{(?:[^{}]*\{[^{}]*\})*[^{}]*\}/gi, '');
+  const classes = new Set(
+    (css.match(/\.[A-Za-z0-9_-]*print[A-Za-z0-9_-]*/g) || []).filter((c) => BRAND_TOKEN.test(c))
+  );
+  for (const cls of classes) {
+    const escaped = cls.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    const blocks = screenCascade.match(new RegExp(escaped + '\\b[^{]*\\{[^}]*\\}', 'g')) || [];
+    if (!blocks.length) continue;
+    if (!blocks.some((b) => /display\s*:\s*none/i.test(b))) {
+      out.push(rel + '  print-scoped class ' + cls + ' is not display:none in the screen cascade: ' +
+        'a print-only brand mark must never render on screen');
+    }
+  }
+  return out;
+}
 
 /* HTML comments are commentary too, including inside a JS template literal
    that builds markup, where strip() deliberately keeps the string. Blanked
@@ -183,11 +228,16 @@ for (const dir of DIRS) {
     prose.split('\n').forEach((line, i) => {
       for (const rule of PROSE_RULES) {
         const m = rule.re.exec(line);
+        if (m && rule.skipIf && rule.skipIf.test(line)) continue;
         if (m && !negated(line, m.index)) {
           failures.push(rel + ':' + (i + 1) + '  ' + rule.name + ': ' + rule.why + '\n    ' + rawLines[i].trim());
         }
       }
     });
+
+    if (isCss) {
+      failures.push(...printOnlyViolations(raw, rel));
+    }
 
     if (isJs) {
       const code = strip(raw);

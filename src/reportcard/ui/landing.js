@@ -37,10 +37,19 @@ export function renderLanding(root, { hasSaved, savedCount, total, onStart, onRe
     'can manage it. Each of them sees a different part of the system. One person answering alone ' +
     'tends to skew the result toward whichever part they know best.'
   ));
+  /* THIS PARAGRAPH MUST DESCRIBE WHAT THE TOOL ACTUALLY DOES. It used to
+     say "nothing leaves your browser", which stopped being true the day
+     the assessment started posting to HubSpot (submit.js). Nobody would
+     have caught it from the outside, which is exactly why it gets a note:
+     if the submission behaviour changes again, this text changes with it,
+     in the same commit. */
   facts.appendChild(factRow(
     'What happens to your answers',
-    'Nothing is saved to an account and nothing leaves your browser. Your answers sit in this ' +
-    'browser only, so you can stop and come back. There is no email required to see the result.'
+    'There is no account and no signup, and you never have to give us your email to see your ' +
+    'score. Your answers save in this browser so you can stop and come back. When you finish, we ' +
+    'keep a copy of the grades and the size of your system to build a picture of how small ' +
+    'systems are really doing. That copy has no name on it unless you choose to give us your ' +
+    'email at the end.'
   ));
   wrap.appendChild(facts);
 

@@ -52,7 +52,8 @@
 /* ---------- focus (C1: #0088ff site-wide) ---------- */
 #ziptility-report-card button:focus-visible,
 #ziptility-report-card a:focus-visible,
-#ziptility-report-card input:focus-visible{
+#ziptility-report-card input:focus-visible,
+#ziptility-report-card select:focus-visible{
   outline:2px solid var(--info);
   outline-offset:2px;
 }
@@ -170,7 +171,16 @@
   font-family:var(--font-ui); font-size:13px; font-weight:600; color:var(--midnight); margin-bottom:12px;
 }
 
-/* ---------- radio rungs ---------- */
+/* ---------- radio rungs (BLIND INTAKE, Blake ruling 2026-07-29) ----------
+   intake.js renders each rung as description-only, in a shuffled order,
+   with no letter, no ordinal word, and no per-grade colour - all five must
+   look GENUINELY IDENTICAL unselected, or the shuffle buys nothing. Every
+   rule below is grade-agnostic on purpose: nothing here reads a grade or a
+   position, only :checked. The old --zrc-rung-fg/--zrc-rung-bg custom
+   properties this block used to key off are never set by JS any more
+   (they implied a per-grade colour), so the selected state below is the
+   single, neutral, brand selection treatment - a Tomato border plus a
+   filled radio - used the same way regardless of which rung it is. */
 #ziptility-report-card .zrc-ruggroup{ display:flex; flex-direction:column; gap:10px; }
 #ziptility-report-card .zrc-rung{
   display:flex; align-items:flex-start; gap:12px; width:100%; text-align:left; cursor:pointer;
@@ -179,24 +189,37 @@
 }
 #ziptility-report-card .zrc-rung:hover{ border-color:var(--n300); }
 #ziptility-report-card .zrc-rung:has(.zrc-rung-input:checked){
-  border-color:var(--zrc-rung-fg, var(--tomato));
-  background:var(--zrc-rung-bg, var(--tomato-tint));
+  border-color:var(--tomato);
+  background:var(--tomato-tint);
 }
 #ziptility-report-card .zrc-rung-input{ margin-top:3px; flex:0 0 auto; width:18px; height:18px; accent-color:var(--tomato); }
-#ziptility-report-card .zrc-rung-badge{
-  flex:0 0 auto; width:30px; height:30px; border-radius:9px; display:flex; align-items:center; justify-content:center;
-  font-family:var(--font-ui); font-weight:700; font-size:14px; background:var(--n100); color:var(--n700);
-}
 #ziptility-report-card .zrc-rung-text{ display:flex; flex-direction:column; gap:2px; flex:1; }
-#ziptility-report-card .zrc-rung-name{
-  font-family:var(--font-ui); font-size:12px; font-weight:700; letter-spacing:.03em; text-transform:uppercase; color:var(--n500);
-}
 #ziptility-report-card .zrc-rung-desc{ font-size:15px; line-height:1.5; color:var(--n700); }
 
 /* ---------- nav rows ---------- */
 #ziptility-report-card .zrc-navrow{ display:flex; gap:10px; margin-top:20px; flex-wrap:wrap; align-items:center; }
 #ziptility-report-card .zrc-navrow .zrc-btn-primary{ margin-left:auto; }
 #ziptility-report-card .zrc-viewresults-row{ text-align:center; margin-top:16px; }
+
+/* ---------- profile (the optional closing block, R14: not a gate) ---------- */
+#ziptility-report-card .zrc-profile{ padding:8px 0 24px; }
+#ziptility-report-card .zrc-profile-why{ font-size:15px; line-height:1.6; color:var(--n600); max-width:640px; margin:0 0 28px; }
+#ziptility-report-card .zrc-profile-grid{
+  display:grid; grid-template-columns:1fr; gap:20px; margin:0 0 24px;
+}
+@media (min-width:640px){ #ziptility-report-card .zrc-profile-grid{ grid-template-columns:1fr 1fr; } }
+#ziptility-report-card .zrc-profile-field{ display:flex; flex-direction:column; gap:6px; }
+#ziptility-report-card .zrc-profile-label{ font-family:var(--font-ui); font-size:14.5px; font-weight:700; color:var(--midnight); }
+#ziptility-report-card .zrc-profile-help{ font-size:13px; line-height:1.4; color:var(--n500); margin:0 0 2px; }
+#ziptility-report-card .zrc-profile-select,
+#ziptility-report-card .zrc-profile-input{
+  font-family:var(--font-ui); font-size:15px; padding:12px 14px;
+  border-radius:var(--radius); border:2px solid var(--n200); background:var(--white); color:var(--midnight);
+}
+#ziptility-report-card .zrc-profile-select:hover,
+#ziptility-report-card .zrc-profile-input:hover{ border-color:var(--n300); }
+#ziptility-report-card .zrc-profile-email-field{ max-width:420px; margin-bottom:28px; }
+#ziptility-report-card .zrc-profile-actions{ display:flex; gap:12px; flex-wrap:wrap; }
 
 /* ---------- results: composite ---------- */
 #ziptility-report-card .zrc-composite-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:14px; margin-bottom:20px; }
@@ -279,6 +302,13 @@
   border-radius:var(--radius); border:2px solid var(--n200); background:var(--white); color:var(--midnight);
 }
 
+/* ---------- print-only chrome (hidden on screen; a printed page has no
+   page chrome of its own, so the report supplies its own logo, title,
+   date, and source URL - see the @media print block below for the
+   visible treatment) ---------- */
+#ziptility-report-card .zrc-print-logo{ display:none; }
+#ziptility-report-card .zrc-print-footer{ display:none; }
+
 /* ---------- reduced motion ---------- */
 @media (prefers-reduced-motion:reduce){
   #ziptility-report-card *{ transition:none!important; animation:none!important; }
@@ -305,4 +335,28 @@
   #ziptility-report-card .zrc-actionplan-card,
   #ziptility-report-card .zrc-composite-card{ break-inside:avoid; }
   #ziptility-report-card .zrc-redline-section{ background:#fff; border:1px solid #999; }
+
+  /* Never split one dimension's card, or a composite/red-line/action card,
+     across a page break - a board handout is skimmed card by card. */
+  #ziptility-report-card .zrc-bar-row{ break-inside:avoid; }
+
+  /* The print-only logo: display:none on screen (rule above), visible here
+     at the very top of the printed report, with the report title and the
+     print date next to it. */
+  #ziptility-report-card .zrc-print-logo{
+    display:flex; align-items:center; justify-content:space-between; gap:20px;
+    margin:0 0 18px; padding-bottom:12px; border-bottom:2px solid #000;
+    break-after:avoid; break-inside:avoid;
+  }
+  #ziptility-report-card .zrc-print-logo-mark svg{ display:block; height:26px; width:auto; }
+  #ziptility-report-card .zrc-print-logo-meta{ text-align:right; }
+  #ziptility-report-card .zrc-print-logo-title{ font-family:var(--font-sans); font-weight:800; font-size:13pt; color:#000; }
+  #ziptility-report-card .zrc-print-logo-date{ font-family:var(--font-ui); font-size:10pt; color:#333; margin-top:2px; }
+
+  /* Print footer: the tool's URL, so a photocopied or re-printed handout
+     can still be traced back to where it came from. */
+  #ziptility-report-card .zrc-print-footer{
+    display:block; margin-top:28px; padding-top:10px; border-top:1px solid #999;
+    font-family:var(--font-ui); font-size:9pt; color:#333; text-align:center;
+  }
 }

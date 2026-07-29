@@ -8,14 +8,11 @@
    role="radiogroup" (task requirement) - no clickable divs standing in
    for form controls, so keyboard and screen-reader behavior come from
    the browser rather than from JS re-implementing them. */
-import { el, clear, splitGradeLabel, GRADE_COLORS, LEG_COLOR } from './util.js';
+import { el, clear, LEG_COLOR } from './util.js';
 import { score, GRADES, LEGS, LEG_NAMES } from '../scoring.js';
-import { RED_LINE_IDS } from '../config.js';
-
-const RED_LINE_SET = new Set(RED_LINE_IDS);
 
 export function renderIntake(root, opts) {
-  const { dimensions, grades, idx, gradeLabels, onAnswer, onGoto, onExit, onViewResults } = opts;
+  const { dimensions, grades, idx, gradeLabels, rungOrders, onAnswer, onGoto, onExit, onViewResults } = opts;
   clear(root);
 
   const s = score(grades, dimensions);
@@ -26,7 +23,7 @@ export function renderIntake(root, opts) {
   wrap.appendChild(buildTopbar(s, onExit));
   wrap.appendChild(buildLegBars(s, dim.leg));
   wrap.appendChild(buildJumpNav(dimensions, grades, idx, onGoto));
-  wrap.appendChild(buildStepCard(dim, grades, gradeLabels, onAnswer));
+  wrap.appendChild(buildStepCard(dim, grades, gradeLabels, onAnswer, rungOrders && rungOrders[dim.id]));
   wrap.appendChild(buildNavRow(dimensions, idx, onGoto, onViewResults));
 
   const viewResultsRow = el('div', 'zrc-viewresults-row');
@@ -77,9 +74,12 @@ export function updateAnswerFeedback(root, { dimensions, grades }) {
     const answered = Boolean(grades[d.id]);
     btn.classList.toggle('zrc-jumpbtn-answered', answered);
     btn.textContent = d.id + (answered ? ' ✓' : '');
+    /* "answered", never "answered grade A". The jump nav is on screen the
+       whole time, so naming the grade here would hand back the letter the
+       blind intake just removed, to screen-reader users only. */
     btn.setAttribute(
       'aria-label',
-      d.id + ', ' + d.name + (answered ? ', answered grade ' + grades[d.id] : ', not yet answered')
+      d.id + ', ' + d.name + (answered ? ', answered' : ', not yet answered')
     );
   });
 }
@@ -134,7 +134,7 @@ function buildJumpNav(dimensions, grades, idx, onGoto) {
       b.dataset.dimId = d.id;
       b.setAttribute(
         'aria-label',
-        d.id + ', ' + d.name + (answered ? ', answered grade ' + grades[d.id] : ', not yet answered')
+        d.id + ', ' + d.name + (answered ? ', answered' : ', not yet answered')
       );
       if (i === idx) b.setAttribute('aria-current', 'step');
       b.addEventListener('click', () => onGoto(i));
@@ -146,14 +146,16 @@ function buildJumpNav(dimensions, grades, idx, onGoto) {
   return nav;
 }
 
-function buildStepCard(dim, grades, gradeLabels, onAnswer) {
+function buildStepCard(dim, grades, gradeLabels, onAnswer, rungOrder) {
   const card = el('div', 'zrc-card zrc-step-card');
 
   const meta = el('div', 'zrc-step-meta');
   meta.appendChild(el('span', 'zrc-legbadge', LEG_NAMES[dim.leg] + ' · ' + dim.id));
-  if (RED_LINE_SET.has(dim.id)) {
-    meta.appendChild(el('span', 'zrc-critical-badge', 'Critical dimension'));
-  }
+  /* The "Critical dimension" badge belongs on the RESULTS screen, not
+     here. While answering, telling somebody this one counts double is
+     pressure to shade upward on precisely the dimensions the red-line
+     panel exists to catch honestly. Shown in full once the answers are
+     in (ui/results.js). */
   card.appendChild(meta);
 
   const headingId = 'zrc-dim-heading';
@@ -165,15 +167,28 @@ function buildStepCard(dim, grades, gradeLabels, onAnswer) {
   card.appendChild(el('p', 'zrc-step-def', dim.definition));
   card.appendChild(el('div', 'zrc-step-instruction', 'Pick the description that sounds most like your utility today.'));
 
-  const group = el('div', 'zrc-ruggroup');
+  const group = el('div', 'zrc-ruggroup zrc-ruggroup-blind');
   group.setAttribute('role', 'radiogroup');
   group.setAttribute('aria-labelledby', headingId);
 
-  GRADES.forEach((g) => {
-    const { name } = splitGradeLabel(gradeLabels[g]);
+  /* BLIND INTAKE (Blake ruling 2026-07-29). While answering, a rung shows
+     its DESCRIPTION and nothing else:
+       - no letter (A to F)
+       - no ordinal word (Survival, Thriving, and the three between)
+       - no rank colour, so green-means-good cannot stand in for the letter
+       - shuffled order, so position cannot either
+     Each of those is the same cue wearing a different hat, and any one of
+     them left in lets a reader pick the answer they want instead of the
+     one that is true. All of it comes back on the results screen, where it
+     informs rather than steers.
+
+     Rendering order is the stored shuffle; `g` (the real grade) still
+     rides on input.value, so scoring is untouched and a resumed session
+     re-checks the right rung. */
+  const order = rungOrder && rungOrder.length === GRADES.length ? rungOrder : GRADES;
+
+  order.forEach((g, position) => {
     const label = el('label', 'zrc-rung');
-    label.style.setProperty('--zrc-rung-fg', GRADE_COLORS[g].fg);
-    label.style.setProperty('--zrc-rung-bg', GRADE_COLORS[g].bg);
 
     const input = document.createElement('input');
     input.type = 'radio';
@@ -181,13 +196,13 @@ function buildStepCard(dim, grades, gradeLabels, onAnswer) {
     input.value = g;
     input.className = 'zrc-rung-input';
     input.checked = grades[dim.id] === g;
+    /* Announced by position, never by grade: a screen-reader user must get
+       the same blind choice as a sighted one, not the answer key. */
+    input.setAttribute('aria-label', 'Option ' + (position + 1) + ' of ' + order.length + ': ' + dim.rungs[g]);
     input.addEventListener('change', () => onAnswer(dim.id, g));
     label.appendChild(input);
 
-    label.appendChild(el('span', 'zrc-rung-badge', g));
-
     const textWrap = el('span', 'zrc-rung-text');
-    textWrap.appendChild(el('span', 'zrc-rung-name', name));
     textWrap.appendChild(el('span', 'zrc-rung-desc', dim.rungs[g]));
     label.appendChild(textWrap);
 

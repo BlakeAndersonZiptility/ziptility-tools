@@ -10,8 +10,11 @@ import CSS from './styles.css';
 import RUBRIC from './data/rubric.json';
 import { score } from './scoring.js';
 import { loadState, saveState } from './storage.js';
+import { ensureOrders } from './rung-order.js';
+import { submitAssessment } from './submit.js';
 import { renderLanding } from './ui/landing.js';
 import { renderIntake, updateAnswerFeedback } from './ui/intake.js';
+import { renderProfile } from './ui/profile.js';
 import { renderResults } from './ui/results.js';
 
 function boot() {
@@ -54,6 +57,12 @@ function boot() {
 
   let grades = (saved && saved.grades) || {};
   let idx = saved && typeof saved.idx === 'number' ? saved.idx : 0;
+  /* Generated once and reused for the life of the assessment. ensureOrders
+     keeps every valid stored order exactly as the reader has been seeing
+     it and only fills gaps. */
+  let orders = ensureOrders(dims, saved && saved.orders);
+  let profile = (saved && saved.profile) || null;
+  let submitted = Boolean(saved && saved.submitted);
   let screen = 'landing';
 
   mount.innerHTML = '';
@@ -62,7 +71,8 @@ function boot() {
   mount.appendChild(stage);
 
   function persist() {
-    try { saveState({ grades, idx }); } catch (e) { /* guarded in storage.js too; belt and suspenders */ }
+    try { saveState({ grades, idx, orders, profile, submitted }); }
+    catch (e) { /* guarded in storage.js too; belt and suspenders */ }
   }
 
   function clampIdx(i) {
@@ -79,9 +89,33 @@ function boot() {
     persist();
     render();
   }
+  /* The optional closing block sits between the last dimension and the
+     score: demographics last is standard survey practice, because a wall
+     of profile questions up front is where people quit, and by here the
+     reader has already put in 90 minutes.
+
+     It is NOT a gate (R14). Skipping goes straight to the same score, and
+     the block is shown once: a reader who has already passed it, or who is
+     coming back to a finished assessment, goes direct to results. */
+  function goProfile() {
+    if (profile || submitted) { goResults(); return; }
+    screen = 'profile';
+    render();
+  }
   function goResults() {
     screen = 'results';
     render();
+  }
+  function handleProfile(answers) {
+    profile = answers || {};
+    persist();
+    /* Fire and forget. The score must never wait on a network call, and a
+       failed submission is our problem, not the reader's: they see their
+       results either way. */
+    submitAssessment({ grades, profile, dimensions: dims })
+      .then(() => { submitted = true; persist(); })
+      .catch(() => { /* nothing to tell the reader; their report is unaffected */ });
+    goResults();
   }
   function handleAnswer(dimId, grade) {
     grades = Object.assign({}, grades, { [dimId]: grade });
@@ -98,10 +132,11 @@ function boot() {
       grades,
       idx,
       gradeLabels,
+      rungOrders: orders,
       onAnswer: handleAnswer,
       onGoto: goIntake,
       onExit: goLanding,
-      onViewResults: goResults
+      onViewResults: goProfile
     };
   }
 
@@ -117,11 +152,19 @@ function boot() {
       });
     } else if (screen === 'intake') {
       renderIntake(stage, intakeProps());
+    } else if (screen === 'profile') {
+      renderProfile(stage, {
+        profile,
+        onSubmit: handleProfile,
+        onSkip: goResults,
+        onBack: () => goIntake(idx)
+      });
     } else {
       renderResults(stage, {
         dimensions: dims,
         grades,
         gradeLabels,
+        profile,
         onBack: () => goIntake(idx),
         onEdit: (i) => goIntake(i)
       });

@@ -5,23 +5,17 @@
    a code review.
 
    ---------------------------------------------------------------------
-   DECISION 1: which dimensions are red-line.
+   DECISION 1: which dimensions are red-line. RULED: SEVEN.
 
-   The sources disagree, so this is not a detail:
+   Blake ruled 2026-07-29: seven, matching the workbook's own Rubric sheet,
+   which marks T5, T7, T8, M3, M8, F1 and F2 with a filled circle.
 
-   - The design spec (70-tool-report-card.md) names SIX: T5, T7, T8, F1,
-     F2, M8, and calls the size an open decision ("6 vs a tighter 4 vs a
-     wider 8").
-   - Blake SIGNED six on 2026-06-28 (decision D26, "the spec default"),
-     choosing against 4 and 8.
-   - The workbook's Rubric sheet marks SEVEN with a filled circle, adding
-     M3 Evidence-Based Decision-Making. The workbook was last modified
-     2026-05-15, BEFORE that ruling, and its own Dashboard still reads
-     "[Red-line dimensions: TBD by author]".
-
-   Default is SIX, because the signed ruling is later than the workbook and
-   the workbook itself does not claim to have settled it. M3 is listed
-   below, commented out, so adding it is uncommenting one line.
+   This supersedes D26 (2026-06-28), which signed six against the design
+   spec's list and omitted M3 Evidence-Based Decision-Making. Worth keeping
+   the history visible, because the two numbers are still both written down
+   in different places: the design spec and D26 say six, the workbook says
+   seven, and the workbook's own Dashboard says "[Red-line dimensions: TBD
+   by author]". Seven is now the answer.
    ---------------------------------------------------------------------
    DECISION 2: what trips a red-line flag.
 
@@ -39,11 +33,10 @@ export const RED_LINE_IDS = [
   'T5', /* Operations & Maintenance Practices */
   'T7', /* Regulatory Compliance */
   'T8', /* Emergency Preparedness */
+  'M3', /* Evidence-Based Decision-Making (Blake ruling 2026-07-29) */
+  'M8', /* Workforce / Operator Bench */
   'F1', /* Financial Reserves */
-  'F2', /* Rate Adequacy */
-  'M8'  /* Workforce / Operator Bench */
-  /* 'M3' */ /* Evidence-Based Decision-Making: marked in the workbook,
-                absent from the signed six. Uncomment to go to seven. */
+  'F2'  /* Rate Adequacy */
 ];
 
 /* Grades that trip a red-line flag. ['F'] per the Methodology; ['F','D']
@@ -70,4 +63,22 @@ export const PRACTICAL_CAP_GRADE = 'D';
 export const CONFIG = {
   guideBaseUrl: '/field-guide/for-managers',
   contactEmail: 'sales@ziptility.com'
+};
+
+/* Survey submission (Blake ruling 2026-07-29: HubSpot, with an optional
+   email). Portal is the same one the calculator's formula-sheet form uses.
+
+   formId IS DELIBERATELY BLANK. The form does not exist in HubSpot yet,
+   and creating one is a write to a shared system, which is Blake's call
+   rather than something to do quietly. While it is blank the tool is fully
+   usable and simply sends nothing (submit.js no-ops). The exact fields to
+   create are written out in HUBSPOT-FORM-SPEC.md; drop the GUID here and
+   submission starts working with no other change.
+
+   Reusing the calculator's form id (d00fc6e5) would be wrong: different
+   purpose, different fields, and it would mix survey responses into a
+   formula-sheet lead list. */
+export const HUBSPOT = {
+  portalId: '4938013',
+  formId: ''
 };

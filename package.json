@@ -17,7 +17,7 @@
     "test:manager": "node --test tests/manager.test.js",
     "build:reportcard:dev": "esbuild src/reportcard/main.js --bundle --format=iife --loader:.css=text --outfile=dist/reportcard-dev.js",
     "dev:reportcard": "esbuild src/reportcard/main.js --bundle --format=iife --loader:.css=text --outfile=dist/reportcard-dev.js --watch --servedir=.",
-    "test:reportcard": "node --test tests/reportcard.test.js",
+    "test:reportcard": "node --test tests/reportcard.test.js tests/reportcard-survey.test.js",
     "build:page-content": "node scripts/build-page-content.mjs",
     "test:page-content": "node --test tests/page-content.test.js",
     "test:cross-tool": "node --test tests/cross-tool-links.test.js",

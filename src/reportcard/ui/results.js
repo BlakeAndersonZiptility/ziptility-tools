@@ -13,6 +13,64 @@ import { RED_LINE_IDS } from '../config.js';
 
 const RED_LINE_SET = new Set(RED_LINE_IDS);
 
+/* PRINT-ONLY LOGO. On screen this tool shows no brand mark - the host
+   page's own header/footer carry it (R14 neutrality, and see
+   HANDOFF-WEB.md on why no tool bundle renders a logo on screen). A
+   printed page has none of that chrome, and boards print these, so the
+   printed report needs its own logo, title, and date at the top.
+   Inlined markup (not a linked <img src>) so the bundle stays
+   self-contained and printing works with no network available. Source:
+   ziptility/shared/brand/design-system/assets/logo-horizontal-navy.svg
+   in the master repo (copied verbatim, navy-on-white lockup - correct per
+   that system's own contrast rule, since a printed page is white). */
+const PRINT_LOGO_SVG = '<svg xmlns="http://www.w3.org/2000/svg" width="595.995" height="71.933" viewBox="0 0 595.995 71.933" fill="none">' +
+  '<path d="M 217.668 50.734 L 188.205 50.734 L 217.245 20.29 L 217.245 7.002 L 164.076 7.002 L 164.076 21.299 L 193.2 21.299 L 163.653 52.248 L 163.653 65.872 L 217.668 65.872 L 217.668 50.734 Z" fill="#0c1f30"></path>' +
+  '<path d="M 242.616 65.872 L 242.616 7.002 L 224.498 7.002 L 224.498 65.872 L 242.616 65.872 Z" fill="#0c1f30"></path>' +
+  '<path d="M 249.861 7.002 L 249.861 65.872 L 267.809 65.872 L 267.809 47.875 L 301.675 47.875 C 303.707 42.576 304.723 35.933 304.723 27.943 C 304.723 19.449 303.538 12.469 301.336 7.002 L 249.861 7.002 Z M 267.809 20.711 L 285.927 20.711 C 286.435 22.477 286.774 24.831 286.774 27.691 C 286.774 30.718 286.435 33.073 285.927 34.755 L 267.809 34.755 L 267.809 20.711 Z" fill="#0c1f30"></path>' +
+  '<path d="M 364.67 21.804 L 364.67 7.002 L 309.808 7.002 L 309.808 21.804 L 328.265 21.804 L 328.265 65.872 L 346.213 65.872 L 346.213 21.804 L 364.67 21.804 Z" fill="#0c1f30"></path>' +
+  '<path d="M 390.031 65.872 L 390.031 7.002 L 371.913 7.002 L 371.913 65.872 L 390.031 65.872 Z" fill="#0c1f30"></path>' +
+  '<path d="M 415.217 51.154 L 415.217 7.002 L 397.268 7.002 L 397.268 65.872 L 442.817 65.872 L 442.817 51.154 L 415.217 51.154 Z" fill="#0c1f30"></path>' +
+  '<path d="M 468.149 65.872 L 468.149 7.002 L 450.031 7.002 L 450.031 65.872 L 468.149 65.872 Z" fill="#0c1f30"></path>' +
+  '<path d="M 530.249 21.801 L 530.249 7 L 475.386 7 L 475.386 21.801 L 493.843 21.801 L 493.843 65.869 L 511.792 65.869 L 511.792 21.801 L 530.249 21.801 Z" fill="#0c1f30"></path>' +
+  '<path d="M 574.518 44.991 L 595.995 7.002 L 576.691 7.002 L 565.543 30.118 L 554.565 7.002 L 535.092 7.002 L 556.569 44.991 L 556.569 65.872 L 574.518 65.872 L 574.518 44.991 Z" fill="#0c1f30"></path>' +
+  '<path d="M 76.447 60.312 C 74.624 62.221 75.977 65.384 78.616 65.384 L 106.198 65.384 C 107.018 65.384 107.802 65.048 108.368 64.455 L 133.902 37.709 C 135.724 35.8 134.371 32.637 131.732 32.637 L 104.15 32.637 C 103.331 32.637 102.547 32.973 101.98 33.566 L 76.447 60.312 Z" fill="#0c1f30"></path>' +
+  '<path d="M 0.836 34.224 C -0.986 36.133 0.367 39.296 3.006 39.296 L 30.588 39.296 C 31.407 39.296 32.191 38.96 32.758 38.367 L 58.291 11.621 C 60.114 9.712 58.761 6.549 56.121 6.549 L 28.54 6.549 C 27.72 6.549 26.936 6.885 26.37 7.478 L 0.836 34.224 Z" fill="#0c1f30"></path>' +
+  '<path d="M 118.221 5.072 C 120.043 3.163 118.69 0 116.051 0 L 81.645 0 C 80.825 0 80.041 0.335 79.475 0.928 L 16.519 66.861 C 14.696 68.77 16.049 71.933 18.688 71.933 L 53.094 71.933 C 53.914 71.933 54.698 71.598 55.264 71.005 L 118.221 5.072 Z" fill="#0c1f30"></path>' +
+  '</svg>';
+
+/* Human-readable, guarded: a printed page must never blank out because
+   Intl formatting threw in some odd embed context. */
+function printDate() {
+  try {
+    return new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+  } catch (e) {
+    try { return new Date().toDateString(); } catch (e2) { return ''; }
+  }
+}
+
+function buildPrintLogo() {
+  const wrap = el('div', 'zrc-print-logo');
+  wrap.setAttribute('aria-hidden', 'true');
+
+  const mark = el('div', 'zrc-print-logo-mark');
+  mark.innerHTML = PRINT_LOGO_SVG;
+  wrap.appendChild(mark);
+
+  const meta = el('div', 'zrc-print-logo-meta');
+  meta.appendChild(el('div', 'zrc-print-logo-title', 'Utility Health Report Card'));
+  meta.appendChild(el('div', 'zrc-print-logo-date', printDate()));
+  wrap.appendChild(meta);
+
+  return wrap;
+}
+
+function buildPrintFooter() {
+  const footer = el('div', 'zrc-print-footer');
+  footer.setAttribute('aria-hidden', 'true');
+  footer.textContent = 'ziptility.com/tools/report-card';
+  return footer;
+}
+
 /* Plain operator-voice headline per overall grade. Wording is written
    fresh here, not lifted from the prototype (house rule: structure and
    visual ideas from the prototype, zero content). */
@@ -35,6 +93,8 @@ export function renderResults(root, opts) {
 
   const wrap = el('div', 'zrc-results');
 
+  wrap.appendChild(buildPrintLogo());
+
   const topbar = el('div', 'zrc-topbar zrc-noprint');
   const backBtn = el('button', 'zrc-link-btn', '← Back to the questions');
   backBtn.type = 'button';
@@ -50,6 +110,7 @@ export function renderResults(root, opts) {
   wrap.appendChild(buildOneRungUp(s, byId, gradeLabels));
   wrap.appendChild(buildActionPlan(dimensions, grades, gradeLabels, onEdit));
   wrap.appendChild(buildSoftCapture());
+  wrap.appendChild(buildPrintFooter());
 
   root.appendChild(wrap);
 

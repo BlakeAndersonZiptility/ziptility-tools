@@ -49,6 +49,14 @@
 #ziptility-report-card *::after{ box-sizing:border-box; }
 
 #ziptility-report-card .zrc-wrap{ max-width:56rem; margin:0 auto; }
+/* WIDER ON DESKTOP so the tool is not a tall narrow ribbon inside a 1185px
+   page container (Blake, 2026-07-29). Only the WRAP widens: prose keeps its
+   own reading measure below (.zrc-lede 620px, .zrc-section-lede 640px), so
+   line length does not blow out. The height comes off the grids, which get
+   to sit side by side instead of stacking. */
+@media (min-width:1040px){
+  #ziptility-report-card .zrc-wrap{ max-width:72rem; }
+}
 
 /* ---------- focus (C1: #0088ff site-wide) ---------- */
 #ziptility-report-card button:focus-visible,
@@ -117,6 +125,14 @@
 #ziptility-report-card .zrc-eyebrow-dot{ width:7px; height:7px; border-radius:999px; background:#16a34a; }
 #ziptility-report-card .zrc-lede{ font-size:18px; line-height:1.6; color:var(--n600); max-width:620px; margin:0 0 28px; }
 #ziptility-report-card .zrc-facts{ display:grid; grid-template-columns:1fr; gap:16px; margin-bottom:28px; }
+/* Three fact cards stacked was 369px of the landing screen's 711px, measured
+   on production 2026-07-29. Side by side they cost a fraction of that. */
+@media (min-width:720px){
+  #ziptility-report-card .zrc-facts{ grid-template-columns:1fr 1fr; }
+}
+@media (min-width:1040px){
+  #ziptility-report-card .zrc-facts{ grid-template-columns:repeat(3,1fr); }
+}
 #ziptility-report-card .zrc-fact{ background:var(--warm-50); border-radius:var(--radius); padding:18px 20px; }
 #ziptility-report-card .zrc-fact-label{ font-size:15px; font-weight:700; color:var(--midnight); margin:0 0 6px; }
 #ziptility-report-card .zrc-fact-body{ font-size:14.5px; line-height:1.55; color:var(--n600); margin:0; }

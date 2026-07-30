@@ -16,6 +16,7 @@ import { renderLanding } from './ui/landing.js';
 import { renderIntake, updateAnswerFeedback } from './ui/intake.js';
 import { renderProfile } from './ui/profile.js';
 import { renderResults } from './ui/results.js';
+import { trackComplete, trackProgress, makeMilestoneGate } from '../shared/analytics.js';
 
 function boot() {
   const mount = document.getElementById('ziptility-report-card');
@@ -146,8 +147,30 @@ function boot() {
     screen = 'profile';
     render();
   }
+  /* Fires once per page load, not once per render: goResults is reachable
+     again from the profile skip path and from a returning reader. */
+  let completeSent = false;
   function goResults() {
     screen = 'results';
+    if (!completeSent) {
+      completeSent = true;
+      /* NO PII. Grades and counts only, never the email or the profile
+         free-text, because the whole point of this tool is that a reader can
+         finish it without identifying themselves. */
+      try {
+        const s2 = score(grades, RUBRIC.dimensions);
+        trackComplete('report-card', {
+          practical_grade: s2.practical && s2.practical.grade,
+          overall_grade: s2.overall && s2.overall.grade,
+          capped: s2.practical && s2.practical.capped ? 'yes' : 'no',
+          redline_count: s2.flags ? s2.flags.length : 0,
+          answered: s2.answered,
+          complete: s2.complete ? 'yes' : 'no'
+        });
+      } catch (e) {
+        trackComplete('report-card');
+      }
+    }
     render();
   }
   function handleProfile(answers) {
@@ -161,9 +184,18 @@ function boot() {
       .catch(() => { /* nothing to tell the reader; their report is unaffected */ });
     goResults();
   }
+  /* Coarse milestones only. 23 answers must not become 23 events per
+     session; what matters is the shape of the drop-off, not each keystroke. */
+  const progressGate = makeMilestoneGate([25, 50, 75]);
   function handleAnswer(dimId, grade) {
     grades = Object.assign({}, grades, { [dimId]: grade });
     persist();
+    try {
+      const answered = Object.keys(grades).length;
+      if (progressGate(answered, dims.length)) {
+        trackProgress('report-card', answered, dims.length);
+      }
+    } catch (e) { /* analytics never blocks answering */ }
     /* Lightweight update only (see updateAnswerFeedback's own comment):
        a full renderIntake here would rebuild the radio the reader just
        picked and drop keyboard focus off it. */

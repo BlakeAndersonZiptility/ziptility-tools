@@ -40,19 +40,22 @@ export function renderLanding(root, { hasSaved, savedCount, total, onStart, onRe
     'can manage it. Each of them sees a different part of the system. One person answering alone ' +
     'tends to skew the result toward whichever part they know best.'
   ));
-  /* THIS PARAGRAPH MUST DESCRIBE WHAT THE TOOL ACTUALLY DOES. It used to
-     say "nothing leaves your browser", which stopped being true the day
-     the assessment started posting to HubSpot (submit.js). Nobody would
-     have caught it from the outside, which is exactly why it gets a note:
-     if the submission behaviour changes again, this text changes with it,
-     in the same commit. */
+  /* THIS PARAGRAPH MUST DESCRIBE WHAT THE TOOL ACTUALLY DOES, and it has
+     now been wrong in BOTH directions, which is why the rule is written
+     twice. It first said "nothing leaves your browser" after the assessment
+     started posting to HubSpot. Then submit.js was built to post but
+     HUBSPOT.formId was left deliberately blank, so the tool sends nothing,
+     while this text still promised "we keep a copy of the grades". It
+     shipped to production on 2026-07-29 saying that.
+     THE RULE: this text tracks HUBSPOT.formId in config.js, in the same
+     commit. Blank id means say nothing is sent. A real id means describe
+     what is kept. Nobody catches this from the outside, because both
+     versions read perfectly plausibly. */
   facts.appendChild(factRow(
     'What happens to your answers',
     'There is no account and no signup, and you never have to give us your email to see your ' +
-    'score. Your answers save in this browser so you can stop and come back. When you finish, we ' +
-    'keep a copy of the grades and the size of your system to build a picture of how small ' +
-    'systems are really doing. That copy has no name on it unless you choose to give us your ' +
-    'email at the end.'
+    'score. Your answers save in this browser so you can stop and come back, and nothing is sent ' +
+    'anywhere. If that changes, this paragraph changes with it.'
   ));
   wrap.appendChild(facts);
 

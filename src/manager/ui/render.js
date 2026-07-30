@@ -8,6 +8,7 @@
 import { UNITS } from '../../units.js';
 import { buildShell, escHtml } from './template.js';
 import { ENERGY_HISTORY_KEY } from '../config.js';
+import { trackComplete } from '../../shared/analytics.js';
 
 function fmt(x) {
   if (x == null || !isFinite(x)) return '';
@@ -235,10 +236,24 @@ export function renderTool(mount, tool) {
   const msgEl = mount.querySelector('#zmt-msg');
   const resultEl = mount.querySelector('#zmt-result');
   const captureBtn = mount.querySelector('#zmt-capture-open');
+  let completeSent = false;
 
   function renderResult(res) {
     resultEl.innerHTML = ''; msgEl.textContent = ''; msgEl.className = 'zmt-msg';
     if (res.error) { msgEl.textContent = res.error; return; }
+
+    /* COMPLETION. Emitted here and nowhere else, because this is the first
+       line past the error guard: a verdict is on screen. An input change or
+       a Calculate click that failed validation is NOT a completion.
+       ONCE PER PAGE LOAD. These tools are built to be played with (change the
+       rate, recalculate), and counting every recalculation as a completion
+       would inflate the lane's primary KPI by however many times one person
+       tweaked an input. Iteration depth is a real signal but a DIFFERENT one,
+       and conflating the two corrupts the number that matters. */
+    if (!completeSent) {
+      completeSent = true;
+      trackComplete(tool.id, { verdict: res.verdict && res.verdict.label });
+    }
 
     // Write auto-filled values back into their own inputs (e.g. breaksYr).
     tool.fields.forEach((f) => {

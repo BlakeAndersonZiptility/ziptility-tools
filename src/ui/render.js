@@ -3,10 +3,18 @@
    optional per-calculator resource links rendered on the card. */
 import { calculators, CAT_ORDER } from '../registry.js';
 import { UNITS } from '../units.js';
+import { trackComplete } from '../shared/analytics.js';
 
 export function initApp(){
   const grid=document.getElementById('grid'), catSelect=document.getElementById('catSelect'), countEl=document.getElementById('count'), searchEl=document.getElementById('search'), catWrap=document.getElementById('catWrap');
   const state={ mode:'water', cat:null, query:'' };
+  /* COMPLETION (WW-14, 2026-09-10). One entry per calculator id that has
+     put a result on screen this page load. This page carries 76 calculators
+     on one URL, so "once per page load" (the manager rule) becomes "once per
+     calculator per page load": finishing chlorine-dose and then detention
+     time is two completions of two different tools; recalculating
+     chlorine-dose three times is still one. */
+  const completed={};
 
   function fmt(x){ if(x==null||!isFinite(x)) return ''; let n=Math.round(x*1e6)/1e6;
     if(Math.abs(n)>=1000) return n.toLocaleString('en-US',{maximumFractionDigits:2}); return String(parseFloat(n.toFixed(4))); }
@@ -102,6 +110,13 @@ export function initApp(){
     c.fields.forEach((f,idx)=>{ if(f.k in res.values){ const val=res.values[f.k]; if(val==null||!isFinite(val)){ bad=true; return; }
       writeField(f, inputs[idx], val); if(res.computed.includes(f.k)) inputs[idx].classList.add('computed'); } });
     if(bad){ msg.textContent='Check inputs: result is undefined (divide by zero?).'; return; }
+    /* A result is on screen: every guard above has passed. tool_name is the
+       page slug (the GA4 report groups every tool by the slug its URL and
+       embed use); tool_calc is the card id the deep links use, so the same
+       id answers "which of the 76 gets finished". No reader input rides
+       the payload, only ids. Fire and forget: analytics never throws into
+       the tool. */
+    if(!completed[c.id]){ completed[c.id]=true; try{ trackComplete('calculator', { calc:c.id, mode:state.mode }); }catch(e){} }
     if(c.interpret){ const merged=Object.assign({}, v, res.values); const ins=c.interpret(merged);
       if(ins){ insEl.className='insight show '+ins.level; insEl.innerHTML='<span class="lead">Note</span>'+ins.text; } }
   }

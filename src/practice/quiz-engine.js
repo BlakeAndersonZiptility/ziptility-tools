@@ -5,6 +5,7 @@
    on one page. See quiz-logic.js for the pure math/draw/score functions
    this file calls into. */
 import { fmtClock, sizesAvailable, examMinutes, drawQuestions, scoreAttempt, weakestFirstDomains } from './quiz-logic.js';
+import { trackComplete, trackProgress, makeMilestoneGate } from '../shared/analytics.js';
 /* quiz.js L58-63. Shared with the discipline pages' generated subject
    table so the same code never gets two names on one screen. */
 import { DOMAIN_LABELS } from './domains.js';
@@ -81,6 +82,37 @@ export function initQuiz(rootEl, bank, cfg, { onExit } = {}) {
   function announce(text) { live.textContent = text; }
 
   let state = null; /* { mode, size, qs:[{q, order, correctPos}], idx, answers:{}, checked:{}, remainingSec, timerId } */
+
+  /* ---------- completion + progress events (WW-14, 2026-09-10) ----------
+     tool_name is "practice-<slug>", the discipline page's own URL segment
+     (cfg.slug, from the manifest), so the GA4 report groups a run by the
+     page it belongs to whether it started on the hub or on
+     /tools/practice/<slug>. Falls back to the bank id only if an embed
+     predates the slug.
+     Progress fires at coarse milestones (25/50/75 percent answered), one
+     gate per attempt, so a 100-question exam does not become 100 events
+     and WHERE people stop is still recoverable. A resumed session pre-marks
+     the milestones it already crossed, so resuming at question 60 of 100
+     does not re-announce 25 and 50.
+     Completion fires once per finished attempt (a retake is a new attempt
+     with its own score), carrying only counts and bands: mode, size, the
+     score, pass or below, and the attempt number. Never the answers. */
+  const TOOL = 'practice-' + (cfg.slug || bank.id);
+  let progressGate = makeMilestoneGate([25, 50, 75]);
+  function resetProgress(answeredSoFar, total) {
+    progressGate = makeMilestoneGate([25, 50, 75]);
+    if (answeredSoFar > 0) {
+      /* Drain the gate for the milestones already behind us (bounded by
+         the three marks), without emitting. */
+      for (let guard = 0; guard < 4 && progressGate(answeredSoFar, total); guard++) { /* pre-marked */ }
+    }
+  }
+  function reportProgress() {
+    try {
+      const answered = Object.keys(state.answers).length;
+      if (progressGate(answered, state.qs.length)) trackProgress(TOOL, answered, state.qs.length);
+    } catch (e) { /* analytics never blocks answering */ }
+  }
   const pick = { mode: 'practice', size: null };
 
   /* ---------- session persistence (quiz.js L134-170) ---------- */
@@ -237,6 +269,7 @@ export function initQuiz(rootEl, bank, cfg, { onExit } = {}) {
       timerId: null
     };
     saveSession();
+    resetProgress(0, state.qs.length);
     if (mode === 'exam') startTimer();
     renderQuestion();
   }
@@ -256,6 +289,7 @@ export function initQuiz(rootEl, bank, cfg, { onExit } = {}) {
       remainingSec: s.remainingSec || 0,
       timerId: null
     };
+    resetProgress(Object.keys(state.answers).length, state.qs.length);
     if (state.mode === 'exam') startTimer();
     renderQuestion();
   }
@@ -389,6 +423,7 @@ export function initQuiz(rootEl, bank, cfg, { onExit } = {}) {
   function selectChoice(pos) {
     state.answers[state.idx] = pos;
     saveSession();
+    reportProgress();
     renderQuestion();
   }
 
@@ -430,6 +465,22 @@ export function initQuiz(rootEl, bank, cfg, { onExit } = {}) {
   function finish() {
     stopTimer();
     const { correct, n, pct, byDomain, missed } = scoreAttempt(state.qs, state.answers);
+
+    /* COMPLETION: the score exists. Guarded per attempt (finish is reachable
+       from Submit, from the last question's button, and from the exam
+       timer running out). The attempt number counts this one. */
+    if (!state.completeSent) {
+      state.completeSent = true;
+      try {
+        const prior = (readJSON(KEY_HISTORY) || []).length;
+        trackComplete(TOOL, {
+          mode: state.mode, size: n, score_pct: pct,
+          passed: pct >= 70 ? 'yes' : 'no',
+          attempt: prior + 1,
+          deep_linked: cfg.deepLinked ? 'yes' : 'no'
+        });
+      } catch (e) { trackComplete(TOOL); }
+    }
 
     pushHistory({
       date: new Date().toISOString().slice(0, 10),

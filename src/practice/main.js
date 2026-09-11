@@ -81,7 +81,11 @@ function boot() {
       .then((bank) => {
         const cfg = {
           ...CONFIG, embedApp, hubUrl,
-          title: test.title, badge: test.badge, deepLinked: !!deepLinked
+          title: test.title, badge: test.badge, deepLinked: !!deepLinked,
+          /* WW-14: the completion event carries the discipline's URL slug
+             ("practice-water-treatment"), the same id the page and the
+             embed's data-test use, never the bank's internal id. */
+          slug: test.slug
         };
         controller = initQuiz(stage, bank, cfg, { onExit: deepLinked ? null : showPicker });
         /* test-only reach-in: mirrors the calculator's debug-hook idiom.

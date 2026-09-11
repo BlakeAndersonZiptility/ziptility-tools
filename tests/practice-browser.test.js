@@ -244,6 +244,29 @@ test('full practice flow: setup through results, score math matches the click ta
       `tallied ${correct}/${size} correct from DOM classes -> expected ${expectedPct}%, shown ${shownPct}%`);
     const sub = await page.locator('.zq-score-sub').innerText();
     assert.match(sub, new RegExp(`${correct} of ${size} correct`));
+
+    // completion + progress events (WW-14): three milestones on the way,
+    // one completion at the end, the score the reader saw, the page slug
+    // as the tool name, and nothing a reader typed or chose.
+    const events = await page.evaluate(() => (window.dataLayer || []).filter((e) => e && /^tool_/.test(e.event)));
+    const progress = events.filter((e) => e.event === 'tool_progress');
+    const complete = events.filter((e) => e.event === 'tool_complete');
+    assert.equal(complete.length, 1, 'exactly one tool_complete per finished attempt');
+    assert.equal(complete[0].tool_name, 'practice-operator-math');
+    assert.equal(complete[0].tool_mode, 'practice');
+    assert.equal(complete[0].tool_size, size);
+    assert.equal(complete[0].tool_score_pct, shownPct);
+    assert.equal(complete[0].tool_passed, shownPct >= 70 ? 'yes' : 'no');
+    assert.equal(complete[0].tool_attempt, 1);
+    assert.equal(complete[0].tool_deep_linked, 'no');
+    assert.deepEqual(progress.map((e) => e.tool_name), ['practice-operator-math', 'practice-operator-math', 'practice-operator-math']);
+    const pcts = progress.map((e) => e.tool_percent);
+    assert.ok(pcts[0] >= 25 && pcts[0] < 50 && pcts[1] >= 50 && pcts[1] < 75 && pcts[2] >= 75 && pcts[2] < 100,
+      'milestones fire once each, in order, at the first answer past 25/50/75 percent: ' + pcts.join(','));
+    for (const e of progress) assert.equal(e.tool_total, size);
+    for (const e of events) {
+      for (const v of Object.values(e)) assert.ok(typeof v === 'string' || typeof v === 'number', 'flat payload only');
+    }
   });
 });
 
@@ -347,6 +370,17 @@ test('localStorage keys exist at the right lifecycle points; resume restores pos
     await page.waitForSelector('.zq-topbar');
     const topbarAfter = await page.locator('.zq-topbar').innerText();
     assert.match(topbarAfter, /Question 3 of/);
+
+    // WW-14: finishing the resumed attempt is its own completion, numbered
+    // as the second attempt, and the resumed milestones fire from where the
+    // run actually is (2 of `size` answered is below 25 percent, so all
+    // three milestones are still ahead and fire once each).
+    await answerAll(page, size - 2);
+    const events = await page.evaluate(() => (window.dataLayer || []).filter((e) => e && /^tool_/.test(e.event)));
+    const complete = events.filter((e) => e.event === 'tool_complete');
+    assert.equal(complete.length, 1, 'the reload cleared the first attempt\'s events; the resumed attempt completes once');
+    assert.equal(complete[0].tool_attempt, 2);
+    assert.equal(events.filter((e) => e.event === 'tool_progress').length, 3);
   });
 });
 

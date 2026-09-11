@@ -98,6 +98,15 @@ await page.fill('#area-rect__W', '4');
 await page.press('#area-rect__W', 'Enter');
 ok('Enter key calculates (20)', (await page.inputValue('#area-rect__A')) === '20');
 
+// completion events (WW-14): two successful runs of the same card are ONE
+// completion; the payload carries the page slug and the card id, no input.
+const completes = () => page.evaluate(() => (window.dataLayer || []).filter(e => e && e.event === 'tool_complete'));
+let dl = await completes();
+ok('tool_complete fired once for two area-rect runs', dl.length === 1);
+ok('tool_complete payload = calculator / area-rect / water',
+  dl[0] && dl[0].tool_name === 'calculator' && dl[0].tool_calc === 'area-rect' && dl[0].tool_mode === 'water');
+ok('tool_complete carries no reader input', dl[0] && Object.keys(dl[0]).every(k => ['event', 'tool_name', 'tool_calc', 'tool_mode'].includes(k)));
+
 // unit switch converts in place
 await page.selectOption('#area-rect__A__u', 'sqm');
 const m2 = parseFloat(await page.inputValue('#area-rect__A'));
@@ -106,6 +115,13 @@ ok('unit switch ft²→m² (~1.858), got ' + m2, Math.abs(m2 - 1.8581) < 0.001);
 // clear
 await page.click('#clear-area-rect');
 ok('clear empties fields', (await page.inputValue('#area-rect__L')) === '');
+
+// a run that fails validation is NOT a completion
+await page.fill('#area-rect__L', '7');
+await page.click('#calc-area-rect');
+ok('missing input shows an error', (await page.textContent('#msg-area-rect')).trim().length > 0);
+dl = await completes();
+ok('no tool_complete on a validation error', dl.length === 1);
 
 // mode switch + search
 await page.click('.mode-btn[data-m="wastewater"]');
@@ -144,6 +160,9 @@ ok('toggle switches sides', await page.evaluate(() =>
   && document.getElementById('tank-chlorination__drypct').closest('.field').style.display !== 'none'));
 await page.click('#calc-tank-chlorination');
 ok('granular side computes with default 65%', (await page.inputValue('#tank-chlorination__drypct')) === '65');
+dl = await completes();
+ok('a second calculator is a second completion (tank-chlorination), and its two runs are one',
+  dl.length === 2 && dl[1].tool_calc === 'tank-chlorination');
 await page.fill('#search', '');
 await page.click('.mode-btn[data-m="wastewater"]');
 

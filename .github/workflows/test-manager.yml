@@ -22,3 +22,11 @@ jobs:
         # (R6, R14). Checked in CI rather than at review, because the failure
         # is a policy breach on a live page, not a bug someone will notice.
         run: node scripts/check-neutral-lane.mjs src/manager
+      - name: Install Playwright Chromium
+        run: npx playwright install --with-deps chromium
+      - name: Browser tests - the completion payload carries the rendered verdict
+        # The math tests never touch the DOM, so they stayed green through the
+        # whole 2026-07-30 to 2026-09-11 window in which every manager
+        # completion shipped with no verdict on it. Only a rendered run sees
+        # what actually reaches the dataLayer.
+        run: node tests/manager-browser.test.js

@@ -340,3 +340,14 @@ GA4 custom dimensions at event scope for `tool_name` first, then
 `tool_calc` and `tool_mode`, so a report can group by them. A push that
 appears in `dataLayer` on the live page proves the bundle; a row in GA4
 appears only after that container version is published.
+
+**BUILT AND PUBLISHED 2026-09-11** (GTM container Version 15 on
+GTM-PNT7GK52; the trigger is scoped to hostname `www.ziptility.com`). The
+tag forwards **all 17** `tool_*` parameters this table lists, which is worth
+stating because the first draft forwarded 14: `tool_capped`,
+`tool_redline_count` and `tool_complete` had no mapping and would have been
+dropped on the floor. That was caught by auditing the tag against the
+`trackComplete` call sites in this repo rather than against this table.
+**The lesson for anyone editing this table: it is a claim about the code,
+not evidence.** If the two disagree, the code is right and this table is the
+bug. Both failures on 2026-09-11 were of exactly that shape.

@@ -21,6 +21,10 @@ Nothing on the live site has moved. Every page still serves the version it
 served this morning, because a page only changes when its `src` changes,
 and that is Blake's call.
 
+**Cut 2026-09-10 (WW-14):** `calculator-v2.9.0.js` and `practice-v1.7.0.js`.
+Each adds the completion events in §6 and nothing else. The two pages move
+to them by the same one-line repoint, staging first.
+
 Deploy is one edit: change the version in the `<script src>` and publish.
 Artifacts are immutable, so **merging to main never changes what a visitor
 sees**. Rollback is the same edit in reverse and takes about a minute.
@@ -291,3 +295,34 @@ along. Tools pages carry **WebPage + BreadcrumbList only** (D13): no
 FAQPage, no SoftwareApplication, no Offer, no ratings.
 
 Production publish is Blake's typed word. Staging is autonomous.
+
+---
+
+## 6. Completion events, all four bundles (added 2026-09-10, WW-14)
+
+Every bundle now pushes to `window.dataLayer` when a reader finishes
+(`src/shared/analytics.js`; never `gtag`, never a measurement id in a
+public artifact). GTM on ziptility.com is what turns a push into a GA4
+event, so the bundle's job ends at the push. The contract the site's tag
+reads:
+
+| Event | Bundle | Fires when | `tool_name` | Other parameters |
+|---|---|---|---|---|
+| `tool_complete` | calculator v2.9.0+ | a result renders past every validation guard; once per calculator id per page load (three recalculations of one card = one; two different cards = two) | `calculator` | `tool_calc` (the card id the deep links use, e.g. `chlorine-dose`), `tool_mode` (`water` / `wastewater`) |
+| `tool_complete` | practice v1.7.0+ | the score screen renders; once per finished attempt (a retake is a new attempt; the exam timer running out counts) | `practice-<slug>` (the discipline page's URL segment: `practice-operator-math`, `practice-water-treatment`, `practice-water-distribution`, `practice-wastewater-treatment`, `practice-wastewater-collection`, `practice-regulations`) | `tool_mode` (`practice` / `exam`), `tool_size`, `tool_score_pct`, `tool_passed` (`yes` / `no` at the 70 line), `tool_attempt` (1 = first finish of that bank in this browser), `tool_deep_linked` (`yes` on a discipline page, `no` from the hub) |
+| `tool_progress` | practice v1.7.0+ | the first answer past 25, 50 and 75 percent of the draw, once each per attempt; a resumed session does not re-fire milestones already behind it | `practice-<slug>` | `tool_answered`, `tool_total`, `tool_percent` |
+| `tool_complete` | manager v1.3.0+ | a verdict renders; once per page load | `repair-or-replace` / `cost-of-turnover` / `energy-cost` | `tool_verdict` |
+| `tool_complete` | reportcard v1.2.0+ | the results screen; once per page load | `report-card` | `tool_practical_grade`, `tool_overall_grade`, `tool_capped`, `tool_redline_count`, `tool_answered`, `tool_complete` |
+| `tool_progress` | reportcard v1.2.0+ | 25, 50, 75 percent of dimensions answered | `report-card` | `tool_answered`, `tool_total`, `tool_percent` |
+
+Never in a payload: an email, free text, a company name, a chosen answer,
+a typed input value. Ids, counts and bands only. Every push is wrapped;
+a blocked or absent `dataLayer` never reaches the reader.
+
+What the site side owns (the leg this repo cannot prove): one Custom Event
+trigger on `^tool_(complete|progress)$`, one GA4 event tag with event name
+`{{Event}}` forwarding `tool_name` and the `tool_*` parameters above, and
+GA4 custom dimensions at event scope for `tool_name` first, then
+`tool_calc` and `tool_mode`, so a report can group by them. A push that
+appears in `dataLayer` on the live page proves the bundle; a row in GA4
+appears only after that container version is published.

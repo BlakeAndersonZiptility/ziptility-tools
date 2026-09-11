@@ -53,6 +53,10 @@ jobs:
       - name: Neutral-lane rules and sandbox safety
         run: node scripts/check-neutral-lane.mjs src/manager
       - run: npm run build:manager:dev
+      - name: Install Playwright Chromium
+        run: npx playwright install --with-deps chromium
+      - name: Browser tests (the rendered run, incl. the completion payload)
+        run: node tests/manager-browser.test.js
       - name: Build versioned artifact
         run: |
           if [ -f "dist/${TAG}.js" ]; then

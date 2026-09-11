@@ -252,7 +252,16 @@ export function renderTool(mount, tool) {
        and conflating the two corrupts the number that matters. */
     if (!completeSent) {
       completeSent = true;
-      trackComplete(tool.id, { verdict: res.verdict && res.verdict.label });
+      /* The verdict is a STRING on res.values, set by the solver
+         (repair-or-replace: REPLACE / KEEP REPAIRING / ON THE LINE), and the
+         same field the hero badge renders. This used to read res.verdict.label
+         - a shape no solver has ever returned - so every manager completion
+         from 2026-07-30 to 2026-09-11 carried no verdict at all, silently:
+         analytics.js drops empty detail keys, so the push looked fine and the
+         GA4 hit simply had no ep.tool_verdict on it. Covered now by
+         tests/manager-browser.test.js, which asserts the verdict on the hit
+         equals the verdict on the screen. */
+      trackComplete(tool.id, { verdict: res.values && res.values.verdict });
     }
 
     // Write auto-filled values back into their own inputs (e.g. breaksYr).

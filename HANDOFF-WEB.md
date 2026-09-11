@@ -311,13 +311,27 @@ reads:
 | `tool_complete` | calculator v2.9.0+ | a result renders past every validation guard; once per calculator id per page load (three recalculations of one card = one; two different cards = two) | `calculator` | `tool_calc` (the card id the deep links use, e.g. `chlorine-dose`), `tool_mode` (`water` / `wastewater`) |
 | `tool_complete` | practice v1.7.0+ | the score screen renders; once per finished attempt (a retake is a new attempt; the exam timer running out counts) | `practice-<slug>` (the discipline page's URL segment: `practice-operator-math`, `practice-water-treatment`, `practice-water-distribution`, `practice-wastewater-treatment`, `practice-wastewater-collection`, `practice-regulations`) | `tool_mode` (`practice` / `exam`), `tool_size`, `tool_score_pct`, `tool_passed` (`yes` / `no` at the 70 line), `tool_attempt` (1 = first finish of that bank in this browser), `tool_deep_linked` (`yes` on a discipline page, `no` from the hub) |
 | `tool_progress` | practice v1.7.0+ | the first answer past 25, 50 and 75 percent of the draw, once each per attempt; a resumed session does not re-fire milestones already behind it | `practice-<slug>` | `tool_answered`, `tool_total`, `tool_percent` |
-| `tool_complete` | manager v1.3.0+ | a verdict renders; once per page load | `repair-or-replace` / `cost-of-turnover` / `energy-cost` | `tool_verdict` |
+| `tool_complete` | manager v1.4.0+ | a verdict renders; once per page load | `repair-or-replace` / `cost-of-turnover` / `energy-cost` | `tool_verdict`, on `repair-or-replace` only (`REPLACE` / `KEEP REPAIRING` / `ON THE LINE`, the same string the hero badge shows). The other two tools compute no verdict and send the key not at all, never an empty one. |
 | `tool_complete` | reportcard v1.2.0+ | the results screen; once per page load | `report-card` | `tool_practical_grade`, `tool_overall_grade`, `tool_capped`, `tool_redline_count`, `tool_answered`, `tool_complete` |
 | `tool_progress` | reportcard v1.2.0+ | 25, 50, 75 percent of dimensions answered | `report-card` | `tool_answered`, `tool_total`, `tool_percent` |
 
 Never in a payload: an email, free text, a company name, a chosen answer,
 a typed input value. Ids, counts and bands only. Every push is wrapped;
 a blocked or absent `dataLayer` never reaches the reader.
+
+**`manager-v1.3.0` sent no verdict (fixed 2026-09-11 in `manager-v1.4.0`).**
+The row above claimed `tool_verdict` from v1.3.0; it was never true.
+`render.js` read the verdict off `res.verdict.label`, a shape no solver
+returns - all three return it as the string `res.values.verdict` - so from
+2026-07-30 to 2026-09-11 every manager completion pushed the event with the
+key silently dropped (`analytics.js` drops empty detail values by design).
+It surfaced in GTM Preview on production, where the outgoing GA4 hit carried
+`ep.tool_name=repair-or-replace` and no `ep.tool_verdict`. The math tests
+never touch the DOM and stayed green throughout, so the guard is now a
+rendered one: `tests/manager-browser.test.js` asserts the verdict on the hit
+equals the verdict on the screen, and it runs in both manager workflows.
+Nothing else about the payload changed, and no GA4 registration was needed -
+the event-scoped dimension "Tool verdict" on `tool_verdict` already existed.
 
 What the site side owns (the leg this repo cannot prove): one Custom Event
 trigger on `^tool_(complete|progress)$`, one GA4 event tag with event name

@@ -125,6 +125,10 @@ export function initQuiz(rootEl, bank, cfg, { onExit } = {}) {
       mode: state.mode,
       size: state.size,
       qids: state.qs.map((it) => it.q.id),
+      /* WW-01 step 3: which unit system the drawn items were rendered in. A session resumed
+         under the other system would grade old answer positions against a different
+         variant's key, so it is dropped instead (loadSession). */
+      system: (bank.variants && bank.variants.system) || 'imperial',
       orders: state.qs.map((it) => it.order),
       answers: state.answers,
       checked: state.checked,
@@ -136,6 +140,7 @@ export function initQuiz(rootEl, bank, cfg, { onExit } = {}) {
     const s = readJSON(KEY_SESSION);
     if (!s || s.v !== 1 || s.bankVersion !== (bank.version || '')) return null;
     if (!s.qids || !s.qids.length) return null;
+    if ((s.system || 'imperial') !== ((bank.variants && bank.variants.system) || 'imperial')) return null;
     for (const qid of s.qids) if (!byId[qid]) return null;
     return s;
   }
@@ -160,11 +165,12 @@ export function initQuiz(rootEl, bank, cfg, { onExit } = {}) {
      in one line, which units the math uses, and told a little more
      plainly when their calculator is set to metric. Reads the shared store
      once per screen; there is no toggle on this surface. */
-  function unitsNote() {
+  function unitsNote(where) {
     const metric = getSystem() === 'metric';
     const v = bank.variants || { total: 0, withSi: 0 };
     let text;
-    if (!metric) text = 'Math questions use US customary exam-sheet units (gallons, feet, MGD, lb/day), the way the exam sheet does.';
+    if (where === 'results' && metric && v.withSi > 0) text = 'Your calculator is set to metric; questions with a metric version showed it, the rest used US customary exam-sheet units.';
+    else if (!metric) text = 'Math questions use US customary exam-sheet units (gallons, feet, MGD, lb/day), the way the exam sheet does.';
     else if (v.withSi > 0 && v.withSi >= v.total) text = 'Shown in metric (SI) units, to match your calculator. Switch the calculator to US customary to practise in exam-sheet units.';
     else if (v.withSi > 0) text = 'Your calculator is set to metric. ' + v.withSi + ' of ' + v.total + ' questions here have a metric version and show it; the rest still use US customary exam-sheet units (gallons, feet, MGD, lb/day).';
     else text = 'Your calculator is set to metric. These practice questions still use US customary exam-sheet units (gallons, feet, MGD, lb/day), the way the exam sheet does. Metric question sets follow.';
@@ -523,7 +529,7 @@ export function initQuiz(rootEl, bank, cfg, { onExit } = {}) {
     hero.appendChild(el('div', 'zq-score-sub', correct + ' of ' + n + ' correct' + (state.mode === 'exam' ? ' on a timed exam' : '')));
     hero.appendChild(el('p', 'zq-passnote',
       "Most states set the pass line at 70 percent. Your state's rules govern, so check your certification program for the real requirement."));
-    hero.appendChild(unitsNote());
+    hero.appendChild(unitsNote('results'));
     announce('You scored ' + pct + ' percent, ' + correct + ' of ' + n + ' correct. ' +
       (passed ? 'That clears the 70 percent line.' : 'That is below the 70 percent line.'));
 

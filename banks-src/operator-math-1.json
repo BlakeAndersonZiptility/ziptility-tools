@@ -5,7 +5,7 @@
  "level": "Levels 1-2 (ABC Class I-II)",
  "durationMin": 120,
  "refCount": 100,
- "version": "2026-06-12",
+ "version": "2026-09-16",
  "questions": [
   {
    "id": "XC-ALL-MATH-0001",
@@ -24,7 +24,19 @@
    "cognitive": "Application",
    "formula": "MGD = gpm x 1440 / 1,000,000",
    "calculator": "gpm-mgd",
-   "citation": null
+   "citation": null,
+   "si": {
+    "text": "A pump delivers 22 L/s. What is this flow expressed in ML/d?",
+    "choices": [
+     "1.90 ML/d",
+     "0.02 ML/d",
+     "19.00 ML/d",
+     "0.00 ML/d"
+    ],
+    "correctIndex": 0,
+    "explanation": "22 L/s x 86,400 s/day = 1,900,800 L/day. 1,900,800 / 1,000,000 = 1.90 ML/d.",
+    "formula": "ML/d = L/s x 86,400 / 1,000,000"
+   }
   },
   {
    "id": "XC-ALL-MATH-0002",
@@ -43,7 +55,19 @@
    "cognitive": "Application",
    "formula": "gpm = MGD x 1,000,000 / 1440",
    "calculator": "gpm-mgd",
-   "citation": null
+   "citation": null,
+   "si": {
+    "text": "A plant treats 7.5 ML/d. What is the average flow in L/s?",
+    "choices": [
+     "43.4 L/s",
+     "86.8 L/s",
+     "864 L/s",
+     "7,500 L/s"
+    ],
+    "correctIndex": 1,
+    "explanation": "7.5 ML/d = 7,500,000 L/day. 7,500,000 / 86,400 s/day = 86.8 L/s.",
+    "formula": "L/s = ML/d x 1,000,000 / 86,400"
+   }
   },
   {
    "id": "XC-ALL-MATH-0003",
@@ -62,7 +86,19 @@
    "cognitive": "Recall",
    "formula": "gallons = cubic feet x 7.48",
    "calculator": "vol-box",
-   "citation": null
+   "citation": null,
+   "si": {
+    "text": "Your crew drains 15 cubic meters of water out of a storage basin for an inspection. How much water went out, in liters?",
+    "choices": [
+     "0.015 L",
+     "15 L",
+     "15,000 L",
+     "150,000 L"
+    ],
+    "correctIndex": 2,
+    "explanation": "15 m³ x 1,000 L/m³ = 15,000 liters.",
+    "formula": "liters = cubic meters x 1,000"
+   }
   },
   {
    "id": "XC-ALL-MATH-0004",
@@ -81,7 +117,19 @@
    "cognitive": "Application",
    "formula": "feet of head = psi x 2.31",
    "calculator": "pressure-head",
-   "citation": null
+   "citation": null,
+   "si": {
+    "text": "A pressure gauge reads 300 kPa. What is the equivalent head in meters of water?",
+    "choices": [
+     "3.06 m",
+     "300.00 m",
+     "61.20 m",
+     "30.60 m"
+    ],
+    "correctIndex": 3,
+    "explanation": "300 kPa x 0.102 m/kPa = 30.6 m of head.",
+    "formula": "meters of head = kPa x 0.102"
+   }
   },
   {
    "id": "XC-ALL-MATH-0005",
@@ -100,7 +148,19 @@
    "cognitive": "Application",
    "formula": "area = 0.785 x diameter squared",
    "calculator": "area-circle",
-   "citation": null
+   "citation": null,
+   "si": {
+    "text": "A circular clarifier is 18 m in diameter. What is its surface area?",
+    "choices": [
+     "254.0 m²",
+     "56.5 m²",
+     "324.0 m²",
+     "127.0 m²"
+    ],
+    "correctIndex": 0,
+    "explanation": "Area = 0.785 x 18 x 18 = 0.785 x 324 = 254.3, about 254 m².",
+    "formula": "area = 0.785 x diameter squared"
+   }
   },
   {
    "id": "XC-ALL-MATH-0006",
@@ -119,7 +179,19 @@
    "cognitive": "Recall",
    "formula": "area = length x width",
    "calculator": "area-rect",
-   "citation": null
+   "citation": null,
+   "si": {
+    "text": "A rectangular sedimentation basin is 24 m long and 9 m wide. What is its surface area?",
+    "choices": [
+     "33 m²",
+     "216 m²",
+     "66 m²",
+     "108 m²"
+    ],
+    "correctIndex": 1,
+    "explanation": "Area = length x width = 24 x 9 = 216 m².",
+    "formula": "area = length x width"
+   }
   },
   {
    "id": "XC-ALL-MATH-0007",
@@ -138,7 +210,19 @@
    "cognitive": "Application",
    "formula": "gallons = L x W x D x 7.48",
    "calculator": "vol-box",
-   "citation": null
+   "citation": null,
+   "si": {
+    "text": "A rectangular tank is 15 m long, 6 m wide, and 3.5 m deep. What is its volume in cubic meters?",
+    "choices": [
+     "90 m³",
+     "252 m³",
+     "315 m³",
+     "378 m³"
+    ],
+    "correctIndex": 2,
+    "explanation": "15 x 6 x 3.5 = 315 m³.",
+    "formula": "volume = L x W x D (m³)"
+   }
   },
   {
    "id": "XC-ALL-MATH-0008",
@@ -157,7 +241,19 @@
    "cognitive": "Application",
    "formula": "gallons = 0.785 x diameter squared x depth x 7.48",
    "calculator": "vol-cyl",
-   "citation": null
+   "citation": null,
+   "si": {
+    "text": "A cylindrical tank is 12 m in diameter and 6 m deep. What is its volume in cubic meters?",
+    "choices": [
+     "113 m³",
+     "864 m³",
+     "6,780 m³",
+     "678 m³"
+    ],
+    "correctIndex": 3,
+    "explanation": "Volume = 0.785 x 12 x 12 x 6 = 678 m³.",
+    "formula": "volume = 0.785 x diameter squared x depth (m³)"
+   }
   },
   {
    "id": "XC-ALL-MATH-0009",
@@ -176,7 +272,19 @@
    "cognitive": "Analysis",
    "formula": "gallons = 0.785 x diameter squared x length x 7.48 (convert inches to feet first)",
    "calculator": "vol-cyl",
-   "citation": null
+   "citation": null,
+   "si": {
+    "text": "How many cubic meters are contained in 300 m of 200 mm diameter pipe?",
+    "choices": [
+     "9.42 m³",
+     "0.03 m³",
+     "94.2 m³",
+     "942 m³"
+    ],
+    "correctIndex": 0,
+    "explanation": "200 mm = 0.2 m. Area = 0.785 x 0.2 x 0.2 = 0.0314 sq m. Volume = 0.0314 x 300 = 9.42 m³.",
+    "formula": "volume = 0.785 x diameter squared x length (m³, diameter converted from mm to m)"
+   }
   },
   {
    "id": "XC-ALL-MATH-0010",
@@ -195,7 +303,19 @@
    "cognitive": "Application",
    "formula": "velocity = flow / area",
    "calculator": "velocity",
-   "citation": null
+   "citation": null,
+   "si": {
+    "text": "Water flows at 45 L/s through a 300 mm diameter pipe. What is the velocity?",
+    "choices": [
+     "1.60 m/s",
+     "0.64 m/s",
+     "2.50 m/s",
+     "0.50 m/s"
+    ],
+    "correctIndex": 1,
+    "explanation": "45 L/s = 0.045 m³/s. A 300 mm pipe is 0.3 m in diameter. Area = 0.785 x 0.3 x 0.3 = 0.0707 sq m. Velocity = 0.045 / 0.0707 = 0.64 m/s.",
+    "formula": "convert L/s to m³/s (divide by 1,000), area = 0.785 x diameter squared (m²), velocity = flow / area"
+   }
   },
   {
    "id": "XC-ALL-MATH-0011",
@@ -214,7 +334,19 @@
    "cognitive": "Analysis",
    "formula": "convert MGD to cfs (x 1.547), then velocity = flow / area",
    "calculator": "velocity",
-   "citation": null
+   "citation": null,
+   "si": {
+    "text": "A flow of 8.6 ML/d passes through a channel 0.6 m wide with water 0.45 m deep. What is the velocity in m/s?",
+    "choices": [
+     "0.25 m/s",
+     "0.83 m/s",
+     "0.37 m/s",
+     "1.15 m/s"
+    ],
+    "correctIndex": 2,
+    "explanation": "8.6 ML/d = 8,600 m³/d = 0.0995 m³/s. Channel area = 0.6 x 0.45 = 0.27 sq m. Velocity = 0.0995 / 0.27 = 0.37 m/s.",
+    "formula": "convert ML/d to m³/s (x1,000, then divide by 86,400), area = width x depth (m²), velocity = flow / area"
+   }
   },
   {
    "id": "XC-ALL-MATH-0012",
@@ -233,7 +365,19 @@
    "cognitive": "Application",
    "formula": "flow = velocity x area",
    "calculator": "velocity",
-   "citation": null
+   "citation": null,
+   "si": {
+    "text": "Water moves at 0.6 m/s through a channel with a cross-sectional area of 0.4 sq m. What is the flow in m³/s?",
+    "choices": [
+     "0.60 m³/s",
+     "1.50 m³/s",
+     "0.10 m³/s",
+     "0.24 m³/s"
+    ],
+    "correctIndex": 3,
+    "explanation": "Flow = velocity x area = 0.6 x 0.4 = 0.24 m³/s.",
+    "formula": "flow = velocity x area (m³/s = m/s x m²)"
+   }
   },
   {
    "id": "XC-ALL-MATH-0013",
@@ -252,7 +396,19 @@
    "cognitive": "Application",
    "formula": "detention time = volume / flow",
    "calculator": "detention",
-   "citation": null
+   "citation": null,
+   "si": {
+    "text": "A 400 m³ tank receives a flow of 2 ML/d. What is the detention time in hours?",
+    "choices": [
+     "4.8 hr",
+     "2.0 hr",
+     "0.2 hr",
+     "48 hr"
+    ],
+    "correctIndex": 0,
+    "explanation": "DT = volume / flow = 400 m³ / 2,000 m³/d = 0.2 day. 0.2 x 24 = 4.8 hours.",
+    "formula": "detention time = volume / flow"
+   }
   },
   {
    "id": "XC-ALL-MATH-0014",
@@ -271,7 +427,19 @@
    "cognitive": "Application",
    "formula": "detention time = volume / flow",
    "calculator": "detention",
-   "citation": null
+   "citation": null,
+   "si": {
+    "text": "A clearwell holds 190 m³ and the flow is 22 L/s. What is the detention time in hours?",
+    "choices": [
+     "144 hr",
+     "2.4 hr",
+     "0.42 hr",
+     "4.8 hr"
+    ],
+    "correctIndex": 1,
+    "explanation": "DT = volume / flow = 190,000 L / 22 L/s = 8,636 seconds. 8,636 / 3,600 = 2.4 hours.",
+    "formula": "detention time = volume / flow"
+   }
   },
   {
    "id": "XC-ALL-MATH-0015",
@@ -290,7 +458,19 @@
    "cognitive": "Application",
    "formula": "detention time = volume / flow",
    "calculator": "detention",
-   "citation": null
+   "citation": null,
+   "si": {
+    "text": "A sedimentation basin holds 300 m³ and treats 2 ML/d. What is the detention time in hours?",
+    "choices": [
+     "1.5 hr",
+     "6.7 hr",
+     "3.6 hr",
+     "36.0 hr"
+    ],
+    "correctIndex": 2,
+    "explanation": "DT = volume / flow = 300 m³ / 2,000 m³/d = 0.15 day. 0.15 x 24 = 3.6 hours.",
+    "formula": "detention time = volume / flow"
+   }
   },
   {
    "id": "XC-ALL-MATH-0016",
@@ -309,7 +489,19 @@
    "cognitive": "Application",
    "formula": "lb/day = MGD x mg/L x 8.34",
    "calculator": "chlorine-dose",
-   "citation": null
+   "citation": null,
+   "si": {
+    "text": "A plant feeds chlorine at 2.5 mg/L while treating 6 ML/d. Using the dosage formula, what is the chlorine feed in kilograms per day?",
+    "choices": [
+     "6.0 kg/d",
+     "1.8 kg/d",
+     "150.0 kg/d",
+     "15.0 kg/d"
+    ],
+    "correctIndex": 3,
+    "explanation": "kg/d = mg/L x ML/d = 2.5 x 6 = 15 kg/d.",
+    "formula": "kg/d = mg/L x ML/d"
+   }
   },
   {
    "id": "XC-ALL-MATH-0017",
@@ -328,7 +520,19 @@
    "cognitive": "Analysis",
    "formula": "mg/L = lb/day / (MGD x 8.34)",
    "calculator": "chlorine-dose",
-   "citation": null
+   "citation": null,
+   "si": {
+    "text": "A plant feeds 12 kg/d of chlorine to a flow of 5 ML/d. What is the dosage in mg/L?",
+    "choices": [
+     "2.40 mg/L",
+     "24.00 mg/L",
+     "4.80 mg/L",
+     "0.42 mg/L"
+    ],
+    "correctIndex": 0,
+    "explanation": "mg/L = kg/d / ML/d = 12 / 5 = 2.4 mg/L.",
+    "formula": "mg/L = kg/d / ML/d"
+   }
   },
   {
    "id": "XC-ALL-MATH-0018",
@@ -366,7 +570,19 @@
    "cognitive": "Analysis",
    "formula": "product lb/day = chemical lb/day / (percent available / 100)",
    "calculator": "chem-feed",
-   "citation": null
+   "citation": null,
+   "si": {
+    "text": "You need 20 kg/d of chlorine using calcium hypochlorite that is 65 percent available chlorine. How many kg/d of product is required?",
+    "choices": [
+     "13.0 kg/d",
+     "20.0 kg/d",
+     "30.8 kg/d",
+     "65.0 kg/d"
+    ],
+    "correctIndex": 2,
+    "explanation": "Product kg/d = chlorine needed / fraction available = 20 / 0.65 = 30.8 kg/d.",
+    "formula": "product kg/d = chemical kg/d / (percent available / 100)"
+   }
   },
   {
    "id": "XC-ALL-MATH-0020",
@@ -385,7 +601,19 @@
    "cognitive": "Analysis",
    "formula": "MGD = lb/day / (mg/L x 8.34)",
    "calculator": "chlorine-dose",
-   "citation": null
+   "citation": null,
+   "si": {
+    "text": "A system feeds 20 kg/d of chlorine at a dosage of 2.5 mg/L. What is the flow in ML/d?",
+    "choices": [
+     "20.0 ML/d",
+     "0.1 ML/d",
+     "0.8 ML/d",
+     "8.0 ML/d"
+    ],
+    "correctIndex": 3,
+    "explanation": "ML/d = kg/d / mg/L = 20 / 2.5 = 8.0 ML/d.",
+    "formula": "ML/d = kg/d / mg/L"
+   }
   },
   {
    "id": "XC-ALL-MATH-0021",
@@ -404,7 +632,19 @@
    "cognitive": "Application",
    "formula": "lb/day = MGD x mg/L x 8.34",
    "calculator": "chem-feed",
-   "citation": null
+   "citation": null,
+   "si": {
+    "text": "How many kg/d of fluoride ion are needed to dose 8 ML/d at 0.8 mg/L?",
+    "choices": [
+     "6.4 kg/d",
+     "0.64 kg/d",
+     "10 kg/d",
+     "64 kg/d"
+    ],
+    "correctIndex": 0,
+    "explanation": "kg/d = ML/d x mg/L = 8 x 0.8 = 6.4 kg/d of fluoride ion.",
+    "formula": "kg/d = ML/d x mg/L"
+   }
   },
   {
    "id": "XC-ALL-MATH-0022",
@@ -423,7 +663,19 @@
    "cognitive": "Application",
    "formula": "surface overflow rate = flow (gpd) / surface area (sq ft)",
    "calculator": "surface-loading",
-   "citation": null
+   "citation": null,
+   "si": {
+    "text": "A clarifier surface is 150 m² and treats 1,500 m³/d. What is the surface overflow rate in m³/m²·d?",
+    "choices": [
+     "100 m³/m²·d",
+     "10 m³/m²·d",
+     "1 m³/m²·d",
+     "0.1 m³/m²·d"
+    ],
+    "correctIndex": 1,
+    "explanation": "Surface overflow rate = flow / area = 1,500 m³/d / 150 m² = 10 m³/m²·d.",
+    "formula": "surface overflow rate = flow (m³/d) / surface area (m²)"
+   }
   },
   {
    "id": "XC-ALL-MATH-0023",
@@ -442,7 +694,19 @@
    "cognitive": "Application",
    "formula": "weir overflow rate = flow (gpd) / weir length (ft)",
    "calculator": "weir-overflow",
-   "citation": null
+   "citation": null,
+   "si": {
+    "text": "A clarifier has 60 m of weir and discharges 2,400 m³/d. What is the weir overflow rate in m³/m·d?",
+    "choices": [
+     "400 m³/m·d",
+     "4 m³/m·d",
+     "40 m³/m·d",
+     "0.03 m³/m·d"
+    ],
+    "correctIndex": 2,
+    "explanation": "Weir overflow rate = flow / weir length = 2,400 m³/d / 60 m = 40 m³/m·d.",
+    "formula": "weir overflow rate = flow (m³/d) / weir length (m)"
+   }
   },
   {
    "id": "XC-ALL-MATH-0024",
@@ -461,7 +725,19 @@
    "cognitive": "Application",
    "formula": "lb/day = MGD x mg/L x 8.34",
    "calculator": "organic-loading",
-   "citation": null
+   "citation": null,
+   "si": {
+    "text": "Flow to an aeration basin is 3.0 ML/d with a BOD of 180 mg/L. What is the BOD loading in kg/d?",
+    "choices": [
+     "60 kg/d",
+     "54 kg/d",
+     "5,400 kg/d",
+     "540 kg/d"
+    ],
+    "correctIndex": 3,
+    "explanation": "kg/d = ML/d x mg/L = 3.0 x 180 = 540 kg/d.",
+    "formula": "kg/d = ML/d x mg/L"
+   }
   },
   {
    "id": "XC-ALL-MATH-0025",
@@ -480,7 +756,19 @@
    "cognitive": "Analysis",
    "formula": "filtration rate = flow (gpm) / filter area (sq ft); convert MGD to gpm first",
    "calculator": "filtration-rate",
-   "citation": null
+   "citation": null,
+   "si": {
+    "text": "A filter is 40 m² and treats 4.8 ML/d. What is the filtration rate in m³/m²·h?",
+    "choices": [
+     "5.0 m³/m²·h",
+     "120.0 m³/m²·h",
+     "2.5 m³/m²·h",
+     "10.0 m³/m²·h"
+    ],
+    "correctIndex": 0,
+    "explanation": "4.8 ML/d = 4,800 m³/d = 200 m³/h. Rate = 200 / 40 = 5.0 m³/m²·h.",
+    "formula": "filtration rate (m³/m²·h) = flow (m³/h) / filter area (m²); convert ML/d to m³/h first (ML/d x 1000 / 24)"
+   }
   },
   {
    "id": "XC-ALL-MATH-0026",
@@ -537,7 +825,19 @@
    "cognitive": "Application",
    "formula": "water hp = (gpm x head ft) / 3960",
    "calculator": "water-hp",
-   "citation": null
+   "citation": null,
+   "si": {
+    "text": "A pump moves 20 L/s against 50 m of total head. What is the water power in kW?",
+    "choices": [
+     "1.0 kW",
+     "98.1 kW",
+     "19.6 kW",
+     "9.8 kW"
+    ],
+    "correctIndex": 3,
+    "explanation": "Water power = (L/s x head m x 9.81) / 1000 = (20 x 50 x 9.81) / 1000 = 9.81, rounds to 9.8 kW.",
+    "formula": "water power (kW) = L/s x head (m) x 9.81 / 1000"
+   }
   },
   {
    "id": "XC-ALL-MATH-0029",
@@ -556,7 +856,19 @@
    "cognitive": "Application",
    "formula": "brake hp = water hp / pump efficiency",
    "calculator": "hp",
-   "citation": null
+   "citation": null,
+   "si": {
+    "text": "If the water power is 9.8 kW and the pump efficiency is 80 percent, what is the brake power?",
+    "choices": [
+     "12.3 kW",
+     "7.8 kW",
+     "9.8 kW",
+     "14.0 kW"
+    ],
+    "correctIndex": 0,
+    "explanation": "Brake power = water power / pump efficiency = 9.8 / 0.80 = 12.3 kW.",
+    "formula": "brake power (kW) = water power (kW) / pump efficiency"
+   }
   },
   {
    "id": "XC-ALL-MATH-0030",
@@ -575,7 +887,19 @@
    "cognitive": "Application",
    "formula": "motor input hp = brake hp / motor efficiency",
    "calculator": "motor-hp",
-   "citation": null
+   "citation": null,
+   "si": {
+    "text": "The brake power is 12.3 kW and the motor efficiency is 90 percent. What is the motor input power?",
+    "choices": [
+     "11.1 kW",
+     "13.7 kW",
+     "12.3 kW",
+     "15.2 kW"
+    ],
+    "correctIndex": 1,
+    "explanation": "Motor input power = brake power / motor efficiency = 12.3 / 0.90 = 13.7 kW.",
+    "formula": "motor input power (kW) = brake power (kW) / motor efficiency"
+   }
   },
   {
    "id": "XC-ALL-MATH-0031",
@@ -594,7 +918,19 @@
    "cognitive": "Analysis",
    "formula": "blended concentration = (Q1 x C1 + Q2 x C2) / (Q1 + Q2)",
    "calculator": "concentration",
-   "citation": null
+   "citation": null,
+   "si": {
+    "text": "You blend 4.0 ML/d of water at 300 mg/L hardness with 2.0 ML/d of water at 0 mg/L hardness. What is the blended hardness?",
+    "choices": [
+     "150 mg/L",
+     "300 mg/L",
+     "200 mg/L",
+     "100 mg/L"
+    ],
+    "correctIndex": 2,
+    "explanation": "Blended = (Q1 x C1 + Q2 x C2) / (Q1 + Q2) = (4.0 x 300 + 2.0 x 0) / 6.0 = 1200 / 6.0 = 200 mg/L.",
+    "formula": "blended concentration = (Q1 x C1 + Q2 x C2) / (Q1 + Q2)"
+   }
   },
   {
    "id": "XC-ALL-MATH-0032",
@@ -613,7 +949,19 @@
    "cognitive": "Application",
    "formula": "C1 x V1 = C2 x V2",
    "calculator": "dilution",
-   "citation": null
+   "citation": null,
+   "si": {
+    "text": "How many liters of a 50 percent stock solution are needed to make 75 liters of a 5 percent solution?",
+    "choices": [
+     "37.5 L",
+     "750 L",
+     "3.8 L",
+     "7.5 L"
+    ],
+    "correctIndex": 3,
+    "explanation": "C1 x V1 = C2 x V2. 50 x V1 = 5 x 75. V1 = 375 / 50 = 7.5 liters of stock.",
+    "formula": "C1 x V1 = C2 x V2"
+   }
   },
   {
    "id": "XC-ALL-MATH-0033",
@@ -632,7 +980,19 @@
    "cognitive": "Application",
    "formula": "specific capacity = well yield (gpm) / drawdown (ft)",
    "calculator": "drawdown",
-   "citation": null
+   "citation": null,
+   "si": {
+    "text": "A well produces 15 L/s with a drawdown of 5 m. What is the specific capacity in L/s·m?",
+    "choices": [
+     "3 L/s·m",
+     "0.33 L/s·m",
+     "75 L/s·m",
+     "20 L/s·m"
+    ],
+    "correctIndex": 0,
+    "explanation": "Specific capacity = yield / drawdown = 15 / 5 = 3 L/s·m.",
+    "formula": "specific capacity = well yield (L/s) / drawdown (m)"
+   }
   },
   {
    "id": "XC-ALL-MATH-0109",
@@ -651,7 +1011,19 @@
    "cognitive": "Application",
    "formula": "gpm = gallons / minutes",
    "calculator": null,
-   "citation": null
+   "citation": null,
+   "si": {
+    "text": "A booster station meters 1,800 liters over a 3-minute run. What is the pumping rate in L/s?",
+    "choices": [
+     "10 L/s",
+     "2.5 L/s",
+     "1,800 L/s",
+     "1.0 L/s"
+    ],
+    "correctIndex": 0,
+    "explanation": "Rate is volume divided by time in seconds: 3 minutes = 180 seconds, so 1,800 L / 180 s = 10 L/s.",
+    "formula": "L/s = liters / (minutes x 60)"
+   }
   },
   {
    "id": "XC-ALL-MATH-0110",
@@ -670,7 +1042,19 @@
    "cognitive": "Application",
    "formula": "gpm = cfs x 448.8",
    "calculator": "gpm-mgd",
-   "citation": null
+   "citation": null,
+   "si": {
+    "text": "Flow through a meter vault reads 864 m³/d. What is that in L/s?",
+    "choices": [
+     "5 L/s",
+     "10 L/s",
+     "20 L/s",
+     "240 L/s"
+    ],
+    "correctIndex": 1,
+    "explanation": "One m³/d equals 1000/86400 L/s, about 1 L/s per 86.4 m³/d, so 864 / 86.4 = 10 L/s.",
+    "formula": "L/s = (m³/d x 1000) / 86400"
+   }
   },
   {
    "id": "XC-ALL-MATH-0111",
@@ -689,7 +1073,19 @@
    "cognitive": "Application",
    "formula": "cfs = MGD x 1.547",
    "calculator": "gpm-mgd",
-   "citation": null
+   "citation": null,
+   "si": {
+    "text": "A 3.8 ML/d plant runs at a steady rate all day. About how many cubic meters per second is that?",
+    "choices": [
+     "328 m³/s",
+     "0.44 m³/s",
+     "0.044 m³/s",
+     "63.3 m³/s"
+    ],
+    "correctIndex": 2,
+    "explanation": "One ML/d equals 1,000 m³/d, and there are 86,400 seconds in a day, so 3.8 ML/d / 86.4 = about 0.044 m³/s.",
+    "formula": "m³/s = ML/d / 86.4"
+   }
   },
   {
    "id": "XC-ALL-MATH-0112",
@@ -708,7 +1104,19 @@
    "cognitive": "Application",
    "formula": "lb = gallons x 8.34",
    "calculator": "mass",
-   "citation": null
+   "citation": null,
+   "si": {
+    "text": "A day tank holds 2.0 m³ of water. Using the certification convention, how much does that water weigh?",
+    "choices": [
+     "200 kg",
+     "20,000 kg",
+     "1,000 kg",
+     "2,000 kg"
+    ],
+    "correctIndex": 3,
+    "explanation": "Water has a density of 1000 kg/m³ by certification convention. 2.0 m³ x 1000 kg/m³ = 2,000 kg.",
+    "formula": "kg = m³ x 1000"
+   }
   },
   {
    "id": "XC-ALL-MATH-0113",
@@ -727,7 +1135,19 @@
    "cognitive": "Application",
    "formula": "gallons = acre-feet x 325,851",
    "calculator": null,
-   "citation": null
+   "citation": null,
+   "si": {
+    "text": "A storage reservoir drops 2.0 hectare-meters during a peak day. How many cubic meters left storage?",
+    "choices": [
+     "20,000 m³",
+     "10,000 m³",
+     "2,000 m³",
+     "2,000,000 m³"
+    ],
+    "correctIndex": 0,
+    "explanation": "One hectare-meter is 10,000 m³ (a 1 m drop across 1 hectare's 10,000 m²). 2.0 x 10,000 = 20,000 m³.",
+    "formula": "m³ = hectare-meters x 10,000"
+   }
   },
   {
    "id": "XC-ALL-MATH-0114",
@@ -746,7 +1166,19 @@
    "cognitive": "Application",
    "formula": "gallons = gpm x 60 x hours",
    "calculator": null,
-   "citation": null
+   "citation": null,
+   "si": {
+    "text": "A well pumps 10 L/s and runs 14 hours in a day. How much water did it produce that day?",
+    "choices": [
+     "864.0 m³",
+     "504.0 m³",
+     "140.0 m³",
+     "50.4 m³"
+    ],
+    "correctIndex": 1,
+    "explanation": "10 L/s x 3.6 x 14 hours = 504 m³ (the 3.6 factor turns L/s over an hour into m³).",
+    "formula": "m³ = L/s x 3.6 x hours"
+   }
   },
   {
    "id": "XC-ALL-MATH-0115",
@@ -765,7 +1197,19 @@
    "cognitive": "Application",
    "formula": "MGD = (gallons / hours) x 24 / 1,000,000",
    "calculator": "gpm-mgd",
-   "citation": null
+   "citation": null,
+   "si": {
+    "text": "A plant treats 1,800 m³ between midnight and 8:00 a.m. at a steady rate. If that pace holds all day, what is the daily flow in ML/d?",
+    "choices": [
+     "1.80 ML/d",
+     "14.40 ML/d",
+     "5.40 ML/d",
+     "0.23 ML/d"
+    ],
+    "correctIndex": 2,
+    "explanation": "1,800 m³ in 8 hours is 225 m³ per hour. Over 24 hours that is 5,400 m³, which is 5.4 ML.",
+    "formula": "ML/d = (m³ / hours) x 24 / 1,000"
+   }
   },
   {
    "id": "XC-ALL-MATH-0116",
@@ -784,7 +1228,19 @@
    "cognitive": "Application",
    "formula": "gallons = (inches / 12) x acres x 325,851",
    "calculator": null,
-   "citation": null
+   "citation": null,
+   "si": {
+    "text": "A storm drops 30 mm of rain on a 16-hectare plant site. If every drop ran off, about how many cubic meters would that be?",
+    "choices": [
+     "480 m³",
+     "48,000 m³",
+     "2,400 m³",
+     "4,800 m³"
+    ],
+    "correctIndex": 3,
+    "explanation": "Each millimeter of rain over one hectare is 10 m³ (10,000 m² x 0.001 m). 30 mm x 16 ha x 10 = 4,800 m³.",
+    "formula": "m³ = mm x hectares x 10"
+   }
   },
   {
    "id": "XC-ALL-MATH-0117",
@@ -803,7 +1259,19 @@
    "cognitive": "Application",
    "formula": "lb/day = total lb / days",
    "calculator": null,
-   "citation": null
+   "citation": null,
+   "si": {
+    "text": "A chlorinator feeds 21 kilograms of gas over a full week of steady operation. What is the average feed in kilograms per day?",
+    "choices": [
+     "3.0 kg/day",
+     "0.3 kg/day",
+     "147 kg/day",
+     "0.875 kg/day"
+    ],
+    "correctIndex": 0,
+    "explanation": "21 kilograms across 7 days is 21 / 7 = 3.0 kilograms per day.",
+    "formula": "kg/d = total kg / days"
+   }
   },
   {
    "id": "XC-ALL-MATH-0118",
@@ -822,7 +1290,19 @@
    "cognitive": "Application",
    "formula": "distance = velocity x time",
    "calculator": "velocity",
-   "citation": null
+   "citation": null,
+   "si": {
+    "text": "A main flushes at 1.5 m/s. How far does that water travel in one minute?",
+    "choices": [
+     "1.5 m",
+     "90 m",
+     "15 m",
+     "900 m"
+    ],
+    "correctIndex": 1,
+    "explanation": "Distance is velocity times time: 1.5 m/s x 60 s = 90 meters every minute.",
+    "formula": "distance = velocity x time"
+   }
   },
   {
    "id": "XC-ALL-MATH-0119",
@@ -841,7 +1321,19 @@
    "cognitive": "Application",
    "formula": "area = L x W",
    "calculator": "area-rect",
-   "citation": null
+   "citation": null,
+   "si": {
+    "text": "A sludge drying bed measures 20 m by 8 m. What is its surface area?",
+    "choices": [
+     "56 sq m",
+     "80 sq m",
+     "160 sq m",
+     "1,600 sq m"
+    ],
+    "correctIndex": 2,
+    "explanation": "Rectangle area is length times width: 20 x 8 = 160 square meters.",
+    "formula": "area = L x W"
+   }
   },
   {
    "id": "XC-ALL-MATH-0120",
@@ -860,7 +1352,19 @@
    "cognitive": "Application",
    "formula": "area = 0.785 x D^2",
    "calculator": "area-circle",
-   "citation": null
+   "citation": null,
+   "si": {
+    "text": "A clarifier is 16 m in diameter. What is its surface area, to the nearest 10 square meters?",
+    "choices": [
+     "800 sq m",
+     "50 sq m",
+     "400 sq m",
+     "200 sq m"
+    ],
+    "correctIndex": 3,
+    "explanation": "Circle area is 0.785 x D squared: 0.785 x 16 x 16 = about 200 square meters.",
+    "formula": "area = 0.785 x D^2"
+   }
   },
   {
    "id": "XC-ALL-MATH-0121",
@@ -879,7 +1383,19 @@
    "cognitive": "Application",
    "formula": "gallons = L x W x D x 7.48",
    "calculator": "vol-box",
-   "citation": null
+   "citation": null,
+   "si": {
+    "text": "A chlorine contact basin is 9 m long, 4 m wide, and 3 m deep. How many liters does it hold when full?",
+    "choices": [
+     "108,000 liters",
+     "108 liters",
+     "1,080,000 liters",
+     "54,000 liters"
+    ],
+    "correctIndex": 0,
+    "explanation": "Volume is 9 x 4 x 3 = 108 cubic meters, and 108 x 1,000 = 108,000 liters.",
+    "formula": "liters = L x W x D x 1000"
+   }
   },
   {
    "id": "XC-ALL-MATH-0122",
@@ -898,7 +1414,19 @@
    "cognitive": "Application",
    "formula": "gallons = 0.785 x D^2 x depth x 7.48",
    "calculator": "vol-cyl",
-   "citation": null
+   "citation": null,
+   "si": {
+    "text": "A standpipe is 6 m in diameter and currently holds 10 m of water. About how many liters is that?",
+    "choices": [
+     "283 liters",
+     "283,000 liters",
+     "2,830,000 liters",
+     "141,500 liters"
+    ],
+    "correctIndex": 1,
+    "explanation": "Cylinder volume is 0.785 x 6 x 6 x 10 = about 283 cubic meters. Times 1,000 gives about 283,000 liters.",
+    "formula": "liters = 0.785 x D^2 x depth x 1000"
+   }
   },
   {
    "id": "XC-ALL-MATH-0123",
@@ -917,7 +1445,19 @@
    "cognitive": "Application",
    "formula": "gallons = L x W x water depth x 7.48",
    "calculator": "vol-box",
-   "citation": null
+   "citation": null,
+   "si": {
+    "text": "A rectangular basin 12 m by 6 m holds water 2 m deep. The basin itself is 4 m deep. How many liters are in it right now?",
+    "choices": [
+     "288,000 liters",
+     "144 liters",
+     "144,000 liters",
+     "72,000 liters"
+    ],
+    "correctIndex": 2,
+    "explanation": "Use the water depth, not the wall height: 12 x 6 x 2 = 144 cubic meters, x 1,000 = 144,000 liters.",
+    "formula": "liters = L x W x water depth x 1000"
+   }
   },
   {
    "id": "XC-ALL-MATH-0124",
@@ -936,7 +1476,19 @@
    "cognitive": "Application",
    "formula": "volume = 0.785 x D^2 x H",
    "calculator": "vol-cyl",
-   "citation": null
+   "citation": null,
+   "si": {
+    "text": "A chemical tote is a cylinder 1.2 m in diameter and 1.5 m tall. What is its volume in cubic meters?",
+    "choices": [
+     "6.78 m³",
+     "0.85 m³",
+     "3.39 m³",
+     "1.70 m³"
+    ],
+    "correctIndex": 3,
+    "explanation": "0.785 x 1.2 x 1.2 x 1.5 = 1.70 cubic meters.",
+    "formula": "volume = 0.785 x D^2 x H (m³)"
+   }
   },
   {
    "id": "XC-ALL-MATH-0125",
@@ -955,7 +1507,19 @@
    "cognitive": "Application",
    "formula": "cu yd = (L x W x D) / 27",
    "calculator": "vol-box",
-   "citation": null
+   "citation": null,
+   "si": {
+    "text": "Crews excavate a trench 36 m long, 0.9 m wide, and 1.5 m deep. How many liters of spoil come out?",
+    "choices": [
+     "48600 L",
+     "48.6 L",
+     "4860 L",
+     "486 L"
+    ],
+    "correctIndex": 0,
+    "explanation": "Volume is 36 x 0.9 x 1.5 = 48.6 cubic meters. A cubic meter is 1,000 liters, so 48.6 x 1,000 = 48,600 liters.",
+    "formula": "L = (Length x Width x Depth, in m) x 1000"
+   }
   },
   {
    "id": "XC-ALL-MATH-0126",
@@ -974,7 +1538,19 @@
    "cognitive": "Application",
    "formula": "Q = A x V",
    "calculator": "velocity",
-   "citation": null
+   "citation": null,
+   "si": {
+    "text": "Water moves at 0.9 m/s through a channel with a 0.8 square-meter cross-section. What is the flow?",
+    "choices": [
+     "0.89 m³/s",
+     "0.72 m³/s",
+     "1.70 m³/s",
+     "7.20 m³/s"
+    ],
+    "correctIndex": 1,
+    "explanation": "Flow is area times velocity: Q = 0.8 x 0.9 = 0.72 m³/s.",
+    "formula": "Q = A x V (m³/s)"
+   }
   },
   {
    "id": "XC-ALL-MATH-0127",
@@ -993,7 +1569,19 @@
    "cognitive": "Application",
    "formula": "V = Q / A",
    "calculator": "velocity",
-   "citation": null
+   "citation": null,
+   "si": {
+    "text": "A 200 mm main carries 22 L/s. What is the velocity in the pipe?",
+    "choices": [
+     "0.32 m/s",
+     "1.40 m/s",
+     "0.70 m/s",
+     "0.16 m/s"
+    ],
+    "correctIndex": 2,
+    "explanation": "Convert flow: 22 L/s = 0.022 m³/s. Pipe area: 0.785 x (0.2)^2 = 0.0314 m². Velocity = 0.022 / 0.0314 = about 0.70 m/s.",
+    "formula": "V = Q / A (m/s)"
+   }
   },
   {
    "id": "XC-ALL-MATH-0128",
@@ -1012,7 +1600,19 @@
    "cognitive": "Application",
    "formula": "gpm = A x V x 448.8",
    "calculator": "velocity",
-   "citation": null
+   "citation": null,
+   "si": {
+    "text": "A 300 mm line flows full at 0.9 m/s. About what flow is that in L/s?",
+    "choices": [
+     "32.0 L/s",
+     "127.0 L/s",
+     "6.4 L/s",
+     "63.6 L/s"
+    ],
+    "correctIndex": 3,
+    "explanation": "A 300 mm pipe has an area of 0.785 x 0.3 x 0.3 = 0.0707 m². Q = 0.0707 x 0.9 = 0.0636 m³/s, which is about 63.6 L/s.",
+    "formula": "L/s = A x V x 1000 (m² x m/s x 1000)"
+   }
   },
   {
    "id": "XC-ALL-MATH-0129",
@@ -1031,7 +1631,19 @@
    "cognitive": "Application",
    "formula": "time = distance / velocity",
    "calculator": "velocity",
-   "citation": null
+   "citation": null,
+   "si": {
+    "text": "Flushing water moves through 480 m of main at 1.0 m/s. How long does it take the water to travel the full length?",
+    "choices": [
+     "8 minutes",
+     "48 minutes",
+     "2 minutes",
+     "30 minutes"
+    ],
+    "correctIndex": 0,
+    "explanation": "Time is distance over velocity: 480 / 1.0 = 480 seconds, which is 8 minutes.",
+    "formula": "time = distance / velocity"
+   }
   },
   {
    "id": "XC-ALL-MATH-0130",
@@ -1050,7 +1662,19 @@
    "cognitive": "Application",
    "formula": "V2 = V1 x (D1/D2)^2",
    "calculator": "velocity",
-   "citation": null
+   "citation": null,
+   "si": {
+    "text": "Flow stays constant as a main necks down from 300 mm to 150 mm. The 300 mm section runs at 0.6 m/s. What is the velocity in the 150 mm section?",
+    "choices": [
+     "1.2 m/s",
+     "2.4 m/s",
+     "0.3 m/s",
+     "0.6 m/s"
+    ],
+    "correctIndex": 1,
+    "explanation": "Same flow through a quarter of the area means four times the velocity: 0.6 x 4 = 2.4 m/s.",
+    "formula": "V2 = V1 x (D1/D2)^2"
+   }
   },
   {
    "id": "XC-ALL-MATH-0131",
@@ -1069,7 +1693,19 @@
    "cognitive": "Application",
    "formula": "gpm = gallons / (seconds/60)",
    "calculator": null,
-   "citation": null
+   "citation": null,
+   "si": {
+    "text": "A service line fills a 20 L bucket in 8 seconds. What is the flow in L/s?",
+    "choices": [
+     "0.40 L/s",
+     "4.00 L/s",
+     "2.50 L/s",
+     "0.25 L/s"
+    ],
+    "correctIndex": 2,
+    "explanation": "Flow is volume over time: 20 L / 8 s = 2.5 L/s.",
+    "formula": "L/s = liters / seconds"
+   }
   },
   {
    "id": "XC-ALL-MATH-0132",
@@ -1088,7 +1724,19 @@
    "cognitive": "Application",
    "formula": "MGD = A x V x 0.6463",
    "calculator": "velocity",
-   "citation": null
+   "citation": null,
+   "si": {
+    "text": "A rectangular channel 1.0 m wide flows 0.5 m deep at 0.6 m/s. What is the flow in ML/d?",
+    "choices": [
+     "13.00 ML/d",
+     "0.30 ML/d",
+     "2.59 ML/d",
+     "25.90 ML/d"
+    ],
+    "correctIndex": 3,
+    "explanation": "Area is 1.0 x 0.5 = 0.5 m². Q = 0.5 x 0.6 = 0.3 m³/s. One m³/s is 86.4 ML/d, so 0.3 x 86.4 = about 25.9 ML/d.",
+    "formula": "ML/d = A x V x 86.4"
+   }
   },
   {
    "id": "XC-ALL-MATH-0133",
@@ -1107,7 +1755,19 @@
    "cognitive": "Application",
    "formula": "DT = volume / flow",
    "calculator": "detention",
-   "citation": null
+   "citation": null,
+   "si": {
+    "text": "A clearwell holds 360 m³ and the plant pumps through it at 50 L/s. What is the detention time?",
+    "choices": [
+     "2 hours",
+     "1 hour",
+     "12 hours",
+     "20 minutes"
+    ],
+    "correctIndex": 0,
+    "explanation": "Detention time is volume over flow: 360,000 L / (50 x 60) L/min = 120 minutes, which is 2 hours.",
+    "formula": "DT (hr) = volume (m³) / (flow (L/s) x 3.6)"
+   }
   },
   {
    "id": "XC-ALL-MATH-0134",
@@ -1126,7 +1786,19 @@
    "cognitive": "Application",
    "formula": "DT (hr) = (volume MG / flow MGD) x 24",
    "calculator": "detention",
-   "citation": null
+   "citation": null,
+   "si": {
+    "text": "An equalization basin holds 1.0 ML and receives a steady 4.8 ML/d. What is the detention time in hours?",
+    "choices": [
+     "0.2 hours",
+     "5 hours",
+     "12 hours",
+     "50 hours"
+    ],
+    "correctIndex": 1,
+    "explanation": "1.0 ML / 4.8 ML/d = 0.208 days. Times 24 gives about 5 hours.",
+    "formula": "DT (hr) = (volume ML / flow ML/d) x 24"
+   }
   },
   {
    "id": "XC-ALL-MATH-0135",
@@ -1145,7 +1817,19 @@
    "cognitive": "Application",
    "formula": "DT = (L x W x D x 7.48) / (gpd / 24)",
    "calculator": "detention",
-   "citation": null
+   "citation": null,
+   "si": {
+    "text": "A sedimentation basin is 24 m long, 9 m wide, and 3.6 m deep, and treats 7.5 ML/d. What is the detention time in hours?",
+    "choices": [
+     "1.3 hours",
+     "5.0 hours",
+     "2.5 hours",
+     "0.6 hours"
+    ],
+    "correctIndex": 2,
+    "explanation": "Volume is 24 x 9 x 3.6 = about 777.6 m³. Flow is 7.5 ML/d x 1000 / 24 = about 312.5 m³/hr. 777.6 / 312.5 = about 2.5 hours.",
+    "formula": "DT (hr) = (L x W x D in m³) / (ML/d x 1000 / 24)"
+   }
   },
   {
    "id": "XC-ALL-MATH-0136",
@@ -1164,7 +1848,19 @@
    "cognitive": "Application",
    "formula": "volume = flow x DT",
    "calculator": "detention",
-   "citation": null
+   "citation": null,
+   "si": {
+    "text": "Operators want 30 minutes of contact time at a flow of 40 L/s. What tank volume does that take?",
+    "choices": [
+     "7.2 m³",
+     "144 m³",
+     "1.3 m³",
+     "72 m³"
+    ],
+    "correctIndex": 3,
+    "explanation": "Rearrange detention time: volume = flow x time = 40 L/s x 1800 s = 72,000 L, which is 72 m³.",
+    "formula": "volume (m³) = flow (L/s) x DT (s) / 1000"
+   }
   },
   {
    "id": "XC-ALL-MATH-0137",
@@ -1183,7 +1879,19 @@
    "cognitive": "Application",
    "formula": "time = volume / inflow",
    "calculator": "cycle-time",
-   "citation": null
+   "citation": null,
+   "si": {
+    "text": "A wet well holds 9.6 m³ between pump-off and pump-on. Inflow is 20 L/s with the pump off. How long until the pump starts?",
+    "choices": [
+     "8 minutes",
+     "0.8 minutes",
+     "80 minutes",
+     "2.1 minutes"
+    ],
+    "correctIndex": 0,
+    "explanation": "Fill time is volume over inflow: 9,600 L / 20 L/s = 480 seconds, which is 8 minutes.",
+    "formula": "time (s) = volume (L) / inflow (L/s)"
+   }
   },
   {
    "id": "XC-ALL-MATH-0138",
@@ -1202,7 +1910,19 @@
    "cognitive": "Application",
    "formula": "DT = total volume / flow",
    "calculator": "detention",
-   "citation": null
+   "citation": null,
+   "si": {
+    "text": "A plant runs two clearwells in series, 150 m³ and 230 m³, at a steady 32 L/s. What is the total detention time in hours?",
+    "choices": [
+     "2.0 hours",
+     "3.3 hours",
+     "1.3 hours",
+     "6.6 hours"
+    ],
+    "correctIndex": 1,
+    "explanation": "Tanks in series add their volumes: 380,000 L / 32 L/s = 11,875 seconds, which is about 3.3 hours.",
+    "formula": "DT (h) = total volume (L) / flow (L/s) / 3600"
+   }
   },
   {
    "id": "XC-ALL-MATH-0139",
@@ -1221,7 +1941,19 @@
    "cognitive": "Application",
    "formula": "DT = volume / flow",
    "calculator": "detention",
-   "citation": null
+   "citation": null,
+   "si": {
+    "text": "Flow through a 200 m³ contact tank rises from 13 L/s to 26 L/s. What is the new detention time?",
+    "choices": [
+     "4.3 hours",
+     "8.5 hours",
+     "2.1 hours",
+     "1.1 hours"
+    ],
+    "correctIndex": 2,
+    "explanation": "At 26 L/s: 200,000 L / 26 L/s = 7,692 seconds, which is about 2.1 hours. Twice the flow means half the contact time.",
+    "formula": "DT (h) = volume (L) / flow (L/s) / 3600"
+   }
   },
   {
    "id": "XC-ALL-MATH-0140",
@@ -1240,7 +1972,19 @@
    "cognitive": "Application",
    "formula": "lb/day = MGD x mg/L x 8.34",
    "calculator": "chlorine-dose",
-   "citation": null
+   "citation": null,
+   "si": {
+    "text": "A plant treats 4 ML/d at a chlorine dose of 3.0 mg/L. How many kilograms of chlorine per day is that?",
+    "choices": [
+     "4 kg/d",
+     "120 kg/d",
+     "1.2 kg/d",
+     "12 kg/d"
+    ],
+    "correctIndex": 3,
+    "explanation": "The SI dosage formula: kg/d = ML/d x mg/L = 4 x 3.0 = 12 kg/d.",
+    "formula": "kg/d = ML/d x mg/L"
+   }
   },
   {
    "id": "XC-ALL-MATH-0141",
@@ -1259,7 +2003,19 @@
    "cognitive": "Application",
    "formula": "mg/L = lb/day / (MGD x 8.34)",
    "calculator": "chlorine-dose",
-   "citation": null
+   "citation": null,
+   "si": {
+    "text": "An operator feeds 19 kg/d of chlorine into a flow of 6.8 ML/d. What dose is the water receiving?",
+    "choices": [
+     "2.80 mg/L",
+     "28.00 mg/L",
+     "0.36 mg/L",
+     "0.28 mg/L"
+    ],
+    "correctIndex": 0,
+    "explanation": "Rearrange the SI dosage formula: mg/L = kg/d / ML/d = 19 / 6.8 = about 2.8 mg/L.",
+    "formula": "mg/L = kg/d / ML/d"
+   }
   },
   {
    "id": "XC-ALL-MATH-0142",
@@ -1278,7 +2034,19 @@
    "cognitive": "Application",
    "formula": "lb product = (MGD x mg/L x 8.34) / strength",
    "calculator": "chem-feed",
-   "citation": null
+   "citation": null,
+   "si": {
+    "text": "A 2 ML/d system needs a 6.0 mg/L dose. The hypochlorite on hand is 12.5 percent available chlorine. How many kilograms of hypochlorite solution per day?",
+    "choices": [
+     "12.0 kg/d",
+     "96.0 kg/d",
+     "1.5 kg/d",
+     "48.0 kg/d"
+    ],
+    "correctIndex": 1,
+    "explanation": "Pure chlorine: 6.0 mg/L x 2 ML/d = 12 kg/d. The product is only 12.5 percent chlorine, so 12 / 0.125 = 96 kg/d of solution per day.",
+    "formula": "kg/d product = (mg/L x ML/d) / strength"
+   }
   },
   {
    "id": "XC-ALL-MATH-0143",
@@ -1297,7 +2065,19 @@
    "cognitive": "Recall",
    "formula": "lb/day = MGD x mg/L x 8.34",
    "calculator": null,
-   "citation": null
+   "citation": null,
+   "si": {
+    "text": "In the metric dosage formula, kg/d = mg/L x ML/d, why is there no separate constant like the 8.34 in the pounds formula?",
+    "choices": [
+     "Because a cubic meter holds 1,000 liters",
+     "Because a kilogram equals 2.2 pounds",
+     "Because one liter of water weighs one kilogram",
+     "Because of the specific gravity of chlorine"
+    ],
+    "correctIndex": 2,
+    "explanation": "One liter of water has a mass of one kilogram. That 1:1 relationship is what makes the constant in mg/L x ML/d work out to exactly 1, unlike the 8.34 needed to convert gallons of water into pounds.",
+    "formula": "kg/d = mg/L x ML/d"
+   }
   },
   {
    "id": "XC-ALL-MATH-0144",
@@ -1316,7 +2096,19 @@
    "cognitive": "Application",
    "formula": "dose = demand + residual; lb/day = MGD x mg/L x 8.34",
    "calculator": "chlorine-dose",
-   "citation": null
+   "citation": null,
+   "si": {
+    "text": "Chlorine demand is 2.2 mg/L and the operator wants a 0.8 mg/L free residual leaving the plant. At 6 ML/d, what feed rate does that take?",
+    "choices": [
+     "13 kg/d",
+     "5 kg/d",
+     "3 kg/d",
+     "18 kg/d"
+    ],
+    "correctIndex": 3,
+    "explanation": "Dose = demand + residual = 2.2 + 0.8 = 3.0 mg/L. Then 3.0 mg/L x 6 ML/d = 18 kg/d.",
+    "formula": "dose = demand + residual; kg/d = mg/L x ML/d"
+   }
   },
   {
    "id": "XC-ALL-MATH-0145",
@@ -1335,7 +2127,19 @@
    "cognitive": "Application",
    "formula": "lb/day = MGD x mg/L x 8.34",
    "calculator": "chem-feed",
-   "citation": null
+   "citation": null,
+   "si": {
+    "text": "A fluoride system doses 0.9 mg/L into 3 ML/d. How many kilograms of fluoride ion is that per day?",
+    "choices": [
+     "2.7 kg/d",
+     "0.27 kg/d",
+     "27 kg/d",
+     "3.0 kg/d"
+    ],
+    "correctIndex": 0,
+    "explanation": "0.9 mg/L x 3 ML/d = 2.7 kg/d.",
+    "formula": "kg/d = mg/L x ML/d"
+   }
   },
   {
    "id": "XC-ALL-MATH-0146",
@@ -1354,7 +2158,19 @@
    "cognitive": "Application",
    "formula": "lb/day = MGD x mg/L x 8.34",
    "calculator": "chem-feed",
-   "citation": null
+   "citation": null,
+   "si": {
+    "text": "A polymer feed runs at 1.2 mg/L on a 7.5 ML/d flow. What is the feed rate in kilograms per day?",
+    "choices": [
+     "4.5 kg/d",
+     "9.0 kg/d",
+     "0.9 kg/d",
+     "90 kg/d"
+    ],
+    "correctIndex": 1,
+    "explanation": "1.2 mg/L x 7.5 ML/d = 9.0 kg/d.",
+    "formula": "kg/d = mg/L x ML/d"
+   }
   },
   {
    "id": "XC-ALL-MATH-0147",
@@ -1373,7 +2189,19 @@
    "cognitive": "Application",
    "formula": "mg/L = lb fed / (MG x 8.34)",
    "calculator": "chlorine-dose",
-   "citation": null
+   "citation": null,
+   "si": {
+    "text": "A chlorinator ran at 14 kg/d for 12 hours, then sat idle the rest of the day. Total flow for the full day was 4 ML. What average dose did the day's water receive?",
+    "choices": [
+     "3.5 mg/L",
+     "0.9 mg/L",
+     "1.8 mg/L",
+     "14.0 mg/L"
+    ],
+    "correctIndex": 2,
+    "explanation": "At 14 kg/d for 12 hours the feeder delivered 7 kg. Dose = 7 / 4 = about 1.8 mg/L.",
+    "formula": "mg/L = kg fed / ML"
+   }
   },
   {
    "id": "XC-ALL-MATH-0148",
@@ -1392,7 +2220,19 @@
    "cognitive": "Application",
    "formula": "gallons = lb needed / lb per gallon",
    "calculator": "chem-feed",
-   "citation": null
+   "citation": null,
+   "si": {
+    "text": "Liquid hypochlorite at 12.5 percent carries about 125 grams of available chlorine per liter. How many liters does it take to feed 6 kilograms of chlorine?",
+    "choices": [
+     "4.8 L",
+     "0.8 L",
+     "24.0 L",
+     "48.0 L"
+    ],
+    "correctIndex": 3,
+    "explanation": "Liters = kg needed / kg per liter = 6 / 0.125 = 48 liters.",
+    "formula": "liters = kg needed / kg per liter"
+   }
   },
   {
    "id": "XC-ALL-MATH-0149",
@@ -1411,7 +2251,19 @@
    "cognitive": "Application",
    "formula": "lb = MG x mg/L x 8.34",
    "calculator": "chlorine-dose",
-   "citation": null
+   "citation": null,
+   "si": {
+    "text": "A new well needs disinfecting at 50 mg/L. The well casing and column hold 15 cubic meters of water. How many kilograms of chlorine is that?",
+    "choices": [
+     "0.75 kg",
+     "0.075 kg",
+     "7.5 kg",
+     "1.5 kg"
+    ],
+    "correctIndex": 0,
+    "explanation": "15 cubic meters is 15,000 liters. 50 mg/L x 15,000 L = 750,000 mg, which is 0.75 kg of chlorine.",
+    "formula": "kg = m³ x mg/L x 0.001"
+   }
   },
   {
    "id": "XC-ALL-MATH-0150",
@@ -1430,7 +2282,19 @@
    "cognitive": "Recall",
    "formula": "lb = MG x mg/L x 8.34",
    "calculator": "chlorine-dose",
-   "citation": null
+   "citation": null,
+   "si": {
+    "text": "Dosing 1.0 mg/L into 1.0 megaliter of water takes how many kilograms of chemical?",
+    "choices": [
+     "1000 kg",
+     "1.0 kg",
+     "9.8 kg",
+     "0.79 kg"
+    ],
+    "correctIndex": 1,
+    "explanation": "In SI the pounds formula becomes kg = ML x mg/L, with no extra factor: 1.0 ML x 1.0 mg/L = 1.0 kg of chemical.",
+    "formula": "kg = ML x mg/L"
+   }
   },
   {
    "id": "XC-ALL-MATH-0151",
@@ -1449,7 +2313,19 @@
    "cognitive": "Application",
    "formula": "mg/L = lb / (MG x 8.34)",
    "calculator": "chem-feed",
-   "citation": null
+   "citation": null,
+   "si": {
+    "text": "A plant fed 28 kilograms of alum while treating 9.5 megaliters. What was the alum dose?",
+    "choices": [
+     "0.29 mg/L",
+     "29 mg/L",
+     "2.9 mg/L",
+     "9.5 mg/L"
+    ],
+    "correctIndex": 2,
+    "explanation": "mg/L = kg fed / ML treated = 28 / 9.5 = about 2.9 mg/L.",
+    "formula": "mg/L = kg / ML"
+   }
   },
   {
    "id": "XC-ALL-MATH-0152",
@@ -1468,7 +2344,19 @@
    "cognitive": "Application",
    "formula": "SOR = gpd / surface area",
    "calculator": "surface-loading",
-   "citation": null
+   "citation": null,
+   "si": {
+    "text": "An 18 meter diameter clarifier treats 5.7 megaliters per day. What is the surface overflow rate?",
+    "choices": [
+     "22.0 m³/m²·d",
+     "44.0 m³/m²·d",
+     "11.0 m³/m²·d",
+     "2.2 m³/m²·d"
+    ],
+    "correctIndex": 0,
+    "explanation": "Surface area is 0.785 x 18 x 18 = about 254 square meters. 5.7 ML/d is 5,700 m³/d. SOR = 5,700 / 254 = about 22 m³ per square meter per day.",
+    "formula": "SOR = m³/d / surface area"
+   }
   },
   {
    "id": "XC-ALL-MATH-0153",
@@ -1487,7 +2375,19 @@
    "cognitive": "Application",
    "formula": "WOR = gpd / weir length",
    "calculator": "weir-overflow",
-   "citation": null
+   "citation": null,
+   "si": {
+    "text": "A circular clarifier has 57 meters of weir and passes 4.5 megaliters per day. What is the weir overflow rate?",
+    "choices": [
+     "40.0 m³/m·d",
+     "79.0 m³/m·d",
+     "7.9 m³/m·d",
+     "158.0 m³/m·d"
+    ],
+    "correctIndex": 1,
+    "explanation": "4.5 ML/d is 4,500 m³/d. WOR = flow / weir length = 4,500 / 57 = about 79 m³ per meter of weir per day.",
+    "formula": "WOR = m³/d / weir length"
+   }
   },
   {
    "id": "XC-ALL-MATH-0154",
@@ -1506,7 +2406,19 @@
    "cognitive": "Application",
    "formula": "rate = gpm / filter area",
    "calculator": "filtration-rate",
-   "citation": null
+   "citation": null,
+   "si": {
+    "text": "A filter box measures 5 m by 5 m and passes 75 m³/h. What is the filtration rate?",
+    "choices": [
+     "0.3 m³/m²·h",
+     "6.0 m³/m²·h",
+     "3.0 m³/m²·h",
+     "1.5 m³/m²·h"
+    ],
+    "correctIndex": 2,
+    "explanation": "Filter area is 5 x 5 = 25 m². Rate = 75 / 25 = 3.0 m³ per m² per hour.",
+    "formula": "rate = m³/h / filter area (m²)"
+   }
   },
   {
    "id": "XC-ALL-MATH-0155",
@@ -1525,7 +2437,19 @@
    "cognitive": "Application",
    "formula": "rate = backwash gpm / filter area",
    "calculator": "filtration-rate",
-   "citation": null
+   "citation": null,
+   "si": {
+    "text": "Backwash on a 40-square-meter filter runs at 600 m³/h. What is the backwash rate?",
+    "choices": [
+     "7.5 m³/m²·h",
+     "1.5 m³/m²·h",
+     "30.0 m³/m²·h",
+     "15.0 m³/m²·h"
+    ],
+    "correctIndex": 3,
+    "explanation": "Backwash rate is backwash flow over filter area: 600 / 40 = 15 m³ per m² per hour.",
+    "formula": "rate = backwash m³/h / filter area (m²)"
+   }
   },
   {
    "id": "XC-ALL-MATH-0156",
@@ -1544,7 +2468,19 @@
    "cognitive": "Application",
    "formula": "lb/day = MGD x mg/L x 8.34",
    "calculator": "organic-loading",
-   "citation": null
+   "citation": null,
+   "si": {
+    "text": "A lagoon receives 2.5 ML/d with an influent BOD of 200 mg/L. What is the organic loading in kilograms of BOD per day?",
+    "choices": [
+     "500 kg/d",
+     "250 kg/d",
+     "50 kg/d",
+     "5,000 kg/d"
+    ],
+    "correctIndex": 0,
+    "explanation": "Organic loading uses kg/d = mg/L x ML/d: 200 x 2.5 = 500 kilograms of BOD per day.",
+    "formula": "kg/d = mg/L x ML/d"
+   }
   },
   {
    "id": "XC-ALL-MATH-0157",
@@ -1563,7 +2499,19 @@
    "cognitive": "Application",
    "formula": "loading = gpd / surface area",
    "calculator": "loading",
-   "citation": null
+   "citation": null,
+   "si": {
+    "text": "A trickling filter 16 m in diameter receives 2,000 m³/d including recirculation. What is the hydraulic loading?",
+    "choices": [
+     "20 m³/m²·d",
+     "10 m³/m²·d",
+     "5 m³/m²·d",
+     "1 m³/m²·d"
+    ],
+    "correctIndex": 1,
+    "explanation": "Area is 0.785 x 16 x 16 = about 201 m². Loading = 2,000 / 201 = about 10 m³ per m² per day.",
+    "formula": "loading = m³/d / surface area (m²)"
+   }
   },
   {
    "id": "XC-ALL-MATH-0158",
@@ -1582,7 +2530,19 @@
    "cognitive": "Application",
    "formula": "turnovers = gpd / volume",
    "calculator": null,
-   "citation": null
+   "citation": null,
+   "si": {
+    "text": "A 1,000 m³ basin receives 4,000 m³/d. How many times does the basin volume turn over in a day?",
+    "choices": [
+     "0.25 times",
+     "2.00 times",
+     "4.00 times",
+     "8.00 times"
+    ],
+    "correctIndex": 2,
+    "explanation": "Turnovers per day = daily flow / basin volume = 4,000 / 1,000 = 4.",
+    "formula": "turnovers = m³/d / volume (m³)"
+   }
   },
   {
    "id": "XC-ALL-MATH-0159",
@@ -1601,7 +2561,19 @@
    "cognitive": "Application",
    "formula": "loading = (MGD x mg/L x 8.34) / area",
    "calculator": "solids-loading",
-   "citation": null
+   "citation": null,
+   "si": {
+    "text": "A gravity thickener 10 m in diameter receives 0.25 ML/d of sludge at 8,000 mg/L solids. What is the solids loading in kilograms per day per square meter?",
+    "choices": [
+     "12.7 kg/m²·d",
+     "51.0 kg/m²·d",
+     "2.6 kg/m²·d",
+     "25.5 kg/m²·d"
+    ],
+    "correctIndex": 3,
+    "explanation": "Solids: 8,000 x 0.25 = 2,000 kg/d. Area: 0.785 x 10 x 10 = 78.5 m². Loading = 2,000 / 78.5 = about 25.5.",
+    "formula": "loading = (mg/L x ML/d) / area (m²)"
+   }
   },
   {
    "id": "XC-ALL-MATH-0160",
@@ -1620,7 +2592,19 @@
    "cognitive": "Application",
    "formula": "% removal = removed / influent x 100",
    "calculator": "removal",
-   "citation": null
+   "citation": null,
+   "si": {
+    "text": "A grit channel removes 36 of the 40 kilograms of grit that enter it each day. What is the removal efficiency?",
+    "choices": [
+     "90 percent",
+     "36 percent",
+     "95 percent",
+     "10 percent"
+    ],
+    "correctIndex": 0,
+    "explanation": "Removal is what came out over what went in: 36 / 40 = 0.90, which is 90 percent.",
+    "formula": "% removal = removed / influent x 100"
+   }
   },
   {
    "id": "XC-ALL-MATH-0161",
@@ -1715,7 +2699,19 @@
    "cognitive": "Application",
    "formula": "head (ft) = psi x 2.31",
    "calculator": "pressure-head",
-   "citation": null
+   "citation": null,
+   "si": {
+    "text": "A pressure gauge at the base of a standpipe reads 200 kPa. How high is the water above the gauge?",
+    "choices": [
+     "200 m",
+     "20 m",
+     "204 m",
+     "41 m"
+    ],
+    "correctIndex": 1,
+    "explanation": "Each kPa of pressure equals 0.102 m of head: 200 x 0.102 = about 20 m.",
+    "formula": "head (m) = kPa x 0.102"
+   }
   },
   {
    "id": "XC-ALL-MATH-0166",
@@ -1734,7 +2730,19 @@
    "cognitive": "Application",
    "formula": "psi = head / 2.31",
    "calculator": "pressure-head",
-   "citation": null
+   "citation": null,
+   "si": {
+    "text": "A tank's water surface sits 30 meters above a home's meter. Ignoring friction, what static pressure does the home see?",
+    "choices": [
+     "30 kPa",
+     "147 kPa",
+     "294 kPa",
+     "588 kPa"
+    ],
+    "correctIndex": 2,
+    "explanation": "Pressure is head times 9.81: 30 x 9.81 = about 294 kPa.",
+    "formula": "kPa = head (m) x 9.81"
+   }
   },
   {
    "id": "XC-ALL-MATH-0167",
@@ -1753,7 +2761,19 @@
    "cognitive": "Application",
    "formula": "psi = (water level - elevation) / 2.31",
    "calculator": "pressure-head",
-   "citation": null
+   "citation": null,
+   "si": {
+    "text": "An elevated tank's overflow sits at 50 m, with the water level 5 m below overflow. What is the static pressure at a hydrant at elevation zero?",
+    "choices": [
+     "491 kPa",
+     "220 kPa",
+     "45 kPa",
+     "441 kPa"
+    ],
+    "correctIndex": 3,
+    "explanation": "Actual water level is 50 - 5 = 45 m. Pressure = 45 x 9.81 = about 441 kPa.",
+    "formula": "kPa = (water level - elevation) x 9.81"
+   }
   },
   {
    "id": "XC-ALL-MATH-0168",
@@ -1772,7 +2792,19 @@
    "cognitive": "Recall",
    "formula": "1 psi = 2.31 ft of water",
    "calculator": "pressure-head",
-   "citation": null
+   "citation": null,
+   "si": {
+    "text": "One kPa of pressure pushes a column of water up about how far?",
+    "choices": [
+     "0.10 m",
+     "9.81 m",
+     "1.02 m",
+     "1.00 m"
+    ],
+    "correctIndex": 0,
+    "explanation": "One kPa equals about 0.10 meters of water column. Its inverse, 9.81 kPa per meter, is the same fact turned around.",
+    "formula": "1 kPa = 0.102 m of water"
+   }
   },
   {
    "id": "XC-ALL-MATH-0169",
@@ -1791,7 +2823,19 @@
    "cognitive": "Application",
    "formula": "head added = (discharge psi - suction psi) x 2.31",
    "calculator": "pressure-head",
-   "citation": null
+   "citation": null,
+   "si": {
+    "text": "A pump's suction gauge reads 40 kPa and its discharge gauge reads 450 kPa. How much head is the pump adding?",
+    "choices": [
+     "46 m",
+     "42 m",
+     "4 m",
+     "410 m"
+    ],
+    "correctIndex": 1,
+    "explanation": "The pump adds 450 - 40 = 410 kPa, and 410 x 0.102 = about 42 meters of head.",
+    "formula": "head added (m) = (discharge kPa - suction kPa) x 0.102"
+   }
   },
   {
    "id": "XC-ALL-MATH-0170",
@@ -1810,7 +2854,19 @@
    "cognitive": "Application",
    "formula": "psi = (HGL - elevation) / 2.31",
    "calculator": "pressure-head",
-   "citation": null
+   "citation": null,
+   "si": {
+    "text": "A zone's tank water level sits at 55 m elevation. A pressure-reducing valve sits at 9 m elevation. What static pressure arrives at the valve?",
+    "choices": [
+     "90 kPa",
+     "540 kPa",
+     "451 kPa",
+     "46 kPa"
+    ],
+    "correctIndex": 2,
+    "explanation": "Head at the valve is 55 - 9 = 46 m. Pressure = 46 x 9.81 = about 451 kPa.",
+    "formula": "kPa = (HGL - elevation) x 9.81"
+   }
   },
   {
    "id": "XC-ALL-MATH-0171",
@@ -1829,7 +2885,19 @@
    "cognitive": "Application",
    "formula": "psi = head x 0.433",
    "calculator": "pressure-head",
-   "citation": null
+   "citation": null,
+   "si": {
+    "text": "Using the 9.81 factor, what is the pressure at the bottom of a standpipe holding 25 meters of water?",
+    "choices": [
+     "3 kPa",
+     "123 kPa",
+     "25 kPa",
+     "245 kPa"
+    ],
+    "correctIndex": 3,
+    "explanation": "Pressure = 25 x 9.81 = about 245 kPa. Same answer as dividing by 0.102; the two factors are inverses.",
+    "formula": "kPa = head (m) x 9.81"
+   }
   },
   {
    "id": "XC-ALL-MATH-0172",
@@ -1848,7 +2916,19 @@
    "cognitive": "Application",
    "formula": "HGL = psi x 2.31 + elevation",
    "calculator": "pressure-head",
-   "citation": null
+   "citation": null,
+   "si": {
+    "text": "A gauge reads 300 kPa at an elevation of 30 m. What is the hydraulic grade line elevation at that point?",
+    "choices": [
+     "61 m",
+     "31 m",
+     "33 m",
+     "300 m"
+    ],
+    "correctIndex": 0,
+    "explanation": "Convert pressure to head: 300 x 0.102 = about 30.6 m. Add the gauge elevation: 30.6 + 30 = about 61 m. That is the HGL.",
+    "formula": "HGL = kPa x 0.102 + elevation"
+   }
   },
   {
    "id": "XC-ALL-MATH-0173",
@@ -1867,7 +2947,19 @@
    "cognitive": "Application",
    "formula": "whp = gpm x ft / 3960",
    "calculator": "water-hp",
-   "citation": null
+   "citation": null,
+   "si": {
+    "text": "A lift station pump raises 50 L/s through 20 m of total head. What water power is the pump putting into the water?",
+    "choices": [
+     "3.9 kW",
+     "9.8 kW",
+     "39.0 kW",
+     "19.6 kW"
+    ],
+    "correctIndex": 1,
+    "explanation": "Water power = L/s x m x 9.81 / 1000 = 50 x 20 x 9.81 / 1000 = about 9.8 kW.",
+    "formula": "kW = L/s x m x 9.81 / 1000"
+   }
   },
   {
    "id": "XC-ALL-MATH-0174",
@@ -1886,7 +2978,19 @@
    "cognitive": "Recall",
    "formula": "whp = gpm x ft / 3960",
    "calculator": "water-hp",
-   "citation": null
+   "citation": null,
+   "si": {
+    "text": "What does the 9.81 do in the water power formula (kW = L/s x m x 9.81 / 1000)?",
+    "choices": [
+     "Accounts for motor efficiency",
+     "Converts kPa into meters of head",
+     "Converts L/s times meters of head into power",
+     "Accounts for the weight of chlorine"
+    ],
+    "correctIndex": 2,
+    "explanation": "It is the unit conversion: water's density, 1000 kg per cubic meter, cancels the 1000 used to turn L/s into m³/s, leaving g = 9.81 m/s2 as the constant. Flow times head times 9.81, divided by 1000, yields power in kW.",
+    "formula": "kW = L/s x m x 9.81 / 1000"
+   }
   },
   {
    "id": "XC-ALL-MATH-0175",
@@ -1905,7 +3009,19 @@
    "cognitive": "Application",
    "formula": "bhp = whp / pump efficiency",
    "calculator": "hp",
-   "citation": null
+   "citation": null,
+   "si": {
+    "text": "A pump must produce 7.5 kW of water power and the pump itself is 70 percent efficient. What input power must the motor deliver to the shaft?",
+    "choices": [
+     "5.3 kW",
+     "8.3 kW",
+     "15.0 kW",
+     "10.7 kW"
+    ],
+    "correctIndex": 3,
+    "explanation": "Input power = water power / pump efficiency = 7.5 / 0.70 = about 10.7 kW.",
+    "formula": "input kW = water kW / pump efficiency"
+   }
   },
   {
    "id": "XC-ALL-MATH-0176",
@@ -1924,7 +3040,19 @@
    "cognitive": "Application",
    "formula": "input hp = bhp / motor efficiency",
    "calculator": "motor-hp",
-   "citation": null
+   "citation": null,
+   "si": {
+    "text": "Brake power is 9 kW and the motor is 90 percent efficient. What power does the motor draw from the power line?",
+    "choices": [
+     "10.0 kW",
+     "8.1 kW",
+     "4.5 kW",
+     "18.0 kW"
+    ],
+    "correctIndex": 0,
+    "explanation": "Input power = brake power / motor efficiency = 9 / 0.90 = 10.0 kW.",
+    "formula": "input kW = brake kW / motor efficiency"
+   }
   },
   {
    "id": "XC-ALL-MATH-0177",
@@ -1943,7 +3071,19 @@
    "cognitive": "Application",
    "formula": "kW = hp x 0.746",
    "calculator": "elec-power",
-   "citation": null
+   "citation": null,
+   "si": {
+    "text": "A motor nameplate reads 40 hp. About how many kilowatts is that at full output?",
+    "choices": [
+     "53.6 kW",
+     "29.8 kW",
+     "40.0 kW",
+     "3.0 kW"
+    ],
+    "correctIndex": 1,
+    "explanation": "One horsepower is 0.746 kilowatts: 40 x 0.746 = about 29.8 kW.",
+    "formula": "kW = hp x 0.746"
+   }
   },
   {
    "id": "XC-ALL-MATH-0178",
@@ -1962,7 +3102,19 @@
    "cognitive": "Application",
    "formula": "line hp = (gpm x ft / 3960) / wire-to-water eff",
    "calculator": "wire-to-water",
-   "citation": null
+   "citation": null,
+   "si": {
+    "text": "A pump moves 38 L/s at 30 m of head with a wire-to-water efficiency of 65 percent. What power is being drawn from the line, in kW?",
+    "choices": [
+     "11.2 kW",
+     "7.3 kW",
+     "17.2 kW",
+     "34.4 kW"
+    ],
+    "correctIndex": 2,
+    "explanation": "Water power = 38 x 30 x 9.81 / 1000 = about 11.2 kW. Wire-to-water covers all losses, so line draw = 11.2 / 0.65 = about 17.2 kW.",
+    "formula": "line kW = (L/s x m x 9.81 / 1000) / wire-to-water eff"
+   }
   },
   {
    "id": "XC-ALL-MATH-0179",
@@ -1981,7 +3133,19 @@
    "cognitive": "Application",
    "formula": "parallel: total gpm = sum of pump flows",
    "calculator": "hp",
-   "citation": null
+   "citation": null,
+   "si": {
+    "text": "Two identical pumps run in parallel against the same head. Each delivers 19 L/s at that head. About what total flow do they deliver together?",
+    "choices": [
+     "19.0 L/s",
+     "57.0 L/s",
+     "9.5 L/s",
+     "38.0 L/s"
+    ],
+    "correctIndex": 3,
+    "explanation": "In parallel, flows add at the same head: 19 + 19 = about 38 L/s (slightly less in a real system as head rises with flow).",
+    "formula": "parallel: total L/s = sum of pump flows"
+   }
   },
   {
    "id": "XC-ALL-MATH-0180",
@@ -2000,7 +3164,19 @@
    "cognitive": "Application",
    "formula": "C1V1 = C2V2",
    "calculator": "dilution",
-   "citation": null
+   "citation": null,
+   "si": {
+    "text": "You need 200 L of a 1 percent solution, mixed down from 12.5 percent hypochlorite. How many liters of the 12.5 percent product do you start with?",
+    "choices": [
+     "16.0 L",
+     "1.6 L",
+     "25.0 L",
+     "32.0 L"
+    ],
+    "correctIndex": 0,
+    "explanation": "C1 x V1 = C2 x V2. V1 = (1 x 200) / 12.5 = 16 L of strong product, then fill to 200 L with water.",
+    "formula": "C1V1 = C2V2"
+   }
   },
   {
    "id": "XC-ALL-MATH-0181",
@@ -2038,7 +3214,19 @@
    "cognitive": "Application",
    "formula": "blend = sum(flow x conc) / total flow",
    "calculator": "concentration",
-   "citation": null
+   "citation": null,
+   "si": {
+    "text": "A system blends 2 ML/d of well water carrying 0.8 mg/L of a mineral with 6 ML/d of surface water carrying 0.2 mg/L of the same mineral. What is the blended concentration?",
+    "choices": [
+     "0.50 mg/L",
+     "2.80 mg/L",
+     "0.35 mg/L",
+     "1.00 mg/L"
+    ],
+    "correctIndex": 2,
+    "explanation": "Weight each source by its flow: (2 x 0.8 + 6 x 0.2) / (2 + 6) = 2.8 / 8 = 0.35 mg/L.",
+    "formula": "blend = sum(flow x conc) / total flow"
+   }
   },
   {
    "id": "XC-ALL-MATH-0183",
@@ -2057,7 +3245,19 @@
    "cognitive": "Application",
    "formula": "dry lb = gallons x 8.34 x % solids",
    "calculator": "mass",
-   "citation": null
+   "citation": null,
+   "si": {
+    "text": "Sludge runs 4 percent solids. How many kilograms of dry solids are in 3.8 m³ of that sludge?",
+    "choices": [
+     "15 kg",
+     "3,800 kg",
+     "76 kg",
+     "152 kg"
+    ],
+    "correctIndex": 3,
+    "explanation": "3.8 m³ of water weighs about 3,800 kg (1 m³ = 1,000 kg). Four percent of that is dry solids: 3,800 x 0.04 = about 152 kg.",
+    "formula": "dry kg = m³ x 1000 kg/m³ x % solids"
+   }
   },
   {
    "id": "XC-ALL-MATH-0184",
@@ -2076,7 +3276,19 @@
    "cognitive": "Application",
    "formula": "scale by the ratio",
    "calculator": null,
-   "citation": null
+   "citation": null,
+   "si": {
+    "text": "The plant uses 12 L of polymer for every 400 m³ treated. How much polymer does 6,000 m³ take?",
+    "choices": [
+     "180 L",
+     "18 L",
+     "120 L",
+     "60 L"
+    ],
+    "correctIndex": 0,
+    "explanation": "6,000 m³ divided by 400 m³ is 15 blocks of the ratio. 12 L x 15 = 180 L.",
+    "formula": "scale by the ratio"
+   }
   },
   {
    "id": "XC-ALL-MATH-0185",
@@ -2095,7 +3307,19 @@
    "cognitive": "Application",
    "formula": "chemical = water / ratio",
    "calculator": "dilution",
-   "citation": null
+   "citation": null,
+   "si": {
+    "text": "A make-down calls for 2 L of chemical per 100 L of water. How many liters of chemical go into an 8,000 L batch of water?",
+    "choices": [
+     "1,600 L",
+     "160 L",
+     "16 L",
+     "1.6 L"
+    ],
+    "correctIndex": 1,
+    "explanation": "8,000 L divided by 100 L is 80 batches of the ratio. 2 L x 80 = 160 L of chemical.",
+    "formula": "chemical = (water / 100) x dose"
+   }
   }
  ]
 }

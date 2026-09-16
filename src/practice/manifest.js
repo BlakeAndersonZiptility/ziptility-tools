@@ -40,7 +40,7 @@ export const TESTS = [
     questionCount: 110,
     durationMin: 120,
     refCount: 100,
-    bankVersion: '1.0.0'
+    bankVersion: '1.1.0'
   },
   {
     id: 'regulations-1',
@@ -66,7 +66,7 @@ export const TESTS = [
     questionCount: 125,
     durationMin: 120,
     refCount: 100,
-    bankVersion: '1.0.0'
+    bankVersion: '1.1.0'
   },
   {
     id: 'wwc-1',
@@ -79,7 +79,7 @@ export const TESTS = [
     questionCount: 120,
     durationMin: 120,
     refCount: 100,
-    bankVersion: '1.0.0'
+    bankVersion: '1.1.0'
   },
   {
     id: 'wt-1',
@@ -92,7 +92,7 @@ export const TESTS = [
     questionCount: 128,
     durationMin: 120,
     refCount: 100,
-    bankVersion: '1.0.0'
+    bankVersion: '1.1.0'
   },
   {
     id: 'wwt-1',
@@ -105,7 +105,7 @@ export const TESTS = [
     questionCount: 119,
     durationMin: 120,
     refCount: 100,
-    bankVersion: '1.0.0'
+    bankVersion: '1.1.0'
   }
 ];
 

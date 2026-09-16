@@ -47,6 +47,14 @@ which ships on the setup and score screens until the SI item variants land
 (WW-01 step 3). No embed attribute changes; the same one-line repoint per
 page.
 
+**Cut 2026-09-16 (WW-01 step 3, content):** `practice-v1.9.0.js` with bank artifacts
+`operator-math-1-v1.1.0`, `wt-1-v1.1.0`, `wd-1-v1.1.0`, `wwt-1-v1.1.0`, `wwc-1-v1.1.0`
+(regulations-1 stays at 1.0.0). 139 questions now carry `si`, the same item re-derived in
+SI units through the content pipeline (QAQC record in the master repo,
+`practice-tests/review/qaqc-2026-09-16-si-variants.md`); a reader whose calculator is set
+to metric sees the SI version, everyone else sees exactly what they saw before. No embed
+attribute changes; the same one-line repoint.
+
 **Cut 2026-09-16 (WW-11 + WW-01 step 2):** `sheets-v1.0.2.js` (1.0.0 never built: its
 release run failed a phone-height check on CI's fonts, fixed with a shorter phone note; 1.0.1 shipped
 without the form id; 1.0.2 carries the HubSpot form `be491609-9dff-4488-9823-28c4803b1c47` Blake

@@ -5,7 +5,7 @@
  "level": "Entry level (ABC Class I)",
  "durationMin": 120,
  "refCount": 100,
- "version": "2026-07-11",
+ "version": "2026-09-16",
  "questions": [
   {
    "id": "WD-ALL-PROC-0001",
@@ -841,7 +841,19 @@
    "cognitive": "Application",
    "formula": "V (gal) = pi x r^2 x h x 7.48, r = diameter / 2",
    "calculator": "vol-cyl",
-   "citation": null
+   "citation": null,
+   "si": {
+    "text": "A cylindrical elevated storage tank is 12 meters in diameter and holds water to a depth of 7.5 meters in the bowl. About how many cubic meters of water does that represent?",
+    "choices": [
+     "About 3,390 m³",
+     "About 212 m³",
+     "About 850 m³",
+     "About 1,080 m³"
+    ],
+    "correctIndex": 2,
+    "explanation": "Tank volume in cubic meters equals 0.785 times diameter squared times depth: 0.785 x 12 squared x 7.5 is about 850 m³.",
+    "formula": "V (m³) = 0.785 x D^2 x H"
+   }
   },
   {
    "id": "WD-ALL-MATH-0002",
@@ -860,7 +872,19 @@
    "cognitive": "Application",
    "formula": "V (gal) = L x W x H x 7.48",
    "calculator": "vol-box",
-   "citation": null
+   "citation": null,
+   "si": {
+    "text": "A rectangular ground storage tank is 14 meters long, 9 meters wide, and holds water to a depth of 5.5 meters. About how many cubic meters does it hold?",
+    "choices": [
+     "About 693,000 m³",
+     "About 690 m³",
+     "About 1,390 m³",
+     "About 126 m³"
+    ],
+    "correctIndex": 1,
+    "explanation": "Rectangular tank volume in cubic meters equals length times width times depth of water: 14 x 9 x 5.5 is about 690 m³.",
+    "formula": "V (m³) = L x W x H"
+   }
   },
   {
    "id": "WD-ALL-MATH-0003",
@@ -879,7 +903,19 @@
    "cognitive": "Application",
    "formula": "P (psi) = h (ft) x 0.433",
    "calculator": "pressure-head",
-   "citation": null
+   "citation": null,
+   "si": {
+    "text": "An elevated tank's overflow sits 45 meters above a hydrant at the low end of the system. Ignoring friction loss, about what static pressure does that elevation alone provide at the hydrant?",
+    "choices": [
+     "About 4.6 kPa",
+     "About 45 kPa",
+     "About 450 kPa",
+     "About 440 kPa"
+    ],
+    "correctIndex": 3,
+    "explanation": "Static pressure from elevation equals meters of head times 9.81 kPa per meter: 45 x 9.81 is about 440 kPa.",
+    "formula": "P (kPa) = h (m) x 9.81"
+   }
   },
   {
    "id": "WD-ALL-MATH-0004",
@@ -898,7 +934,19 @@
    "cognitive": "Application",
    "formula": "h (ft) = P (psi) / 0.433",
    "calculator": "pressure-head",
-   "citation": null
+   "citation": null,
+   "si": {
+    "text": "A gauge at a hydrant near the bottom of a pressure zone reads 270 kPa with the system at rest. About how many meters of elevation (head) above that hydrant does that reading represent?",
+    "choices": [
+     "About 28 m",
+     "About 270 m",
+     "About 2,650 m",
+     "About 55 m"
+    ],
+    "correctIndex": 0,
+    "explanation": "Meters of head equal kPa times 0.102: 270 x 0.102 is about 28 m.",
+    "formula": "h (m) = P (kPa) x 0.102"
+   }
   },
   {
    "id": "WD-ALL-PROC-0031",
@@ -1563,7 +1611,19 @@
    "cognitive": "Application",
    "formula": "V (ft/s) = Q (cfs) / A (sq ft), Q (cfs) = gpm / 448.831, A = pi x r^2",
    "calculator": "velocity",
-   "citation": null
+   "citation": null,
+   "si": {
+    "text": "A crew flushes a dead-end 200 mm main and reads 25 L/s on the flow meter at the blow-off. What velocity does that produce in the main, and does it clear the commonly cited 0.75 m/s minimum scouring velocity?",
+    "choices": [
+     "About 0.2 m/s",
+     "About 0.8 m/s",
+     "About 1.6 m/s",
+     "About 0.4 m/s"
+    ],
+    "correctIndex": 1,
+    "explanation": "Velocity equals flow divided by pipe cross-sectional area. Converting 25 L/s to 0.025 m³/s and dividing by the area of a 200 mm pipe (radius 0.1 m, area about 0.0314 m²) gives about 0.8 m/s, which clears the commonly cited 0.75 m/s minimum scouring velocity.",
+    "formula": "V (m/s) = Q (m³/s) / A (m²), Q (m³/s) = L/s / 1000, A = pi x r^2"
+   }
   },
   {
    "id": "WD-ALL-MATH-0006",
@@ -1582,7 +1642,19 @@
    "cognitive": "Application",
    "formula": "V (ft/s) = Q (cfs) / A (sq ft), Q (cfs) = gpm / 448.831, A = pi x r^2",
    "calculator": "velocity",
-   "citation": null
+   "citation": null,
+   "si": {
+    "text": "A crew flushes a 300 mm main at 19 L/s. What velocity does that produce in the main, and does it reach the commonly cited 0.75 m/s minimum scouring velocity?",
+    "choices": [
+     "About 0.067 m/s",
+     "About 0.54 m/s",
+     "About 0.13 m/s",
+     "About 0.27 m/s"
+    ],
+    "correctIndex": 3,
+    "explanation": "Velocity equals flow divided by pipe cross-sectional area. Converting 19 L/s to 0.019 m³/s and dividing by the area of a 300 mm pipe (radius 0.15 m, area about 0.0707 m²) gives about 0.27 m/s, well below the commonly cited 0.75 m/s minimum scouring velocity, meaning this flow is too low to properly scour the main.",
+    "formula": "V (m/s) = Q (m³/s) / A (m²), Q (m³/s) = L/s / 1000, A = pi x r^2"
+   }
   },
   {
    "id": "WD-ALL-MATH-0007",
@@ -1601,7 +1673,19 @@
    "cognitive": "Application",
    "formula": "WHP = (GPM x TDH) / 3960",
    "calculator": "hp",
-   "citation": null
+   "citation": null,
+   "si": {
+    "text": "A booster pump must deliver 30 L/s against 35 m of total dynamic head. What water power is required?",
+    "choices": [
+     "About 10 kW",
+     "About 21 kW",
+     "About 5.2 kW",
+     "About 103 kW"
+    ],
+    "correctIndex": 0,
+    "explanation": "Water power equals L/s times m of head times 9.81, divided by 1000: (30 x 35 x 9.81) / 1000 is about 10 kW.",
+    "formula": "kW = (L/s x m x 9.81) / 1000"
+   }
   },
   {
    "id": "WD-ALL-SAFE-0001",
@@ -2342,7 +2426,19 @@
    "cognitive": "Application",
    "formula": "lbs = MG x mg/L x 8.34",
    "calculator": "chlorine-dose",
-   "citation": null
+   "citation": null,
+   "si": {
+    "text": "An operator needs to disinfect a repaired 150 mm main section holding 12 m³ at a 25 mg/L continuous-feed dose, the standard practice for putting a main into service. How many kilograms of chlorine are needed?",
+    "choices": [
+     "About 0.6 kg",
+     "About 0.15 kg",
+     "About 0.3 kg",
+     "About 3 kg"
+    ],
+    "correctIndex": 2,
+    "explanation": "Kilograms of chlorine equal cubic meters times mg/L dose times 0.001: 12 x 25 x 0.001 is about 0.3 kg.",
+    "formula": "kg = m³ x mg/L x 0.001"
+   }
   },
   {
    "id": "WD-ALL-MATH-0009",
@@ -2361,7 +2457,19 @@
    "cognitive": "Application",
    "formula": "lbs/day = MGD x mg/L x 8.34",
    "calculator": "chlorine-dose",
-   "citation": null
+   "citation": null,
+   "si": {
+    "text": "A distribution system averages 1.5 ML/d, and the operator wants to raise the free chlorine residual by 0.8 mg/L system-wide with a booster feed. About how many kilograms per day of additional chlorine are needed?",
+    "choices": [
+     "About 1.2 kg/day",
+     "About 2.4 kg/day",
+     "About 0.6 kg/day",
+     "About 0.12 kg/day"
+    ],
+    "correctIndex": 0,
+    "explanation": "Additional kilograms per day of chlorine equal ML/d times the mg/L increase in dose: 1.5 x 0.8 is about 1.2 kg/day.",
+    "formula": "kg/d = ML/d x mg/L"
+   }
   },
   {
    "id": "WD-ALL-MATH-0010",
@@ -2380,7 +2488,19 @@
    "cognitive": "Application",
    "formula": "Blended mg/L = (Q1 x C1 + Q2 x C2) / (Q1 + Q2)",
    "calculator": "dilution",
-   "citation": null
+   "citation": null,
+   "si": {
+    "text": "Main A flows 30 L/s with a 1.2 mg/L free chlorine residual. Main B flows 15 L/s with a 0.3 mg/L residual. The two merge into one line. Ignoring any further chlorine demand, about what is the blended residual downstream?",
+    "choices": [
+     "About 0.75 mg/L",
+     "About 0.9 mg/L",
+     "About 0.6 mg/L",
+     "About 1.5 mg/L"
+    ],
+    "correctIndex": 1,
+    "explanation": "The blended residual is a flow-weighted average: (30 x 1.2 + 15 x 0.3) / (30 + 15) is about 0.9 mg/L. Because Main A carries twice the flow of Main B, its residual counts twice as heavily in the blend.",
+    "formula": "Blended mg/L = (Q1 x C1 + Q2 x C2) / (Q1 + Q2)"
+   }
   }
  ]
 }

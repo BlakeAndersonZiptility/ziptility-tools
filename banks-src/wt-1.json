@@ -5,7 +5,7 @@
  "level": "Entry level (ABC Class I)",
  "durationMin": 120,
  "refCount": 100,
- "version": "2026-07-11",
+ "version": "2026-09-16",
  "questions": [
   {
    "id": "WT-ALL-PROC-0002",
@@ -2285,7 +2285,19 @@
    "cognitive": "Application",
    "formula": "lb/day = dose (mg/L) x flow (MGD) x 8.34",
    "calculator": "chlorine-dose",
-   "citation": null
+   "citation": null,
+   "si": {
+    "text": "An operator sets the chlorinator to feed a 2.2 mg/L dose into a flow of 2.8 ML/d. About how many kilograms of chlorine per day is the chlorinator now feeding?",
+    "choices": [
+     "About 5.6 kg/d",
+     "About 6.2 kg/d",
+     "About 0.8 kg/d",
+     "About 2.8 kg/d"
+    ],
+    "correctIndex": 1,
+    "explanation": "In SI units, kilograms per day equal the dose in mg/L multiplied directly by the flow in ML/d, with no extra conversion constant needed. Here that is 2.2 mg/L x 2.8 ML/d, or about 6.2 kilograms of chlorine per day.",
+    "formula": "kg/d = dose (mg/L) x flow (ML/d)"
+   }
   },
   {
    "id": "WT-ALL-MATH-0004",
@@ -2304,7 +2316,19 @@
    "cognitive": "Application",
    "formula": "Product feed (lb/day) = chlorine required (lb/day) / (percent available chlorine / 100)",
    "calculator": "chlorine-dose",
-   "citation": null
+   "citation": null,
+   "si": {
+    "text": "A well station must deliver 8.0 kg/d of chlorine to disinfect its flow, and the only product on hand is calcium hypochlorite at 70 percent available chlorine. About how many kilograms of that hypochlorite product does the operator need to feed each day?",
+    "choices": [
+     "About 11.4 kg/d",
+     "About 8.0 kg/d",
+     "About 5.6 kg/d",
+     "About 26.7 kg/d"
+    ],
+    "correctIndex": 0,
+    "explanation": "Calcium hypochlorite is only 70 percent available chlorine, so more product must be fed than the pure chlorine weight needed. Divide the required chlorine by the decimal form of the percent strength: 8.0 kg/d / 0.70 = about 11.4 kg/d of product.",
+    "formula": "Product feed (kg/d) = chlorine required (kg/d) / (percent available chlorine / 100)"
+   }
   },
   {
    "id": "WT-ALL-MATH-0005",
@@ -2323,7 +2347,19 @@
    "cognitive": "Application",
    "formula": "Detention time (hr) = Volume (gal) / Flow (gpm) / 60",
    "calculator": "detention",
-   "citation": null
+   "citation": null,
+   "si": {
+    "text": "The clearwell at a small plant holds 300 cubic meters, and the operator is pumping a steady 25 L/s through it. About how long is water staying in the clearwell, in hours?",
+    "choices": [
+     "About 200 hours",
+     "About 8.3 hours",
+     "About 0.3 hours",
+     "About 3.3 hours"
+    ],
+    "correctIndex": 3,
+    "explanation": "Detention time equals volume divided by flow. Converting 25 L/s to L/min gives 1,500 L/min, and the 300 cubic meter clearwell holds 300,000 liters, so 300,000 L / 1,500 L/min = 200 minutes. Converting to hours by dividing by 60 gives about 3.3 hours, the time water actually spends in the clearwell.",
+    "formula": "Detention time (hr) = (Volume (L) / Flow (L/min)) / 60"
+   }
   },
   {
    "id": "WT-ALL-MATH-0006",
@@ -2342,7 +2378,19 @@
    "cognitive": "Application",
    "formula": "Detention time (hr) = (Volume (MG) / Flow (MGD)) x 24",
    "calculator": "detention",
-   "citation": null
+   "citation": null,
+   "si": {
+    "text": "A new sedimentation basin is holding 1.2 ML of water while treating a steady flow of 6 ML/d. About how many hours of detention time is that basin providing?",
+    "choices": [
+     "About 0.2 hours",
+     "About 2.4 hours",
+     "About 4.8 hours",
+     "About 120 hours"
+    ],
+    "correctIndex": 2,
+    "explanation": "Detention time equals basin volume divided by flow: 1.2 ML / 6 ML/d = 0.2 days. Converting days to hours by multiplying by 24 gives about 4.8 hours, the time water spends in the basin.",
+    "formula": "Detention time (hr) = (Volume (ML) / Flow (ML/d)) x 24"
+   }
   },
   {
    "id": "WT-ALL-MATH-0007",
@@ -2361,7 +2409,19 @@
    "cognitive": "Application",
    "formula": "Filtration rate (gpm/sq ft) = flow (gpm) / filter area (sq ft)",
    "calculator": "filtration-rate",
-   "citation": null
+   "citation": null,
+   "si": {
+    "text": "A rapid sand filter has a surface area of 30 square meters. It is passing 4 ML/d at a steady rate. About how many cubic meters per square meter per hour is the filter loading?",
+    "choices": [
+     "About 2.8 m³/m²·h",
+     "About 5.6 m³/m²·h",
+     "About 11.1 m³/m²·h",
+     "About 0.2 m³/m²·h"
+    ],
+    "correctIndex": 1,
+    "explanation": "Filtration rate equals flow divided by filter surface area. Converting 4 ML/d to cubic meters per hour gives about 166.7 m³/h (4,000 cubic meters per day divided by 24 hours per day). Dividing 166.7 m³/h by the 30 square meter filter area gives about 5.6 m³/m²·h, a typical loading rate for a rapid sand filter.",
+    "formula": "Filtration rate (m³/m²·h) = flow (m³/h) / filter area (m²)"
+   }
   },
   {
    "id": "WT-ALL-MATH-0008",
@@ -2380,7 +2440,19 @@
    "cognitive": "Application",
    "formula": "Filtration rate (gpm/sq ft) = flow (gpm) / filter area (sq ft)",
    "calculator": "filtration-rate",
-   "citation": null
+   "citation": null,
+   "si": {
+    "text": "A filter bed measures 20 square meters and is passing a steady 120 m³/h. About how many cubic meters per square meter per hour is the filter loading?",
+    "choices": [
+     "About 6.0 m³/m²·h",
+     "About 3.0 m³/m²·h",
+     "About 12.0 m³/m²·h",
+     "About 0.2 m³/m²·h"
+    ],
+    "correctIndex": 0,
+    "explanation": "Filtration rate equals flow divided by filter surface area. Dividing the 120 m³/h flow by the 20 square meter filter area gives 6.0 m³/m²·h, a typical loading rate for a granular media filter.",
+    "formula": "Filtration rate (m³/m²·h) = flow (m³/h) / filter area (m²)"
+   }
   },
   {
    "id": "WT-ALL-MATH-0009",
@@ -2399,7 +2471,19 @@
    "cognitive": "Application",
    "formula": "Flow (gpm) = (cubic feet x 7.48 gal/cu ft) / minutes",
    "calculator": "gpm-mgd",
-   "citation": null
+   "citation": null,
+   "si": {
+    "text": "A plant's raw water intake meter totalizes in cubic meters. Over one hour of steady operation, the reading advances 300 cubic meters. About how many liters per second is the plant taking in?",
+    "choices": [
+     "About 0.083 liters per second",
+     "About 5,000 liters per second",
+     "About 167 liters per second",
+     "About 83 liters per second"
+    ],
+    "correctIndex": 3,
+    "explanation": "One cubic meter equals 1000 liters. The 300 cubic meter reading converts to 300,000 liters for the hour (300 x 1000). Dividing by the 3600 seconds in that hour gives about 83 liters per second.",
+    "formula": "Flow (L/s) = (cubic meters x 1000 L/m³) / seconds"
+   }
   },
   {
    "id": "WT-ALL-MATH-0010",
@@ -2418,7 +2502,19 @@
    "cognitive": "Application",
    "formula": "BHP = (gpm x TDH(ft) x 8.34) / (33,000 x pump efficiency)",
    "calculator": "hp",
-   "citation": null
+   "citation": null,
+   "si": {
+    "text": "A booster pump must move 40 liters per second against 45 meters of total dynamic head. The pump is 75 percent efficient. About how many kilowatts of brake power does the pump require?",
+    "choices": [
+     "About 13.2 kilowatts of brake power",
+     "About 2.4 kilowatts of brake power",
+     "About 23.5 kilowatts of brake power",
+     "About 17.7 kilowatts of brake power"
+    ],
+    "correctIndex": 2,
+    "explanation": "Water power in kilowatts equals liters per second times head in meters times 9.81, divided by 1000. For this pump that is 40 x 45 x 9.81 divided by 1000, or about 17.7 kW of water power. Brake power accounts for the pump's mechanical efficiency, so the water power is divided by the 0.75 efficiency: 17.7 divided by 0.75 is about 23.5 kW.",
+    "formula": "Brake power (kW) = (L/s x head(m) x 9.81) / (1000 x pump efficiency)"
+   }
   },
   {
    "id": "WT-ALL-MATH-0011",

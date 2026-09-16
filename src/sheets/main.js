@@ -30,6 +30,7 @@ function boot() {
   const mount = document.getElementById('ziptility-sheets');
   if (!mount || mount.dataset.zipBooted) return;
   mount.dataset.zipBooted = '1';
+  document.body.classList.add('zs-booted');
   if (!document.getElementById('zip-sheets-styles')) {
     const s = document.createElement('style'); s.id = 'zip-sheets-styles'; s.textContent = CSS;
     document.head.appendChild(s);

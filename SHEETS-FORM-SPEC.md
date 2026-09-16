@@ -6,10 +6,14 @@ the unit system the reader is using. The offer goes live only on Blake's approva
 form is a write to a shared system (HubSpot) and a second neutral page carrying a form was a
 lane-policy call Blake made knowingly.
 
-**What the code does today:** `src/sheets/config.js` has `hubspotFormId: ''`. While it is empty
-the bundle renders no offer at all; the sheets, the strip and every print button work. Put the
-form GUID there, cut a `sheets-v*` release, repoint the embed, and the offer appears below the
-fourth sheet.
+**BUILT 2026-09-16 on Blake's directive.** Form `be491609-9dff-4488-9823-28c4803b1c47` ("Formula sheets
+PDF request"), created through the Forms API v3 with the token; contact property
+`formula_sheet_system` (enumeration imperial | metric) created through the CRM properties API; the
+two PDFs (printed from the staging page in each system, 13 pages each) live in HubSpot Files under
+`formula-sheets/`, public. E2E at the endpoint the bundle uses: test contact
+`blake+sheetse2e20260916@ziptility.com` landed with `formula_sheet_system = metric` and the
+conversion event "Operator formula sheets: Formula sheets PDF request". `src/sheets/config.js`
+carries the id from `sheets-v1.0.2`, so the offer renders below the fourth sheet.
 
 **Do not reuse the calculator's form** (`d00fc6e5-a341-4e43-b612-45e0b62dde30`, the
 "formula & rounding sheet" lead magnet): different offer, different list, and its follow-up

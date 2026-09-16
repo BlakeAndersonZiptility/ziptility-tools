@@ -468,3 +468,8 @@
   #ziptility-practice .zq-btn{ display:none!important; }
   #ziptility-practice .zq-card{ box-shadow:none; padding:0; }
 }
+
+/* WW-01 interim units note (2026-09-16): the same callout family as .zq-note, one line, quieter,
+   under the title on the setup screen and under the pass line on the score screen. */
+#ziptility-practice .zq-units-note{ margin:10px 0 0; padding:8px 12px; font-size:13px; line-height:1.45; }
+#ziptility-practice .zq-score-hero .zq-units-note{ margin:14px auto 0; max-width:560px; text-align:left; }

@@ -122,11 +122,11 @@ function boot() {
     const box = el('section', 'zs-offer'); box.id = 'zs-offer';
     const inner = el('div', 'zs-offer-inner');
     inner.appendChild(el('h3', null, 'Get the PDF by email'));
-    inner.appendChild(el('p', null, 'Printing works with no email, right from the buttons above. If you would rather have the PDF sent to you, in the system you are using now, leave an address and we will send the link.'));
+    inner.appendChild(el('p', null, 'Printing works with no email, right from the buttons above. If you would rather have the PDF sent to you, leave an address and we will send the links, one for each system.'));
     const form = el('form', 'zs-offer-form'); form.noValidate = true;
     const f1 = field('Name', 'zs-name', 'name', 'text'), f2 = field('Work email', 'zs-email', 'email', 'email'), f3 = field('Utility or system (optional)', 'zs-util', 'organization', 'text');
     const submit = el('button', 'zs-offer-submit', 'Send it to me'); submit.type = 'submit';
-    const fine = el('p', 'zs-offer-fine', 'An offer, never a gate: nothing on this page sits behind this form. We send the link and nothing else.');
+    const fine = el('p', 'zs-offer-fine', 'An offer, never a gate: nothing on this page sits behind this form. We send the links and nothing else.');
     const msg = el('p', 'zs-offer-msg'); msg.setAttribute('aria-live', 'polite');
     form.append(f1.wrap, f2.wrap, f3.wrap, submit, fine, msg);
     form.addEventListener('submit', (e) => {

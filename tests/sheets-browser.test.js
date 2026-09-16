@@ -27,7 +27,11 @@ ok('strip renders in the hero mount, US customary pressed', await page.evaluate(
 }));
 ok('strip buttons meet the 36px tap floor', await page.evaluate(() => [...document.querySelectorAll('#ziptility-sheets .zs-seg button')].every((b) => b.getBoundingClientRect().height >= 36)));
 ok('every sheet got a "Print this sheet" button after its title', await page.evaluate(() => document.querySelectorAll('.zs-sheet-tools .zs-print-one').length === 4));
-ok('the offer is NOT rendered while no form id is configured', await page.evaluate(() => !document.querySelector('.zs-offer')));
+ok('the offer renders below the fourth sheet now that a form id is configured', await page.evaluate(() => { const o = document.querySelector('.zs-offer'); return !!o && o.previousElementSibling && o.previousElementSibling.id === 'wastewater-collection'; }));
+ok('offer: nothing on the page is gated (all 4 sheets and every print button stay usable)', await page.evaluate(() => document.querySelectorAll('section[id] .state-richtext li').length > 0 && document.querySelectorAll('.zs-print-one').length === 4));
+ok('offer: the fine print says it is an offer, never a gate', await page.evaluate(() => /never a gate/.test(document.querySelector('.zs-offer-fine').textContent)));
+ok('offer: a bad email is refused client-side without posting', await page.evaluate(async () => { let posted = false; const of = window.fetch; window.fetch = () => { posted = true; return Promise.resolve({ ok: true }); }; document.getElementById('zs-email').value = 'nope'; document.querySelector('.zs-offer-form').dispatchEvent(new Event('submit', { cancelable: true })); await new Promise(r => setTimeout(r, 50)); window.fetch = of; return !posted && /does not look right/.test(document.querySelector('.zs-offer-msg').textContent); }));
+ok('offer: a good email posts the four fields and the current system to the HubSpot form', await page.evaluate(async () => { let body = null, url = ''; const of = window.fetch; window.fetch = (u, o) => { url = u; body = JSON.parse(o.body); return Promise.resolve({ ok: true }); }; document.getElementById('zs-name').value = 'Test'; document.getElementById('zs-email').value = 'test@example.com'; document.getElementById('zs-util').value = 'Test utility'; document.querySelector('.zs-offer-form').dispatchEvent(new Event('submit', { cancelable: true })); await new Promise(r => setTimeout(r, 80)); window.fetch = of; const names = body.fields.map(f => f.name); return /be491609-9dff-4488-9823-28c4803b1c47$/.test(url) && names.join(',') === 'firstname,email,company,formula_sheet_system' && body.fields[3].value === 'imperial' && /On its way/.test(document.querySelector('.zs-offer-msg').textContent); }));
 ok('all formula lines are the US text before any flip', await page.evaluate((n) => document.querySelectorAll('section[id] .state-richtext li').length === n, total));
 
 await page.click('#ziptility-sheets .zs-seg button[data-sys="metric"]');
@@ -53,6 +57,7 @@ ok('print-one: body flagged and the chosen sheet targeted', await page.evaluate(
 ok('print-one: the title names the sheet', (await page.title()) === 'Ziptility operator formula sheets (metric, Water distribution formula sheet)');
 await page.emulateMedia({ media: 'print' });
 ok('print-one: other sheets are hidden in print media, the target stays', await page.evaluate(() => getComputedStyle(document.getElementById('water-treatment')).display === 'none' && getComputedStyle(document.getElementById('water-distribution')).display !== 'none'));
+ok('print: the hero is hidden in print media, the offer too', await page.evaluate(() => getComputedStyle(document.getElementById('main')).display === 'none' && getComputedStyle(document.querySelector('.zs-offer')).display === 'none'));
 await page.emulateMedia({ media: 'screen' });
 await page.evaluate(() => window.dispatchEvent(new Event('afterprint')));
 ok('afterprint clears the print-one state', await page.evaluate(() => !document.body.classList.contains('zs-print-one') && !document.querySelector('.zs-target')));

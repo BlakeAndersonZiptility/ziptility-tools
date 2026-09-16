@@ -47,8 +47,10 @@ which ships on the setup and score screens until the SI item variants land
 (WW-01 step 3). No embed attribute changes; the same one-line repoint per
 page.
 
-**Cut 2026-09-16 (WW-11 + WW-01 step 2):** `sheets-v1.0.1.js` (1.0.0 never built: its
-release run failed a phone-height check on CI's fonts, fixed with a shorter phone note), a NEW bundle for
+**Cut 2026-09-16 (WW-11 + WW-01 step 2):** `sheets-v1.0.2.js` (1.0.0 never built: its
+release run failed a phone-height check on CI's fonts, fixed with a shorter phone note; 1.0.1 shipped
+without the form id; 1.0.2 carries the HubSpot form `be491609-9dff-4488-9823-28c4803b1c47` Blake
+directed built, so the offer now renders, and hides the hero in print), a NEW bundle for
 `/tools/formula-sheets`. The page keeps its four server-rendered sheets; the
 bundle adds the same US customary / Metric strip (one shared `zip-units`
 preference), swaps every formula line to its SI form in place from one data
@@ -57,7 +59,7 @@ list (`src/sheets/lines.js`, whose US side is the live page's text), adds a
 PDF title at print time, and renders the "email me the PDF" offer only once a
 HubSpot form id is configured (`SHEETS-FORM-SPEC.md`; Blake's approval). New
 embed on that page, in the hero after the intro paragraph:
-`<div id="ziptility-sheets"></div><script defer src=".../dist/sheets-v1.0.1.js"></script>`.
+`<div id="ziptility-sheets"></div><script defer src=".../dist/sheets-v1.0.2.js"></script>`.
 
 Deploy is one edit: change the version in the `<script src>` and publish.
 Artifacts are immutable, so **merging to main never changes what a visitor

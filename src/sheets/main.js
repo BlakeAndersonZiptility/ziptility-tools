@@ -30,6 +30,7 @@ function boot() {
   const mount = document.getElementById('ziptility-sheets');
   if (!mount || mount.dataset.zipBooted) return;
   mount.dataset.zipBooted = '1';
+  document.body.classList.add('zs-booted');
   if (!document.getElementById('zip-sheets-styles')) {
     const s = document.createElement('style'); s.id = 'zip-sheets-styles'; s.textContent = CSS;
     document.head.appendChild(s);
@@ -43,8 +44,12 @@ function boot() {
   SHEETS.forEach((sh) => {
     titleOf[sh.id] = sh.title;
     const sec = document.getElementById(sh.id); if (!sec) return;
-    sec.querySelectorAll('li').forEach((li) => { const l = byImp.get(norm(li.textContent)); if (l && l.si) items.push({ li, l }); });
+    /* Only a plain-text li is swappable: one carrying a link, strong or sup keeps its markup and its US text. */
+    sec.querySelectorAll('li').forEach((li) => { if (li.children.length) return; const l = byImp.get(norm(li.textContent)); if (l && l.si) items.push({ li, l }); });
   });
+  /* What matched, for the verification scripts: every SI-bearing line should be on the page. */
+  const expected = SHEETS.reduce((n, sh) => n + sh.blocks.reduce((m2, b) => m2 + b.lines.filter((l) => l.si).length, 0), 0);
+  mount.dataset.zsMatched = items.length + '/' + expected;
 
   /* The strip. Same shape and sizes as the calculator's (compact by rule). */
   mount.innerHTML = '';
@@ -88,14 +93,19 @@ function boot() {
     document.title = 'Ziptility operator formula sheets (' + (sys === 'metric' ? 'metric' : 'US customary') + (printOne ? ', ' + titleOf[printOne] : '') + ')';
     try { trackComplete('formula-sheets', { mode: sys, calc: printOne || 'all-four' }); } catch (e) {}
   });
-  window.addEventListener('afterprint', () => {
-    document.title = baseTitle;
-    if (printOne) { document.body.classList.remove('zs-print-one'); const t = document.getElementById(printOne); if (t) t.classList.remove('zs-target'); printOne = null; }
-  });
-  function printSheets(id) {
-    if (id && document.getElementById(id)) { printOne = id; document.body.classList.add('zs-print-one'); document.getElementById(id).classList.add('zs-target'); }
-    try { window.print(); } catch (e) {}
+  window.addEventListener('afterprint', () => { document.title = baseTitle; clearPrintOne(); });
+  function clearPrintOne() {
+    document.body.classList.remove('zs-print-one');
+    document.querySelectorAll('.zs-target').forEach((t) => t.classList.remove('zs-target'));
+    printOne = null;
   }
+  function printSheets(id) {
+    clearPrintOne(); /* never inherit a stale state from a print whose afterprint did not fire */
+    if (id && document.getElementById(id)) { printOne = id; document.body.classList.add('zs-print-one'); document.getElementById(id).classList.add('zs-target'); }
+    try { window.print(); } catch (e) { clearPrintOne(); document.title = baseTitle; }
+  }
+  /* afterprint is unreliable on some mobile browsers; the print media query flipping back is the second signal. */
+  try { const mq = window.matchMedia('print'); mq.addEventListener('change', (e) => { if (!e.matches && printOne) { document.title = baseTitle; clearPrintOne(); } }); } catch (e) {}
 
   /* The offer. Only when a form exists to post to; the sheets and the
      print buttons above never depend on it. */

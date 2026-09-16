@@ -25,7 +25,7 @@ ok('strip renders in the hero mount, US customary pressed', await page.evaluate(
   const b = [...document.querySelectorAll('#ziptility-sheets .zs-seg button')];
   return b.length === 2 && b[0].getAttribute('aria-pressed') === 'true' && b[1].getAttribute('aria-pressed') === 'false';
 }));
-ok('strip buttons meet the 36px tap floor', await page.evaluate(() => [...document.querySelectorAll('#ziptility-sheets .zs-seg button')].every((b) => b.getBoundingClientRect().height >= 36)));
+ok('desktop: strip buttons are the compact 38px, the calculator strip\'s desktop height', await page.evaluate(() => [...document.querySelectorAll('#ziptility-sheets .zs-seg button')].every((b) => b.getBoundingClientRect().height >= 38)));
 ok('every sheet got a "Print this sheet" button after its title', await page.evaluate(() => document.querySelectorAll('.zs-sheet-tools .zs-print-one').length === 4));
 ok('the offer renders below the fourth sheet now that a form id is configured', await page.evaluate(() => { const o = document.querySelector('.zs-offer'); return !!o && o.previousElementSibling && o.previousElementSibling.id === 'wastewater-collection'; }));
 ok('offer: nothing on the page is gated (all 4 sheets and every print button stay usable)', await page.evaluate(() => document.querySelectorAll('section[id] .state-richtext li').length > 0 && document.querySelectorAll('.zs-print-one').length === 4));
@@ -71,8 +71,11 @@ await page.click('#ziptility-sheets .zs-seg button[data-sys="imperial"]');
 ok('flip back restores every US line', await page.evaluate(() => [...document.querySelectorAll('section[id] .state-richtext li')].some((li) => /8\.34/.test(li.textContent))));
 await page.evaluate(() => { try { localStorage.removeItem('zip-units'); } catch (e) {} });
 
-await page.setViewportSize({ width: 375, height: 740 });
-ok('375px: strip buttons >= 36px, short note shown, strip under 100px tall', await page.evaluate(() => { const s = document.querySelector('#ziptility-sheets'); const sh = s.querySelector('.zs-short'), lg = s.querySelector('.zs-long'); return [...s.querySelectorAll('button')].every((b) => b.getBoundingClientRect().height >= 36) && getComputedStyle(sh).display !== 'none' && getComputedStyle(lg).display === 'none' && s.getBoundingClientRect().height < 100; }));
+await page.setViewportSize({ width: 375, height: 812 });
+// The 44px tap-target floor. Measured on staging 2026-09-16 (sheets-v1.0.2 at 375x812): both strip buttons and all
+// four "Print this sheet" buttons were 36px while the offer's inputs and submit were 44px. Six buttons, none vacuous.
+ok('375x812: every strip button and every "Print this sheet" button measures at least 44px', await page.evaluate(() => { const b = [...document.querySelectorAll('#ziptility-sheets .zs-seg button, .zs-print-one')]; return b.length === 6 && b.every((x) => { const r = x.getBoundingClientRect(); return r.height >= 44 && r.width >= 44; }); }));
+ok('375px: short note shown, long note hidden, strip under 100px tall (the compact masthead rule)', await page.evaluate(() => { const s = document.querySelector('#ziptility-sheets'); const sh = s.querySelector('.zs-short'), lg = s.querySelector('.zs-long'); return getComputedStyle(sh).display !== 'none' && getComputedStyle(lg).display === 'none' && s.getBoundingClientRect().height < 100; }));
 
 ok('no page errors', jsErrors.length === 0);
 await browser.close();

@@ -162,9 +162,13 @@ export function initQuiz(rootEl, bank, cfg, { onExit } = {}) {
      once per screen; there is no toggle on this surface. */
   function unitsNote() {
     const metric = getSystem() === 'metric';
-    return el('p', 'zq-note zq-units-note', metric
-      ? 'Your calculator is set to metric. These practice questions still use US customary exam-sheet units (gallons, feet, MGD, lb/day), the way the exam sheet does. Metric question sets follow.'
-      : 'Math questions use US customary exam-sheet units (gallons, feet, MGD, lb/day), the way the exam sheet does.');
+    const v = bank.variants || { total: 0, withSi: 0 };
+    let text;
+    if (!metric) text = 'Math questions use US customary exam-sheet units (gallons, feet, MGD, lb/day), the way the exam sheet does.';
+    else if (v.withSi > 0 && v.withSi >= v.total) text = 'Shown in metric (SI) units, to match your calculator. Switch the calculator to US customary to practise in exam-sheet units.';
+    else if (v.withSi > 0) text = 'Your calculator is set to metric. ' + v.withSi + ' of ' + v.total + ' questions here have a metric version and show it; the rest still use US customary exam-sheet units (gallons, feet, MGD, lb/day).';
+    else text = 'Your calculator is set to metric. These practice questions still use US customary exam-sheet units (gallons, feet, MGD, lb/day), the way the exam sheet does. Metric question sets follow.';
+    return el('p', 'zq-note zq-units-note', text);
   }
 
   function renderStart() {

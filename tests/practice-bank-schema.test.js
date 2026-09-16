@@ -34,6 +34,17 @@ for (const t of TESTS) {
       assert.ok(Number.isInteger(q.correctIndex) && q.correctIndex >= 0 && q.correctIndex <= 3, q.id + ': correctIndex out of range');
       assert.ok(q.text && q.text.trim().length, q.id + ': empty question text');
       assert.ok(q.explanation && q.explanation.trim().length, q.id + ': empty explanation');
+      /* WW-01 step 3: an optional SI variant carries the same shape as the parent's public fields. */
+      if (q.si != null) {
+        const v = q.si;
+        assert.ok(v && typeof v === 'object', q.id + ': si must be an object');
+        assert.ok(v.text && v.text.trim().length, q.id + ': si.text empty');
+        assert.ok(Array.isArray(v.choices) && v.choices.length === 4 && v.choices.every(c => c && c.trim().length), q.id + ': si.choices must be 4 non-empty strings');
+        assert.ok(Number.isInteger(v.correctIndex) && v.correctIndex >= 0 && v.correctIndex <= 3, q.id + ': si.correctIndex out of range');
+        assert.ok(v.explanation && v.explanation.trim().length, q.id + ': si.explanation empty');
+        assert.ok(v.formula == null || typeof v.formula === 'string', q.id + ': si.formula must be a string or null');
+        assert.ok(v.text !== q.text, q.id + ': si.text identical to the parent stem');
+      }
     }
   });
 }

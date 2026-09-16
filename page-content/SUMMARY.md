@@ -8,12 +8,12 @@ build time, so a page can quote a number without anyone checking it by hand.
 
 | Page | Bank | Questions | Topics | Samples | Bank revision |
 |---|---|---|---|---|---|
-| `/tools/practice/operator-math` | operator-math-1 | 110 | 13 | 8 | 2026-06-12 |
+| `/tools/practice/operator-math` | operator-math-1 | 110 | 13 | 8 | 2026-09-16 |
 | `/tools/practice/regulations` | regulations-1 | 103 | 10 | 8 | 2026-07-10 |
-| `/tools/practice/water-distribution` | wd-1 | 125 | 23 | 8 | 2026-07-11 |
-| `/tools/practice/wastewater-collection` | wwc-1 | 120 | 26 | 8 | 2026-07-11 |
-| `/tools/practice/water-treatment` | wt-1 | 128 | 35 | 8 | 2026-07-11 |
-| `/tools/practice/wastewater-treatment` | wwt-1 | 119 | 31 | 8 | 2026-07-11 |
+| `/tools/practice/water-distribution` | wd-1 | 125 | 23 | 8 | 2026-09-16 |
+| `/tools/practice/wastewater-collection` | wwc-1 | 120 | 26 | 8 | 2026-09-16 |
+| `/tools/practice/water-treatment` | wt-1 | 128 | 35 | 8 | 2026-09-16 |
+| `/tools/practice/wastewater-treatment` | wwt-1 | 119 | 31 | 8 | 2026-09-16 |
 
 ## Holds enforced at build time
 

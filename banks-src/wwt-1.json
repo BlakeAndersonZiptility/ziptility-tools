@@ -5,7 +5,7 @@
  "level": "Entry level (ABC Class I)",
  "durationMin": 120,
  "refCount": 100,
- "version": "2026-07-11",
+ "version": "2026-09-16",
  "questions": [
   {
    "id": "WWT-ALL-EQIP-0001",
@@ -2076,7 +2076,19 @@
    "cognitive": "Application",
    "formula": "DT (hr) = (V, gal / Q, gpd) x 24",
    "calculator": "detention",
-   "citation": null
+   "citation": null,
+   "si": {
+    "text": "An aeration basin holds 5.0 ML. The plant sends a steady flow of 12 ML/d to the basin. About how many hours of detention time does the basin provide?",
+    "choices": [
+     "2.4 hours",
+     "10.0 hours",
+     "0.4 hours",
+     "58 hours"
+    ],
+    "correctIndex": 1,
+    "explanation": "Detention time equals basin volume divided by flow, expressed in matching units, then converted to hours. Dividing 5.0 ML by 12 ML/d gives 0.417 days. Multiplying by 24 hours per day gives 10.0 hours of detention time.",
+    "formula": "DT (hr) = (V, ML / Q, ML/d) x 24"
+   }
   },
   {
    "id": "WWT-ALL-MATH-0038",
@@ -2095,7 +2107,19 @@
    "cognitive": "Application",
    "formula": "DT (hr) = [V (gal) / (Q (gpm) x 1440)] x 24",
    "calculator": "detention",
-   "citation": null
+   "citation": null,
+   "si": {
+    "text": "A secondary clarifier holds 576 cubic meters. Flow to the clarifier is steady at 8.0 L/s. About how many hours of detention time does the clarifier provide?",
+    "choices": [
+     "29 hours",
+     "480 hours",
+     "20 hours",
+     "0.8 hours"
+    ],
+    "correctIndex": 2,
+    "explanation": "Detention time equals clarifier volume divided by flow, with flow converted to matching time units. Converting 8.0 L/s to a daily flow (8.0 times 86,400 seconds per day, divided by 1,000 liters per cubic meter, equals 691.2 cubic meters per day), then dividing the 576 cubic meter clarifier volume by that daily flow gives 0.833 days. Multiplying by 24 hours per day gives 20 hours of detention time.",
+    "formula": "DT (hr) = [V (m³) / (Q (L/s) x 86.4)] x 24"
+   }
   },
   {
    "id": "WWT-ALL-MATH-0039",
@@ -2114,7 +2138,19 @@
    "cognitive": "Application",
    "formula": "Loading rate (gpd/sq ft) = Flow (gpd) / Area (sq ft)",
    "calculator": "surface-loading",
-   "citation": null
+   "citation": null,
+   "si": {
+    "text": "A gravity thickener has a surface area of 30 square meters and receives a flow of 180 cubic meters per day. About how many cubic meters per day per square meter is the hydraulic loading rate on the thickener?",
+    "choices": [
+     "6.0 m³/m²·d",
+     "0.6 m³/m²·d",
+     "60 m³/m²·d",
+     "0.25 m³/m²·d"
+    ],
+    "correctIndex": 0,
+    "explanation": "Hydraulic loading rate is flow divided by surface area. Dividing the 180 cubic meter per day flow by the 30 square meter thickener surface gives 6.0 cubic meters per day per square meter.",
+    "formula": "Loading rate (m³/m²·d) = Flow (m³/d) / Area (m²)"
+   }
   },
   {
    "id": "WWT-ALL-MATH-0040",
@@ -2133,7 +2169,19 @@
    "cognitive": "Application",
    "formula": "Organic loading rate (lb BOD/day/1,000 cu ft) = BOD load (lb/day) / [Volume (cu ft) / 1,000]",
    "calculator": "organic-loading",
-   "citation": null
+   "citation": null,
+   "si": {
+    "text": "An aeration basin holds 1,800 cubic meters and receives a BOD load of 1,440 kilograms per day. About how many kilograms of BOD per day per cubic meter is the organic loading rate on the basin?",
+    "choices": [
+     "1.25 kg BOD/d/m³",
+     "8.0 kg BOD/d/m³",
+     "800 kg BOD/d/m³",
+     "0.8 kg BOD/d/m³"
+    ],
+    "correctIndex": 3,
+    "explanation": "Organic loading rate is the BOD load divided by basin volume, both already in matching metric units. Dividing 1,440 kilograms of BOD per day by the 1,800 cubic meter basin gives 0.8 kilograms of BOD per day per cubic meter.",
+    "formula": "Organic loading rate (kg BOD/d/m³) = BOD load (kg/d) / Volume (m³)"
+   }
   },
   {
    "id": "WWT-ALL-MATH-0041",
@@ -2152,7 +2200,19 @@
    "cognitive": "Application",
    "formula": "Solids loading rate (lb/day/sq ft) = (Q, MGD x MLSS, mg/L x 8.34) / Area (sq ft)",
    "calculator": "loading",
-   "citation": null
+   "citation": null,
+   "si": {
+    "text": "A secondary clarifier has a surface area of 220 square meters. Flow to the clarifier is 11 ML/d and the mixed liquor suspended solids concentration entering the clarifier is 2,200 mg/L. About how many kilograms per day per square meter of solids loading is the clarifier receiving?",
+    "choices": [
+     "24 kg/d/m²",
+     "110 kg/d/m²",
+     "920 kg/d/m²",
+     "0.009 kg/d/m²"
+    ],
+    "correctIndex": 1,
+    "explanation": "Solids loading rate is the kilograms of solids applied per day divided by the clarifier's surface area. The metric pounds formula gives 11 ML/d times 2,200 mg/L, or 24,200 kilograms of solids per day. Dividing by the 220 square meter surface area gives 110 kilograms per day per square meter.",
+    "formula": "Solids loading rate (kg/d/m²) = (Q, ML/d x MLSS, mg/L) / Area (m²)"
+   }
   },
   {
    "id": "WWT-ALL-MATH-0042",
@@ -2171,7 +2231,19 @@
    "cognitive": "Application",
    "formula": "lb MLSS = Volume (MG) x MLSS (mg/L) x 8.34",
    "calculator": "mass",
-   "citation": null
+   "citation": null,
+   "si": {
+    "text": "An aeration basin holds 1.6 ML and the mixed liquor suspended solids concentration is 2,500 mg/L. About how many kilograms of MLSS are in the basin?",
+    "choices": [
+     "1,560 kg",
+     "4,000,000 kg",
+     "4,000 kg",
+     "400 kg"
+    ],
+    "correctIndex": 2,
+    "explanation": "Kilograms of MLSS in the basin equal basin volume in megaliters times the MLSS concentration in mg/L. The 1.6 ML basin times 2,500 mg/L gives 4,000 kilograms of MLSS in the basin.",
+    "formula": "kg MLSS = Volume (ML) x MLSS (mg/L)"
+   }
   },
   {
    "id": "WWT-ALL-MATH-0043",
@@ -2247,7 +2319,19 @@
    "cognitive": "Application",
    "formula": "Water horsepower = (flow in gpm x total head in ft x 8.34) / 33,000",
    "calculator": "hp",
-   "citation": null
+   "citation": null,
+   "si": {
+    "text": "A treatment plant's influent pump has to overcome 18 m of total dynamic head while handling 47 L/s of incoming raw sewage. About how much water power must the pump supply?",
+    "choices": [
+     "0.46 kW",
+     "0.85 kW",
+     "8.3 kW",
+     "83.0 kW"
+    ],
+    "correctIndex": 2,
+    "explanation": "Water power equals flow in L/s times total head in m times 9.81 (the gravitational constant), divided by 1000 to convert watts to kilowatts. Here that is 47 times 18 times 9.81, divided by 1000, which works out to about 8.3 kW. All three factors, flow, head, and the 9.81 constant, have to be included, and the result is divided by 1000, not a smaller or larger number.",
+    "formula": "Water power (kW) = flow (L/s) x total head (m) x 9.81 / 1000"
+   }
   },
   {
    "id": "WWT-ALL-MATH-0047",
@@ -2266,7 +2350,19 @@
    "cognitive": "Application",
    "formula": "Pounds of MLSS = basin volume (MG) x MLSS concentration (mg/L) x 8.34",
    "calculator": "mass",
-   "citation": null
+   "citation": null,
+   "si": {
+    "text": "An aeration basin holds 7,000 m³ of mixed liquor with an MLSS concentration of 2,200 mg/L. About how many kilograms of MLSS are in the basin?",
+    "choices": [
+     "15,400,000 kg",
+     "15.4 kg",
+     "154,000 kg",
+     "15,400 kg"
+    ],
+    "correctIndex": 3,
+    "explanation": "Multiply the basin volume by the MLSS concentration and divide by 1,000 to convert to kilograms: 7,000 times 2,200 equals 15,400,000, and dividing by 1,000 gives about 15,400 kilograms of MLSS in the basin. All three parts, the volume, the concentration, and the divide-by-1,000 step, have to be included.",
+    "formula": "Kilograms of MLSS = basin volume (m³) x MLSS concentration (mg/L) / 1000"
+   }
   }
  ]
 }

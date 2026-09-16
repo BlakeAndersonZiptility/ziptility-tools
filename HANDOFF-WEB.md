@@ -25,6 +25,12 @@ and that is Blake's call.
 Each adds the completion events in §6 and nothing else. The two pages move
 to them by the same one-line repoint, staging first.
 
+**Cut 2026-09-16 (WW-02):** `calculator-v2.10.0.js`. One change over v2.9.0:
+the volume group gains `floz` (1/128 US gallon) and `mL` (1/1000 litre), and
+the "Liquid to add" field on well, tank and main disinfection offers gal,
+fl oz, L, mL in that order (the default stays gal; no cups, by ruling). No
+embed attribute changes; the same one-line repoint.
+
 Deploy is one edit: change the version in the `<script src>` and publish.
 Artifacts are immutable, so **merging to main never changes what a visitor
 sees**. Rollback is the same edit in reverse and takes about a minute.

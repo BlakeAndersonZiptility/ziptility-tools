@@ -37,7 +37,7 @@
 @media print{
   #ziptility-sheets, .zs-sheet-tools, .zs-offer{ display:none !important; }
   /* The hero (title, intro, print button, jump nav) is a near-empty first PDF page; the sheets are the document. */
-  body.zs-booted #main{ display:none !important; }
+  body.zs-booted #main, .zs-print-hide, .breadcrumb_component{ display:none !important; }
   /* Print one sheet: every other section goes, and the chosen one does not start on a fresh page. */
   body.zs-print-one section[id]:not(.zs-target){ display:none !important; }
   body.zs-print-one .zs-target{ break-before:auto !important; page-break-before:auto !important; }

@@ -38,7 +38,7 @@ export const SHEETS = [
      },
      {
       "imp": "1 percent = 10,000 mg/L; 1 grain per gallon = 17.1 mg/L",
-      "si": "1 percent = 10,000 mg/L; 1 grain per gallon = 17.1 mg/L"
+      "si": "1 percent = 10,000 mg/L"
      },
      {
       "imp": "0.785 = pi divided by 4; 8.34 = pounds per gallon",
@@ -362,7 +362,8 @@ export const SHEETS = [
       "imp": "Percent removal = (influent minus effluent) ÷ influent × 100",
       "si": "Percent removal = (influent minus effluent) ÷ influent × 100"
      }
-    ]
+    ],
+    "hSI": "Kilograms, dosage, and loading"
    },
    {
     "h": "Activated-sludge process control",

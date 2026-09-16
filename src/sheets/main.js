@@ -53,7 +53,9 @@ function boot() {
   const bImp = el('button', null, 'US customary'); bImp.type = 'button'; bImp.dataset.sys = 'imperial';
   const bMet = el('button', null, 'Metric'); bMet.type = 'button'; bMet.dataset.sys = 'metric';
   seg.append(bImp, bMet);
-  const note = el('p', 'zs-note', 'Both systems on one sheet. Print works in either; the PDF name says which. Remembered on this device.');
+  const note = el('p', 'zs-note');
+  note.appendChild(el('span', 'zs-long', 'Both systems on one sheet. Print works in either; the PDF name says which. Remembered on this device.'));
+  note.appendChild(el('span', 'zs-short', 'Both systems, one sheet. Remembered on this device.'));
   strip.append(seg, note); mount.appendChild(strip);
   [bImp, bMet].forEach((b) => b.addEventListener('click', () => setSystem(b.dataset.sys)));
 

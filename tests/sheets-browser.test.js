@@ -64,7 +64,7 @@ ok('flip back restores every US line', await page.evaluate(() => [...document.qu
 await page.evaluate(() => { try { localStorage.removeItem('zip-units'); } catch (e) {} });
 
 await page.setViewportSize({ width: 375, height: 740 });
-ok('375px: strip buttons >= 36px, strip under 90px tall', await page.evaluate(() => { const s = document.querySelector('#ziptility-sheets'); return [...s.querySelectorAll('button')].every((b) => b.getBoundingClientRect().height >= 36) && s.getBoundingClientRect().height < 90; }));
+ok('375px: strip buttons >= 36px, short note shown, strip under 100px tall', await page.evaluate(() => { const s = document.querySelector('#ziptility-sheets'); const sh = s.querySelector('.zs-short'), lg = s.querySelector('.zs-long'); return [...s.querySelectorAll('button')].every((b) => b.getBoundingClientRect().height >= 36) && getComputedStyle(sh).display !== 'none' && getComputedStyle(lg).display === 'none' && s.getBoundingClientRect().height < 100; }));
 
 ok('no page errors', jsErrors.length === 0);
 await browser.close();

@@ -3,32 +3,32 @@ import { C, LBS, LITERS, PSI2FT, GRGAL, KW, PI4, D834 } from '../constants.js';
 
 export default [
 
-  { id:"loading", cat:"Loading & Mass", domains:["wastewater"], title:"Loading Rate", formula:"Flow MGD × Conc mg/L × 8.34 = lbs/day", note:"Enter any two values.",
+  { id:"loading", cat:"Loading & Mass", domains:["wastewater"], title:"Loading Rate", formula:"Flow MGD × Conc mg/L × 8.34 = lbs/day", formulaSI:"Flow ML/d × Conc mg/L = kg/d", note:"Enter any two values.",
     fields:[{k:"mgd",label:"Flow",unit:"flow",def:"mgd",base:"mgd",units:["mgd","gpm","gpd","MLd","m3d","Lps"]},{k:"conc",label:"Conc mg/L"},{k:"lbs",label:"Loading",unit:"massrate",def:"lbd",units:["lbd","kgd"]}],
     solve:(v)=>{ if(v.mgd!=null&&v.conc!=null) return {values:{lbs:v.mgd*v.conc*D834},computed:["lbs"],error:""};
       if(v.lbs!=null&&v.mgd!=null) return {values:{conc:v.lbs/(v.mgd*D834)},computed:["conc"],error:""};
       if(v.lbs!=null&&v.conc!=null) return {values:{mgd:v.lbs/(v.conc*D834)},computed:["mgd"],error:""};
       return {values:{},computed:[],error:"Enter any two values."}; }},
-  { id:"mass", cat:"Loading & Mass", domains:["wastewater"], title:"Mass in Process", formula:"Volume MG × Conc mg/L × 8.34 = lbs", note:"Enter any two values.",
+  { id:"mass", cat:"Loading & Mass", domains:["wastewater"], title:"Mass in Process", formula:"Volume MG × Conc mg/L × 8.34 = lbs", formulaSI:"Volume ML × Conc mg/L = kg", note:"Enter any two values.",
     fields:[{k:"mg",label:"Volume",unit:"volume",def:"MG",base:"MG",units:["MG","gal","ML","m3"]},{k:"conc",label:"Conc mg/L"},{k:"lbs",label:"Mass",unit:"mass",def:"lb",units:["lb","kg"]}],
     solve:(v)=>{ if(v.mg!=null&&v.conc!=null) return {values:{lbs:v.mg*v.conc*D834},computed:["lbs"],error:""};
       if(v.lbs!=null&&v.mg!=null) return {values:{conc:v.lbs/(v.mg*D834)},computed:["conc"],error:""};
       if(v.lbs!=null&&v.conc!=null) return {values:{mg:v.lbs/(v.conc*D834)},computed:["mg"],error:""};
       return {values:{},computed:[],error:"Enter any two values."}; }},
-  { id:"surface-loading", cat:"Loading & Mass", domains:["wastewater"], title:"Surface / Overflow Rate", formula:"Flow gpd ÷ Area ft² = gpd/ft²", note:"Clarifier overflow rate. Enter any two values.",
+  { id:"surface-loading", cat:"Loading & Mass", domains:["wastewater"], title:"Surface / Overflow Rate", formula:"Flow gpd ÷ Area ft² = gpd/ft²", formulaSI:"Flow m³/d ÷ Area m² = m³/m²·d", note:"Clarifier overflow rate. Enter any two values.",
     fields:[{k:"flow",label:"Flow",unit:"flow",def:"gpd",base:"gpd",units:["gpd","gpm","mgd","m3d","Lps"]},{k:"area",label:"Area",unit:"area",def:"sqft",units:["sqft","ac","sqm","ha"]},{k:"rate",label:"Rate",unit:"arealflow",def:"gpdft2",units:["gpdft2","gpmft2","m3m2d","m3m2h"]}],
     solve:(v)=>{ if(v.flow!=null&&v.area!=null) return {values:{rate:v.flow/v.area},computed:["rate"],error:""};
       if(v.flow!=null&&v.rate!=null) return {values:{area:v.flow/v.rate},computed:["area"],error:""};
       if(v.area!=null&&v.rate!=null) return {values:{flow:v.area*v.rate},computed:["flow"],error:""};
       return {values:{},computed:[],error:"Enter any two values."}; },
     interpret:(m)=>{ if(m.rate==null) return null; return {level:"info",text:"Typical clarifier overflow ~400–800 gpd/ft² (varies by type and flow). Compare to design."}; }},
-  { id:"weir-overflow", cat:"Loading & Mass", domains:["wastewater"], title:"Weir Overflow Rate", formula:"Flow gpd ÷ Weir length ft = gpd/ft", note:"Enter any two values.",
+  { id:"weir-overflow", cat:"Loading & Mass", domains:["wastewater"], title:"Weir Overflow Rate", formula:"Flow gpd ÷ Weir length ft = gpd/ft", formulaSI:"Flow m³/d ÷ Weir length m = m³/m·d", note:"Enter any two values.",
     fields:[{k:"flow",label:"Flow",unit:"flow",def:"gpd",base:"gpd",units:["gpd","gpm","mgd","m3d","Lps"]},{k:"len",label:"Weir length",unit:"length",def:"ft",units:["ft","in","m","mm"]},{k:"rate",label:"Rate",unit:"linearflow",def:"gpdft",units:["gpdft","m3md"]}],
     solve:(v)=>{ if(v.flow!=null&&v.len!=null) return {values:{rate:v.flow/v.len},computed:["rate"],error:""};
       if(v.flow!=null&&v.rate!=null) return {values:{len:v.flow/v.rate},computed:["len"],error:""};
       if(v.len!=null&&v.rate!=null) return {values:{flow:v.len*v.rate},computed:["flow"],error:""};
       return {values:{},computed:[],error:"Enter any two values."}; }},
-  { id:"solids-loading", cat:"Loading & Mass", domains:["wastewater"], title:"Solids Loading Rate", formula:"Solids lbs/day ÷ Area ft² = lbs/day/ft²", note:"Enter Flow + MLSS (or solids load) plus area.",
+  { id:"solids-loading", cat:"Loading & Mass", domains:["wastewater"], title:"Solids Loading Rate", formula:"Solids lbs/day ÷ Area ft² = lbs/day/ft²", formulaSI:"Solids kg/d ÷ Area m² = kg/m²·d", note:"Enter Flow + MLSS (or solids load) plus area.",
     fields:[{k:"mgd",label:"Flow",unit:"flow",def:"mgd",base:"mgd",units:["mgd","gpm","gpd","MLd","m3d","Lps"]},{k:"conc",label:"MLSS mg/L"},{k:"load",label:"Solids",unit:"massrate",def:"lbd",units:["lbd","kgd"]},{k:"area",label:"Area",unit:"area",def:"sqft",units:["sqft","ac","sqm","ha"]},{k:"rate",label:"Rate",unit:"massflux",def:"lbdft2",units:["lbdft2","kgm2d"]}],
     solve:(v)=>{ const values={}, computed=[]; let load=v.load;
       if(load==null&&v.mgd!=null&&v.conc!=null){ load=v.mgd*v.conc*D834; values.load=load; computed.push("load"); }
@@ -38,7 +38,7 @@ export default [
       else if(load==null) return {values:{},computed:[],error:"Enter Flow + MLSS (or load) plus area."};
       else if(v.area==null&&v.rate==null) return {values:{},computed:[],error:"Add area or a rate."};
       return {values,computed,error:""}; }},
-  { id:"organic-loading", cat:"Loading & Mass", domains:["wastewater"], title:"Organic Loading Rate", formula:"BOD lbs/day ÷ Volume (1000 ft³)", note:"Enter Flow + BOD (or load) plus volume in 1000 ft³.",
+  { id:"organic-loading", cat:"Loading & Mass", domains:["wastewater"], title:"Organic Loading Rate", formula:"BOD lbs/day ÷ Volume (1000 ft³)", formulaSI:"BOD kg/d ÷ Volume m³", note:"Enter Flow + BOD (or load) plus volume in 1000 ft³.",
     fields:[{k:"mgd",label:"Flow",unit:"flow",def:"mgd",base:"mgd",units:["mgd","gpm","gpd","MLd","m3d","Lps"]},{k:"bod",label:"BOD mg/L"},{k:"load",label:"BOD load",unit:"massrate",def:"lbd",units:["lbd","kgd"]},{k:"vol",label:"Volume",unit:"volume",def:"kcf",base:"kcf",units:["kcf","cf","MG","m3"]},{k:"rate",label:"Rate",unit:"volloading",def:"lbdkcf",units:["lbdkcf","kgm3d"]}],
     solve:(v)=>{ const values={}, computed=[]; let load=v.load;
       if(load==null&&v.mgd!=null&&v.bod!=null){ load=v.mgd*v.bod*D834; values.load=load; computed.push("load"); }
@@ -48,7 +48,7 @@ export default [
       else if(load==null) return {values:{},computed:[],error:"Enter Flow + BOD (or load) plus volume."};
       else if(v.vol==null&&v.rate==null) return {values:{},computed:[],error:"Add volume (1000 ft³) or a rate."};
       return {values,computed,error:""}; }},
-  { id:"pop-equiv", cat:"Loading & Mass", domains:["wastewater"], title:"Population Equivalent", formula:"(Flow MGD × BOD × 8.34) ÷ 0.17 = people", note:"Domestic-strength basis. Enter any two values.",
+  { id:"pop-equiv", cat:"Loading & Mass", domains:["wastewater"], title:"Population Equivalent", formula:"(Flow MGD × BOD × 8.34) ÷ 0.17 = people", formulaSI:"(Flow ML/d × BOD) ÷ 0.077 = people", note:"Domestic-strength basis. Enter any two values.",
     fields:[{k:"mgd",label:"Flow",unit:"flow",def:"mgd",base:"mgd",units:["mgd","gpm","gpd","MLd","m3d","Lps"]},{k:"bod",label:"BOD mg/L"},{k:"pe",label:"Pop. equivalent"}],
     solve:(v)=>{ if(v.mgd!=null&&v.bod!=null) return {values:{pe:(v.mgd*v.bod*D834)/0.17},computed:["pe"],error:""};
       if(v.pe!=null&&v.bod!=null) return {values:{mgd:v.pe*0.17/(v.bod*D834)},computed:["mgd"],error:""};

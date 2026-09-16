@@ -290,6 +290,23 @@ ok('practice cross-links resolve: ' + linkedIds.size + ' deep links land on thei
   await page.evaluate(() => { try { localStorage.removeItem('zip-units'); } catch (e) {} });
 }
 
+// ---- WW-01 metric formula chips (2026-09-16) --------------------------------
+{
+  await page.evaluate(() => { try { localStorage.removeItem('zip-units'); } catch (e) {} });
+  await page.goto(PREVIEW, { waitUntil: 'load' }); await page.waitForSelector('.card');
+  await page.fill('#search', 'tank chlorination'); await page.waitForSelector('#tank-chlorination');
+  const imp = await page.$eval('#tank-chlorination .formula', e => e.textContent);
+  ok('imperial chip carries the pounds formula (8.34)', /8\.34/.test(imp) && /MG/.test(imp));
+  await page.click('.sys-seg button[data-sys="metric"]');
+  const met = await page.$eval('#tank-chlorination .formula', e => e.textContent);
+  ok('metric chip drops 8.34 and speaks ML and kg', !/8\.34/.test(met) && /ML/.test(met) && /kg/.test(met));
+  ok('a unit-invariant chip is unchanged in metric', await page.evaluate(() => { const c = document.querySelector('#tank-chlorination'); return !!c; }));
+  await page.click('.sys-seg button[data-sys="imperial"]');
+  ok('flip back restores the imperial chip', (await page.$eval('#tank-chlorination .formula', e => e.textContent)) === imp);
+  await page.fill('#search', '');
+  await page.evaluate(() => { try { localStorage.removeItem('zip-units'); } catch (e) {} });
+}
+
 console.log(`\n${pass} passed, ${fail} failed; JS errors: ${jsErrors.length ? jsErrors.join('; ') : 'none'}`);
 await browser.close();
 process.exit(fail || jsErrors.length ? 1 : 0);

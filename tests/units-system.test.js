@@ -84,24 +84,28 @@ test('units: partner() and targetUnit() land where the ruling says', () => {
   assert.equal(targetUnit(liq, 'mL', 'imperial'), 'floz');
   const liqNoMet = { unit: 'volume', def: 'gal', units: ['gal', 'floz', 'L', 'mL'] }; // the WW-02 field as committed
   assert.equal(targetUnit(liqNoMet, 'gal', 'metric'), 'L');   // nearest declared metric unit, never m³
-  assert.deepEqual(unitList(liqNoMet), ['gal', 'floz', 'L', 'mL']); // nothing appended
+  assert.deepEqual(unitList(liqNoMet, 'metric'), ['gal', 'floz', 'L', 'mL']); // nothing appended
   const well = { unit: 'volume', def: 'gal', units: ['gal', 'L', 'm3', 'MG'] };
   assert.equal(targetUnit(well, 'gal', 'metric'), 'm3');
   assert.equal(targetUnit(well, 'MG', 'metric'), 'm3');   // ML not offered; m³ is the nearest declared
   assert.equal(targetUnit(well, 'm3', 'imperial'), 'gal');
   assert.equal(targetUnit(well, 'L', 'imperial'), 'gal');
   const impOnly = { unit: 'flow', def: 'mgd', units: ['mgd', 'gpm'] };
-  assert.deepEqual(unitList(impOnly), ['mgd', 'gpm', 'MLd', 'Lps']); // partners appended so a flip can land
+  assert.deepEqual(unitList(impOnly, 'imperial'), ['mgd', 'gpm']); // imperial reader: exactly the declared list
+  assert.deepEqual(unitList(impOnly, 'metric'), ['mgd', 'gpm', 'MLd', 'Lps']); // metric reader: partners appended so a flip can land
+  const bare = { unit: 'volume', def: 'gal' };
+  assert.deepEqual(unitList(bare, 'imperial'), ['gal', 'cf', 'L', 'm3', 'MG', 'acft', 'lbH2O', 'floz', 'mL']); // the group as it stood before WW-01 plus WW-02, no ext members
+  assert.ok(unitList(bare, 'metric').includes('ML')); // metric reader gets the MG partner
   const dia = { unit: 'length', def: 'in', units: ['in', 'ft', 'mm', 'cm', 'm'] };
   assert.equal(targetUnit(dia, 'in', 'metric'), 'mm');
   assert.equal(targetUnit(dia, 'mm', 'imperial'), 'in');
   assert.equal(targetUnit(dia, 'ft', 'metric'), 'm');
 });
 
-test('units: unitList() always contains both systems for every declared unit', () => {
+test('units: unitList(metric) always contains both systems for every declared unit', () => {
   for (const c of calculators) for (const f of c.fields) {
     if (!f.unit) continue;
-    const list = unitList(f);
+    const list = unitList(f, 'metric');
     assert.ok(list.includes(f.def), `${c.id}.${f.k} list lacks def`);
     for (const u of list) for (const sys of ['metric', 'imperial']) {
       const t = targetUnit(f, u, sys);

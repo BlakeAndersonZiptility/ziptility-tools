@@ -11,7 +11,7 @@ export default [
       else if(b==="mgd") values.mgd=v.fm*v.mlvss*v.mg/v.bod; else if(b==="mlvss") values.mlvss=(v.bod*v.mgd)/(v.fm*v.mg);
       else if(b==="mg") values.mg=(v.bod*v.mgd)/(v.fm*v.mlvss); return {values,computed:[b],error:""}; },
     interpret:(m)=>{ if(m.fm==null) return null; return {level:"info",text:"Typical: conventional 0.2–0.5; extended aeration 0.05–0.15; high-rate >0.5 lb BOD/lb MLVSS·day."}; }},
-  { id:"mcrt", cat:"Process Control", domains:["wastewater"], title:"MCRT / Sludge Age (SRT)", formula:"Aeration TSS lb ÷ (Wasted + Effluent TSS lb/day)", note:"Mean cell residence time. Enter all but one.",
+  { id:"mcrt", cat:"Process Control", domains:["wastewater"], title:"MCRT / Sludge Age (SRT)", formula:"Aeration TSS lb ÷ (Wasted + Effluent TSS lb/day)", formulaSI:"Aeration TSS kg ÷ (Wasted + Effluent TSS kg/d)", note:"Mean cell residence time. Enter all but one.",
     fields:[{k:"mlss",label:"MLSS mg/L"},{k:"aer",label:"Aeration volume",unit:"volume",def:"MG",base:"MG",units:["MG","gal","ML","m3"]},{k:"was",label:"WAS mg/L"},{k:"wasq",label:"WAS",unit:"flow",def:"mgd",base:"mgd",units:["mgd","gpm","gpd","MLd","m3d","Lps"]},{k:"ess",label:"Effl TSS mg/L"},{k:"essq",label:"Effluent",unit:"flow",def:"mgd",base:"mgd",units:["mgd","gpm","gpd","MLd","m3d","Lps"]},{k:"mcrt",label:"MCRT days"}],
     solve:(v)=>{ const keys=["mlss","aer","was","wasq","ess","essq","mcrt"]; const blanks=keys.filter(k=>v[k]==null); if(blanks.length!==1) return {values:{},computed:[],error:"Enter all but one value."};
       const b=blanks[0], values={}; const num=(v.mlss!=null&&v.aer!=null)? v.mlss*v.aer*D834 : null;

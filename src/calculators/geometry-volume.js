@@ -55,14 +55,14 @@ export default [
       if(D!=null){ computed.push("V"); return {values:{D,R,V:(Math.PI/6)*D*D*D*C},computed,error:""}; }
       if(v.V!=null){ const d=Math.cbrt((v.V/C)*6/Math.PI); return {values:{D:d,R:d/2},computed:["D","R"],error:""}; }
       return {values:{},computed:[],error:"Enter diameter or radius."}; }},
-  { id:"tank-volume-field", cat:"Geometry & Volume", domains:["water","wastewater"], title:"Tank Volume (dia + depth)", formula:"gal = 0.0408 × dia in² × depth ft", note:"Quick field volume from a tape measure. Enter any two values.",
+  { id:"tank-volume-field", cat:"Geometry & Volume", domains:["water","wastewater"], title:"Tank Volume (dia + depth)", formula:"gal = 0.0408 × dia in² × depth ft", formulaSI:"m³ = 0.785 × dia m² × depth m", note:"Quick field volume from a tape measure. Enter any two values.",
     keywords:["tape measure","standpipe"],
     fields:[{k:"dia",label:"Diameter",unit:"length",def:"in",units:["in","ft","mm","cm","m"]},{k:"depth",label:"Water depth",unit:"length",def:"ft",units:["ft","in","m"]},{k:"gal",label:"Volume",unit:"volume",def:"gal",units:["gal","L","m3","MG"]}],
     solve:(v)=>{ if(v.dia!=null&&v.depth!=null) return {values:{gal:PI4*v.dia*v.dia*v.depth*C},computed:["gal"],error:""};
       if(v.gal!=null&&v.dia!=null&&v.dia!==0) return {values:{depth:v.gal/(PI4*v.dia*v.dia*C)},computed:["depth"],error:""};
       if(v.gal!=null&&v.depth!=null&&v.depth!==0) return {values:{dia:Math.sqrt(v.gal/(PI4*v.depth*C))},computed:["dia"],error:""};
       return {values:{},computed:[],error:"Enter any two values."}; }},
-  { id:"pipe-volume", cat:"Geometry & Volume", domains:["water","wastewater"], title:"Pipe Volume", formula:"gal = 0.0408 × dia in² × length ft", note:"Enter any two values.",
+  { id:"pipe-volume", cat:"Geometry & Volume", domains:["water","wastewater"], title:"Pipe Volume", formula:"gal = 0.0408 × dia in² × length ft", formulaSI:"m³ = 0.785 × dia m² × length m", note:"Enter any two values.",
     keywords:["main","flushing"], seeAlso:["main-disinfection"],
     fields:[{k:"dia",label:"Diameter",unit:"length",def:"in",units:["in","ft","mm","cm","m"]},{k:"len",label:"Length",unit:"length",def:"ft",units:["ft","m","mi"]},{k:"gal",label:"Volume",unit:"volume",def:"gal",units:["gal","L","m3","MG"]}],
     solve:(v)=>{ if(v.dia!=null&&v.len!=null) return {values:{gal:PI4*v.dia*v.dia*v.len*C},computed:["gal"],error:""};

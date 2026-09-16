@@ -14,14 +14,14 @@ export default [
       if(v.req!=null&&ct!=null){ values.ratio=ct/v.req; computed.push("ratio"); }
       return {values,computed,error:""}; },
     interpret:(m)=>{ if(m.ratio==null) return null; return m.ratio>=1 ? {level:"good",text:"CT ratio ≥ 1: the required disinfection CT is met."} : {level:"alert",text:"CT ratio < 1: required disinfection credit not met. Increase residual or contact time."}; }},
-  { id:"filtration-rate", cat:"Treatment & Filtration", domains:["water"], title:"Filtration / Backwash Rate", formula:"Flow gpm ÷ Filter area ft² = gpm/ft²", note:"Enter any two values.",
+  { id:"filtration-rate", cat:"Treatment & Filtration", domains:["water"], title:"Filtration / Backwash Rate", formula:"Flow gpm ÷ Filter area ft² = gpm/ft²", formulaSI:"Flow m³/h ÷ Filter area m² = m³/m²·h", note:"Enter any two values.",
     fields:[{k:"flow",label:"Flow",unit:"flow",def:"gpm",units:["gpm","mgd","gpd","Lps","m3h","MLd"]},{k:"area",label:"Area",unit:"area",def:"sqft",units:["sqft","ac","sqm","ha"]},{k:"rate",label:"Rate",unit:"arealflow",def:"gpmft2",base:"gpmft2",units:["gpmft2","gpdft2","m3m2h","m3m2d"]}],
     solve:(v)=>{ if(v.flow!=null&&v.area!=null) return {values:{rate:v.flow/v.area},computed:["rate"],error:""};
       if(v.flow!=null&&v.rate!=null) return {values:{area:v.flow/v.rate},computed:["area"],error:""};
       if(v.area!=null&&v.rate!=null) return {values:{flow:v.area*v.rate},computed:["flow"],error:""};
       return {values:{},computed:[],error:"Enter any two values."}; },
     interpret:(m)=>{ if(m.rate==null) return null; return {level:"info",text:"Typical filtration runs ~2–10 gpm/ft²; backwash ~15–20 gpm/ft². Compare to your filter's design."}; }},
-  { id:"flux", cat:"Treatment & Filtration", domains:["water"], title:"Membrane / Filter Flux", formula:"Flux gfd = Flow gpm ÷ Area ft² × 1440\n1 gfd ≈ 1.698 LMH", note:"Enter flow + area, or a flux (gfd or LMH) to convert / back-solve.",
+  { id:"flux", cat:"Treatment & Filtration", domains:["water"], title:"Membrane / Filter Flux", formula:"Flux gfd = Flow gpm ÷ Area ft² × 1440\n1 gfd ≈ 1.698 LMH", formulaSI:"Flux LMH = Flow L/s ÷ Area m² × 3600\n1 LMH ≈ 0.589 gfd", note:"Enter flow + area, or a flux (gfd or LMH) to convert / back-solve.",
     keywords:["membrane","lmh","gfd"],
     fields:[{k:"flow",label:"Flow",unit:"flow",def:"gpm",units:["gpm","mgd","gpd","Lps"]},{k:"area",label:"Area",unit:"area",def:"sqft",units:["sqft","sqm"]},{k:"gfd",label:"Flux gfd"},{k:"lmh",label:"Flux LMH"}],
     solve:(v)=>{ let gfd=null, src=null;
@@ -36,7 +36,7 @@ export default [
       if(src!=="lmh"){ values.lmh=gfd*LMH_PER_GFD; computed.push("lmh"); }
       return {values,computed,error:""}; },
     interpret:(m)=>{ if(m.gfd==null) return null; return {level:"info",text:"Low-pressure membranes commonly run ~10–25 gfd; compare to the membrane's design/spec flux."}; }},
-  { id:"ufrv", cat:"Treatment & Filtration", domains:["water"], title:"Unit Filter Run Volume (UFRV)", formula:"UFRV gal/ft² = Rate gpm/ft² × Run hours × 60", note:"Gallons filtered per ft² per run. Enter rate (or flow + area) + run hours.",
+  { id:"ufrv", cat:"Treatment & Filtration", domains:["water"], title:"Unit Filter Run Volume (UFRV)", formula:"UFRV gal/ft² = Rate gpm/ft² × Run hours × 60", formulaSI:"UFRV m³/m² = Rate m³/m²·h × Run hours", note:"Gallons filtered per ft² per run. Enter rate (or flow + area) + run hours.",
     keywords:["backwash","filter run"], seeAlso:["filtration-rate"],
     fields:[{k:"flow",label:"Flow",unit:"flow",def:"gpm",units:["gpm","mgd","gpd","Lps"]},{k:"area",label:"Area",unit:"area",def:"sqft",units:["sqft","sqm"]},{k:"rate",label:"Rate",unit:"arealflow",def:"gpmft2",base:"gpmft2",units:["gpmft2","gpdft2","m3m2h","m3m2d"]},{k:"hrs",label:"Run length hr"},{k:"ufrv",label:"UFRV",unit:"arealvolume",def:"galft2",units:["galft2","m3m2"]}],
     solve:(v)=>{ const values={}, computed=[]; let rate=v.rate;

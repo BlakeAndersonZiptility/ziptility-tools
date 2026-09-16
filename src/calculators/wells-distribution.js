@@ -3,7 +3,7 @@ import { C, LBS, LITERS, PSI2FT, GRGAL, KW, PI4, D834, Q_HYD } from '../constant
 
 export default [
 
-  { id:"drawdown", cat:"Wells & Distribution", domains:["water"], title:"Drawdown / Specific Capacity", formula:"Depth = Airline − (psi × 2.3067)\nSC = Yield ÷ Drawdown", note:"Airline method. Enter airline + psi readings + yield.",
+  { id:"drawdown", cat:"Wells & Distribution", domains:["water"], title:"Drawdown / Specific Capacity", formula:"Depth = Airline − (psi × 2.3067)\nSC = Yield ÷ Drawdown", formulaSI:"Depth = Airline − (kPa × 0.102)\nSC = Yield ÷ Drawdown", note:"Airline method. Enter airline + psi readings + yield.",
     fields:[{k:"air",label:"Air line",unit:"length",def:"ft",units:["ft","in","m","mm"]},{k:"poff",label:"Pump OFF pressure",unit:"pressure",def:"psi",units:["psi","kPa","bar"]},{k:"pon",label:"Pump ON pressure",unit:"pressure",def:"psi",units:["psi","kPa","bar"]},{k:"gpm",label:"Yield",unit:"flow",def:"gpm",units:["gpm","mgd","gpd","Lps","m3h","MLd"]},{k:"stat",label:"Static depth",unit:"length",def:"ft",units:["ft","in","m","mm"]},{k:"pump",label:"Pumping depth",unit:"length",def:"ft",units:["ft","in","m","mm"]},{k:"dd",label:"Drawdown",unit:"length",def:"ft",units:["ft","in","m","mm"]},{k:"sc",label:"Specific capacity",unit:"speccap",def:"gpmft",units:["gpmft","Lsm"]}],
     solve:(v)=>{ const values={}, computed=[]; let stat=v.stat, pump=v.pump;
       if(v.air!=null&&v.poff!=null){ stat=v.air-(v.poff*PSI2FT); values.stat=stat; computed.push("stat"); }
@@ -19,14 +19,14 @@ export default [
       return {values:{acct,lost,pct},computed:["acct","lost","pct"],error:""}; },
     interpret:(m)=>{ if(m.pct==null||!isFinite(m.pct)) return null; if(m.pct<10) return {level:"good",text:"Under 10%: generally considered low, well-controlled loss."};
       if(m.pct<=20) return {level:"watch",text:"10–20%: worth investigating; check metering accuracy and known leaks."}; return {level:"alert",text:"Over 20%: high loss. Prioritize leak detection and meter testing."}; }},
-  { id:"water-use", cat:"Wells & Distribution", domains:["water"], title:"Water Use (gpcd)", formula:"Water produced gpd ÷ Population = gpcd", note:"Gallons per capita per day. Enter any two values.",
+  { id:"water-use", cat:"Wells & Distribution", domains:["water"], title:"Water Use (gpcd)", formula:"Water produced gpd ÷ Population = gpcd", formulaSI:"Water produced m³/d ÷ Population × 1000 = L/capita/d", note:"Gallons per capita per day. Enter any two values.",
     fields:[{k:"gpd",label:"Produced",unit:"flow",def:"gpd",base:"gpd",units:["gpd","gpm","mgd","m3d","Lps"]},{k:"pop",label:"Population"},{k:"gpcd",label:"Per capita",unit:"percap",def:"gpcd",units:["gpcd","Lcd"]}],
     solve:(v)=>{ if(v.gpd!=null&&v.pop!=null) return {values:{gpcd:v.gpd/v.pop},computed:["gpcd"],error:""};
       if(v.gpd!=null&&v.gpcd!=null) return {values:{pop:v.gpd/v.gpcd},computed:["pop"],error:""};
       if(v.pop!=null&&v.gpcd!=null) return {values:{gpd:v.pop*v.gpcd},computed:["gpd"],error:""};
       return {values:{},computed:[],error:"Enter any two values."}; },
     interpret:(m)=>{ if(m.gpcd==null) return null; return {level:"info",text:"U.S. residential average is roughly 80–100 gpcd; whole-system numbers vary with industry and losses."}; }},
-  { id:"customer-leak", cat:"Wells & Distribution", domains:["water"], title:"Customer Leak Estimator", formula:"gal/day = gal/hr × 24 · $/month = gal/month ÷ 1000 × $/1000 gal", note:"Enter the leak rate any way you have it (meter sweep gal/hr works well). Add your rate for the bill impact.",
+  { id:"customer-leak", cat:"Wells & Distribution", domains:["water"], title:"Customer Leak Estimator", formula:"gal/day = gal/hr × 24 · $/month = gal/month ÷ 1000 × $/1000 gal", formulaSI:"L/day = L/hr × 24 · $/month = m³/month × $/m³", note:"Enter the leak rate any way you have it (meter sweep gal/hr works well). Add your rate for the bill impact.",
     fields:[{k:"gph",label:"Leak gal/hr"},{k:"gpd",label:"Gallons/day"},{k:"gpmo",label:"Gallons/month"},{k:"rate",label:"Rate $/1000 gal"},{k:"cost",label:"Cost $/month"}],
     solve:(v)=>{ let gpd=null, src=null;
       if(v.gph!=null){ gpd=v.gph*24; src="gph"; } else if(v.gpd!=null){ gpd=v.gpd; src="gpd"; } else if(v.gpmo!=null){ gpd=v.gpmo/30; src="gpmo"; }
@@ -37,7 +37,7 @@ export default [
       return {values,computed,error:""}; },
     interpret:(m)=>{ if(m.gpd==null) return null; return {level:"info",text:"For scale (EPA WaterSense): a dripping faucet wastes ~3,000 gal/yr; a running toilet ~200 gal/day."}; },
     links:[{label:"EPA WaterSense: Fix a Leak",href:"https://www.epa.gov/watersense/fix-leak-week"}]},
-  { id:"break-loss", cat:"Wells & Distribution", domains:["water"], title:"Main Break / Repair Loss", formula:"gpm ≈ 29.83 × C × d² × √psi\nTotal gal = gpm × minutes + flushing gal", note:"Order-of-magnitude estimate for incident reporting, not billing. C defaults to 0.6 (sharp-edged opening).",
+  { id:"break-loss", cat:"Wells & Distribution", domains:["water"], title:"Main Break / Repair Loss", formula:"gpm ≈ 29.83 × C × d² × √psi\nTotal gal = gpm × minutes + flushing gal", formulaSI:"L/s ≈ 0.001111 × C × d² × √kPa\nTotal m³ = L/s × minutes × 0.06 + flushing m³", note:"Order-of-magnitude estimate for incident reporting, not billing. C defaults to 0.6 (sharp-edged opening).",
     fields:[{k:"d",label:"Opening dia",unit:"length",def:"in",units:["in","mm","cm"]},{k:"c",label:"Orifice coeff C"},{k:"psi",label:"Pressure",unit:"pressure",def:"psi",units:["psi","kPa","bar"]},{k:"gpm",label:"Est. flow",unit:"flow",def:"gpm",units:["gpm","mgd","gpd","Lps","m3h","MLd"]},{k:"mins",label:"Duration min"},{k:"flush",label:"Flushing",unit:"volume",def:"gal",units:["gal","cf","MG","m3","L","ML"]},{k:"total",label:"Total lost",unit:"volume",def:"gal",units:["gal","cf","MG","m3","L","ML"]}],
     solve:(v)=>{ const cc=(v.c!=null&&v.c!==0)?v.c:0.6; let gpm=v.gpm; const values={}, computed=[];
       if(v.d!=null&&v.psi!=null){ if(v.psi<0) return {values:{},computed:[],error:"Pressure can't be negative."};

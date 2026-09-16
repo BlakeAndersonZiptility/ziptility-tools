@@ -31,6 +31,8 @@ function boot() {
   if (!mount || mount.dataset.zipBooted) return;
   mount.dataset.zipBooted = '1';
   document.body.classList.add('zs-booted');
+  /* The breadcrumb bar sits above the hero in its own wrapper and was printing as a near-empty first page. */
+  const bc = document.querySelector('nav[aria-label="Breadcrumb"]'); if (bc) (bc.closest('section') || bc.closest('.padding-global') || bc).classList.add('zs-print-hide');
   if (!document.getElementById('zip-sheets-styles')) {
     const s = document.createElement('style'); s.id = 'zip-sheets-styles'; s.textContent = CSS;
     document.head.appendChild(s);
@@ -40,12 +42,15 @@ function boot() {
   const byImp = new Map();
   SHEETS.forEach((sh) => sh.blocks.forEach((b) => b.lines.forEach((l) => { if (!byImp.has(norm(l.imp))) byImp.set(norm(l.imp), l); })));
   const items = [];
+  const heads = [];
   const titleOf = {};
   SHEETS.forEach((sh) => {
     titleOf[sh.id] = sh.title;
     const sec = document.getElementById(sh.id); if (!sec) return;
     /* Only a plain-text li is swappable: one carrying a link, strong or sup keeps its markup and its US text. */
     sec.querySelectorAll('li').forEach((li) => { if (li.children.length) return; const l = byImp.get(norm(li.textContent)); if (l && l.si) items.push({ li, l }); });
+    /* A block heading that names a US unit ("Pounds, dosage, and loading") has its own SI form. */
+    sh.blocks.forEach((b) => { if (!b.hSI) return; sec.querySelectorAll('h2, h3').forEach((h) => { if (!h.children.length && norm(h.textContent) === norm(b.h)) heads.push({ h, b }); }); });
   });
   /* What matched, for the verification scripts: every SI-bearing line should be on the page. */
   const expected = SHEETS.reduce((n, sh) => n + sh.blocks.reduce((m2, b) => m2 + b.lines.filter((l) => l.si).length, 0), 0);
@@ -68,7 +73,7 @@ function boot() {
   SHEETS.forEach((sh) => {
     const sec = document.getElementById(sh.id); const h2 = sec && sec.querySelector('h2'); if (!h2) return;
     const tools = el('div', 'zs-sheet-tools');
-    const b = el('button', 'zs-print-one', 'Print this sheet'); b.type = 'button';
+    const b = el('button', 'zs-print-one', 'Print this sheet'); b.type = 'button'; b.setAttribute('aria-label', 'Print this sheet: ' + sh.title);
     b.addEventListener('click', () => printSheets(sh.id));
     tools.appendChild(b); h2.insertAdjacentElement('afterend', tools);
   });
@@ -76,6 +81,7 @@ function boot() {
   function apply(sys) {
     const metric = sys === 'metric';
     items.forEach(({ li, l }) => { const want = metric ? l.si : l.imp; if (norm(li.textContent) !== norm(want)) li.textContent = want; });
+    heads.forEach(({ h, b }) => { const want = metric ? b.hSI : b.h; if (norm(h.textContent) !== norm(want)) h.textContent = want; });
     bImp.setAttribute('aria-pressed', String(!metric)); bMet.setAttribute('aria-pressed', String(metric));
     mount.dataset.system = sys;
   }
@@ -115,12 +121,12 @@ function boot() {
     const last = document.getElementById(SHEETS[SHEETS.length - 1].id); if (!last) return;
     const box = el('section', 'zs-offer'); box.id = 'zs-offer';
     const inner = el('div', 'zs-offer-inner');
-    inner.appendChild(el('h3', null, 'Want the PDF in your inbox?'));
+    inner.appendChild(el('h3', null, 'Get the PDF by email'));
     inner.appendChild(el('p', null, 'Printing works with no email, right from the buttons above. If you would rather have the PDF sent to you, in the system you are using now, leave an address and we will send the link.'));
     const form = el('form', 'zs-offer-form'); form.noValidate = true;
     const f1 = field('Name', 'zs-name', 'name', 'text'), f2 = field('Work email', 'zs-email', 'email', 'email'), f3 = field('Utility or system (optional)', 'zs-util', 'organization', 'text');
     const submit = el('button', 'zs-offer-submit', 'Send it to me'); submit.type = 'submit';
-    const fine = el('p', 'zs-offer-fine', 'An offer, never a gate: nothing on this page sits behind this form. We send the sheet and the occasional note for small-system operators. Unsubscribe any time.');
+    const fine = el('p', 'zs-offer-fine', 'An offer, never a gate: nothing on this page sits behind this form. We send the link and nothing else.');
     const msg = el('p', 'zs-offer-msg'); msg.setAttribute('aria-live', 'polite');
     form.append(f1.wrap, f2.wrap, f3.wrap, submit, fine, msg);
     form.addEventListener('submit', (e) => {

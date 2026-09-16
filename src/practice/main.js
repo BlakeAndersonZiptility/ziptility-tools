@@ -8,6 +8,8 @@ import { TESTS, BANK_BASE_URL } from './manifest.js';
 import { loadBank } from './bank-loader.js';
 import { renderPicker, renderLoading, renderError } from './picker.js';
 import { initQuiz } from './quiz-engine.js';
+import { withVariants } from './variants.js';
+import { getSystem } from '../shared/units-store.js';
 
 function boot() {
   const mount = document.getElementById('ziptility-practice');
@@ -87,7 +89,10 @@ function boot() {
              embed's data-test use, never the bank's internal id. */
           slug: test.slug
         };
-        controller = initQuiz(stage, bank, cfg, { onExit: deepLinked ? null : showPicker });
+        /* WW-01 step 3: a metric reader gets each item's SI version where one
+           exists (variants.js). Applied here, once, so the engine sees one
+           question shape. */
+        controller = initQuiz(stage, withVariants(bank, getSystem()), cfg, { onExit: deepLinked ? null : showPicker });
         /* test-only reach-in: mirrors the calculator's debug-hook idiom.
            Never set outside an explicit opt-in, so production pages never
            expose the controller. */

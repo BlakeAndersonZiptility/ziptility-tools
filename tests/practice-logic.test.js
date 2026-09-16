@@ -125,3 +125,29 @@ test('drawQuestions: displayed correct-answer position spreads across A-D even w
   assert.ok(distinct.size > 1,
     `expected displayed-position spread across 12 questions, got only position(s) ${[...distinct].join(', ')} (positions: ${positions.join(', ')})`);
 });
+
+// ---- WW-01 step 3: SI item variants (variants.js) --------------------------------------------
+import { applyVariant, withVariants } from '../src/practice/variants.js';
+test('variants: metric shows the SI version, imperial the parent, ids never change', () => {
+  const q = { id: 'XC-ALL-MATH-0001', text: 'A pump delivers 350 gpm. What is this in MGD?', choices: ['0.50 MGD', '0.35 MGD', '5.04 MGD', '0.24 MGD'], correctIndex: 0, explanation: '350 x 1440 / 1e6', formula: 'MGD = gpm x 1440 / 1,000,000', domain: 'MATH', calculator: 'gpm-mgd',
+    si: { text: 'A pump delivers 22 L/s. What is this in ML/d?', choices: ['1.9 ML/d', '2.2 ML/d', '0.19 ML/d', '22 ML/d'], correctIndex: 0, explanation: '22 x 0.0864', formula: 'ML/d = L/s x 0.0864' } };
+  const imp = applyVariant(q, 'imperial'); assert.strictEqual(imp, q);
+  const met = applyVariant(q, 'metric');
+  assert.equal(met.id, q.id); assert.equal(met.text, q.si.text); assert.deepEqual(met.choices, q.si.choices);
+  assert.equal(met.correctIndex, 0); assert.equal(met.explanation, q.si.explanation); assert.equal(met.formula, q.si.formula);
+  assert.equal(met.calculator, 'gpm-mgd'); assert.equal(met.unitSystem, 'metric');
+  assert.equal(q.text.includes('gpm'), true, 'parent untouched');
+  const plain = { id: 'x', text: 't', choices: ['a','b','c','d'], correctIndex: 2, explanation: 'e' };
+  assert.strictEqual(applyVariant(plain, 'metric'), plain);
+  const noFormula = applyVariant({ ...q, si: { ...q.si, formula: undefined } }, 'metric');
+  assert.equal(noFormula.formula, q.formula, 'a variant without its own formula keeps the parent formula');
+});
+test('variants: withVariants counts what the note needs and copies the bank', () => {
+  const bank = { id: 'b', questions: [ { id: '1', text: 'a', si: { text: 'a-si', choices: ['1','2','3','4'], correctIndex: 1, explanation: 'x' } }, { id: '2', text: 'b' } ] };
+  const met = withVariants(bank, 'metric');
+  assert.deepEqual(met.variants, { system: 'metric', total: 2, withSi: 1 });
+  assert.equal(met.questions[0].text, 'a-si'); assert.equal(met.questions[1].text, 'b');
+  assert.equal(bank.questions[0].text, 'a', 'source bank untouched');
+  const imp = withVariants(bank, 'imperial');
+  assert.equal(imp.questions[0].text, 'a'); assert.equal(imp.variants.withSi, 1);
+});

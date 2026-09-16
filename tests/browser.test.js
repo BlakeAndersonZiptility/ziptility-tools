@@ -154,6 +154,16 @@ await page.fill('#tank-chlorination__gal', '50000');
 await page.fill('#tank-chlorination__dose', '10');
 await page.click('#calc-tank-chlorination');
 ok('liquid side computes with default 12.5%', (await page.inputValue('#tank-chlorination__liqpct')) === '12.5');
+// WW-02: the small liquid units for dosing from a jug
+ok('liquid-to-add computes 4 gal', Math.abs(parseFloat(await page.inputValue('#tank-chlorination__liqgal')) - 4) < 1e-6);
+const liqUnits = await page.evaluate(() => Array.from(document.querySelectorAll('#tank-chlorination__liqgal__u option')).map(o => o.value));
+ok('liquid-to-add offers gal, fl oz, L, mL in that order', liqUnits.join(',') === 'gal,floz,L,mL');
+await page.selectOption('#tank-chlorination__liqgal__u', 'floz');
+ok('4 gal reads 512 fl oz', Math.abs(parseFloat(await page.inputValue('#tank-chlorination__liqgal')) - 512) < 1e-6);
+await page.selectOption('#tank-chlorination__liqgal__u', 'mL');
+const mlVal = parseFloat((await page.inputValue('#tank-chlorination__liqgal')).replace(/,/g, ''));
+ok('4 gal reads ~15,141.65 mL, got ' + mlVal, Math.abs(mlVal - 15141.65) < 0.1);
+await page.selectOption('#tank-chlorination__liqgal__u', 'gal');
 await page.click('.seg button[data-v="granular"]');
 ok('toggle switches sides', await page.evaluate(() =>
   document.getElementById('tank-chlorination__liqpct').closest('.field').style.display === 'none'

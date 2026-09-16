@@ -2,8 +2,9 @@
    Only changes: wrapped in initApp(), registry/units imported, and
    optional per-calculator resource links rendered on the card. */
 import { calculators, CAT_ORDER } from '../registry.js';
-import { UNITS } from '../units.js';
+import { UNITS, uConv, unitList, targetUnit, fieldToBase, fieldFromBase } from '../units.js';
 import { trackComplete } from '../shared/analytics.js';
+import { getSystem, setSystem, subscribe } from '../shared/units-store.js';
 
 export function initApp(){
   const grid=document.getElementById('grid'), catSelect=document.getElementById('catSelect'), countEl=document.getElementById('count'), searchEl=document.getElementById('search'), catWrap=document.getElementById('catWrap');
@@ -20,9 +21,16 @@ export function initApp(){
     if(Math.abs(n)>=1000) return n.toLocaleString('en-US',{maximumFractionDigits:2}); return String(parseFloat(n.toFixed(4))); }
   function rawNum(el){ const raw=el.value.replace(/,/g,'').trim(); if(raw==='') return null; const n=parseFloat(raw); return isFinite(n)?n:null; }
   function selFor(inputEl){ return document.getElementById(inputEl.id+'__u'); }
+  /* The only conversion boundary (WW-01): a solver receives the field's
+     base unit (its group anchor, or `base` when the field names the unit
+     its math expects) and hands values back the same way; the select
+     decides what the reader sees. */
   function readField(f, inputEl){ const n=rawNum(inputEl); if(n==null) return null;
-    if(f.unit){ const u=selFor(inputEl).value; return n*UNITS[f.unit][u].f; } return n; }
-  function writeField(f, inputEl, baseVal){ if(f.unit){ const u=selFor(inputEl).value; inputEl.value=fmt(baseVal/UNITS[f.unit][u].f); } else inputEl.value=fmt(baseVal); }
+    if(f.unit){ const u=selFor(inputEl).value; return fieldToBase(f, n, u); } return n; }
+  function writeField(f, inputEl, baseVal){ if(f.unit){ const u=selFor(inputEl).value; inputEl.value=fmt(fieldFromBase(f, baseVal, u)); } else inputEl.value=fmt(baseVal); }
+  /* The unit a field shows on first paint in the current system. */
+  function initialUnit(f){ return getSystem()==='metric' ? targetUnit(f, f.def, 'metric') : f.def; }
+  function formulaText(c){ return (getSystem()==='metric' && c.formulaSI) ? c.formulaSI : c.formula; }
   function availableCats(mode){ return CAT_ORDER.filter(c=>calculators.some(k=>k.cat===c && k.domains.includes(mode))); }
   function buildSelect(){ const cats=availableCats(state.mode); if(!cats.includes(state.cat)) state.cat=cats[0];
     catSelect.innerHTML=cats.map(c=>'<option value="'+c+'">'+c+'</option>').join(''); catSelect.value=state.cat; }
@@ -41,9 +49,27 @@ export function initApp(){
     return rows.length? '<div class="card-links">'+rows.join('<br>')+'</div>' : '';
   }
   function unitSelectHtml(c, f){
-    const list=f.units||Object.keys(UNITS[f.unit]);
-    const opts=list.map(u=>'<option value="'+u+'"'+(u===f.def?' selected':'')+'>'+UNITS[f.unit][u].label+'</option>').join('');
-    return '<select id="'+c.id+'__'+f.k+'__u" data-cur="'+f.def+'" aria-label="unit">'+opts+'</select>';
+    const list=unitList(f), init=initialUnit(f);
+    const opts=list.map(u=>'<option value="'+u+'"'+(u===init?' selected':'')+'>'+UNITS[f.unit][u].label+'</option>').join('');
+    return '<select id="'+c.id+'__'+f.k+'__u" data-cur="'+init+'" aria-label="unit">'+opts+'</select>';
+  }
+  /* One flip moves every rendered field at once (WW-01 shape a). A typed
+     value is converted in place, never re-derived, so what the reader
+     entered is still what the reader entered, in the other unit. The
+     formula chips and the reference constants follow. */
+  function applySystem(sys){
+    document.querySelectorAll('.sys-seg button').forEach(b=>b.setAttribute('aria-pressed', String(b.dataset.sys===sys)));
+    const ref=document.querySelector('.ref'); if(ref) ref.dataset.system=sys;
+    grid.querySelectorAll('.card').forEach(card=>{
+      const c=calculators.find(k=>k.id===card.id); if(!c) return;
+      const chip=card.querySelector('.formula'); if(chip) chip.textContent=formulaText(c);
+      c.fields.forEach(f=>{ if(!f.unit) return;
+        const inp=document.getElementById(c.id+'__'+f.k), sel=selFor(inp); if(!inp||!sel) return;
+        const oldU=sel.dataset.cur, newU=targetUnit(f, oldU, sys); if(newU===oldU) return;
+        if(!sel.querySelector('option[value="'+newU+'"]')){ const o=document.createElement('option'); o.value=newU; o.textContent=UNITS[f.unit][newU].label; sel.appendChild(o); }
+        const cur=rawNum(inp); if(cur!=null) inp.value=fmt(uConv(cur, oldU, newU, f.unit));
+        sel.value=newU; sel.dataset.cur=newU; });
+    });
   }
   function renderGrid(){
     grid.innerHTML='';
@@ -73,7 +99,7 @@ export function initApp(){
         const hide=f.show&&f.show!==tgl;
         fieldsHtml+='<div class="field"'+(f.show?' data-show="'+f.show+'"':'')+(hide?' style="display:none"':'')+'><label for="'+c.id+'__'+f.k+'">'+f.label+'</label>'+body+'</div>'; });
       const tglHtml=c.toggle? '<div class="seg" role="group">'+c.toggle.options.map(o=>'<button type="button" data-v="'+o.v+'" aria-pressed="'+(o.v===tgl)+'">'+o.label+'</button>').join('')+'</div>' : '';
-      card.innerHTML='<div class="card-head">'+(searching?'<span class="card-tag">'+c.cat+'</span>':'')+'<h2>'+c.title+'</h2><div class="formula">'+c.formula+'</div><p class="note">'+c.note+'</p>'+tglHtml+'</div>'
+      card.innerHTML='<div class="card-head">'+(searching?'<span class="card-tag">'+c.cat+'</span>':'')+'<h2>'+c.title+'</h2><div class="formula">'+formulaText(c)+'</div><p class="note">'+c.note+'</p>'+tglHtml+'</div>'
         +'<div class="fields '+(c.fields.length<=2?'one-col':'')+'">'+fieldsHtml+'</div>'
         +'<div class="actions"><button class="btn btn-calc" id="calc-'+c.id+'" type="button">Calculate</button><button class="btn btn-clear" id="clear-'+c.id+'" type="button">Clear</button><button class="btn btn-copy" id="copy-'+c.id+'" type="button">Copy</button></div>'
         +'<div class="msg" id="msg-'+c.id+'" aria-live="polite"></div><div class="insight" id="ins-'+c.id+'" aria-live="polite"></div>'
@@ -95,7 +121,7 @@ export function initApp(){
         i.addEventListener('keydown',e=>{ if(e.key==='Enter') run(); });
         i.addEventListener('input',()=>i.classList.remove('computed'));
         if(f.unit){ const sel=selFor(i); sel.addEventListener('change',()=>{ const oldU=sel.dataset.cur, newU=sel.value;
-          const cur=rawNum(i); if(cur!=null){ i.value=fmt(cur*UNITS[f.unit][oldU].f/UNITS[f.unit][newU].f); } sel.dataset.cur=newU; }); }
+          const cur=rawNum(i); if(cur!=null){ i.value=fmt(uConv(cur, oldU, newU, f.unit)); } sel.dataset.cur=newU; }); }
       });
     });
   }
@@ -134,6 +160,9 @@ export function initApp(){
     document.body.appendChild(ta); ta.select(); try{ document.execCommand('copy'); done(); }catch(e){} document.body.removeChild(ta); }
 
   document.querySelectorAll('.mode-btn').forEach(b=>b.addEventListener('click',()=>setMode(b.dataset.m)));
+  document.querySelectorAll('.sys-seg button').forEach(b=>b.addEventListener('click',()=>setSystem(b.dataset.sys)));
+  subscribe(applySystem);
+  applySystem(getSystem()); /* the strip and the constants agree with the remembered system on first paint */
   catSelect.addEventListener('change',()=>{ state.cat=catSelect.value; renderGrid(); });
   searchEl.addEventListener('input',()=>{ state.query=searchEl.value; renderGrid(); });
 

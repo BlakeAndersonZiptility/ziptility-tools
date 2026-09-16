@@ -18,8 +18,13 @@ export function buildShell(){
 <header>
   <div class="head-wrap">
     <div class="head-title"><h1>Operator Calculator</h1><p>Water &amp; wastewater system math</p></div>
-    <div class="head-spacer"></div>
-    <div class="head-hint">Pick units per field &middot; enter decimals (1&#39;6&quot; = 1.5&#39;)</div>
+    <div class="sys">
+      <div class="seg sys-seg" role="group" aria-label="Unit system">
+        <button type="button" data-sys="imperial" aria-pressed="true"><span class="long">US customary</span><span class="short" aria-hidden="true">US</span></button>
+        <button type="button" data-sys="metric" aria-pressed="false">Metric</button>
+      </div>
+      <p class="sys-note"><span class="long">Math runs in US customary exam-sheet units, so 8.34, 7.48, 694.4 and 2.31 stay exact; metric is converted at the edge and remembered on this device. Pick units per field &middot; enter decimals (1&#39;6&quot; = 1.5&#39;).</span><span class="short">Math runs in US customary units; metric converts at the edge.</span></p>
+    </div>
   </div>
 </header>
 
@@ -70,13 +75,19 @@ export function buildShell(){
   <div class="disclaimer">
     <strong>Always verify before field use.</strong> This is a working aid for common operator math, not a substitute for your own check, your system&#39;s engineering, or regulatory requirements. The guidance notes are general rules of thumb: your permit, process, and state rules govern. Confirm any number that drives a compliance, dosing, or safety decision.
   </div>
-  <div class="ref">
+  <div class="ref" data-system="imperial">
     <h3>Reference constants</h3>
-    <div class="ref-grid">
+    <div class="ref-grid" data-sys="imperial">
       <span>1 cu ft = 7.4805 gal</span><span>1 gal = 8.3454 lbs</span><span>8.34 lb/gal (dosage)</span>
       <span>1 gal = 3.78541 L</span><span>1 psi = 2.3067 ft head</span><span>1 MGD = 694 gpm</span>
       <span>1 cfs = 0.6463 MGD</span><span>1 gr/gal = 17.1181 mg/L</span><span>1 hp = 0.746 kW</span>
       <span>&pi;/4 = 0.7854</span><span>1 PE = 0.17 lb BOD/day</span><span>SDI = 100 / SVI</span>
+    </div>
+    <div class="ref-grid" data-sys="metric">
+      <span>1 m&sup3; = 1,000 L</span><span>1 L water = 1 kg</span><span>kg/day = mg/L &times; ML/d (dosage)</span>
+      <span>1 gal = 3.78541 L</span><span>1 kPa = 0.102 m head</span><span>1 ML/d = 11.574 L/s</span>
+      <span>1 m&sup3;/s = 86.4 ML/d</span><span>1 gr/gal = 17.1181 mg/L</span><span>1 kW = 1.341 hp</span>
+      <span>&pi;/4 = 0.7854</span><span>1 PE = 0.077 kg BOD/day</span><span>SDI = 100 / SVI</span>
     </div>
   </div>
   <div class="colophon">

@@ -1,0 +1,27 @@
+name: Test Formula Sheets
+on:
+  pull_request:
+  push:
+    branches: [main]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm ci
+      - name: Formula sheets data: one list, both systems
+        run: npm run test:sheets
+      - name: Build dev bundle
+        run: npm run build:sheets:dev && npm run build:sheets:preview
+      - name: Neutral-lane rules and sandbox safety
+        # The sheets page is in the ungated tools lane: print works with no email, the offer is
+        # never a gate (WW-11 ruling), checked in CI because the failure is a policy breach.
+        run: node scripts/check-neutral-lane.mjs src/sheets
+      - name: Install Playwright Chromium
+        run: npx playwright install --with-deps chromium
+      - name: Browser tests - the completion payload carries the rendered verdict
+        # The flip, the per-sheet print and the PDF title only exist rendered.
+        run: node tests/sheets-browser.test.js

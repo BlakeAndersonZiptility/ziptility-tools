@@ -1,0 +1,39 @@
+/* Formula sheets bundle: the unit strip, the per-sheet print buttons, the
+   offer, and the print-one rule. Tokens follow DS 4.0/4.1 (navy #0c1f30,
+   tomato-press #c02100 for any fill that carries text, THE radius .625rem);
+   the page's own type (Archivo/Geist) is inherited, nothing is loaded here.
+   Compact by rule: the strip is one row, 38px controls, 36px on a phone. */
+#ziptility-sheets{ margin:14px 0 6px; }
+#ziptility-sheets .zs-strip{ display:flex; align-items:center; flex-wrap:wrap; gap:8px 14px; }
+#ziptility-sheets .zs-seg{ display:inline-flex; background:#eef2f6; border:1px solid #d5dde6; border-radius:999px; padding:3px; gap:3px; }
+#ziptility-sheets .zs-seg button{ cursor:pointer; font-family:inherit; font-weight:600; font-size:12px; color:#42515f; background:transparent; border:none; border-radius:999px; min-height:38px; padding:0 14px; transition:all .14s ease; }
+#ziptility-sheets .zs-seg button:hover{ color:#0c1f30; }
+#ziptility-sheets .zs-seg button[aria-pressed="true"]{ color:#fff; background:#0c1f30; }
+#ziptility-sheets .zs-seg button:focus-visible{ outline:2px solid #0c1f30; outline-offset:2px; }
+#ziptility-sheets .zs-note{ margin:0; font-size:12.5px; line-height:1.4; color:#42515f; max-width:520px; }
+.zs-sheet-tools{ margin:-4px 0 12px; }
+.zs-print-one{ cursor:pointer; font-family:inherit; font-weight:600; font-size:12.5px; color:#0c1f30; background:#fff; border:1.5px solid #d5dde6; border-radius:.625rem; min-height:36px; padding:0 12px; }
+.zs-print-one:hover{ border-color:#0c1f30; }
+.zs-print-one:focus-visible{ outline:2px solid #0c1f30; outline-offset:2px; }
+.zs-offer{ padding:28px 0 8px; }
+.zs-offer-inner{ max-width:560px; margin:0 auto; padding:22px 22px 18px; border:1.5px solid #d5dde6; border-radius:.625rem; background:#fff; }
+.zs-offer h3{ margin:0 0 6px; font-size:18px; color:#0c1f30; }
+.zs-offer p{ margin:0 0 12px; font-size:14px; line-height:1.5; color:#42515f; }
+.zs-field{ display:flex; flex-direction:column; gap:4px; margin:0 0 10px; }
+.zs-field label{ font-size:12px; font-weight:600; color:#42515f; }
+.zs-field input{ font-family:inherit; font-size:16px; padding:10px 12px; border:1.5px solid #d5dde6; border-radius:.625rem; min-height:44px; }
+.zs-field input:focus{ outline:none; border-color:#0c1f30; box-shadow:0 0 0 3px rgba(12,31,48,.12); }
+.zs-offer-submit{ cursor:pointer; font-family:inherit; font-weight:600; font-size:14px; color:#fff; background:#c02100; border:none; border-radius:.625rem; min-height:44px; padding:0 18px; }
+.zs-offer-submit:hover{ background:#901800; }
+.zs-offer-submit[disabled]{ opacity:.6; cursor:default; }
+.zs-offer-fine{ font-size:12px; margin:10px 0 0; }
+.zs-offer-msg{ font-size:13px; margin:8px 0 0; color:#0c1f30; }
+@media (max-width:560px){
+  #ziptility-sheets .zs-seg button{ min-height:36px; padding:0 11px; }
+}
+@media print{
+  #ziptility-sheets, .zs-sheet-tools, .zs-offer{ display:none !important; }
+  /* Print one sheet: every other section goes, and the chosen one does not start on a fresh page. */
+  body.zs-print-one section[id]:not(.zs-target){ display:none !important; }
+  body.zs-print-one .zs-target{ break-before:auto !important; page-break-before:auto !important; }
+}

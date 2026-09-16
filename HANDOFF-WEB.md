@@ -47,6 +47,17 @@ which ships on the setup and score screens until the SI item variants land
 (WW-01 step 3). No embed attribute changes; the same one-line repoint per
 page.
 
+**Cut 2026-09-16 (WW-11 + WW-01 step 2):** `sheets-v1.0.0.js`, a NEW bundle for
+`/tools/formula-sheets`. The page keeps its four server-rendered sheets; the
+bundle adds the same US customary / Metric strip (one shared `zip-units`
+preference), swaps every formula line to its SI form in place from one data
+list (`src/sheets/lines.js`, whose US side is the live page's text), adds a
+"Print this sheet" button per sheet, names the system (and the sheet) in the
+PDF title at print time, and renders the "email me the PDF" offer only once a
+HubSpot form id is configured (`SHEETS-FORM-SPEC.md`; Blake's approval). New
+embed on that page, in the hero after the intro paragraph:
+`<div id="ziptility-sheets"></div><script defer src=".../dist/sheets-v1.0.0.js"></script>`.
+
 Deploy is one edit: change the version in the `<script src>` and publish.
 Artifacts are immutable, so **merging to main never changes what a visitor
 sees**. Rollback is the same edit in reverse and takes about a minute.
@@ -334,6 +345,7 @@ reads:
 | `tool_complete` | practice v1.7.0+ | the score screen renders; once per finished attempt (a retake is a new attempt; the exam timer running out counts) | `practice-<slug>` (the discipline page's URL segment: `practice-operator-math`, `practice-water-treatment`, `practice-water-distribution`, `practice-wastewater-treatment`, `practice-wastewater-collection`, `practice-regulations`) | `tool_mode` (`practice` / `exam`), `tool_size`, `tool_score_pct`, `tool_passed` (`yes` / `no` at the 70 line), `tool_attempt` (1 = first finish of that bank in this browser), `tool_deep_linked` (`yes` on a discipline page, `no` from the hub) |
 | `tool_progress` | practice v1.7.0+ | the first answer past 25, 50 and 75 percent of the draw, once each per attempt; a resumed session does not re-fire milestones already behind it | `practice-<slug>` | `tool_answered`, `tool_total`, `tool_percent` |
 | `tool_complete` | manager v1.4.0+ | a verdict renders; once per page load | `repair-or-replace` / `cost-of-turnover` / `energy-cost` | `tool_verdict`, on `repair-or-replace` only (`REPLACE` / `KEEP REPAIRING` / `ON THE LINE`, the same string the hero badge shows). The other two tools compute no verdict and send the key not at all, never an empty one. |
+| `tool_complete` | sheets v1.0.0+ | a print starts (beforeprint), once per print | `formula-sheets` | `tool_mode` (`imperial` / `metric`, the system printed), `tool_calc` (the sheet id for a single-sheet print, `all-four` for the page) |
 | `tool_complete` | reportcard v1.2.0+ | the results screen; once per page load | `report-card` | `tool_practical_grade`, `tool_overall_grade`, `tool_capped`, `tool_redline_count`, `tool_answered`, `tool_complete` |
 | `tool_progress` | reportcard v1.2.0+ | 25, 50, 75 percent of dimensions answered | `report-card` | `tool_answered`, `tool_total`, `tool_percent` |
 

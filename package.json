@@ -22,7 +22,12 @@
     "build:page-content": "node scripts/build-page-content.mjs",
     "test:page-content": "node --test tests/page-content.test.js",
     "test:cross-tool": "node --test tests/cross-tool-links.test.js",
-    "test:all": "npm run test && npm run test:practice && npm run test:manager && npm run test:reportcard && npm run test:page-content && npm run test:cross-tool"
+    "test:all": "npm run test && npm run test:practice && npm run test:manager && npm run test:reportcard && npm run test:page-content && npm run test:cross-tool && npm run test:sheets",
+    "build:sheets:dev": "esbuild src/sheets/main.js --bundle --format=iife --loader:.css=text --outfile=dist/sheets-dev.js",
+    "dev:sheets": "esbuild src/sheets/main.js --bundle --format=iife --loader:.css=text --outfile=dist/sheets-dev.js --watch --servedir=.",
+    "build:sheets:preview": "node scripts/build-sheets-preview.mjs",
+    "test:sheets": "node --test tests/sheets.test.js",
+    "test:sheets:browser": "npm run build:sheets:dev && npm run build:sheets:preview && node tests/sheets-browser.test.js"
   },
   "devDependencies": {
     "esbuild": "^0.25.0",

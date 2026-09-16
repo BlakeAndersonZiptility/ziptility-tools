@@ -13,8 +13,8 @@ export default [
   { id:"gallons-acre-feet", cat:"Conversions", domains:["water","wastewater"], title:"Gallons ↔ Acre-Feet", formula:"1 acre-foot = 325,851 gal", note:"Enter one value, handy for annual pumpage / withdrawal reports filed in acre-feet.",
     keywords:["ADWR","acre feet","pumping report","withdrawal"],
     fields:[{k:"gal",label:"Gallons"},{k:"MG",label:"Million gallons"},{k:"acft",label:"Acre-feet"}], solve:convSolve({gal:1, MG:1e-6, acft:1/325851})},
-  { id:"specific-gravity", cat:"Conversions", domains:["water","wastewater"], title:"Specific Gravity", formula:"Substance lb/gal ÷ 8.34 = SG", note:"Relative to water. Enter one value.",
-    fields:[{k:"lbgal",label:"Weight lb/gal"},{k:"sg",label:"Specific Gravity"}], solve:convSolve({lbgal:D834, sg:1})},
+  { id:"specific-gravity", cat:"Conversions", domains:["water","wastewater"], title:"Specific Gravity", formula:"Substance lb/gal ÷ 8.34 = SG", formulaSI:"Substance kg/L ÷ 1.0 = SG", note:"Relative to water. Enter one value.",
+    fields:[{k:"lbgal",label:"Weight",unit:"density",def:"lbgal",units:["lbgal","kgL"]},{k:"sg",label:"Specific Gravity"}], solve:convSolve({lbgal:D834, sg:1})},
   { id:"temp", cat:"Conversions", domains:["water","wastewater"], title:"Temperature", formula:"(°F − 32) × 5/9 = °C", note:"Enter one value.",
     fields:[{k:"f",label:"Fahrenheit"},{k:"c",label:"Celsius"}],
     solve:(v)=>{ if(v.f!=null) return {values:{c:(v.f-32)*5/9},computed:["c"],error:""}; if(v.c!=null) return {values:{f:v.c*9/5+32},computed:["f"],error:""};

@@ -31,6 +31,22 @@ the "Liquid to add" field on well, tank and main disinfection offers gal,
 fl oz, L, mL in that order (the default stays gal; no cups, by ruling). No
 embed attribute changes; the same one-line repoint.
 
+**Cut 2026-09-16 (WW-01 step 1):** `calculator-v2.11.0.js` and `practice-v1.8.0.js`.
+The calculator gains the global US customary / Metric strip in its header
+(Blake ruling 2026-09-10, shape a: one persisted preference, every unit
+select on screen flips at once, the typed value converts in place, the math
+stays US customary and converts at the edge, so 8.34, 7.48, 694.4 and 2.31
+stay exact). Every field that used to bake a unit into its label now carries
+a unit select; unit-invariant fields (mg/L, percent, ratios, minutes) do not
+flip. Metric readers see an SI formula chip on the 34 cards where the
+constants change. The preference lives in `localStorage` under ONE key,
+`zip-units` (`imperial` | `metric`, imperial when absent), read by every
+bundle through `src/shared/units-store.js`. The practice bundle reads it to
+word its interim note ("math questions use US customary exam-sheet units"),
+which ships on the setup and score screens until the SI item variants land
+(WW-01 step 3). No embed attribute changes; the same one-line repoint per
+page.
+
 Deploy is one edit: change the version in the `<script src>` and publish.
 Artifacts are immutable, so **merging to main never changes what a visitor
 sees**. Rollback is the same edit in reverse and takes about a minute.

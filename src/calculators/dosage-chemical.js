@@ -12,8 +12,8 @@ export default [
       return {values:{},computed:[],error:"Enter any two values."}; },
     interpret:(m)=>{ if(m.residual==null) return null; if(m.residual<0.2) return {level:"watch",text:"Residual under 0.2 mg/L: may be too low to hold protection through distribution."};
       if(m.residual<=4.0) return {level:"good",text:"Residual within the usual 0.2–4.0 mg/L window (free chlorine MRDL = 4.0)."}; return {level:"alert",text:"Residual above 4.0 mg/L: exceeds the free chlorine MRDL."}; }},
-  { id:"chem-feed", cat:"Dosage & Chemical", domains:["water","wastewater"], title:"Chemical Feed Rate", formula:"(Dose × Flow MGD × 8.34) ÷ Purity = lbs/day", note:"Enter dose + flow. Purity defaults to 100%.",
-    fields:[{k:"dose",label:"Dose mg/L"},{k:"mgd",label:"Flow MGD"},{k:"pur",label:"Purity %"},{k:"feed",label:"Feed lbs/day"}],
+  { id:"chem-feed", cat:"Dosage & Chemical", domains:["water","wastewater"], title:"Chemical Feed Rate", formula:"(Dose × Flow MGD × 8.34) ÷ Purity = lbs/day", formulaSI:"(Dose × Flow ML/d) ÷ Purity = kg/d", note:"Enter dose + flow. Purity defaults to 100%.",
+    fields:[{k:"dose",label:"Dose mg/L"},{k:"mgd",label:"Flow",unit:"flow",def:"mgd",base:"mgd",units:["mgd","gpm","gpd","MLd","m3d","Lps"]},{k:"pur",label:"Purity %"},{k:"feed",label:"Feed lbs/day"}],
     solve:(v)=>{ const p=(v.pur!=null&&v.pur!==0)?v.pur:100, pGiven=v.pur!=null; const K=D834*100/p; const values={}, computed=[];
       if(!pGiven){ values.pur=100; computed.push("pur"); }
       if(v.dose!=null&&v.mgd!=null&&v.feed==null){ values.feed=v.dose*v.mgd*K; computed.push("feed"); }

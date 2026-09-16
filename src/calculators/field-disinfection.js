@@ -23,15 +23,15 @@ function addSources(v,values,computed,lbs){
 }
 const DIA={k:"dia",label:"Diameter",unit:"length",def:"in",units:["in","ft","mm","cm","m"]};
 const LIQ=[{k:"liqpct",label:"Liquid strength %",show:"liquid"},{k:"liqgal",label:"Liquid to add",unit:"volume",def:"gal",units:["gal","floz","L","mL"],show:"liquid"}];
-const DRY=[{k:"drypct",label:"Granular strength %",show:"granular"},{k:"drylbs",label:"Granular product lbs",show:"granular"}];
+const DRY=[{k:"drypct",label:"Granular strength %",show:"granular"},{k:"drylbs",label:"Granular product",unit:"mass",def:"lb",units:["lb","kg"],show:"granular"}];
 const SRC_TOGGLE={k:"src",def:"liquid",options:[{v:"liquid",label:"Liquid (sod-hypo)"},{v:"granular",label:"Granular (cal-hypo)"}]};
 const SRC_NOTE="Pick your product above the fields. Strength defaults if left blank: sodium hypochlorite 12.5% (household bleach runs 6–8%), cal-hypo 65%.";
 
 export default [
 
-  { id:"well-disinfection", cat:"Field Disinfection", domains:["water"], title:"Well Disinfection (AWWA C654)", formula:"Vol gal = 0.0408 × dia in² × depth ft\nlbs Cl = mg/L × MG × 8.34 · product = lbs ÷ strength%", note:"Dose defaults to 50 mg/L (C654 typical). "+SRC_NOTE,
+  { id:"well-disinfection", cat:"Field Disinfection", domains:["water"], title:"Well Disinfection (AWWA C654)", formula:"Vol gal = 0.0408 × dia in² × depth ft\nlbs Cl = mg/L × MG × 8.34 · product = lbs ÷ strength%", formulaSI:"Vol m³ = 0.785 × dia m² × depth m\nkg Cl = mg/L × ML · product = kg ÷ strength%", note:"Dose defaults to 50 mg/L (C654 typical). "+SRC_NOTE,
     toggle:SRC_TOGGLE, seeAlso:["tank-volume-field"],
-    fields:[Object.assign({},DIA,{label:"Casing dia"}),{k:"depth",label:"Water depth",unit:"length",def:"ft",units:["ft","in","m"]},{k:"vol",label:"Well volume",unit:"volume",def:"gal",units:["gal","L","m3","MG"]},{k:"dose",label:"Target mg/L"},{k:"lbs",label:"Chlorine lbs"}].concat(LIQ,DRY),
+    fields:[Object.assign({},DIA,{label:"Casing dia"}),{k:"depth",label:"Water depth",unit:"length",def:"ft",units:["ft","in","m"]},{k:"vol",label:"Well volume",unit:"volume",def:"gal",units:["gal","L","m3","MG"]},{k:"dose",label:"Target mg/L"},{k:"lbs",label:"Chlorine",unit:"mass",def:"lb",units:["lb","kg"]}].concat(LIQ,DRY),
     solve:(v)=>{ const values={}, computed=[]; let vol=v.vol;
       if(vol==null&&v.dia!=null&&v.depth!=null){ vol=cylGal(v.dia,v.depth); values.vol=vol; computed.push("vol"); }
       if(vol==null) return {values:{},computed:[],error:"Enter casing diameter + water depth (or well volume)."};
@@ -41,9 +41,9 @@ export default [
       return {values,computed,error:""}; },
     interpret:(m)=>{ if(m.lbs==null) return null; return {level:"info",text:"AWWA C654 commonly targets ~50 mg/L. Mix through the water column, hold per your state's guidance, then pump to waste and pass bac-T before returning to service."}; },
     links:[{label:"AWWA C654: Disinfection of Wells",href:"https://store.awwa.org/AWWA-C654-21-Disinfection-of-Wells"}]},
-  { id:"tank-chlorination", cat:"Field Disinfection", domains:["water"], title:"Tank Chlorination", formula:"lbs Cl = mg/L × MG × 8.34 · product = lbs ÷ strength%", note:"Works both ways: target residual → amount to add, or amount added → resulting mg/L. "+SRC_NOTE,
+  { id:"tank-chlorination", cat:"Field Disinfection", domains:["water"], title:"Tank Chlorination", formula:"lbs Cl = mg/L × MG × 8.34 · product = lbs ÷ strength%", formulaSI:"kg Cl = mg/L × ML · product = kg ÷ strength%", note:"Works both ways: target residual → amount to add, or amount added → resulting mg/L. "+SRC_NOTE,
     keywords:["bleach","HTH","shock","hypochlorite","cal-hypo"], seeAlso:["tank-volume-field"], toggle:SRC_TOGGLE,
-    fields:[Object.assign({},DIA,{label:"Dia (optional)"}),{k:"depth",label:"Depth (optional)",unit:"length",def:"ft",units:["ft","in","m"]},{k:"gal",label:"Tank volume",unit:"volume",def:"gal",units:["gal","L","m3","MG"]},{k:"dose",label:"Target residual mg/L"},{k:"lbs",label:"Chlorine lbs"}].concat(LIQ,DRY),
+    fields:[Object.assign({},DIA,{label:"Dia (optional)"}),{k:"depth",label:"Depth (optional)",unit:"length",def:"ft",units:["ft","in","m"]},{k:"gal",label:"Tank volume",unit:"volume",def:"gal",units:["gal","L","m3","MG"]},{k:"dose",label:"Target residual mg/L"},{k:"lbs",label:"Chlorine",unit:"mass",def:"lb",units:["lb","kg"]}].concat(LIQ,DRY),
     solve:(v)=>{ const values={}, computed=[]; let gal=v.gal;
       if(gal==null&&v.dia!=null&&v.depth!=null){ gal=cylGal(v.dia,v.depth); values.gal=gal; computed.push("gal"); }
       if(gal==null||gal===0) return {values:{},computed:[],error:"Enter tank volume (or diameter + depth)."};
@@ -56,9 +56,9 @@ export default [
       if(lbs==null) return {values:{},computed:[],error:"Enter a target residual, or what you added (product amount, or chlorine lbs)."};
       values.dose=lbs/((gal/1e6)*D834); computed.push("dose"); if(v.lbs==null){ values.lbs=lbs; computed.push("lbs"); }
       return {values,computed,error:""}; }},
-  { id:"main-disinfection", cat:"Field Disinfection", domains:["water"], title:"Water-Main Disinfection (AWWA C651)", formula:"Vol gal = 0.0408 × dia in² × length ft\nlbs Cl = mg/L × MG × 8.34 · product = lbs ÷ strength%", note:"New or repaired mains. Dose defaults to 25 mg/L (C651 continuous-feed, 24-hr hold). "+SRC_NOTE,
+  { id:"main-disinfection", cat:"Field Disinfection", domains:["water"], title:"Water-Main Disinfection (AWWA C651)", formula:"Vol gal = 0.0408 × dia in² × length ft\nlbs Cl = mg/L × MG × 8.34 · product = lbs ÷ strength%", formulaSI:"Vol m³ = 0.785 × dia m² × length m\nkg Cl = mg/L × ML · product = kg ÷ strength%", note:"New or repaired mains. Dose defaults to 25 mg/L (C651 continuous-feed, 24-hr hold). "+SRC_NOTE,
     toggle:SRC_TOGGLE, seeAlso:["pipe-volume"],
-    fields:[Object.assign({},DIA,{label:"Pipe dia"}),{k:"len",label:"Length",unit:"length",def:"ft",units:["ft","m","mi"]},{k:"vol",label:"Main volume",unit:"volume",def:"gal",units:["gal","L","m3","MG"]},{k:"dose",label:"Dose mg/L"},{k:"lbs",label:"Chlorine lbs"}].concat(LIQ,DRY),
+    fields:[Object.assign({},DIA,{label:"Pipe dia"}),{k:"len",label:"Length",unit:"length",def:"ft",units:["ft","m","mi"]},{k:"vol",label:"Main volume",unit:"volume",def:"gal",units:["gal","L","m3","MG"]},{k:"dose",label:"Dose mg/L"},{k:"lbs",label:"Chlorine",unit:"mass",def:"lb",units:["lb","kg"]}].concat(LIQ,DRY),
     solve:(v)=>{ const values={}, computed=[]; let vol=v.vol;
       if(vol==null&&v.dia!=null&&v.len!=null){ vol=cylGal(v.dia,v.len); values.vol=vol; computed.push("vol"); }
       if(vol==null) return {values:{},computed:[],error:"Enter pipe diameter + length (or main volume)."};

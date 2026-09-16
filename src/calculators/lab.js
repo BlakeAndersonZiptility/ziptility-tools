@@ -30,7 +30,7 @@ export default [
       return {values:{},computed:[],error:"Enter conductivity or TDS."}; }},
   { id:"do-saturation", cat:"Lab", domains:["water","wastewater"], title:"DO Saturation vs. Temperature", formula:"Cs = 14.652 − 0.41022·T + 0.0079910·T² − 0.000077774·T³  (T °C)", note:"Freshwater at sea level. Enter temp in °F or °C; add a measured DO for % saturation.",
     keywords:["dissolved oxygen","DO","saturation","aeration"], seeAlso:["bod"],
-    fields:[{k:"tempf",label:"Temp °F"},{k:"tempc",label:"Temp °C"},{k:"cs",label:"Saturation DO mg/L"},{k:"meas",label:"Measured DO mg/L"},{k:"pct",label:"% of saturation"}],
+    fields:[{k:"tempf",label:"Temperature",unit:"temperature",def:"F",units:["F","C"]},{k:"tempc",label:"Temp °C"},{k:"cs",label:"Saturation DO mg/L"},{k:"meas",label:"Measured DO mg/L"},{k:"pct",label:"% of saturation"}],
     solve:(v)=>{ let tc=v.tempc, values={}, computed=[];
       if(tc==null&&v.tempf!=null){ tc=(v.tempf-32)*5/9; values.tempc=tc; computed.push("tempc"); }
       else if(tc!=null&&v.tempf==null){ values.tempf=tc*9/5+32; computed.push("tempf"); }

@@ -43,7 +43,13 @@ export function validate(){
       if(!f.k || typeof f.label!=='string') errors.push(where+': field missing k/label');
       if(f.unit && !UNITS[f.unit]) errors.push(where+': field "'+f.k+'" has unknown unit group "'+f.unit+'"');
       if(f.unit && f.def && !UNITS[f.unit][f.def]) errors.push(where+': field "'+f.k+'" default unit "'+f.def+'" not in group');
+      if(f.unit && !f.def) errors.push(where+': field "'+f.k+'" has a unit group but no def');
+      if(f.unit && f.base && !UNITS[f.unit][f.base]) errors.push(where+': field "'+f.k+'" base unit "'+f.base+'" not in group');
+      if(f.unit && f.met && !UNITS[f.unit][f.met]) errors.push(where+': field "'+f.k+'" metric unit "'+f.met+'" not in group');
+      if(f.unit && f.units && f.def && !f.units.includes(f.def)) errors.push(where+': field "'+f.k+'" def "'+f.def+'" is not in its units list');
+      if(!f.unit && (f.base || f.met)) errors.push(where+': field "'+f.k+'" declares base/met without a unit group');
     }
+    if(c.formulaSI!=null && (typeof c.formulaSI!=='string' || !c.formulaSI)) errors.push(where+': formulaSI must be a non-empty string when present');
     if(typeof c.solve!=='function') errors.push(where+': missing solve()');
     if(c.interpret!=null && typeof c.interpret!=='function') errors.push(where+': interpret must be a function');
     if(c.links!=null){

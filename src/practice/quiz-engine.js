@@ -6,6 +6,7 @@
    this file calls into. */
 import { fmtClock, sizesAvailable, examMinutes, drawQuestions, scoreAttempt, weakestFirstDomains } from './quiz-logic.js';
 import { trackComplete, trackProgress, makeMilestoneGate } from '../shared/analytics.js';
+import { getSystem } from '../shared/units-store.js';
 /* quiz.js L58-63. Shared with the discipline pages' generated subject
    table so the same code never gets two names on one screen. */
 import { DOMAIN_LABELS } from './domains.js';
@@ -153,6 +154,19 @@ export function initQuiz(rootEl, bank, cfg, { onExit } = {}) {
   }
 
   /* ---------- start screen (quiz.js L172-265) ---------- */
+  /* WW-01 interim note (Blake ruling 2026-09-10): the calculator's global
+     unit toggle does not reach these questions yet; SI variants come
+     through the content pipeline (step 3). Until then the reader is told,
+     in one line, which units the math uses, and told a little more
+     plainly when their calculator is set to metric. Reads the shared store
+     once per screen; there is no toggle on this surface. */
+  function unitsNote() {
+    const metric = getSystem() === 'metric';
+    return el('p', 'zq-note zq-units-note', metric
+      ? 'Your calculator is set to metric. These practice questions still use US customary exam-sheet units (gallons, feet, MGD, lb/day), the way the exam sheet does. Metric question sets follow.'
+      : 'Math questions use US customary exam-sheet units (gallons, feet, MGD, lb/day), the way the exam sheet does.');
+  }
+
   function renderStart() {
     stopTimer();
     state = null;
@@ -161,6 +175,7 @@ export function initQuiz(rootEl, bank, cfg, { onExit } = {}) {
     const head = el('div');
     head.appendChild(el('span', 'zq-badge', cfg.badge || bank.discipline || ''));
     head.appendChild(el('h2', 'zq-title', cfg.title || bank.title));
+    head.appendChild(unitsNote());
     stage.appendChild(head);
     /* PORT-NOTE: the old test-template.html also rendered a multi-paragraph
        .zq-intro blurb here (manifest.json's per-test "intro" prose) and a
@@ -504,6 +519,7 @@ export function initQuiz(rootEl, bank, cfg, { onExit } = {}) {
     hero.appendChild(el('div', 'zq-score-sub', correct + ' of ' + n + ' correct' + (state.mode === 'exam' ? ' on a timed exam' : '')));
     hero.appendChild(el('p', 'zq-passnote',
       "Most states set the pass line at 70 percent. Your state's rules govern, so check your certification program for the real requirement."));
+    hero.appendChild(unitsNote());
     announce('You scored ' + pct + ' percent, ' + correct + ' of ' + n + ' correct. ' +
       (passed ? 'That clears the 70 percent line.' : 'That is below the 70 percent line.'));
 

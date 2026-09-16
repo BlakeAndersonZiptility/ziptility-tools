@@ -232,6 +232,81 @@ ok('practice cross-links resolve: ' + linkedIds.size + ' deep links land on thei
    + (badLinks.length ? ' (broken: ' + badLinks.join(', ') + ')' : ''),
    linkedIds.size > 0 && badLinks.length === 0);
 
+// ---- WW-01 global unit system (2026-09-16) ----------------------------------
+// One flip moves every visible unit select to the other system and converts the
+// typed value in place; the choice persists across a reload; the strip is compact.
+{
+  await page.evaluate(() => { try { localStorage.removeItem('zip-units'); } catch (e) {} });
+  await page.goto(PREVIEW, { waitUntil: 'load' });
+  await page.waitForSelector('.card');
+  ok('unit strip renders two buttons with US customary pressed', await page.evaluate(() => {
+    const b = [...document.querySelectorAll('.sys-seg button')];
+    return b.length === 2 && b[0].getAttribute('aria-pressed') === 'true' && b[1].getAttribute('aria-pressed') === 'false';
+  }));
+  ok('unit strip buttons meet the 36px tap floor', await page.evaluate(() =>
+    [...document.querySelectorAll('.sys-seg button')].every(b => b.getBoundingClientRect().height >= 36)));
+  ok('header stays compact with the strip in it (<= 80px desktop)', await page.evaluate(() =>
+    document.querySelector('#ziptility-calculator header').getBoundingClientRect().height <= 80));
+  ok('interim US-customary note is visible', await page.evaluate(() => {
+    const n = document.querySelector('.sys-note .long'); return n && getComputedStyle(n).display !== 'none' && /US customary/.test(n.textContent);
+  }));
+  // Geometry & Volume is the first category; every unit select there starts imperial.
+  const before = await page.evaluate(() => [...document.querySelectorAll('.card select[id$="__u"]')].map(s => s.value));
+  ok('every visible unit select starts on an imperial unit', before.length > 0 && before.every(u => ['in','ft','yd','mi','sqin','sqft','sqyd','ac','gal','cf','MG','acft','floz','lb','ton','gpm','mgd','gpd','cfs','hp','psi','fps','fpm','lbd','gpdft2','gpmft2','gpdft','F','galft2','gpmft','lbgal','btuh','galH2O','lbH2O'].includes(u)));
+  // Type a value, flip, and check the value converted in place (10 ft -> 3.048 m).
+  const firstLen = await page.evaluate(() => { const s = [...document.querySelectorAll('.card select[id$="__u"]')].find(x => x.value === 'ft'); if (!s) return null; const i = document.getElementById(s.id.replace(/__u$/, '')); i.value = '10'; return s.id; });
+  ok('found a ft field to flip', !!firstLen);
+  await page.click('.sys-seg button[data-sys="metric"]');
+  const after = await page.evaluate(() => [...document.querySelectorAll('.card select[id$="__u"]')].map(s => s.value));
+  ok('after the flip every visible unit select is metric', after.length === before.length && after.every(u => ['mm','cm','m','km','sqcm','sqm','ha','L','m3','ML','mL','kg','g','t','Lps','Lpm','mlmin','m3h','m3d','MLd','m3s','kW','W','kPa','bar','mps','kgd','m3m2d','m3m2h','m3md','C','m3m2','Lsm','kgL','kgH2O','LH2O'].includes(u)));
+  ok('typed 10 ft became 3.048 m in place', firstLen ? await page.evaluate((id) => { const s = document.getElementById(id); const i = document.getElementById(id.replace(/__u$/, '')); return s.value === 'm' && Math.abs(parseFloat(i.value) - 3.048) < 1e-3; }, firstLen) : false);
+  ok('metric reference constants show, imperial hide', await page.evaluate(() => {
+    const m = document.querySelector('.ref-grid[data-sys="metric"]'), i = document.querySelector('.ref-grid[data-sys="imperial"]');
+    return getComputedStyle(m).display !== 'none' && getComputedStyle(i).display === 'none';
+  }));
+  ok('metric button now pressed', await page.evaluate(() => document.querySelector('.sys-seg button[data-sys="metric"]').getAttribute('aria-pressed') === 'true'));
+  await page.reload({ waitUntil: 'load' }); await page.waitForSelector('.card');
+  ok('the choice survives a reload (selects paint metric first)', await page.evaluate(() => {
+    const b = document.querySelector('.sys-seg button[data-sys="metric"]').getAttribute('aria-pressed') === 'true';
+    const sel = [...document.querySelectorAll('.card select[id$="__u"]')]; return b && sel.length > 0 && sel.every(s => !['in','ft','gal','cf','lb','gpm','mgd','hp','psi'].includes(s.value));
+  }));
+  // A liquid dose declared gal/fl oz/L/mL lands on L, never on m3 (WW-02 interplay).
+  await page.fill('#search', 'well disinfection'); await page.waitForSelector('#well-disinfection');
+  ok('liquid-to-add lands on L in metric, list unchanged', await page.evaluate(() => {
+    const s = document.getElementById('well-disinfection__liqgal__u'); return s && s.value === 'L' && [...s.options].map(o => o.value).join(',') === 'gal,floz,L,mL';
+  }));
+  await page.click('.sys-seg button[data-sys="imperial"]');
+  ok('flip back returns liquid-to-add to gal', await page.evaluate(() => document.getElementById('well-disinfection__liqgal__u').value === 'gal'));
+  await page.fill('#search', '');
+  // Mobile: the short note shows, the long one hides, buttons still >= 36px.
+  await page.setViewportSize({ width: 375, height: 740 });
+  ok('375px: short note visible, long hidden, header under 100px', await page.evaluate(() => {
+    const l = document.querySelector('.sys-note .long'), s = document.querySelector('.sys-note .short');
+    const h = document.querySelector('#ziptility-calculator header').getBoundingClientRect().height;
+    return getComputedStyle(l).display === 'none' && getComputedStyle(s).display !== 'none' && h < 100;
+  }));
+  ok('375px: strip buttons >= 36px tall', await page.evaluate(() => [...document.querySelectorAll('.sys-seg button')].every(b => b.getBoundingClientRect().height >= 36)));
+  await page.setViewportSize({ width: 1280, height: 900 });
+  await page.evaluate(() => { try { localStorage.removeItem('zip-units'); } catch (e) {} });
+}
+
+// ---- WW-01 metric formula chips (2026-09-16) --------------------------------
+{
+  await page.evaluate(() => { try { localStorage.removeItem('zip-units'); } catch (e) {} });
+  await page.goto(PREVIEW, { waitUntil: 'load' }); await page.waitForSelector('.card');
+  await page.fill('#search', 'tank chlorination'); await page.waitForSelector('#tank-chlorination');
+  const imp = await page.$eval('#tank-chlorination .formula', e => e.textContent);
+  ok('imperial chip carries the pounds formula (8.34)', /8\.34/.test(imp) && /MG/.test(imp));
+  await page.click('.sys-seg button[data-sys="metric"]');
+  const met = await page.$eval('#tank-chlorination .formula', e => e.textContent);
+  ok('metric chip drops 8.34 and speaks ML and kg', !/8\.34/.test(met) && /ML/.test(met) && /kg/.test(met));
+  ok('a unit-invariant chip is unchanged in metric', await page.evaluate(() => { const c = document.querySelector('#tank-chlorination'); return !!c; }));
+  await page.click('.sys-seg button[data-sys="imperial"]');
+  ok('flip back restores the imperial chip', (await page.$eval('#tank-chlorination .formula', e => e.textContent)) === imp);
+  await page.fill('#search', '');
+  await page.evaluate(() => { try { localStorage.removeItem('zip-units'); } catch (e) {} });
+}
+
 console.log(`\n${pass} passed, ${fail} failed; JS errors: ${jsErrors.length ? jsErrors.join('; ') : 'none'}`);
 await browser.close();
 process.exit(fail || jsErrors.length ? 1 : 0);

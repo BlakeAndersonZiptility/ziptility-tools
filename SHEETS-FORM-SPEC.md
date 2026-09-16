@@ -1,3 +1,8 @@
+> **RETIRED 2026-09-16 (sheets-v1.1.0).** The offer this spec describes is gone: the two PDFs are plain links in the strip
+> (`src/shared/sheets-pdf.js`), no form, no email, no follow-up. Blake's call the same day, after the war-gamed offer copy
+> read as fine print ("we just need to do more than say"). HubSpot form be491609, email 222065374750 and workflow
+> 1885414270 stay in HubSpot unused. Kept as the dated record of the shape that was built and E2E-verified.
+
 # HubSpot form to create: "Email me the formula sheet PDF" (an offer, never a gate)
 
 Blake ruling 2026-09-10 (WW-11, the email question): the formula sheets page keeps a working

@@ -47,6 +47,13 @@ which ships on the setup and score screens until the SI item variants land
 (WW-01 step 3). No embed attribute changes; the same one-line repoint per
 page.
 
+**Cut 2026-09-16 (gateless, Blake's call):** `calculator-v2.12.0.js`. One change over v2.11.0: the
+lead modal is gone. The CTA band under the calculators now carries two plain links to the operator
+formula-sheet PDFs (`src/shared/sheets-pdf.js`, hosted on the HubSpot file CDN), the pressed unit
+system's file red and first, the other a ghost; a click fires `tool_complete` with `tool_calc`
+"formula-sheets-pdf". No form, no email, no fine print: HubSpot form d00fc6e5 is no longer posted
+to by anything (it never had a follow-up email). No embed attribute changes; the same one-line repoint.
+
 **Cut 2026-09-16 (WW-01 step 3, content):** `practice-v1.9.0.js` with bank artifacts
 `operator-math-1-v1.1.0`, `wt-1-v1.1.0`, `wd-1-v1.1.0`, `wwt-1-v1.1.0`, `wwc-1-v1.1.0`
 (regulations-1 stays at 1.0.0). 139 questions now carry `si`, the same item re-derived in
@@ -70,7 +77,7 @@ list (`src/sheets/lines.js`, whose US side is the live page's text), adds a
 PDF title at print time, and renders the "email me the PDF" offer only once a
 HubSpot form id is configured (`SHEETS-FORM-SPEC.md`; Blake's approval). New
 embed on that page, in the hero after the intro paragraph:
-`<div id="ziptility-sheets"></div><script defer src=".../dist/sheets-v1.0.4.js"></script>`.
+`<div id="ziptility-sheets"></div><script defer src=".../dist/sheets-v1.1.0.js"></script>`.
 
 **Cut 2026-09-16 (WW-11 staged-build review fix):** `sheets-v1.0.5.js`. One change over
 v1.0.4 (the note first said 1.0.3; that number was taken by the public-draft cut while
@@ -81,6 +88,14 @@ sheet" buttons grow to the 44px tap-target floor. They measured 36px on staging 
 buttons' `transition:all` became colour and background only, because `all` animated the
 height across the breakpoint and a measurement taken straight after a resize read short.
 No embed attribute changes; the same one-line repoint.
+
+**Cut 2026-09-16 (gateless, Blake's call):** `sheets-v1.1.0.js`. The "email me the PDF" offer is
+retired (1.0.2 to 1.0.5 carried it): the strip now holds one PDF link that follows the pressed system
+(US customary file or metric file, `src/shared/sheets-pdf.js`), 38px desktop, 44px on a phone, and a
+click fires `tool_complete` with `tool_calc` "pdf". The strip note lost its print sentence. Nothing
+on the page asks for anything; the fine print went with the form. HubSpot form be491609, email
+222065374750 and workflow 1885414270 stay unused (`SHEETS-FORM-SPEC.md` is banner-retired). Same
+one-line repoint.
 
 Deploy is one edit: change the version in the `<script src>` and publish.
 Artifacts are immutable, so **merging to main never changes what a visitor

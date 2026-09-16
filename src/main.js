@@ -6,7 +6,7 @@
 import CSS from './ui/styles.css';
 import { buildShell } from './ui/template.js';
 import { initApp } from './ui/render.js';
-import { initLead } from './ui/lead.js';
+import { initSheetsLink } from './ui/sheets-link.js';
 
 /* Fonts: DS 4.0 (2026-06-22) moved the tool to Archivo + Geist and now loads
    them from the bundle (see boot()), so it renders correctly on any host.
@@ -42,7 +42,7 @@ function boot(){
     if(q.get('embed')==='app' || mount.dataset.embed==='app') document.body.classList.add('embed-app');
   }catch(e){ if(mount.dataset.embed==='app') document.body.classList.add('embed-app'); }
   initApp();
-  initLead();
+  initSheetsLink();
 }
 
 if(document.readyState==='loading') document.addEventListener('DOMContentLoaded', boot);

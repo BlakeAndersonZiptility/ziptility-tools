@@ -5,7 +5,7 @@ import { convSolve, countNN, converter } from '../calc-helpers.js';
 export default [
 
   { id:"gpm-mgd", cat:"Flow & Pressure", domains:["water","wastewater"], title:"Flow: gpm / MGD", formula:"gpm × 1440 ÷ 1,000,000 = MGD", note:"Enter one value.",
-    fields:[{k:"gpm",label:"gpm"},{k:"mgd",label:"MGD"},{k:"ml",label:"mL/min"}], solve:convSolve({gpm:1, mgd:0.00144, ml:3785.41})},
+    fields:[{k:"gpm",label:"Flow",unit:"flow",def:"gpm",units:["gpm","mgd","gpd","Lps","m3h","MLd"]},{k:"mgd",label:"Flow",unit:"flow",def:"mgd",base:"mgd",units:["mgd","gpm","gpd","MLd","m3d","Lps"]},{k:"ml",label:"mL/min"}], solve:convSolve({gpm:1, mgd:0.00144, ml:3785.41})},
   { id:"detention", cat:"Flow & Pressure", domains:["water","wastewater"], title:"Detention Time", formula:"Volume ÷ Flow = Time", note:"Enter any two. Units must be compatible.",
     fields:[{k:"vol",label:"Volume"},{k:"flow",label:"Flow / time"},{k:"t",label:"Detention Time"}],
     solve:(v)=>{ if(v.vol!=null&&v.flow!=null) return {values:{t:v.vol/v.flow},computed:["t"],error:""};
@@ -13,7 +13,7 @@ export default [
       if(v.flow!=null&&v.t!=null) return {values:{vol:v.flow*v.t},computed:["vol"],error:""};
       return {values:{},computed:[],error:"Enter any two values."}; }},
   { id:"velocity", cat:"Flow & Pressure", domains:["water","wastewater"], title:"Velocity (Q = V × A)", formula:"Flow rate ÷ Area = Velocity", note:"Enter any two. Keep units consistent.",
-    fields:[{k:"q",label:"Flow ft³/s"},{k:"a",label:"Area ft²"},{k:"vel",label:"Velocity ft/s"}],
+    fields:[{k:"q",label:"Flow",unit:"flow",def:"cfs",base:"cfs",units:["cfs","mgd","gpm","m3s","MLd"]},{k:"a",label:"Area",unit:"area",def:"sqft",units:["sqft","ac","sqm","ha"]},{k:"vel",label:"Velocity",unit:"velocity",def:"fps",units:["fps","fpm","mps"]}],
     solve:(v)=>{ if(v.a!=null&&v.vel!=null) return {values:{q:v.a*v.vel},computed:["q"],error:""};
       if(v.q!=null&&v.a!=null) return {values:{vel:v.q/v.a},computed:["vel"],error:""};
       if(v.q!=null&&v.vel!=null) return {values:{a:v.q/v.vel},computed:["a"],error:""};
@@ -22,16 +22,16 @@ export default [
     links:[{label:"Mapping your sewer collection system",href:"https://www.ziptility.com/blog/sewer-collection-system-mapping-small-utilities"}]},
   { id:"pressure-head", cat:"Flow & Pressure", domains:["water"], title:"Pressure / Head", formula:"psi × 2.3067 = ft of head", note:"Enter one value.",
     keywords:["head","psi"], seeAlso:["head-loss"],
-    fields:[{k:"psi",label:"psi"},{k:"ft",label:"Head ft"}], solve:convSolve({psi:1, ft:PSI2FT}),
+    fields:[{k:"psi",label:"Pressure",unit:"pressure",def:"psi",units:["psi","kPa","bar"]},{k:"ft",label:"Head",unit:"length",def:"ft",units:["ft","in","m","mm"]}], solve:convSolve({psi:1, ft:PSI2FT}),
     interpret:(m)=>{ if(m.psi==null) return null; if(m.psi<20) return {level:"alert",text:"Under 20 psi: below the minimum distribution pressure most states require."};
       if(m.psi<=80) return {level:"good",text:"20–80 psi: within the normal distribution range."}; return {level:"watch",text:"Over 80 psi: high; can stress mains and fixtures (consider a PRV)."}; }},
   { id:"cycle-time", cat:"Flow & Pressure", domains:["wastewater"], title:"Lift Station Cycle Time", formula:"Storage ÷ (Pump − Inflow) = Cycle (min)", note:"Pump-down time. Enter pump, inflow, storage (gal & gpm).",
-    fields:[{k:"pump",label:"Pump gpm"},{k:"inflow",label:"Inflow gpm"},{k:"stor",label:"Storage gal"},{k:"cyc",label:"Cycle min"}],
+    fields:[{k:"pump",label:"Pump",unit:"flow",def:"gpm",units:["gpm","mgd","gpd","Lps","m3h","MLd"]},{k:"inflow",label:"Inflow",unit:"flow",def:"gpm",units:["gpm","mgd","gpd","Lps","m3h","MLd"]},{k:"stor",label:"Storage",unit:"volume",def:"gal",units:["gal","cf","MG","m3","L","ML"]},{k:"cyc",label:"Cycle min"}],
     solve:(v)=>{ if(v.pump!=null&&v.inflow!=null&&v.stor!=null){ const net=v.pump-v.inflow; return {values:{cyc:net!==0?v.stor/net:NaN},computed:["cyc"],error:""}; }
       return {values:{},computed:[],error:"Enter pump, inflow, and storage."}; }},
   { id:"hydrant-flow", cat:"Flow & Pressure", domains:["water"], title:"Hydrant Flow Test (NFPA 291)", formula:"Q = 29.83 × C × d in² × √pitot\nQ₂₀ = Q × (S−20)^0.54 ÷ (S−R)^0.54", note:"Nozzle dia defaults to 2.5\", C to 0.90 (smooth outlet; 0.80 square, 0.70 projecting). Add static + residual psi for the NFPA 20-psi rating.",
     keywords:["pitot","fire flow","NFPA","hydrant class","bonnet color"],
-    fields:[{k:"d",label:"Nozzle dia",unit:"length",def:"in",units:["in","mm","cm"]},{k:"c",label:"Outlet coeff C"},{k:"pitot",label:"Pitot psi"},{k:"q",label:"Test flow gpm"},{k:"static",label:"Static psi"},{k:"resid",label:"Residual psi"},{k:"q20",label:"Rated gpm @20 psi"}],
+    fields:[{k:"d",label:"Nozzle dia",unit:"length",def:"in",units:["in","mm","cm"]},{k:"c",label:"Outlet coeff C"},{k:"pitot",label:"Pitot",unit:"pressure",def:"psi",units:["psi","kPa","bar"]},{k:"q",label:"Test flow",unit:"flow",def:"gpm",units:["gpm","mgd","gpd","Lps","m3h","MLd"]},{k:"static",label:"Static",unit:"pressure",def:"psi",units:["psi","kPa","bar"]},{k:"resid",label:"Residual",unit:"pressure",def:"psi",units:["psi","kPa","bar"]},{k:"q20",label:"Rated at 20 psi (140 kPa)",unit:"flow",def:"gpm",units:["gpm","mgd","gpd","Lps","m3h","MLd"]}],
     solve:(v)=>{ const din=(v.d!=null&&v.d!==0)?v.d*12:2.5, cc=(v.c!=null&&v.c!==0)?v.c:0.9; let q=v.q;
       if(v.pitot!=null){ if(v.pitot<0) return {values:{},computed:[],error:"Pitot psi can't be negative."}; q=Q_HYD*cc*din*din*Math.sqrt(v.pitot); }
       if(q==null) return {values:{},computed:[],error:"Enter a pitot reading (or an observed test flow)."};
@@ -49,7 +49,7 @@ export default [
     links:[{label:"NFPA 291 hydrant flow testing explained",href:"https://www.mwua.org/nfpa-291-hydrant-flow-testing/"}]},
   { id:"head-loss", cat:"Flow & Pressure", domains:["water","wastewater"], title:"Friction Head Loss (Hazen-Williams)", formula:"hf ft/100ft = 0.2083 × (100/C)^1.852 × gpm^1.852 ÷ dia in^4.8655", note:"C-factor: PVC 150 · new ductile iron 140 (default) · steel 120 · old cast iron 100. Add length for total loss.",
     keywords:["hazen","williams","friction","pressure drop","pipe sizing"], seeAlso:["pressure-head","velocity"],
-    fields:[{k:"flow",label:"Flow",unit:"flow",def:"gpm",units:["gpm","mgd","cfs","Lps"]},{k:"dia",label:"Pipe dia",unit:"length",def:"in",units:["in","mm","cm"]},{k:"c",label:"C-factor"},{k:"len",label:"Length",unit:"length",def:"ft",units:["ft","m","mi"]},{k:"hf100",label:"Loss ft/100 ft"},{k:"loss",label:"Total loss ft"},{k:"psi",label:"Total loss psi"},{k:"vel",label:"Velocity ft/s"}],
+    fields:[{k:"flow",label:"Flow",unit:"flow",def:"gpm",units:["gpm","mgd","cfs","Lps"]},{k:"dia",label:"Pipe dia",unit:"length",def:"in",units:["in","mm","cm"]},{k:"c",label:"C-factor"},{k:"len",label:"Length",unit:"length",def:"ft",units:["ft","m","mi"]},{k:"hf100",label:"Loss ft/100 ft"},{k:"loss",label:"Total loss (head)",unit:"length",def:"ft",units:["ft","in","m","mm"]},{k:"psi",label:"Total loss (pressure)",unit:"pressure",def:"psi",units:["psi","kPa","bar"]},{k:"vel",label:"Velocity",unit:"velocity",def:"fps",units:["fps","fpm","mps"]}],
     solve:(v)=>{ if(v.flow==null||v.dia==null||v.dia===0) return {values:{},computed:[],error:"Enter flow + pipe diameter."};
       const cc=(v.c!=null&&v.c!==0)?v.c:140, din=v.dia*12, values={}, computed=[];
       if(v.c==null){ values.c=140; computed.push("c"); }
@@ -64,7 +64,7 @@ export default [
     links:[{label:"Hazen-Williams formula & C-factors",href:"https://www.engineeringtoolbox.com/hazen-williams-water-d_797.html"}]},
   { id:"sewer-capacity", cat:"Flow & Pressure", domains:["wastewater"], title:"Gravity Sewer Capacity (Manning)", formula:"Q = (1.486/n) × A × R^⅔ × √S   (full circular pipe)", note:"n: PVC 0.010–0.013 (default 0.013) · concrete 0.013–0.015 · clay 0.013. Slope in ft per 100 ft (%).",
     keywords:["manning","slope","gravity sewer","full pipe"], seeAlso:["velocity","cycle-time"],
-    fields:[{k:"dia",label:"Pipe dia",unit:"length",def:"in",units:["in","mm","cm"]},{k:"slope",label:"Slope %"},{k:"n",label:"Manning n"},{k:"q",label:"Full-pipe flow",unit:"flow",def:"gpm",units:["gpm","mgd","cfs"]},{k:"vel",label:"Full-pipe velocity ft/s"}],
+    fields:[{k:"dia",label:"Pipe dia",unit:"length",def:"in",units:["in","mm","cm"]},{k:"slope",label:"Slope %"},{k:"n",label:"Manning n"},{k:"q",label:"Full-pipe flow",unit:"flow",def:"gpm",units:["gpm","mgd","cfs"]},{k:"vel",label:"Full-pipe velocity",unit:"velocity",def:"fps",units:["fps","fpm","mps"]}],
     solve:(v)=>{ if(v.dia==null||v.dia===0||v.slope==null||v.slope<=0) return {values:{},computed:[],error:"Enter pipe diameter + slope %."};
       const n=(v.n!=null&&v.n!==0)?v.n:0.013, values={}, computed=[];
       if(v.n==null){ values.n=0.013; computed.push("n"); }

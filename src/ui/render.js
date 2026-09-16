@@ -49,7 +49,7 @@ export function initApp(){
     return rows.length? '<div class="card-links">'+rows.join('<br>')+'</div>' : '';
   }
   function unitSelectHtml(c, f){
-    const list=unitList(f), init=initialUnit(f);
+    const init=initialUnit(f), list=unitList(f, getSystem()); if(!list.includes(init)) list.push(init);
     const opts=list.map(u=>'<option value="'+u+'"'+(u===init?' selected':'')+'>'+UNITS[f.unit][u].label+'</option>').join('');
     return '<select id="'+c.id+'__'+f.k+'__u" data-cur="'+init+'" aria-label="unit">'+opts+'</select>';
   }

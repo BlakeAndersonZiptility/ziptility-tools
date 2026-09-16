@@ -69,6 +69,15 @@ HubSpot form id is configured (`SHEETS-FORM-SPEC.md`; Blake's approval). New
 embed on that page, in the hero after the intro paragraph:
 `<div id="ziptility-sheets"></div><script defer src=".../dist/sheets-v1.0.2.js"></script>`.
 
+**Cut 2026-09-16 (WW-11 staged-build review fix):** `sheets-v1.0.3.js`. One change over
+v1.0.2: on a phone (under 560px) the two unit-strip buttons and the four "Print this
+sheet" buttons grow to the 44px tap-target floor. They measured 36px on staging at
+375x812 in the staged-build review while the offer's inputs and submit were already
+44px. Desktop keeps the compact 38px strip, the calculator strip's height. The strip
+buttons' `transition:all` became colour and background only, because `all` animated the
+height across the breakpoint and a measurement taken straight after a resize read short.
+No embed attribute changes; the same one-line repoint.
+
 Deploy is one edit: change the version in the `<script src>` and publish.
 Artifacts are immutable, so **merging to main never changes what a visitor
 sees**. Rollback is the same edit in reverse and takes about a minute.

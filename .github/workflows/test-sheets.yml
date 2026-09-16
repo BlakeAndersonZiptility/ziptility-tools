@@ -12,7 +12,7 @@ jobs:
         with:
           node-version: 22
       - run: npm ci
-      - name: Formula sheets data: one list, both systems
+      - name: "Formula sheets data: one list, both systems"
         run: npm run test:sheets
       - name: Build dev bundle
         run: npm run build:sheets:dev && npm run build:sheets:preview

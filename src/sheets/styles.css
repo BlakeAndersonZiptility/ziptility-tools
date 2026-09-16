@@ -2,18 +2,20 @@
    offer, and the print-one rule. Tokens follow DS 4.0/4.1 (navy #0c1f30,
    tomato-press #c02100 for any fill that carries text, THE radius .625rem);
    the page's own type (Archivo/Geist) is inherited, nothing is loaded here.
-   Compact by rule: the strip is one row, 38px controls, 36px on a phone. */
+   Compact by rule: the strip is one row, 38px controls on desktop (the calculator strip's
+   height). On a phone every button grows to the 44px tap-target floor: strip buttons and the
+   per-sheet print buttons measured 36px on staging 2026-09-16 (sheets-v1.0.2 at 375x812). */
 #ziptility-sheets{ margin:14px 0 6px; }
 #ziptility-sheets .zs-strip{ display:flex; align-items:center; flex-wrap:wrap; gap:8px 14px; }
 #ziptility-sheets .zs-seg{ display:inline-flex; background:#eef2f6; border:1px solid #d5dde6; border-radius:999px; padding:3px; gap:3px; }
-#ziptility-sheets .zs-seg button{ cursor:pointer; font-family:inherit; font-weight:600; font-size:12px; color:#42515f; background:transparent; border:none; border-radius:999px; min-height:38px; padding:0 14px; transition:all .14s ease; }
+#ziptility-sheets .zs-seg button{ cursor:pointer; font-family:inherit; font-weight:600; font-size:12px; color:#42515f; background:transparent; border:none; border-radius:999px; min-height:38px; padding:0 14px; transition:color .14s ease, background-color .14s ease; } /* not `all`: it animated min-height across the phone breakpoint */
 #ziptility-sheets .zs-seg button:hover{ color:#0c1f30; }
 #ziptility-sheets .zs-seg button[aria-pressed="true"]{ color:#fff; background:#0c1f30; }
 #ziptility-sheets .zs-seg button:focus-visible{ outline:2px solid #0c1f30; outline-offset:2px; }
 #ziptility-sheets .zs-note{ margin:0; font-size:12.5px; line-height:1.4; color:#42515f; max-width:520px; }
 #ziptility-sheets .zs-short{ display:none; }
 .zs-sheet-tools{ margin:-4px 0 12px; }
-.zs-print-one{ cursor:pointer; font-family:inherit; font-weight:600; font-size:12.5px; color:#0c1f30; background:#fff; border:1.5px solid #d5dde6; border-radius:.625rem; min-height:36px; padding:0 12px; }
+.zs-print-one{ cursor:pointer; font-family:inherit; font-weight:600; font-size:12.5px; color:#0c1f30; background:#fff; border:1.5px solid #d5dde6; border-radius:.625rem; min-height:44px; padding:0 14px; }
 .zs-print-one:hover{ border-color:#0c1f30; }
 .zs-print-one:focus-visible{ outline:2px solid #0c1f30; outline-offset:2px; }
 .zs-offer{ padding:28px 0 8px; }
@@ -30,7 +32,7 @@
 .zs-offer-fine{ font-size:12px; margin:10px 0 0; }
 .zs-offer-msg{ font-size:13px; margin:8px 0 0; color:#0c1f30; }
 @media (max-width:560px){
-  #ziptility-sheets .zs-seg button{ min-height:36px; padding:0 11px; }
+  #ziptility-sheets .zs-seg button{ min-height:44px; padding:0 12px; }
   #ziptility-sheets .zs-long{ display:none; }
   #ziptility-sheets .zs-short{ display:inline; }
 }

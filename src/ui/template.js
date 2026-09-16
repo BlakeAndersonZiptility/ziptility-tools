@@ -61,10 +61,11 @@ export function buildShell(){
   <div class="cta-inner">
     <div class="cta-txt">
       <h3>Take the formulas with you</h3>
-      <p>A printable sheet of the formulas and conversion factors behind these calculators. It&#39;s free: give us an email and we&#39;ll send it over, then tape it up in the plant or keep it in the truck.</p>
+      <p>The operator formula sheets, printable. Tape one up in the plant or keep it in the truck.</p>
     </div>
     <div class="cta-actions">
-      <button class="cta-btn cta-primary" id="openSheet" type="button">Get the formula sheet (PDF)</button>
+      <a class="cta-btn cta-primary" id="sheetPdfImp" href="#" target="_blank" rel="noopener">PDF, US customary</a>
+      <a class="cta-btn cta-ghost" id="sheetPdfMet" href="#" target="_blank" rel="noopener">PDF, metric</a>
     </div>
   </div>
 </div>
@@ -97,25 +98,5 @@ export function buildShell(){
   </div>
 </footer>
 
-<!-- Lead-capture modal (opt-in only) -->
-<div class="modal" id="leadModal" role="dialog" aria-modal="true" aria-labelledby="leadTitle">
-  <div class="modal-card">
-    <button class="modal-close" id="leadClose" aria-label="Close">&times;</button>
-    <div id="leadForm">
-      <h3 id="leadTitle">Get the formula &amp; rounding sheet</h3>
-      <p>A printable PDF of every formula in this tool, with the interpretation ranges and constants. We&#39;ll email it over.</p>
-      <div class="modal-field"><label for="ld-name">Name</label><input id="ld-name" autocomplete="name"></div>
-      <div class="modal-field"><label for="ld-email">Work email</label><input id="ld-email" type="email" autocomplete="email"></div>
-      <div class="modal-field"><label for="ld-util">Utility / system (optional)</label><input id="ld-util" autocomplete="organization"></div>
-      <button class="modal-submit" id="leadSubmit" type="button">Send it to me</button>
-      <p class="modal-fine">We&#39;ll send the sheet and the occasional Ziptility note for small-system operators. Unsubscribe anytime. No spam.</p>
-    </div>
-    <div class="modal-ok" id="leadOk">
-      <div class="check"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
-      <h3>On its way</h3>
-      <p id="leadOkMsg">Check your inbox for the formula sheet. Thanks!</p>
-    </div>
-  </div>
-</div>
 `;
 }

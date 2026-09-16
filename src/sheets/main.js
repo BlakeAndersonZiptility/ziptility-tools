@@ -14,12 +14,13 @@
         tests, so the page and the data cannot drift apart silently;
      3. a "Print this sheet" button per sheet, and a PDF title that names
         the system (and the sheet) at print time;
-     4. the "email me the PDF" offer, rendered only when a HubSpot form id
-        is configured (config.js), never a gate: print works with no email.
+     4. the two PDFs as plain links in the strip (src/shared/sheets-pdf.js);
+        the link follows the pressed system. No form since 1.1.0: the file
+        is the offer (Blake 2026-09-16).
    Mount: <div id="ziptility-sheets"></div> placed in the page hero. */
 import CSS from './styles.css';
 import { SHEETS } from './lines.js';
-import { SHEETS_CFG } from './config.js';
+import { SHEETS_PDF, SHEETS_PDF_LABEL } from '../shared/sheets-pdf.js';
 import { getSystem, setSystem, subscribe } from '../shared/units-store.js';
 import { trackComplete } from '../shared/analytics.js';
 
@@ -64,9 +65,13 @@ function boot() {
   const bMet = el('button', null, 'Metric'); bMet.type = 'button'; bMet.dataset.sys = 'metric';
   seg.append(bImp, bMet);
   const note = el('p', 'zs-note');
-  note.appendChild(el('span', 'zs-long', 'Both systems on one sheet. Print works in either; the PDF name says which. Remembered on this device.'));
-  note.appendChild(el('span', 'zs-short', 'Both systems, one sheet. Remembered on this device.'));
-  strip.append(seg, note); mount.appendChild(strip);
+  note.appendChild(el('span', 'zs-long', 'Both systems on one sheet. Remembered on this device.'));
+  note.appendChild(el('span', 'zs-short', 'Remembered on this device.'));
+  /* The PDF: one link, the file for the pressed system. Flip the strip for the other. */
+  const dl = el('a', 'zs-dl'); dl.target = '_blank'; dl.rel = 'noopener';
+  const dlLong = el('span', 'zs-long'), dlShort = el('span', 'zs-short', 'PDF'); dl.append(dlLong, dlShort);
+  dl.addEventListener('click', () => { try { trackComplete('formula-sheets', { mode: getSystem(), calc: 'pdf' }); } catch (e) {} });
+  strip.append(seg, dl, note); mount.appendChild(strip);
   [bImp, bMet].forEach((b) => b.addEventListener('click', () => setSystem(b.dataset.sys)));
 
   /* Per-sheet print, after each sheet's title. */
@@ -83,6 +88,7 @@ function boot() {
     items.forEach(({ li, l }) => { const want = metric ? l.si : l.imp; if (norm(li.textContent) !== norm(want)) li.textContent = want; });
     heads.forEach(({ h, b }) => { const want = metric ? b.hSI : b.h; if (norm(h.textContent) !== norm(want)) h.textContent = want; });
     bImp.setAttribute('aria-pressed', String(!metric)); bMet.setAttribute('aria-pressed', String(metric));
+    dl.href = SHEETS_PDF[sys]; dlLong.textContent = 'PDF, ' + SHEETS_PDF_LABEL[sys]; dl.setAttribute('aria-label', 'Download the PDF, ' + SHEETS_PDF_LABEL[sys]);
     mount.dataset.system = sys;
   }
   subscribe(apply);
@@ -113,45 +119,6 @@ function boot() {
   /* afterprint is unreliable on some mobile browsers; the print media query flipping back is the second signal. */
   try { const mq = window.matchMedia('print'); mq.addEventListener('change', (e) => { if (!e.matches && printOne) { document.title = baseTitle; clearPrintOne(); } }); } catch (e) {}
 
-  /* The offer. Only when a form exists to post to; the sheets and the
-     print buttons above never depend on it. */
-  if (SHEETS_CFG.hubspotFormId) renderOffer();
-
-  function renderOffer() {
-    const last = document.getElementById(SHEETS[SHEETS.length - 1].id); if (!last) return;
-    const box = el('section', 'zs-offer'); box.id = 'zs-offer';
-    const inner = el('div', 'zs-offer-inner');
-    inner.appendChild(el('h3', null, 'Get the PDF by email'));
-    inner.appendChild(el('p', null, 'Printing works with no email, right from the buttons above. If you would rather have the PDF sent to you, leave an address and we will send the links, one for each system.'));
-    const form = el('form', 'zs-offer-form'); form.noValidate = true;
-    const f1 = field('Name', 'zs-name', 'name', 'text'), f2 = field('Work email', 'zs-email', 'email', 'email'), f3 = field('Utility or system (optional)', 'zs-util', 'organization', 'text');
-    const submit = el('button', 'zs-offer-submit', 'Send it to me'); submit.type = 'submit';
-    const fine = el('p', 'zs-offer-fine', 'An offer, never a gate: nothing on this page sits behind this form. We send the links and nothing else.');
-    const msg = el('p', 'zs-offer-msg'); msg.setAttribute('aria-live', 'polite');
-    form.append(f1.wrap, f2.wrap, f3.wrap, submit, fine, msg);
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const email = f2.input.value.trim();
-      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { msg.textContent = 'That email does not look right yet.'; return; }
-      submit.disabled = true;
-      const body = { fields: [
-        { name: 'firstname', value: f1.input.value.trim() }, { name: 'email', value: email }, { name: 'company', value: f3.input.value.trim() },
-        { name: 'formula_sheet_system', value: getSystem() }
-      ], context: { pageUri: safeHref(), pageName: 'Operator formula sheets' } };
-      fetch('https://api.hsforms.com/submissions/v3/integration/submit/' + SHEETS_CFG.hubspotPortalId + '/' + SHEETS_CFG.hubspotFormId, {
-        method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body)
-      }).then((r) => { if (!r.ok) throw new Error('hs ' + r.status); form.querySelectorAll('input,button').forEach((x) => { x.disabled = true; }); msg.textContent = 'On its way. Check your inbox for the link.'; })
-        .catch(() => { submit.disabled = false; msg.textContent = 'That did not go through. Printing still works, right from the buttons above.'; });
-    });
-    inner.appendChild(form); box.appendChild(inner);
-    last.insertAdjacentElement('afterend', box);
-  }
-  function field(label, id, ac, type) {
-    const wrap = el('div', 'zs-field'); const lab = el('label', null, label); lab.htmlFor = id;
-    const input = el('input'); input.id = id; input.type = type; input.autocomplete = ac;
-    wrap.append(lab, input); return { wrap, input };
-  }
-  function safeHref() { try { return window.location.href; } catch (e) { return ''; } }
 }
 
 if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);

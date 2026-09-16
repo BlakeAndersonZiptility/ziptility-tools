@@ -8,3 +8,4 @@ dist/reportcard-dev.js
 *.png
 .claude/
 preview-src.html
+dist/sheets-dev.js

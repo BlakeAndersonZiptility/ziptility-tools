@@ -1,3 +1,5 @@
+/* RETIRED 2026-09-16 (calculator v2.12.0): the lead modal is gone, the formula-sheet PDFs are plain links
+   (ui/sheets-link.js). Not imported anywhere; kept as the record of the HubSpot form d00fc6e5 shape. */
 /* Lead capture — HubSpot Forms POST with mailto fallback (verbatim from v1). */
 import { LEAD } from '../config.js';
 

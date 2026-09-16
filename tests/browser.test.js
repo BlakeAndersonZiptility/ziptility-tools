@@ -183,12 +183,13 @@ ok('resource backlink renders', await linkRow.count() === 1 &&
   (await linkRow.getAttribute('href')).startsWith('https://www.ziptility.com/'));
 await page.fill('#search', '');
 
-// lead modal
+// formula-sheet PDF links (gateless since v2.12.0): two links, the pressed system's file is the primary and sits first
 await page.click('.mode-btn[data-m="water"]');
-await page.click('#openSheet');
-ok('lead modal opens', await page.evaluate(() => document.getElementById('leadModal').classList.contains('show')));
-await page.click('#leadClose');
-ok('lead modal closes', await page.evaluate(() => !document.getElementById('leadModal').classList.contains('show')));
+ok('PDF links: US customary primary and first by default, metric ghost, both hosted PDFs in a new tab', await page.evaluate(() => { const i = document.getElementById('sheetPdfImp'), m = document.getElementById('sheetPdfMet'); return !!i && !!m && i.classList.contains('cta-primary') && m.classList.contains('cta-ghost') && /us-customary\.pdf$/.test(i.href) && /metric\.pdf$/.test(m.href) && i.target === '_blank' && i.parentNode.firstElementChild === i; }));
+await page.click('.sys button[data-sys="metric"]');
+ok('PDF links: flipping the strip to metric makes the metric file the primary and first', await page.evaluate(() => { const i = document.getElementById('sheetPdfImp'), m = document.getElementById('sheetPdfMet'); return m.classList.contains('cta-primary') && i.classList.contains('cta-ghost') && m.parentNode.firstElementChild === m; }));
+await page.click('.sys button[data-sys="imperial"]');
+ok('no lead modal, no email field anywhere in the tool', await page.evaluate(() => !document.getElementById('leadModal') && !document.querySelector('#ziptility-calculator input[type=email], .modal')));
 
 // no mojibake anywhere in the tool's own text
 ok('clean text (no double-encoded chars)', await page.evaluate(() => !document.body.innerText.includes('‚Ä')));

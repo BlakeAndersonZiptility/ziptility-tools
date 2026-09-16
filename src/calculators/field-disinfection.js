@@ -22,7 +22,7 @@ function addSources(v,values,computed,lbs){
   if(v.src!=="liquid"&&dry!=null&&dry!==0){ values.drylbs=lbs/(dry/100); computed.push("drylbs"); }
 }
 const DIA={k:"dia",label:"Diameter",unit:"length",def:"in",units:["in","ft","mm","cm","m"]};
-const LIQ=[{k:"liqpct",label:"Liquid strength %",show:"liquid"},{k:"liqgal",label:"Liquid to add",unit:"volume",def:"gal",units:["gal","L"],show:"liquid"}];
+const LIQ=[{k:"liqpct",label:"Liquid strength %",show:"liquid"},{k:"liqgal",label:"Liquid to add",unit:"volume",def:"gal",units:["gal","floz","L","mL"],show:"liquid"}];
 const DRY=[{k:"drypct",label:"Granular strength %",show:"granular"},{k:"drylbs",label:"Granular product lbs",show:"granular"}];
 const SRC_TOGGLE={k:"src",def:"liquid",options:[{v:"liquid",label:"Liquid (sod-hypo)"},{v:"granular",label:"Granular (cal-hypo)"}]};
 const SRC_NOTE="Pick your product above the fields. Strength defaults if left blank: sodium hypochlorite 12.5% (household bleach runs 6–8%), cal-hypo 65%.";

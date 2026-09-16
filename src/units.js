@@ -5,7 +5,10 @@ export const UNITS = {
   area:{ sqin:{label:"in²",f:1/144}, sqft:{label:"ft²",f:1}, sqyd:{label:"yd²",f:9}, ac:{label:"acre",f:43560},
     sqm:{label:"m²",f:10.7639104}, ha:{label:"hectare",f:107639.104} },
   volume:{ gal:{label:"gal",f:1}, cf:{label:"cu ft",f:7.480519}, L:{label:"L",f:0.26417205}, m3:{label:"m³",f:264.17205},
-    MG:{label:"MG",f:1e6}, acft:{label:"ac-ft",f:325851}, lbH2O:{label:"lb H₂O",f:0.1198266} },
+    MG:{label:"MG",f:1e6}, acft:{label:"ac-ft",f:325851}, lbH2O:{label:"lb H₂O",f:0.1198266},
+    /* WW-02 (Blake ruling 2026-09-10): the small liquid units operators asked for when dosing
+       from a jug. US fluid ounce = 1/128 gal; millilitre = 1/1000 L. No cups, by ruling. */
+    floz:{label:"fl oz",f:1/128}, mL:{label:"mL",f:0.26417205/1000} },
   mass:{ lb:{label:"lb",f:1}, kg:{label:"kg",f:2.2046226}, g:{label:"g",f:0.0022046226}, ton:{label:"ton",f:2000}, galH2O:{label:"gal H₂O",f:8.3454} },
   flow:{ gpm:{label:"gpm",f:1}, mgd:{label:"MGD",f:694.44444}, gpd:{label:"gpd",f:1/1440}, cfs:{label:"cfs",f:448.8312}, Lps:{label:"L/s",f:15.850323}, mlmin:{label:"mL/min",f:1/3785.411} },
   power:{ hp:{label:"hp",f:1}, kW:{label:"kW",f:1.34102209}, W:{label:"W",f:0.00134102209}, btuh:{label:"BTU/hr",f:0.000393014779} }

@@ -69,6 +69,11 @@ test('wells, lab, conversions', () => {
   approx(solve('temp', { f: 212, c: null }).values.c, 100);
   approx(solve('temp', { f: null, c: 0 }).values.f, 32);
   approx(uConv(1, 'mi', 'ft', 'length'), 5280);
+  // WW-02: fluid ounces and millilitres on the volume group (2026-09-16)
+  approx(uConv(1, 'gal', 'floz', 'volume'), 128);
+  approx(uConv(1, 'L', 'mL', 'volume'), 1000);
+  approx(uConv(1, 'floz', 'mL', 'volume'), 29.5735, 1e-3);
+  approx(uConv(4, 'gal', 'mL', 'volume'), 15141.65, 1e-1);
   approx(uConv(1, 'mgd', 'gpm', 'flow'), 694.444);
   approx(solve('conv-length', { in: 1, out: null }).values.out, 1, 1e-9);
   const af = solve('gallons-acre-feet', { gal: 325851, MG: null, acft: null });

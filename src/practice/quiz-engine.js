@@ -82,6 +82,17 @@ export function initQuiz(rootEl, bank, cfg, { onExit } = {}) {
   rootEl.appendChild(live);
   function announce(text) { live.textContent = text; }
 
+  /* Fit pass 2026-09-22. Only the question screen used to scroll the tool into view; picking a
+     card at the foot of the six-card hub swapped in a setup screen that started 1000px above
+     the viewport, and finishing a test left the reader where the last Next button was with the
+     score above the fold. Every reader-initiated screen change now brings the tool back to the
+     top (scroll-margin-top on .zq-wrap keeps it clear of the sticky site header). The very
+     first paint never scrolls, so a deep-linked discipline page does not jump on load. */
+  let painted = false;
+  function scrollToTop() {
+    try { rootEl.scrollIntoView({ block: 'start' }); } catch (e) { /* ignore */ }
+  }
+
   let state = null; /* { mode, size, qs:[{q, order, correctPos}], idx, answers:{}, checked:{}, remainingSec, timerId } */
 
   /* ---------- completion + progress events (WW-14, 2026-09-10) ----------
@@ -181,6 +192,8 @@ export function initQuiz(rootEl, bank, cfg, { onExit } = {}) {
     stopTimer();
     state = null;
     clear(stage);
+    if (painted) scrollToTop();
+    painted = true;
 
     const head = el('div');
     head.appendChild(el('span', 'zq-badge', cfg.badge || bank.discipline || ''));
@@ -367,7 +380,9 @@ export function initQuiz(rootEl, bank, cfg, { onExit } = {}) {
 
     const bar = el('div', 'zq-progressbar');
     const fill = el('i');
-    fill.style.width = Math.round(100 * state.idx / n) + '%';
+    /* Position, not questions-behind-you: idx/n drew an empty track on question 1, which read
+       as a bar that had not loaded (fit pass 2026-09-22). */
+    fill.style.width = Math.round(100 * (state.idx + 1) / n) + '%';
     bar.appendChild(fill);
     stage.appendChild(bar);
 
@@ -442,7 +457,8 @@ export function initQuiz(rootEl, bank, cfg, { onExit } = {}) {
     /* must-fix 1: no window.scrollTo. Scroll the tool's own root into
        view instead (scroll-margin-top on .zq-wrap keeps it clear of a
        sticky header; see styles.css). */
-    try { rootEl.scrollIntoView({ block: 'start' }); } catch (e) { /* ignore */ }
+    scrollToTop();
+    painted = true;
   }
 
   function selectChoice(pos) {
@@ -519,6 +535,7 @@ export function initQuiz(rootEl, bank, cfg, { onExit } = {}) {
 
   function renderResults(pct, correct, n, byDomain, missed) {
     clear(stage);
+    scrollToTop();
     const passed = pct >= 70;
 
     const hero = el('div', 'zq-card zq-score-hero');

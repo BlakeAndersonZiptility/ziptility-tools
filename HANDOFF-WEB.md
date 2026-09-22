@@ -97,6 +97,16 @@ on the page asks for anything; the fine print went with the form. HubSpot form b
 222065374750 and workflow 1885414270 stay unused (`SHEETS-FORM-SPEC.md` is banner-retired). Same
 one-line repoint.
 
+**Cut 2026-09-22 (fit pass), PUBLISHED the same day:** `practice-v1.10.0.js`. Visual only, measured on the
+live page at 1280 and 390 before and after: the site's global h2/h3/li/p rules no longer leak into the
+tool (the bundle now styles its own card headings, paragraphs and lists), the score card keeps its side
+padding, phone button rows are full-width stacks with the arrow pinned to the right edge, the disabled
+primary is a neutral fill instead of half-opacity tomato, the progress bar shows position, and picking a
+hub card, finishing a test or leaving for the hub scrolls the tool into view (first paint never does, so
+deep-linked discipline pages do not jump). Questions, scoring, events and localStorage untouched. No
+embed attribute changes; the hub's embed was repointed headless from v1.9.0 and the site published to
+production on Blake's word 2026-09-22. Captures: master-data `practice-fit-pass-2026-09-22/`.
+
 Deploy is one edit: change the version in the `<script src>` and publish.
 Artifacts are immutable, so **merging to main never changes what a visitor
 sees**. Rollback is the same edit in reverse and takes about a minute.

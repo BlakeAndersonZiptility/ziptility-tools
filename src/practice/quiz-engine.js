@@ -88,9 +88,25 @@ export function initQuiz(rootEl, bank, cfg, { onExit } = {}) {
      score above the fold. Every reader-initiated screen change now brings the tool back to the
      top (scroll-margin-top on .zq-wrap keeps it clear of the sticky site header). The very
      first paint never scrolls, so a deep-linked discipline page does not jump on load. */
-  let painted = false;
+  let painted = !cfg.deepLinked; /* a hub click is reader-initiated: the setup screen may take
+                                    scroll and focus at once; a deep-linked page load may not */
   function scrollToTop() {
     try { rootEl.scrollIntoView({ block: 'start' }); } catch (e) { /* ignore */ }
+  }
+
+  /* A11Y (backlog 2026-09-16, fixed 2026-09-22): every render clears and rebuilds `stage`, which
+     dropped keyboard and screen-reader focus onto <body> after each click. Each screen now lands
+     focus on what a reader should hear next: the new question's card, the feedback panel after a
+     check, the same choice after a pick (so 1-4 and Enter keep working from where the reader
+     is), the setup card or the resume prompt, the score hero. tabindex -1 makes a container
+     focusable without adding it to the tab order (the calculator's deep-link idiom,
+     src/ui/render.js); natively focusable controls are left alone so they keep their place in
+     the tab order. preventScroll leaves scrolling to scrollToTop. */
+  const NATIVE_FOCUS = /^(BUTTON|A|INPUT|SELECT|TEXTAREA|SUMMARY)$/;
+  function focusEl(el) {
+    if (!el) return;
+    if (!NATIVE_FOCUS.test(el.tagName) && !el.hasAttribute('tabindex')) el.setAttribute('tabindex', '-1');
+    try { el.focus({ preventScroll: true }); } catch (e) { /* ignore */ }
   }
 
   let state = null; /* { mode, size, qs:[{q, order, correctPos}], idx, answers:{}, checked:{}, remainingSec, timerId } */
@@ -192,6 +208,7 @@ export function initQuiz(rootEl, bank, cfg, { onExit } = {}) {
     stopTimer();
     state = null;
     clear(stage);
+    const readerInitiated = painted;
     if (painted) scrollToTop();
     painted = true;
 
@@ -232,6 +249,10 @@ export function initQuiz(rootEl, bank, cfg, { onExit } = {}) {
     card.appendChild(el('h2', null, 'Set up your test'));
 
     const modeGrid = el('div', 'zq-mode-grid');
+    /* Pressed-state semantics (backlog 2026-09-16): a set of toggle buttons, one pressed, inside
+       a labelled group, the same pattern the calculator's mode and unit toggles use. */
+    modeGrid.setAttribute('role', 'group');
+    modeGrid.setAttribute('aria-label', 'Test mode');
     const modes = [
       { id: 'practice', name: 'Practice', desc: 'Check each answer as you go. Every question shows a plain-English explanation.' },
       { id: 'exam', name: 'Timed exam', desc: 'No feedback until the end, with a clock running. The closest thing to test day.' }
@@ -240,11 +261,15 @@ export function initQuiz(rootEl, bank, cfg, { onExit } = {}) {
     modes.forEach((m) => {
       const modeBtn = el('button', 'zq-mode' + (pick.mode === m.id ? ' zq-selected' : ''));
       modeBtn.type = 'button';
+      modeBtn.setAttribute('aria-pressed', String(pick.mode === m.id));
       modeBtn.appendChild(el('h3', null, m.name));
       modeBtn.appendChild(el('p', null, m.desc));
       modeBtn.addEventListener('click', () => {
         pick.mode = m.id;
-        for (const k in modeBtns) modeBtns[k].classList.toggle('zq-selected', k === m.id);
+        for (const k in modeBtns) {
+          modeBtns[k].classList.toggle('zq-selected', k === m.id);
+          modeBtns[k].setAttribute('aria-pressed', String(k === m.id));
+        }
         syncStartLabel();
       });
       modeBtns[m.id] = modeBtn;
@@ -255,15 +280,21 @@ export function initQuiz(rootEl, bank, cfg, { onExit } = {}) {
     const sizes = sizesAvailable(bank.questions.length);
     if (pick.size === null || sizes.indexOf(pick.size) === -1) pick.size = sizes[0];
     const sizeRow = el('div', 'zq-size-row');
+    sizeRow.setAttribute('role', 'group');
+    sizeRow.setAttribute('aria-label', 'Number of questions');
     const sizeBtns = {};
     sizes.forEach((n) => {
       const sizeBtn = el('button', 'zq-size' + (pick.size === n ? ' zq-selected' : ''));
       sizeBtn.type = 'button';
+      sizeBtn.setAttribute('aria-pressed', String(pick.size === n));
       sizeBtn.appendChild(document.createTextNode(n === bank.questions.length && sizes.length > 1 ? 'All ' + n : String(n)));
       sizeBtn.appendChild(el('small', null, 'questions'));
       sizeBtn.addEventListener('click', () => {
         pick.size = n;
-        for (const k in sizeBtns) sizeBtns[k].classList.toggle('zq-selected', Number(k) === n);
+        for (const k in sizeBtns) {
+          sizeBtns[k].classList.toggle('zq-selected', Number(k) === n);
+          sizeBtns[k].setAttribute('aria-pressed', String(Number(k) === n));
+        }
         syncStartLabel();
       });
       sizeBtns[n] = sizeBtn;
@@ -291,6 +322,8 @@ export function initQuiz(rootEl, bank, cfg, { onExit } = {}) {
       for (const h of hist) if (h.scorePct > best) best = h.scorePct;
       stage.appendChild(el('p', 'zq-best', 'Your best score on this test so far: ' + best + ' percent. Attempts: ' + hist.length + '.'));
     }
+    /* The resume prompt outranks the setup card when both are on screen. */
+    if (readerInitiated) focusEl(saved ? stage.querySelector('.zq-resume') : card);
   }
 
   /* ---------- run (quiz.js L267-322) ---------- */
@@ -358,7 +391,9 @@ export function initQuiz(rootEl, bank, cfg, { onExit } = {}) {
     if (state && state.timerId) { clearInterval(state.timerId); state.timerId = null; }
   }
 
-  function renderQuestion() {
+  /* focus: 'card' (default, a new question), 'feedback' (after a check), or a choice position
+     (after a pick, so the reader stays on the button they just used). */
+  function renderQuestion(focus = 'card') {
     clear(stage);
     const item = state.qs[state.idx];
     const q = item.q;
@@ -459,13 +494,16 @@ export function initQuiz(rootEl, bank, cfg, { onExit } = {}) {
        sticky header; see styles.css). */
     scrollToTop();
     painted = true;
+    if (focus === 'feedback') focusEl(card.querySelector('.zq-feedback'));
+    else if (typeof focus === 'number') focusEl(card.querySelectorAll('.zq-choice')[focus]);
+    else focusEl(card);
   }
 
   function selectChoice(pos) {
     state.answers[state.idx] = pos;
     saveSession();
     reportProgress();
-    renderQuestion();
+    renderQuestion(pos);
   }
 
   function checkAnswer() {
@@ -474,7 +512,7 @@ export function initQuiz(rootEl, bank, cfg, { onExit } = {}) {
     saveSession();
     const item = state.qs[state.idx];
     announce(state.answers[state.idx] === item.correctPos ? 'Correct.' : 'Not quite. The explanation is shown below.');
-    renderQuestion();
+    renderQuestion('feedback');
   }
 
   function buildFeedback(item, selected) {
@@ -640,6 +678,8 @@ export function initQuiz(rootEl, bank, cfg, { onExit } = {}) {
     captureSlot.hidden = true;
     stage.appendChild(document.createComment(' soft-capture slot: reserved, ruling 2026-07-10 '));
     stage.appendChild(captureSlot);
+
+    focusEl(hero);
 
     const hist = readJSON(KEY_HISTORY) || [];
     if (hist.length > 1) {

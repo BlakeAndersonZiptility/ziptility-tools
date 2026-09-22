@@ -72,7 +72,12 @@ function boot() {
     renderPicker(stage, { onSelect: selectTest, childPages, hubUrl });
     /* Fit pass 2026-09-22: "All practice tests" from a score screen brings the hub into view
        rather than leaving the reader at the foot of the results. Never on first paint. */
-    if (leavingRun) { try { stage.scrollIntoView({ block: 'start' }); } catch (e) { /* ignore */ } }
+    if (leavingRun) {
+      try { stage.scrollIntoView({ block: 'start' }); } catch (e) { /* ignore */ }
+      /* And land focus on the hub's heading, not on <body> (a11y, 2026-09-22). */
+      const title = stage.querySelector('.zq-hub-section-title');
+      if (title) { title.setAttribute('tabindex', '-1'); try { title.focus({ preventScroll: true }); } catch (e) { /* ignore */ } }
+    }
   }
 
   /* deepLinked: entered straight into one bank from a per-discipline page

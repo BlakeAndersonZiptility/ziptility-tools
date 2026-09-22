@@ -201,6 +201,10 @@
 #ziptility-practice .zq-btn-quiet:hover{ border-color:var(--n300); color:var(--n700); }
 
 /* ---------- focus (C1: #0088ff site-wide, ruled 2026-07-07) ---------- */
+/* Containers the engine focuses programmatically (tabindex -1: cards, the feedback panel, the
+   hub heading) show the ring only for keyboard focus, never after a mouse click. */
+#ziptility-practice [tabindex="-1"]:focus{ outline:none; }
+#ziptility-practice [tabindex="-1"]:focus-visible{ outline:2px solid var(--info); outline-offset:2px; }
 #ziptility-practice .zq-btn:focus-visible,
 #ziptility-practice .zq-choice:focus-visible,
 #ziptility-practice .zq-mode:focus-visible,

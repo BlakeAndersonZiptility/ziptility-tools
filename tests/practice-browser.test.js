@@ -514,6 +514,58 @@ test('computed styles: DS4 tokens (colors, radii, fonts) and focus-visible outli
 });
 
 // ---------------------------------------------------------------------
+// 8b. A11y: focus follows each rebuild; mode/size carry pressed state
+// ---------------------------------------------------------------------
+test('a11y: focus lands on the new screen after every rebuild; mode and size buttons carry aria-pressed in labelled groups', async () => {
+  await withPage(async (page) => {
+    await gotoPractice(page);
+    await selectOperatorMathCard(page);
+    await page.waitForSelector('.zq-mode-grid');
+    const active = () => page.evaluate(() => {
+      const a = document.activeElement;
+      return a ? a.tagName + '|' + a.className : '';
+    });
+    // reached from a hub click: the setup card takes focus (a deep-linked load must not; see below)
+    assert.match(await active(), /zq-card/);
+
+    assert.equal(await page.locator('.zq-mode-grid').getAttribute('role'), 'group');
+    assert.equal(await page.locator('.zq-size-row').getAttribute('role'), 'group');
+    assert.equal(await page.locator('.zq-mode.zq-selected').getAttribute('aria-pressed'), 'true');
+    assert.equal(await page.locator('.zq-mode:not(.zq-selected)').first().getAttribute('aria-pressed'), 'false');
+    await page.click('.zq-mode:has-text("Timed exam")');
+    assert.equal(await page.locator('.zq-mode:has-text("Timed exam")').getAttribute('aria-pressed'), 'true');
+    assert.equal(await page.locator('.zq-mode:has-text("Practice")').getAttribute('aria-pressed'), 'false');
+    assert.equal(await page.locator('.zq-size.zq-selected').getAttribute('aria-pressed'), 'true');
+    await page.locator('.zq-size').nth(1).click();
+    assert.equal(await page.locator('.zq-size').nth(1).getAttribute('aria-pressed'), 'true');
+    assert.equal(await page.locator('.zq-size').nth(0).getAttribute('aria-pressed'), 'false');
+
+    await startRun(page, { mode: 'Practice' });
+    assert.match(await active(), /DIV\|zq-card/, 'a new question focuses its card');
+    await page.locator('.zq-choice').nth(1).click();
+    assert.match(await active(), /BUTTON\|zq-choice/, 'a pick keeps focus on the picked choice');
+    assert.equal(await page.locator('.zq-choice').nth(1).getAttribute('tabindex'), null, 'no tabindex written onto a native button');
+    await page.click('[data-zq-check]');
+    assert.match(await active(), /zq-feedback/, 'a check focuses the feedback panel');
+    await page.click('[data-zq-next]');
+    assert.match(await active(), /DIV\|zq-card/, 'Next focuses the next question card');
+    // keyboard path: 1-4 then Enter still works from the focused choice
+    await page.keyboard.press('3');
+    assert.match(await active(), /BUTTON\|zq-choice/);
+    await page.keyboard.press('Enter');
+    assert.match(await active(), /zq-feedback/);
+  });
+
+  // a deep-linked page load must not steal focus from the document
+  await withPage(async (page) => {
+    await gotoPractice(page, '?test=water-treatment');
+    await page.waitForSelector('.zq-card:has-text("Set up your test")');
+    const tag = await page.evaluate(() => document.activeElement && document.activeElement.tagName);
+    assert.equal(tag, 'BODY', 'first paint on a deep link leaves focus alone');
+  });
+});
+
+// ---------------------------------------------------------------------
 // 9. Scoping leak: host page never absorbs the tool's styles
 // ---------------------------------------------------------------------
 test('scoping leak: host body styles and an external h1 stay untouched across a full boot + flow', async () => {

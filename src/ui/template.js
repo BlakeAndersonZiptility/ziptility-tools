@@ -12,12 +12,23 @@
    which is where it belongs. What stays is the free formula sheet, offered
    BELOW the working calculators so it is never a gate in front of an
    answer. Kept as a JS comment rather than an HTML one so it does not ship
-   into every rendered page's source. */
+   into every rendered page's source.
+
+   FIT PASS 2026-09-22. The in-tool heading is an h2, not an h1: on the
+   live page the Webflow H1 ("Water and wastewater operator calculators")
+   sits directly above this strip, and one page carries exactly one h1
+   (PAGE-COMPOSITION-STANDARD §9.13). The mode cards moved OUT of the
+   sticky .control bar into a plain .modes row: with the Webflow site
+   header also sticky, the old bar stacked 168px (desktop) / 290px (phone)
+   of the tool's own chrome under 61-75px of site header, a third of a
+   phone screen pinned on every scroll, and the mode cards were cut off
+   behind the nav. Only the search/category toolbar sticks now, offset by
+   the measured site-header height (render.js sets --zip-top). */
 export function buildShell(){
   return `
 <header>
   <div class="head-wrap">
-    <div class="head-title"><h1>Operator Calculator</h1><p>Water &amp; wastewater system math</p></div>
+    <div class="head-title"><h2>Operator Calculator</h2><p>Water &amp; wastewater system math</p></div>
     <div class="sys">
       <div class="seg sys-seg" role="group" aria-label="Unit system">
         <button type="button" data-sys="imperial" aria-pressed="true"><span class="long">US customary</span><span class="short" aria-hidden="true">US</span></button>
@@ -28,8 +39,7 @@ export function buildShell(){
   </div>
 </header>
 
-<div class="control">
-  <div class="control-wrap">
+<div class="modes">
     <div class="modebar" id="modebar">
       <button class="mode-btn" data-m="water" type="button" aria-pressed="true">
         <span class="mode-ic"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C8 7 5.5 10.6 5.5 14.2A6.5 6.5 0 0 0 18.5 14.2C18.5 10.6 16 7 12 2Z"/></svg></span>
@@ -40,6 +50,10 @@ export function buildShell(){
         <span class="mode-txt"><b>Wastewater</b><span>Process control, solids, loading</span></span>
       </button>
     </div>
+</div>
+
+<div class="control">
+  <div class="control-wrap">
     <div class="toolbar">
       <div class="field-wrap">
         <span class="mag"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg></span>

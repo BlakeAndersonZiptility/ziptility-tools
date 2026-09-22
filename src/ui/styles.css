@@ -70,7 +70,7 @@
      does not have. Recover from git history if the standalone (non-Webflow)
      use case ever needs its own masthead. */
   .head-divider{width:1px; height:32px; background:rgba(255,255,255,.22);}
-  .head-title h1{font-family:var(--brand-font-display); font-weight:600; font-size:16px; margin:0; letter-spacing:.01em;}
+  .head-title h2{font-family:var(--brand-font-display); font-weight:600; font-size:16px; margin:0; letter-spacing:.01em;}
   .head-title p{margin:1px 0 0; font-size:12.5px; color:#A9C2DB;}
   .head-spacer{flex:1 1 auto;}
   .head-hint{font-size:11.5px; color:#A9C2DB; background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.12); padding:7px 11px; border-radius:8px; font-family:var(--brand-font-mono);}
@@ -371,7 +371,7 @@ html[data-mode="wastewater"] .mode-btn[data-m="wastewater"] .mode-txt b{ color:v
 .linkbtn{ color:var(--brand-red-press); }
 
 /* header title: Archivo black, per design */
-.head-title h1{ font-family:var(--brand-font-display); font-weight:900; font-size:19px; letter-spacing:-.02em; line-height:1; }
+.head-title h2{ font-family:var(--brand-font-display); font-weight:900; font-size:19px; letter-spacing:-.02em; line-height:1; }
 /* MUTED-TEXT AUDIT, 2026-07-29: DESIGN_SYSTEM_HANDOFF.md documents --neutral-400 (#94a3b8) as
    "muted text" with no caveat, which is how it ends up on light backgrounds where it MEASURES
    2.46-2.56:1 and fails 4.5:1 (fixed everywhere that happened, across all four bundles). This one
@@ -414,3 +414,102 @@ html[data-mode="wastewater"] .mode-btn[data-m="wastewater"] .mode-txt b{ color:v
 .ref .ref-grid[data-sys]{ display:none; }
 .ref[data-system="imperial"] .ref-grid[data-sys="imperial"],
 .ref[data-system="metric"] .ref-grid[data-sys="metric"]{ display:grid; }
+
+/* ============================================================
+   FIT PASS (2026-09-22, kept last so it wins). Blake: the live page
+   "looks super goofy and does not fit well". Audited on rendered captures
+   at 1280 and 390 across Geometry & Volume, Flow & Pressure, Field
+   Disinfection, Pumps & Power. Numbered to the audit findings.
+   No math, no unit behaviour and no markup contract changes beyond the
+   .modes/.control split in template.js.
+   ============================================================ */
+
+/* 1 + 2  Sticky stacking. The mode cards now live in .modes (scrolls
+   away); only the toolbar sticks, offset by the measured site header
+   (--zip-top, render.js). Cards carry a scroll margin so a deep link
+   (#tank-chlorination) lands with its heading visible instead of under
+   site header + toolbar. Fallback values cover the bare preview page. */
+.modes{ max-width:1180px; margin:0 auto; padding:16px 16px 0; }
+.modebar{ margin-bottom:0; }
+.control{ top:var(--zip-top, 0px); }
+.control-wrap{ padding:12px 16px; }
+.card{ scroll-margin-top:var(--zip-anchor, 96px); }
+
+/* 3  The deep-linked card is focused for keyboard and screen-reader
+   readers; the ring is the brand's, not the browser's (§9.14). */
+.card:focus{ outline:none; }
+.card:focus-visible{ outline:2px solid var(--brand-red); outline-offset:3px; }
+
+/* 6  Rows no longer stretch every card to the tallest neighbour (Water
+   Horsepower carried ~170px of blank white under its buttons; Pressure /
+   Head ~250px). Each card is its own height; gap on the rem scale. */
+.grid{ align-items:start; gap:20px; }
+
+/* 4  Unit select: a quiet linen chip like the formula chip, so the only
+   tomato on a card is the computed answer (DS §3: Tomato sparingly). The
+   chevron is drawn in, the native arrow off; 44px tap height stays. */
+.uf{ gap:6px; }
+.uf select{ appearance:none; -webkit-appearance:none; font-family:var(--brand-font-mono); font-size:12.5px; font-weight:500; color:var(--ink); background:#f6eee6 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ff442f' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E") no-repeat right 7px center / 11px 11px; border:1px solid #ece1d3; border-radius:8px; padding:0 22px 0 8px; min-height:44px; line-height:1; }
+.uf select:hover{ border-color:#d9c9b4; }
+.uf select:focus{ outline:none; border-color:var(--brand-red); box-shadow:0 0 0 3px var(--mode-soft); }
+.field input{ min-width:0; }
+
+/* 7  "Learn more" and "Also" rows: one link treatment for both kinds,
+   each row its own line under a muted label. */
+.card-links{ display:flex; flex-direction:column; gap:5px; line-height:1.5; }
+.card-links-row{ display:block; }
+.card-links-lbl{ color:var(--muted); }
+.card-links-sep{ color:var(--muted); margin:0 6px; }
+.card-links a, .card-links .linkbtn{ color:var(--brand-red-press); font-weight:600; text-decoration:none; }
+.card-links a:hover, .card-links .linkbtn:hover{ text-decoration:underline; }
+
+/* 9  Labels wrap instead of clipping ("Rated at 20 psi (140 kPa)"). */
+.field label{ white-space:normal; overflow:visible; text-overflow:clip; line-height:1.3; }
+
+/* 10  Button row degrades by wrapping, never by overflowing the card. */
+.actions{ flex-wrap:wrap; }
+.btn-calc{ flex:1 1 140px; }
+.btn-clear, .btn-copy{ flex:0 0 auto; }
+
+/* 12  One radius for the mode cards (DS: 10px is THE radius). */
+.mode-btn{ border-radius:10px; }
+
+/* 5  Header strip: the note takes the room the row actually has (it was
+   capped at 520px and wrapped to three lines at 1280). */
+.sys{ flex:1 1 320px; }
+.sys-note{ flex:1 1 280px; max-width:640px; }
+
+@media (max-width:560px){
+  /* 5  Title and the US/Metric pill share one row (the pill used to drop
+     to its own right-aligned row). */
+  .head-wrap{ padding:10px 14px; gap:4px 10px; }
+  .head-title{ flex:1 1 auto; min-width:0; }
+  .head-title h2{ font-size:15px; }
+  .sys-seg button{ padding:0 8px; }
+  /* 4  Tool-side gutters shrink: the Webflow page already gives a 40px
+     gutter, and the tool was adding 16 + 18 on top, leaving 242px for two
+     columns of input + unit chip. Fields go one column. */
+  main{ padding:14px 10px 10px; }
+  .modes{ padding:12px 10px 0; }
+  .modebar{ gap:10px; }
+  .mode-btn{ padding:12px 10px; gap:10px; }
+  .mode-ic{ width:38px; height:38px; }
+  .control-wrap{ padding:10px; }
+  .card{ padding:16px 14px 14px; }
+  .fields, .fields.one-col{ grid-template-columns:1fr; gap:10px; }
+  .field.full{ grid-column:auto; }
+  /* 1  Phone toolbar: search on one row, category + count on the next
+     (the "CATEGORY" label goes; the select carries its aria-label). */
+  .toolbar{ display:grid; grid-template-columns:1fr auto; gap:8px; align-items:center; }
+  .toolbar .field-wrap{ max-width:none; }
+  .toolbar .field-wrap:first-child{ grid-column:1/-1; }
+  .toolbar .lbl{ display:none; }
+  .count{ padding:5px 10px; }
+  .count-w{ display:none; } /* the pill reads "10" beside the category select; the word is implied */
+  /* 10  Calculate keeps Clear and Copy on its row inside a 274px card. */
+  .btn-calc{ flex:1 1 110px; }
+  /* 8  Card toggle pill: full width, one line per option (scoped to cards;
+     the header's US/Metric strip keeps its own compact shape). */
+  .card .seg{ display:flex; width:100%; }
+  .card .seg button{ flex:1 1 0; white-space:nowrap; padding:6px 6px; font-size:11.5px; text-align:center; min-height:34px; }
+}

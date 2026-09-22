@@ -42,12 +42,46 @@ export function initApp(){
     return calculators.filter(c=>c.cat===state.cat && c.domains.includes(state.mode)); }
   const titleOf=Object.fromEntries(calculators.map(c=>[c.id,c.title]));
 
+  /* FIT PASS 2026-09-22: one row per kind, each its own block (was <br>-joined
+     inline text), so a long title wraps under its own label on a phone. */
   function cardLinksHtml(c){
     const rows=[];
-    if(c.links&&c.links.length) rows.push('Learn more: '+c.links.map(l=>'<a href="'+l.href+'" target="_blank" rel="noopener">'+l.label+'</a>').join(' · '));
-    if(c.seeAlso&&c.seeAlso.length) rows.push('Also: '+c.seeAlso.map(id=>'<button type="button" class="linkbtn seealso" data-t="'+titleOf[id]+'">'+titleOf[id]+'</button>').join(' · '));
-    return rows.length? '<div class="card-links">'+rows.join('<br>')+'</div>' : '';
+    if(c.links&&c.links.length) rows.push('<div class="card-links-row"><span class="card-links-lbl">Learn more:</span> '+c.links.map(l=>'<a href="'+l.href+'" target="_blank" rel="noopener">'+l.label+'</a>').join('<span class="card-links-sep">·</span>')+'</div>');
+    if(c.seeAlso&&c.seeAlso.length) rows.push('<div class="card-links-row"><span class="card-links-lbl">Also:</span> '+c.seeAlso.map(id=>'<button type="button" class="linkbtn seealso" data-t="'+titleOf[id]+'">'+titleOf[id]+'</button>').join('<span class="card-links-sep">·</span>')+'</div>');
+    return rows.length? '<div class="card-links">'+rows.join('')+'</div>' : '';
   }
+  /* FIT PASS 2026-09-22: the host page's header. On ziptility.com the global
+     site header is sticky (75px desktop, 61px phone); this tool's toolbar is
+     sticky too, and before this pass both sat at top:0, so the toolbar slid
+     under the site header and a deep-linked card (#chlorine-dose from a
+     practice question) scrolled to y=0, hidden behind both. The bundle
+     cannot know the host's header at build time (the same file runs in the
+     bare preview page), so it measures whatever fixed/sticky element covers
+     the top of the viewport outside the mount and hands it to CSS:
+       --zip-top     the toolbar's sticky offset
+       --zip-anchor  scroll-margin-top for cards (site header + toolbar + gap)
+     Guarded against a full-screen fixed overlay (cookie modal): anything
+     taller than 40% of the viewport is not a header. Re-measured on resize. */
+  const mount=document.getElementById('ziptility-calculator');
+  const control=document.querySelector('#ziptility-calculator .control');
+  function measureChrome(){
+    let top=0;
+    try{
+      const els=document.elementsFromPoint(Math.floor(window.innerWidth/2), 1);
+      for(const el of els){
+        if(el===document.documentElement||el===document.body||el.closest('#ziptility-calculator')) continue;
+        const cs=getComputedStyle(el);
+        if(cs.position!=='fixed'&&cs.position!=='sticky') continue;
+        const b=el.getBoundingClientRect();
+        if(b.top<=1&&b.height>0&&b.height<window.innerHeight*0.4) top=Math.max(top,b.bottom);
+      }
+    }catch(e){}
+    top=Math.round(top);
+    const ctlH=control?Math.round(control.getBoundingClientRect().height):0;
+    if(mount){ mount.style.setProperty('--zip-top', top+'px'); mount.style.setProperty('--zip-anchor', (top+ctlH+12)+'px'); }
+  }
+  let rsT=null;
+  window.addEventListener('resize',()=>{ clearTimeout(rsT); rsT=setTimeout(measureChrome,120); });
   function unitSelectHtml(c, f){
     const init=initialUnit(f), list=unitList(f, getSystem()); if(!list.includes(init)) list.push(init);
     const opts=list.map(u=>'<option value="'+u+'"'+(u===init?' selected':'')+'>'+UNITS[f.unit][u].label+'</option>').join('');
@@ -76,7 +110,7 @@ export function initApp(){
     const searching=state.query.trim()!=='';
     catWrap.style.opacity=searching?'.5':'1';
     const items=visibleItems();
-    countEl.innerHTML='<b>'+items.length+'</b> '+(searching?('match'+(items.length===1?'':'es')):('calculator'+(items.length===1?'':'s')));
+    countEl.innerHTML='<b>'+items.length+'</b> <span class="count-w">'+(searching?('match'+(items.length===1?'':'es')):('calculator'+(items.length===1?'':'s')))+'</span>';
     if(items.length===0){ const other=state.mode==='water'?'wastewater':'water', otherLbl=other==='water'?'Water':'Wastewater';
       const q=state.query.trim().toLowerCase();
       const otherN=calculators.filter(c=>c.domains.includes(other) && hay(c).includes(q)).length;
@@ -196,6 +230,7 @@ export function initApp(){
     const card=document.getElementById(id);
     if(!card) return;
     card.setAttribute('tabindex','-1');
+    measureChrome(); /* the card's scroll-margin-top reads --zip-anchor, so it must be current before the scroll */
     card.scrollIntoView({block:'start'});
     card.focus({preventScroll:true});
   }
@@ -203,5 +238,6 @@ export function initApp(){
 
   document.documentElement.dataset.mode=state.mode; /* active mode styled on first paint */
   buildSelect(); renderGrid();
+  measureChrome();
   gotoHash();
 }

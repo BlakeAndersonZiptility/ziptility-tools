@@ -67,8 +67,12 @@ function boot() {
   let controller = null;
 
   function showPicker() {
+    const leavingRun = !!controller;
     if (controller) { controller.destroy(); controller = null; }
     renderPicker(stage, { onSelect: selectTest, childPages, hubUrl });
+    /* Fit pass 2026-09-22: "All practice tests" from a score screen brings the hub into view
+       rather than leaving the reader at the foot of the results. Never on first paint. */
+    if (leavingRun) { try { stage.scrollIntoView({ block: 'start' }); } catch (e) { /* ignore */ } }
   }
 
   /* deepLinked: entered straight into one bank from a per-discipline page
@@ -79,6 +83,9 @@ function boot() {
      it. See quiz-engine.js renderResults. */
   function selectTest(test, deepLinked) {
     renderLoading(stage);
+    /* A hub-card click at the foot of the grid used to swap in a setup screen that began well
+       above the viewport (fit pass 2026-09-22). Deep links skip this: no jump on page load. */
+    if (!deepLinked) { try { stage.scrollIntoView({ block: 'start' }); } catch (e) { /* ignore */ } }
     loadBank(test.id, test.bankVersion, bankBase)
       .then((bank) => {
         const cfg = {

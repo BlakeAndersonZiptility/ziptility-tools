@@ -56,8 +56,9 @@ scripts/               bank build, page-content build, neutral-lane check
 tests/                 solvers, practice (logic/schema/browser), manager,
                        reportcard, page-content, cross-tool-links
 webflow/               embed snippets + legacy page snapshot (rollback insurance)
-calculator.js          LEGACY v1 monolith — still what the live page loads
-                       until the v2 cutover; do not edit
+calculator.js          LEGACY v1 monolith, kept for the solver-parity test
+                       (test:legacy); the live page has loaded v2 since
+                       2026-06-22; do not edit
 ```
 
 ## Tests

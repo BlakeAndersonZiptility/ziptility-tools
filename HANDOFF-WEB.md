@@ -117,6 +117,16 @@ the site published to production on Blake's word 2026-09-22 (a second publish th
 
 **Cut 2026-09-22 (visual fit pass, Blake: "looks super goofy and does not fit well"):** `calculator-v2.13.0.js`, LIVE on production the same day (PR 33, Blake's word). Over v2.12.0: no math or unit change. The mode cards leave the sticky bar (only the search/category toolbar sticks, offset by the site header the bundle measures at boot and on resize, `--zip-top`); cards carry a scroll margin so a deep link (`#chlorine-dose` from a practice question) lands with its heading visible, with a tomato focus ring; grid rows no longer stretch every card to the tallest neighbour; on a phone the fields go one column, the unit selects are quiet linen chips, the tool-side gutters shrink (Webflow already gives 40px), the title and the US/Metric pill share one row down to 375px, the toggle pill and labels no longer wrap or clip, the count pill reads "10"; the header note fits two lines at 1280; the in-tool heading is an h2 because the Webflow page's H1 sits directly above it. Embed contract unchanged: the same one-line repoint.
 
+**Cut 2026-09-22 (host-leak fix), PUBLISHED the same day:** `calculator-v2.14.0.js`. Blake: the global
+header's dropdowns on /tools/calculator were hidden behind the sections below. Root cause, measured on the
+live page against /tools/practice: the bundle's bare `header{overflow:hidden}` rule reached the site's own
+header and clipped every dropdown; the same leak padded the site's `<main>`, squeezed the site footer to
+1180px with 12px text, and recoloured host links. Every bare element rule now sits under
+`:where(#ziptility-calculator)` (zero added specificity, so the tool's own cascade is unchanged; the warm
+page background stays on body on purpose). Verified rendered on staging and production: header overflow
+visible, the Product menu on top, main padding 0, footer full width. The `<script defer>` src repointed
+headless from v2.13.0; no embed attribute changes.
+
 Deploy is one edit: change the version in the `<script src>` and publish.
 Artifacts are immutable, so **merging to main never changes what a visitor
 sees**. Rollback is the same edit in reverse and takes about a minute.

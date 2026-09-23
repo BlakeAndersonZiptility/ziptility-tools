@@ -107,6 +107,14 @@ deep-linked discipline pages do not jump). Questions, scoring, events and localS
 embed attribute changes; the hub's embed was repointed headless from v1.9.0 and the site published to
 production on Blake's word 2026-09-22. Captures: master-data `practice-fit-pass-2026-09-22/`.
 
+**Cut 2026-09-22 (a11y backlog), PUBLISHED the same day:** `practice-v1.11.0.js`. Closes the two
+items from the 2026-09-16 staged-build review: focus now follows every rebuild (the new question's
+card, the feedback panel after a check, the picked choice after a pick, the setup card or resume
+prompt, the score hero, the hub heading on "All practice tests"; a deep-linked page load never steals
+focus), and the Practice / Timed exam and question-count buttons are labelled groups carrying
+`aria-pressed`. No embed attribute changes; the hub's embed was repointed headless from v1.10.0 and
+the site published to production on Blake's word 2026-09-22 (a second publish the same day).
+
 **Cut 2026-09-22 (visual fit pass, Blake: "looks super goofy and does not fit well"):** `calculator-v2.13.0.js`, LIVE on production the same day (PR 33, Blake's word). Over v2.12.0: no math or unit change. The mode cards leave the sticky bar (only the search/category toolbar sticks, offset by the site header the bundle measures at boot and on resize, `--zip-top`); cards carry a scroll margin so a deep link (`#chlorine-dose` from a practice question) lands with its heading visible, with a tomato focus ring; grid rows no longer stretch every card to the tallest neighbour; on a phone the fields go one column, the unit selects are quiet linen chips, the tool-side gutters shrink (Webflow already gives 40px), the title and the US/Metric pill share one row down to 375px, the toggle pill and labels no longer wrap or clip, the count pill reads "10"; the header note fits two lines at 1280; the in-tool heading is an h2 because the Webflow page's H1 sits directly above it. Embed contract unchanged: the same one-line repoint.
 
 Deploy is one edit: change the version in the `<script src>` and publish.

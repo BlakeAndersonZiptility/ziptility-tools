@@ -51,11 +51,22 @@
     --warning:#d97706; --warning-bg:#fffbeb; --warning-border:#fcd34d; --warning-fg:#b45309;
   }
   html[data-mode="wastewater"]{ --mode:var(--brand-teal); --mode-dark:var(--brand-teal-dark); --mode-soft:#E2F3EF; --mode-tint:#F1F9F7; }
-  *{box-sizing:border-box;} html,body{margin:0;padding:0;}
-  body{font-family:var(--brand-font-body); color:var(--ink); background:var(--bg); -webkit-font-smoothing:antialiased; line-height:1.45;}
+  /* HOST-LEAK FIX (2026-09-22, Blake: the header dropdowns on /tools/calculator were hidden
+     behind the sections below). These element rules were bare, so they styled the HOST page too:
+     the site's <header> got overflow:hidden (which clipped every nav dropdown and the mobile
+     menu), the site's <main id="main"> got 22/16/10 padding, the site footer got max-width 1180,
+     12px text and side margins, and every host link got this bundle's link colour. Measured on
+     the live page against /tools/practice as the control. Every rule now sits under
+     :where(#ziptility-calculator), which scopes it to the mount at ZERO added specificity, so the
+     cascade inside the tool is byte-for-byte what it was (a plain `a` still loses to
+     `.cta-actions a`, as before). The warm page background stays on body on purpose: the page is
+     designed on it and tests/browser.test.js pins it. */
+  :where(#ziptility-calculator), :where(#ziptility-calculator) *{box-sizing:border-box;}
+  body{background:var(--bg);}
+  :where(#ziptility-calculator){font-family:var(--brand-font-body); color:var(--ink); -webkit-font-smoothing:antialiased; line-height:1.45;}
 
-  header{background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(0,0,0,.12)), var(--navy); color:#fff; position:relative; overflow:hidden; border-bottom:3px solid var(--mode); transition:border-color .35s ease;}
-  header::before{content:""; position:absolute; inset:0; background-image:linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px); background-size:28px 28px; -webkit-mask-image:linear-gradient(180deg, rgba(0,0,0,.9), rgba(0,0,0,0)); mask-image:linear-gradient(180deg, rgba(0,0,0,.9), rgba(0,0,0,0)); pointer-events:none;}
+  :where(#ziptility-calculator) header{background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(0,0,0,.12)), var(--navy); color:#fff; position:relative; overflow:hidden; border-bottom:3px solid var(--mode); transition:border-color .35s ease;}
+  :where(#ziptility-calculator) header::before{content:""; position:absolute; inset:0; background-image:linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px); background-size:28px 28px; -webkit-mask-image:linear-gradient(180deg, rgba(0,0,0,.9), rgba(0,0,0,0)); mask-image:linear-gradient(180deg, rgba(0,0,0,.9), rgba(0,0,0,0)); pointer-events:none;}
   .head-wrap{max-width:1180px; margin:0 auto; padding:20px 22px 22px; position:relative; z-index:1; display:flex; flex-wrap:wrap; align-items:center; gap:14px 20px;}
   /* NO LOGO AND NO MASTHEAD IN THIS BUNDLE, deliberately: on the live page
      the Webflow global header and footer sit around the tool and carry the
@@ -102,7 +113,7 @@
   .count{font-family:var(--brand-font-mono); font-size:12px; color:var(--muted); background:var(--card); border:1px solid var(--line); border-radius:999px; padding:6px 12px; white-space:nowrap;}
   .count b{color:var(--mode-dark);}
 
-  main{max-width:1180px; margin:0 auto; padding:22px 16px 10px;}
+  :where(#ziptility-calculator) main{max-width:1180px; margin:0 auto; padding:22px 16px 10px;}
   .grid{display:grid; gap:18px; grid-template-columns:repeat(auto-fill, minmax(340px, 1fr));}
   .empty{grid-column:1/-1; text-align:center; color:var(--muted); padding:48px 16px; font-size:14px; line-height:1.6;}
   .empty b{color:var(--ink);}
@@ -215,7 +226,7 @@
   .modal-ok{display:none; text-align:center; padding:12px 0;}
   .modal-ok .check{width:48px; height:48px; border-radius:50%; background:#E9F7F0; color:var(--good); display:grid; place-items:center; margin:0 auto 12px;}
 
-  footer{max-width:1180px; margin:0 auto; padding:24px 16px 48px; color:var(--muted); font-size:12px;}
+  :where(#ziptility-calculator) footer{max-width:1180px; margin:0 auto; padding:24px 16px 48px; color:var(--muted); font-size:12px;}
   .disclaimer{background:#fff; border:1px solid var(--line); border-left:3px solid var(--accent); border-radius:10px; padding:14px 16px; line-height:1.55;}
   .disclaimer strong{color:var(--ink);}
   .ref{margin-top:16px;}
@@ -252,7 +263,7 @@
 /* G1 fix, 2026-07-29: default link color was raw tomato (3.43:1 text-on-white, fails). No page
    copy actually falls through to this bare rule today (every live anchor has a more specific
    selector), but it is the default any new one would inherit, so it gets the same fix. */
-a{ color:var(--brand-red-press); }
+:where(#ziptility-calculator) a{ color:var(--brand-red-press); }
 .cta-inner{ background:linear-gradient(to bottom,#0C1F30,#0F1923); }
 
 /* The "Blake's call: in-tool Calculate buttons = brand red" ruling that used to override
@@ -333,7 +344,7 @@ body.embed-app .cta, body.embed-app .seo, body.embed-app .zip-seo{ display:none;
 html[data-mode="wastewater"]{ --mode:var(--brand-red); --mode-dark:#c5341f; --mode-soft:#ffe9e5; --mode-tint:#ffffff; }
 
 /* header: no mode-colored underline (the design ends flush on the linen page) */
-header{ border-bottom:none; }
+:where(#ziptility-calculator) header{ border-bottom:none; }
 
 /* flat white cards — drop the mode-colored top stripe.
    G4 fix, 2026-07-29: this reskin overrode the radius but never removed the base rule's
@@ -489,7 +500,7 @@ html[data-mode="wastewater"] .mode-btn[data-m="wastewater"] .mode-txt b{ color:v
   /* 4  Tool-side gutters shrink: the Webflow page already gives a 40px
      gutter, and the tool was adding 16 + 18 on top, leaving 242px for two
      columns of input + unit chip. Fields go one column. */
-  main{ padding:14px 10px 10px; }
+  :where(#ziptility-calculator) main{ padding:14px 10px 10px; }
   .modes{ padding:12px 10px 0; }
   .modebar{ gap:10px; }
   .mode-btn{ padding:12px 10px; gap:10px; }

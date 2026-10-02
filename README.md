@@ -43,7 +43,7 @@ src/
   calc-helpers.js      convSolve / converter / countNN
   registry.js          assembles calculators[] + CAT_ORDER, validates schema
   calculators/         one file per category — add calculators here
-  ui/                  template.js, render.js, lead.js, styles.css
+  ui/                  template.js, render.js, sheets-link.js, styles.css
   domains.js           subject-area labels, shared by the quiz chips and the
                        generated discipline-page tables (two copies drifted)
   practice/            practice-test bundle (manifest, banks loader, quiz engine)

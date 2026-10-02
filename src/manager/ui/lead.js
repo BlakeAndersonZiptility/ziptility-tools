@@ -1,5 +1,5 @@
 /* Manager toolbox - soft capture, wired the same way as the operator
-   calculator's src/ui/lead.js (HubSpot Forms POST with a mailto fallback).
+   calculator's lead modal (retired 2026-09-16, file removed 2026-10-02): HubSpot Forms POST, mailto fallback.
    The button that opens this modal only exists once render.js has revealed
    it after a successful calculation (see ui/render.js renderResult); this
    module never gates anything, it only handles the modal once it is open. */
